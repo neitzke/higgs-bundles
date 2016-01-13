@@ -1,0 +1,260 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+
+% \usepackage{mathtools}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{indentfirst}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.5,0.15,0.15}
+\hypersetup{colorlinks=true,urlcolor=darkred,linkcolor=darkred,citecolor=darkred}
+\usepackage{verbatim}
+\usepackage[letterpaper,margin=1in,headheight=15pt]{geometry}
+\usepackage{mathpazo}
+\usepackage{tikz-cd}
+\usepackage{booktabs}
+\usepackage{framed}
+\usepackage{float} %Specify position of figures & I added (LF)
+\definecolor{shadecolor}{rgb}{0.85,0.85,0.85}
+% Bibliography formatting
+\usepackage[bibstyle=authoryear-comp,labeldate=false,defernumbers=true,maxnames=20,firstinits=true,uniquename=init,dashed=false,backend=biber,sorting=none]{biblatex}
+
+\DeclareNameAlias{sortname}{first-last}
+
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inproceedings]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[incollection]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[article]{volume}{\textbf{#1}}
+\DeclareFieldFormat[article]{number}{(#1)}
+\DeclareFieldFormat[article]{title}{\MakeCapital{#1}}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat{shorthandwidth}{#1}
+
+% Don't use "In:" in bibliography. Omit urls from journal articles.
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor}%
+  \setunit{\labelnamepunct}\newblock
+  \MakeSentenceCase{\usebibmacro{title}}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+%  \usebibmacro{in:}%
+  \usebibmacro{journal+issuetitle}%
+  \newunit\newblock
+  \printfield{note}%
+  \setunit{\bibpagespunct}%
+  \printfield{pages}
+  \newunit\newblock
+  \usebibmacro{eprint}
+  \newunit\newblock
+  \printfield{addendum}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+% Remove dot between volume and number in journal articles.
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}
+    {}
+    {\newunit
+     \printfield{series}%
+     \setunit{\addspace}}%
+  \printfield{volume}%
+%  \setunit*{\adddot}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \newunit\newblock
+  \usebibmacro{issue}%
+  \newunit}
+
+
+% Bibliography categories
+\def\makebibcategory#1#2{\DeclareBibliographyCategory{#1}\defbibheading{#1}{\section*{#2}}}
+\makebibcategory{books}{Books}
+\makebibcategory{papers}{Refereed research papers}
+\makebibcategory{chapters}{Book chapters}
+\makebibcategory{conferences}{Papers in conference proceedings}
+\makebibcategory{techreports}{Unpublished working papers}
+\makebibcategory{bookreviews}{Book reviews}
+\makebibcategory{editorials}{Editorials}
+\makebibcategory{phd}{PhD thesis}
+\makebibcategory{subpapers}{Submitted papers}
+\makebibcategory{curpapers}{Current projects}
+
+\setlength{\bibitemsep}{2.65pt}
+\setlength{\bibhang}{.8cm}
+\renewcommand{\bibfont}{\small}
+
+\renewcommand*{\bibitem}{\addtocounter{papers}{1}\item \mbox{}\hskip-0.85cm\hbox to 0.85cm{\hfill\arabic{papers}.~~}}
+\defbibenvironment{bibliography}
+{\list{}
+  {\setlength{\leftmargin}{\bibhang}%
+   \setlength{\itemsep}{\bibitemsep}%
+   \setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\bibitem}
+
+\newenvironment{publications}{\section{\LARGE Publications}\label{papersstart}\vspace*{0.2cm}\small
+\titlespacing{\section}{0pt}{1.5ex}{1ex}\itemsep=0.00cm
+}{\label{papersend}\addtocounter{sumpapers}{-1}\refstepcounter{sumpapers}\label{sumpapers}}
+
+\def\printbib#1{\printbibliography[category=#1,heading=#1]\lastref{sumpapers}}
+
+% Counters for keeping track of papers
+\newcounter{papers}\setcounter{papers}{0}
+\newcounter{sumpapers}\setcounter{sumpapers}{0}
+\def\lastref#1{\addtocounter{#1}{\value{papers}}\setcounter{papers}{0}}
+
+% theorem environments
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+
+% numbering by section
+\numberwithin{thm}{section}
+\numberwithin{equation}{section}
+
+% macros for convenience
+\newcommand{\tops}{\texorpdfstring}
+
+\newcommand{\nid}{\noindent}
+
+\newcommand{\fa}{{\mathfrak a}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fk}{{\mathfrak k}}
+\newcommand{\fg}{{\mathfrak g}}
+\newcommand{\fh}{{\mathfrak h}}
+\newcommand{\fn}{{\mathfrak n}}
+\newcommand{\fq}{{\mathfrak q}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fr}{{\mathfrak r}}
+
+\newcommand{\cC}{\ensuremath{\mathcal C}}
+\newcommand{\cG}{\ensuremath{\mathcal G}}
+\newcommand{\cB}{\ensuremath{\mathcal B}}
+\newcommand{\cL}{\ensuremath{\mathcal L}}
+\newcommand{\cS}{\ensuremath{\mathcal S}}
+\newcommand{\cF}{\ensuremath{\mathcal F}}
+\newcommand{\cK}{\ensuremath{\mathcal K}}
+\newcommand{\cZ}{\ensuremath{\mathcal Z}}
+\newcommand{\cM}{\ensuremath{\mathcal M}}
+\newcommand{\cO}{\ensuremath{\mathcal O}}
+\newcommand{\cH}{\ensuremath{\mathcal H}}
+\newcommand{\cX}{\ensuremath{\mathcal X}}
+\newcommand{\cY}{\ensuremath{\mathcal Y}}
+\newcommand{\cA}{\ensuremath{\mathcal A}}
+\newcommand{\cI}{\ensuremath{\mathcal I}}
+
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\C}{\ensuremath{\mathbb C}}
+\newcommand{\PP}{\ensuremath{\mathbb P}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\Q}{\ensuremath{\mathbb Q}}
+\newcommand{\A}{\ensuremath{\mathbb A}}
+\newcommand{\bbH}{\ensuremath{\mathbb H}}
+\newcommand{\bbI}{\ensuremath{\mathbb I}}
+\newcommand{\bS}{\ensuremath{\mathbb S}}
+
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\qtr}{\ensuremath{\frac{1}{4}}}
+\newcommand{\bq}{{\mathbf q}}
+\newcommand{\N}{{\mathcal N}}
+\newcommand{\F}{{\mathcal F}}
+\newcommand{\HH}{{\mathcal H}}
+\newcommand{\LL}{{\mathcal L}}
+\newcommand{\RR}{{\mathcal R}}
+\newcommand{\V}{{\mathcal V}}
+\newcommand{\dirac}{\!\!\not\!\partial}
+\newcommand{\Dirac}{\!\!\not\!\!D}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\vs}{\not\!v}
+\newcommand{\kahler}{K\"ahler\xspace}
+\newcommand{\hk}{hyperk\"ahler\xspace}
+\newcommand{\del}{\ensuremath{\partial}}%I added (LF)
+\newcommand{\delbar}{\ensuremath{\overline{\partial}}}%I added (LF)
+\newcommand{\zbar}{\ensuremath{\overline{z}}}%I added (LF)
+\newcommand{\rme}{\ensuremath{\mathrm{e}}}%I added (LF)
+
+\newcommand{\breg}{{\cB_{\mathrm{reg}}}}
+\newcommand{\bsing}{{\cB_{\mathrm{sing}}}}
+
+\newcommand{\Top}{{\mathrm Top}}
+\newcommand{\I}{{\mathrm i}}
+\newcommand{\e}{{\mathrm e}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\ab}{\mathrm{ab}}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\IP}[1]{\langle#1\rangle}
+\newcommand{\dwrt}[1]{\frac{\partial}{\partial#1}}
+\newcommand{\eps}{\epsilon}
+
+\newcommand{\pa}{{\partial}}
+\newcommand{\ti}[1]{\textit{#1}}
+
+\newcommand{\fro}{\overline{\underline{\Omega}}}
+
+\newcommand{\unif}{{\mathrm {unif}}}
+\newcommand{\fsl}{\mathfrak{sl}}
+
+\newcommand{\hb}{harmonic bundle}
+
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\diag}{diag}
+
+\newcommand{\fixme}[1]{{\color{blue}{\tt [#1]}}}
+
+
+% \mathtoolsset{showonlyrefs}
+
+\bibliography{higgs-bundles}
+
+\begin{document}
+
+\title{Moduli of Higgs bundles}
+\date{}
+
+\maketitle
+
+\setcounter{page}{1}
+
+\section{Syllabus}
+
+
+
+\printbibliography
+
+\end{document}
