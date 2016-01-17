@@ -18,7 +18,8 @@
 \usepackage{tikz-cd}
 \usepackage{booktabs}
 \usepackage{framed}
-\usepackage{float} %Specify position of figures & I added (LF)
+\usepackage{float}
+
 \definecolor{shadecolor}{rgb}{0.85,0.85,0.85}
 % Bibliography formatting
 \usepackage[bibstyle=authoryear-comp,labeldate=false,defernumbers=true,maxnames=20,firstinits=true,uniquename=init,dashed=false,backend=biber,sorting=none]{biblatex}
@@ -135,6 +136,8 @@
 
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
 
 % numbering by section
 \numberwithin{thm}{section}
@@ -233,6 +236,7 @@
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\diag}{diag}
 
 \newcommand{\fixme}[1]{{\color{blue}{\tt [#1]}}}
@@ -254,8 +258,7 @@
 \section{Syllabus}
 
 Moduli spaces of Higgs bundles are extremely 
-geometrically rich, and yet reasonably 
-accessible, spaces. 
+geometrically rich.
 The aim of the course is to learn as much as we can about 
 the topology and geometry of these spaces. One 
 idiosyncratic point is that we will focus more than 
@@ -294,6 +297,168 @@ to be dropped):
   \item role in geometric Langlands program?
   \item role in $\N=2$ supersymmetric QFT?
 \end{itemize}
+
+
+\section{Complex and \kahler geometry: a quick review}
+
+There are many references for this material: one
+good one is \cite{MR2093043}.
+
+
+\subsection{Complex manifolds}
+
+\begin{defn} Suppose $X$ is a smooth manifold.
+An \ti{almost complex structure} on $X$ is a smooth section $I$ of $\End(TX)$ with $I^2 = -1$. An \ti{almost complex manifold} is a pair $(X,I)$ where $I$ is an almost complex structure.
+\end{defn}
+
+\begin{example} $\C^n$ has a canonical almost complex structure $I$, as follows. Each tangent space $T_p \C^n \simeq \R^{2n}$ canonically; $I$ is multiplication by $\I$.
+Writing $z_i = x_i + \I y_i$, and taking the basis
+$\{\partial_{x_1}, \partial_{x_2}, \dots, \partial_{x_n}, \partial_{y_1}, \partial_{y_2}, \dots, \partial_{y_n}\}$ for for $T_p \C^n$, we have \fixme{check sign}
+\begin{equation}
+   I = \begin{pmatrix} {\bf 0}_{n \times n} & {\bf 1}_{n \times n} \\ -{\bf 1}_{n \times n} & {\bf 0}_{n \times n} \end{pmatrix}.
+\end{equation}
+\end{example}
+
+If $X$ has real dimension $2n$, an almost complex
+structure $I$ equips $TX$ with the structure of
+\ti{complex} vector bundle over $X$, of rank $n$,
+and we say the \ti{complex dimension} $\dim_\C X$ is
+$n$.
+
+ \begin{defn} If $(X,I_X)$ and $(Y,I_Y)$ are almost
+ complex manifolds, a \ti{holomorphic map} $\phi: X \to Y$
+is one obeying
+\begin{equation}
+ I_Y \circ \de \phi = \de \phi \circ I_X.  
+\end{equation}
+\end{defn}
+
+\begin{defn} An almost complex structure $I$ on $X$ is \ti{integrable} if there is a covering of $X$ by open sets $U_\alpha$ with holomorphic maps $\phi_\alpha: U_\alpha \to \C^n$. A \ti{complex manifold} is an almost complex manifold $(X,I)$ with $I$ integrable.
+\end{defn}
+
+\begin{exercise} Show that this is equivalent to the usual definition of complex manifold, namely a space
+$X$ with a covering by charts $\phi_\alpha: U_\alpha \to \C^n$, where the transition maps are holomorphic (obey Cauchy-Riemann equations).
+\end{exercise}
+
+There are various equivalent ways of formulating the integrability condition. One which will be useful for us is:
+\begin{prop} $I$ is integrable if and only if the \ti{Nijenhuis tensor} $N_I \in C^\infty(\wedge^2 TX)$,
+\begin{equation}
+N_I(v,w) = [v,w] + I[v,Iw] + I[Iv,w] - [Iv,Iw],
+\end{equation}
+has
+\begin{equation}
+N_I = 0.  
+\end{equation}
+\end{prop}
+
+
+In addition we have a decomposition
+of $T_\C X = TX \otimes_\R \C$,
+\begin{equation}
+T_\C X = T^{1,0} X \oplus T^{0,1} X
+  \end{equation}
+where $T^{1,0} X$ and $T^{0,1} X$ are 
+respectively the
+$+\I$ and $-\I$ eigenspaces of $I$.
+There is also a dual decomposition
+\begin{equation}
+T^*_\C X = (T^*)^{1,0} X \oplus (T^*)^{0,1} X,
+  \end{equation}
+which induces
+\begin{equation}
+\wedge^* T^*_\C X = \bigoplus_{p,q} \wedge^{p,q} T^* X , \qquad \Omega^*_\C X = \bigoplus_{p,q} \Omega^{p,q}(X)
+\end{equation}
+and a corresponding decomposition
+\begin{equation}
+\de = \partial + \bar\partial, \quad \partial: \Omega^{p,q}(X) \to \Omega^{p+1,q}(X), \quad \bar\partial: \Omega^{p,q}(X) \to \Omega^{p,q+1}(X).
+\end{equation}
+
+\subsection{Holomorphic vector bundles}
+
+In this section $(X,I)$ is always a complex manifold.
+
+\begin{defn} A \ti{holomorphic vector bundle} over $X$ is a complex vector bundle $E$ over $X$, equipped with an operator
+\begin{equation}
+  \bar\partial_E :  \Omega^{p,q}(E) \to \Omega^{p,q+1}(E)
+\end{equation}
+obeying
+\begin{equation}
+  \bar\partial_E (\alpha \psi) = (\bar\partial_E \alpha) \psi + (-1)^{\abs{\alpha}} \alpha \wedge \bar\partial_E \psi
+\end{equation}
+and the integrability condition
+\begin{equation}
+  \bar\partial_E^2 = 0.
+\end{equation}
+\end{defn}
+
+\begin{example} The tangent bundle $TX$ carries
+a canonical structure of holomorphic vector bundle.
+\end{example}
+
+\begin{defn}
+If $E$ is a holomorphic vector bundle over $X$,
+a connection $D$ in $E$ is \ti{compatible with the
+holomorphic structure} if, for all 
+$\psi \in \Omega^0(E)$, the $(0,1)$ part of $D \psi$ 
+is $\bar\partial_E \psi$.
+\end{defn}
+
+\begin{defn}
+If $E$ is a holomorphic vector bundle over $X$ with
+a Hermitian metric $h$, the \ti{Chern connection} 
+in $E$ is the unique connection which is 
+$h$-unitary and compatible with the holomorphic
+structure.
+\end{defn}
+
+\subsection{Hermitian and \kahler metrics}
+
+In this section $(X,I)$ is always a complex manifold.
+
+\begin{defn} A Hermitian metric on $X$ is a Riemannian
+metric $g$ obeying
+$$ g(v,w) = g(Iv,Iw). $$
+\end{defn}
+Equivalently, with respect to the decomposition 
+\begin{equation}
+  \Sym^2 (T_\C X) = \Sym^{2,0} TX \oplus \Sym^{1,1} TX \oplus \Sym^{0,2} TX,
+\end{equation}
+we have $g \in \Sym^{1,1} TX$, i.e. $g$ is of ``type $(1,1)$.''.
+
+\begin{defn} If $g$ is a Hermitian metric on $X$, 
+the \ti{fundamental form} $\omega \in \Omega^2(X)$
+is
+\begin{equation}
+  \omega(v,w) = g(Iv,w).
+\end{equation}
+There is also a Hermitian metric on $TX$
+considered as a complex vector bundle,
+given by
+\begin{equation}
+  h(v,w) = g(v,w) - \I \omega(v,w) = g(v,w) - \I g(Iv,w).
+\end{equation}
+\end{defn}
+
+\begin{defn} If $g$ is a Hermitian metric on $X$,
+$g$ is \kahler if the corresponding $\omega$ obeys
+\begin{equation}
+  \de \omega = 0.
+\end{equation}
+In this case we say $(X,I,g)$ is a \kahler manifold.
+\end{defn}
+
+The \kahler property has various useful consequences:
+\begin{prop}
+If $(X,I,g)$ is a \kahler manifold, with
+\kahler form $\omega$, then:
+\begin{itemize}
+  \item $\omega$ is a symplectic form on $X$,
+  \item $\frac{\omega^n}{n!}$ is the volume form induced by $g$,
+  \item the Levi-Civita connection on $TX$ agrees with the Chern connection,
+\end{itemize}
+
+\end{prop}
+
 
 \printbibliography
 
