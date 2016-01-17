@@ -19,6 +19,7 @@
 \usepackage{booktabs}
 \usepackage{framed}
 \usepackage{float}
+\usepackage{thmtools}
 
 \definecolor{shadecolor}{rgb}{0.85,0.85,0.85}
 % Bibliography formatting
@@ -125,22 +126,12 @@
 \def\lastref#1{\addtocounter{#1}{\value{papers}}\setcounter{papers}{0}}
 
 % theorem environments
-\newtheorem{thm}{Theorem}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{conj}[thm]{Conjecture}
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{prop}[thm]{Proposition}
+\declaretheorem[name=Theorem,numberwithin=section]{thm}
+\declaretheorem[name=Definition,sibling=thm]{defn}
+\declaretheorem[name=Proposition,sibling=thm]{prop}
+\declaretheorem[name=Example,sibling=thm]{example}
+\declaretheorem[name=Exercise,numberwithin=section,shaded={bgcolor={gray}{0.9}}]{exercise}
 
-\theoremstyle{remark}
-\newtheorem{rem}[thm]{Remark}
-
-\theoremstyle{definition}
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{example}[thm]{Example}
-\newtheorem{exercise}[thm]{Exercise}
-
-% numbering by section
-\numberwithin{thm}{section}
 \numberwithin{equation}{section}
 
 % macros for convenience
@@ -464,13 +455,16 @@ is
 \begin{equation}
   \omega(v,w) = g(Iv,w).
 \end{equation}
-There is also a Hermitian metric on $TX$
-considered as a complex vector bundle,
-given by
-\begin{equation}
-  h(v,w) = g(v,w) - \I \omega(v,w) = g(v,w) - \I g(Iv,w).
-\end{equation}
 \end{defn}
+
+\begin{exercise} If $g$ is a Hermitian metric on $X$,
+verify that
+\begin{equation}
+  h = g - \I \omega
+\end{equation}
+defines a Hermitian metric on the complex vector
+bundle $TX$.
+\end{exercise}
 
 \begin{defn} If $g$ is a Hermitian metric on $X$,
 $g$ is \kahler if the corresponding $\omega$ obeys
