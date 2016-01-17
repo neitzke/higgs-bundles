@@ -239,7 +239,7 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\diag}{diag}
 
-\newcommand{\fixme}[1]{{\color{blue}{\tt [#1]}}}
+\newcommand{\fixme}[1]{{\color{blue}{[#1]}}}
 
 
 % \mathtoolsset{showonlyrefs}
@@ -305,9 +305,10 @@ There are many references for this material: one
 good one is \cite{MR2093043}.
 
 
-\subsection{Complex manifolds}
+\subsection{Complex manifolds} 
+In this section $X$ is a smooth manifold.
 
-\begin{defn} Suppose $X$ is a smooth manifold.
+\begin{defn}
 An \ti{almost complex structure} on $X$ is a smooth section $I$ of $\End(TX)$ with $I^2 = -1$. An \ti{almost complex manifold} is a pair $(X,I)$ where $I$ is an almost complex structure.
 \end{defn}
 
@@ -336,7 +337,7 @@ is one obeying
 \begin{defn} An almost complex structure $I$ on $X$ is \ti{integrable} if there is a covering of $X$ by open sets $U_\alpha$ with holomorphic maps $\phi_\alpha: U_\alpha \to \C^n$. A \ti{complex manifold} is an almost complex manifold $(X,I)$ with $I$ integrable.
 \end{defn}
 
-\begin{exercise} Show that this is equivalent to the usual definition of complex manifold, namely a space
+\begin{exercise} Show that this is equivalent to the usual definition of a complex manifold as a space
 $X$ with a covering by charts $\phi_\alpha: U_\alpha \to \C^n$, where the transition maps are holomorphic (obey Cauchy-Riemann equations).
 \end{exercise}
 
@@ -351,8 +352,9 @@ N_I = 0.
 \end{equation}
 \end{prop}
 
-
-In addition we have a decomposition
+\subsection{Type decompositions}
+Suppose $(X,I)$ is a complex manifold.
+We have a decomposition
 of $T_\C X = TX \otimes_\R \C$,
 \begin{equation}
 T_\C X = T^{1,0} X \oplus T^{0,1} X
@@ -360,13 +362,22 @@ T_\C X = T^{1,0} X \oplus T^{0,1} X
 where $T^{1,0} X$ and $T^{0,1} X$ are 
 respectively the
 $+\I$ and $-\I$ eigenspaces of $I$.
+Both $TX$ and $T^{1,0}X$ are complex vector bundles 
+of rank $n$; it is sometimes convenient to identify
+them, by projection on the $(1,0)$ part.
+
+\begin{exercise}
+Show that this is indeed an isomorphism 
+of complex vector bundles.
+\end{exercise}
+
 There is also a dual decomposition
 \begin{equation}
 T^*_\C X = (T^*)^{1,0} X \oplus (T^*)^{0,1} X,
   \end{equation}
 which induces
 \begin{equation}
-\wedge^* T^*_\C X = \bigoplus_{p,q} \wedge^{p,q} T^* X , \qquad \Omega^*_\C X = \bigoplus_{p,q} \Omega^{p,q}(X)
+\wedge^* T^*_\C X = \bigoplus_{p,q=0}^n \wedge^{p,q} T^* X , \qquad \Omega^*_\C X = \bigoplus_{p,q=0}^n \Omega^{p,q}(X)
 \end{equation}
 and a corresponding decomposition
 \begin{equation}
@@ -391,8 +402,30 @@ and the integrability condition
 \end{equation}
 \end{defn}
 
+\begin{exercise} Show that a structure of holomorphic vector bundle on $E$ is equivalent to a maximal atlas 
+of preferred trivializations of $E$, such that
+the transition maps 
+$U_\alpha \cap U_\beta \to GL(r,\C)$ 
+are holomorphic.
+\end{exercise}
+
+% \begin{example} The trivial bundle $X \times \C^r$
+% carries a canonical holomorphic structure.
+% \end{example}
+
 \begin{example} The tangent bundle $TX$ carries
 a canonical structure of holomorphic vector bundle.
+(Indeed, the coordinate charts give rise to 
+preferred trivializations corresponding 
+to the bases $\{\partial_{z_1}, \dots, \partial_{z_n} \}$
+for $TX \simeq T^{1,0} X$, and the transition 
+maps are given 
+by the Jacobians, which are holomorphic.)
+% It can be described as follows: for each coordinate
+% chart $\phi_\alpha: U \to \C^n$, we get an isomorphism
+% $\de \phi_\alpha: TU \to T \C^n$, and under this 
+% isomorphism $\bar\partial_{TX}$ is identified
+% with the canonical holomorphic structure.
 \end{example}
 
 \begin{defn}
@@ -454,10 +487,29 @@ If $(X,I,g)$ is a \kahler manifold, with
 \begin{itemize}
   \item $\omega$ is a symplectic form on $X$,
   \item $\frac{\omega^n}{n!}$ is the volume form induced by $g$,
-  \item the Levi-Civita connection on $TX$ agrees with the Chern connection,
+  \item the Levi-Civita connection on $TX$ agrees with the Chern connection.
 \end{itemize}
 
 \end{prop}
+
+\fixme{reduced holonomy}
+
+
+\section{Hyperk\"ahler manifolds}
+
+\begin{defn} A \hk manifold is a Riemannian 
+manifold $(X,g)$,
+equipped with three complex structures $I$, $J$, $K$, obeying the algebra of the quaternions: $IJ = -JI = K$,
+such $g$ is Hermitian and \kahler with respect to
+any of $I$, $J$, $K$.
+\end{defn}
+
+We generally denote the three corresponding
+symplectic forms $\omega_I, \omega_J, \omega_K$.
+
+\fixme{reduced holonomy}
+
+\fixme{Ricci-flatness}
 
 
 \printbibliography
