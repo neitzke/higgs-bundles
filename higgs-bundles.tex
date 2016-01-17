@@ -126,11 +126,13 @@
 \def\lastref#1{\addtocounter{#1}{\value{papers}}\setcounter{papers}{0}}
 
 % theorem environments
+\declaretheoremstyle[bodyfont=\normalfont]{noital}
+
 \declaretheorem[name=Theorem,numberwithin=section]{thm}
 \declaretheorem[name=Definition,sibling=thm]{defn}
 \declaretheorem[name=Proposition,sibling=thm]{prop}
-\declaretheorem[name=Example,sibling=thm]{example}
-\declaretheorem[name=Exercise,numberwithin=section,shaded={bgcolor={gray}{0.9}}]{exercise}
+\declaretheorem[name=Example,sibling=thm,style=noital]{example}
+\declaretheorem[name=Exercise,numberwithin=section,style=noital,shaded={bgcolor={gray}{0.9}}]{exercise}
 
 \numberwithin{equation}{section}
 
@@ -200,6 +202,8 @@
 
 \newcommand{\Top}{{\mathrm Top}}
 \newcommand{\I}{{\mathrm i}}
+\newcommand{\J}{{\mathrm j}}
+\newcommand{\K}{{\mathrm k}}
 \newcommand{\e}{{\mathrm e}}
 \newcommand{\de}{\mathrm{d}}
 \newcommand{\ab}{\mathrm{ab}}
@@ -266,6 +270,7 @@ to be dropped):
   \begin{itemize}
   \item \hk and twistor geometry of $\R^4$, $\R^3 \times S^1$, $\R^2 \times T^2$, $T^* \C\PP^1$
   \item Gibbons-Hawking spaces?
+  \item ALE spaces?
   \item Ooguri-Vafa manifold?
   \item Atiyah-Hitchin manifold?
   \item complex coadjoint orbits?
@@ -471,17 +476,21 @@ $g$ is \kahler if the corresponding $\omega$ obeys
 \begin{equation}
   \de \omega = 0.
 \end{equation}
-In this case we say $(X,I,g)$ is a \kahler manifold.
+In this case we say $(X,I,g)$ is a \kahler manifold,
+and $\omega$ is the \kahler form.
 \end{defn}
 
-The \kahler property has various useful consequences:
+The \kahler property has various useful consequences,
+some local and some global. Here we recall some
+of the local ones:
 \begin{prop}
 If $(X,I,g)$ is a \kahler manifold, with
 \kahler form $\omega$, then:
 \begin{itemize}
   \item $\omega$ is a symplectic form on $X$,
   \item $\frac{\omega^n}{n!}$ is the volume form induced by $g$,
-  \item the Levi-Civita connection on $TX$ agrees with the Chern connection.
+  \item the Levi-Civita connection on $TX$ agrees with the Chern connection,
+  \item $\omega$ and $I$ are covariantly constant for the Levi-Civita connection.
 \end{itemize}
 
 \end{prop}
@@ -506,20 +515,82 @@ a subgroup isomorphic to $U(n)$.
 
 \begin{defn} A \hk manifold is a Riemannian 
 manifold $(X,g)$,
-equipped with three complex structures $I$, $J$, $K$, obeying the algebra of the quaternions: $IJ = -JI = K$,
+equipped with three complex structures $I$, $J$, $K$, obeying the algebra of the quaternions ($IJ = -JI = K$),
 such that $g$ is Hermitian and \kahler with respect to
 any of $I$, $J$, $K$.
 \end{defn}
 
 It is crucial that we require the \ti{single} metric
 $g$ to be \kahler for \ti{all three} complex structures.
-We generally denote the three corresponding
+We denote the three corresponding
 symplectic forms $\omega_I, \omega_J, \omega_K$.
+
+\begin{example} The space
+$\bbH$ can be identified with $\R^4$
+via the map
+\begin{equation}
+  a + b \I + c \J + d \K \mapsto (a,b,c,d).
+\end{equation}
+This makes $\bbH$ into a manifold of real 
+dimension $4$.
+The standard metric on $\R^4$ induces a metric
+$g$ on $\bbH$.
+If we identify $T_p \bbH \simeq \bbH$ 
+in the obvious way,
+the operations of multiplication by $\I$, $\J$ and $\K$
+give complex structures $I$, $J$, $K$ on $\bbH$,
+obeying the quaternion algebra.
+The metric $g$ is \kahler for all three of these complex
+structures. Thus $\bbH$ is \hk, in a canonical way.
+\end{example}
+
+\begin{exercise}
+Write explicit formulas for the symplectic forms
+$\omega_I$, $\omega_J$, $\omega_K$ on $\bbH$.
+\end{exercise}
+
+The group $O(4)$ acts on $\bbH$ by isometries, but 
+these do \ti{not} generally preserve the \hk structure.
+However, we do have the following:
+\begin{exercise}
+Recall the identification of Lie groups, $SO(4) \simeq (SU(2) \times SU(2)) / \Z_2$. Thus $SO(4)$ has two canonical $SU(2)$ subgroups. Show that one of these
+subgroups acts on $\bbH$ by \ti{triholomorphic} isometries, i.e. isometries which are holomorphic for
+all of $I$, $J$, and $K$.
+\end{exercise}
+
+\begin{example}
+It follows that, if we choose a subgroup
+$\Gamma \subset SU(2)$, the quotient
+$\bbH / \Gamma$ carries a natural \hk structure 
+at least where it is a manifold. For example,
+if $\Gamma$ is a discrete subgroup, it acts
+freely away from the origin, so
+$X_\Gamma^\circ = (\bbH \setminus \{0\}) / \Gamma$
+is a \hk manifold.
+However, this \hk manifold is \ti{incomplete},
+since the origin is at finite distance.
+We could include the origin and say we have 
+a \hk \ti{orbifold}. But there is an alternative: 
+one can consider the so-called 
+\ti{minimal resolution} of the singularity at the 
+origin; call this $X_\Gamma$;
+then $X_\Gamma$ is an honest smooth manifold, 
+carrying a natural family 
+of \ti{complete} \hk metrics \cite{MR90d:53055}.
+These metrics asymptotically approach
+the metric we started with on $X_\Gamma^\circ$
+(induced from the flat metric on $\bbH$);
+thus the $X_\Gamma$ are called ``ALE spaces'',
+for ``asymptotically locally Euclidean.''
+\end{example}
 
 \fixme{reduced holonomy}
 
+\fixme{holomorphic symplectic form}
+
 \fixme{Ricci-flatness}
 
+\fixme{twistor family}
 
 \printbibliography
 
