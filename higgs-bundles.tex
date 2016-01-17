@@ -486,7 +486,20 @@ If $(X,I,g)$ is a \kahler manifold, with
 
 \end{prop}
 
-\fixme{reduced holonomy}
+Finally we quickly recall the notion of special holonomy. Recall that for any Riemannian metric $g$ the parallel transport of Levi-Civita preserves $g$, so that 
+for any $p \in X$ the holonomy group $Hol_g(p) \subset GL(T_p X)$ 
+is contained in the subgroup $O(h_p) \simeq O(2n)$.
+For a \kahler metric, since the Chern connection agrees with the 
+Levi-Civita connection, the parallel transport of Levi-Civita preserves the Hermitian metric
+$h$ on the complex vector bundle $TX$. Thus, for any $p \in X$, the holonomy group
+$Hol_g(p) \subset GL(T_p X)$ is contained in the smaller group $U(h_p) \simeq U(n)$.
+This proves one-half of the following:
+
+\begin{prop} Given any Riemannian metric $g$ on a manifold $M$ of dimension $2n$, $g$ is a \kahler metric 
+(for some complex structure $I$ on $M$) if and only if
+the holonomy group at a point is contained in
+a subgroup isomorphic to $U(n)$.
+\end{prop}
 
 
 \section{Hyperk\"ahler manifolds}
@@ -494,10 +507,12 @@ If $(X,I,g)$ is a \kahler manifold, with
 \begin{defn} A \hk manifold is a Riemannian 
 manifold $(X,g)$,
 equipped with three complex structures $I$, $J$, $K$, obeying the algebra of the quaternions: $IJ = -JI = K$,
-such $g$ is Hermitian and \kahler with respect to
+such that $g$ is Hermitian and \kahler with respect to
 any of $I$, $J$, $K$.
 \end{defn}
 
+It is crucial that we require the \ti{single} metric
+$g$ to be \kahler for \ti{all three} complex structures.
 We generally denote the three corresponding
 symplectic forms $\omega_I, \omega_J, \omega_K$.
 
