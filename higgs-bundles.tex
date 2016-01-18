@@ -260,7 +260,7 @@ usual on the fact that these spaces are \ti{\hk}
 and our point of view will be more differential-geometric
 than algebraic-geometric.
 
-A very rough plan (probably too much to really cover,
+A list of possible topics (too much to really cover,
 so some of the things with question marks will have 
 to be dropped; also some things will probably 
 have to be done in a different order):
@@ -270,8 +270,8 @@ have to be done in a different order):
   \item examples of \hk spaces:
   \begin{itemize}
   \item \hk and twistor geometry of $\R^4$, $\R^3 \times S^1$, $\R^2 \times T^2$, $T^* \C\PP^1$
-  \item Gibbons-Hawking spaces?
-  \item ALE spaces?
+  \item Gibbons-Hawking spaces
+  \item ALE spaces
   \item Ooguri-Vafa manifold?
   \item Atiyah-Hitchin manifold?
   \item complex coadjoint orbits?
@@ -297,6 +297,7 @@ have to be done in a different order):
   \item role in geometric Langlands program?
   \item role in $\N=2$ supersymmetric QFT?
   \item holomorphic disc counting and GW/DT-type invariants?
+  \item $S$-duality action on branes?
 \end{itemize}
 
 
@@ -305,38 +306,58 @@ have to be done in a different order):
 Suppose given a compact Riemann surface $C$ and compact semisimple
 Lie group $G$. Built from these data there is a
 moduli space $$\cM = \cM^H(C,G)$$
-which is seen in different ways by different people:
+which can be seen in various ways:
 \begin{itemize}
-\item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of stable $G$-bundles on $C$; from this point of view Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on one side of the geometric Langlands correspondence,
+\item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of stable $G$-bundles on $C$; from this point of view Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on ``A side'' 
+of the geometric Langlands correspondence,
 \insfig{higgs-bundles-2}{0.55}
-\item $\cM$ is a \ti{complex integrable system}, i.e. a holomorphic
+\item $\cM$ is a \ti{complex integrable system} \cite{MR88i:58068}, i.e. a holomorphic
 symplectic manifold fibered over a complex base with Lagrangian
 fibers, generic fiber a compact complex torus, \insfig{higgs-bundles-1}{0.8}
 \item $\cM$ is the \ti{character variety} i.e. moduli space of flat $G_\C$-connections on $C$; certain sheaves on this moduli space are 
-basic objects on the other side of the geometric Langlands correspondence,
+basic objects on ``B side'' of the geometric Langlands correspondence,
 \item $\cM$ is a noncompact \ti{Calabi-Yau manifold}, i.e. a \kahler
 manifold admitting a Ricci-flat metric, in some sense a close 
 cousin of the K3 surface; from this point of view
 it is a paradigmatic example of the Strominger-Yau-Zaslow
-philosophy, which says that every Calabi-Yau manifold arises naturally
+philosophy \cite{Strominger:1996it}, 
+which says that every Calabi-Yau manifold arises naturally
 as a special Lagrangian \ti{torus fibration} over a complex base,
 and that its \ti{mirror} can be obtained by a natural fiberwise duality
 operation; moreover in this case the mirror is a space of the same kind,
-namely $\cM^\vee = \cM^H(C,^L G)$ where
-$^L G$ is the \ti{Langlands dual} group, and the mirror symmetry
+namely $\cM^\vee = \cM^H(C,^L G)$ where 
+$^L G$ is the \ti{Langlands dual} group \cite{mlh,MR2957305}, 
+and the mirror symmetry
 exchanges the two sides of the geometric Langlands correspondence,
-\item $\cM$ is the space of solutions of an interesting PDE, \ti{Hitchin's equations}, containing as special cases various sorts of harmonic maps (including \ti{uniformization} in the case $G = PSU(2)$).
+\item $\cM$ is the space of solutions of an interesting PDE, \ti{Hitchin's equations} \cite{MR89a:32021}, containing as special cases various sorts of harmonic maps (including \ti{uniformization} in the case $G = PSU(2)$).
 \item $\cM$ is a \ti{cluster variety}, built by gluing together
 very simple pieces $(\C^\times)^n$ in an essentially \ti{combinatorial} way. (Almost: to make this precisely true, we have to include \ti{punctures} on $C$; but even without the punctures, some cluster-like
 structure seems to persist.)
 \end{itemize}
 
-How can one space be so many different things at once?
+How can one space $\cM$ be so many different things at once?
+A partial answer comes from another structure $\cM$ carries, namely
+the \ti{\hk} structure. This says in short that $\cM$ has many
+different complex structures,
+fitting together in a specific way; thus $\cM$ gives rise to
+many complex manifolds which look quite different from one
+another, but are nevertheless canonically diffeomorphic.
+This structure is rather rigid and gives a lot of constraints, e.g.
+it implies that $\cM$ carries a Ricci-flat metric, and even lets 
+us say some things about what the metric looks like (much
+more than we can say for ``generic'' Ricci-flat metrics);
+also allows us to study the \ti{topology} of $\cM$, e.g. 
+its Betti numbers.
+Our first major aim is to understand this structure.
 
+(A fuller answer should come from the way $\cM$
+fits into supersymmetric quantum field theory; but this is 
+mostly beyond the scope of this course.)
 
 
 \section{Complex and \kahler geometry: a quick review}
 
+This is only intended as a review and to fix notation.
 There are many references for this material: one
 good one is \cite{MR2093043}.
 
