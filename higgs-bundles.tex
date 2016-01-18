@@ -128,9 +128,9 @@
 \def\lastref#1{\addtocounter{#1}{\value{papers}}\setcounter{papers}{0}}
 
 % theorem environments
-\declaretheoremstyle[notefont=\normalfont\bfseries, notebraces={(}{)}]{theorem}
-\declaretheoremstyle[bodyfont=\normalfont,notefont=\normalfont\bfseries, notebraces={(}{)}]{noital}
-\declaretheoremstyle[bodyfont=\normalfont\color{darkgreen},notefont=\normalfont\bfseries, notebraces={(}{)}]{green}
+\declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,notefont=\normalfont\bfseries, notebraces={(}{)}]{theorem}
+\declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,bodyfont=\normalfont,notefont=\normalfont\bfseries, notebraces={(}{)}]{noital}
+\declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,bodyfont=\normalfont\color{darkgreen},notefont=\normalfont\bfseries, notebraces={(}{)}]{green}
 
 \declaretheorem[name=Theorem,numberwithin=section,style=theorem]{thm}
 \declaretheorem[name=Proposition,sibling=thm,style=theorem]{prop}
@@ -139,6 +139,7 @@
 \declaretheorem[name=Definition,sibling=thm,style=noital]{defn}
 \declaretheorem[name=Example,sibling=thm,style=noital]{example}
 \declaretheorem[name=Exercise,numberwithin=section,style=green]{exercise}
+\declaretheorem[name=Proof,style=noital,numbered=no]{pf}
 
 \numberwithin{equation}{section}
 
@@ -226,9 +227,12 @@
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Bun}{Bun}
+
+\newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
+% syntax: \insfig{name}{0.5}{caption}
 
 \newcommand{\fixme}[1]{{\color{blue}{[#1]}}}
-
 
 
 % \mathtoolsset{showonlyrefs}
@@ -292,7 +296,43 @@ have to be done in a different order):
   \item $P=W$ conjecture?
   \item role in geometric Langlands program?
   \item role in $\N=2$ supersymmetric QFT?
+  \item holomorphic disc counting and GW/DT-type invariants?
 \end{itemize}
+
+
+\section{Introductory motivation}
+
+Suppose given a compact Riemann surface $C$ and compact semisimple
+Lie group $G$. Built from these data there is a
+moduli space $$\cM = \cM^H(C,G)$$
+which is seen in different ways by different people:
+\begin{itemize}
+\item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of stable $G$-bundles on $C$; from this point of view Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on one side of the geometric Langlands correspondence,
+\insfig{higgs-bundles-2}{0.55}
+\item $\cM$ is a \ti{complex integrable system}, i.e. a holomorphic
+symplectic manifold fibered over a complex base with Lagrangian
+fibers, generic fiber a compact complex torus, \insfig{higgs-bundles-1}{0.8}
+\item $\cM$ is the \ti{character variety} i.e. moduli space of flat $G_\C$-connections on $C$; certain sheaves on this moduli space are 
+basic objects on the other side of the geometric Langlands correspondence,
+\item $\cM$ is a noncompact \ti{Calabi-Yau manifold}, i.e. a \kahler
+manifold admitting a Ricci-flat metric, in some sense a close 
+cousin of the K3 surface; from this point of view
+it is a paradigmatic example of the Strominger-Yau-Zaslow
+philosophy, which says that every Calabi-Yau manifold arises naturally
+as a special Lagrangian \ti{torus fibration} over a complex base,
+and that its \ti{mirror} can be obtained by a natural fiberwise duality
+operation; moreover in this case the mirror is a space of the same kind,
+namely $\cM^\vee = \cM^H(C,^L G)$ where
+$^L G$ is the \ti{Langlands dual} group, and the mirror symmetry
+exchanges the two sides of the geometric Langlands correspondence,
+\item $\cM$ is the space of solutions of an interesting PDE, \ti{Hitchin's equations}, containing as special cases various sorts of harmonic maps (including \ti{uniformization} in the case $G = PSU(2)$).
+\item $\cM$ is a \ti{cluster variety}, built by gluing together
+very simple pieces $(\C^\times)^n$ in an essentially \ti{combinatorial} way. (Almost: to make this precisely true, we have to include \ti{punctures} on $C$; but even without the punctures, some cluster-like
+structure seems to persist.)
+\end{itemize}
+
+How can one space be so many different things at once?
+
 
 
 \section{Complex and \kahler geometry: a quick review}
@@ -306,21 +346,21 @@ In this section $X$ is a smooth manifold.
 
 \begin{defn}[Almost complex structure]
 An \ti{almost complex structure} on $X$ is a smooth section $I$ of $\End(TX)$ with $I^2 = -1$. An \ti{almost complex manifold} is a pair $(X,I)$ where $I$ is an almost complex structure.
-\end{defn}
-
-\begin{example}[Flat complex space] $\C^n$ has a canonical almost complex structure $I$, as follows. Each tangent space $T_p \C^n \simeq \R^{2n}$ canonically; $I$ is multiplication by $\I$.
-Writing $z_i = x_i + \I y_i$, and taking the basis
-$\{\partial_{x_1}, \partial_{x_2}, \dots, \partial_{x_n}, \partial_{y_1}, \partial_{y_2}, \dots, \partial_{y_n}\}$ for for $T_p \C^n$, we have \fixme{check sign}
-\begin{equation}
-   I = \begin{pmatrix} {\bf 0}_{n \times n} & {\bf 1}_{n \times n} \\ -{\bf 1}_{n \times n} & {\bf 0}_{n \times n} \end{pmatrix}.
-\end{equation}
-\end{example}
-
 If $X$ has real dimension $2n$, an almost complex
 structure $I$ equips $TX$ with the structure of
 \ti{complex} vector bundle over $X$, of rank $n$,
 and we say the \ti{complex dimension} $\dim_\C X$ is
 $n$.
+\end{defn}
+
+\begin{example}[Flat complex space] $\C^n$ has a canonical almost complex structure $I$, as follows. Each tangent space $T_p \C^n \simeq \C^n$ canonically; $I$ is multiplication by $\I$, thought of as an 
+endomorphism of the underlying real vector space.
+Writing $z_i = x_i + \I y_i$, and taking the coordinate basis
+$\{\partial_{x_1}, \partial_{x_2}, \dots, \partial_{x_n}, \partial_{y_1}, \partial_{y_2}, \dots, \partial_{y_n}\}$ for for $T_p \C^n$, $I$ is represented by the matrix
+\begin{equation}
+   I = \begin{pmatrix} {\bf 0}_{n \times n} & -{\bf 1}_{n \times n} \\ {\bf 1}_{n \times n} & {\bf 0}_{n \times n} \end{pmatrix}.
+\end{equation}
+\end{example}
 
  \begin{defn}[Holomorphic maps] If $(X,I_X)$ and $(Y,I_Y)$ are almost
  complex manifolds, a \ti{holomorphic map} $\phi: X \to Y$
@@ -330,16 +370,16 @@ is one obeying
 \end{equation}
 \end{defn}
 
-\begin{defn}[Complex structures] An almost complex structure $I$ on $X$ is \ti{integrable}, 
+\begin{defn}[Complex structures] \label{def:complex-structures} An almost complex structure $I$ on $X$ is \ti{integrable}, 
 or a \ti{complex structure}, if there is a covering of $X$ by open sets $U_\alpha$ with holomorphic maps $\phi_\alpha: U_\alpha \to \C^n$. A \ti{complex manifold} is an almost complex manifold $(X,I)$ with $I$ integrable.
 \end{defn}
 
-\begin{exercise} Show that this is equivalent to the usual definition of a complex manifold as a space
+\begin{exercise} Show that \autoref{def:complex-structures} is equivalent to the usual definition of a complex manifold as a space
 $X$ with a covering by charts $\phi_\alpha: U_\alpha \to \C^n$, where the transition maps are holomorphic (obey Cauchy-Riemann equations).
 \end{exercise}
 
 There are various equivalent ways of formulating the integrability condition. One which will be useful for us is:
-\begin{prop}[Infinitesimal characterization of integrability] $I$ is integrable if and only if the \ti{Nijenhuis tensor} $N_I \in C^\infty(\wedge^2 T^*X \otimes TX)$,
+\begin{prop}[Infinitesimal characterization of integrability] $I$ is integrable if and only if the \ti{Nijenhuis tensor} $N_I \in \Omega^0(\wedge^2 T^*X \otimes TX)$,
 \begin{equation}
 N_I(v,w) = [v,w] + I[v,Iw] + I[Iv,w] - [Iv,Iw],
 \end{equation}
@@ -386,6 +426,10 @@ and a corresponding decomposition
 \begin{equation}
 \de = \partial + \bar\partial, \quad \partial: \Omega^{p,q}(X) \to \Omega^{p+1,q}(X), \quad \bar\partial: \Omega^{p,q}(X) \to \Omega^{p,q+1}(X).
 \end{equation}
+Complex conjugation is an $\R$-linear map
+$\Omega^{p,q}(X) \to \Omega^{q,p}(X)$;
+thus it maps $\Omega^{p,p}(X)$ to itself;
+we let $\Omega_\R^{p,p}(X)$ denote the fixed subspace.
 
 \subsection{Holomorphic vector bundles}
 
@@ -397,7 +441,7 @@ In this section $(X,I)$ is always a complex manifold.
 \end{equation}
 obeying
 \begin{equation}
-  \bar\partial_E (\alpha \psi) = (\bar\partial_E \alpha) \psi + (-1)^{\abs{\alpha}} \alpha \wedge \bar\partial_E \psi
+  \bar\partial_E (\alpha \psi) = (\bar\partial_E \alpha) \psi + (-1)^{\abs{\alpha}} \alpha \wedge \bar\partial_E \psi \qquad \alpha \in \Omega^*(X), \quad \psi \in \Omega^0(E)
 \end{equation}
 and the integrability condition
 \begin{equation}
@@ -462,7 +506,7 @@ Equivalently, with respect to the decomposition
 we have $g \in \Sym^{1,1} TX$, i.e. $g$ is of ``type $(1,1)$.''
 
 \begin{defn}[Fundamental form] If $g$ is a Hermitian metric on $X$, 
-the \ti{fundamental form} $\omega \in \Omega^2(X)$
+the \ti{fundamental form} $\omega \in \Omega^{1,1}_\R(X)$
 is
 \begin{equation}
   \omega(v,w) = g(Iv,w).
@@ -484,7 +528,7 @@ $g$ is \kahler if the corresponding $\omega$ obeys
 \begin{equation}
   \de \omega = 0.
 \end{equation}
-In this case we say $(X,I,g)$ is a \kahler manifold,
+In this case we say $(X,g,I)$ is a \kahler manifold,
 and $\omega$ is the \kahler form.
 \end{defn}
 
@@ -493,13 +537,13 @@ some local and some global. Here we recall some
 of the local ones. Let $\nabla$ denote the 
 Levi-Civita connection on $TX$ induced
 by the metric $g$.
-\begin{prop}[Covariant constancy of $I$]
+\begin{prop}[\kahler means covariant constancy of $I$]
 If $g$ is a Hermitian metric on $X$,
 $g$ is \kahler if and only if
 $\nabla I = 0$.
 \end{prop}
 
-\begin{cor}[Covariant constancy of other things]
+\begin{cor}[\kahler means covariant constancy of other things]
 If $g$ is a Hermitian metric on $X$, with 
 fundamental form $\omega$, then the following are
 equivalent:
@@ -532,6 +576,8 @@ a subgroup isomorphic to $U(n)$.
 
 Useful (and inspiring) references are \cite{MR88f:53087,Hitchin-hk,MR1798605}.
 
+\subsection{Basic definitions and examples}
+
 \begin{defn}[\Hk manifold] A \ti{\hk manifold} is 
 a tuple $(X,g,I_1,I_2,I_3)$, where $(X,g)$ is a Riemannian 
 manifold equipped with three complex 
@@ -552,13 +598,15 @@ and $(\omega_1,\omega_2,\omega_3) = (\omega_I,\omega_J,\omega_K)$.
 \begin{defn}[Holomorphic symplectic form] If $(X,I)$ is a complex manifold, 
 $\Omega \in \Omega^{2,0}(X)$ is a \ti{holomorphic
 symplectic form} if $\de \Omega = 0$
-and $\Omega$ is \ti{nondegenerate}, i.e. it induces
+and $\Omega$ is nondegenerate in the holomorphic sense, i.e. it induces
 an isomorphism $T^{1,0}X \to (T^{1,0} X)^*$.
 \end{defn}
+(Note that this definitely does \ti{not} mean that $\Omega$ is nondegenerate on the whole $T_\C X$. Indeed, since $\Omega$ is 
+of type $(2,0)$ its contraction with any $v \in T^{0,1} X$ vanishes.)
 
 \begin{prop}[\Hk manifolds are holomorphic symplectic] If $X$ is \hk then $\Omega_1 = \omega_2 + \I \omega_3$ is a \ti{holomorphic symplectic form} with respect to structure $I_1$.
 \end{prop}
-\begin{proof} 
+\begin{pf} 
 \begin{align}
     \Omega_1(v,w) &= \omega_2(v,w) + \I \omega_3(v,w) \\
     &= g(I_2 v,w) + \I g(I_3 v,w)
@@ -579,17 +627,17 @@ The nondegeneracy follows from the nondegeneracy for the $\omega_i$: namely, for
 \begin{equation}
   \Omega_1(v,\cdot) = 0 \implies \Omega_1(v+\bar{v}, \cdot) = 0 \implies \omega_2(v + \bar{v}, \cdot) = 0 \implies v + \bar{v} = 0 \implies v = 0.
 \end{equation}
-\end{proof}
+\end{pf}
 
 \begin{cor}[\Hk manifolds have dimension $4n$] If $X$ is \hk then $\dim_\R X$ is a multiple of $4$.
 \end{cor}
-\begin{proof} There is a standard bit of ``symplectic linear algebra'' saying that a vector space with a
+\begin{pf} There is a standard bit of ``symplectic linear algebra'' saying that a vector space with a
 nondegenerate antisymmetric pairing is always 
 even-dimensional (to prove it, one inductively constructs
 a standard ``Darboux'' basis). Thus the existence of the 
 holomorphic symplectic form $\Omega_1$ implies
 that $T^{1,0}_{I_1} X$ has even complex dimension.
-\end{proof}
+\end{pf}
 
 \begin{example}[Flat quaternionic space] The quaternions
 $\bbH$ can be identified with $\R^4$
@@ -630,7 +678,82 @@ However, we do have the following:
 Recall the identification of Lie groups, $SO(4) \simeq (SU(2) \times SU(2)) / \Z_2$. Thus $SO(4)$ has two canonical $SU(2)$ subgroups. Show that one of these
 subgroups acts on $\bbH$ by \ti{triholomorphic} isometries, i.e. isometries which are holomorphic for
 all of $I$, $J$, and $K$.
+We call this subgroup $SU(2)_L$, and the other one
+$SU(2)_R$.
 \end{exercise}
+
+\begin{example}[Incomplete Gibbons-Hawking spaces] \label{exa:incomplete-gibbons-hawking}
+Fix some open set $U \subset \R^3$ and
+let $V: U \to \R_{>0}$ be a positive harmonic function.
+Then $\Delta V = \de \star \de V = 0$, so if we write
+\begin{equation}
+  F = \star \de V
+\end{equation}
+then we have $\de F = 0$. If $F$ is moreover integrally
+quantized, i.e. $[F/2\pi] \in H^2(U,\Z)$, then
+there exists a principal 
+$U(1)$ bundle $X$ over $U$, carrying a connection
+$\Theta$ (represented as a $1$-form on $X$) 
+whose curvature is $F$. Then the metric
+on $X$ given by \fixme{check factors}
+\begin{equation}
+  g = V(\vec{x}) \de \vec{x}^2 + V^{-1}(\vec{x}) \Theta^2
+\end{equation}
+is \hk. The three symplectic forms are \fixme{check}
+\begin{equation}
+  \omega_i = \de x_i \wedge \Theta + \half \eps^{ijk} V(\vec x) \de x_j \wedge \de x_k.
+\end{equation}
+The $U(1)$ action on $X$ is by isometries preserving
+the \hk structure.
+\end{example}
+
+\begin{example}[Gibbons-Hawking spaces] \label{exa:gibbons-hawking}
+Extending \autoref{exa:incomplete-gibbons-hawking}
+we can allow $V$ to have quantized
+singularities:
+\begin{equation}
+  \Delta V = 2 \pi \sum_{i=1}^n \delta(\vec x - \vec x_i)
+\end{equation}
+In this case, consider a small $S^2$ around $\vec{x}_i$:
+\begin{equation}
+  \int_{S^2} F = \int_{S^2} \star \de V = \int_{B^3} \de \star \de V = \int_{B^3} 2 \pi \delta(\vec x - \vec x_i) = 2 \pi
+\end{equation}
+so the $U(1)$ bundle $X$ restricted to this $S^2$ has 
+degree $1$. $X$ thus doesn't extend as a $U(1)$ bundle
+over the point $\vec x_i$.
+Nevertheless it turns out that it \ti{does} extend
+as a \hk manifold. Indeed, near $\vec x_i$ we have
+\fixme{check factors}
+$V = 1/\norm{\vec x - \vec x_i} + \text{regular}$,
+so the circle fibers of $X$ are shrinking to zero
+length, and it turns out to be possible to add
+a single point over $\vec x_i$, in such a way 
+that the total space is a \hk manifold with non-free 
+$U(1)$ action.
+
+\end{example}
+
+\begin{example}[Taub-NUT space]
+This is the case of \autoref{exa:gibbons-hawking}
+with one singularity. 
+Take $U = \R^3$ and
+\begin{equation}
+  V(\vec x) = 1 + 1/\norm{\vec x}.
+\end{equation}
+\fixme{...}
+\end{example}
+
+\begin{example}[Eguchi-Hanson space]
+This is the case of \autoref{exa:gibbons-hawking}
+with two singularities. Fix two points, say
+$\vec x_1 = (1,0,0)$ and $\vec x_2 = (-1,0,0)$.
+Take $U = \R^3$ and 
+\begin{equation}
+  V(\vec x) = 1 + 1/\norm{\vec x-\vec x_1} + 1/\norm{\vec x-\vec x_2}.
+\end{equation}
+\fixme{...}
+\end{example}
+
 
 \begin{example}[ALE spaces]
 It follows from \autoref{exc:so4-action} that, if we choose a subgroup
@@ -659,28 +782,8 @@ thus the $X_\Gamma$ are called ``ALE spaces'',
 for ``asymptotically locally Euclidean.''
 \end{example}
 
-\begin{example}[Gibbons-Hawking spaces]
-Fix some $U \subset \R^3$ and
-let $V: U \to \R$ be a harmonic function.
-Then $\de \star \de V = 0$, i.e. if we write
-\begin{equation}
-  F = \star \de V
-\end{equation}
-then we have $\de F = 0$. If $F$ is moreover integrally
-quantized, i.e. $[F/2\pi] \in H^2(U,\Z)$, then
-there exists a principal 
-$U(1)$ bundle $X$ over $U$, carrying a connection
-$\Theta$ whose curvature is $F$. Then the metric
-on $X$ given by
-\begin{equation}
-  g = V(\vec{x}) \de \vec{x}^2 + V^{-1}(\vec{x}) \Theta^2
-\end{equation}
-is \hk. The three symplectic forms are
-\begin{equation}
-  \omega_i = \fixme{...}
-\end{equation}
 
-\end{example}
+\subsection{Twistor space}
 
 \begin{exercise}
 Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
@@ -691,9 +794,22 @@ Show that $(X,I_{\vec s},g)$ is a \kahler manifold,
 with \kahler form $\omega_{\vec s}$.
 \end{exercise}
 In other words, a \hk metric is \kahler for a whole 
-$S^2$ of complex structures, not only three of them.
+$S^2$ of complex structures, not only three of them;
+moreover specifying $I_1$, $I_2$, $I_3$ is equivalent to 
+specifying the whole collection of $I_{\vec s}$.
 
-
+\begin{exercise}
+Given a Riemannian manifold $(X,g)$ and 
+a \hk structure thereon, specified by complex structures
+$I_{\vec s}$, show that we get another
+\hk structure by choosing an element $T \in SO(3)$
+and defining 
+\begin{equation}
+I'_{\vec s} = I_{T \vec s}.
+\end{equation}
+Thus $SO(3)$ naturally acts on the set of
+\hk manifolds.
+\end{exercise}
 
 \fixme{reduced holonomy}
 
