@@ -10,8 +10,10 @@
 \usepackage{multirow}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\definecolor{darkred}{rgb}{0.5,0.15,0.15}
+\definecolor{darkred}{rgb}{0.5,0.1,0.1}
+\definecolor{darkgreen}{rgb}{0,0.55,0.2}
 \hypersetup{colorlinks=true,urlcolor=darkred,linkcolor=darkred,citecolor=darkred}
+
 \usepackage{verbatim}
 \usepackage[letterpaper,margin=1in,headheight=15pt]{geometry}
 \usepackage{mathpazo}
@@ -126,15 +128,20 @@
 \def\lastref#1{\addtocounter{#1}{\value{papers}}\setcounter{papers}{0}}
 
 % theorem environments
+\declaretheoremstyle[notefont=\normalfont\bfseries, notebraces={(}{)}]{theorem}
 \declaretheoremstyle[bodyfont=\normalfont,notefont=\normalfont\bfseries, notebraces={(}{)}]{noital}
+\declaretheoremstyle[bodyfont=\normalfont\color{darkgreen},notefont=\normalfont\bfseries, notebraces={(}{)}]{green}
 
-\declaretheorem[name=Theorem,numberwithin=section]{thm}
-\declaretheorem[name=Proposition,sibling=thm]{prop}
+\declaretheorem[name=Theorem,numberwithin=section,style=theorem]{thm}
+\declaretheorem[name=Proposition,sibling=thm,style=theorem]{prop}
+\declaretheorem[name=Corollary,sibling=thm,style=theorem]{cor}
+\declaretheorem[name=Lemma,sibling=thm,style=theorem]{lem}
 \declaretheorem[name=Definition,sibling=thm,style=noital]{defn}
 \declaretheorem[name=Example,sibling=thm,style=noital]{example}
-\declaretheorem[name=Exercise,numberwithin=section,style=noital,shaded={bgcolor={gray}{0.9}}]{exercise}
+\declaretheorem[name=Exercise,numberwithin=section,style=green]{exercise}
 
 \numberwithin{equation}{section}
+
 
 % macros for convenience
 \newcommand{\tops}{\texorpdfstring}
@@ -192,15 +199,9 @@
 \newcommand{\vs}{\not\!v}
 \newcommand{\kahler}{K\"ahler\xspace}
 \newcommand{\hk}{hyperk\"ahler\xspace}
-\newcommand{\del}{\ensuremath{\partial}}%I added (LF)
-\newcommand{\delbar}{\ensuremath{\overline{\partial}}}%I added (LF)
-\newcommand{\zbar}{\ensuremath{\overline{z}}}%I added (LF)
-\newcommand{\rme}{\ensuremath{\mathrm{e}}}%I added (LF)
-
-\newcommand{\breg}{{\cB_{\mathrm{reg}}}}
-\newcommand{\bsing}{{\cB_{\mathrm{sing}}}}
-
-\newcommand{\Top}{{\mathrm Top}}
+\newcommand{\Hk}{Hyperk\"ahler\xspace}
+\newcommand{\del}{\ensuremath{\partial}}
+\newcommand{\delbar}{\ensuremath{\overline{\partial}}}
 \newcommand{\I}{{\mathrm i}}
 \newcommand{\J}{{\mathrm j}}
 \newcommand{\K}{{\mathrm k}}
@@ -214,15 +215,7 @@
 \newcommand{\dwrt}[1]{\frac{\partial}{\partial#1}}
 \newcommand{\eps}{\epsilon}
 
-\newcommand{\pa}{{\partial}}
 \newcommand{\ti}[1]{\textit{#1}}
-
-\newcommand{\fro}{\overline{\underline{\Omega}}}
-
-\newcommand{\unif}{{\mathrm {unif}}}
-\newcommand{\fsl}{\mathfrak{sl}}
-
-\newcommand{\hb}{harmonic bundle}
 
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\im}{Im}
@@ -235,6 +228,7 @@
 \DeclareMathOperator{\diag}{diag}
 
 \newcommand{\fixme}[1]{{\color{blue}{[#1]}}}
+
 
 
 % \mathtoolsset{showonlyrefs}
@@ -345,7 +339,7 @@ $X$ with a covering by charts $\phi_\alpha: U_\alpha \to \C^n$, where the transi
 \end{exercise}
 
 There are various equivalent ways of formulating the integrability condition. One which will be useful for us is:
-\begin{prop} $I$ is integrable if and only if the \ti{Nijenhuis tensor} $N_I \in C^\infty(\wedge^2 T^*X \otimes TX)$,
+\begin{prop}[Infinitesimal characterization of integrability] $I$ is integrable if and only if the \ti{Nijenhuis tensor} $N_I \in C^\infty(\wedge^2 T^*X \otimes TX)$,
 \begin{equation}
 N_I(v,w) = [v,w] + I[v,Iw] + I[Iv,w] - [Iv,Iw],
 \end{equation}
@@ -371,14 +365,20 @@ them, by projection on the $(1,0)$ part.
 
 \begin{exercise}
 Show that this is indeed an isomorphism 
-of complex vector bundles.
+of complex vector bundles. (This reduces essentially
+to a question of linear algebra, concerning 
+a vector space $V$ with complex structure $I$,
+and its complexification $V_\C$.)
 \end{exercise}
 
 There is also a dual decomposition
 \begin{equation}
 T^*_\C X = (T^*)^{1,0} X \oplus (T^*)^{0,1} X,
   \end{equation}
-which induces
+where $(T^*)^{1,0} X$ is the annihilator of
+$T^{0,1} X$, and $(T^*)^{0,1} X$ is the annihilator of
+$T^{1,0} X$.
+This decomposition induces
 \begin{equation}
 \wedge^* T^*_\C X = \bigoplus_{p,q=0}^n \wedge^{p,q} T^* X , \qquad \Omega^*_\C X = \bigoplus_{p,q=0}^n \Omega^{p,q}(X)
 \end{equation}
@@ -469,7 +469,8 @@ is
 \end{equation}
 \end{defn}
 
-\begin{exercise} If $g$ is a Hermitian metric on $X$,
+\begin{exercise} \label{exc:hermitian-metric} 
+If $g$ is a Hermitian metric on $X$,
 verify that
 \begin{equation}
   h = g - \I \omega
@@ -489,18 +490,27 @@ and $\omega$ is the \kahler form.
 
 The \kahler property has various useful consequences,
 some local and some global. Here we recall some
-of the local ones:
-\begin{prop}
-If $(X,I,g)$ is a \kahler manifold, with
-\kahler form $\omega$, then:
-\begin{itemize}
-  \item $\omega$ is a symplectic form on $X$,
-  \item $\frac{\omega^n}{n!}$ is the volume form induced by $g$,
-  \item the Levi-Civita connection on $TX$ agrees with the Chern connection,
-  \item $\omega$ and $I$ are covariantly constant for the Levi-Civita connection.
-\end{itemize}
-
+of the local ones. Let $\nabla$ denote the 
+Levi-Civita connection on $TX$ induced
+by the metric $g$.
+\begin{prop}[Covariant constancy of $I$]
+If $g$ is a Hermitian metric on $X$,
+$g$ is \kahler if and only if
+$\nabla I = 0$.
 \end{prop}
+
+\begin{cor}[Covariant constancy of other things]
+If $g$ is a Hermitian metric on $X$, with 
+fundamental form $\omega$, then the following are
+equivalent:
+\begin{itemize}
+  \item $g$ is \kahler,
+  \item $\nabla I = 0$,
+  \item $\nabla \omega = 0$,
+  \item $\nabla$ agrees with the Chern connection on $TX$,
+  when we view $TX$ as a complex vector bundle with the induced Hermitian metric $h$ of \autoref{exc:hermitian-metric}.
+\end{itemize}
+\end{cor}
 
 Finally we quickly recall the notion of special holonomy. Recall that for any Riemannian metric $g$ the parallel transport of Levi-Civita preserves $g$, so that 
 for any $p \in X$ the holonomy group $Hol_g(p) \subset GL(T_p X)$ 
@@ -511,7 +521,7 @@ $h$ on the complex vector bundle $TX$. Thus, for any $p \in X$, the holonomy gro
 $Hol_g(p) \subset GL(T_p X)$ is contained in the smaller group $U(h_p) \simeq U(n)$.
 This proves one-half of the following:
 
-\begin{prop} Given any Riemannian metric $g$ on a manifold $M$ of dimension $2n$, $g$ is a \kahler metric 
+\begin{prop}[Special holonomy of \kahler manifolds] Given any Riemannian metric $g$ on a manifold $M$ of dimension $2n$, $g$ is a \kahler metric 
 (for some complex structure $I$ on $M$) if and only if
 the holonomy group at a point is contained in
 a subgroup isomorphic to $U(n)$.
@@ -522,33 +532,64 @@ a subgroup isomorphic to $U(n)$.
 
 Useful (and inspiring) references are \cite{MR88f:53087,Hitchin-hk,MR1798605}.
 
-\begin{defn}[\hk manifold] A \ti{\hk manifold} is 
-a tuple $(X,g,I,J,K)$, where $(X,g)$ is a Riemannian 
+\begin{defn}[\Hk manifold] A \ti{\hk manifold} is 
+a tuple $(X,g,I_1,I_2,I_3)$, where $(X,g)$ is a Riemannian 
 manifold equipped with three complex 
-structures $I$, $J$, $K$, obeying the algebra of the quaternions ($IJ = -JI = K$),
+structures $I_i$ obeying the algebra of the quaternions ($I_1 I_2 = -I_2 I_1 = I_3$),
 such that $g$ is Hermitian and \kahler with respect to
-any of $I$, $J$, $K$.
+any of the $I_i$.
 \end{defn}
 
 It is crucial that we require the \ti{single} metric
-$g$ to be \kahler for \ti{all} of $I$, $J$, $K$:
+$g$ to be \kahler for \ti{all} of the $I_i$:
 this is a very strong condition!
 We denote the three corresponding
-symplectic forms $\omega_I, \omega_J, \omega_K$.
+\kahler forms $\omega_i$.
 Sometimes it is convenient to use instead the
 notation $(I_1,I_2,I_3) = (I,J,K)$
 and $(\omega_1,\omega_2,\omega_3) = (\omega_I,\omega_J,\omega_K)$.
 
-\begin{exercise}
-Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
+\begin{defn}[Holomorphic symplectic form] If $(X,I)$ is a complex manifold, 
+$\Omega \in \Omega^{2,0}(X)$ is a \ti{holomorphic
+symplectic form} if $\de \Omega = 0$
+and $\Omega$ is \ti{nondegenerate}, i.e. it induces
+an isomorphism $T^{1,0}X \to (T^{1,0} X)^*$.
+\end{defn}
+
+\begin{prop}[\Hk manifolds are holomorphic symplectic] If $X$ is \hk then $\Omega_1 = \omega_2 + \I \omega_3$ is a \ti{holomorphic symplectic form} with respect to structure $I_1$.
+\end{prop}
+\begin{proof} 
+\begin{align}
+    \Omega_1(v,w) &= \omega_2(v,w) + \I \omega_3(v,w) \\
+    &= g(I_2 v,w) + \I g(I_3 v,w)
+\end{align}
+Thus
+\begin{align}
+    \Omega_1(I_1 v,w) &= g(I_2 I_1 v, w) + \I g(I_3 I_1 v,w) \\
+    &= -g(I_3 v, w) + \I g(I_2 v, w) \\
+    &= \I \Omega_1(v,w)
+\end{align}
+and similarly
 \begin{equation}
-  I_{\vec s} = \sum_{i=1}^3 s_i I_i, \qquad \omega_{\vec s} = \sum_{i=1}^3 s_i \omega_i.
+ \Omega_1(v,I_1 w) = \I \Omega_1(v,w). 
 \end{equation}
-Show that $(X,I_{\vec s},g)$ is a \kahler manifold,
-with \kahler form $\omega_{\vec s}$.
-\end{exercise}
-In other words, a \hk metric is \kahler for a whole 
-$S^2$ of complex structures, not only three of them.
+It follows that $\Omega_1$ is of type $(2,0)$ for $I_1$,
+$\Omega_1 \in \Omega^{2,0}_{I_1}(X)$.
+The nondegeneracy follows from the nondegeneracy for the $\omega_i$: namely, for any $v \in T^{1,0}_{I_1} X$,
+\begin{equation}
+  \Omega_1(v,\cdot) = 0 \implies \Omega_1(v+\bar{v}, \cdot) = 0 \implies \omega_2(v + \bar{v}, \cdot) = 0 \implies v + \bar{v} = 0 \implies v = 0.
+\end{equation}
+\end{proof}
+
+\begin{cor}[\Hk manifolds have dimension $4n$] If $X$ is \hk then $\dim_\R X$ is a multiple of $4$.
+\end{cor}
+\begin{proof} There is a standard bit of ``symplectic linear algebra'' saying that a vector space with a
+nondegenerate antisymmetric pairing is always 
+even-dimensional (to prove it, one inductively constructs
+a standard ``Darboux'' basis). Thus the existence of the 
+holomorphic symplectic form $\Omega_1$ implies
+that $T^{1,0}_{I_1} X$ has even complex dimension.
+\end{proof}
 
 \begin{example}[Flat quaternionic space] The quaternions
 $\bbH$ can be identified with $\R^4$
@@ -571,26 +612,32 @@ structures. Thus $\bbH$ is \hk, in a canonical way.
 
 \begin{exercise}
 Write explicit formulas for the symplectic forms
-$\omega_I$, $\omega_J$, $\omega_K$ on $\bbH$.
-Show that the complex 2-form $\omega_J + \I \omega_K$
+$\omega_i$ on $\bbH$, and for complex coordinates
+with respect to the complex structures $I_i$.
+Thus verify directly that $\omega_i$ is of type $(1,1)$
+for structure $I_i$, that
+$\Omega_1 = \omega_2 + \I \omega_3$
 is of type $(2,0)$ with respect to complex structure
-$I$. \fixme{check sign}
+$I_1$, and that when considered as a complex
+manifold in structure $I_i$, $\bbH$ is biholomorphic
+to $\C^2$.
 \end{exercise}
 
 The group $O(4)$ acts on $\bbH$ by isometries, but 
 these do \ti{not} generally preserve the \hk structure.
 However, we do have the following:
-\begin{exercise}
+\begin{exercise} \label{exc:so4-action}
 Recall the identification of Lie groups, $SO(4) \simeq (SU(2) \times SU(2)) / \Z_2$. Thus $SO(4)$ has two canonical $SU(2)$ subgroups. Show that one of these
 subgroups acts on $\bbH$ by \ti{triholomorphic} isometries, i.e. isometries which are holomorphic for
 all of $I$, $J$, and $K$.
 \end{exercise}
 
 \begin{example}[ALE spaces]
-It follows that, if we choose a subgroup
+It follows from \autoref{exc:so4-action} that, if we choose a subgroup
 $\Gamma \subset SU(2)$, the quotient
-$\bbH / \Gamma$ carries a natural \hk structure 
-at least where it is a manifold. For example,
+$\bbH / \Gamma$ is a \hk orbifold: in particular, it
+carries a natural \hk structure 
+where it is a manifold. For example,
 if $\Gamma$ is a discrete subgroup, it acts
 freely away from the origin, so
 \begin{equation}
@@ -599,11 +646,9 @@ X_\Gamma^\circ = (\bbH \setminus \{0\}) / \Gamma
 is a \hk manifold.
 However, this \hk manifold is \ti{incomplete},
 since the origin is at finite distance.
-We could include the origin and say we have 
-a \hk \ti{orbifold}. But there is an alternative: 
-one can consider the so-called 
-\ti{minimal resolution} of the singularity at the 
-origin; call this $X_\Gamma$;
+One can consider the so-called 
+\ti{minimal resolution} $X_\Gamma$
+of the singularity at the origin;
 then $X_\Gamma$ is an honest smooth manifold, 
 carrying a natural family 
 of \ti{complete} \hk metrics \cite{MR90d:53055}.
@@ -637,9 +682,20 @@ is \hk. The three symplectic forms are
 
 \end{example}
 
-\fixme{reduced holonomy}
+\begin{exercise}
+Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
+\begin{equation}
+  I_{\vec s} = \sum_{i=1}^3 s_i I_i, \qquad \omega_{\vec s} = \sum_{i=1}^3 s_i \omega_i.
+\end{equation}
+Show that $(X,I_{\vec s},g)$ is a \kahler manifold,
+with \kahler form $\omega_{\vec s}$.
+\end{exercise}
+In other words, a \hk metric is \kahler for a whole 
+$S^2$ of complex structures, not only three of them.
 
-\fixme{holomorphic symplectic form}
+
+
+\fixme{reduced holonomy}
 
 \fixme{Ricci-flatness}
 
