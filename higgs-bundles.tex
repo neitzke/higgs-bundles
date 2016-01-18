@@ -126,11 +126,11 @@
 \def\lastref#1{\addtocounter{#1}{\value{papers}}\setcounter{papers}{0}}
 
 % theorem environments
-\declaretheoremstyle[bodyfont=\normalfont]{noital}
+\declaretheoremstyle[bodyfont=\normalfont,notefont=\normalfont\bfseries, notebraces={(}{)}]{noital}
 
 \declaretheorem[name=Theorem,numberwithin=section]{thm}
-\declaretheorem[name=Definition,sibling=thm]{defn}
 \declaretheorem[name=Proposition,sibling=thm]{prop}
+\declaretheorem[name=Definition,sibling=thm,style=noital]{defn}
 \declaretheorem[name=Example,sibling=thm,style=noital]{example}
 \declaretheorem[name=Exercise,numberwithin=section,style=noital,shaded={bgcolor={gray}{0.9}}]{exercise}
 
@@ -310,11 +310,11 @@ good one is \cite{MR2093043}.
 \subsection{Complex manifolds} 
 In this section $X$ is a smooth manifold.
 
-\begin{defn}
+\begin{defn}[Almost complex structure]
 An \ti{almost complex structure} on $X$ is a smooth section $I$ of $\End(TX)$ with $I^2 = -1$. An \ti{almost complex manifold} is a pair $(X,I)$ where $I$ is an almost complex structure.
 \end{defn}
 
-\begin{example} $\C^n$ has a canonical almost complex structure $I$, as follows. Each tangent space $T_p \C^n \simeq \R^{2n}$ canonically; $I$ is multiplication by $\I$.
+\begin{example}[Flat complex space] $\C^n$ has a canonical almost complex structure $I$, as follows. Each tangent space $T_p \C^n \simeq \R^{2n}$ canonically; $I$ is multiplication by $\I$.
 Writing $z_i = x_i + \I y_i$, and taking the basis
 $\{\partial_{x_1}, \partial_{x_2}, \dots, \partial_{x_n}, \partial_{y_1}, \partial_{y_2}, \dots, \partial_{y_n}\}$ for for $T_p \C^n$, we have \fixme{check sign}
 \begin{equation}
@@ -328,7 +328,7 @@ structure $I$ equips $TX$ with the structure of
 and we say the \ti{complex dimension} $\dim_\C X$ is
 $n$.
 
- \begin{defn} If $(X,I_X)$ and $(Y,I_Y)$ are almost
+ \begin{defn}[Holomorphic maps] If $(X,I_X)$ and $(Y,I_Y)$ are almost
  complex manifolds, a \ti{holomorphic map} $\phi: X \to Y$
 is one obeying
 \begin{equation}
@@ -336,7 +336,8 @@ is one obeying
 \end{equation}
 \end{defn}
 
-\begin{defn} An almost complex structure $I$ on $X$ is \ti{integrable} if there is a covering of $X$ by open sets $U_\alpha$ with holomorphic maps $\phi_\alpha: U_\alpha \to \C^n$. A \ti{complex manifold} is an almost complex manifold $(X,I)$ with $I$ integrable.
+\begin{defn}[Complex structures] An almost complex structure $I$ on $X$ is \ti{integrable}, 
+or a \ti{complex structure}, if there is a covering of $X$ by open sets $U_\alpha$ with holomorphic maps $\phi_\alpha: U_\alpha \to \C^n$. A \ti{complex manifold} is an almost complex manifold $(X,I)$ with $I$ integrable.
 \end{defn}
 
 \begin{exercise} Show that this is equivalent to the usual definition of a complex manifold as a space
@@ -390,7 +391,7 @@ and a corresponding decomposition
 
 In this section $(X,I)$ is always a complex manifold.
 
-\begin{defn} A \ti{holomorphic vector bundle} over $X$ is a complex vector bundle $E$ over $X$, equipped with an operator
+\begin{defn}[Holomorphic vector bundle] A \ti{holomorphic vector bundle} over $X$ is a complex vector bundle $E$ over $X$, equipped with an operator
 \begin{equation}
   \bar\partial_E :  \Omega^{p,q}(E) \to \Omega^{p,q+1}(E)
 \end{equation}
@@ -415,7 +416,7 @@ are holomorphic.
 % carries a canonical holomorphic structure.
 % \end{example}
 
-\begin{example} The tangent bundle $TX$ carries
+\begin{example}[Tangent bundle as a holomorphic bundle] The tangent bundle $TX$ carries
 a canonical structure of holomorphic vector bundle.
 (Indeed, the coordinate charts give rise to 
 preferred trivializations corresponding 
@@ -430,7 +431,7 @@ by the Jacobians, which are holomorphic.)
 % with the canonical holomorphic structure.
 \end{example}
 
-\begin{defn}
+\begin{defn}[Connection compatible with holomorphic structure]
 If $E$ is a holomorphic vector bundle over $X$,
 a connection $D$ in $E$ is \ti{compatible with the
 holomorphic structure} if, for all 
@@ -438,7 +439,7 @@ $\psi \in \Omega^0(E)$, the $(0,1)$ part of $D \psi$
 is $\bar\partial_E \psi$.
 \end{defn}
 
-\begin{defn}
+\begin{defn}[Chern connection]
 If $E$ is a holomorphic vector bundle over $X$ with
 a Hermitian metric $h$, the \ti{Chern connection} 
 in $E$ is the unique connection which is 
@@ -450,7 +451,7 @@ structure.
 
 In this section $(X,I)$ is always a complex manifold.
 
-\begin{defn} A Hermitian metric on $X$ is a Riemannian
+\begin{defn}[Hermitian metric on complex manifold] A Hermitian metric on $X$ is a Riemannian
 metric $g$ obeying
 $$ g(v,w) = g(Iv,Iw). $$
 \end{defn}
@@ -458,9 +459,9 @@ Equivalently, with respect to the decomposition
 \begin{equation}
   \Sym^2 (T_\C X) = \Sym^{2,0} TX \oplus \Sym^{1,1} TX \oplus \Sym^{0,2} TX,
 \end{equation}
-we have $g \in \Sym^{1,1} TX$, i.e. $g$ is of ``type $(1,1)$.''.
+we have $g \in \Sym^{1,1} TX$, i.e. $g$ is of ``type $(1,1)$.''
 
-\begin{defn} If $g$ is a Hermitian metric on $X$, 
+\begin{defn}[Fundamental form] If $g$ is a Hermitian metric on $X$, 
 the \ti{fundamental form} $\omega \in \Omega^2(X)$
 is
 \begin{equation}
@@ -477,7 +478,7 @@ defines a Hermitian metric on the complex vector
 bundle $TX$.
 \end{exercise}
 
-\begin{defn} If $g$ is a Hermitian metric on $X$,
+\begin{defn}[\kahler metric] If $g$ is a Hermitian metric on $X$,
 $g$ is \kahler if the corresponding $\omega$ obeys
 \begin{equation}
   \de \omega = 0.
@@ -521,19 +522,35 @@ a subgroup isomorphic to $U(n)$.
 
 Useful (and inspiring) references are \cite{MR88f:53087,Hitchin-hk,MR1798605}.
 
-\begin{defn} A \hk manifold is a Riemannian 
-manifold $(X,g)$,
-equipped with three complex structures $I$, $J$, $K$, obeying the algebra of the quaternions ($IJ = -JI = K$),
+\begin{defn}[\hk manifold] A \ti{\hk manifold} is 
+a tuple $(X,g,I,J,K)$, where $(X,g)$ is a Riemannian 
+manifold equipped with three complex 
+structures $I$, $J$, $K$, obeying the algebra of the quaternions ($IJ = -JI = K$),
 such that $g$ is Hermitian and \kahler with respect to
 any of $I$, $J$, $K$.
 \end{defn}
 
 It is crucial that we require the \ti{single} metric
-$g$ to be \kahler for \ti{all three} complex structures.
+$g$ to be \kahler for \ti{all} of $I$, $J$, $K$:
+this is a very strong condition!
 We denote the three corresponding
 symplectic forms $\omega_I, \omega_J, \omega_K$.
+Sometimes it is convenient to use instead the
+notation $(I_1,I_2,I_3) = (I,J,K)$
+and $(\omega_1,\omega_2,\omega_3) = (\omega_I,\omega_J,\omega_K)$.
 
-\begin{example} The space
+\begin{exercise}
+Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
+\begin{equation}
+  I_{\vec s} = \sum_{i=1}^3 s_i I_i, \qquad \omega_{\vec s} = \sum_{i=1}^3 s_i \omega_i.
+\end{equation}
+Show that $(X,I_{\vec s},g)$ is a \kahler manifold,
+with \kahler form $\omega_{\vec s}$.
+\end{exercise}
+In other words, a \hk metric is \kahler for a whole 
+$S^2$ of complex structures, not only three of them.
+
+\begin{example}[Flat quaternionic space] The quaternions
 $\bbH$ can be identified with $\R^4$
 via the map
 \begin{equation}
@@ -555,6 +572,9 @@ structures. Thus $\bbH$ is \hk, in a canonical way.
 \begin{exercise}
 Write explicit formulas for the symplectic forms
 $\omega_I$, $\omega_J$, $\omega_K$ on $\bbH$.
+Show that the complex 2-form $\omega_J + \I \omega_K$
+is of type $(2,0)$ with respect to complex structure
+$I$. \fixme{check sign}
 \end{exercise}
 
 The group $O(4)$ acts on $\bbH$ by isometries, but 
@@ -566,14 +586,16 @@ subgroups acts on $\bbH$ by \ti{triholomorphic} isometries, i.e. isometries whic
 all of $I$, $J$, and $K$.
 \end{exercise}
 
-\begin{example}
+\begin{example}[ALE spaces]
 It follows that, if we choose a subgroup
 $\Gamma \subset SU(2)$, the quotient
 $\bbH / \Gamma$ carries a natural \hk structure 
 at least where it is a manifold. For example,
 if $\Gamma$ is a discrete subgroup, it acts
 freely away from the origin, so
-$X_\Gamma^\circ = (\bbH \setminus \{0\}) / \Gamma$
+\begin{equation}
+X_\Gamma^\circ = (\bbH \setminus \{0\}) / \Gamma  
+\end{equation}
 is a \hk manifold.
 However, this \hk manifold is \ti{incomplete},
 since the origin is at finite distance.
@@ -590,6 +612,29 @@ the metric we started with on $X_\Gamma^\circ$
 (induced from the flat metric on $\bbH$);
 thus the $X_\Gamma$ are called ``ALE spaces'',
 for ``asymptotically locally Euclidean.''
+\end{example}
+
+\begin{example}[Gibbons-Hawking spaces]
+Fix some $U \subset \R^3$ and
+let $V: U \to \R$ be a harmonic function.
+Then $\de \star \de V = 0$, i.e. if we write
+\begin{equation}
+  F = \star \de V
+\end{equation}
+then we have $\de F = 0$. If $F$ is moreover integrally
+quantized, i.e. $[F/2\pi] \in H^2(U,\Z)$, then
+there exists a principal 
+$U(1)$ bundle $X$ over $U$, carrying a connection
+$\Theta$ whose curvature is $F$. Then the metric
+on $X$ given by
+\begin{equation}
+  g = V(\vec{x}) \de \vec{x}^2 + V^{-1}(\vec{x}) \Theta^2
+\end{equation}
+is \hk. The three symplectic forms are
+\begin{equation}
+  \omega_i = \fixme{...}
+\end{equation}
+
 \end{example}
 
 \fixme{reduced holonomy}
