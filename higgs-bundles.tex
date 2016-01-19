@@ -298,24 +298,26 @@ have to be done in a different order):
   \item role in $\N=2$ supersymmetric QFT?
   \item holomorphic disc counting and GW/DT-type invariants?
   \item $S$-duality action on branes?
+  \item Hitchin's section (higher Teichmuller space)?
 \end{itemize}
 
 
 \section{Introductory motivation}
 
-Suppose given a compact Riemann surface $C$ and compact semisimple
+Suppose given a compact Riemann surface $C$ and compact reductive
 Lie group $G$. Built from these data there is a
 moduli space $$\cM = \cM^H(C,G)$$
 which can be seen in various ways:
 \begin{itemize}
+\item $\cM$ is the \ti{character variety} i.e. moduli space of stable flat $G_\C$-local systems on $C$, i.e. moduli space of stable representations
+$\pi_1(C) \to G_\C$; certain sheaves on this moduli space are 
+basic objects on ``B side'' of the geometric Langlands correspondence,
 \item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of stable $G$-bundles on $C$; from this point of view Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on ``A side'' 
 of the geometric Langlands correspondence,
 \insfig{higgs-bundles-2}{0.55}
 \item $\cM$ is a \ti{complex integrable system} \cite{MR88i:58068}, i.e. a holomorphic
 symplectic manifold fibered over a complex base with Lagrangian
 fibers, generic fiber a compact complex torus, \insfig{higgs-bundles-1}{0.8}
-\item $\cM$ is the \ti{character variety} i.e. moduli space of flat $G_\C$-connections on $C$; certain sheaves on this moduli space are 
-basic objects on ``B side'' of the geometric Langlands correspondence,
 \item $\cM$ is a noncompact \ti{Calabi-Yau manifold}, i.e. a \kahler
 manifold admitting a Ricci-flat metric, in some sense a close 
 cousin of the K3 surface; from this point of view
@@ -329,21 +331,23 @@ namely $\cM^\vee = \cM^H(C,^L G)$ where
 $^L G$ is the \ti{Langlands dual} group \cite{mlh,MR2957305}, 
 and the mirror symmetry
 exchanges the two sides of the geometric Langlands correspondence,
-\item $\cM$ is the space of solutions of an interesting PDE, \ti{Hitchin's equations} \cite{MR89a:32021}, containing as special cases various sorts of harmonic maps (including \ti{uniformization} in the case $G = PSU(2)$).
 \item $\cM$ is a \ti{cluster variety}, built by gluing together
 very simple pieces $(\C^\times)^n$ in an essentially \ti{combinatorial} way. (Almost: to make this precisely true, we have to include \ti{punctures} on $C$; but even without the punctures, some cluster-like
 structure seems to persist.)
+\item $\cM$ is the space of solutions of an interesting PDE, \ti{Hitchin's equations} \cite{MR89a:32021}, containing as special cases various sorts of harmonic maps (including \ti{uniformization} in the case $G = PSU(2)$).
 \end{itemize}
 
 How can one space $\cM$ be so many different things at once?
+
 A partial answer comes from another structure $\cM$ carries, namely
-the \ti{\hk} structure. This says in short that $\cM$ has many
+the \ti{\hk} structure. This says in short that $\cM$ has a 
+metric compatible with many
 different complex structures,
 fitting together in a specific way; thus $\cM$ gives rise to
 many complex manifolds which look quite different from one
 another, but are nevertheless canonically diffeomorphic.
 This structure is rather rigid and gives a lot of constraints, e.g.
-it implies that $\cM$ carries a Ricci-flat metric, and even lets 
+it implies that the metric on $\cM$ is Ricci-flat, and even lets 
 us say some things about what the metric looks like (much
 more than we can say for ``generic'' Ricci-flat metrics);
 also allows us to study the \ti{topology} of $\cM$, e.g. 
@@ -355,7 +359,7 @@ fits into supersymmetric quantum field theory; but this is
 mostly beyond the scope of this course.)
 
 
-\section{Complex and \kahler geometry: a quick review}
+\section{Local complex and \kahler geometry: a quick review}
 
 This is only intended as a review and to fix notation.
 There are many references for this material: one
@@ -375,7 +379,7 @@ $n$.
 \end{defn}
 
 \begin{example}[Flat complex space] $\C^n$ has a canonical almost complex structure $I$, as follows. Each tangent space $T_p \C^n \simeq \C^n$ canonically; $I$ is multiplication by $\I$, thought of as an 
-endomorphism of the underlying real vector space.
+endomorphism of the underlying $2n$-dimensional real vector space.
 Writing $z_i = x_i + \I y_i$, and taking the coordinate basis
 $\{\partial_{x_1}, \partial_{x_2}, \dots, \partial_{x_n}, \partial_{y_1}, \partial_{y_2}, \dots, \partial_{y_n}\}$ for for $T_p \C^n$, $I$ is represented by the matrix
 \begin{equation}
@@ -470,6 +474,11 @@ and the integrability condition
 \end{equation}
 \end{defn}
 
+We emphasize that this structure makes sense only when $X$ is 
+a complex manifold, while complex vector bundles make sense 
+over any $X$. This structure is much more rigid than that of 
+a merely complex vector bundle.
+
 \begin{exercise} Show that a structure of holomorphic vector bundle on $E$ is equivalent to a maximal atlas 
 of preferred trivializations of $E$, such that
 the transition maps 
@@ -519,12 +528,12 @@ In this section $(X,I)$ is always a complex manifold.
 \begin{defn}[Hermitian metric on complex manifold] A Hermitian metric on $X$ is a Riemannian
 metric $g$ obeying
 $$ g(v,w) = g(Iv,Iw). $$
-\end{defn}
 Equivalently, with respect to the decomposition 
 \begin{equation}
   \Sym^2 (T_\C X) = \Sym^{2,0} TX \oplus \Sym^{1,1} TX \oplus \Sym^{0,2} TX,
 \end{equation}
 we have $g \in \Sym^{1,1} TX$, i.e. $g$ is of ``type $(1,1)$.''
+\end{defn}
 
 \begin{defn}[Fundamental form] If $g$ is a Hermitian metric on $X$, 
 the \ti{fundamental form} $\omega \in \Omega^{1,1}_\R(X)$
@@ -555,7 +564,8 @@ and $\omega$ is the \kahler form.
 
 The \kahler property has various useful consequences,
 some local and some global. Here we recall some
-of the local ones. Let $\nabla$ denote the 
+of the local ones: the global ones will come later. 
+Let $\nabla$ denote the 
 Levi-Civita connection on $TX$ induced
 by the metric $g$.
 \begin{prop}[\kahler means covariant constancy of $I$]
@@ -679,7 +689,7 @@ The metric $g$ is \kahler for all three of these complex
 structures. Thus $\bbH$ is \hk, in a canonical way.
 \end{example}
 
-\begin{exercise}
+\begin{exercise} \label{exc:flat-space-computing}
 Write explicit formulas for the symplectic forms
 $\omega_i$ on $\bbH$, and for complex coordinates
 with respect to the complex structures $I_i$.
@@ -730,8 +740,8 @@ the \hk structure.
 
 \begin{example}[Gibbons-Hawking spaces] \label{exa:gibbons-hawking}
 Extending \autoref{exa:incomplete-gibbons-hawking}
-we can allow $V$ to have quantized
-singularities:
+we can allow $V$ to have quantized (distributional) sources
+on $U$:
 \begin{equation}
   \Delta V = 2 \pi \sum_{i=1}^n \delta(\vec x - \vec x_i)
 \end{equation}
@@ -750,7 +760,7 @@ so the circle fibers of $X$ are shrinking to zero
 length, and it turns out to be possible to add
 a single point over $\vec x_i$, in such a way 
 that the total space is a \hk manifold with non-free 
-$U(1)$ action.
+$U(1)$ action, and the quotient is $U$.
 
 \end{example}
 
@@ -763,6 +773,16 @@ Take $U = \R^3$ and
 \end{equation}
 \fixme{...}
 \end{example}
+
+\begin{exercise}
+Show that, in any of its complex structures $I_i$, 
+Taub-NUT space is biholomorphic to $\C^2$.
+\end{exercise}
+% This was also true of $\bbH$ of course 
+% (\autoref{exc:flat-space-computing}); nevertheless, Taub-NUT space
+% and $\bbH$ are definitely not the same \hk manifold!
+% Thus there is more information in the \hk structure than
+% in the set of complex manifolds one obtains by specializing.
 
 \begin{example}[Eguchi-Hanson space]
 This is the case of \autoref{exa:gibbons-hawking}
