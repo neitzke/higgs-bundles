@@ -357,21 +357,32 @@ $\{\partial_{x_1}, \partial_{x_2}, \dots, \partial_{x_n}, \partial_{y_1}, \parti
 \end{equation}
 \end{example}
 
- \begin{defn}[Holomorphic maps] If $(X,I_X)$ and $(Y,I_Y)$ are almost
- complex manifolds, a \ti{holomorphic map} $\phi: X \to Y$
+\begin{defn}[Holomorphic maps] \label{def:holomorphic-maps} If $(X,I_X)$ and $(Y,I_Y)$ are almost
+complex manifolds, a \ti{holomorphic map} $\phi: X \to Y$
 is one obeying
 \begin{equation}
  I_Y \circ \de \phi = \de \phi \circ I_X.  
 \end{equation}
 \end{defn}
 
+\begin{exercise} Show that, if both $(X,I_X)$ and $(Y,I_Y)$ are $\C$ with its canonical 
+almost complex structure, \autoref{def:holomorphic-maps} becomes the standard
+definition of holomorphic function (Cauchy-Riemann equations).
+\end{exercise}
+
 \begin{defn}[Complex structures] \label{def:complex-structures} An almost complex structure $I$ on $X$ is \ti{integrable}, 
-or a \ti{complex structure}, if there is a covering of $X$ by open sets $U_\alpha$ with holomorphic maps $\phi_\alpha: U_\alpha \to \C^n$. A \ti{complex manifold} is an almost complex manifold $(X,I)$ with $I$ integrable.
+or a \ti{complex structure}, if there is a covering of $X$ by open sets $U_\alpha$ with holomorphic diffeomorphisms $\phi_\alpha: U_\alpha \to V_\alpha \subset \C^n$ (where on $\C^n$ we take the
+canonical almost complex structure.) A \ti{complex manifold} is an almost complex manifold $(X,I)$ with $I$ integrable.
 \end{defn}
 
 \begin{exercise} Show that \autoref{def:complex-structures} is equivalent to the usual definition of a complex manifold as a space
 $X$ with a covering by charts $\phi_\alpha: U_\alpha \to \C^n$, where the transition maps are holomorphic (obey Cauchy-Riemann equations).
 \end{exercise}
+
+\begin{example}[Complex structure on $\C^n$] A tautological example is $X = \C^n$ itself with its 
+canonical almost complex structure: just take a single open set $U = \C^n$, and $\phi: U \to \C^n$ to be the identity map. So the canonical almost complex structure on $\C^n$ is, tautologically, a
+complex structure.
+\end{example}
 
 There are various equivalent ways of formulating the integrability condition. One which will be useful for us is:
 \begin{prop}[Infinitesimal characterization of integrability] $I$ is integrable if and only if the \ti{Nijenhuis tensor} $N_I \in \Omega^0(\wedge^2 T^*X \otimes TX)$,
