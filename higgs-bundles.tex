@@ -252,37 +252,47 @@
 \section{Introductory motivation}
 
 Suppose given a compact Riemann surface $C$
-of genus $g \ge 2$ and a compact semisimple
-Lie group $G$, e.g. $G = SU(2)$. Built from these data there is a
+of genus $g \ge 2$ and a compact reductive
+Lie group $G$, e.g. $G = U(1)$, $G = SU(2)$. 
+Built from these data there is a
 moduli space $$\cM = \cM^H(C,G)$$
-which can be seen in various ways:
+It is \ti{almost} a manifold --- has some singularities, but also
+some components without singularities, and at first we can focus
+on the parts without singularities.
+It can be seen in various ways:
 
 \begin{itemize}
 \item $\cM$ is the (twisted) \ti{character variety}, i.e. moduli space of
 (twisted) 
-stable representations\footnote{``Stable'' means the image is not
-contained in any nontrivial parabolic subgroup of $G$.}
-$\pi_1(C) \to G_\C$; certain sheaves on this moduli space are 
-basic objects on ``$B$ side'' of the geometric Langlands correspondence,
-\item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of stable $G$-bundles on $C$; from this point of view Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on ``$A$ side'' 
-of the geometric Langlands correspondence,
+reductive representations\footnote{``Reductive'' means the closure of 
+the image is a reductive subgroup of $G_\C$.}
+$\pi_1(C) \to G_\C$.
+e.g. for $g=2$ and $G = SU(2)$, 
+this means
+\begin{equation}
+  \cM = \{ A_1,A_2,B_1,B_2 \in SL(2,\C): A_1 B_1 A_1^{-1} B_1^{-1} A_2 B_2 A_2^{-1} B_2^{-1} = \pm 1 \} / \sim
+\end{equation}
+(Certain sheaves on this moduli space are 
+basic objects on ``$B$ side'' of the geometric Langlands correspondence.)
+\item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of semistable $G$-bundles on $C$. (Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on ``$A$ side'' 
+of the geometric Langlands correspondence.)
 \insfig{higgs-bundles-2}{0.55}
 \item $\cM$ is a \ti{complex integrable system} \cite{MR88i:58068}, i.e. a holomorphic
-symplectic manifold fibered over a complex base with Lagrangian
-fibers, generic fiber a compact complex torus, \insfig{higgs-bundles-1}{0.8}
-\item $\cM$ is a noncompact \ti{Calabi-Yau manifold}, i.e. a \kahler
-manifold admitting a Ricci-flat metric, in some sense a close 
+symplectic space fibered over a complex base with Lagrangian
+fibers, generic fiber a compact complex torus. \insfig{higgs-bundles-1}{0.8}
+\item $\cM$ is a noncompact \ti{Calabi-Yau space}, i.e. a \kahler
+space admitting a Ricci-flat metric, in some sense a close 
 cousin of the K3 surface; from this point of view
 it is a paradigmatic example of the Strominger-Yau-Zaslow
 philosophy \cite{Strominger:1996it}, 
-which says that every Calabi-Yau manifold arises naturally
+which says that every Calabi-Yau space arises naturally
 as a special Lagrangian \ti{torus fibration} over a complex base,
 and that its \ti{mirror} can be obtained by a natural fiberwise duality
 operation; moreover in this case the mirror is a space of the same kind,
 namely $\cM^\vee = \cM^H(C,^L G)$ where 
-$^L G$ is the \ti{Langlands dual} group \cite{mlh,MR2957305}, 
-and the mirror symmetry
-exchanges the two sides of the geometric Langlands correspondence,
+$^L G$ is the \ti{Langlands dual} group \cite{mlh,MR2957305}.
+(The mirror symmetry
+exchanges the two sides of the geometric Langlands correspondence.)
 \item $\cM$ is a \ti{cluster variety}, built by gluing together
 very simple pieces $(\C^\times)^n$ in an essentially \ti{combinatorial} way. (Almost: to make this precisely true, we have to include \ti{punctures} on $C$; but even without the punctures, some cluster-like
 structure seems to persist.)
@@ -306,11 +316,16 @@ us say some things about what the metric looks like (much
 more than we can say for ``generic'' Ricci-flat metrics);
 also allows us to study the \ti{topology} of $\cM$, e.g. 
 its Betti numbers.
-Our first major aim is to understand this structure.
+
+Our first major aim is to understand this structure --- first 
+we will study some simpler ``baby'' examples of \hk geometry, then
+we will study $\cM(C,G)$ for $G = U(1)$, finally we will
+come to $\cM(C,G)$ for general $G$.
 
 (A fuller answer should come from the way $\cM$
 fits into supersymmetric quantum field theory; but this is 
 mostly beyond the scope of this course.)
+
 
 
 \section{Local complex and \kahler geometry: a quick review}
