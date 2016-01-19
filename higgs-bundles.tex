@@ -251,13 +251,17 @@
 
 \section{Introductory motivation}
 
-Suppose given a compact Riemann surface $C$ and compact reductive
-Lie group $G$. Built from these data there is a
+Suppose given a compact Riemann surface $C$
+of genus $g \ge 2$ and a compact semisimple
+Lie group $G$, e.g. $G = SU(2)$. Built from these data there is a
 moduli space $$\cM = \cM^H(C,G)$$
 which can be seen in various ways:
 
 \begin{itemize}
-\item $\cM$ is the \ti{character variety} i.e. moduli space of stable flat $G_\C$-local systems on $C$, i.e. moduli space of stable representations
+\item $\cM$ is the (twisted) \ti{character variety}, i.e. moduli space of
+(twisted) 
+stable representations\footnote{``Stable'' means the image is not
+contained in any nontrivial parabolic subgroup of $G$.}
 $\pi_1(C) \to G_\C$; certain sheaves on this moduli space are 
 basic objects on ``$B$ side'' of the geometric Langlands correspondence,
 \item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of stable $G$-bundles on $C$; from this point of view Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on ``$A$ side'' 
@@ -294,7 +298,9 @@ different complex structures,
 fitting together in a specific way; thus $\cM$ gives rise to
 many complex manifolds which look quite different from one
 another, but are nevertheless canonically diffeomorphic.
-This structure is rather rigid and gives a lot of constraints, e.g.
+Loosely speaking, one complex structure comes from the Riemann 
+surface $C$, another comes from $G_\C$.
+An \hk structure is rather rigid and gives a lot of constraints, e.g.
 it implies that the metric on $\cM$ is Ricci-flat, and even lets 
 us say some things about what the metric looks like (much
 more than we can say for ``generic'' Ricci-flat metrics);
@@ -414,7 +420,7 @@ In this section $(X,I)$ is always a complex manifold.
 \end{equation}
 obeying
 \begin{equation}
-  \bar\partial_E (\alpha \psi) = (\bar\partial_E \alpha) \psi + (-1)^{\abs{\alpha}} \alpha \wedge \bar\partial_E \psi \qquad \alpha \in \Omega^*(X), \quad \psi \in \Omega^0(E)
+  \bar\partial_E (\alpha \psi) = (\bar\partial \alpha) \psi + (-1)^{\abs{\alpha}} \alpha \wedge \bar\partial_E \psi \qquad \alpha \in \Omega^*(X), \quad \psi \in \Omega^0(E)
 \end{equation}
 and the integrability condition
 \begin{equation}
@@ -422,10 +428,12 @@ and the integrability condition
 \end{equation}
 \end{defn}
 
+
+The structure of holomorphic vector bundle is much 
+more rigid than that of a merely complex vector bundle.
 We emphasize that this structure makes sense only when $X$ is 
 a complex manifold, while complex vector bundles make sense 
-over any $X$. This structure is much more rigid than that of 
-a merely complex vector bundle.
+over any $X$. 
 
 \begin{exercise} Show that a structure of holomorphic vector bundle on $E$ is equivalent to a maximal atlas 
 of preferred trivializations of $E$, such that
@@ -678,13 +686,15 @@ Then $\Delta V = \de \star \de V = 0$, so if we write
 \begin{equation}
   F = \star \de V
 \end{equation}
-then we have $\de F = 0$. If $F$ is moreover integrally
-quantized, i.e. $[F/2\pi] \in H^2(U,\Z)$, then
+then we have $\de F = 0$. Suppose $F$ is moreover integrally
+quantized, i.e. $[F/2\pi] \in H^2(U,\Z)$. Then
 there exists a principal 
 $U(1)$ bundle $X$ over $U$, carrying a connection
-$\Theta$ (represented as a $1$-form on $X$) 
-whose curvature is $F$. Then the metric
-on $X$ given by \fixme{check factors}
+$\Theta$ whose curvature is $F$. Concretely we represent
+$\Theta$ as a $1$-form on $X$, with 
+integral $1$ over each fiber, locally of the form
+$\Theta = A + \de \chi$ with $A \in \Omega^1(U)$.
+Then the metric on $X$ given by
 \begin{equation}
   g = V(\vec{x}) \de \vec{x}^2 + V(\vec{x})^{-1} \Theta^2
 \end{equation}
@@ -692,8 +702,9 @@ is \hk. The three symplectic forms are \fixme{check}
 \begin{equation}
   \omega_i = \de x_i \wedge \Theta + \half \eps^{ijk} V(\vec x) \de x_j \wedge \de x_k.
 \end{equation}
-The $U(1)$ action on $X$ is by isometries preserving
-the \hk structure.
+The principal $U(1)$ action on $X$ is by isometries preserving
+the \hk structure (this is clear since nothing in $g$ or $\omega_i$
+depends on the fiber coordinates).
 \end{example}
 
 \begin{example}[Gibbons-Hawking spaces] \label{exa:gibbons-hawking}
@@ -712,8 +723,8 @@ degree $1$. $X$ thus doesn't extend as a $U(1)$ bundle
 over the point $\vec x_i$.
 Nevertheless it turns out that it \ti{does} extend
 as a \hk manifold. Indeed, near $\vec x_i$ we have
-\fixme{check factors}
-$V = 1/\norm{\vec x - \vec x_i} + \text{regular}$,
+\fixme{fix wrong factor of $2 \pi$ somewhere!}
+$V = 1 / 4 \pi \norm{\vec x - \vec x_i} + \text{regular}$,
 so the circle fibers of $X$ are shrinking to zero
 length, and it turns out to be possible to add
 a single point over $\vec x_i$, in such a way 
@@ -727,7 +738,7 @@ This is the case of \autoref{exa:gibbons-hawking}
 with one singularity. 
 Take $U = \R^3$ and
 \begin{equation}
-  V(\vec x) = 1 + 1/\norm{\vec x}.
+  V(\vec x) = 1 + \frac{1}{4 \pi \norm{\vec x}}.
 \end{equation}
 \fixme{...}
 \end{example}
@@ -748,7 +759,7 @@ with two singularities. Fix two points, say
 $\vec x_1 = (1,0,0)$ and $\vec x_2 = (-1,0,0)$.
 Take $U = \R^3$ and 
 \begin{equation}
-  V(\vec x) = 1 + 1/\norm{\vec x-\vec x_1} + 1/\norm{\vec x-\vec x_2}.
+  V(\vec x) = 1 + \frac{1}{4 \pi \norm{\vec x-\vec x_1}} + \frac{1}{4 \pi \norm{\vec x-\vec x_2}}.
 \end{equation}
 \fixme{...}
 \end{example}
