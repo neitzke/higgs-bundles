@@ -10,10 +10,6 @@
 \usepackage{multirow}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\definecolor{darkred}{rgb}{0.5,0.1,0.1}
-\definecolor{darkgreen}{rgb}{0,0.55,0.2}
-\hypersetup{colorlinks=true,urlcolor=darkred,linkcolor=darkred,citecolor=darkred}
-
 \usepackage{verbatim}
 \usepackage[letterpaper,margin=1in,headheight=15pt]{geometry}
 \usepackage{mathpazo}
@@ -23,7 +19,11 @@
 \usepackage{float}
 \usepackage{thmtools}
 
+\definecolor{darkred}{rgb}{0.5,0.1,0.1}
+\definecolor{darkgreen}{rgb}{0,0.55,0.2}
+\hypersetup{colorlinks=true,urlcolor=darkred,linkcolor=darkred,citecolor=darkred}
 \definecolor{shadecolor}{rgb}{0.85,0.85,0.85}
+
 % Bibliography formatting
 \usepackage[bibstyle=authoryear-comp,labeldate=false,defernumbers=true,maxnames=20,firstinits=true,uniquename=init,dashed=false,backend=biber,sorting=none]{biblatex}
 
@@ -308,11 +308,12 @@ Suppose given a compact Riemann surface $C$ and compact reductive
 Lie group $G$. Built from these data there is a
 moduli space $$\cM = \cM^H(C,G)$$
 which can be seen in various ways:
+
 \begin{itemize}
 \item $\cM$ is the \ti{character variety} i.e. moduli space of stable flat $G_\C$-local systems on $C$, i.e. moduli space of stable representations
 $\pi_1(C) \to G_\C$; certain sheaves on this moduli space are 
-basic objects on ``B side'' of the geometric Langlands correspondence,
-\item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of stable $G$-bundles on $C$; from this point of view Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on ``A side'' 
+basic objects on ``$B$ side'' of the geometric Langlands correspondence,
+\item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of stable $G$-bundles on $C$; from this point of view Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on ``$A$ side'' 
 of the geometric Langlands correspondence,
 \insfig{higgs-bundles-2}{0.55}
 \item $\cM$ is a \ti{complex integrable system} \cite{MR88i:58068}, i.e. a holomorphic
@@ -704,13 +705,23 @@ to $\C^2$.
 
 The group $O(4)$ acts on $\bbH$ by isometries, but 
 these do \ti{not} generally preserve the \hk structure.
-However, we do have the following:
+However, we do have the following. Recall that the 
+unit sphere in ${\mathbb H}$ is isomorphic as a group
+to $SU(2)$. Thus we have an action of $SU(2) \times SU(2)$ 
+on ${\mathbb H}$ by
+\begin{equation}
+  (q, q') \cdot x = q x q'^{-1}.
+\end{equation}
+This gives a map $SU(2) \times SU(2) \to SO(4)$, which
+has kernel $\{(1,1),(-1,-1)\} \simeq \Z_2$, thus an isomorphism
+$SO(4) \simeq (SU(2) \times SU(2)) / \Z_2$.
+Said otherwise, $O(4)$ has two canonical $SU(2)$ subgroups,
+which we could call $SU(2)_L$ and $SU(2)_R$ (for ``left'' and ``right.'')
+
 \begin{exercise} \label{exc:so4-action}
-Recall the identification of Lie groups, $SO(4) \simeq (SU(2) \times SU(2)) / \Z_2$. Thus $SO(4)$ has two canonical $SU(2)$ subgroups. Show that one of these
+Show that one of these
 subgroups acts on $\bbH$ by \ti{triholomorphic} isometries, i.e. isometries which are holomorphic for
 all of $I$, $J$, and $K$.
-We call this subgroup $SU(2)_L$, and the other one
-$SU(2)_R$.
 \end{exercise}
 
 \begin{example}[Incomplete Gibbons-Hawking spaces] \label{exa:incomplete-gibbons-hawking}
@@ -728,7 +739,7 @@ $\Theta$ (represented as a $1$-form on $X$)
 whose curvature is $F$. Then the metric
 on $X$ given by \fixme{check factors}
 \begin{equation}
-  g = V(\vec{x}) \de \vec{x}^2 + V^{-1}(\vec{x}) \Theta^2
+  g = V(\vec{x}) \de \vec{x}^2 + V(\vec{x})^{-1} \Theta^2
 \end{equation}
 is \hk. The three symplectic forms are \fixme{check}
 \begin{equation}
