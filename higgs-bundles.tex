@@ -18,6 +18,7 @@
 \usepackage{framed}
 \usepackage{float}
 \usepackage{thmtools}
+\usepackage{dashrule}
 
 \definecolor{darkred}{rgb}{0.5,0.1,0.1}
 \definecolor{darkgreen}{rgb}{0,0.55,0.2}
@@ -233,7 +234,7 @@
 % syntax: \insfig{name}{0.5}{caption}
 
 \newcommand{\fixme}[1]{{\color{blue}{[#1]}}}
-
+\newcommand{\currentposition}{{\color{blue} \noindent\makebox[\linewidth]{\hdashrule{\paperwidth}{1pt}{3mm}}}}
 
 % \mathtoolsset{showonlyrefs}
 
@@ -385,15 +386,21 @@ complex structure.
 \end{example}
 
 There are various equivalent ways of formulating the integrability condition. One which will be useful for us is:
-\begin{prop}[Infinitesimal characterization of integrability] $I$ is integrable if and only if the \ti{Nijenhuis tensor} $N_I \in \Omega^0(\wedge^2 T^*X \otimes TX)$,
+\begin{prop}[Infinitesimal characterization of integrability] Define the \ti{Nijenhuis tensor} $N_I \in \Omega^0(\wedge^2 T^*X \otimes TX)$ as a map
+$T^*X \otimes T^*X \to TX$ by
 \begin{equation}
-N_I(v,w) = [v,w] + I[v,Iw] + I[Iv,w] - [Iv,Iw],
+N_I(v,w) = [\tilde v,\tilde w] + I[\tilde v,I \tilde w] + I[I \tilde v, \tilde w] - [I\tilde v,I\tilde w],
 \end{equation}
-vanishes:
+where $\tilde v$ and $\tilde w$ are any vector fields extending $v$, $w$.
+Then $I$ is integrable if and only if
 \begin{equation}
 N_I = 0.  
 \end{equation}
 \end{prop}
+\begin{proof} To show that integrability implies $N_I = 0$ is straightforward
+by directly computing in a local coordinate chart. The other direction
+is much harder --- it is the content of the Newlander-Nirenberg theorem.
+\end{proof}
 
 \subsection{Type decompositions}
 Suppose $(X,I)$ is a complex manifold.
@@ -410,11 +417,12 @@ of rank $n$; it is sometimes convenient to identify
 them, by projection on the $(1,0)$ part.
 
 \begin{exercise}
-Show that this is indeed an isomorphism 
+Show that this projection $\pi: TX \to T^{1,0}X$ indeed is an isomorphism 
 of complex vector bundles. (This reduces essentially
 to a question of linear algebra, concerning 
 a vector space $V$ with complex structure $I$,
-and its complexification $V_\C$.)
+and its complexification $V_\C$.) If $X = \C$, 
+what are $\pi(\partial_x)$ and $\pi(\partial_y)$?
 \end{exercise}
 
 There is also a dual decomposition
@@ -466,21 +474,26 @@ over any $X$.
 of preferred trivializations of $E$, such that
 the transition maps 
 $U_\alpha \cap U_\beta \to GL(r,\C)$ 
-are holomorphic.
+are holomorphic. (This is a sort of linear analogue of the 
+Newlander-Nirenberg theorem; when $\dim_\C X = 1$ you can --- and should --- 
+do it ``with bare hands'';
+for $\dim_\C X > 1$ you may want to look at \cite{MR1079726} Theorem 2.1.53.)
 \end{exercise}
 
 % \begin{example} The trivial bundle $X \times \C^r$
 % carries a canonical holomorphic structure.
 % \end{example}
 
+\currentposition
+
 \begin{example}[Tangent bundle as a holomorphic bundle] The tangent bundle $TX$ carries
 a canonical structure of holomorphic vector bundle.
-(Indeed, the coordinate charts give rise to 
-preferred trivializations corresponding 
+Indeed, the holomorphic charts $\phi_\alpha = (z_1, \dots, z_n)$ 
+give rise to preferred trivializations corresponding 
 to the bases $\{\partial_{z_1}, \dots, \partial_{z_n} \}$
 for $TX \simeq T^{1,0} X$, and the transition 
-maps are given 
-by the Jacobians, which are holomorphic.)
+maps are given by the Jacobian matrices 
+$(\partial z'_i / \partial z_j)_{i,j=1}^n$, which are holomorphic.
 % It can be described as follows: for each coordinate
 % chart $\phi_\alpha: U \to \C^n$, we get an isomorphism
 % $\de \phi_\alpha: TU \to T \C^n$, and under this 
@@ -706,6 +719,35 @@ isometries, i.e. isometries which are holomorphic for
 all of $I$, $J$, and $K$.
 \end{exercise}
 
+
+\begin{example}[ALE spaces]
+It follows from \autoref{exc:so4-action} that, if we choose a subgroup
+$\Gamma \subset SU(2)$, the quotient
+$\bbH / \Gamma$ is a \hk orbifold: in particular, it
+carries a natural \hk structure 
+on the locus where it is a manifold. For example,
+if $\Gamma$ is a discrete subgroup, it acts
+freely away from the origin, so
+\begin{equation}
+X_\Gamma^\circ = (\bbH \setminus \{0\}) / \Gamma  
+\end{equation}
+is a \hk manifold.
+However, this \hk manifold is \ti{incomplete},
+since the origin is at finite distance.
+One can consider the so-called 
+\ti{minimal resolution} $X_\Gamma$
+of the singularity at the origin;
+then $X_\Gamma$ is an honest smooth manifold, 
+carrying a natural family 
+of \ti{complete} \hk metrics \cite{MR90d:53055}.
+These metrics asymptotically approach
+the metric we started with on $X_\Gamma^\circ$
+(induced from the flat metric on $\bbH$);
+thus the $X_\Gamma$ are called ``ALE spaces'',
+for ``asymptotically locally Euclidean.''
+\end{example}
+
+
 \begin{example}[Incomplete Gibbons-Hawking spaces] \label{exa:incomplete-gibbons-hawking}
 Fix some open set $U \subset \R^3$ and
 let $V: U \to \R_{>0}$ be a positive harmonic function.
@@ -794,34 +836,6 @@ Take $U = \R^3$ and
   V(\vec x) = 1 + \frac{1}{4\pi \norm{\vec x-\vec x_1}} + \frac{1}{4\pi \norm{\vec x-\vec x_2}}.
 \end{equation}
 \fixme{...}
-\end{example}
-
-
-\begin{example}[ALE spaces]
-It follows from \autoref{exc:so4-action} that, if we choose a subgroup
-$\Gamma \subset SU(2)$, the quotient
-$\bbH / \Gamma$ is a \hk orbifold: in particular, it
-carries a natural \hk structure 
-where it is a manifold. For example,
-if $\Gamma$ is a discrete subgroup, it acts
-freely away from the origin, so
-\begin{equation}
-X_\Gamma^\circ = (\bbH \setminus \{0\}) / \Gamma  
-\end{equation}
-is a \hk manifold.
-However, this \hk manifold is \ti{incomplete},
-since the origin is at finite distance.
-One can consider the so-called 
-\ti{minimal resolution} $X_\Gamma$
-of the singularity at the origin;
-then $X_\Gamma$ is an honest smooth manifold, 
-carrying a natural family 
-of \ti{complete} \hk metrics \cite{MR90d:53055}.
-These metrics asymptotically approach
-the metric we started with on $X_\Gamma^\circ$
-(induced from the flat metric on $\bbH$);
-thus the $X_\Gamma$ are called ``ALE spaces'',
-for ``asymptotically locally Euclidean.''
 \end{example}
 
 
