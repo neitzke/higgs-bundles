@@ -711,23 +711,27 @@ Fix some open set $U \subset \R^3$ and
 let $V: U \to \R_{>0}$ be a positive harmonic function.
 Then $\Delta V = \de \star \de V = 0$, so if we write
 \begin{equation}
-  F = \star \de V
+  F = 2 \pi \star \de V
 \end{equation}
 then we have $\de F = 0$. Suppose $F$ is moreover integrally
 quantized, i.e. $[F/2\pi] \in H^2(U,\Z)$. Then
 there exists a principal 
 $U(1)$ bundle $X$ over $U$, carrying a connection
-$\Theta$ whose curvature is $F$. Concretely we represent
-$\Theta$ as a $1$-form on $X$, with 
-integral $1$ over each fiber, locally of the form
-$\Theta = A + \de \chi$ with $A \in \Omega^1(U)$.
+$\Theta$ whose curvature is $F$. Concretely, we represent
+$\Theta$ as a $1$-form on $X$; if we choose a local
+trivialization of the $U(1)$-bundle $X$ over a patch $U_\alpha$, 
+with local 
+fiber coordinate $\chi \in \R / 2 \pi \Z$, then $\Theta$ 
+is locally of the form
+$\Theta = A + \de \chi$ with $A \in \Omega^1(U_\alpha)$,
+$\de A = F$.
 Then the metric on $X$ given by
 \begin{equation}
-  g = V(\vec{x}) \de \vec{x}^2 + V(\vec{x})^{-1} \Theta^2
+  g = V(\vec{x}) \de \vec{x}^2 + V(\vec{x})^{-1} (\Theta/2\pi)^2
 \end{equation}
 is \hk. The three symplectic forms are \fixme{check}
 \begin{equation}
-  \omega_i = \de x_i \wedge \Theta + \half \eps^{ijk} V(\vec x) \de x_j \wedge \de x_k.
+  \omega_i = \de x_i \wedge (\Theta/2\pi) + \half \eps_{ijk} V(\vec x) \de x_j \wedge \de x_k.
 \end{equation}
 The principal $U(1)$ action on $X$ is by isometries preserving
 the \hk structure (this is clear since nothing in $g$ or $\omega_i$
@@ -739,19 +743,20 @@ Extending \autoref{exa:incomplete-gibbons-hawking}
 we can allow $V$ to have quantized (distributional) sources
 on $U$:
 \begin{equation}
-  \Delta V = 2 \pi \sum_{i=1}^n \delta(\vec x - \vec x_i)
+  \Delta V = \sum_{i=1}^n \delta(\vec x - \vec x_i)
 \end{equation}
 In this case, consider a small $S^2$ around $\vec{x}_i$:
 \begin{equation}
-  \int_{S^2} F = \int_{S^2} \star \de V = \int_{B^3} \de \star \de V = \int_{B^3} 2 \pi \delta(\vec x - \vec x_i) = 2 \pi
+  \int_{S^2} \frac{F}{2\pi} = \int_{S^2} \star \de V = \int_{B^3} \de \star \de V = \int_{B^3} \delta(\vec x - \vec x_i) = 1
 \end{equation}
 so the $U(1)$ bundle $X$ restricted to this $S^2$ has 
 degree $1$. $X$ thus doesn't extend as a $U(1)$ bundle
 over the point $\vec x_i$.
 Nevertheless it turns out that it \ti{does} extend
 as a \hk manifold. Indeed, near $\vec x_i$ we have
-\fixme{fix wrong factor of $2 \pi$ somewhere!}
-$V = 1 / 4 \pi \norm{\vec x - \vec x_i} + \text{regular}$,
+\begin{equation}
+V = \frac{1}{4\pi\norm{\vec x - \vec x_i}} + \text{regular},
+\end{equation}
 so the circle fibers of $X$ are shrinking to zero
 length, and it turns out to be possible to add
 a single point over $\vec x_i$, in such a way 
@@ -765,7 +770,7 @@ This is the case of \autoref{exa:gibbons-hawking}
 with one singularity. 
 Take $U = \R^3$ and
 \begin{equation}
-  V(\vec x) = 1 + \frac{1}{4 \pi \norm{\vec x}}.
+  V(\vec x) = 1 + \frac{1}{4\pi \norm{\vec x}}.
 \end{equation}
 \fixme{...}
 \end{example}
@@ -786,7 +791,7 @@ with two singularities. Fix two points, say
 $\vec x_1 = (1,0,0)$ and $\vec x_2 = (-1,0,0)$.
 Take $U = \R^3$ and 
 \begin{equation}
-  V(\vec x) = 1 + \frac{1}{4 \pi \norm{\vec x-\vec x_1}} + \frac{1}{4 \pi \norm{\vec x-\vec x_2}}.
+  V(\vec x) = 1 + \frac{1}{4\pi \norm{\vec x-\vec x_1}} + \frac{1}{4\pi \norm{\vec x-\vec x_2}}.
 \end{equation}
 \fixme{...}
 \end{example}
