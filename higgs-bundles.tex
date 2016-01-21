@@ -400,10 +400,10 @@ Then $I$ is integrable if and only if
 N_I = 0.  
 \end{equation}
 \end{prop}
-\begin{proof} To show that integrability implies $N_I = 0$ is straightforward
+\begin{pf} To show that integrability implies $N_I = 0$ is straightforward
 by directly computing in a local coordinate chart. The other direction
 is much harder --- it is the content of the Newlander-Nirenberg theorem.
-\end{proof}
+\end{pf}
 
 \subsection{Type decompositions}
 Suppose $(X,I)$ is a complex manifold.
@@ -519,11 +519,10 @@ structure.
 \end{defn}
 
 \subsection{Hermitian and \kahler metrics}
+Throughout this section $(X,I)$ is an almost complex manifold.
 
-In this section $(X,I)$ is always a complex manifold.
-
-\begin{defn}[Hermitian metric on complex manifold] A Hermitian metric on $X$ is a Riemannian
-metric $g$ obeying
+\begin{defn}[Hermitian metric on complex manifold] A Hermitian metric on 
+$(X,I)$ is a Riemannian metric $g$ obeying
 $$ g(v,w) = g(Iv,Iw). $$
 Equivalently, with respect to the decomposition 
 \begin{equation}
@@ -532,7 +531,7 @@ Equivalently, with respect to the decomposition
 we have $g \in \Sym^{1,1} TX$, i.e. $g$ is of ``type $(1,1)$.''
 \end{defn}
 
-\begin{defn}[Fundamental form] If $g$ is a Hermitian metric on $X$, 
+\begin{defn}[Fundamental form] If $g$ is a Hermitian metric on $(X,I)$, 
 the \ti{fundamental form} $\omega \in \Omega^{1,1}_\R(X)$
 is
 \begin{equation}
@@ -540,8 +539,19 @@ is
 \end{equation}
 \end{defn}
 
+\begin{exercise}If $g$ is a Hermitian metric on $(X,I)$ check that
+\begin{equation}
+  {\mathrm {vol}}_g = \frac{\omega^n}{n!}
+\end{equation}
+(in particular, $\omega$ is nondegenerate.)
+\end{exercise}
+
+The term ``Hermitian'' might seem confusing here since $g$ is just 
+an ordinary real-valued metric on the real vector bundle 
+$TX$. The following should help:
+
 \begin{exercise} \label{exc:hermitian-metric} 
-If $g$ is a Hermitian metric on $X$,
+If $g$ is a Hermitian metric on $(X,I)$,
 verify that
 \begin{equation}
   h = g - \I \omega
@@ -550,33 +560,34 @@ defines a Hermitian metric on the complex vector
 bundle $TX$.
 \end{exercise}
 
-\begin{defn}[\kahler metric] If $g$ is a Hermitian metric on $X$,
-$g$ is \kahler if the corresponding $\omega$ obeys
-\begin{equation}
-  \de \omega = 0.
-\end{equation}
-In this case we say $(X,g,I)$ is a \kahler manifold,
-and $\omega$ is the \kahler form.
-\end{defn}
-
-The \kahler property has various useful consequences,
-some local and some global. Here we recall some
-of the local ones: the global ones will come later. 
 Let $\nabla$ denote the 
 Levi-Civita connection on $TX$ induced
 by the metric $g$.
-\begin{prop}[\kahler means covariant constancy of $I$]
-If $g$ is a Hermitian metric on $X$,
-$g$ is \kahler if and only if
-$\nabla I = 0$.
-\end{prop}
 
-\begin{cor}[\kahler means covariant constancy of other things]
-If $g$ is a Hermitian metric on $X$, with 
+\begin{defn}[\kahler metric] If $g$ is a Hermitian metric 
+on $(X,I)$, we say $g$ is \ti{\kahler} if
+\begin{equation}
+  \nabla I = 0.
+\end{equation}
+Then $(X,g,I)$ is a \ti{\kahler manifold},
+and $\omega$ is the \ti{\kahler form}.
+\end{defn}
+
+The \kahler property has various useful alternative 
+characterizations:
+% \begin{prop}[\kahler means covariant constancy of $I$]
+% If $g$ is a Hermitian metric on $X$,
+% $g$ is \kahler if and only if
+% $\nabla I = 0$.
+% \end{prop}
+
+\begin{cor}[Other characterizations of \kahler metrics] \label{cor:kahler-cc}
+If $g$ is a Hermitian metric on $(X,I)$, with 
 fundamental form $\omega$, then the following are
 equivalent:
 \begin{itemize}
   \item $g$ is \kahler,
+  \item $I$ is integrable and $\de \omega = 0$,
   \item $\nabla I = 0$,
   \item $\nabla \omega = 0$,
   \item $\nabla$ agrees with the Chern connection on $TX$,
@@ -584,14 +595,21 @@ equivalent:
 \end{itemize}
 \end{cor}
 
+In particular \autoref{cor:kahler-cc} implies that any complex 
+submanifold of a \kahler manifold is again \kahler. Combining this 
+with the fact that $\C\PP^n$ admits a \kahler metric
+(Fubini-Study), we obtain a huge supply of examples.
+
 Finally we quickly recall the notion of special holonomy. Recall that for any Riemannian metric $g$ the parallel transport of Levi-Civita preserves $g$, so that 
-for any $p \in X$ the holonomy group $Hol_g(p) \subset GL(T_p X)$ 
-is contained in the subgroup $O(h_p) \simeq O(2n)$.
-For a \kahler metric, since the Chern connection agrees with the 
-Levi-Civita connection, the parallel transport of Levi-Civita preserves the Hermitian metric
+for any $p \in X$ the holonomy group $Hol_\nabla(p) \subset GL(T_p X)$ 
+is contained in the subgroup $O(g(p)) \simeq O(2n)$.
+For a \kahler metric, \autoref{cor:kahler-cc} says
+the parallel transport of Levi-Civita preserves the Hermitian metric
 $h$ on the complex vector bundle $TX$. Thus, for any $p \in X$, the holonomy group
-$Hol_g(p) \subset GL(T_p X)$ is contained in the smaller group $U(h_p) \simeq U(n)$.
-This proves one-half of the following:
+$Hol_\nabla(p) \subset GL(T_p X)$ is contained in the smaller group $U(h(p)) \simeq U(n)$.
+Conversely, if $Hol_\nabla(p)$ is contained in some subgroup 
+isomorphic to $U(n)$ then it preserves some $h$, from 
+which one can prove:
 
 \begin{prop}[Special holonomy of \kahler manifolds] Given any Riemannian metric $g$ on a manifold $M$ of dimension $2n$, $g$ is a \kahler metric 
 (for some complex structure $I$ on $M$) if and only if
@@ -604,14 +622,13 @@ a subgroup isomorphic to $U(n)$.
 
 Useful (and inspiring) references are \cite{MR88f:53087,Hitchin-hk,MR1798605,boalch-notes}.
 
-\subsection{Basic definitions and examples}
+\subsection{Basic definitions}
 
 \begin{defn}[\Hk manifold] A \ti{\hk manifold} is 
 a tuple $(X,g,I_1,I_2,I_3)$, where $(X,g)$ is a Riemannian 
 manifold equipped with three complex 
-structures $I_i$ obeying the algebra of the quaternions ($I_1 I_2 = -I_2 I_1 = I_3$),
-such that $g$ is Hermitian and \kahler with respect to
-any of the $I_i$.
+structures $I_i$ obeying the algebra of the quaternions ($I_1 I_2 = -I_2 I_1 = I_3$, and cyclic permutations),
+such that $(X,g,I_i)$ is \kahler for $i=1,2,3$.
 \end{defn}
 
 It is crucial that we require the \ti{single} metric
@@ -632,7 +649,8 @@ an isomorphism $T^{1,0}X \to (T^{1,0} X)^*$.
 (Note that this definitely does \ti{not} mean that $\Omega$ is nondegenerate on the whole $T_\C X$. Indeed, since $\Omega$ is 
 of type $(2,0)$ its contraction with any $v \in T^{0,1} X$ vanishes.)
 
-\begin{prop}[\Hk manifolds are holomorphic symplectic] If $X$ is \hk then $\Omega_1 = \omega_2 + \I \omega_3$ is a \ti{holomorphic symplectic form} with respect to structure $I_1$.
+\begin{prop}[\Hk manifolds are holomorphic symplectic] If $X$ is \hk then $\Omega_1 = \omega_2 + \I \omega_3$ is a \ti{holomorphic symplectic form} with respect to structure $I_1$ (and similarly with the indices 
+$1,2,3$ cyclically permuted.)
 \end{prop}
 \begin{pf} 
 \begin{align}
@@ -655,6 +673,7 @@ The nondegeneracy follows from the nondegeneracy for the $\omega_i$: namely, for
 \begin{equation}
   \Omega_1(v,\cdot) = 0 \implies \Omega_1(v+\bar{v}, \cdot) = 0 \implies \omega_2(v + \bar{v}, \cdot) = 0 \implies v + \bar{v} = 0 \implies v = 0.
 \end{equation}
+The remaining claims are obtained by cyclic permutations.
 \end{pf}
 
 \begin{cor}[\Hk manifolds have dimension $4n$] If $X$ is \hk then $\dim_\R X$ is a multiple of $4$.
@@ -666,6 +685,58 @@ a standard ``Darboux'' basis). Thus the existence of the
 holomorphic symplectic form $\Omega_1$ implies
 that $T^{1,0}_{I_1} X$ has even complex dimension.
 \end{pf}
+
+\begin{prop}[The $\omega_i$ determine the \hk structure]
+If $X$ is \hk then
+\begin{equation}
+I_1 = \omega_3^{-1} \omega_2  
+\end{equation}
+and cyclic permutations.
+\end{prop}
+\begin{pf}
+What we have to check is that $\omega_3(I_1 v,w) = \omega_2(v,w)$.
+But 
+\begin{equation}
+ \omega_3(I_1 v,w) = g(I_3 I_1 v,w) = g(I_2 v, w) = \omega_2(v,w) 
+\end{equation}
+as desired.
+\end{pf}
+
+This leads to the amusing formula:
+\begin{equation}
+  g = \omega_1 \omega_3^{-1} \omega_2
+\end{equation}
+and cyclic permutations.
+
+\begin{exercise}
+Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
+\begin{equation}
+  I_{\vec s} = \sum_{i=1}^3 s_i I_i, \qquad \omega_{\vec s} = \sum_{i=1}^3 s_i \omega_i.
+\end{equation}
+Show that $(X,I_{\vec s},g)$ is a \kahler manifold,
+with \kahler form $\omega_{\vec s}$.
+\end{exercise}
+In other words, a \hk metric is \kahler for a whole 
+$S^2$ of complex structures, not only three of them;
+moreover specifying $I_1$, $I_2$, $I_3$ is equivalent to 
+specifying the whole collection of $I_{\vec s}$.
+
+\begin{exercise}
+Given a Riemannian manifold $(X,g)$ and 
+a \hk structure thereon, specified by complex structures
+$I_{\vec s}$, show that we get another
+\hk structure by choosing an element $T \in SO(3)$
+and defining 
+\begin{equation}
+I'_{\vec s} = I_{T \vec s}.
+\end{equation}
+Thus $SO(3)$ naturally acts on the set of
+\hk manifolds.
+\end{exercise}
+
+
+
+\subsection{First examples}
 
 \begin{example}[Flat quaternionic space] The quaternions
 $\bbH$ can be identified with $\R^4$
@@ -699,31 +770,44 @@ manifold in structure $I_i$, $\bbH$ is biholomorphic
 to $\C^2$.
 \end{exercise}
 
-The group $O(4)$ acts on $\bbH$ by isometries, but 
+$\bbH$ has a lot of symmetry. For example, $\bbH$ acts 
+on itself by translations preserving the \hk structure.
+Also the group $O(4)$ acts on $\bbH$ by isometries, but 
 these do \ti{not} generally preserve the \hk structure.
 However, we do have the following. Recall that the 
 unit sphere in ${\mathbb H}$ is isomorphic as a group
-to $SU(2)$. Thus we have an action of $SU(2) \times SU(2)$ 
+to $SU(2)$: 
+\begin{equation}
+  a + b \I + c \J + d \K \mapsto \begin{pmatrix} a+b\I & c+d\I \\ -c+d\I & a-b\I \end{pmatrix}
+\end{equation}
+Thus we have an action of $SU(2) \times SU(2)$ 
 on ${\mathbb H}$ by
 \begin{equation}
   (q, q') \cdot x = q x q'^{-1}.
 \end{equation}
-This gives a map $SU(2) \times SU(2) \to SO(4)$, which
-has kernel $\{(1,1),(-1,-1)\} \simeq \Z_2$, thus an isomorphism
-$SO(4) \simeq (SU(2) \times SU(2)) / \Z_2$.
+This gives a map $SU(2) \times SU(2) \to SO(4)$.
 Said otherwise, $O(4)$ has two canonical $SU(2)$ subgroups,
-which we could call $SU(2)_L$ and $SU(2)_R$ (for ``left'' and ``right.'')
+which we call $SU(2)_L$ and $SU(2)_R$ (for ``left'' and ``right.'')
+(Incidentally, this map has kernel $\{(1,1),(-1,-1)\} \simeq \Z_2$, 
+thus gives an isomorphism $SO(4) \simeq (SU(2) \times SU(2)) / \Z_2$.)
 
-\begin{exercise} \label{exc:so4-action}
+\begin{exercise} \label{exc:su2r-action}
 Show that $SU(2)_R$ acts on $\bbH$ by \ti{triholomorphic} 
 isometries, i.e. isometries which are holomorphic for
 all of $I$, $J$, and $K$.
 \end{exercise}
 
+\begin{exercise} \label{exc:su2l-action}
+Show that the action of $T \in SU(2)_L$ on $\bbH$ has
+\begin{equation}
+  T^* I_{\vec s} = I_{T \vec s}
+\end{equation}
+(where on the right side we use the projection $SU(2) \to SO(3)$.)
+\end{exercise}
 
 \begin{example}[Quotients of $\bbH$] \label{exa:H-quotients}
-It follows from \autoref{exc:so4-action} that, if we choose a subgroup
-$\Gamma \subset SU(2)$, the quotient
+It follows from \autoref{exc:su2r-action} that, if we choose a subgroup
+$\Gamma \subset SU(2)_R$, the quotient
 $\bbH / \Gamma$ is a \hk orbifold: in particular, it
 carries a natural \hk structure 
 on the locus where it is a manifold. For example,
@@ -809,8 +893,25 @@ $U(1)$ action, and the quotient is $U$.
 
 \end{example}
 
+% This was also true of $\bbH$ of course 
+% (\autoref{exc:flat-space-computing}); nevertheless, Taub-NUT space
+% and $\bbH$ are definitely not the same \hk manifold!
+% Thus there is more information in the \hk structure than
+% in the set of complex manifolds one obtains by specializing.
+
+\begin{example}[Eguchi-Hanson space]
+This is a case of \autoref{exa:gibbons-hawking}
+with two singularities. Fix two points, say
+$\vec x_1 = (1,0,0)$ and $\vec x_2 = (-1,0,0)$.
+Take $U = \R^3$ and 
+\begin{equation}
+  V(\vec x) = \frac{1}{4\pi \norm{\vec x-\vec x_1}} + \frac{1}{4\pi \norm{\vec x-\vec x_2}}.
+\end{equation}
+\fixme{...}
+\end{example}
+
 \begin{example}[Taub-NUT space]
-This is the case of \autoref{exa:gibbons-hawking}
+This is a case of \autoref{exa:gibbons-hawking}
 with one singularity. 
 Take $U = \R^3$ and
 \begin{equation}
@@ -823,51 +924,7 @@ Take $U = \R^3$ and
 Show that, in any of its complex structures $I_i$, 
 Taub-NUT space is biholomorphic to $\C^2$.
 \end{exercise}
-% This was also true of $\bbH$ of course 
-% (\autoref{exc:flat-space-computing}); nevertheless, Taub-NUT space
-% and $\bbH$ are definitely not the same \hk manifold!
-% Thus there is more information in the \hk structure than
-% in the set of complex manifolds one obtains by specializing.
 
-\begin{example}[Eguchi-Hanson space]
-This is the case of \autoref{exa:gibbons-hawking}
-with two singularities. Fix two points, say
-$\vec x_1 = (1,0,0)$ and $\vec x_2 = (-1,0,0)$.
-Take $U = \R^3$ and 
-\begin{equation}
-  V(\vec x) = 1 + \frac{1}{4\pi \norm{\vec x-\vec x_1}} + \frac{1}{4\pi \norm{\vec x-\vec x_2}}.
-\end{equation}
-\fixme{...}
-\end{example}
-
-
-\subsection{Twistor space}
-
-\begin{exercise}
-Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
-\begin{equation}
-  I_{\vec s} = \sum_{i=1}^3 s_i I_i, \qquad \omega_{\vec s} = \sum_{i=1}^3 s_i \omega_i.
-\end{equation}
-Show that $(X,I_{\vec s},g)$ is a \kahler manifold,
-with \kahler form $\omega_{\vec s}$.
-\end{exercise}
-In other words, a \hk metric is \kahler for a whole 
-$S^2$ of complex structures, not only three of them;
-moreover specifying $I_1$, $I_2$, $I_3$ is equivalent to 
-specifying the whole collection of $I_{\vec s}$.
-
-\begin{exercise}
-Given a Riemannian manifold $(X,g)$ and 
-a \hk structure thereon, specified by complex structures
-$I_{\vec s}$, show that we get another
-\hk structure by choosing an element $T \in SO(3)$
-and defining 
-\begin{equation}
-I'_{\vec s} = I_{T \vec s}.
-\end{equation}
-Thus $SO(3)$ naturally acts on the set of
-\hk manifolds.
-\end{exercise}
 
 \fixme{reduced holonomy}
 
