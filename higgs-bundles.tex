@@ -680,8 +680,10 @@ The remaining claims are obtained by cyclic permutations.
 \begin{pf} There is a standard bit of ``symplectic linear algebra'' saying that a vector space with a
 nondegenerate antisymmetric pairing is always 
 even-dimensional (to prove it, one inductively constructs
-a standard ``Darboux'' basis). Thus the existence of the 
-holomorphic symplectic form $\Omega_1$ implies
+a ``Darboux'' basis, in which the antisymmetric pairing
+is a direct sum of blocks 
+of the shape $\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$). 
+Thus the existence of the holomorphic symplectic form $\Omega_1$ implies
 that $T^{1,0}_{I_1} X$ has even complex dimension.
 \end{pf}
 
@@ -691,21 +693,27 @@ If $X$ is \hk then
 I_1 = \omega_3^{-1} \omega_2  
 \end{equation}
 and cyclic permutations.
+(What this formula really means: view $\omega_2$ as a map $TX \to T^* X$
+namely $v \mapsto \omega_2(v,\cdot)$,
+and $\omega_3^{-1}$ as a map $T^* X \to TX$
+namely $\omega_3(v,\cdot) \mapsto v$, then the composition
+$\omega_3^{-1} \omega_2: TX \to TX$ is $I_1$.)
 \end{prop}
 \begin{pf}
-What we have to check is that $\omega_3(I_1 v,w) = \omega_2(v,w)$.
+What we have to check is that $\omega_3(I_1 v,\cdot) = \omega_2(v,\cdot)$.
 But 
 \begin{equation}
- \omega_3(I_1 v,w) = g(I_3 I_1 v,w) = g(I_2 v, w) = \omega_2(v,w) 
+ \omega_3(I_1 v,\cdot) = g(I_3 I_1 v,\cdot) = g(I_2 v, \cdot) = \omega_2(v,\cdot) 
 \end{equation}
 as desired.
 \end{pf}
 
 This leads to the amusing formula:
 \begin{equation}
-  g = \omega_1 \omega_3^{-1} \omega_2
+  g = - \omega_1 \omega_3^{-1} \omega_2
 \end{equation}
-and cyclic permutations.
+and cyclic permutations. (Here similarly we view $g$ as a map $TX \to T^*X$,
+namely $v \mapsto g(v,\cdot)$.)
 
 \begin{exercise}
 Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
