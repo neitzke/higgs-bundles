@@ -945,18 +945,27 @@ line $\vec x_1 \vec x_2$.
 
 \begin{exercise}
 Show that this $S^2$ is a complex submanifold of $X$, with
-respect to \ti{one} of the complex structures $I_{\vec s}$.
-Which one is it? (Hint: to see that it's complex with respect 
+respect to \ti{two} of the complex structures $I_{\vec s}$.
+Which ones? (Hint: to see that it's complex with respect 
 to say $I_1$, it would be enough to show that $\Omega_1$ vanishes
 on it. Why?)
 \end{exercise}
 
 Eguchi-Hanson space is our first example where the $I_{\vec s}$ do not all 
 give rise to the same complex manifold: one of them gives 
-rise to $T^* \C\PP^1$, the others are something else. The isometric $U(1)$
-action on $\R^3$ that preserves $V$ rotates the sphere of complex structures.
-\fixme{asymptotics look like $\R^4 / \Z_2$; it's example of ALE space}
+rise to $T^* \C\PP^1$, the others are something else.
 
+\begin{example}[Multi-Eguchi-Hanson spaces] More generally we can fix a collection
+of distinct points $\vec x_1, \dots, \vec x_k \in \R^3$ and take
+\begin{equation}
+  V(\vec x) = \sum_{i=1}^k \frac{1}{4 \pi \norm{\vec x - \vec x_i}}
+\end{equation}
+Then a straight line segment in $\R^3$ connecting two $\vec x_i$ (and not meeting any others)
+gives an $S^2$ in $X$. This $S^2$ is a complex submanifold with respect to two
+of the complex structures $I_{\vec s}$: indeed $\vec s$ is just the direction
+of the line segment.
+\fixme{special case where they're all lined up in a row, relation to ALE}
+\end{example}
 
 \begin{example}[ALE spaces]
 One can consider the \ti{minimal resolution} $X_\Gamma$
