@@ -581,7 +581,7 @@ characterizations:
 % $\nabla I = 0$.
 % \end{prop}
 
-\begin{cor}[Other characterizations of \kahler metrics] \label{cor:kahler-cc}
+\begin{prop}[Other characterizations of \kahler metrics] \label{cor:kahler-cc}
 If $g$ is a Hermitian metric on $(X,I)$, with 
 fundamental form $\omega$, then the following are
 equivalent:
@@ -593,7 +593,7 @@ equivalent:
   \item $\nabla$ agrees with the Chern connection on $TX$,
   when we view $TX$ as a complex vector bundle with the induced Hermitian metric $h$ of \autoref{exc:hermitian-metric}.
 \end{itemize}
-\end{cor}
+\end{prop}
 
 In particular \autoref{cor:kahler-cc} implies that any complex 
 submanifold of a \kahler manifold is again \kahler. Combining this 
@@ -768,6 +768,12 @@ is of type $(2,0)$ with respect to complex structure
 $I_1$, and that when considered as a complex
 manifold in structure $I_i$, $\bbH$ is biholomorphic
 to $\C^2$.
+
+% (The answer should look something like:
+% $\omega_1 = \de a \wedge \de b + \de c \wedge \de d$, 
+% $\omega_2 = \de a \wedge \de c + \de b \wedge \de d$,
+% $\omega_3 = \de a \wedge \de d + \de c \wedge \de b$,
+% $z = a + b\I$, $w = c + d\I$.)
 \end{exercise}
 
 $\bbH$ has a lot of symmetry. For example, $\bbH$ acts 
@@ -805,6 +811,12 @@ Show that the action of $T \in SU(2)_L$ on $\bbH$ has
 (where on the right side we use the projection $SU(2) \to SO(3)$.)
 \end{exercise}
 
+\begin{exercise}
+Show that in any complex structure
+$I_{\vec s}$, $\bbH$ is biholomorphic
+to $\C^2$.
+\end{exercise}
+
 \begin{example}[Quotients of $\bbH$] \label{exa:H-quotients}
 It follows from \autoref{exc:su2r-action} that, if we choose a subgroup
 $\Gamma \subset SU(2)_R$, the quotient
@@ -821,18 +833,26 @@ However, this \hk manifold is \ti{incomplete},
 since the origin is at finite distance.
 \end{example}
 
-\begin{example}[ALE spaces]
-One can consider the \ti{minimal resolution} $X_\Gamma$
-of the singularity at the origin in \autoref{exa:H-quotients};
-then $X_\Gamma$ is an honest smooth manifold, 
-carrying a natural family 
-of \ti{complete} \hk metrics \cite{MR90d:53055}.
-These metrics asymptotically approach
-the metric we started with on $X_\Gamma^\circ$
-(induced from the flat metric on $\bbH$);
-thus the $X_\Gamma$ are called ``ALE spaces'',
-for ``asymptotically locally Euclidean.''
+\begin{example}[$\R^3 \times S^1$] \label{exa:R3S1}
+Since translations preserve the \hk structure, we can divide $\bbH$
+out by $\Z$ acting by translations to get another \hk manifold,
+\begin{equation}
+ X = \bbH / \Z \simeq \R^3 \times S^1.
+\end{equation}
 \end{example}
+
+\begin{exercise}
+Show that $SO(3)$ acts by isometries on $X = \bbH / \Z$,
+with
+\begin{equation}
+  T^* I_{\vec s} = I_{T \vec s}.
+\end{equation}
+\end{exercise}
+
+\begin{exercise}
+Show that for any $\vec s$, $X = \bbH / \Z$ with complex structure
+$I_{\vec s}$ is biholomorphic to $\C \times \C^\times$.
+\end{exercise}
 
 \begin{example}[Incomplete Gibbons-Hawking spaces] \label{exa:incomplete-gibbons-hawking}
 Fix some open set $U \subset \R^3$ and
@@ -857,7 +877,7 @@ Then the metric on $X$ given by
 \begin{equation}
   g = V(\vec{x}) \de \vec{x}^2 + V(\vec{x})^{-1} (\Theta/2\pi)^2
 \end{equation}
-is \hk. The three symplectic forms are \fixme{check}
+is \hk. The three symplectic forms are
 \begin{equation}
   \omega_i = \de x_i \wedge (\Theta/2\pi) + \half \eps_{ijk} V(\vec x) \de x_j \wedge \de x_k.
 \end{equation}
@@ -880,18 +900,28 @@ In this case, consider a small $S^2$ around $\vec{x}_i$:
 so the $U(1)$ bundle $X$ restricted to this $S^2$ has 
 degree $1$. $X$ thus doesn't extend as a $U(1)$ bundle
 over the point $\vec x_i$.
-Nevertheless it turns out that it \ti{does} extend
+Nevertheless it \ti{does} extend
 as a \hk manifold. Indeed, near $\vec x_i$ we have
 \begin{equation}
 V = \frac{1}{4\pi\norm{\vec x - \vec x_i}} + \text{regular},
 \end{equation}
 so the circle fibers of $X$ are shrinking to zero
-length, and it turns out to be possible to add
+length, and it is possible to add
 a single point over $\vec x_i$, in such a way 
 that the total space is a \hk manifold with non-free 
 $U(1)$ action, and the quotient is $U$.
-
+This follows from the next (hard) exercise.
 \end{example}
+
+\begin{exercise}
+Consider \autoref{exa:incomplete-gibbons-hawking} with
+$U = \R^3 \setminus \{(0,0,0)\}$ and
+$V(\vec x) = \frac{1}{4\pi\norm{\vec x}}$.
+Show that $X$ with the metric $g$ is isometric
+to $\R^4$ with one point deleted,
+and that the \hk structure on $X$ extends
+to a \hk structure on the full $\R^4$.
+\end{exercise}
 
 % This was also true of $\bbH$ of course 
 % (\autoref{exc:flat-space-computing}); nevertheless, Taub-NUT space
@@ -901,14 +931,46 @@ $U(1)$ action, and the quotient is $U$.
 
 \begin{example}[Eguchi-Hanson space]
 This is a case of \autoref{exa:gibbons-hawking}
-with two singularities. Fix two points, say
-$\vec x_1 = (1,0,0)$ and $\vec x_2 = (-1,0,0)$.
+with two singularities. Fix two points
+$\vec x_1, \vec x_2 \in \R^3$.
 Take $U = \R^3$ and 
 \begin{equation}
   V(\vec x) = \frac{1}{4\pi \norm{\vec x-\vec x_1}} + \frac{1}{4\pi \norm{\vec x-\vec x_2}}.
 \end{equation}
-\fixme{...}
+Then $X$ is fibered over $\R^3$ with two degenerate fibers.
+It contains in particular an $S^2$ fibered over the
+line $\vec x_1 \vec x_2$.
 \end{example}
+
+
+\begin{exercise}
+Show that this $S^2$ is a complex submanifold of $X$, with
+respect to \ti{one} of the complex structures $I_{\vec s}$.
+Which one is it? (Hint: to see that it's complex with respect 
+to say $I_1$, it would be enough to show that $\Omega_1$ vanishes
+on it. Why?)
+\end{exercise}
+
+Eguchi-Hanson space is our first example where the $I_{\vec s}$ do not all 
+give rise to the same complex manifold: one of them gives 
+rise to $T^* \C\PP^1$, the others are something else. The isometric $U(1)$
+action on $\R^3$ that preserves $V$ rotates the sphere of complex structures.
+\fixme{asymptotics look like $\R^4 / \Z_2$; it's example of ALE space}
+
+
+\begin{example}[ALE spaces]
+One can consider the \ti{minimal resolution} $X_\Gamma$
+of the singularity at the origin in \autoref{exa:H-quotients};
+then $X_\Gamma$ is an honest smooth manifold, 
+carrying a natural family 
+of \ti{complete} \hk metrics \cite{MR90d:53055}.
+These metrics asymptotically approach
+the metric we started with on $X_\Gamma^\circ$
+(induced from the flat metric on $\bbH$);
+thus the $X_\Gamma$ are called ``ALE spaces'',
+for ``asymptotically locally Euclidean.''
+\end{example}
+
 
 \begin{example}[Taub-NUT space]
 This is a case of \autoref{exa:gibbons-hawking}
@@ -919,12 +981,6 @@ Take $U = \R^3$ and
 \end{equation}
 \fixme{...}
 \end{example}
-
-\begin{exercise}
-Show that, in any of its complex structures $I_i$, 
-Taub-NUT space is biholomorphic to $\C^2$.
-\end{exercise}
-
 
 \fixme{reduced holonomy}
 
