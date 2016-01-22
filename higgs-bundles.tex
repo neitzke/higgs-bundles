@@ -682,12 +682,12 @@ nondegenerate antisymmetric pairing is always
 even-dimensional (to prove it, one inductively constructs
 a ``Darboux'' basis, in which the antisymmetric pairing
 is a direct sum of blocks 
-of the shape $\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$). 
+of the shape $\tiny \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$). 
 Thus the existence of the holomorphic symplectic form $\Omega_1$ implies
 that $T^{1,0}_{I_1} X$ has even complex dimension.
 \end{pf}
 
-\begin{prop}[The $\omega_i$ determine the \hk structure]
+\begin{prop}[The $\omega_i$ determine the complex structures]
 If $X$ is \hk then
 \begin{equation}
 I_1 = \omega_3^{-1} \omega_2  
@@ -696,7 +696,7 @@ and cyclic permutations.
 (What this formula really means: view $\omega_2$ as a map $TX \to T^* X$
 namely $v \mapsto \omega_2(v,\cdot)$,
 and $\omega_3^{-1}$ as a map $T^* X \to TX$
-namely $\omega_3(v,\cdot) \mapsto v$, then the composition
+namely $\omega_3(v,\cdot) \mapsto v$; then the composition
 $\omega_3^{-1} \omega_2: TX \to TX$ is $I_1$.)
 \end{prop}
 \begin{pf}
@@ -708,12 +708,27 @@ But
 as desired.
 \end{pf}
 
-This leads to the amusing formula:
+\begin{cor}[The $\omega_i$ determine the \hk metric]
+If $X$ is \hk then
 \begin{equation}
-  g = - \omega_1 \omega_3^{-1} \omega_2
+g = -\omega_1 \omega_3^{-1} \omega_2  
 \end{equation}
-and cyclic permutations. (Here similarly we view $g$ as a map $TX \to T^*X$,
+and cyclic permutations.
+(Here similarly we view $g$ as a map $TX \to T^*X$,
 namely $v \mapsto g(v,\cdot)$.)
+\end{cor}
+
+\begin{prop}[Condition for forms $\omega_i$ to give a \hk metric] \label{prop:omega-hk-condition}
+Suppose $X$ is a smooth manifold with symplectic forms 
+$\omega_1, \omega_2, \omega_3$, obeying the condition that
+\begin{equation}
+-\omega_1 \omega_3^{-1} \omega_2 = -\omega_2 \omega_1^{-1} \omega_3 = -\omega_3 \omega_2^{-1} \omega_1,
+\end{equation}
+and that this quantity, $g$, 
+is \ti{positive definite} as a symmetric bilinear form.
+Then $g$ is a \hk metric on $X$,
+with $\omega_i$ the associated \kahler forms.
+\end{prop}
 
 \begin{exercise}
 Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
@@ -864,6 +879,8 @@ $I_{\vec s}$ is biholomorphic to $\C \times \C^\times$.
 \end{exercise}
 
 \begin{example}[Incomplete Gibbons-Hawking spaces] \label{exa:incomplete-gibbons-hawking}
+Now we generalize from $\R^3 \times S^1$ to a \ti{circle bundle}
+with connection.
 Fix some open set $U \subset \R^3$ and
 let $V: U \to \R_{>0}$ be a positive harmonic function.
 Then $\Delta V = \de \star \de V = 0$, so if we write
@@ -876,24 +893,65 @@ there exists a principal
 $U(1)$ bundle $X$ over $U$, carrying a connection
 $\Theta$ whose curvature is $F$. Concretely, we represent
 $\Theta$ as a $1$-form on $X$; if we choose a local
-trivialization of the $U(1)$-bundle $X$ over a patch $U_\alpha$, 
-with local 
+trivialization of the $U(1)$-bundle $X$ over a patch
+$U_\alpha \subset U$, with local 
 fiber coordinate $\chi \in \R / 2 \pi \Z$, then $\Theta$ 
 is locally of the form
 $\Theta = A + \de \chi$ with $A \in \Omega^1(U_\alpha)$,
 $\de A = F$.
-Then the metric on $X$ given by
+\newcommand{\tTheta}{\tilde\Theta}
+For convenience write $\tTheta = \Theta / 2\pi$.
+
+We introduce three symplectic forms on $X$,
 \begin{equation}
-  g = V(\vec{x}) \de \vec{x}^2 + V(\vec{x})^{-1} (\Theta/2\pi)^2
+  \omega_i = \de x_i \wedge \tTheta - V \star \de x_i.
 \end{equation}
-is \hk. The three symplectic forms are
+To check that these are indeed closed,
 \begin{equation}
-  \omega_i = \de x_i \wedge (\Theta/2\pi) + V(\vec x) \star_{\R^3} \de x_i.
+  \de \omega_i = \de x_i \wedge \star \de V - \de V \wedge \star \de x_i = 0
 \end{equation}
-\fixme{should include direct proof that these forms really make
-up a hyperkahler structure}
+(the last equality because all of these forms are pulled back
+from $\R^3$, and on $\R^3$ we always have $\alpha \wedge \star \beta - \beta \wedge \star \alpha = 0$ for 1-forms $\alpha, \beta$.)
+Then define
+\begin{equation}
+  \Omega_1 = \omega_2 + \I \omega_3 = V \de z_1 \wedge \alpha_1
+\end{equation}
+where we introduced
+\begin{equation}
+  z_1 = x_2 + \I x_3, \qquad 
+  \alpha_1 = V^{-1} \tTheta + \I \de x_1.
+\end{equation}
+This motivates the definition of an almost complex 
+structure $I_1$: it acts
+by the eigenvalue $+\I$ on the forms $\de z_1$ and $\alpha_1$.
+Similarly we can define $I_2$, $I_3$.
+\fixme{obeying algebraic relations}
+\fixme{as complex manifold, it has a global holomorphic function
+$z_1$ and holomorphic vector field
+$V \partial_\chi - \I \tilde \partial_1$, where $\tilde \partial_1 \cdot \tilde\Theta = 0$ ie parallel lift of $\partial_3$ --- would
+integrate to $\C^\times$ action}
+
+Now we compute $g$ from $I_1$ and $\omega_1$:
+\begin{equation}
+  \omega_1 = V \im \alpha_1 \wedge \re \alpha_1 - V \re \de z_1 \wedge \im \de z_1
+\end{equation}
+which gives
+\begin{align}
+  g &= V ((\re \alpha_1)^2 + (\im \alpha_1)^2) + V ((\re \de z_1)^2 + (\im \de z_1)^2) \\
+  &= V (V^{-2} \tTheta^2 + \de x_1^2) + V (\de x_2^2 + \de x_3^2) \\
+  &= V \de \vec{x}^2 + V^{-1} \tTheta^2
+\end{align}
+% Note that the explicit index $1$ has disappeared from this formula;
+% if we had computed $g$ from $I_2$ and $\omega_2$, or
+% from $I_3$ and $\omega_3$, we would get the same result.
+Thus the metric on $X$ given by
+\begin{equation}
+  g = V \de \vec{x}^2 + V^{-1} \tTheta^2
+\end{equation}
+is \hk, with \kahler forms $\omega_i$.
+
 The principal $U(1)$ action on $X$ is by isometries preserving
-the \hk structure (this is clear since nothing in $g$ or $\omega_i$
+the \hk structure (this is clear since nothing in $\omega_i$
 depends on the fiber coordinates).
 \end{example}
 
@@ -966,7 +1024,7 @@ Eguchi-Hanson space is our first example where the $I_{\vec s}$ do not all
 give rise to the same complex manifold: one of them gives 
 rise to $T^* \C\PP^1$, the others are something else.
 
-\begin{example}[Multi-Eguchi-Hanson spaces] More generally we can fix a collection
+\begin{example}[Multi-Eguchi-Hanson spaces] \cite{MR520463} More generally we can fix a collection
 of distinct points $\vec x_1, \dots, \vec x_k \in \R^3$ and take
 \begin{equation}
   V(\vec x) = \sum_{i=1}^k \frac{1}{4 \pi \norm{\vec x - \vec x_i}}
