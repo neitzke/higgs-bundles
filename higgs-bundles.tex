@@ -389,7 +389,7 @@ complex structure.
 \end{example}
 
 There are various equivalent ways of formulating the integrability condition. One which will be useful for us is:
-\begin{prop}[Infinitesimal characterization of integrability] Define the \ti{Nijenhuis tensor} $N_I \in \Omega^0(\wedge^2 T^*X \otimes TX)$ as a map
+\begin{prop}[Integrability means vanishing of Nijenhuis tensor] Define the \ti{Nijenhuis tensor} $N_I \in \Omega^0(\wedge^2 T^*X \otimes TX)$ as a map
 $T^*X \otimes T^*X \to TX$ by
 \begin{equation}
 N_I(v,w) = [\tilde v,\tilde w] + I[\tilde v,I \tilde w] + I[I \tilde v, \tilde w] - [I\tilde v,I\tilde w],
@@ -406,7 +406,7 @@ is much harder --- it is the content of the Newlander-Nirenberg theorem.
 \end{pf}
 
 \subsection{Type decompositions}
-Suppose $(X,I)$ is a complex manifold.
+Suppose $(X,I)$ is an almost complex manifold.
 We have a decomposition
 of $T_\C X = TX \otimes_\R \C$,
 \begin{equation}
@@ -437,12 +437,22 @@ $T^{0,1} X$, and $(T^*)^{0,1} X$ is the annihilator of
 $T^{1,0} X$.
 This decomposition induces
 \begin{equation}
-\wedge^* T^*_\C X = \bigoplus_{p,q=0}^n \wedge^{p,q} T^* X , \qquad \Omega^*_\C X = \bigoplus_{p,q=0}^n \Omega^{p,q}(X)
+\wedge^* T^*_\C X = \bigoplus_{p,q=0}^n \wedge^{p,q} T^* X , \qquad \Omega^*_\C X = \bigoplus_{p,q=0}^n \Omega^{p,q}(X).
 \end{equation}
-and a corresponding decomposition
+
+\begin{prop}[Integrability versus type decompositions]
+Suppose $(X,I)$ is an almost complex manifold. The following are equivalent:
+\begin{itemize}
+\item $I$ is integrable.
+\item There is a decomposition
 \begin{equation}
 \de = \partial + \bar\partial, \quad \partial: \Omega^{p,q}(X) \to \Omega^{p+1,q}(X), \quad \bar\partial: \Omega^{p,q}(X) \to \Omega^{p,q+1}(X).
 \end{equation}
+\item The distribution $T^{0,1}X$ is integrable: if $v$, $w$ are 
+sections of $T^{0,1}X$ then $[v,w]$ is also a section of $T^{0,1}X$.
+\end{itemize}
+\end{prop}
+
 Complex conjugation is an $\R$-linear map
 $\Omega^{p,q}(X) \to \Omega^{q,p}(X)$;
 thus it maps $\Omega^{p,p}(X)$ to itself;
@@ -466,20 +476,26 @@ and the integrability condition
 \end{equation}
 \end{defn}
 
-
+It is useful to think of $\bar\partial_E$ as a kind of 
+partially-defined flat connection, which allows us to differentiate
+only in the $(0,1)$ ``directions.''
 The structure of holomorphic vector bundle is much 
 more rigid than that of a merely complex vector bundle.
 We emphasize that this structure makes sense only when $X$ is 
 a complex manifold, while complex vector bundles make sense 
-over any $X$. 
+over any $X$.
 
-\begin{exercise} Show that a structure of holomorphic vector bundle on $E$ is equivalent to a maximal atlas 
+\begin{prop} A structure of holomorphic vector bundle on $E$ is equivalent to a maximal atlas 
 of preferred trivializations of $E$, such that
 the transition maps 
 $U_\alpha \cap U_\beta \to GL(r,\C)$ 
-are holomorphic. (This is a sort of linear analogue of the 
-Newlander-Nirenberg theorem; you may want to look at \cite{MR1079726} Theorem 2.1.53.)
-\end{exercise}
+are holomorphic. 
+\end{prop}
+\begin{pf}
+This is a sort of linear analogue of the 
+Newlander-Nirenberg theorem; for a proof see 
+\cite{MR1079726} Theorem 2.1.53, proven in Section 2.2.
+\end{pf}
 
 % \begin{example} The trivial bundle $X \times \C^r$
 % carries a canonical holomorphic structure.
@@ -687,7 +703,35 @@ Thus the existence of the holomorphic symplectic form $\Omega_1$ implies
 that $T^{1,0}_{I_1} X$ has even complex dimension.
 \end{pf}
 
-\begin{prop}[The $\omega_i$ determine the complex structures]
+\begin{prop}[Holomorphic symplectic form determines complex structure] \label{prop:hol-symp-to-complex}
+Suppose $X$ is a manifold with $\dim_\R X = 2n$, 
+with $\Omega \in \Omega^2_\C(X)$, such that $\de \Omega = 0$ and
+\begin{equation}
+ T_\C X = \ker \Omega \oplus \ker \overline\Omega. 
+\end{equation}
+Then there is a 
+unique complex structure $I$ on $X$, for which $\Omega$
+is a holomorphic symplectic form.
+\end{prop}
+\begin{pf} We define a complex-linear operator 
+$I_\C$ on $T_\C X$ to act by $-\I$ on
+$\ker \Omega$, and by $+\I$ on $\ker \overline\Omega$.
+This $I_\C$ obeys $I_\C v = \overline{I_\C \bar{v}}$, so it is the 
+complexification of a real-linear operator $I$ on $TX$,
+which gives an almost complex structure.
+The integrability of $I$ is equivalent to requiring
+that $T^{0,1} X = \ker \Omega$ is an integrable distribution,
+i.e. that if $v,w$ are sections of $\ker \Omega$ then $[v,w]$
+is also a section of $\ker \Omega$.
+This follows from $\de \Omega = 0$ and the covariant formula
+for $\de$:
+\begin{equation}
+  \de \Omega(v,w) = v (\Omega(w)) - w (\Omega(v)) + \Omega([v,w]).
+\end{equation}
+\end{pf}
+
+\begin{prop}[Explicit formula for the complex structures on a 
+\hk manifold in terms of $\omega_i$]
 If $X$ is \hk then
 \begin{equation}
 I_1 = \omega_3^{-1} \omega_2  
@@ -921,16 +965,20 @@ where we introduced
   z_1 = x_2 + \I x_3, \qquad 
   \alpha_1 = V^{-1} \tTheta + \I \de x_1.
 \end{equation}
-This motivates the definition of an almost complex 
-structure $I_1$: it acts
-by the eigenvalue $+\I$ on the forms $\de z_1$ and $\alpha_1$.
+Then $\ker \Omega_1$ is spanned by $\hat\partial_2 + \I \hat\partial_3$
+and $V \partial_\chi + \I \hat\partial_1$, where the hat denotes
+the parallel lift determined by $\Theta$. Thus
+by \autoref{prop:hol-symp-to-complex}, $\Omega_1$ 
+determines a complex structure $I_1$ on $X$, which acts
+by $+\I$ on $\de z_1$ and $\alpha_1$.
+In this structure, $\de z_1$ is of type $(1,0)$, so
+$z_1$ is a holomorphic map, $z_1: X \to \C$.
+
 Similarly we can define $I_2$, $I_3$.
 \fixme{obeying algebraic relations}
-\fixme{as complex manifold, it has a global holomorphic function
-$z_1$ and holomorphic vector field
+\fixme{as complex manifold, it has a holomorphic vector field
 $V \partial_\chi - \I \tilde \partial_1$, where $\tilde \partial_1 \cdot \tilde\Theta = 0$ ie parallel lift of $\partial_3$ --- would
-integrate to $\C^\times$ action --- integrability comes from 
-$[\tilde\partial_z, V \partial_\chi - \I \tilde \partial_1] = 0$}
+integrate to $\C^\times$ action}
 
 Now we compute $g$ from $I_1$ and $\omega_1$:
 \begin{equation}
