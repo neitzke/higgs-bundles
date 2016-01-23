@@ -506,7 +506,7 @@ a canonical structure of holomorphic vector bundle.
 Indeed, the holomorphic charts $\phi_\alpha = (z_1, \dots, z_n)$ 
 give rise to preferred trivializations corresponding 
 to the bases $\{\partial_{z_1}, \dots, \partial_{z_n} \}$
-for $TX \simeq T^{1,0} X$, and the transition 
+for $T^{1,0} X \simeq TX$, and the transition 
 maps are given by the Jacobian matrices 
 $(\partial z'_i / \partial z_j)_{i,j=1}^n$, which are holomorphic.
 % It can be described as follows: for each coordinate
@@ -599,16 +599,51 @@ characterizations:
 If $g$ is a Hermitian metric on $(X,I)$, with 
 fundamental form $\omega$, then the following are
 equivalent:
-\begin{itemize}
+\begin{enumerate}
   \item $g$ is \kahler,
-  \item $I$ is integrable and $\de \omega = 0$,
   \item $\nabla I = 0$,
   \item $\nabla \omega = 0$,
   \item $I$ is integrable and $\nabla$ agrees with the Chern connection on $TX$,
   when we view $TX$ as a holomorphic vector bundle, with the induced Hermitian 
-  metric $h$ of \autoref{exc:hermitian-metric}.
-\end{itemize}
+  metric $h$ of \autoref{exc:hermitian-metric},
+  \item $I$ is integrable and $\de \omega = 0$.
+\end{enumerate}
 \end{prop}
+
+\begin{pf} As we defined \kahler we have 
+automatically $(1) \Leftrightarrow (2)$. 
+Using $\nabla g = 0$ we easily obtain $(2) \Leftrightarrow (3)$.
+So all of $(1)$-$(3)$ are equivalent.
+
+Now we consider $(4)$.
+To show $(2)$ implies integrability of $I$,
+note that for $v,w$ sections of $T^{0,1} X$ we have
+(using the torsion-free property of $\nabla$)
+\begin{equation}
+  I[v,w] = I(\nabla_v w - \nabla_w v) = \nabla_v(Iw) - \nabla_w(Iv) = -\I (\nabla_v w - \nabla_w v) = -\I [v,w].
+\end{equation}
+Also $(2)$ implies that
+for $v \in T^{0,1} X$ and $w$ a section of $T^{1,0} X$,
+$\nabla_v w$ is also a section of $T^{1,0} X$;
+this means $\nabla$ is compatible with the holomorphic
+structure.
+Finally $(2)+(3)$ implies $\nabla h = 0$.
+So we have shown that $(2) \Rightarrow (4)$.
+Conversely, we have easily $(4) \Rightarrow (3)$,
+since $\omega$ is the imaginary part of $h$.
+Thus, all of $(1)$-$(4)$ are equivalent.
+
+Finally we consider $(5)$. We already showed that
+$(2)$ implies integrability of $I$. Also
+$(3)$ immediately implies $\de \omega = 0$.
+Thus we have $(2)+(3) \Rightarrow (5)$.
+All that remains is to see that $(5) \Rightarrow (4)$,
+which is the most interesting part. This amounts to verifying
+that the Chern connection is torsion-free (then it will have
+to agree with $\nabla$, since $\nabla$ is characterized by
+being torsion-free and having $\nabla g = 0$.) \fixme{...}
+\end{pf}
+
 
 In particular \autoref{cor:kahler-cc} implies that any complex 
 submanifold of a \kahler manifold is again \kahler. Combining this 
@@ -642,7 +677,7 @@ Useful (and inspiring) references are \cite{MR88f:53087,Hitchin-hk,MR1798605,boa
 \begin{defn}[\Hk manifold] A \ti{\hk manifold} is 
 a tuple $(X,g,I_1,I_2,I_3)$, where $(X,g)$ is a Riemannian 
 manifold equipped with three complex 
-structures $I_i$ obeying the algebra of the quaternions ($I_1 I_2 = -I_2 I_1 = I_3$, and cyclic permutations),
+structures $I_i$ obeying $I_1 I_2 = I_3$,
 such that $(X,g,I_i)$ is \kahler for $i=1,2,3$.
 \end{defn}
 
@@ -654,6 +689,15 @@ We denote the three corresponding
 Sometimes it is convenient to use instead the
 notation $(I_1,I_2,I_3) = (I,J,K)$
 and $(\omega_1,\omega_2,\omega_3) = (\omega_I,\omega_J,\omega_K)$.
+
+\begin{exercise} Show that the relations $I_1 I_2 = I_3$ and $I_1^2 = I_2^2 = I_3^2 = -1$ are equivalent to the full set of quaternion relations
+\begin{gather}
+  I_1 I_2 = I_3, \quad I_2 I_1 = - I_3, \\
+  I_2 I_3 = I_1, \quad I_3 I_2 = - I_1, \\
+  I_3 I_1 = I_2, \quad I_1 I_3 = - I_2, \\
+  I_1^2 = I_2^2 = I_3^2 = -1.
+\end{gather}
+\end{exercise}
 
 \begin{defn}[Holomorphic symplectic form] If $(X,I)$ is a complex manifold, 
 $\Omega \in \Omega^{2,0}(X)$ is a \ti{holomorphic
@@ -966,19 +1010,22 @@ where we introduced
   \alpha_1 = V^{-1} \tTheta + \I \de x_1.
 \end{equation}
 Then $\ker \Omega_1$ is spanned by $\hat\partial_2 + \I \hat\partial_3$
-and $V \partial_\chi + \I \hat\partial_1$, where the hat denotes
-the parallel lift determined by $\Theta$. Thus
+and $V \partial_\chi + \I \hat\partial_1$, where the hat means
+the parallel lift determined by $\Theta$, i.e. the lift
+obeying $\Theta \cdot \hat\partial_1 = 0$. Thus
 by \autoref{prop:hol-symp-to-complex}, $\Omega_1$ 
 determines a complex structure $I_1$ on $X$, which acts
 by $+\I$ on $\de z_1$ and $\alpha_1$.
 In this structure, $\de z_1$ is of type $(1,0)$, so
 $z_1$ is a holomorphic map, $z_1: X \to \C$.
+\fixme{it has a holomorphic vector field
+$V \partial_\chi - \I \hat \partial_1$ --- would
+integrate to $\C^\times$ action --- like a principal
+$\C^\times$-bundle}
 
-Similarly we can define $I_2$, $I_3$.
-\fixme{obeying algebraic relations}
-\fixme{as complex manifold, it has a holomorphic vector field
-$V \partial_\chi - \I \tilde \partial_1$, where $\tilde \partial_1 \cdot \tilde\Theta = 0$ ie parallel lift of $\partial_3$ --- would
-integrate to $\C^\times$ action}
+Similarly define complex structures $I_2$, $I_3$.
+Just as for $\R^3 \times S^1$ these obey the quaternion
+relation $I_1 I_2 = I_3$.
 
 Now we compute $g$ from $I_1$ and $\omega_1$:
 \begin{equation}
