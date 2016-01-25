@@ -485,7 +485,7 @@ We emphasize that this structure makes sense only when $X$ is
 a complex manifold, while complex vector bundles make sense 
 over any $X$.
 
-\begin{prop} A structure of holomorphic vector bundle on $E$ is equivalent to a maximal atlas 
+\begin{prop}[Equivalence of definitions of holomorphic vector bundle] A structure of holomorphic vector bundle on $E$ is equivalent to a maximal atlas 
 of preferred trivializations of $E$, such that
 the transition maps 
 $U_\alpha \cap U_\beta \to GL(r,\C)$ 
@@ -595,7 +595,7 @@ characterizations:
 % $\nabla I = 0$.
 % \end{prop}
 
-\begin{prop}[Other characterizations of \kahler metrics] \label{cor:kahler-cc}
+\begin{prop}[Characterizations of \kahler metrics] \label{cor:kahler-cc}
 If $g$ is a Hermitian metric on $(X,I)$, with 
 fundamental form $\omega$, then the following are
 equivalent:
@@ -623,8 +623,9 @@ note that for $v,w$ sections of $T^{0,1} X$ we have
   I[v,w] = I(\nabla_v w - \nabla_w v) = \nabla_v(Iw) - \nabla_w(Iv) = -\I (\nabla_v w - \nabla_w v) = -\I [v,w].
 \end{equation}
 Also $(2)$ implies that
-for $v \in T^{0,1} X$ and $w$ a section of $T^{1,0} X$,
-$\nabla_v w$ is also a section of $T^{1,0} X$;
+for $v \in TX$ and $w$ a section of $T^{1,0} X$
+we have $I (\nabla_v w) = \nabla_v (Iw) = \I \nabla_v w$,
+so that $\nabla_v w$ is also a section of $T^{1,0} X$;
 this means $\nabla$ is compatible with the holomorphic
 structure.
 Finally $(2)+(3)$ implies $\nabla h = 0$.
@@ -640,9 +641,11 @@ Thus we have $(2)+(3) \Rightarrow (5)$.
 All that remains is to see that $(5) \Rightarrow (4)$,
 which is the most interesting part. This amounts to verifying
 that the Chern connection is torsion-free (then it will have
-to agree with $\nabla$, since $\nabla$ is characterized by
-being torsion-free and having $\nabla g = 0$.) \fixme{...}
+to agree with $\nabla$, since $\nabla$ is the unique connection
+in $TX$ which is torsion-free and has $\nabla g = 0$.) \fixme{...}
 \end{pf}
+
+
 
 
 In particular \autoref{cor:kahler-cc} implies that any complex 
@@ -827,8 +830,10 @@ Show that $(X,I_{\vec s},g)$ is a \kahler manifold,
 with \kahler form $\omega_{\vec s}$.
 \end{exercise}
 In other words, a \hk metric is \kahler for a whole 
-$S^2$ of complex structures, not only three of them;
-moreover specifying $I_1$, $I_2$, $I_3$ is equivalent to 
+$S^2$ of complex structures, not only three of them.
+We can think of this $S^2$ as the
+set of norm-$1$ imaginary quaternions.
+Moreover specifying $I_1$, $I_2$, $I_3$ is equivalent to 
 specifying the whole collection of $I_{\vec s}$.
 
 \begin{exercise}
@@ -854,7 +859,7 @@ Thus $SO(3)$ naturally acts on the set of
 $\bbH$ can be identified with $\R^4$
 via the map
 \begin{equation}
-  a + b \I + c \J + d \K \mapsto (a,b,c,d).
+  x_0 + x_1 \I + x_2 \J + x_3 \K \mapsto (x_0,x_1,x_2,x_3).
 \end{equation}
 This makes $\bbH$ into a manifold of real 
 dimension $4$.
@@ -863,41 +868,43 @@ $g$ on $\bbH$.
 If we identify $T_p \bbH \simeq \bbH$ 
 in the obvious way,
 the operations of left-multiplication by $\I$, $\J$ and $\K$
-give complex structures $I$, $J$, $K$ on $\bbH$,
+give complex structures $I_1$, $I_2$, $I_3$ on $\bbH$,
 obeying the quaternion algebra.
-The metric $g$ is \kahler for all three of these complex
-structures. Thus $\bbH$ is \hk, in a canonical way.
+Evidently these are all covariantly constant, so
+$g$ is \kahler for all three of these complex
+structures, and thus $\bbH$ is \hk.
+
+The symplectic forms are
+\begin{align}
+  \omega_1 &= \de x_0 \wedge \de x_1 + \de x_2 \wedge \de x_3, \\
+  \omega_2 &= \de x_0 \wedge \de x_2 + \de x_3 \wedge \de x_1, \\
+  \omega_3 &= \de x_0 \wedge \de x_3 + \de x_1 \wedge \de x_2.
+\end{align}
+The holomorphic symplectic form is
+\begin{equation}
+  \Omega_1 = \omega_2 + \I \omega_3 = \de w_1 \wedge \de z_1, \qquad w_1 = x_0 + \I x_1, \qquad z_1 = x_2 + \I x_3
+\end{equation}
+$w_1$ and $z_1$ are complex coordinates with respect to $I_1$.
+Thus, in structure $I_1$, $\bbH$ is biholomorphic to $\C^2$.
 \end{example}
 
 \begin{exercise} \label{exc:flat-space-computing}
-Write explicit formulas for the symplectic forms
-$\omega_i$ on $\bbH$, and for complex coordinates
-with respect to the complex structures $I_i$.
-Thus verify directly that $\omega_i$ is of type $(1,1)$
-for structure $I_i$, that
-$\Omega_1 = \omega_2 + \I \omega_3$
-is of type $(2,0)$ with respect to complex structure
-$I_1$, and that when considered as a complex
-manifold in structure $I_i$, $\bbH$ is biholomorphic
-to $\C^2$.
-
-% (The answer should look something like:
-% $\omega_1 = \de a \wedge \de b + \de c \wedge \de d$, 
-% $\omega_2 = \de a \wedge \de c + \de b \wedge \de d$,
-% $\omega_3 = \de a \wedge \de d + \de c \wedge \de b$,
-% $z = a + b\I$, $w = c + d\I$.)
+Verify the explicit formulas for the symplectic forms
+$\omega_i$ on $\bbH$.
 \end{exercise}
 
 $\bbH$ has a lot of symmetry. For example, $\bbH$ acts 
 on itself by translations preserving the \hk structure.
 Also the group $O(4)$ acts on $\bbH$ by isometries, but 
 these do \ti{not} generally preserve the \hk structure.
-However, we do have the following. Recall that the 
-unit sphere in ${\mathbb H}$ is isomorphic as a group
-to $SU(2)$: 
+However, we do have the following. The 
+unit sphere in ${\mathbb H}$ is a Lie group,
+which happens to be isomorphic to $SU(2)$.\footnote{The isomorphism
+can be given explicitly by the formula
 \begin{equation}
-  a + b \I + c \J + d \K \mapsto \begin{pmatrix} a+b\I & c+d\I \\ -c+d\I & a-b\I \end{pmatrix}
+  x_0 + x_1 \I + x_2 \J + x_3 \K \mapsto \begin{pmatrix} x_0+x_1\I & x_2+x_3\I \\ -x_2+x_3\I & x_0-x_1\I \end{pmatrix}
 \end{equation}
+but we will not need to use this anywhere.}
 Thus we have an action of $SU(2) \times SU(2)$ 
 on ${\mathbb H}$ by
 \begin{equation}
@@ -920,7 +927,10 @@ Show that the action of $T \in SU(2)_L$ on $\bbH$ has
 \begin{equation}
   T^* I_{\vec s} = I_{T \vec s}
 \end{equation}
-(where on the right side we use the projection $SU(2) \to SO(3)$.)
+On the right side, by $T \vec s$ we mean the \ti{conjugation}
+action of the unit quaternion $T$ on the sphere of norm-$1$
+imaginary quaternions (which gives the standard double-covering
+$SU(2) \to SO(3)$.)
 \end{exercise}
 
 \begin{exercise}
@@ -947,10 +957,20 @@ since the origin is at finite distance.
 
 \begin{example}[$\R^3 \times S^1$] \label{exa:R3S1}
 Since translations preserve the \hk structure, we can divide $\bbH$
-out by $\Z$ acting by translations to get another \hk manifold,
+out by $\Z$ acting by translations 
+\begin{equation}
+ x_0 \to x_0 + 2 \pi n 
+\end{equation}
+to get another \hk manifold,
 \begin{equation}
  X = \bbH / \Z \simeq \R^3 \times S^1.
 \end{equation}
+In structure $I_1$ we have
+\begin{equation}
+  \Omega_1 = -\I \frac{\de \cX_1}{\cX_1} \wedge \de z_1, \qquad \cX_1 = \exp(\I(x_0 + \I x_1)), \qquad z_1 = x_2 + \I x_3 
+\end{equation}
+The functions $(z_1,\cX_1)$ make $(X,I_1)$ 
+biholomorphic to $\C \times \C^\times$.
 \end{example}
 
 \begin{exercise}
@@ -983,14 +1003,14 @@ $\Theta$ whose curvature is $F$. Concretely, we represent
 $\Theta$ as a $1$-form on $X$; if we choose a local
 trivialization of the $U(1)$-bundle $X$ over a patch
 $U_\alpha \subset U$, with local 
-fiber coordinate $\chi \in \R / 2 \pi \Z$, then $\Theta$ 
+fiber coordinate $x_0 \in \R / 2 \pi \Z$, then $\Theta$ 
 is locally of the form
-$\Theta = A + \de \chi$ with $A \in \Omega^1(U_\alpha)$,
+$\Theta = A + \de x_0$ with $A \in \Omega^1(U_\alpha)$,
 $\de A = F$.
 \newcommand{\tTheta}{\tilde\Theta}
 For convenience write $\tTheta = \Theta / 2\pi$.
 
-We introduce three symplectic forms on $X$,
+We introduce three symplectic forms on $X$, \fixme{I think I need to reverse their sign}
 \begin{equation}
   \omega_i = \de x_i \wedge \tTheta - V \star \de x_i.
 \end{equation}
