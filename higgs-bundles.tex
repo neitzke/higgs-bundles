@@ -898,6 +898,9 @@ The holomorphic symplectic form is
 \end{equation}
 $w_1$ and $z_1$ are complex coordinates with respect to $I_1$.
 Thus, in structure $I_1$, $\bbH$ is biholomorphic to $\C^2$.
+
+(All this generalizes in a straightforward way to $\bbH^n$ 
+or better, an affine space modeled on $\bbH^n$.)
 \end{example}
 
 \begin{exercise} \label{exc:flat-space-computing}
@@ -1151,6 +1154,12 @@ Show that $X$ with the metric $g$ is isometric
 to $\R^4$ with one point deleted,
 and that the \hk structure on $X$ extends
 to a \hk structure on the full $\R^4$.
+(Hint: the subset of $X$ with $\norm{x-x_0} = r$ is
+the Hopf fibration over $S^2$, thus homeomorphic to
+$S^3$; the restriction of $g$ to this $S^3$ 
+turns out to be the round metric with 
+radius $\rho = \sqrt{r}$, while $g$ in the radial 
+direction is $\de r^2 / r = \de \rho^2$.)
 \end{exercise}
 
 % This was also true of $\bbH$ of course 
@@ -1192,11 +1201,17 @@ this one might be hard}
 \end{exercise}
 
 Eguchi-Hanson space is our first example where the $I_{\vec s}$ do not all give rise to the same complex manifold:
-
 \begin{exercise}
 Show that, in any \ti{other} complex structure $I_{\vec s}$,
 $X$ has no compact complex submanifolds, and in particular 
 it is not biholomorphic to $T^* \C\PP^1$.
+\end{exercise}
+
+Nevertheless we do have a 1-parameter group relating 
+\ti{some} of the $I_{\vec s}$:
+\begin{exercise}
+Show that $X$ admits an action of $SO(2) \subset SO(3)$,
+such that $T^* I_{\vec s} = I_{T \vec{s}}$.
 \end{exercise}
 
 \begin{example}[Multi-Eguchi-Hanson spaces] \cite{MR520463} \label{exa:multi-eguchi-hanson} More generally we can fix a collection
@@ -1265,6 +1280,9 @@ rather than $\R^4$.
 biholomorphic to $\C^2$, in any of its complex
 structures.
 \end{exercise}
+
+\begin{example}[$\R^2 \times T^2$] \fixme{...}
+\end{example}
 
 \fixme{reduced holonomy}
 
