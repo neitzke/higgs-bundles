@@ -868,9 +868,6 @@ Thus $SO(3)$ naturally acts on the set of
 \end{exercise}
 
 
-\currentposition
-
-
 \subsection{First examples}
 
 \begin{example}[Flat quaternionic space] \label{exa:R4} The quaternions
@@ -1032,10 +1029,16 @@ Then $\Delta V = \de \star \de V = 0$, so if we write
   F = -2 \pi \star \de V
 \end{equation}
 then we have $\de F = 0$. 
+
 Fix a principal $U(1)$ bundle $X$ over $U$, carrying a connection
-$\Theta$ whose curvature is $F$. 
-(Such an $X$ exists if and only if $[F/2\pi] \in H^2(U,\Z)$.) 
-Concretely, we represent $\Theta$ as a $1$-form on $X$. 
+$\Theta$ whose curvature is $F$.
+(Such an $X$ exists if and only if $[F/2\pi]$ lies in 
+the image of $H^2(U,\Z) \to H^2(U,\R)$.) 
+Globally this means a 1-form $\Theta$ on $X$
+such that $\de \Theta = F$ (more precisely on the RHS we have
+the pullback of $F$ to $X$) and $\Theta \cdot \partial_0 = 1$,
+where $\partial_0$ denotes the vector field generating
+the $U(1)$ action.
 If we choose a local
 trivialization of the $U(1)$-bundle $X$ over a patch
 $U_\alpha \subset U$, with local 
@@ -1059,6 +1062,7 @@ To check that these are indeed closed,
 \end{equation}
 (the last equality because all of these forms are pulled back
 from $\R^3$, and on $\R^3$ we always have $\star \alpha \wedge \beta = \alpha \wedge \star \beta$ for 1-forms $\alpha, \beta$.)
+\currentposition
 Then define
 \begin{align}
   \Omega_1 &= \omega_2 + \I \omega_3 \\
