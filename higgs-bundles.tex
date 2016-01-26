@@ -590,6 +590,16 @@ Then $(X,g,I)$ is a \ti{\kahler manifold},
 and $\omega$ is the \ti{\kahler form}.
 \end{defn}
 
+\begin{example}[Standard metric on $\C$ is \kahler] 
+Take $X=\C$ with coordinate $z = x + \I y$, $I$ the standard complex structure,
+and $g$ the standard Riemannian metric, $g = \de x^2 + \de y^2$.
+Evidently $\nabla I = 0$, so this is a \kahler metric.
+The \kahler form is
+\begin{equation}
+  \omega = \de x \wedge \de y = \frac{\I}{2} \de z \wedge \de \bar{z}.
+\end{equation}
+\end{example}
+
 The \kahler property has various useful alternative 
 characterizations:
 % \begin{prop}[\kahler means covariant constancy of $I$]
@@ -1187,6 +1197,10 @@ Then $\pi^{-1}(x_1 x_2)$ has the topology of $S^2$.
 Show that this $S^2$ is a complex submanifold of $X$, with
 respect to the two complex structures $I_{\vec s}$ where $\vec s$
 is the direction from $x_1$ to $x_2$ or vice versa.
+\end{exercise}
+
+\begin{exercise}
+Compute the area of this $S^2$ (in the \hk metric $g$).
 \end{exercise}
 
 \begin{exercise}
