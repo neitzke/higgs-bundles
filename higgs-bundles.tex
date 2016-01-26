@@ -211,6 +211,7 @@
 \newcommand{\e}{{\mathrm e}}
 \newcommand{\de}{\mathrm{d}}
 \newcommand{\ab}{\mathrm{ab}}
+\newcommand{\vol}{\mathrm{vol}}
 
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lVert#1\rVert}
@@ -835,8 +836,13 @@ In other words, a \hk metric is \kahler for a whole
 $S^2$ of complex structures, not only three of them.
 We can think of this $S^2$ as the
 set of norm-$1$ imaginary quaternions.
-Moreover specifying $I_1$, $I_2$, $I_3$ is equivalent to 
+Specifying $I_1$, $I_2$, $I_3$ is equivalent to 
 specifying the whole collection of $I_{\vec s}$.
+
+Note that the antipodal map acts in a simple way:
+$I_{-\vec s} = - I_{\vec s}$, the opposite
+complex structure of $I_{\vec s}$ --- i.e. 
+the antipodal map exchanges holomorphic and antiholomorphic.
 
 \begin{exercise}
 Given a Riemannian manifold $(X,g)$ and 
@@ -857,7 +863,7 @@ Thus $SO(3)$ naturally acts on the set of
 
 \subsection{First examples}
 
-\begin{example}[Flat quaternionic space] The quaternions
+\begin{example}[Flat quaternionic space] \label{exa:R4} The quaternions
 $\bbH$ can be identified with $\R^4$
 via the map
 \begin{equation}
@@ -880,8 +886,12 @@ The symplectic forms are
 \begin{align}
   \omega_1 &= \de x_0 \wedge \de x_1 + \de x_2 \wedge \de x_3, \\
   \omega_2 &= \de x_0 \wedge \de x_2 + \de x_3 \wedge \de x_1, \\
-  \omega_3 &= \de x_0 \wedge \de x_3 + \de x_1 \wedge \de x_2.
+  \omega_3 &= \de x_0 \wedge \de x_3 + \de x_1 \wedge \de x_2,
 \end{align}
+or more uniformly
+\begin{equation} \label{eq:symplectic-forms-R4}
+  \omega_i = \de x_0 \wedge \de x_i + \star \de x_i.
+\end{equation}
 The holomorphic symplectic form is
 \begin{equation}
   \Omega_1 = \omega_2 + \I \omega_3 = \de w_1 \wedge \de z_1, \qquad w_1 = x_0 + \I x_1, \qquad z_1 = x_2 + \I x_3
@@ -892,7 +902,7 @@ Thus, in structure $I_1$, $\bbH$ is biholomorphic to $\C^2$.
 
 \begin{exercise} \label{exc:flat-space-computing}
 Verify the explicit formulas for the symplectic forms
-$\omega_i$ on $\bbH$.
+$\omega_i$ on $\bbH$, and write a formula for $\omega_{\vec s}$.
 \end{exercise}
 
 $\bbH$ has a lot of symmetry. For example, $\bbH$ acts 
@@ -989,61 +999,82 @@ $I_{\vec s}$ is biholomorphic to $\C \times \C^\times$.
 \end{exercise}
 
 \begin{example}[Incomplete Gibbons-Hawking spaces] \label{exa:incomplete-gibbons-hawking}
-Now we generalize from $\R^3 \times S^1$ to a \ti{circle bundle}
-with connection.
+Now we generalize from $\R^3 \times S^1$ to a more general
+\hk space with $U(1)$ action, i.e. we consider a principal
+$U(1)$ bundle.
+
 Fix some open set $U \subset \R^3$ and
-let $V: U \to \R_{>0}$ be a positive harmonic function.
+let $V: U \to \R_{>0}$ be a positive harmonic function.\footnote{Our
+conventions for the Laplace operator on $\Omega^0(\R^3)$ are:
+$\Delta f = \de \star \de f = \sum_i \partial_i^2 f \, \de \vol$.}
 Then $\Delta V = \de \star \de V = 0$, so if we write
 \begin{equation}
-  F = 2 \pi \star \de V
+  F = -2 \pi \star \de V
 \end{equation}
-then we have $\de F = 0$. Suppose $F$ is moreover integrally
-quantized, i.e. $[F/2\pi] \in H^2(U,\Z)$. Then
-there exists a principal 
-$U(1)$ bundle $X$ over $U$, carrying a connection
-$\Theta$ whose curvature is $F$. Concretely, we represent
-$\Theta$ as a $1$-form on $X$; if we choose a local
+then we have $\de F = 0$. 
+Fix a principal $U(1)$ bundle $X$ over $U$, carrying a connection
+$\Theta$ whose curvature is $F$. 
+(Such an $X$ exists if and only if $[F/2\pi] \in H^2(U,\Z)$.) 
+Concretely, we represent $\Theta$ as a $1$-form on $X$. 
+If we choose a local
 trivialization of the $U(1)$-bundle $X$ over a patch
 $U_\alpha \subset U$, with local 
 fiber coordinate $x_0 \in \R / 2 \pi \Z$, then $\Theta$ 
 is locally of the form
-$\Theta = A + \de x_0$ with $A \in \Omega^1(U_\alpha)$,
-$\de A = F$.
+\begin{equation}
+ \Theta = A + \de x_0 
+\end{equation}
+with $A \in \Omega^1(U_\alpha)$, $\de A = F$.
 \newcommand{\tTheta}{\tilde\Theta}
 For convenience write $\tTheta = \Theta / 2\pi$.
 
-We introduce three symplectic forms on $X$, \fixme{I think I need to reverse their sign}
+We introduce three symplectic forms on $X$,
+generalizing \eqref{eq:symplectic-forms-R4}:
 \begin{equation}
-  \omega_i = \de x_i \wedge \tTheta - V \star \de x_i.
+  \omega_i = \tTheta \wedge \de x_i + V \star \de x_i.
 \end{equation}
 To check that these are indeed closed,
 \begin{equation}
-  \de \omega_i = \de x_i \wedge \star \de V - \de V \wedge \star \de x_i = 0
+  \de \omega_i = - \star \de V \wedge \de x_i + \de V \wedge \star \de x_i = 0
 \end{equation}
 (the last equality because all of these forms are pulled back
-from $\R^3$, and on $\R^3$ we always have $\alpha \wedge \star \beta - \beta \wedge \star \alpha = 0$ for 1-forms $\alpha, \beta$.)
+from $\R^3$, and on $\R^3$ we always have $\star \alpha \wedge \beta = \alpha \wedge \star \beta$ for 1-forms $\alpha, \beta$.)
 Then define
-\begin{equation}
-  \Omega_1 = \omega_2 + \I \omega_3 = V \de z_1 \wedge \alpha_1
-\end{equation}
+\begin{align}
+  \Omega_1 &= \omega_2 + \I \omega_3 \\
+  &= \tTheta \wedge \de z_1 +  V \star \de(x_2 + \I x_3)\\
+  &= \tTheta \wedge \de z_1 +  V (\de x_3 \wedge \de x_1 + \I \de x_1 \wedge \de x_2)\\
+  &= \tTheta \wedge \de z_1 + \I V \de x_1 \wedge \de z_1 \\
+  &= V \alpha_1 \wedge \de z_1
+\end{align}
 where we introduced
 \begin{equation}
   z_1 = x_2 + \I x_3, \qquad 
   \alpha_1 = V^{-1} \tTheta + \I \de x_1.
 \end{equation}
 Then $\ker \Omega_1$ is spanned by $\hat\partial_2 + \I \hat\partial_3$
-and $V \partial_\chi + \I \hat\partial_1$, where the hat means
-the parallel lift determined by $\Theta$, i.e. the lift
+and $2 \pi V \partial_0 + \I \hat\partial_1$, where $\partial_0$ 
+is the globally defined generator of the $U(1)$ action 
+(shifting $x_0$),  and $\hat \partial_i$ means
+the parallel lift of $\partial_i$ from $\R^3$ to $X$, i.e. the lift
 obeying $\Theta \cdot \hat\partial_1 = 0$. Thus
 by \autoref{prop:hol-symp-to-complex}, $\Omega_1$ 
 determines a complex structure $I_1$ on $X$, which acts
 by $+\I$ on $\de z_1$ and $\alpha_1$.
 In this structure, $\de z_1$ is of type $(1,0)$, so
-$z_1$ is a holomorphic map, $z_1: X \to \C$.
-\fixme{it has a holomorphic vector field
-$V \partial_\chi - \I \hat \partial_1$ --- would
-integrate to $\C^\times$ action --- like a principal
-$\C^\times$-bundle}
+$z_1$ is a holomorphic map,
+\begin{equation}
+  z_1: X \to \C.
+\end{equation}
+
+Morally this map makes $X$ into something like 
+a $\C^\times$-bundle over a patch of $\C$ (generalizing
+the $\C\times\C^\times$ which we got in \autoref{exa:R3S1}).
+It is not quite a $\C^\times$-bundle in general
+(since $U$ was an arbitrary open subset of $\R^3$), 
+but it does at least have 
+a holomorphic vector field tangent to the fibers,
+$V \partial_0 - \I \hat \partial_1$.
 
 Similarly define complex structures $I_2$, $I_3$.
 Just as for $\R^3 \times S^1$ these obey the quaternion
@@ -1051,7 +1082,7 @@ relation $I_1 I_2 = I_3$.
 
 Now we compute $g$ from $I_1$ and $\omega_1$:
 \begin{equation}
-  \omega_1 = V \im \alpha_1 \wedge \re \alpha_1 - V \re \de z_1 \wedge \im \de z_1
+  \omega_1 = V \re \alpha_1 \wedge \im \alpha_1 + V \re \de z_1 \wedge \im \de z_1
 \end{equation}
 which gives
 \begin{align}
@@ -1078,17 +1109,17 @@ Extending \autoref{exa:incomplete-gibbons-hawking}
 we can allow $V$ to have quantized (distributional) sources
 on $U$:
 \begin{equation}
-  \Delta V = \sum_{i=1}^n \delta(\vec x - \vec x_i)
+  \Delta V = - \sum_{i=1}^n \delta(\vec x - \vec x_i)
 \end{equation}
 In this case, consider a small $S^2$ around $\vec{x}_i$:
 \begin{equation}
-  \int_{S^2} \frac{F}{2\pi} = \int_{S^2} \star \de V = \int_{B^3} \de \star \de V = \int_{B^3} \delta(\vec x - \vec x_i) = 1
+  \int_{S^2} \frac{F}{2\pi} = -\int_{S^2} \star \de V = -\int_{B^3} \de \star \de V = \int_{B^3} \delta(\vec x - \vec x_i) = 1
 \end{equation}
 so the $U(1)$ bundle $X$ restricted to this $S^2$ has 
 degree $1$. $X$ thus doesn't extend as a $U(1)$ bundle
 over the point $\vec x_i$.
-Nevertheless it \ti{does} extend
-as a \hk manifold. Indeed, near $\vec x_i$ we have
+Nevertheless it \ti{does} extend as a \hk manifold.
+Indeed, near $\vec x_i$ we have
 \begin{equation}
 V = \frac{1}{4\pi\norm{\vec x - \vec x_i}} + \text{regular},
 \end{equation}
@@ -1100,9 +1131,9 @@ $U(1)$ action, and the quotient is $U$.
 This follows from the next (hard) exercise.
 \end{example}
 
-\begin{exercise}
+\begin{exercise} \label{exc:gibbons-hawking-R4}
 Consider \autoref{exa:incomplete-gibbons-hawking} with
-$U = \R^3 \setminus \{(0,0,0)\}$ and
+$U = \R^3 \setminus \{\vec 0\}$ and
 $V(\vec x) = \frac{1}{4\pi\norm{\vec x}}$.
 Show that $X$ with the metric $g$ is isometric
 to $\R^4$ with one point deleted,
@@ -1125,48 +1156,81 @@ Take $U = \R^3$ and
   V(\vec x) = \frac{1}{4\pi \norm{\vec x-\vec x_1}} + \frac{1}{4\pi \norm{\vec x-\vec x_2}}.
 \end{equation}
 Then $X$ is fibered over $\R^3$ with two degenerate fibers.
-It contains in particular an $S^2$ fibered over the
-line $\vec x_1 \vec x_2$.
+Let $\pi: X \to \R^3$ be the projection.
+Then $\pi^{-1}(\vec x_1 \vec x_2)$ has the topology of $S^2$.
 \end{example}
 
+\insfig{higgs-bundles-3}{0.8}
 
 \begin{exercise}
 Show that this $S^2$ is a complex submanifold of $X$, with
-respect to \ti{two} of the complex structures $I_{\vec s}$.
-Which ones? (Hint: to see that it's complex with respect 
-to say $I_1$, it would be enough to show that $\Omega_1$ vanishes
-on it. Why?)
+respect to the two complex structures $I_{\vec s}$ where $\vec s$
+is the direction from $\vec{x}_1$ to $\vec{x}_2$ or vice versa.
 \end{exercise}
 
-Eguchi-Hanson space is our first example where the $I_{\vec s}$ do not all 
-give rise to the same complex manifold: one of them gives 
-rise to $T^* \C\PP^1$, the others are something else.
+\begin{exercise}
+Show that, in either of the complex structures 
+$I_{\vec s}$ of the previous
+exercise, $X$ is biholomorphic to $T^* \C\PP^1$.
+\end{exercise}
 
-\begin{example}[Multi-Eguchi-Hanson spaces] \cite{MR520463} More generally we can fix a collection
+Eguchi-Hanson space is our first example where the $I_{\vec s}$ do not all give rise to the same complex manifold:
+
+\begin{exercise}
+Show that, in any \ti{other} complex structure $I_{\vec s}$,
+$X$ is \ti{not} biholomorphic to $T^* \C\PP^1$.
+\end{exercise}
+
+\begin{example}[Multi-Eguchi-Hanson spaces] \label{exa:multi-eguchi-hanson} \cite{MR520463} More generally we can fix a collection
 of distinct points $\vec x_1, \dots, \vec x_k \in \R^3$ and take
 \begin{equation}
   V(\vec x) = \sum_{i=1}^k \frac{1}{4 \pi \norm{\vec x - \vec x_i}}
 \end{equation}
 Then a straight line segment in $\R^3$ connecting two $\vec x_i$ (and not meeting any others)
-gives an $S^2$ in $X$. This $S^2$ is a complex submanifold with respect to two
-of the complex structures $I_{\vec s}$: indeed $\vec s$ is just the direction
-of the line segment.
-\fixme{special case where they're all lined up in a row, relation to ALE}
+gives an $S^2$ in $X$. This $S^2$ is a complex submanifold with respect to two of the complex structures $I_{\vec s}$, just as before.
+
+Asymptotically, the metric on this space is approximately
+what we would get by taking all $\vec x_i = \vec 0$. In that case
+we would have simply 
+\begin{equation}
+ V(\vec x) = \frac{k}{4 \pi \norm{\vec x}}.
+\end{equation}
+After an overall rescaling by a factor of $k$, the metric
+$g$ in this case is identical to the one in 
+\autoref{exc:gibbons-hawking-R4}, \ti{except}
+that the circle fibers are shorter by a factor of $k$.
+In other words, asymptotically $g$ is approaching the metric of 
+a quotient $\R^4 / \Z_k$. So, when all the $\vec x_i$ are distinct,
+$g$ is a kind of \hk desingularization of $\R^4 / \Z_k$.
+(The $\Z_k$ action here is the same one we saw 
+in \autoref{exa:H-quotients}.)
+
+A nice special case occurs when all of the $\vec x_i$ are collinear:
+then we have a single complex structure in which $X$ contains $k-1$
+holomorphic spheres $C_i$, with intersection numbers
+$C_i \cdot C_{i+1} = 1$. In this complex structure $X$ is 
+the \ti{minimal resolution} of the singularity $\C^2 / \Z_k$
+(sometimes called a ``du Val singularity of type $A_{k-1}$,'' e.g.
+because the intersection numbers of the $C_i$ make up the
+Cartan matrix of type $A_{k-1}$.)
 \end{example}
 
 \begin{example}[ALE spaces]
-One can consider the \ti{minimal resolution} $X_\Gamma$
-of the singularity at the origin in \autoref{exa:H-quotients};
-then $X_\Gamma$ is an honest smooth manifold, 
+One can consider the minimal resolutions $X_\Gamma$
+of the singularities at the origin in \autoref{exa:H-quotients}.
+Then $X_\Gamma$ is an honest smooth manifold, 
 carrying a natural family 
-of \ti{complete} \hk metrics \cite{MR90d:53055}.
+of complete \hk metrics \cite{MR90d:53055}.
 These metrics asymptotically approach
 the metric we started with on $X_\Gamma^\circ$
 (induced from the flat metric on $\bbH$);
 thus the $X_\Gamma$ are called ``ALE spaces'',
 for ``asymptotically locally Euclidean.''
+In the case $\Gamma = \Z_k$ these \hk metrics are
+just those of \autoref{exa:multi-eguchi-hanson};
+for other $\Gamma$ they are not of Gibbons-Hawking type.
+\fixme{How close are they?}
 \end{example}
-
 
 \begin{example}[Taub-NUT space]
 This is a case of \autoref{exa:gibbons-hawking}
@@ -1177,6 +1241,11 @@ Take $U = \R^3$ and
 \end{equation}
 \fixme{...}
 \end{example}
+
+\begin{exercise} Show that Taub-NUT space is
+biholomorphic to $\C^2$, in any of its complex
+structures.
+\end{exercise}
 
 \fixme{reduced holonomy}
 
