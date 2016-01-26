@@ -967,6 +967,8 @@ However, this \hk manifold is \ti{incomplete},
 since the origin is at finite distance.
 \end{example}
 
+\insfig{higgs-bundles-4}{0.65}
+
 \begin{example}[$\R^3 \times S^1$] \label{exa:R3S1}
 Since translations preserve the \hk structure, we can divide $\bbH$
 out by $\Z$ acting by translations 
@@ -997,6 +999,11 @@ with
 Show that for any $\vec s$, $X = \bbH / \Z$ with complex structure
 $I_{\vec s}$ is biholomorphic to $\C \times \C^\times$.
 \end{exercise}
+
+Crudely speaking, the different complex structures 
+$I_{\vec s}$ correspond to different ways of picking which 
+direction in $\R^3$ will get 
+paired up with the circle direction to make a $\C^\times$.
 
 \begin{example}[Incomplete Gibbons-Hawking spaces] \label{exa:incomplete-gibbons-hawking}
 Now we generalize from $\R^3 \times S^1$ to a more general
@@ -1074,7 +1081,7 @@ It is not quite a $\C^\times$-bundle in general
 (since $U$ was an arbitrary open subset of $\R^3$), 
 but it does at least have 
 a holomorphic vector field tangent to the fibers,
-$V \partial_0 - \I \hat \partial_1$.
+$\partial_0 - \I V^{-1} \hat \partial_1$.
 
 Similarly define complex structures $I_2$, $I_3$.
 Just as for $\R^3 \times S^1$ these obey the quaternion
@@ -1088,14 +1095,14 @@ which gives
 \begin{align}
   g &= V ((\re \alpha_1)^2 + (\im \alpha_1)^2) + V ((\re \de z_1)^2 + (\im \de z_1)^2) \\
   &= V (V^{-2} \tTheta^2 + \de x_1^2) + V (\de x_2^2 + \de x_3^2) \\
-  &= V \de \vec{x}^2 + V^{-1} \tTheta^2
+  &= V \norm{\de x}^2 + V^{-1} \tTheta^2
 \end{align}
 % Note that the explicit index $1$ has disappeared from this formula;
 % if we had computed $g$ from $I_2$ and $\omega_2$, or
 % from $I_3$ and $\omega_3$, we would get the same result.
 Thus the metric on $X$ given by
 \begin{equation}
-  g = V \de \vec{x}^2 + V^{-1} \tTheta^2
+  g = V \norm{\de x}^2 + V^{-1} \tTheta^2
 \end{equation}
 is \hk, with \kahler forms $\omega_i$.
 
@@ -1104,28 +1111,33 @@ the \hk structure (this is clear since nothing in $\omega_i$
 depends on the fiber coordinates).
 \end{example}
 
+By the maximum principle, there are no 
+nonconstant positive harmonic functions on the full $\R^3$.
+Thus \autoref{exa:incomplete-gibbons-hawking} does not give
+any interesting complete \hk metrics. However we can do better:
+
 \begin{example}[Gibbons-Hawking spaces] \label{exa:gibbons-hawking}
 Extending \autoref{exa:incomplete-gibbons-hawking}
 we can allow $V$ to have quantized (distributional) sources
 on $U$:
 \begin{equation}
-  \Delta V = - \sum_{i=1}^n \delta(\vec x - \vec x_i)
+  \Delta V = - \sum_{i=1}^n \delta(x - x_i)
 \end{equation}
-In this case, consider a small $S^2$ around $\vec{x}_i$:
+In this case, consider a small $S^2$ around $x_i$:
 \begin{equation}
-  \int_{S^2} \frac{F}{2\pi} = -\int_{S^2} \star \de V = -\int_{B^3} \de \star \de V = \int_{B^3} \delta(\vec x - \vec x_i) = 1
+  \int_{S^2} \frac{F}{2\pi} = -\int_{S^2} \star \de V = -\int_{B^3} \de \star \de V = \int_{B^3} \delta(x - x_i) = 1
 \end{equation}
 so the $U(1)$ bundle $X$ restricted to this $S^2$ has 
 degree $1$. $X$ thus doesn't extend as a $U(1)$ bundle
-over the point $\vec x_i$.
+over the point $x_i$.
 Nevertheless it \ti{does} extend as a \hk manifold.
-Indeed, near $\vec x_i$ we have
+Indeed, near $x_i$ we have
 \begin{equation}
-V = \frac{1}{4\pi\norm{\vec x - \vec x_i}} + \text{regular},
+V = \frac{1}{4\pi\norm{x - x_i}} + \text{regular},
 \end{equation}
 so the circle fibers of $X$ are shrinking to zero
 length, and it is possible to add
-a single point over $\vec x_i$, in such a way 
+a single point over $x_i$, in such a way 
 that the total space is a \hk manifold with non-free 
 $U(1)$ action, and the quotient is $U$.
 This follows from the next (hard) exercise.
@@ -1133,8 +1145,8 @@ This follows from the next (hard) exercise.
 
 \begin{exercise} \label{exc:gibbons-hawking-R4}
 Consider \autoref{exa:incomplete-gibbons-hawking} with
-$U = \R^3 \setminus \{\vec 0\}$ and
-$V(\vec x) = \frac{1}{4\pi\norm{\vec x}}$.
+$U = \R^3 \setminus \{x_0\}$ and
+$V(\vec x) = \frac{1}{4\pi\norm{x-x_0}}$.
 Show that $X$ with the metric $g$ is isometric
 to $\R^4$ with one point deleted,
 and that the \hk structure on $X$ extends
@@ -1150,14 +1162,14 @@ to a \hk structure on the full $\R^4$.
 \begin{example}[Eguchi-Hanson space]
 This is a case of \autoref{exa:gibbons-hawking}
 with two singularities. Fix two points
-$\vec x_1, \vec x_2 \in \R^3$.
+$x_1, x_2 \in \R^3$.
 Take $U = \R^3$ and 
 \begin{equation}
-  V(\vec x) = \frac{1}{4\pi \norm{\vec x-\vec x_1}} + \frac{1}{4\pi \norm{\vec x-\vec x_2}}.
+  V(x) = \frac{1}{4\pi \norm{x - x_1}} + \frac{1}{4\pi \norm{x - x_2}}.
 \end{equation}
 Then $X$ is fibered over $\R^3$ with two degenerate fibers.
 Let $\pi: X \to \R^3$ be the projection.
-Then $\pi^{-1}(\vec x_1 \vec x_2)$ has the topology of $S^2$.
+Then $\pi^{-1}(x_1 x_2)$ has the topology of $S^2$.
 \end{example}
 
 \insfig{higgs-bundles-3}{0.8}
@@ -1165,47 +1177,51 @@ Then $\pi^{-1}(\vec x_1 \vec x_2)$ has the topology of $S^2$.
 \begin{exercise}
 Show that this $S^2$ is a complex submanifold of $X$, with
 respect to the two complex structures $I_{\vec s}$ where $\vec s$
-is the direction from $\vec{x}_1$ to $\vec{x}_2$ or vice versa.
+is the direction from $x_1$ to $x_2$ or vice versa.
+\end{exercise}
+
+\begin{exercise}
+Show that this $S^2$ has self-intersection number $-2$. \fixme{warning, this one might be hard}
 \end{exercise}
 
 \begin{exercise}
 Show that, in either of the complex structures 
 $I_{\vec s}$ of the previous
-exercise, $X$ is biholomorphic to $T^* \C\PP^1$.
+exercise, $X$ is biholomorphic to $T^* \C\PP^1$. \fixme{warning,
+this one might be hard}
 \end{exercise}
 
 Eguchi-Hanson space is our first example where the $I_{\vec s}$ do not all give rise to the same complex manifold:
 
 \begin{exercise}
 Show that, in any \ti{other} complex structure $I_{\vec s}$,
-$X$ is \ti{not} biholomorphic to $T^* \C\PP^1$.
+$X$ has no compact complex submanifolds, and in particular 
+it is not biholomorphic to $T^* \C\PP^1$.
 \end{exercise}
 
-\begin{example}[Multi-Eguchi-Hanson spaces] \label{exa:multi-eguchi-hanson} \cite{MR520463} More generally we can fix a collection
-of distinct points $\vec x_1, \dots, \vec x_k \in \R^3$ and take
+\begin{example}[Multi-Eguchi-Hanson spaces] \cite{MR520463} \label{exa:multi-eguchi-hanson} More generally we can fix a collection
+of distinct points $x_1, \dots, x_k \in \R^3$ and take
 \begin{equation}
-  V(\vec x) = \sum_{i=1}^k \frac{1}{4 \pi \norm{\vec x - \vec x_i}}
+  V(x) = \sum_{i=1}^k \frac{1}{4 \pi \norm{x - x_i}}.
 \end{equation}
 Then a straight line segment in $\R^3$ connecting two $\vec x_i$ (and not meeting any others)
 gives an $S^2$ in $X$. This $S^2$ is a complex submanifold with respect to two of the complex structures $I_{\vec s}$, just as before.
 
 Asymptotically, the metric on this space is approximately
-what we would get by taking all $\vec x_i = \vec 0$. In that case
-we would have simply 
+what we would get by taking all $x_i = x_0$ for some fixed $x_0$. 
+In that case we would have simply 
 \begin{equation}
- V(\vec x) = \frac{k}{4 \pi \norm{\vec x}}.
+ V(x) = \frac{k}{4 \pi \norm{x - x_0}}.
 \end{equation}
-After an overall rescaling by a factor of $k$, the metric
-$g$ in this case is identical to the one in 
+After an overall rescaling by a factor of $k$, this $V$ 
+gives a metric identical to the one in 
 \autoref{exc:gibbons-hawking-R4}, \ti{except}
 that the circle fibers are shorter by a factor of $k$.
 In other words, asymptotically $g$ is approaching the metric of 
 a quotient $\R^4 / \Z_k$. So, when all the $\vec x_i$ are distinct,
 $g$ is a kind of \hk desingularization of $\R^4 / \Z_k$.
-(The $\Z_k$ action here is the same one we saw 
-in \autoref{exa:H-quotients}.)
 
-A nice special case occurs when all of the $\vec x_i$ are collinear:
+A nice special case occurs when all of the $x_i$ are collinear:
 then we have a single complex structure in which $X$ contains $k-1$
 holomorphic spheres $C_i$, with intersection numbers
 $C_i \cdot C_{i+1} = 1$. In this complex structure $X$ is 
@@ -1214,6 +1230,8 @@ the \ti{minimal resolution} of the singularity $\C^2 / \Z_k$
 because the intersection numbers of the $C_i$ make up the
 Cartan matrix of type $A_{k-1}$.)
 \end{example}
+
+\insfig{higgs-bundles-5}{0.9}
 
 \begin{example}[ALE spaces]
 One can consider the minimal resolutions $X_\Gamma$
@@ -1227,8 +1245,8 @@ the metric we started with on $X_\Gamma^\circ$
 thus the $X_\Gamma$ are called ``ALE spaces'',
 for ``asymptotically locally Euclidean.''
 In the case $\Gamma = \Z_k$ these \hk metrics are
-just those of \autoref{exa:multi-eguchi-hanson};
-for other $\Gamma$ they are not of Gibbons-Hawking type.
+the same as those of \autoref{exa:multi-eguchi-hanson};
+for other $\Gamma$ they are not Gibbons-Hawking spaces.
 \fixme{How close are they?}
 \end{example}
 
@@ -1237,9 +1255,10 @@ This is a case of \autoref{exa:gibbons-hawking}
 with one singularity. 
 Take $U = \R^3$ and
 \begin{equation}
-  V(\vec x) = 1 + \frac{1}{4\pi \norm{\vec x}}.
+  V(\vec x) = 1 + \frac{1}{4\pi \norm{x-x_0}}.
 \end{equation}
-\fixme{...}
+Now the asymptotic metric looks like that of $\R^3 \times S^1$
+rather than $\R^4$.
 \end{example}
 
 \begin{exercise} Show that Taub-NUT space is
