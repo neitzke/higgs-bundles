@@ -1042,12 +1042,12 @@ the $U(1)$ action.
 If we choose a local
 trivialization of the $U(1)$-bundle $X$ over a patch
 $U_\alpha \subset U$, with local 
-fiber coordinate $x_0 \in \R / 2 \pi \Z$, then $\Theta$ 
+fiber coordinate $x_{0,\alpha} \in \R / 2 \pi \Z$, then $\Theta$ 
 is locally of the form
 \begin{equation}
- \Theta = A + \de x_0 
+ \Theta = A_\alpha + \de x_{0,\alpha} 
 \end{equation}
-with $A \in \Omega^1(U_\alpha)$, $\de A = F$.
+with $A_\alpha \in \Omega^1(U_\alpha)$, $\de A_\alpha = F$.
 \newcommand{\tTheta}{\tilde\Theta}
 For convenience write $\tTheta = \Theta / 2\pi$.
 
@@ -1062,7 +1062,9 @@ To check that these are indeed closed,
 \end{equation}
 (the last equality because all of these forms are pulled back
 from $\R^3$, and on $\R^3$ we always have $\star \alpha \wedge \beta = \alpha \wedge \star \beta$ for 1-forms $\alpha, \beta$.)
+
 \currentposition
+
 Then define
 \begin{align}
   \Omega_1 &= \omega_2 + \I \omega_3 \\
@@ -1163,7 +1165,7 @@ This follows from the next (hard) exercise.
 \begin{exercise} \label{exc:gibbons-hawking-R4}
 Consider \autoref{exa:incomplete-gibbons-hawking} with
 $U = \R^3 \setminus \{x_0\}$ and
-$V(\vec x) = \frac{1}{4\pi\norm{x-x_0}}$.
+$V(x) = \frac{1}{4\pi\norm{x-x_0}}$.
 Show that $X$ with the metric $g$ is isometric
 to $\R^4$ with one point deleted,
 and that the \hk structure on $X$ extends
@@ -1237,7 +1239,7 @@ of distinct points $x_1, \dots, x_k \in \R^3$ and take
 \begin{equation}
   V(x) = \sum_{i=1}^k \frac{1}{4 \pi \norm{x - x_i}}.
 \end{equation}
-Then a straight line segment in $\R^3$ connecting two $\vec x_i$ (and not meeting any others)
+Then a straight line segment in $\R^3$ connecting two $x_i$ (and not meeting any others)
 gives an $S^2$ in $X$. This $S^2$ is a complex submanifold with respect to two of the complex structures $I_{\vec s}$, just as before.
 
 Asymptotically, the metric on this space is approximately
@@ -1251,7 +1253,7 @@ gives a metric identical to the one in
 \autoref{exc:gibbons-hawking-R4}, \ti{except}
 that the circle fibers are shorter by a factor of $k$.
 In other words, asymptotically $g$ is approaching the metric of 
-a quotient $\R^4 / \Z_k$. So, when all the $\vec x_i$ are distinct,
+a quotient $\R^4 / \Z_k$. So, when all the $x_i$ are distinct,
 $g$ is a kind of \hk desingularization of $\R^4 / \Z_k$.
 
 A nice special case occurs when all of the $x_i$ are collinear:
@@ -1288,7 +1290,7 @@ This is a case of \autoref{exa:gibbons-hawking}
 with one singularity. 
 Take $U = \R^3$ and
 \begin{equation}
-  V(\vec x) = 1 + \frac{1}{4\pi \norm{x-x_0}}.
+  V(x) = 1 + \frac{1}{4\pi \norm{x-x_0}}.
 \end{equation}
 Now the asymptotic metric looks like that of $\R^3 \times S^1$
 rather than $\R^4$.
