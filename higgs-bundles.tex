@@ -897,8 +897,10 @@ The symplectic forms are
 \end{align}
 or more uniformly
 \begin{equation} \label{eq:symplectic-forms-R4}
-  \omega_i = \de x_0 \wedge \de x_i + \star \de x_i.
+  \omega_i = \de x_0 \wedge \de x_i + \star \de x_i
 \end{equation}
+where $\star$ denotes the Hodge star of $\R^3$ (with its 
+standard orientation), not $\R^4$.
 The holomorphic symplectic form is
 \begin{equation}
   \Omega_1 = \omega_2 + \I \omega_3 = \de w_1 \wedge \de z_1, \qquad w_1 = x_0 + \I x_1, \qquad z_1 = x_2 + \I x_3.
@@ -1145,8 +1147,12 @@ any interesting complete \hk metrics. However we can do better:
 
 \begin{example}[Gibbons-Hawking spaces] \label{exa:gibbons-hawking}
 Extending \autoref{exa:incomplete-gibbons-hawking}
-we can allow $V$ to have quantized (distributional) sources
-on $U$:
+we can allow $V$ to have quantized sources
+on $U$:\footnote{This equality is understood in the sense 
+of distributions; it won't be important for our purpose to 
+know exactly what it means, since we will deal only with
+some very concrete examples, but if you are interested,
+one source is Chapter 6 of \cite{MR1817225}.}
 \begin{equation}
   \Delta V = - \sum_{i=1}^n \delta(x - x_i)
 \end{equation}
@@ -1198,8 +1204,8 @@ and the whole $g$ is isometric to
 the Euclidean metric on $\R^4 \setminus \{0\}$.
 To see this explicitly take
 \begin{align}
-  y_1 &= \sqrt{r/\pi} \sin(\theta/2) \cos\left(\varphi + \chi\right), \\
-  y_2 &= \sqrt{r/\pi} \sin(\theta/2) \sin\left(\varphi + \chi\right), \\
+  y_1 &= \sqrt{r/\pi} \sin(\theta/2) \cos\left(\varphi - \chi\right), \\
+  y_2 &= \sqrt{r/\pi} \sin(\theta/2) \sin\left(\varphi - \chi\right), \\
   y_3 &= \sqrt{r/\pi} \cos(\theta/2) \cos\left(\chi\right), \\
   y_4 &= \sqrt{r/\pi} \cos(\theta/2) \sin\left(\chi\right),
 \end{align}
@@ -1209,11 +1215,23 @@ and then compute directly that
 \end{equation}
 \end{example}
 
-
 \begin{exercise} \label{exc:gibbons-hawking-R4}
-Show that the \hk structure on $X$ extends
-to a \hk structure on the full $\R^4$.
+Show that the \hk structure on $X$ matches the standard one
+in $\R^4 \setminus \{0\}$. In particular this means that 
+$X$ can be extended
+to a complete \hk manifold $\bar X$, 
+on which $U(1)$ acts by isometries,
+with a single fixed point,
+and $\bar X / U(1) = \R^3$. In other words, we can ``fill in the missing fiber over $0$''
+in a smooth \hk way.
 \end{exercise}
+
+In particular, complex structure $I_1$ on $X$ is realized in the standard way,
+with holomorphic coordinates $w = y_1 + \I y_2$ and $z = y_3 + \I y_4$.
+Thus the loci $z = 0$ and $w = 0$ are complex submanifolds (looking like $\C$).
+In the original coordinates, this corresponds to $\theta = 0$ or $\theta = \pi$.
+
+\fixme{insert figure here}
 
 % This was also true of $\bbH$ of course 
 % (\autoref{exc:flat-space-computing}); nevertheless, Taub-NUT space
@@ -1342,6 +1360,16 @@ Despite this, Taub-NUT space is definitely not the same
 \hk manifold as $\bbH$! So a \hk manifold contains more 
 information than just a family of complex manifolds.
 
+
+\subsection{The twistor family}
+
+...
+
+\fixme{twistor family}
+
+
+\subsection{More examples}
+
 \begin{example}[$\R^2 \times T^2$] \fixme{...}
 \end{example}
 
@@ -1354,8 +1382,6 @@ information than just a family of complex manifolds.
 \fixme{reduced holonomy}
 
 \fixme{Ricci-flatness}
-
-\fixme{twistor family}
 
 \printbibliography
 
