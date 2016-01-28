@@ -784,10 +784,18 @@ that $T^{0,1} X = \ker \Omega$ is an integrable distribution,
 i.e. that if $v,w$ are sections of $\ker \Omega$ then $[v,w]$
 is also a section of $\ker \Omega$.
 This follows from $\de \Omega = 0$ and the covariant formula
-for $\de$:
+for $\de$: for any third vector field $y$ we have \fixme{check signs,
+though they don't matter}
 \begin{equation}
-  \de \Omega(v,w) = v (\Omega(w)) - w (\Omega(v)) + \Omega([v,w]).
+  \de \Omega(v,w,y) = v \Omega(w,y) + w \Omega(y,v) + y \Omega(v,w)
+  + \Omega([v,w],y) + \Omega([w,y],v) + \Omega([y,v],w)
 \end{equation}
+and now all terms vanish except the one we want:
+\begin{equation}
+  0 = \Omega([v,w],y)
+\end{equation}
+so $[v,w]$ is a section of $\ker \Omega$ as desired.
+
 \end{pf}
 
 \begin{prop}[Explicit formula for the complex structures on a 
@@ -1065,8 +1073,6 @@ To check that these are indeed closed,
 (the last equality because all of these forms are pulled back
 from $\R^3$, and on $\R^3$ we always have $\star \alpha \wedge \beta = \alpha \wedge \star \beta$ for 1-forms $\alpha, \beta$.)
 
-\currentposition
-
 Then define
 \begin{align}
   \Omega_1 &= \omega_2 + \I \omega_3 \\
@@ -1140,10 +1146,14 @@ the \hk structure (this is clear since nothing in $\omega_i$
 depends on the fiber coordinates).
 \end{example}
 
-By the maximum principle, there are no 
-nonconstant positive harmonic functions on the full $\R^3$.
+There are no 
+nonconstant positive harmonic functions on the full $\R^3$.\footnote{
+This is trickier than I thought, but there is a proof 
+at \tt\href{http://math.stackexchange.com/questions/561818}{http://math.stackexchange.com/questions/561818}.
+}
 Thus \autoref{exa:incomplete-gibbons-hawking} does not give
-any interesting complete \hk metrics. However we can do better:
+\hk metrics fibered over the full $\R^3$.
+However we can do better:
 
 \begin{example}[Gibbons-Hawking spaces] \label{exa:gibbons-hawking}
 Extending \autoref{exa:incomplete-gibbons-hawking}
@@ -1225,6 +1235,8 @@ with a single fixed point,
 and $\bar X / U(1) = \R^3$. In other words, we can ``fill in the missing fiber over $0$''
 in a smooth \hk way.
 \end{exercise}
+
+\currentposition
 
 In particular, complex structure $I_1$ on $X$ is realized in the standard way,
 with holomorphic coordinates $w = y_1 + \I y_2$ and $z = y_3 + \I y_4$.
