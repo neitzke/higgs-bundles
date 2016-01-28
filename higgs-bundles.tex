@@ -901,7 +901,7 @@ or more uniformly
 \end{equation}
 The holomorphic symplectic form is
 \begin{equation}
-  \Omega_1 = \omega_2 + \I \omega_3 = \de w_1 \wedge \de z_1, \qquad w_1 = x_0 + \I x_1, \qquad z_1 = x_2 + \I x_3
+  \Omega_1 = \omega_2 + \I \omega_3 = \de w_1 \wedge \de z_1, \qquad w_1 = x_0 + \I x_1, \qquad z_1 = x_2 + \I x_3.
 \end{equation}
 $w_1$ and $z_1$ are complex coordinates with respect to $I_1$.
 Thus, in structure $I_1$, $\bbH$ is biholomorphic to $\C^2$.
@@ -1042,10 +1042,10 @@ the $U(1)$ action.
 If we choose a local
 trivialization of the $U(1)$-bundle $X$ over a patch
 $U_\alpha \subset U$, with local 
-fiber coordinate $x_{0,\alpha} \in \R / 2 \pi \Z$, then $\Theta$ 
+fiber coordinate $\chi_{\alpha} \in \R / 2 \pi \Z$, then $\Theta$ 
 is locally of the form
 \begin{equation}
- \Theta = A_\alpha + \de x_{0,\alpha} 
+ \Theta = A_\alpha + \de \chi_{\alpha} 
 \end{equation}
 with $A_\alpha \in \Omega^1(U_\alpha)$, $\de A_\alpha = F$.
 \newcommand{\tTheta}{\tilde\Theta}
@@ -1079,9 +1079,9 @@ where we introduced
   \alpha_1 = V^{-1} \tTheta + \I \de x_1.
 \end{equation}
 Then $\ker \Omega_1$ is spanned by $\hat\partial_2 + \I \hat\partial_3$
-and $2 \pi V \partial_0 + \I \hat\partial_1$, where $\partial_0$ 
+and $2 \pi V \partial_\chi + \I \hat\partial_1$, where $\partial_\chi$ 
 is the globally defined generator of the $U(1)$ action 
-(shifting $x_0$),  and $\hat \partial_i$ means
+(shifting $\chi$),  and $\hat \partial_i$ means
 the parallel lift of $\partial_i$ from $\R^3$ to $X$, i.e. the lift
 obeying $\Theta \cdot \hat\partial_1 = 0$. Thus
 by \autoref{prop:hol-symp-to-complex}, $\Omega_1$ 
@@ -1102,7 +1102,15 @@ but it does at least have
 a holomorphic vector field tangent to the fibers,
 $\partial_0 - \I V^{-1} \hat \partial_1$.
 
-Similarly define complex structures $I_2$, $I_3$.
+Similarly we have
+\begin{equation}
+  \Omega_i = V \alpha_i \wedge \de z_i
+\end{equation}
+where
+\begin{equation}
+  z_i = x_{i+1} + \I x_{i+2}, \qquad \alpha_i = V^{-1} \tTheta + \I \de x_i
+\end{equation}
+and we can use this to define complex structures $I_2$, $I_3$.
 Just as for $\R^3 \times S^1$ these obey the quaternion
 relation $I_1 I_2 = I_3$.
 
@@ -1159,23 +1167,52 @@ length, and it is possible to add
 a single point over $x_i$, in such a way 
 that the total space is a \hk manifold with non-free 
 $U(1)$ action, and the quotient is $U$.
-This follows from the next (hard) exercise.
+This follows from the computation in \autoref{exa:gibbons-hawking-R4}
+below.
 \end{example}
 
-\begin{exercise} \label{exc:gibbons-hawking-R4}
+\begin{example}[$\R^4$ as a Gibbons-Hawking space] \label{exa:gibbons-hawking-R4}
 Consider \autoref{exa:incomplete-gibbons-hawking} with
-$U = \R^3 \setminus \{x_0\}$ and
-$V(x) = \frac{1}{4\pi\norm{x-x_0}}$.
-Show that $X$ with the metric $g$ is isometric
-to $\R^4$ with one point deleted,
-and that the \hk structure on $X$ extends
+$U = \R^3 \setminus \{0\}$. In spherical coordinates
+$(r,\theta,\varphi)$ write
+\begin{equation}
+ V(x) = \frac{1}{4\pi r}.
+\end{equation}
+Then we have $F = \half \sin \theta \de \theta \wedge \de \varphi$.
+Fix a circle bundle $X \to U$, with a trivialization away 
+from the pole $\theta = \pi$, 
+with respect to which $\Theta = A + \de \chi$,
+\begin{equation}
+  A = \half(1 - \cos \theta) \, \de \varphi.
+\end{equation}
+Now we have 
+\begin{align}
+  g &= \frac{1}{4 \pi r} (\de r^2 + r^2 \de \theta^2 + r^2 \sin^2 \theta \de \varphi^2) + \frac{r}{\pi} \left(\half (1-\cos \theta) \de \varphi + \de \chi\right)^2 \\
+  &= \frac{1}{4 \pi r} \de r^2 + \frac{r}{4 \pi} (\de \theta^2 + \sin^2 \theta \de \varphi^2 + ((1 - \cos \theta) \de \varphi + 2 \de \chi)^2) \\
+  &= \frac{1}{4 \pi r} \de r^2 + \frac{r}{\pi} \left(\qtr \de \theta^2 + \half(1-\cos\theta) \de \varphi^2 + \de \chi^2 + (1-\cos \theta) \de \varphi \de \chi\right)  
+\end{align}
+with $\theta \in [0,\pi]$, $\varphi \in [0,2\pi]$, $\chi \in [0,2\pi]$.
+Now the surprise is that the second part is just the round 
+metric on $S^3$ with radius $\rho = \sqrt{r/\pi}$, 
+and the whole $g$ is isometric to 
+the Euclidean metric on $\R^4 \setminus \{0\}$.
+To see this explicitly take
+\begin{align}
+  y_1 &= \sqrt{r/\pi} \sin(\theta/2) \cos\left(\varphi + \chi\right), \\
+  y_2 &= \sqrt{r/\pi} \sin(\theta/2) \sin\left(\varphi + \chi\right), \\
+  y_3 &= \sqrt{r/\pi} \cos(\theta/2) \cos\left(\chi\right), \\
+  y_4 &= \sqrt{r/\pi} \cos(\theta/2) \sin\left(\chi\right),
+\end{align}
+and then compute directly that
+\begin{equation}
+  g = \sum_{i=1}^4 \de y_i^2.
+\end{equation}
+\end{example}
+
+
+\begin{exercise} \label{exc:gibbons-hawking-R4}
+Show that the \hk structure on $X$ extends
 to a \hk structure on the full $\R^4$.
-(Hint: the subset of $X$ with $\norm{x-x_0} = r$ is
-the Hopf fibration over $S^2$, thus homeomorphic to
-$S^3$; the restriction of $g$ to this $S^3$ 
-turns out to be the round metric with 
-radius $\rho = \sqrt{r}$, while $g$ in the radial 
-direction is $\de r^2 / r = \de \rho^2$.)
 \end{exercise}
 
 % This was also true of $\bbH$ of course 
