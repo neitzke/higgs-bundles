@@ -1221,16 +1221,16 @@ Now the surprise is that the second part is just the round
 metric on $S^3$ with radius $\rho = \sqrt{r/\pi}$, 
 and the whole $g$ is isometric to 
 the Euclidean metric on $\R^4 \setminus \{0\}$.
-To see this explicitly take
+To see this explicitly take \fixme{check ordering}
 \begin{align}
-  y_1 &= \sqrt{r/\pi} \sin(\theta/2) \cos\left(\varphi - \chi\right), \\
-  y_2 &= \sqrt{r/\pi} \sin(\theta/2) \sin\left(\varphi - \chi\right), \\
-  y_3 &= \sqrt{r/\pi} \cos(\theta/2) \cos\left(\chi\right), \\
-  y_4 &= \sqrt{r/\pi} \cos(\theta/2) \sin\left(\chi\right),
+  y_0 &= \sqrt{r/\pi} \sin(\theta/2) \cos\left(\varphi + \chi\right), \\
+  y_1 &= \sqrt{r/\pi} \sin(\theta/2) \sin\left(\varphi + \chi\right), \\
+  y_2 &= \sqrt{r/\pi} \cos(\theta/2) \cos\left(-\chi\right), \\
+  y_3 &= \sqrt{r/\pi} \cos(\theta/2) \sin\left(-\chi\right),
 \end{align}
 and then compute directly that
 \begin{equation}
-  g = \sum_{i=1}^4 \de y_i^2.
+  g = \sum_{i=0}^3 \de y_i^2.
 \end{equation}
 \end{example}
 
