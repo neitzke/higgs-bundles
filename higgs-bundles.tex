@@ -784,15 +784,14 @@ that $T^{0,1} X = \ker \Omega$ is an integrable distribution,
 i.e. that if $v,w$ are sections of $\ker \Omega$ then $[v,w]$
 is also a section of $\ker \Omega$.
 This follows from $\de \Omega = 0$ and the covariant formula
-for $\de$: for any third vector field $y$ we have \fixme{check signs,
-though they don't matter}
+for $\de$: for any third vector field $y$ we have
 \begin{equation}
   \de \Omega(v,w,y) = v \Omega(w,y) + w \Omega(y,v) + y \Omega(v,w)
-  + \Omega([v,w],y) + \Omega([w,y],v) + \Omega([y,v],w)
+  - \Omega([v,w],y) - \Omega([y,v],w) - \Omega([w,y],v)
 \end{equation}
 and now all terms vanish except the one we want:
 \begin{equation}
-  0 = \Omega([v,w],y)
+  0 = -\Omega([v,w],y)
 \end{equation}
 so $[v,w]$ is a section of $\ker \Omega$ as desired.
 
@@ -915,9 +914,14 @@ The holomorphic symplectic form is
 \end{equation}
 $w_1$ and $z_1$ are complex coordinates with respect to $I_1$.
 Thus, in structure $I_1$, $\bbH$ is biholomorphic to $\C^2$.
+Similarly we can write
+\begin{equation} \label{eq:Omega-i-R4}
+  \Omega_i = \omega_{i+1} + \I \omega_{i+2} = \de w_i \wedge \de z_i, \qquad w_i = x_0 + \I x_i, \qquad z_i = x_{i+1} + \I x_{i+2}
+\end{equation}
+(where we adopt the convention $x_{i+3} = x_i$.)
 
-(All this generalizes in a straightforward way to $\bbH^n$ 
-or better, an affine space modeled on $\bbH^n$.)
+All this generalizes in a straightforward way to $\bbH^n$ 
+or better, an affine space modeled on $\bbH^n$.
 \end{example}
 
 \begin{exercise} \label{exc:flat-space-computing}
@@ -1111,16 +1115,21 @@ a holomorphic vector field tangent to the fibers,
 $\partial_0 - \I V^{-1} \hat \partial_1$.
 
 Similarly we have
-\begin{equation}
+\begin{equation} \label{eq:Omega-i-GH}
   \Omega_i = V \alpha_i \wedge \de z_i
 \end{equation}
 where
-\begin{equation}
+\begin{equation} \label{eq:Omega-i-GH-2}
   z_i = x_{i+1} + \I x_{i+2}, \qquad \alpha_i = V^{-1} \tTheta + \I \de x_i
 \end{equation}
 and we can use this to define complex structures $I_2$, $I_3$.
 Just as for $\R^3 \times S^1$ these obey the quaternion
-relation $I_1 I_2 = I_3$.
+relation $I_1 I_2 = I_3$ --- we could check this directly, 
+or just note that pointwise \eqref{eq:Omega-i-GH}-\eqref{eq:Omega-i-GH-2}
+are isomorphic to \eqref{eq:Omega-i-R4}
+(take $\de x_i \to \sqrt{V} \de x_i$ and $\de x_0 \to \tTheta / \sqrt{V}$),
+and the $\Omega_i$ determine the $I_i$ by pointwise calculations,
+so they must obey the same relations they obeyed on $\R^4$.
 
 Now we compute $g$ from $I_1$ and $\omega_1$:
 \begin{equation}
