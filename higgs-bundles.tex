@@ -335,6 +335,89 @@ fits into supersymmetric quantum field theory; but this is
 mostly beyond the scope of this course.)
 
 
+\section{Symplectic geometry: some facts}
+
+This is mainly intended as a review
+and to fix some notation. \fixme{should put some
+references here?}
+
+\begin{defn}
+A \ti{symplectic manifold} is a pair $(X,\omega)$
+where $X$ is a smooth manifold and
+$\omega \in \Omega^2(X)$, such that
+\begin{equation}
+  \de \omega = 0
+\end{equation}
+and $\omega$ is nondegenerate. By ``nondegenerate''
+we mean that the map
+\begin{align}
+  TX &\to T^*X \\
+  v &\mapsto \iota_v \omega = \omega(v,\cdot)
+\end{align}
+is an isomorphism of vector bundles.
+\end{defn}
+
+\begin{defn}
+Suppose $X$ is a symplectic manifold, with symplectic form $\omega$,
+acted on by a real Lie group $G$, with Lie algebra
+$\fg$. By differentiating the $G$-action at the identity,
+we obtain a map
+\begin{equation}
+  \rho: \fg \to \Vect(X).
+\end{equation}
+Suppose given a function
+\begin{equation} \label{eq:moment-map}
+ \mu: X \to \fg^* 
+\end{equation}
+and for $Z \in \fg$ write $\mu_Z = \mu \cdot Z$.
+We say $\mu$ is a \ti{moment map} for the $G$-action if 
+for all $Z \in \fg$ we have
+\begin{equation}
+  \rho(Z) = \omega^{-1}(\de \mu_Z),
+\end{equation}
+i.e. for any $v \in \Vect(X)$
+\begin{equation}
+  \omega(\rho(Z), v) = v (\mu_Z),
+\end{equation}
+i.e.
+\begin{equation} \label{eq:moment-map-condition-3}
+  \iota_{\rho(Z)} \omega = \de \mu_Z.
+\end{equation}
+(Some authors would require in addition that the 
+map \eqref{eq:moment-map} should be $G$-equivariant.)
+\end{defn}
+In particular, the moment map $\mu$ 
+\ti{determines} the $G$-action.
+
+Note that moment maps do not always exist.
+At the very least, the existence of a moment
+map requires that $\iota_{\rho(Z)} \omega$ is closed
+for all $Z \in \fg$, by \eqref{eq:moment-map-condition-3}. By Cartan's ``magic formula''
+\begin{equation} \label{eq:cartan-magic-formula}
+  \cL_v \omega = \de \iota_v \omega + \iota_v \de \omega
+\end{equation}
+this is equivalent to requiring $\cL_{\rho(Z)}\omega = 0$,
+i.e. the $G$-action preserves $\omega$.
+But even if the $G$-action preserves $\omega$,
+a moment map still may not exist.
+
+\begin{exercise}
+Suppose $X = \R^2$ with $\omega = \de x_1 \wedge \de x_2$, and
+$G = SO(2) = U(1) = \{e^{\I \alpha}: \alpha \in \R \}$.
+Then $\fu(1)$ is $1$-dimensional, spanned by $\partial_\alpha$.
+Show that the rotation action of $U(1)$ on $X$ 
+has a moment map $\mu: \R^2 \to \fu(1)^*$, given by
+\begin{equation}
+  \mu(x_1,x_2) \cdot \partial_\alpha = -\half (x_1^2 + x_2^2).
+\end{equation}
+Thus if we identify $\fu(1) \simeq \R$ using the generator
+$\partial_\alpha$, we can think of $\mu$ just as an $\R$-valued function
+on $X$,
+\begin{equation}
+  \mu(x_1,x_2) = -\half (x_1^2 + x_2^2).
+\end{equation}
+\end{exercise}
+
 
 \section{Local complex and \kahler geometry: a quick review}
 
@@ -443,7 +526,7 @@ This decomposition induces
 \wedge^* T^*_\C X = \bigoplus_{p,q=0}^n \wedge^{p,q} T^* X , \qquad \Omega^*_\C X = \bigoplus_{p,q=0}^n \Omega^{p,q}(X).
 \end{equation}
 
-\begin{prop}[Integrability versus type decompositions]
+\begin{prop}[Integrability versus type decompositions] \label{prop:integrability}
 Suppose $(X,I)$ is an almost complex manifold. The following are equivalent:
 \begin{itemize}
 \item $I$ is integrable.
@@ -560,7 +643,6 @@ is
 \begin{equation}
   {\mathrm {vol}}_g = \frac{\omega^n}{n!}
 \end{equation}
-(in particular, $\omega$ is nondegenerate.)
 \end{exercise}
 
 The term ``Hermitian'' might seem confusing here since $g$ is just 
@@ -633,11 +715,13 @@ So all of $(1)$-$(3)$ are equivalent.
 Now we consider $(4)$.
 To show $(2)$ implies integrability of $I$,
 note that for $v,w$ sections of $T^{0,1} X$ we have
-(using the torsion-free property of $\nabla$)
+(using the torsion-free property of $\nabla$ and
+$\nabla I = 0$)
 \begin{equation}
-  I[v,w] = I(\nabla_v w - \nabla_w v) = \nabla_v(Iw) - \nabla_w(Iv) = -\I (\nabla_v w - \nabla_w v) = -\I [v,w].
+  I[v,w] = I(\nabla_v w - \nabla_w v) = \nabla_v(Iw) - \nabla_w(Iv) = -\I (\nabla_v w - \nabla_w v) = -\I [v,w],
 \end{equation}
-Also $(2)$ implies that
+so by \autoref{prop:integrability} $I$ is
+integrable. Also $(2)$ implies that
 for $v \in TX$ and $w$ a section of $T^{1,0} X$
 we have $I (\nabla_v w) = \nabla_v (Iw) = \I \nabla_v w$,
 so that $\nabla_v w$ is also a section of $T^{1,0} X$;
@@ -1157,6 +1241,117 @@ the \hk structure (this is clear since nothing in $\omega_i$
 depends on the fiber coordinates).
 \end{example}
 
+\begin{example}[$\R^4 \setminus \{ 0 \}$ as an incomplete Gibbons-Hawking space] \label{exa:gibbons-hawking-R4}
+Consider \autoref{exa:incomplete-gibbons-hawking} with
+$U = \R^3 \setminus \{0\}$. In spherical coordinates
+$(r,\theta,\varphi)$ take\footnote{Our conventions
+for spherical coordinates are:
+\begin{align}
+x_1 &= r \cos \theta, \\
+x_2 &= r \sin \theta \cos \phi, \\
+x_3 &= r \sin \theta \sin \phi.
+\end{align}
+}
+\begin{equation}
+ V(x) = \frac{1}{4\pi r}.
+\end{equation}
+Then we have 
+\begin{equation}
+ F = \half \sin \theta \, \de \theta \wedge \de \varphi 
+\end{equation}
+which has $\int_{S^2} \frac{F}{2\pi} = 1$ and thus obeys our
+quantization condition, so that there exists a circle bundle
+$X \to U$ with this curvature. The total space of such a
+circle bundle over $S^2$ is the Hopf fibration $S^3 \to S^2$.
+
+$X$ thus doesn't extend as a $U(1)$ bundle
+over the point $x_i$.
+Nevertheless it \ti{does} extend as a \hk manifold.
+Indeed, near $0$ the circle fibers of $X$ are shrinking to zero
+length, and it is possible to add
+a single point over $0$, in such a way 
+that the total space is a \hk manifold with non-free 
+$U(1)$ action, and the quotient is $\R^3$.
+To see this explicitly, let's fix a trivialization away 
+from $\theta = \pi$, with respect to 
+which $\Theta = A + \de \chi$,
+\begin{equation}
+  A = \half(1 - \cos \theta) \, \de \varphi.
+\end{equation}
+
+Now we have 
+\begin{align}
+  g &= \frac{1}{4 \pi r} (\de r^2 + r^2 \de \theta^2 + r^2 \sin^2 \theta \de \varphi^2) + \frac{r}{\pi} \left(\half (1-\cos \theta) \de \varphi + \de \chi\right)^2 \\
+%  &= \frac{1}{4 \pi r} \de r^2 + \frac{r}{4 \pi} (\de \theta^2 + \sin^2 \theta \de \varphi^2 + ((1 - \cos \theta) \de \varphi + 2 \de \chi)^2) \\
+  &= \frac{1}{4 \pi r} \de r^2 + \frac{r}{\pi} \left(\qtr \de \theta^2 + \half(1-\cos\theta) \de \varphi^2 + \de \chi^2 + (1-\cos \theta) \de \varphi \de \chi\right).
+\end{align}
+Now the surprise is that the second part is just the round 
+metric on $S^3$ with radius $\rho = \sqrt{r/\pi}$, 
+and the whole $g$ is isometric to 
+the Euclidean metric on $\R^4 \setminus \{0\}$.
+To see this explicitly take
+\begin{align}
+  y_0 &= \sqrt{r/\pi} \sin(\theta/2) \cos\left(\varphi + \chi\right), \\
+  y_1 &= \sqrt{r/\pi} \sin(\theta/2) \sin\left(\varphi + \chi\right), \\
+  y_2 &= \sqrt{r/\pi} \cos(\theta/2) \cos\left(-\chi\right), \\
+  y_3 &= \sqrt{r/\pi} \cos(\theta/2) \sin\left(-\chi\right),
+\end{align}
+and then compute directly that
+\begin{equation}
+  g = \sum_{i=0}^3 \de y_i^2.
+\end{equation}
+\end{example}
+
+\begin{exercise} \label{exc:gibbons-hawking-R4}
+Show that the \hk structure on $X$ in
+\autoref{exa:gibbons-hawking-R4} matches the standard one
+in $\R^4 \setminus \{0\}$, given in \autoref{exa:R4}.
+This means that $X$ can be extended to a 
+complete \hk manifold $\bar X$, on which $U(1)$ acts 
+by isometries with a single fixed point,
+and $\bar X / U(1) = \R^3$. In other words, starting 
+from $X$ we can ``fill in the missing fiber over $0$''
+in a smooth \hk way, and the resulting \hk manifold
+is isomorphic to $\R^4$ with its standard \hk structure.
+\fixme{I only checked $\omega_1$ comes out right}
+\end{exercise}
+
+\currentposition
+
+In particular, complex structure $I_1$ on $X$ has
+holomorphic coordinates $w_1 = y_0 + \I y_1$ and $z_1 = y_2 + \I y_3$.
+Thus the loci $z_1 = 0$ and $w_1 = 0$ are complex submanifolds of
+$I_1$. These correspond to $\theta = 0$ and $\theta = \pi$, 
+i.e. the preimages in $X$ of the two half-lines $x_2 = x_3 = 0$, $\pm x_1 \ge 0$.
+
+\insfig{higgs-bundles-6}{0.9}
+
+There is a more conceptual way of arriving at \autoref{exa:gibbons-hawking-R4}:
+
+\begin{exercise}
+Consider again the standard \hk structure on $\R^4$ 
+(\autoref{exa:R4}), which is acted on by $SU(2)_R$.
+Show that there is a subgroup $U(1) \subset SU(2)_R$ which acts
+by $(w_1,z_1) \to (e^{\I \alpha} w_1, e^{-\I\alpha} z_1)$.
+Thus this action preserves the \hk structure.
+Moreover show that this action is Hamiltonian with 
+respect to all of the $\omega_i$, and compute the moment
+maps $\mu_i: \R^4 \to \fu(1)^*$. 
+If we identify $\fu(1) \simeq \R$, we obtain a map $\R^4 \to \R^3$ given by
+$(\mu_1, \mu_2, \mu_3)$. Show that this map realizes
+$\R^4 \setminus \{0\}$ as a circle bundle over $\R^3$,
+and that the metric is precisely of the form considered 
+in \autoref{exa:gibbons-hawking-R4}.
+\end{exercise}
+
+% This was also true of $\bbH$ of course 
+% (\autoref{exc:flat-space-computing}); nevertheless, Taub-NUT space
+% and $\bbH$ are definitely not the same \hk manifold!
+% Thus there is more information in the \hk structure than
+% in the set of complex manifolds one obtains by specializing.
+
+Finally we are ready to use this technology to 
+produce some really interesting complete \hk spaces.
 There are no 
 nonconstant positive harmonic functions on the full $\R^3$.\footnote{
 This is trickier than I thought, but there is a proof 
@@ -1169,7 +1364,11 @@ However we can do better:
 \begin{example}[Gibbons-Hawking spaces] \label{exa:gibbons-hawking}
 Extending \autoref{exa:incomplete-gibbons-hawking}
 we can allow $V$ to have quantized sources
-on $U$:\footnote{This equality is understood in the sense 
+on $U$:\footnote{On the RHS $\delta$ means
+the ``Dirac delta function'' on $\R^3$, 
+which should be understood
+as a distributional 3-form; thus this 
+equality is understood in the sense 
 of distributions; it won't be important for our purpose to 
 know exactly what it means, since we will deal only with
 some very concrete examples, but if you are interested,
@@ -1194,133 +1393,10 @@ length, and it is possible to add
 a single point over $x_i$, in such a way 
 that the total space is a \hk manifold with non-free 
 $U(1)$ action, and the quotient is $U$.
-This follows from the computation in \autoref{exa:gibbons-hawking-R4}
-below.
+This follows from the computation 
+we have already done in \autoref{exa:gibbons-hawking-R4}
+\fixme{explain this more precisely}
 \end{example}
-
-\begin{example}[$\R^4$ as a Gibbons-Hawking space] \label{exa:gibbons-hawking-R4}
-Consider \autoref{exa:incomplete-gibbons-hawking} with
-$U = \R^3 \setminus \{0\}$. In spherical coordinates
-$(r,\theta,\varphi)$ write
-\begin{equation}
- V(x) = \frac{1}{4\pi r}.
-\end{equation}
-Then we have $F = \half \sin \theta \de \theta \wedge \de \varphi$.
-Fix a circle bundle $X \to U$, with a trivialization away 
-from the pole $\theta = \pi$, 
-with respect to which $\Theta = A + \de \chi$,
-\begin{equation}
-  A = \half(1 - \cos \theta) \, \de \varphi.
-\end{equation}
-Now we have 
-\begin{align}
-  g &= \frac{1}{4 \pi r} (\de r^2 + r^2 \de \theta^2 + r^2 \sin^2 \theta \de \varphi^2) + \frac{r}{\pi} \left(\half (1-\cos \theta) \de \varphi + \de \chi\right)^2 \\
-  &= \frac{1}{4 \pi r} \de r^2 + \frac{r}{4 \pi} (\de \theta^2 + \sin^2 \theta \de \varphi^2 + ((1 - \cos \theta) \de \varphi + 2 \de \chi)^2) \\
-  &= \frac{1}{4 \pi r} \de r^2 + \frac{r}{\pi} \left(\qtr \de \theta^2 + \half(1-\cos\theta) \de \varphi^2 + \de \chi^2 + (1-\cos \theta) \de \varphi \de \chi\right)  
-\end{align}
-with $\theta \in [0,\pi]$, $\varphi \in [0,2\pi]$, $\chi \in [0,2\pi]$.
-Now the surprise is that the second part is just the round 
-metric on $S^3$ with radius $\rho = \sqrt{r/\pi}$, 
-and the whole $g$ is isometric to 
-the Euclidean metric on $\R^4 \setminus \{0\}$.
-To see this explicitly take \fixme{check ordering}
-\begin{align}
-  y_0 &= \sqrt{r/\pi} \sin(\theta/2) \cos\left(\varphi + \chi\right), \\
-  y_1 &= \sqrt{r/\pi} \sin(\theta/2) \sin\left(\varphi + \chi\right), \\
-  y_2 &= \sqrt{r/\pi} \cos(\theta/2) \cos\left(-\chi\right), \\
-  y_3 &= \sqrt{r/\pi} \cos(\theta/2) \sin\left(-\chi\right),
-\end{align}
-and then compute directly that
-\begin{equation}
-  g = \sum_{i=0}^3 \de y_i^2.
-\end{equation}
-\end{example}
-
-\begin{exercise} \label{exc:gibbons-hawking-R4}
-Show that the \hk structure on $X$ matches the standard one
-in $\R^4 \setminus \{0\}$. This means that $X$ can be extended
-to a complete \hk manifold $\bar X$, 
-on which $U(1)$ acts by isometries,
-with a single fixed point,
-and $\bar X / U(1) = \R^3$. In other words, we can ``fill in the missing fiber over $0$''
-in a smooth \hk way.
-\end{exercise}
-
-There is a more conceptual way of arriving at this construction.
-For this we need a definition, which we will also 
-use in the future:
-\begin{defn}
-Suppose $X$ is a symplectic manifold, with symplectic form $\omega$,
-acted on by a Lie group $G$, with Lie algebra
-$\fg$. By differentiating this action we obtain a map
-\begin{equation}
-  \rho: \fg \to \Vect(X).
-\end{equation}
-We say a function 
-\begin{equation}
- \mu: X \to \fg^* 
-\end{equation}
-is a \ti{moment map} for this action if 
-for all $Y \in \fg$ we have
-\begin{equation}
-  \rho(Y) = \omega^{-1}(\de (\mu \cdot Y)),
-\end{equation}
-i.e. for any $v \in \Vect(X)$
-\begin{equation}
-  \omega(\rho(Y), v) = v (\mu \cdot Y).
-\end{equation}
-If the action of $G$ admits a moment map, then we call
-this action \ti{Hamiltonian}.
-\end{defn}
-
-\begin{exercise}
-Suppose $X = \R^2$ with $\omega = \de x_1 \wedge \de x_2$, and
-$G = SO(2) = U(1) = \{e^{\I \alpha}: \alpha \in \R \}$.
-Then $\fu(1)$ is $1$-dimensional, spanned by $\partial_\alpha$.
-Show that the rotation action of $U(1)$ on $X$ is Hamiltonian, 
-with moment map $\mu: \R^2 \to \fu(1)^*$ given by
-\begin{equation}
-  \mu(x_1,x_2) \cdot \partial_\alpha = -\half (x_1^2 + x_2^2).
-\end{equation}
-Thus if we identify $\fu(1) \simeq \R$ using the generator
-$\partial_\alpha$, we can think of $\mu$ just as an $\R$-valued function
-on $X$,
-\begin{equation}
-  \mu(x_1,x_2) = -\half (x_1^2 + x_2^2).
-\end{equation}
-\end{exercise}
-
-\begin{exercise}
-Consider again the standard \hk structure on $\R^4$ 
-(\autoref{exa:R4}), which is acted on by $SU(2)_R$.
-Show that there is a subgroup $U(1) \subset SU(2)_R$ which acts
-by $(w_1,z_1) \to (e^{\I \alpha} w_1, e^{-\I\alpha} z_1)$.
-Thus this action preserves the \hk structure.
-Moreover show that this action is Hamiltonian with 
-respect to all of the $\omega_i$, and compute the moment
-maps $\mu_i: \R^4 \to \fu(1)^*$. 
-If we identify $\fu(1) \simeq \R$, we obtain a map $\R^4 \to \R^3$ given by
-$(\mu_1, \mu_2, \mu_3)$. Show that this map realizes
-$\R^4 \setminus \{0\}$ as a circle bundle over $\R^3$,
-and that the metric is precisely of the form considered 
-in \autoref{exa:gibbons-hawking-R4}. Thus this is an alternative
-way of ``discovering'' \autoref{exa:gibbons-hawking-R4}.
-\end{exercise}
-
-\currentposition
-
-In particular, complex structure $I_1$ on $X$ is realized in the standard way,
-with holomorphic coordinates $w = y_1 + \I y_2$ and $z = y_3 + \I y_4$.
-Thus the loci $z = 0$ and $w = 0$ are complex submanifolds (looking like $\C$).
-In the original coordinates, this corresponds to $\theta = 0$ or $\theta = \pi$.
-
-\fixme{insert figure here}
-
-% This was also true of $\bbH$ of course 
-% (\autoref{exc:flat-space-computing}); nevertheless, Taub-NUT space
-% and $\bbH$ are definitely not the same \hk manifold!
-% Thus there is more information in the \hk structure than
-% in the set of complex manifolds one obtains by specializing.
 
 \begin{example}[Eguchi-Hanson space]
 This is a case of \autoref{exa:gibbons-hawking}
