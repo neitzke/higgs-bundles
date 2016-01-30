@@ -22,7 +22,7 @@
 \usepackage[missing=]{gitinfo2}
 
 \definecolor{darkred}{rgb}{0.5,0.1,0.1}
-\definecolor{darkgreen}{rgb}{0,0.55,0.2}
+\definecolor{darkgreen}{rgb}{0.0,0.45,0.05}
 \hypersetup{colorlinks=true,urlcolor=darkred,linkcolor=darkred,citecolor=darkred}
 \definecolor{shadecolor}{rgb}{0.85,0.85,0.85}
 
@@ -160,6 +160,7 @@
 \newcommand{\fq}{{\mathfrak q}}
 \newcommand{\fm}{{\mathfrak m}}
 \newcommand{\fr}{{\mathfrak r}}
+\newcommand{\fu}{{\mathfrak u}}
 
 \newcommand{\cC}{\ensuremath{\mathcal C}}
 \newcommand{\cG}{\ensuremath{\mathcal G}}
@@ -231,6 +232,7 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Bun}{Bun}
+\DeclareMathOperator{\Vect}{Vect}
 
 \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
@@ -1236,13 +1238,56 @@ and then compute directly that
 
 \begin{exercise} \label{exc:gibbons-hawking-R4}
 Show that the \hk structure on $X$ matches the standard one
-in $\R^4 \setminus \{0\}$. In particular this means that 
-$X$ can be extended
+in $\R^4 \setminus \{0\}$. This means that $X$ can be extended
 to a complete \hk manifold $\bar X$, 
 on which $U(1)$ acts by isometries,
 with a single fixed point,
 and $\bar X / U(1) = \R^3$. In other words, we can ``fill in the missing fiber over $0$''
 in a smooth \hk way.
+\end{exercise}
+
+There is a more conceptual way of arriving at this construction.
+For this we need a definition, which we will also 
+use in the future:
+\begin{defn}
+Suppose $X$ is a symplectic manifold, with symplectic form $\omega$,
+acted on by a Lie group $G$, with Lie algebra
+$\fg$. By differentiating this action we obtain a map
+\begin{equation}
+  \rho: \fg \to \Vect(X).
+\end{equation}
+We say a function 
+\begin{equation}
+ \mu: X \to \fg^* 
+\end{equation}
+is a \ti{moment map} for this action if 
+for all $Y \in \fg$ we have
+\begin{equation}
+  \rho(Y) = \omega^{-1}(\de (\mu \cdot Y)),
+\end{equation}
+i.e. for any $v \in \Vect(X)$
+\begin{equation}
+  \omega(\rho(Y), v) = v (\mu \cdot Y).
+\end{equation}
+If the action of $G$ admits a moment map, then we call
+this action \ti{Hamiltonian}.
+\end{defn}
+
+\begin{exercise}
+Suppose $X = \R^2$ with $\omega = \de x_1 \wedge \de x_2$, and
+$G = SO(2) = U(1) = \{e^{\I \alpha}: \alpha \in \R \}$.
+Then $\fu(1)$ is $1$-dimensional, spanned by $\partial_\alpha$.
+Show that the rotation action of $U(1)$ on $X$ is Hamiltonian, 
+with moment map $\mu: \R^2 \to \fu(1)^*$ given by
+\begin{equation}
+  \mu(x_1,x_2) \cdot \partial_\alpha = -\half (x_1^2 + x_2^2).
+\end{equation}
+Thus if we identify $\fu(1) \simeq \R$ using the generator
+$\partial_\alpha$, we can think of $\mu$ just as an $\R$-valued function
+on $X$,
+\begin{equation}
+  \mu(x_1,x_2) = -\half (x_1^2 + x_2^2).
+\end{equation}
 \end{exercise}
 
 \begin{exercise}
@@ -1251,9 +1296,10 @@ Consider again the standard \hk structure on $\R^4$
 Show that there is a subgroup $U(1) \subset SU(2)_R$ which acts
 by $(w_1,z_1) \to (e^{\I \alpha} w_1, e^{-\I\alpha} z_1)$.
 Thus this action preserves the \hk structure.
-Moreover show that this action is \ti{Hamiltonian} with 
+Moreover show that this action is Hamiltonian with 
 respect to all of the $\omega_i$, and compute the moment
-maps $\mu_i$. Thus we obtain a map $\R^4 \to \R^3$ given by
+maps $\mu_i: \R^4 \to \fu(1)^*$. 
+If we identify $\fu(1) \simeq \R$, we obtain a map $\R^4 \to \R^3$ given by
 $(\mu_1, \mu_2, \mu_3)$. Show that this map realizes
 $\R^4 \setminus \{0\}$ as a circle bundle over $\R^3$,
 and that the metric is precisely of the form considered 
