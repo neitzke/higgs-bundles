@@ -1363,8 +1363,10 @@ However we can do better:
 
 \begin{example}[Gibbons-Hawking spaces] \label{exa:gibbons-hawking}
 Extending \autoref{exa:incomplete-gibbons-hawking}
-we can allow $V$ to have quantized sources
-on $U$:\footnote{On the RHS $\delta$ means
+and \autoref{exa:gibbons-hawking-R4},
+let us fix $U \subset \R^3$, 
+distinct points $x_1, \dots, x_k$ in $U$,
+and a function $V$ on $U$ with\footnote{On the RHS $\delta$ means
 the ``Dirac delta function'' on $\R^3$, 
 which should be understood
 as a distributional 3-form; thus this 
@@ -1374,14 +1376,16 @@ know exactly what it means, since we will deal only with
 some very concrete examples, but if you are interested,
 one source is Chapter 6 of \cite{MR1817225}.}
 \begin{equation}
-  \Delta V = - \sum_{i=1}^n \delta(x - x_i)
+  \Delta V = - \sum_{i=1}^n \delta(x - x_i).
 \end{equation}
-In this case, consider a small $S^2$ around $x_i$:
+Then consider a $U(1)$-bundle $X$ over $U \setminus \{x_i\}$ 
+with \hk structure as in \autoref{exa:incomplete-gibbons-hawking}.
+Consider a small $S^2$ around $x_i$:
 \begin{equation}
   \int_{S^2} \frac{F}{2\pi} = -\int_{S^2} \star \de V = -\int_{B^3} \de \star \de V = \int_{B^3} \delta(x - x_i) = 1
 \end{equation}
 so the $U(1)$ bundle $X$ restricted to this $S^2$ has 
-degree $1$. $X$ thus doesn't extend as a $U(1)$ bundle
+degree $1$. Thus, $X$ doesn't extend as a $U(1)$ bundle
 over the point $x_i$.
 Nevertheless it \ti{does} extend as a \hk manifold.
 Indeed, near $x_i$ we have
@@ -1389,24 +1393,23 @@ Indeed, near $x_i$ we have
 V = \frac{1}{4\pi\norm{x - x_i}} + \text{regular},
 \end{equation}
 so the circle fibers of $X$ are shrinking to zero
-length, and it is possible to add
-a single point over $x_i$, in such a way 
-that the total space is a \hk manifold with non-free 
-$U(1)$ action, and the quotient is $U$.
+length just as in \autoref{exa:gibbons-hawking-R4}.
+It is possible to add a single point over $x_i$
+to get a new space $\bar X$, which is a \hk manifold with non-free 
+$U(1)$ action, with $\bar X / U(1) = U$.
 This follows from the computation 
-we have already done in \autoref{exa:gibbons-hawking-R4}
+we have already done in \autoref{exa:gibbons-hawking-R4}.
 \fixme{explain this more precisely}
 \end{example}
 
 \begin{example}[Eguchi-Hanson space]
 This is a case of \autoref{exa:gibbons-hawking}
-with two singularities. Fix two points
-$x_1, x_2 \in \R^3$.
-Take $U = \R^3$ and 
+with two singularities. Take $U = \R^3$, fix distinct points
+$x_1, x_2 \in \R^3$, and let 
 \begin{equation}
   V(x) = \frac{1}{4\pi \norm{x - x_1}} + \frac{1}{4\pi \norm{x - x_2}}.
 \end{equation}
-Then $X$ is fibered over $\R^3$ with two degenerate fibers.
+The resulting $X$ is fibered over $\R^3$ with two degenerate fibers.
 Let $\pi: X \to \R^3$ be the projection.
 Then $\pi^{-1}(x_1 x_2)$ has the topology of $S^2$.
 \end{example}
@@ -1448,7 +1451,7 @@ Show that $X$ admits an action of $SO(2) \subset SO(3)$,
 such that $T^* I_{\vec s} = I_{T \vec{s}}$.
 \end{exercise}
 
-\begin{example}[Multi-Eguchi-Hanson spaces] \cite{MR520463} \label{exa:multi-eguchi-hanson} More generally we can fix a collection
+\begin{example}[Multi-Eguchi-Hanson spaces] \cite{MR520463} \label{exa:multi-eguchi-hanson} More generally, take $U = \R^3$, fix a collection
 of distinct points $x_1, \dots, x_k \in \R^3$ and take
 \begin{equation}
   V(x) = \sum_{i=1}^k \frac{1}{4 \pi \norm{x - x_i}}.
@@ -1522,10 +1525,34 @@ information than just a family of complex manifolds.
 
 \subsection{The twistor family}
 
-...
+Given a \hk manifold $X$ we have seen that we get a 
+family of complex manifolds $(X,I_{\vec s})$.
+This family can be assembled into a \ti{single}
+complex manifold, equipped with some extra structure,
+which in fact contains all the information necessary
+to reconstruct the original \hk $X$.
 
-\fixme{twistor family}
+\begin{defn} Given a \hk manifold $X$, the \ti{twistor space}
+of $X$ is the manifold
+\begin{equation}
+  \cZ = X \times S^2
+\end{equation}
+equipped with the almost complex structure
+\begin{equation}
+  I(x,\vec s) = I_{\vec s}(x) \oplus I_{S^2}
+\end{equation}
+where $I_{S^2}$ denotes the canonical complex structure on $S^2$.
+\end{defn}
 
+\begin{prop} The almost complex structure $I$ on $\cZ$ is integrable.
+\end{prop}
+\begin{proof}
+\fixme{...}
+\end{proof}
+
+\begin{example}[Twistor space of $\R^4$] \label{exa:R^4-twistor-space}
+\fixme{...}
+\end{example}
 
 \subsection{More examples}
 
