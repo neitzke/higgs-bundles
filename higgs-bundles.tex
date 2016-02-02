@@ -341,23 +341,42 @@ This is mainly intended as a review
 and to fix some notation. \fixme{should put some
 references here?}
 
-\begin{defn}
+\begin{defn}[Nondegenerate $2$-form]
+Suppose $V$ is a vector space over $\R$ or $\C$.
+We say $\omega \in \wedge^2(V)$ is \ti{nondegenerate}
+if the map
+\begin{align}
+  V &\to V^* \\
+  v &\mapsto \iota_v \omega = \omega(v,\cdot)
+\end{align}
+is an isomorphism.
+\end{defn}
+
+\begin{prop}[Standard basis for a nondegenerate $2$-form] 
+\label{prop:standard-nondegenerate-2-form}
+If $V$ is a vector space over $\R$ or $\C$, and
+$\omega \in \wedge^2(V)$ is nondegenerate, then $V$ has 
+dimension $2n$ for some $n$, and there
+exists a basis $\{e_1, \dots, e_n, f_1, \dots, f_n\}$ for $V$
+such that
+\begin{align}
+\omega(e_i, f_j) &= \delta_{ij}, \\
+\omega(e_i, e_j) &= 0, \\
+\omega(f_i, f_j) &= 0.
+\end{align}
+\end{prop}
+
+\begin{defn}[Symplectic manifold]
 A \ti{symplectic manifold} is a pair $(X,\omega)$
 where $X$ is a smooth manifold and
 $\omega \in \Omega^2(X)$, such that
 \begin{equation}
   \de \omega = 0
 \end{equation}
-and $\omega$ is nondegenerate. By ``nondegenerate''
-we mean that the map
-\begin{align}
-  TX &\to T^*X \\
-  v &\mapsto \iota_v \omega = \omega(v,\cdot)
-\end{align}
-is an isomorphism of vector bundles.
+and $\omega(x)$ is nondegenerate for every $x \in X$.
 \end{defn}
 
-\begin{defn}
+\begin{defn}[Moment map]
 Suppose $X$ is a symplectic manifold, with symplectic form $\omega$,
 acted on by a real Lie group $G$, with Lie algebra
 $\fg$. By differentiating the $G$-action at the identity,
@@ -372,14 +391,14 @@ Suppose given a function
 and for $Z \in \fg$ write $\mu_Z = \mu \cdot Z$.
 We say $\mu$ is a \ti{moment map} for the $G$-action if 
 for all $Z \in \fg$ we have
-\begin{equation}
-  \rho(Z) = \omega^{-1}(\de \mu_Z),
-\end{equation}
-i.e. for any $v \in \Vect(X)$
-\begin{equation}
-  \omega(\rho(Z), v) = v (\mu_Z),
-\end{equation}
-i.e.
+% \begin{equation}
+%   \rho(Z) = \omega^{-1}(\de \mu_Z),
+% \end{equation}
+% i.e. for any $v \in \Vect(X)$
+% \begin{equation}
+%   \omega(\rho(Z), v) = v (\mu_Z),
+% \end{equation}
+% i.e.
 \begin{equation} \label{eq:moment-map-condition-3}
   \iota_{\rho(Z)} \omega = \de \mu_Z.
 \end{equation}
@@ -392,10 +411,12 @@ In particular, the moment map $\mu$
 Note that moment maps do not always exist.
 At the very least, the existence of a moment
 map requires that $\iota_{\rho(Z)} \omega$ is closed
-for all $Z \in \fg$, by \eqref{eq:moment-map-condition-3}. By Cartan's ``magic formula''
+for all $Z \in \fg$, by \eqref{eq:moment-map-condition-3}. Using 
+Cartan's ``magic formula''
 \begin{equation} \label{eq:cartan-magic-formula}
-  \cL_v \omega = \de \iota_v \omega + \iota_v \de \omega
+  \cL_v \omega = \de (\iota_v \omega) + \iota_v (\de \omega)
 \end{equation}
+and the fact that $\de \omega = 0$,
 this is equivalent to requiring $\cL_{\rho(Z)}\omega = 0$,
 i.e. the $G$-action preserves $\omega$.
 But even if the $G$-action preserves $\omega$,
@@ -840,13 +861,9 @@ The remaining claims are obtained by cyclic permutations.
 
 \begin{cor}[\Hk manifolds have dimension $4n$] If $X$ is \hk then $\dim_\R X$ is a multiple of $4$.
 \end{cor}
-\begin{pf} There is a standard bit of ``symplectic linear algebra'' saying that a vector space with a
-nondegenerate antisymmetric pairing is always 
-even-dimensional (to prove it, one inductively constructs
-a ``Darboux'' basis, in which the antisymmetric pairing
-is a direct sum of blocks 
-of the shape $\tiny \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$). 
-Thus the existence of the holomorphic symplectic form $\Omega_1$ implies
+\begin{pf} The holomorphic symplectic form $\Omega_1$ restricts to a nondegenerate
+form on each fiber of the complex vector bundle $T^{1,0}_{I_1} X$.
+Using \autoref{prop:standard-nondegenerate-2-form}, it follows
 that $T^{1,0}_{I_1} X$ has even complex dimension.
 \end{pf}
 
@@ -1045,7 +1062,7 @@ thus gives an isomorphism $SO(4) \simeq (SU(2) \times SU(2)) / \Z_2$.)
 \begin{exercise} \label{exc:su2r-action}
 Show that $SU(2)_R$ acts on $\bbH$ by \ti{triholomorphic} 
 isometries, i.e. isometries which are holomorphic for
-all of $I$, $J$, and $K$.
+all of $I_1$, $I_2$, and $I_3$.
 \end{exercise}
 
 \begin{exercise} \label{exc:su2l-action}
@@ -1140,8 +1157,8 @@ $\Theta$ whose curvature is $F$.
 the image of $H^2(U,\Z) \to H^2(U,\R)$.) 
 Globally this means a 1-form $\Theta$ on $X$
 such that $\de \Theta = F$ (more precisely on the RHS we have
-the pullback of $F$ to $X$) and $\Theta \cdot \partial_0 = 1$,
-where $\partial_0$ denotes the vector field generating
+the pullback of $F$ to $X$) and $\Theta \cdot \partial_\chi = 1$,
+where $\partial_\chi$ denotes the vector field generating
 the $U(1)$ action.
 If we choose a local
 trivialization of the $U(1)$-bundle $X$ over a patch
@@ -1202,7 +1219,7 @@ It is not quite a $\C^\times$-bundle in general
 (since $U$ was an arbitrary open subset of $\R^3$), 
 but it does at least have 
 a holomorphic vector field tangent to the fibers,
-$\partial_0 - \I V^{-1} \hat \partial_1$.
+$\partial_\chi - \I V^{-1} \hat \partial_1$.
 
 Similarly we have
 \begin{equation} \label{eq:Omega-i-GH}
@@ -1235,7 +1252,7 @@ which gives
 % if we had computed $g$ from $I_2$ and $\omega_2$, or
 % from $I_3$ and $\omega_3$, we would get the same result.
 Thus the metric on $X$ given by
-\begin{equation}
+\begin{equation} \label{eq:gibbons-hawking-metric}
   g = V \norm{\de x}^2 + V^{-1} \tTheta^2
 \end{equation}
 is \hk, with \kahler forms $\omega_i$.
@@ -1353,6 +1370,22 @@ in \autoref{exa:gibbons-hawking-R4}.
 % and $\bbH$ are definitely not the same \hk manifold!
 % Thus there is more information in the \hk structure than
 % in the set of complex manifolds one obtains by specializing.
+
+\begin{example}[$(\R^4 / \Z_k) \setminus \{0\}$ as an incomplete Gibbons-Hawking space]
+\label{exa:gibbons-hawking-R4Zk}
+We can modify \autoref{exa:gibbons-hawking-R4} by taking some
+integer $k>0$ and setting
+\begin{equation}
+  V = \frac{k}{4 \pi r}.
+\end{equation}
+Then the metric \eqref{eq:gibbons-hawking-metric} (divided by $k$)
+matches with that of \autoref{exa:gibbons-hawking-R4} except that
+the circumference of the circle fibers is shorter by a factor of $k$.
+In other words, this metric is obtained by dividing
+out the metric of $\R^4 / \{ 0 \}$ by a subgroup 
+$\Z_k \subset U(1) \subset SU(2)_R$. This is a special case of the quotients
+described in \autoref{exa:H-quotients}.
+\end{example}
 
 Finally we are ready to use this technology to 
 produce some really interesting complete \hk spaces.
@@ -1481,14 +1514,11 @@ Asymptotically, the metric on this space is approximately
 what we would get by taking all $x_i = x_0$ for some fixed $x_0$. 
 In that case we would have simply 
 \begin{equation}
- V(x) = \frac{k}{4 \pi \norm{x - x_0}}.
+ V(x) = \frac{k}{4 \pi \norm{x - x_0}}
 \end{equation}
-After an overall rescaling by a factor of $k$, this $V$ 
-gives a metric identical to the one in 
-\autoref{exc:gibbons-hawking-R4}, \ti{except}
-that the circle fibers are shorter by a factor of $k$.
-In other words, asymptotically $g$ is approaching the metric of 
-a quotient $\R^4 / \Z_k$. So, when all the $x_i$ are distinct,
+which, as explained in \autoref{exa:gibbons-hawking-R4Zk},
+gives the \hk structure of $\R^4 / \Z_k$.
+Thus, when all the $x_i$ are distinct,
 $g$ is a kind of \hk desingularization of $\R^4 / \Z_k$.
 
 A nice special case occurs when all of the $x_i$ are collinear:
@@ -1503,7 +1533,7 @@ Cartan matrix of type $A_{k-1}$.)
 
 \insfig{higgs-bundles-5}{0.9}
 
-\begin{example}[ALE spaces]
+\begin{example}[ALE spaces] \label{exa:ALE-spaces}
 One can consider the minimal resolutions $X_\Gamma$
 of the singularities at the origin in \autoref{exa:H-quotients}.
 Then $X_\Gamma$ is an honest smooth manifold, 
