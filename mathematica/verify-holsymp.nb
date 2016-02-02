@@ -1,0 +1,194 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5814,        185]
+NotebookOptionsPosition[      5320,        164]
+NotebookOutlinePosition[      5657,        179]
+CellTagsIndexPosition[      5614,        176]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Verify that the family of 2-forms which we introduce is indeed \
+holomorphic-symplectic.\
+\>", "Text",
+ CellChangeTimes->{{3.663387022710533*^9, 3.6633870963707027`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"s", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"1", "-", 
+       RowBox[{"z", " ", "zb"}]}], ",", 
+      RowBox[{"z", " ", "+", " ", "zb"}], ",", " ", 
+      RowBox[{
+       RowBox[{"-", "I"}], 
+       RowBox[{"(", 
+        RowBox[{"z", " ", "-", " ", "zb"}], ")"}]}]}], "}"}], " ", "/", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", " ", "+", " ", 
+      RowBox[{"z", " ", "zb"}]}], ")"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.663383460170889*^9, 3.663383517496788*^9}, {
+  3.663384399151313*^9, 3.663384419676919*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[CapitalOmega]", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"w", "[", "2", "]"}], " ", "+", " ", 
+       RowBox[{"I", " ", 
+        RowBox[{"w", "[", "3", "]"}]}]}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"2", " ", "z"}], ")"}]}], " ", "-", " ", 
+    RowBox[{"w", "[", "1", "]"}], " ", "+", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"w", "[", "2", "]"}]}], " ", "+", " ", 
+        RowBox[{"I", " ", 
+         RowBox[{"w", "[", "3", "]"}]}]}], ")"}], "/", "2"}], " ", "z"}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.663383538750678*^9, 3.663383557445825*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Iz", " ", "=", " ", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"s", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], ")"}], 
+      RowBox[{"J", " ", "[", "i", "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "3"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.663383564097082*^9, 3.663383606997723*^9}, {
+  3.663385971330194*^9, 3.663385975102433*^9}, {3.663386085773369*^9, 
+  3.6633860890970592`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Iz\[CapitalOmega]", " ", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Iz", " ", "\[CapitalOmega]"}], " ", "//", "Expand"}], ")"}], 
+    " ", "/.", " ", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "1", "]"}], " ", 
+        RowBox[{"w", "[", "1", "]"}]}], "\[Rule]", "g"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "1", "]"}], 
+        RowBox[{"w", "[", "2", "]"}]}], "\[Rule]", 
+       RowBox[{"-", 
+        RowBox[{"w", "[", "3", "]"}]}]}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "1", "]"}], 
+        RowBox[{"w", "[", "3", "]"}]}], "\[Rule]", 
+       RowBox[{"w", "[", "2", "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "2", "]"}], " ", 
+        RowBox[{"w", "[", "2", "]"}]}], "\[Rule]", "g"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "2", "]"}], 
+        RowBox[{"w", "[", "3", "]"}]}], "\[Rule]", 
+       RowBox[{"-", 
+        RowBox[{"w", "[", "1", "]"}]}]}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "2", "]"}], 
+        RowBox[{"w", "[", "1", "]"}]}], "\[Rule]", 
+       RowBox[{"w", "[", "3", "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "3", "]"}], " ", 
+        RowBox[{"w", "[", "3", "]"}]}], "\[Rule]", "g"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "3", "]"}], 
+        RowBox[{"w", "[", "1", "]"}]}], "\[Rule]", 
+       RowBox[{"-", 
+        RowBox[{"w", "[", "2", "]"}]}]}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"J", "[", "3", "]"}], 
+        RowBox[{"w", "[", "2", "]"}]}], "\[Rule]", 
+       RowBox[{"w", "[", "1", "]"}]}]}], "\[IndentingNewLine]", "}"}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.663383608174776*^9, 3.663383610031493*^9}, {
+   3.663383641119162*^9, 3.6633838298712463`*^9}, {3.663384125671782*^9, 
+   3.663384147498168*^9}, {3.66338443376602*^9, 3.663384442705824*^9}, {
+   3.663384649238927*^9, 3.663384658635151*^9}, 3.663386161395382*^9, {
+   3.6633861928324137`*^9, 3.663386241565259*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Iz\[CapitalOmega]", " ", "/", " ", "\[CapitalOmega]"}], " ", "//", 
+  "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.6633847013849277`*^9, 3.663384703437654*^9}, {
+  3.6633849474334593`*^9, 3.663384955604218*^9}, {3.663386029689068*^9, 
+  3.6633860345867167`*^9}}],
+
+Cell[BoxData["\[ImaginaryI]"], "Output",
+ CellChangeTimes->{
+  3.663384703944991*^9, {3.663384950154017*^9, 3.663384956357815*^9}, 
+   3.6633859842066813`*^9, {3.663386016688056*^9, 3.663386035894671*^9}, 
+   3.663386243428485*^9}]
+}, Open  ]]
+},
+WindowSize->{778, 437},
+WindowMargins->{{62, Automatic}, {Automatic, 65}},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 180, 4, 31, "Text"],
+Cell[741, 26, 578, 17, 32, "Input"],
+Cell[1322, 45, 719, 22, 32, "Input"],
+Cell[2044, 69, 510, 14, 32, "Input"],
+Cell[2557, 85, 2186, 60, 121, "Input"],
+Cell[CellGroupData[{
+Cell[4768, 149, 302, 6, 32, "Input"],
+Cell[5073, 157, 231, 4, 32, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
