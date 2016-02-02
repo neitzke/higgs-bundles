@@ -1347,8 +1347,6 @@ is isomorphic to $\R^4$ with its standard \hk structure.
 \fixme{I only checked $\omega_1$ comes out right}
 \end{exercise}
 
-\currentposition
-
 In particular, complex structure $I_1$ on $X$ has
 holomorphic coordinates $w_1 = y_0 + \I y_1$ and $z_1 = y_2 + \I y_3$.
 Thus the loci $z_1 = 0$ and $w_1 = 0$ are complex submanifolds of
@@ -1634,7 +1632,8 @@ complex structure, $L$ is a \ti{holomorphic} line subbundle of the trivial rank 
 \begin{pf}
 For (1) it's enough to compute for $\vec{s} = (1,0,0)$, and there note
 $\omega_2 + \I \omega_3 \in \Omega^{2,0}$, $\omega_1 \in \Omega^{1,1}$,
-$\omega_2 - \I \omega_3 \in \Omega^{0,2}$.
+$\omega_2 - \I \omega_3 \in \Omega^{0,2}$. Thus $L_{\vec s}$ is 1-dimensional,
+spanned by $\omega_2 + \I \omega_3$.
 
 For (2) here is a computational proof.
 Fix a complex coordinate $\zeta$
@@ -1673,17 +1672,28 @@ these two patches, differing by the transition function $\zeta^{-2}$.
 This gives the desired holomorphic identification
 $L_\zeta \simeq \cO(-2)$ and finishes the proof.
 
-We can also give a more conceptual proof as follows. \fixme{explain better}
-Each complex structure $I_{\vec s}$ generates a 1-parameter
-group $U(1)_{\vec s} \subset SU(2)$. All of these subgroups are 
-conjugate, and we can view
-the $S^2$ of unit imaginary quaternions as the coset space
-$SU(2)/U(1)$ parameterizing such subgroups. $U(1)_{\vec s}$
-acts with weights $2,0,-2$ on $V$, and $L_{\vec s}$ is the
-weight-$2$ piece. Now the standard complex structure on $SU(2)/U(1)$
-is such that the complex vector field corresponding to the 
-\ti{raising} generator $X^+ \in \mathfrak{su}(2)_\C$
-spans $T^{0,1}$. \fixme{...}
+\currentposition
+
+% Another way of getting at this is: identify $V$ with the imaginary
+% quaternions by taking $\omega_i \mapsto I_i$; 
+% then $L_{\vec s}$ is the $-\I$ eigenspace 
+% of the operator $I_{\vec s}$ acting on the complexification of the subspace
+% $\{I_{\vec s'}: s' \perp s\}$ of $V$. (To check this, it's enough to look 
+% at $\vec s = (1,0,0)$; then $L_{\vec s}$ is supposed to contain 
+% $I_2 + \I I_3$.)  On the other hand the holomorphic tangent bundle $T^{1,0} S^2$
+% is the $+\I$ eigenspace of the same operator.
+
+% Yet another proof works as follows. \fixme{explain better}
+% Each complex structure $I_{\vec s}$ generates a 1-parameter
+% group $U(1)_{\vec s} \subset SU(2)$. All of these subgroups are 
+% conjugate, and we can view
+% the $S^2$ of unit imaginary quaternions as the coset space
+% $SU(2)/U(1)$ parameterizing such subgroups. $U(1)_{\vec s}$
+% acts with weights $2,0,-2$ on $V$, and $L_{\vec s}$ is the
+% weight-$2$ piece. Now the standard complex structure on $SU(2)/U(1)$
+% is such that the complex vector field corresponding to the 
+% \ti{raising} generator $X^+ \in \mathfrak{su}(2)_\C$
+% spans $T^{0,1}$. \fixme{...}
 \end{pf}
 
 \begin{defn}[Twistor space] Given a \hk manifold $X$, the \ti{twistor space} of $X$ is the smooth manifold
@@ -1701,28 +1711,45 @@ standard complex structure on $S^2$.
 \begin{prop}[Twistor space is a complex manifold] The almost complex structure $I$ on $\cZ$ is integrable.
 \end{prop}
 \begin{pf}
-We have 
+What we will use is that $\Omega(\zeta)$ determines the complex structure fiberwise,
+and $\Omega(\zeta)$ itself is holomorphic in $\zeta$.
+
+Concretely: we have 
 \begin{equation}
-T^{0,1}_{(x,\zeta)} \cZ = \ker \Omega(\zeta,x) \oplus \IP{\partial_{\bar \zeta}}.
+T^{0,1}_{(x,\zeta)} \cZ = T^{0,1}_{x,I_\zeta} X \oplus T^{0,1}_\zeta S^2.
 \end{equation}
-To see the integrability, consider a pair of vector fields $v = v \oplus v'$
-and $w = w \oplus w'$ with respect to this decomposition.
-It is easy to see that $[v,w]$ lies in $T^{0,1} \cZ$ (this just comes from the
-integrability on each fiber), and $[v',w']$ lies in $T^{0,1} \cZ$ 
-(from the integrability on the $S^2$ base).
+To see the integrability, consider a pair of vector fields in $T^{0,1} \cZ$,
+of the form $v \oplus v'$
+and $w \oplus w'$ with respect to this decomposition.
+
+Part of the story is easy.
+Since $v$ and $w$ are both tangent to the fiber $X_{\zeta} = \pi^{-1}(\zeta)$
+the bracket $[v,w]$ is just the bracket on $X_{\zeta}$, and we already
+know the integrability there, so $[v,w] \in T^{0,1} X$.
+Since $v'$ and $w'$ are both pulled back from the base $S^2$,
+their bracket $[v',w']$ is also pulled back from the bracket on $S^2$,
+and we already know the integrability there, so again $[v',w'] \in T^{0,1} S^2$.
 
 All that remains is to check
-that $[\ker \Omega, \IP{\partial_{\bar \zeta}}] \subset T^{0,1} \cZ$.
-So, suppose
-$v$ is any section of $\ker \Omega \subset TX$ over $\cZ$.
-Then also $[\partial_{\bar \zeta}, v]$ is a section of $TX$,
-and we want to check that it lies in $\ker \Omega$.
-Choose local coordinates $x^i$ for $X$, and write 
-$v = v^i \partial_i$, $\Omega = \Omega_{ij}(\zeta) \de x^i \wedge \de x^j$:
-then $[\partial_{\bar \zeta}, v] = (\partial_{\bar \zeta} v^i) \partial_i$,
-and if $\Omega_{ij}(\zeta) v^i = 0$ then applying
-$\partial_{\bar \zeta}$ gives $\Omega_{ij}(\zeta) \partial_{\bar \zeta} v^i = 0$,
-which is what we want. \fixme{clean this up a little}
+that $[v,w'] \subset T^{0,1} \cZ$.
+Choose local coordinates $x^i$ for $X$ and write 
+\begin{equation}
+v = v^i(x,\zeta) \partial_i, \qquad w' = f(x,\zeta) \partial_{\bar \zeta}, \qquad
+\Omega = \Omega_{ij}(\zeta) \de x^i \wedge \de x^j. 
+\end{equation}
+Here $v \in T^{0,1} X$ means it obeys the constraint
+\begin{equation} \label{eq:v-constraint}
+\Omega_{ij}(\zeta) v^i = 0.
+\end{equation}
+Then
+\begin{equation}
+ [v, f \partial_{\bar \zeta}] = (v^i \partial_i f) \partial_{\bar \zeta} - (\partial_{\bar \zeta} v^i) \partial_i.
+\end{equation}
+The first term is evidently in $T^{0,1} S^2$; for the second term note that
+applying $\partial_{\bar \zeta}$ to \eqref{eq:v-constraint}
+gives $\Omega_{ij}(\zeta) \partial_{\bar \zeta} v^i = 0$,
+so the second term is in $T^{0,1} X$; thus the whole RHS is 
+in $T^{0,1} \cZ$, which is what we want.
 \end{pf}
 
 Let us describe some of the abstract properties of $\cZ$:
