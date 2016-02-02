@@ -1253,7 +1253,7 @@ which gives
 % if we had computed $g$ from $I_2$ and $\omega_2$, or
 % from $I_3$ and $\omega_3$, we would get the same result.
 Thus the metric on $X$ given by
-\begin{equation} \label{eq:gibbons-hawking-metric}
+\begin{equation} \label{eq:gibbons-hawking-metric}.
   g = V \norm{\de x}^2 + V^{-1} \tTheta^2
 \end{equation}
 is \hk, with \kahler forms $\omega_i$.
@@ -1384,7 +1384,7 @@ matches with that of \autoref{exa:gibbons-hawking-R4} except that
 the circumference of the circle fibers is shorter by a factor of $k$.
 In other words, this metric is obtained by dividing
 out the metric of $\R^4 / \{ 0 \}$ by a subgroup 
-$\Z_k \subset U(1) \subset SU(2)_R$. This is a special case of the quotients
+$\Z_k \subset U(1)$. In turn this $U(1) \subset SU(2)_R$, so this is a special case of the quotients
 described in \autoref{exa:H-quotients}.
 \end{example}
 
@@ -1455,12 +1455,13 @@ $y=0$: thus the \hk structure indeed extends to $y=0$.
 
 \begin{example}[Eguchi-Hanson space]
 This is a case of \autoref{exa:gibbons-hawking}
-with two singularities. Take $U = \R^3$, fix distinct points
-$x_1, x_2 \in \R^3$, and let 
+with two singularities. Fix distinct points
+$x_1, x_2 \in \R^3$, let $U = \R^3$, and 
 \begin{equation}
   V(x) = \frac{1}{4\pi \norm{x - x_1}} + \frac{1}{4\pi \norm{x - x_2}}.
 \end{equation}
-The resulting $X$ is fibered over $\R^3$ with two degenerate fibers.
+The resulting $\bar X$ is fibered over $\R^3$ with two degenerate fibers.
+From now on we drop the bar and just call it $X$.
 Let $\pi: X \to \R^3$ be the projection.
 Then $\pi^{-1}(x_1 x_2)$ has the topology of $S^2$.
 \end{example}
@@ -1570,6 +1571,8 @@ Despite this, Taub-NUT space is definitely not the same
 \hk manifold as $\bbH$! So a \hk manifold contains more 
 information than just a family of complex manifolds.
 
+Similarly by taking multiple singularities in $V$ we could
+obtain the ``multi-Taub-NUT'' family of metrics.
 
 \subsection{The twistor family}
 
@@ -1683,11 +1686,24 @@ We have
 \begin{equation}
 T^{0,1}_{(x,\zeta)} \cZ = \ker \Omega(\zeta,x) \oplus \IP{\partial_{\bar \zeta}}.
 \end{equation}
-To see the integrability, suppose
+To see the integrability, consider a pair of vector fields $v = v \oplus v'$
+and $w = w \oplus w'$ with respect to this decomposition.
+It is easy to see that $[v,w]$ lies in $T^{0,1} \cZ$ (this just comes from the
+integrability on each fiber), and $[v',w']$ lies in $T^{0,1} \cZ$ 
+(from the integrability on the $S^2$ base).
+
+All that remains is to check
+that $[\ker \Omega, \IP{\partial_{\bar \zeta}}] \subset T^{0,1} \cZ$.
+So, suppose
 $v$ is any section of $\ker \Omega \subset TX$ over $\cZ$.
 Then also $[\partial_{\bar \zeta}, v]$ is a section of $TX$,
 and we want to check that it lies in $\ker \Omega$.
-\fixme{...}
+Choose local coordinates $x^i$ for $X$, and write 
+$v = v^i \partial_i$, $\Omega = \Omega_{ij}(\zeta) \de x^i \wedge \de x^j$:
+then $[\partial_{\bar \zeta}, v] = (\partial_{\bar \zeta} v^i) \partial_i$,
+and if $\Omega_{ij}(\zeta) v^i = 0$ then applying
+$\partial_{\bar \zeta}$ gives $\Omega_{ij}(\zeta) \partial_{\bar \zeta} v^i = 0$,
+which is what we want. \fixme{clean this up a little}
 \end{pf}
 
 Let us describe some of the abstract properties of $\cZ$:
@@ -1705,9 +1721,12 @@ This trivial-looking bit of extra structure will turn out to be
 very important!
 \item $\cZ$ carries a twisted fiberwise holomorphic symplectic form,
 \begin{equation}
-  \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \cO(2) 
+  \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \pi^* \cO(2) 
 \end{equation}
-\fixme{explain what this means}
+(What this means: $\Omega^{2,0}_{fiber}(\cZ)$ is the \ti{quotient}
+of $\Omega^{2,0}(\cZ)$ by the holomorphic subbundle
+of forms $\de \zeta \wedge \alpha$,
+$\alpha \in \Omega^{1,0}(\cZ)$.)
 \end{enumerate}
 
 \begin{example}[Twistor space of $\R^4$] \label{exa:R^4-twistor-space}
