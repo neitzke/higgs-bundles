@@ -233,6 +233,7 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Bun}{Bun}
 \DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Span}{Span}
 
 \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
@@ -431,13 +432,13 @@ has a moment map $\mu: \R^2 \to \fu(1)^*$, given by
 \begin{equation}
   \mu(x_1,x_2) \cdot \partial_\alpha = -\half (x_1^2 + x_2^2).
 \end{equation}
+\end{exercise}
 Thus if we identify $\fu(1) \simeq \R$ using the generator
 $\partial_\alpha$, we can think of $\mu$ just as an $\R$-valued function
 on $X$,
 \begin{equation}
   \mu(x_1,x_2) = -\half (x_1^2 + x_2^2).
 \end{equation}
-\end{exercise}
 
 
 \section{Local complex and \kahler geometry: a quick review}
@@ -1446,7 +1447,7 @@ where $V_0$ and $\Theta_0$ are as in \autoref{exa:gibbons-hawking-R4},
 $\delta V$ is a smooth (harmonic) function on $W$, 
 and $\delta \Theta$ a smooth 1-form on $W$.
 We then make the same change of coordinates 
-to $(y_1,y_2,y_3,y_4)$ we made in 
+to $(y_0,y_1,y_2,y_3)$ we made in 
 \autoref{exa:gibbons-hawking-R4}, and compute that $\delta V$
 and $\delta \Theta$ do not contribute to the $\omega_i$ at
 $y=0$: thus the \hk structure indeed extends to $y=0$.
@@ -1547,7 +1548,6 @@ for ``asymptotically locally Euclidean.''
 In the case $\Gamma = \Z_k$ these \hk metrics are
 the same as those of \autoref{exa:multi-eguchi-hanson};
 for other $\Gamma$ they are not Gibbons-Hawking spaces.
-\fixme{How close are they?}
 \end{example}
 
 \begin{example}[Taub-NUT space]
@@ -1563,7 +1563,7 @@ rather than $\R^4$.
 
 \begin{exercise} Show that Taub-NUT space is
 biholomorphic to $\C^2$, in any of its complex
-structures.
+structures. \fixme{warning, this one might be hard}
 \end{exercise}
 
 Despite this, Taub-NUT space is definitely not the same
@@ -1592,32 +1592,29 @@ even arrange that the resulting holomorphic symplectic
 forms vary holomorphically:
 
 \begin{prop}[Holomorphic symplectic forms on a \hk manifold
-vary holomorphically over $S^2$] Suppose $X$ is a \hk manifold. For each $\vec s \in S^2$, let
+vary holomorphically over $S^2$] Suppose $X$ is a \hk manifold. 
+Let 
 \begin{equation}
- L_{\vec s} \subset \Omega^2_\C(X)
+V = \Span(\omega_1, \omega_2, \omega_3) \subset \Omega^2_\C(X).
 \end{equation}
-be the vector space spanned by $2$-forms
-$\omega_{\vec s'} + \I \omega_{\vec s \times \vec s'}$, where
-$\vec s' \perp \vec s$. Then:
+For each $\vec s \in S^2$, let 
+\begin{equation}
+ L_{\vec s} = V \cap \Omega^{2,0}_{I_{\vec s}}(X).
+\end{equation}
+Then:
 \begin{enumerate}
-\item $L_{\vec s}$ is a $1$-dimensional complex subspace. 
-\item Any $\Omega \in L_{\vec s}$ is a holomorphic symplectic form
-on $(X,I_{\vec s})$.
+\item $\dim_\C L_{\vec s} = 1$.
 \item If we equip $S^2$ with its standard 
-complex structure, $L$ is a \ti{holomorphic} line subbundle of the trivial holomorphic bundle $S^2 \times \Omega^2_\C(X)$, isomorphic to $\cO(-2) \to \C\PP^1$.
+complex structure, $L$ is a \ti{holomorphic} line subbundle of the trivial rank $3$ holomorphic bundle $S^2 \times V$, canonically isomorphic to $\cO(-2) \to \C\PP^1$.
 \end{enumerate}
 \end{prop}
 
-\begin{pf} For (1) note that any two $\vec s'$ orthogonal to $\vec s$
-differ by a rotation $R$ around $\vec s$ by some angle $\alpha$,
-and then compute directly that such a rotation just changes
-$\omega_{\vec s'} + \I \omega_{\vec s \times \vec s'}$ by
-a factor $e^{\I \alpha}$.
+\begin{pf}
+For (1) it's enough to compute for $\vec{s} = (1,0,0)$, and there note
+$\omega_2 + \I \omega_3 \in \Omega^{2,0}$, $\omega_1 \in \Omega^{1,1}$,
+$\omega_2 - \I \omega_3 \in \Omega^{0,2}$.
 
-(2) is a direct computation, essentially the same as the proof
-of \autoref{prop:hyperkahler-is-hol-symplectic}.
-
-For (3) here is a computational proof.
+For (2) here is a computational proof.
 Fix a complex coordinate $\zeta$
 on $S^2 \setminus \{ (-1,0,0) \}$, by
 \begin{equation}
@@ -1629,17 +1626,40 @@ Thus we have
   \zeta = 1 \leftrightarrow \vec s = (0,1,0), \quad & \zeta = -1 \leftrightarrow \vec s = (0,-1,0), \\
   \zeta = \I \leftrightarrow \vec s = (0,0,1), \quad & \zeta = -\I \leftrightarrow \vec s = (0,0,-1).
 \end{align}
-Then consider the family of 2-forms
-\begin{equation}
+Using this translation we will sometimes write 
+$I_\zeta$ for $I_{\vec s}$ and $L_\zeta$ for $L_{\vec s}$.
+Now consider the holomorphic family of 2-forms
+\begin{equation} \label{eq:hol-symp-family}
   \Omega(\zeta) = \frac{\omega_2 + \I \omega_3}{2\zeta} - \omega_1 + \frac{- \omega_2 + \I \omega_3}{2} \zeta.
 \end{equation}
-Now we verify that $\Omega(\zeta) \in L_\zeta$.
+We want to know
+%(see {\tt verify-holsymp.nb}) 
+that applying $I_\zeta$ to the first slot of $\Omega(\zeta)$ gives
+$\I \Omega(\zeta)$, so that $\Omega(\zeta) \in L_\zeta$.
+This can be checked (a bit laboriously) 
+using $I_i \omega_i = g$,
+$I_i \omega_{i+1} = -\omega_{i+2}$, $I_i \omega_{i+2} = \omega_{i+1}$.
 
-For any $\zeta \in \C$, $\zeta \Omega(\zeta) \in L_\zeta$;
+Now, $\Omega(\zeta)$ blows up as $\zeta \to 0$ or 
+$\zeta \to \infty.$
+Still, for any $\zeta \in \C$, $\zeta \Omega(\zeta)$ is
+a nonvanishing element of $L_\zeta$;
 similarly, for any $\zeta \in \C^\times \cup \{\infty\}$,
-$\Omega(\zeta) / \zeta \in L_\zeta$.
-Together these give the desired holomorphic identification
-between $L_\zeta$ and $\cO(-2)$.
+$\Omega(\zeta) / \zeta$ is a nonvanishing element of $L_\zeta$.
+Thus we have two holomorphic trivializations of $L_\zeta$ over 
+these two patches, differing by the transition function $\zeta^{-2}$.
+This gives the desired holomorphic identification
+$L_\zeta \simeq \cO(-2)$ and finishes the proof.
+
+We can also give a more conceptual proof as follows.
+Each complex structure $I_{\vec s}$ generates a 1-parameter
+group of rotations, $U(1)_{\vec s} \subset SU(2)$. Indeed we can view
+the $S^2$ of unit imaginary quaternions as the coset space
+$SU(2)/U(1)$ parameterizing such subgroups. $U(1)_{\vec s}$
+acts with weights $2,0,-2$ on $V$, and $L_{\vec s}$ is the
+weight-$2$ piece. But this is precisely a standard construction 
+of the holomorphic line bundle $\cO(-2)$ by ``induction'' from
+the $U(1)$ subgroup (Borel-Weil theorem).
 \end{pf}
 
 \begin{defn}[Twistor space] Given a \hk manifold $X$, the \ti{twistor space} of $X$ is the smooth manifold
@@ -1657,11 +1677,56 @@ standard complex structure on $S^2$.
 \begin{prop}[Twistor space is a complex manifold] The almost complex structure $I$ on $\cZ$ is integrable.
 \end{prop}
 \begin{pf}
+We have 
+\begin{equation}
+T^{0,1}_{(x,\zeta)} \cZ = \ker \Omega(\zeta,x) \oplus \IP{\partial_{\bar \zeta}}.
+\end{equation}
+To see the integrability, suppose
+$v$ is any section of $\ker \Omega \subset TX$ over $\cZ$.
+Then also $[\partial_{\bar \zeta}, v]$ is a section of $TX$,
+and we want to check that it lies in $\ker \Omega$.
 \fixme{...}
 \end{pf}
 
+Let us describe some of the abstract properties of $\cZ$:
+\begin{enumerate}
+\item $\cZ$ is a complex manifold, with a 
+  holomorphic projection $\pi: \cZ \to S^2$.
+  The fiber $\pi^{-1}(\vec s)$ is just $(X,I_{\vec s})$ as a complex
+  manifold. 
+\item $\cZ$ carries a \ti{real structure} $\rho: \cZ \to \cZ$,
+i.e. an antiholomorphic involution,
+\begin{equation}
+  \rho(x, \vec s) = (x, - \vec s).
+\end{equation}
+This trivial-looking bit of extra structure will turn out to be 
+very important!
+\item $\cZ$ carries a twisted fiberwise holomorphic symplectic form,
+\begin{equation}
+  \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \cO(2) 
+\end{equation}
+\fixme{explain what this means}
+\end{enumerate}
+
 \begin{example}[Twistor space of $\R^4$] \label{exa:R^4-twistor-space}
-\fixme{...}
+For the standard \hk structure on $\bbH$ all this becomes very 
+concrete. The holomorphic $2$-form \eqref{eq:hol-symp-family}
+can be written as
+\begin{equation}
+  \Omega(\zeta) = \frac{1}{2\zeta} \de z(\zeta) \wedge \de w(\zeta)
+\end{equation}
+where
+\begin{align}
+  z(\zeta) &= z_1 + \bar{w}_1 \zeta, \\
+  w(\zeta) &= w_1 - \bar{z}_1 \zeta.
+\end{align}
+Thus we have two coordinate systems: $(\zeta, z(\zeta), w(\zeta))$
+covering the patch $\zeta \neq \infty$ and $(1/\zeta, z(\zeta)/\zeta, w(\zeta)/\zeta)$ covering $\zeta \neq 0$. This identifies
+$\cZ$ as the total space of the rank $2$ holomorphic bundle
+\begin{equation}
+  \cO(1) \oplus \cO(1) \to S^2.
+\end{equation}
+\fixme{describe the involution $\rho$}
 \end{example}
 
 \subsection{More examples}
