@@ -810,7 +810,8 @@ an isomorphism $T^{1,0}X \to (T^{1,0} X)^*$.
 (Note that this definitely does \ti{not} mean that $\Omega$ is nondegenerate on the whole $T_\C X$. Indeed, since $\Omega$ is 
 of type $(2,0)$ its contraction with any $v \in T^{0,1} X$ vanishes.)
 
-\begin{prop}[\Hk manifolds are holomorphic symplectic] If $X$ is \hk then $\Omega_1 = \omega_2 + \I \omega_3$ is a \ti{holomorphic symplectic form} with respect to structure $I_1$ (and similarly with the indices 
+\begin{prop}[\Hk manifolds are holomorphic symplectic] \label{prop:hyperkahler-is-hol-symplectic}
+If $X$ is \hk then $\Omega_1 = \omega_2 + \I \omega_3$ is a \ti{holomorphic symplectic form} with respect to structure $I_1$ (and similarly with the indices 
 $1,2,3$ cyclically permuted.)
 \end{prop}
 \begin{pf} 
@@ -1268,7 +1269,7 @@ $X \to U$ with this curvature. The total space of such a
 circle bundle over $S^2$ is the Hopf fibration $S^3 \to S^2$.
 
 $X$ thus doesn't extend as a $U(1)$ bundle
-over the point $x_i$.
+over the point $x = 0$.
 Nevertheless it \ti{does} extend as a \hk manifold.
 Indeed, near $0$ the circle fibers of $X$ are shrinking to zero
 length, and it is possible to add
@@ -1390,6 +1391,7 @@ Consider a small $S^2$ around $x_i$:
 so the $U(1)$ bundle $X$ restricted to this $S^2$ has 
 degree $1$. Thus, $X$ doesn't extend as a $U(1)$ bundle
 over the point $x_i$.
+
 Nevertheless it \ti{does} extend as a \hk manifold.
 Indeed, near $x_i$ we have
 \begin{equation}
@@ -1397,12 +1399,24 @@ V = \frac{1}{4\pi\norm{x - x_i}} + \text{regular},
 \end{equation}
 so the circle fibers of $X$ are shrinking to zero
 length just as in \autoref{exa:gibbons-hawking-R4}.
-It is possible to add a single point over $x_i$
+It is possible to add a single point over each $x_i$
 to get a new space $\bar X$, which is a \hk manifold with non-free 
 $U(1)$ action, with $\bar X / U(1) = U$.
-This follows from the computation 
-we have already done in \autoref{exa:gibbons-hawking-R4}.
-\fixme{explain this more precisely}
+% This follows from the computation 
+% we have already done in \autoref{exa:gibbons-hawking-R4}.
+Indeed, choosing the coordinate $x' = x - x_i$,
+a neighborhood $W$ of $x' = 0$ in $X$ can be identified as a 
+principal $U(1)$-bundle with a neighborhood of $x = 0$
+in \autoref{exa:gibbons-hawking-R4}. We have
+$V = V_0 + \delta V$ and $\Theta = \Theta_0 + \delta \Theta$,
+where $V_0$ and $\Theta_0$ are as in \autoref{exa:gibbons-hawking-R4},
+$\delta V$ is a smooth (harmonic) function on $W$, 
+and $\delta \Theta$ a smooth 1-form on $W$.
+We then make the same change of coordinates 
+to $(y_1,y_2,y_3,y_4)$ we made in 
+\autoref{exa:gibbons-hawking-R4}, and compute that $\delta V$
+and $\delta \Theta$ do not contribute to the $\omega_i$ at
+$y=0$: thus the \hk structure indeed extends to $y=0$.
 \end{example}
 
 \begin{example}[Eguchi-Hanson space]
@@ -1426,11 +1440,11 @@ is the direction from $x_1$ to $x_2$ or vice versa.
 \end{exercise}
 
 \begin{exercise}
-Compute the area of this $S^2$ (in the \hk metric $g$).
+Compute the area of this $S^2$, in the \hk metric $g$.
 \end{exercise}
 
 \begin{exercise}
-Show that this $S^2$ has self-intersection number $-2$. \fixme{warning, this one might be hard}
+Show that this $S^2$ has self-intersection number $-2$.
 \end{exercise}
 
 \begin{exercise}
@@ -1450,7 +1464,8 @@ it is not biholomorphic to $T^* \C\PP^1$.
 Nevertheless we do have a 1-parameter group relating 
 \ti{some} of the $I_{\vec s}$:
 \begin{exercise}
-Show that $X$ admits an action of $SO(2) \subset SO(3)$,
+Show that $X$ admits an action of $SO(2) \subset SO(3)$
+by isometries,
 such that $T^* I_{\vec s} = I_{T \vec{s}}$.
 \end{exercise}
 
@@ -1540,36 +1555,49 @@ to reconstruct the original \hk $X$.
 % \ti{holomorphically} as a function of $\vec s$,
 % when we equip $S^2$ with its standard complex
 % structure. 
-To make this precise, first observe the following:
+We know that $\Omega_1 = \omega_2 + \I \omega_3$ is
+a holomorphic symplectic form for $I_1$. We can do similarly
+for an arbitrary complex structure $I_{\vec s}$, and can
+even arrange that the resulting holomorphic symplectic
+forms vary holomorphically:
 
-\begin{prop} Suppose $X$ is a \hk manifold. For each $\vec s \in S^2$,
-let $I = I_{\vec s}$, and let
+\begin{prop}[Holomorphic symplectic forms on a \hk manifold
+vary holomorphically over $S^2$] Suppose $X$ is a \hk manifold. For each $\vec s \in S^2$, let
 \begin{equation}
  L_{\vec s} \subset \Omega^2_\C(X)
 \end{equation}
 be the vector space spanned by $2$-forms
-$\omega_{I'} + \I \omega_{II'}$, where $I' = I_{s'}$ and
-$s' \perp s$. Then:
+$\omega_{\vec s'} + \I \omega_{\vec s \times \vec s'}$, where
+$\vec s' \perp \vec s$. Then:
 \begin{enumerate}
 \item $L_{\vec s}$ is a $1$-dimensional complex subspace. 
 \item Any $\Omega \in L_{\vec s}$ is a holomorphic symplectic form
 on $(X,I_{\vec s})$.
-\item If we equip $S^2$ with the opposite of its standard 
+\item If we equip $S^2$ with its standard 
 complex structure, $L$ is a \ti{holomorphic} line subbundle of the trivial holomorphic bundle $S^2 \times \Omega^2_\C(X)$, isomorphic to $\cO(-2) \to \C\PP^1$.
 \end{enumerate}
 \end{prop}
 
-\begin{pf} Here is a direct computational proof.
+\begin{pf} For (1) note that any two $\vec s'$ orthogonal to $\vec s$
+differ by a rotation $R$ around $\vec s$ by some angle $\alpha$,
+and then compute directly that such a rotation just changes
+$\omega_{\vec s'} + \I \omega_{\vec s \times \vec s'}$ by
+a factor $e^{\I \alpha}$.
+
+(2) is a direct computation, essentially the same as the proof
+of \autoref{prop:hyperkahler-is-hol-symplectic}.
+
+For (3) here is a computational proof.
 Fix a complex coordinate $\zeta$
 on $S^2 \setminus \{ (-1,0,0) \}$, by
 \begin{equation}
- \zeta = \frac{s_3 + \I s_2}{1 + s_1}, \qquad (s_1, s_2, s_3) = \frac{(1 - \abs{\zeta}^2, 2 \im \zeta, 2 \re \zeta)}{1+\abs{\zeta}^2}.
+ \zeta = \frac{s_2 + \I s_3}{1 + s_1}, \qquad (s_1, s_2, s_3) = \frac{(1 - \abs{\zeta}^2, 2 \re \zeta, 2 \im \zeta)}{1+\abs{\zeta}^2}.
 \end{equation}
 Thus we have
 \begin{align}
   \zeta = 0 \leftrightarrow \vec s = (1,0,0), \quad & \zeta = \infty \leftrightarrow \vec s = (-1,0,0), \\
-  \zeta = \I \leftrightarrow \vec s = (0,1,0), \quad & \zeta = -\I \leftrightarrow \vec s = (0,-1,0), \\
-  \zeta = 1 \leftrightarrow \vec s = (0,0,1), \quad & \zeta = -1 \leftrightarrow \vec s = (0,0,-1).
+  \zeta = 1 \leftrightarrow \vec s = (0,1,0), \quad & \zeta = -1 \leftrightarrow \vec s = (0,-1,0), \\
+  \zeta = \I \leftrightarrow \vec s = (0,0,1), \quad & \zeta = -\I \leftrightarrow \vec s = (0,0,-1).
 \end{align}
 Then consider the family of 2-forms
 \begin{equation}
@@ -1592,8 +1620,8 @@ equipped with the almost complex structure
 \begin{equation}
   I(x,\vec s) = I_{\vec s}(x) \oplus I_{S^2}
 \end{equation}
-where $I_{S^2}$ denotes the opposite of the 
-canonical complex structure on $S^2$.
+where $I_{S^2}$ denotes the 
+standard complex structure on $S^2$.
 \end{defn}
 
 \begin{prop}[Twistor space is a complex manifold] The almost complex structure $I$ on $\cZ$ is integrable.
