@@ -1194,7 +1194,7 @@ Then define
   &= V \alpha_1 \wedge \de z_1
 \end{align}
 where we introduced
-\begin{equation}
+\begin{equation} \label{eq:hol-forms-GH}
   z_1 = x_2 + \I x_3, \qquad 
   \alpha_1 = V^{-1} \tTheta + \I \de x_1.
 \end{equation}
@@ -1262,6 +1262,15 @@ The principal $U(1)$ action on $X$ is by isometries preserving
 the \hk structure (this is clear since nothing in $\omega_i$
 depends on the fiber coordinates).
 \end{example}
+
+\begin{exercise} Let $L$ be a line in $U$, oriented 
+in the direction $\vec s = (1,0,0)$. 
+Show that $\pi^{-1}(L)$ is a complex submanifold of $X$
+in the complex structure $I_{\vec s}$. (Hint: it's sufficient
+to show that the holomorphic symplectic form $\Omega_1$ vanishes
+along this submanifold --- why?) If $U = \R^3$ and $V=1$,
+describe this complex submanifold explicitly in complex coordinates. 
+\end{exercise}
 
 \begin{example}[$\R^4 \setminus \{ 0 \}$ as an incomplete Gibbons-Hawking space] \label{exa:gibbons-hawking-R4}
 Consider \autoref{exa:incomplete-gibbons-hawking} with
@@ -1491,9 +1500,18 @@ this one might be hard}
 
 Eguchi-Hanson space is our first example where the $I_{\vec s}$ do not all give rise to the same complex manifold:
 \begin{exercise}
-Show that, in any \ti{other} complex structure $I_{\vec s}$,
-$X$ has no compact complex submanifolds, and in particular 
-it is not biholomorphic to $T^* \C\PP^1$.
+Show that, in any \ti{other} complex structure $I_{\vec s'}$,
+$X$ has no compact 1-complex-dimensional complex 
+submanifolds. (Hint: use the fact that
+there is a holomorphic function $z: X \to \C$.
+The image of a compact connected 
+1-complex-dimensional submanifold
+would have to be a point. But by looking at the fibers
+of $z$ you can see they have no compact complex submanifolds.
+It might be 
+convenient to assume $\vec s$ is generic and $\vec s' = (1,0,0)$,
+in which case the relevant function is $z_1$ given in
+\eqref{eq:hol-forms-GH}.)
 \end{exercise}
 
 Nevertheless we do have a 1-parameter group relating 
