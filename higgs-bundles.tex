@@ -260,6 +260,7 @@ Preliminary draft
 \end{center}
 
 \tableofcontents
+\renewcommand{\listtheoremname}{Quick reference}
 \listoftheorems[onlynamed]
 
 \section{Introductory motivation}
@@ -1619,7 +1620,7 @@ for an arbitrary complex structure $I_{\vec s}$, and can
 even arrange that the resulting holomorphic symplectic
 forms vary holomorphically:
 
-\begin{prop}[Holomorphic symplectic forms on a \hk manifold
+\begin{lem}[Holomorphic symplectic forms on a \hk manifold
 vary holomorphically over $S^2$] Suppose $X$ is a \hk manifold. 
 Let 
 \begin{equation}
@@ -1635,7 +1636,7 @@ Then:
 \item If we equip $S^2$ with its standard 
 complex structure, $L$ is a \ti{holomorphic} line subbundle of the trivial rank $3$ holomorphic bundle $S^2 \times V$, canonically isomorphic to $\cO(-2) \to \C\PP^1$.
 \end{enumerate}
-\end{prop}
+\end{lem}
 
 \begin{pf}
 For (1) it's enough to compute for $\vec{s} = (1,0,0)$, and there note
@@ -1785,24 +1786,39 @@ $\alpha \in \Omega^{1,0}(\cZ)$.)
 
 \begin{example}[Twistor space of $\R^4$] \label{exa:R^4-twistor-space}
 For the standard \hk structure on $\bbH$ all this becomes very 
-concrete. The holomorphic $2$-form \eqref{eq:hol-symp-family}
+concrete. 
+If we define
+\begin{align}
+  w(\zeta) &= w_1 + \I \bar{z}_1 \zeta, \\
+  z(\zeta) &= z_1 - \I \bar{w}_1 \zeta,
+\end{align}
+then the holomorphic $2$-form \eqref{eq:hol-symp-family}
 can be written as
 \begin{equation}
-  \Omega(\zeta) = \frac{1}{2\zeta} \de z(\zeta) \wedge \de w(\zeta)
+  \Omega(\zeta) = \frac{1}{2\zeta} \de w(\zeta) \wedge \de z(\zeta)
 \end{equation}
-where
+Indeed,
 \begin{align}
-  z(\zeta) &= z_1 + \bar{w}_1 \zeta, \\
-  w(\zeta) &= w_1 - \bar{z}_1 \zeta.
+  \frac{1}{2\zeta} \de w(\zeta) \wedge \de z(\zeta) &= \frac{1}{2\zeta} (\de w_1 \wedge \de z_1 - \I \zeta (\de w_1 \wedge \de \bar{w}_i + \de z_1 \wedge \de \bar{z}_1) + \zeta^2 \de \bar{z}_1 \wedge \de \bar{w}_1) \\
+  &= \frac{\omega_2 + \I \omega_3}{2\zeta} - \omega_1 + \frac{-\omega_2 + \I \omega_3}{2} \zeta
 \end{align}
+matching \eqref{eq:hol-symp-family}.
+
 Thus we have two coordinate systems: $(\zeta, z(\zeta), w(\zeta))$
 covering the patch $\zeta \neq \infty$ and $(1/\zeta, z(\zeta)/\zeta, w(\zeta)/\zeta)$ covering $\zeta \neq 0$. This identifies
 $\cZ$ as the total space of the rank $2$ holomorphic bundle
 \begin{equation}
   \cO(1) \oplus \cO(1) \to S^2.
 \end{equation}
-\fixme{describe the involution $\rho$}
+The involution $\rho$ acts by \fixme{check}
+\begin{equation} \label{eq:involution-R4}
+  (\zeta, z, w) \to (-1/\bar\zeta, \bar w / \bar\zeta, -\bar z / \bar \zeta).
+\end{equation}
+
 \end{example}
+
+\begin{exercise} Check that the formula \eqref{eq:involution-R4} is correct.
+\end{exercise}
 
 \subsection{More examples}
 
@@ -1817,11 +1833,14 @@ $\cZ$ as the total space of the rank $2$ holomorphic bundle
 
 \subsection{\Hk quotients}
 
-...
+\subsection{More formal developments}
+
+\begin{prop}[\Hk manifolds are Ricci-flat] If $X$ is a \hk manifold,
+then the \hk metric $g$ is Ricci-flat.
+\end{prop}
 
 \fixme{reduced holonomy}
 
-\fixme{Ricci-flatness}
 
 
 \section{Higgs bundles for $G = U(1)$}
