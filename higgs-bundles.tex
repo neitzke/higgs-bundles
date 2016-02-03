@@ -1073,8 +1073,8 @@ Show that the action of $T \in SU(2)_L$ on $\bbH$ has
 \end{equation}
 On the right side, by $T \vec s$ we mean the \ti{conjugation}
 action of the unit quaternion $T$ on the sphere of norm-$1$
-imaginary quaternions (which gives the standard double-covering
-$SU(2) \to SO(3)$.)
+imaginary quaternions, $\vec s \mapsto T^{-1} {\vec s} T$ 
+(which gives the standard double-covering $SU(2) \to SO(3)$.)
 \end{exercise}
 
 \begin{exercise}
@@ -1361,16 +1361,20 @@ There is a more conceptual way of arriving at \autoref{exa:gibbons-hawking-R4}:
 Consider again the standard \hk structure on $\R^4$ 
 (\autoref{exa:R4}), which is acted on by $SU(2)_R$.
 Show that there is a subgroup $U(1) \subset SU(2)_R$ which acts
-by $(w_1,z_1) \to (e^{\I \alpha} w_1, e^{-\I\alpha} z_1)$.
+by $(w_1,z_1) \to (e^{-\I \alpha} w_1, e^{\I\alpha} z_1)$.
 Thus this action preserves the \hk structure.
-Moreover show that this action is Hamiltonian with 
-respect to all of the $\omega_i$, and compute the moment
-maps $\mu_i: \R^4 \to \fu(1)^*$. 
-If we identify $\fu(1) \simeq \R$, we obtain a map $\R^4 \to \R^3$ given by
-$(\mu_1, \mu_2, \mu_3)$. Show that this map realizes
-$\R^4 \setminus \{0\}$ as a circle bundle over $\R^3$,
-and that the metric is precisely of the form considered 
-in \autoref{exa:gibbons-hawking-R4}.
+Moreover show that this action admits moment maps 
+$\mu_i: \R^4 \to \fu(1)^*$ with 
+respect to all of the $\omega_i$.
+If we identify $\fu(1) \simeq \R$, we obtain a map $\vec\mu: \R^4 \to \R^3$ given by
+$(\mu_1, \mu_2, \mu_3)$. Show that the image of $\vec\mu$ is the complement of a 
+point in $\R^3$; by shifting each $\mu_i$ by a constant we can arrange
+that this point is $0 \in \R^3$. Then show that $\vec\mu$ realizes
+$\R^4 \setminus \{0\}$ as principal $U(1)$ bundle over $\R^3 \setminus \{0\}$,
+and that the metric is of the form in \autoref{exa:gibbons-hawking-R4}.
+(Hint: at some points it is convenient to consider the complex combination 
+$\mu_2 + \I \mu_3$, which is a moment map for the holomorphic symplectic
+form $\Omega_1$.)
 \end{exercise}
 
 % This was also true of $\bbH$ of course 
@@ -1519,7 +1523,7 @@ Nevertheless we do have a 1-parameter group relating
 \begin{exercise}
 Show that $X$ admits an action of $SO(2) \subset SO(3)$
 by isometries,
-such that $T^* I_{\vec s} = I_{T \vec{s}}$.
+such that $T^* I_{\vec s} = I_{T \vec{s}}$. \fixme{check!}
 \end{exercise}
 
 \begin{example}[Multi-Eguchi-Hanson spaces] \cite{MR520463} \label{exa:multi-eguchi-hanson} More generally, take $U = \R^3$, fix a collection
