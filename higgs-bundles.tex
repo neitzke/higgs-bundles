@@ -1,4 +1,4 @@
-\documentclass[12pt,letterpaper,reqno]{amsart}
+\documentclass[12pt,letterpaper,reqno]{article}
 
 % \usepackage{mathtools}
 \usepackage{epsfig}
@@ -220,6 +220,8 @@
 \newcommand{\dwrt}[1]{\frac{\partial}{\partial#1}}
 \newcommand{\eps}{\epsilon}
 
+\newcommand{\mmaref}[1]{}
+
 \newcommand{\ti}[1]{\textit{#1}}
 
 \DeclareMathOperator{\ad}{ad}
@@ -256,6 +258,9 @@
 {\textbf {{Moduli of Higgs Bundles}}} \\
 Preliminary draft
 \end{center}
+
+\tableofcontents
+\listoftheorems[onlynamed]
 
 \section{Introductory motivation}
 
@@ -934,17 +939,19 @@ and cyclic permutations.
 namely $v \mapsto g(v,\cdot)$.)
 \end{cor}
 
-% \begin{prop}[Condition for forms $\omega_i$ to give a \hk metric] \label{prop:omega-hk-condition}
-% Suppose $X$ is a smooth manifold with symplectic forms 
-% $\omega_1, \omega_2, \omega_3$, obeying the condition that
-% \begin{equation}
-% -\omega_1 \omega_3^{-1} \omega_2 = -\omega_2 \omega_1^{-1} \omega_3 = -\omega_3 \omega_2^{-1} \omega_1,
-% \end{equation}
-% and that this quantity, $g$, 
-% is \ti{positive definite} as a symmetric bilinear form.
-% Then $g$ is a \hk metric on $X$,
-% with $\omega_i$ the associated \kahler forms.
-% \end{prop}
+\begin{prop}[Condition for forms $\omega_i$ to give a \hk metric] \label{prop:omega-hk-condition}
+Suppose $X$ is a smooth manifold with symplectic forms 
+$\omega_1, \omega_2, \omega_3$, obeying the condition that
+\begin{equation}
+-\omega_1 \omega_3^{-1} \omega_2 = -\omega_2 \omega_1^{-1} \omega_3 = -\omega_3 \omega_2^{-1} \omega_1,
+\end{equation}
+and that this quantity, $g$, 
+is \ti{positive definite} as a symmetric bilinear form.
+Then $g$ is a \hk metric on $X$,
+with $\omega_i$ the associated \kahler forms.
+\end{prop}
+\begin{pf} \fixme{...}
+\end{pf}
 
 \begin{exercise}
 Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
@@ -983,17 +990,11 @@ Thus $SO(3)$ naturally acts on the set of
 \subsection{First examples}
 
 \begin{example}[Flat quaternionic space] \label{exa:R4} The quaternions
-$\bbH$ can be identified with $\R^4$
-via the map
-\begin{equation}
-  x_0 + x_1 \I + x_2 \J + x_3 \K \mapsto (x_0,x_1,x_2,x_3).
-\end{equation}
-This makes $\bbH$ into a manifold of real 
-dimension $4$.
-The standard metric on $\R^4$ induces a metric
-$g$ on $\bbH$.
-If we identify $T_p \bbH \simeq \bbH$ 
-in the obvious way,
+Being a real vector space, $\bbH$ is
+a manifold of real dimension $4$.
+If we identify $T_p \bbH \simeq \bbH$ in the obvious way,
+the quaternion norm $\norm{q}^2 = q \bar{q}$
+induces a metric $g$ on $\bbH$.
 the operations of left-multiplication by $\I$, $\J$ and $\K$
 give complex structures $I_1$, $I_2$, $I_3$ on $\bbH$,
 obeying the quaternion algebra.
@@ -1001,7 +1002,14 @@ Evidently these are all covariantly constant, so
 $g$ is \kahler for all three of these complex
 structures, and thus $\bbH$ is \hk.
 
-The symplectic forms are
+To introduce coordinates we
+identify $\bbH$ with $\R^4$
+via the map
+\begin{equation}
+  x_0 + x_1 \I + x_2 \J + x_3 \K \mapsto (x_0,x_1,x_2,x_3).
+\end{equation}
+
+Then the symplectic forms are
 \begin{align}
   \omega_1 &= \de x_0 \wedge \de x_1 + \de x_2 \wedge \de x_3, \\
   \omega_2 &= \de x_0 \wedge \de x_2 + \de x_3 \wedge \de x_1, \\
@@ -1654,10 +1662,10 @@ Now consider the holomorphic family of 2-forms
   \Omega(\zeta) = \frac{\omega_2 + \I \omega_3}{2\zeta} - \omega_1 + \frac{- \omega_2 + \I \omega_3}{2} \zeta.
 \end{equation}
 We want to know
-%(see {\tt verify-holsymp.nb}) 
 that applying $I_\zeta$ to the first slot of $\Omega(\zeta)$ gives
 $\I \Omega(\zeta)$, so that $\Omega(\zeta) \in L_\zeta$.
 This can be checked (a bit laboriously) 
+\mmaref{verify-holsymp}
 using $I_i \omega_i = g$,
 $I_i \omega_{i+1} = -\omega_{i+2}$, $I_i \omega_{i+2} = \omega_{i+1}$.
 
