@@ -1869,26 +1869,27 @@ In the holomorphic coordinates this becomes
 
 \begin{example}[Twistor space of $\R^3 \times S^1$]  \label{exa:R3S1-twistor-space}
 For $\R^3 \times S^1$ the picture is more interesting.
-The shift by $\Z$ acts as $(w_1,z_1) \to (w_1 + n,z_1)$.
+The shift by $\Z$ acts as $(w_1,z_1) \to (w_1 + 2 \pi n, z_1)$.
 Thus we can build coordinates by taking invariant 
 combinations of the coordinates we used in 
 \autoref{exa:R4-twistor-space}:
 on the patch $\zeta \neq \infty$ we take
 \begin{equation}
- \eta = z - \zeta w, \qquad \cX = \exp(2 \pi \I w)
+ \eta = z - \zeta w, \qquad \cX = \exp(\I w)
 \end{equation}
 while on $\zeta \neq 0$ we take
 \begin{equation}
- \eta' = z / \zeta^2 - w / \zeta, \qquad \cX' = \exp(2 \pi \I z / \zeta)
+ \eta' = z / \zeta^2 - w / \zeta, \qquad \cX' = \exp(\I z / \zeta)
 \end{equation}
 Thus the transition map is
 \begin{equation}
-  (\zeta', \eta', \cX') = (1 / \zeta, \eta / \zeta^2, \cX \exp(2 \pi \I \eta / \zeta) )
+  (\zeta', \eta', \cX') = (1 / \zeta, \eta / \zeta^2, \cX \exp(\I \eta / \zeta) )
 \end{equation}
-If we let $L$ denote the line bundle over $\cO(2) \to \C\PP^1$ with 
-transition function $e^{2 \pi \I \eta / \zeta}$, what we just showed
+If we let $L$ denote the line bundle over $\cO(2) \to S^2$ with 
+transition function $e^{\I \eta / \zeta}$, what we just showed
 is that $\cZ$ is the total space of $L$ with the
-zero section deleted.
+zero section deleted. (Actually $L$ is holomorphically trivial,
+but this description of it will turn out to be convenient.)
 \end{example}
 
 \begin{exercise} Write down the holomorphic symplectic form 
@@ -1918,7 +1919,7 @@ Let's start with the slightly easier case $\tau = \I$.
 In this case the periodicity is just shifts of $x_0$ and $x_1$
 by $2\pi$.
 Away from $\zeta = 0$ and $\zeta = \infty$, we can write
-holomorphic coordinates as
+holomorphic coordinates as \fixme{typo here? recheck!}
 \begin{align*}
   \cX_A &= \exp \left(\frac{z_1}{2\zeta} + \I x_1 + \frac{\bar{z}_1}{2} \zeta \right),\\
   \cX_B &= \exp \left(\frac{\I z_1}{2\zeta} - \I x_0 - \frac{\I \bar{z}_1}{2}  \zeta \right).
@@ -1929,8 +1930,8 @@ for $I_3$,
 and at $\zeta = -\I$ we have
 $\cX_A = \exp(x_3 + \I x_1)$, $\cX_B = \exp(-x_2 - \I x_0)$,
 holomorphic for $I_2$.
-In general we compute directly: \fixme{show steps, check factors}
-\begin{equation}
+In general we compute directly
+\begin{equation} \label{eq:hol-symp-R2T2}
   \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = \Omega(\zeta).
 \end{equation}
 Thus, for all $\zeta \in \C^\times$, we get in structure $I_\zeta$
@@ -1940,7 +1941,15 @@ Thus, for all $\zeta \in \C^\times$, we get in structure $I_\zeta$
 \end{example}
 
 \begin{exercise}
-Check that $(\cX_A, \cX_B)$ indeed give a 1-1 \ti{biholomorphism}.
+Check \eqref{eq:hol-symp-R2T2}. Note that, as we have explained,
+this immediately implies that $\cX_A$ and $\cX_B$ are indeed
+holomorphic. If you are interested, you might also
+try checking this directly using the definition of $I_\zeta$.
+\end{exercise}
+
+\begin{exercise}
+Check that $(\cX_A, \cX_B)$ indeed give a 1-1 \ti{biholomorphism}
+$(X,I_\zeta) \simeq \C^\times \times \C^\times$.
 \end{exercise}
 
 
