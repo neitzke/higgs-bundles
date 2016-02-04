@@ -1896,6 +1896,55 @@ $\Omega$ and the real structure $\rho$ in these complex
 coordinates for $\cZ$.
 \end{exercise}
 
+\begin{example}[$\R^2 \times T^2$]
+Now fix some $\tau$ in the upper half-plane.
+
+Let $X$ be $\R^4$ modulo shifts of $w_1$ by $2\pi(\Z \oplus \Z \tau)$.
+Note we have made a choice here, which privileges complex structure 
+$I_1$. Indeed in structure $I_1$ we see immediately
+that
+\begin{equation}
+  X \simeq \C \times T^2_\tau,
+\end{equation}
+where by $T^2_\tau$ we mean the complex 
+torus $\C / (\Z \oplus \Z \tau)$.
+Similarly in structure $-I_1$ we have
+\begin{equation}
+  X \simeq \C \times T^2_{-\bar\tau}.
+\end{equation}
+
+What about the other structures, for $\zeta \in \C^\times$?
+Let's start with the slightly easier case $\tau = \I$.
+In this case the periodicity is just shifts of $x_0$ and $x_1$
+by $2\pi$.
+Away from $\zeta = 0$ and $\zeta = \infty$, we can write
+holomorphic coordinates as
+\begin{align*}
+  \cX_A &= \exp \left(\frac{z_1}{2\zeta} + \I x_1 + \frac{\bar{z}_1}{2} \zeta \right),\\
+  \cX_B &= \exp \left(\frac{\I z_1}{2\zeta} - \I x_0 - \frac{\I \bar{z}_1}{2}  \zeta \right).
+\end{align*}
+As a check, note that at $\zeta = 1$ we have
+$\cX_A = \exp(x_2 + \I x_1)$, $\cX_B = \exp(-x_3 - \I x_0)$, holomorphic
+for $I_3$,
+and at $\zeta = -\I$ we have
+$\cX_A = \exp(x_3 + \I x_1)$, $\cX_B = \exp(-x_2 - \I x_0)$,
+holomorphic for $I_2$.
+In general we compute directly: \fixme{show steps, check factors}
+\begin{equation}
+  \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = \Omega(\zeta).
+\end{equation}
+Thus, for all $\zeta \in \C^\times$, we get in structure $I_\zeta$
+\begin{equation}
+ X \simeq \C^\times \times \C^\times. 
+\end{equation}
+\end{example}
+
+\begin{exercise}
+Check that $(\cX_A, \cX_B)$ indeed give a 1-1 \ti{biholomorphism}.
+\end{exercise}
+
+
+
 % \begin{exercise} Check that the formula \eqref{eq:involution-R4} is correct.
 % \end{exercise}
 
@@ -1964,23 +2013,11 @@ in \eqref{eq:hol-symp-family} we get $-\bar\Omega$.
 \end{pf}
 
 
-\begin{thm}[Reconstruction of \hk manifold from its twistor space]
+\begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
 \end{thm}
 \fixme{...}
 
 \subsection{More examples}
-
-\begin{example}[$\R^2 \times T^2$]
-In structure $I_1$ we have $\C \times \Sigma_\tau$.
-In particular, we have a modulus $\tau$.
-Let $a = x_2 + \I x_3$.
-Away from $\zeta = 0$ and $\zeta = \infty$, can write
-\begin{align*}
-  \cX_1 &= \exp \left(\frac{a}{\zeta} + \I \theta_1 + \bar{a} \zeta \right),\\
-  \cX_2 &= \exp \left(\frac{\tau a}{\zeta} + \I \theta_2 + \bar{\tau} \bar{a} \zeta \right).
-\end{align*}
-\fixme{Compute all forms and the metric from this.}
-\end{example}
 
 \begin{example}[Ooguri-Vafa space] \fixme{...}
 \end{example}
