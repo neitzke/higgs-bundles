@@ -1908,26 +1908,36 @@ coordinates for $\cZ$.
 \end{exercise}
 
 \begin{example}[$\R^2 \times T^2$]
-Now fix some $\tau$ in the upper half-plane.
-
-Let $X$ be $\R^4$ modulo shifts of $w_1$ by $2\pi(\Z \oplus \Z \tau)$.
-Note we have made a choice here, which privileges complex structure 
-$I_1$. Indeed in structure $I_1$ we see immediately
-that
+Now fix some $\tau \in \C$, with $\im \tau > 0$, 
+and let $X$ be $\R^4$ modulo shifts of $w_1$ by
+the lattice 
+\begin{equation}
+  \Lambda_\tau = \frac{2\pi}{\sqrt{\im \tau}}(\Z \oplus \Z \tau) \subset \C.
+\end{equation}
+(The funny prefactor is engineered 
+so that the area of $\C / \Lambda_\tau$
+is $(2\pi)^2$, independent of $\tau$).
+Note that in choosing to shift $w_1$, as opposed to some other complex
+coordinate, we have privileged the complex structure $I_1$. 
+In structure $I_1$, moreover, we see immediately that
 \begin{equation}
   X \simeq \C \times T^2_\tau,
 \end{equation}
 where by $T^2_\tau$ we mean the complex 
-torus $\C / (\Z \oplus \Z \tau)$.
+torus $\C / \Lambda_\tau$.
 Similarly in structure $-I_1$ we have
 \begin{equation}
   X \simeq \C \times T^2_{-\bar\tau}.
 \end{equation}
 
+Thus, as a complex manifold, $(X,I_1)$ or $(X,-I_1)$ really 
+\ti{depend} on $\tau$ --- different choices (not related by $SL(2,\Z)$) 
+give inequivalent complex manifolds.
+
 What about the other structures, for $\zeta \in \C^\times$?
 Let's start with the slightly easier case $\tau = \I$.
-In this case the periodicity is just shifts of $x_0$ and $x_1$
-by $2\pi$.
+In this case the $\Z^2$ action just shifts $x_0$ and $x_1$
+independently by multiples of $2\pi$.
 Away from $\zeta = 0$ and $\zeta = \infty$, we can write
 holomorphic coordinates as
 \begin{align*}
@@ -1940,37 +1950,60 @@ for $I_3$,
 and at $\zeta = -\I$ we have
 $\cX_A = \exp(- x_3 - \I x_1)$, $\cX_B = \exp(-x_2 + \I x_0)$,
 holomorphic for $I_2$.
-In general we compute directly
+For general $\zeta \in \C^\times$ we compute directly
 \begin{equation} \label{eq:hol-symp-R2T2}
   \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta),
 \end{equation}
-which shows in particular that $\cX_A$ and $\cX_B$ are holomorphic
+which shows in particular (again using \autoref{exc:hsymp-holomorphy})
+that $\cX_A$ and $\cX_B$ are holomorphic
 on $(X,I_\zeta)$.
 Thus, for all $\zeta \in \C^\times$, we get in structure $I_\zeta$
 \begin{equation}
  X \simeq \C^\times \times \C^\times. 
 \end{equation}
+
+For $\tau \neq \I$ the picture is very similar, just with slightly
+more complicated formulas:
+\begin{align*}
+  \cX_A &= \exp \left(\zeta^{-1} \frac{z_1}{2 \sqrt{\im \tau}} - \I \theta_1 + \zeta \frac{\bar{z}_1}{2\sqrt{\im \tau}} \right),\\
+  \cX_B &= \exp \left(\zeta^{-1} \frac{\tau z_1}{2\sqrt{\im \tau}} + \I \theta_0 + \zeta \frac{\bar \tau \bar {z}_1}{2\sqrt{\im \tau}} \right),
+\end{align*}
+where we introduced
+\begin{align}
+  \theta_0 &= \sqrt{\im \tau} x_0 - \frac{\re \tau}{\sqrt{\im \tau}} x_1, \\
+  \theta_1 &= \frac{1}{\sqrt{\im \tau}} x_1.
+\end{align}
+The point of these coordinates that the $\Z^2$ action
+just shifts $\theta_0$ and $\theta_1$ independently by multiples of $2 \pi$;
+the $I_1$-holomorphic combination is $w_1 = x_0 + \I x_1 = \theta_0 + \tau \theta_1$.
+Then we have again
+\begin{equation} \label{eq:hol-symp-R2T2}
+  \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta)
+\end{equation}
+and so again $X \simeq \C^\times \times \C^\times$.
+In particular, for $\zeta \in \C^\times$, the space
+$(X,I_\zeta)$ as a complex manifold \ti{does not} depend on $\tau$.
+
 \end{example}
 
 \begin{exercise}
-Check \eqref{eq:hol-symp-R2T2}. Note that, as we have explained,
+Check \eqref{eq:hol-symp-R2T2}. As we have explained,
 this immediately implies that $\cX_A$ and $\cX_B$ are indeed
-holomorphic. If you are interested, you might also
-try checking this directly using the definition of $I_\zeta$.
+holomorphic functions on $\cZ$. You could also
+try checking this directly from the definition of 
+the complex structure on $\cZ$.
 \end{exercise}
 
 \begin{exercise}
-Check that $(\cX_A, \cX_B)$ indeed give a 1-1 \ti{biholomorphism}
+Check that $(\cX_A, \cX_B)$ indeed give a \ti{biholomorphism}
 $(X,I_\zeta) \simeq \C^\times \times \C^\times$.
 \end{exercise}
-
 
 
 % \begin{exercise} Check that the formula \eqref{eq:involution-R4} is correct.
 % \end{exercise}
 
-
-Let us describe some of the abstract properties of $\cZ$:
+Next let us describe some of the abstract properties of $\cZ$:
 \begin{prop}[Properties of twistor space]
 Suppose $X$ is a \hk manifold with twistor space $\cZ$. Then:
 \begin{enumerate}
@@ -2014,9 +2047,8 @@ The desired statement about the normal bundle to $s_x(S^2)$ follows from
 \autoref{lem:10-forms-hol}: indeed choosing a basis
 $\{\alpha_1, \dots, \alpha_{2n}\}$ 
 for the $2n$-dimensional vector space
-$(T^{1,0}_{x,I_1} X)^*$ we get $2n$ 
-trivializations of the conormal bundle to $s_x(S^2)$, namely
-by the sections
+$(T^{1,0}_{x,I_1} X)^*$ we get two 
+trivializations of the conormal bundle to $s_x(S^2)$, by the sections
 $\{(1 + \zeta I_3) \alpha_i \oplus 0 \}$ 
 over $\{\zeta \neq 0\}$ and $\{(1/\zeta + I_3) \alpha_i\} \oplus 0$
 over $\{\zeta \neq \infty\}$. The transition function
