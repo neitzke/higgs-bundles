@@ -1657,27 +1657,32 @@ spanned by $\omega_2 + \I \omega_3$.
 For (2) here is a computational proof.
 Fix a complex coordinate $\zeta$
 on $S^2 \setminus \{ (-1,0,0) \}$, by
-\begin{equation}
- \zeta = \frac{s_2 + \I s_3}{1 + s_1}, \qquad (s_1, s_2, s_3) = \frac{(1 - \abs{\zeta}^2, 2 \re \zeta, 2 \im \zeta)}{1+\abs{\zeta}^2}.
+\begin{equation} \label{eq:zeta-def}
+ \zeta = \frac{s_3 - \I s_2}{1 + s_1}, \qquad (s_1, s_2, s_3) = \frac{(1 - \abs{\zeta}^2, -2 \im \zeta, 2 \re \zeta)}{1+\abs{\zeta}^2}.
 \end{equation}
 Thus we have
 \begin{align}
   \zeta = 0 \leftrightarrow \vec s = (1,0,0), \quad & \zeta = \infty \leftrightarrow \vec s = (-1,0,0), \\
-  \zeta = 1 \leftrightarrow \vec s = (0,1,0), \quad & \zeta = -1 \leftrightarrow \vec s = (0,-1,0), \\
-  \zeta = \I \leftrightarrow \vec s = (0,0,1), \quad & \zeta = -\I \leftrightarrow \vec s = (0,0,-1).
+  \zeta = -\I \leftrightarrow \vec s = (0,1,0), \quad & \zeta = \I \leftrightarrow \vec s = (0,-1,0), \\
+  \zeta = 1 \leftrightarrow \vec s = (0,0,1), \quad & \zeta = -1 \leftrightarrow \vec s = (0,0,-1).
 \end{align}
 Using this translation we will sometimes write 
 $I_\zeta$ for $I_{\vec s}$ and $L_\zeta$ for $L_{\vec s}$.
 Now consider the holomorphic family of 2-forms
 \begin{equation} \label{eq:hol-symp-family}
-  \Omega(\zeta) = \frac{\omega_2 + \I \omega_3}{2\zeta} - \omega_1 + \frac{- \omega_2 + \I \omega_3}{2} \zeta.
+  \Omega(\zeta) = \frac{\omega_2 + \I \omega_3}{2\zeta} - \I\omega_1 + \frac{\omega_2 - \I \omega_3}{2} \zeta.
 \end{equation}
-We want to know
+We want to check that $\Omega(\zeta) \in L_\zeta$.
+As a quick check note that
+\begin{equation}
+  \Omega(\zeta=1) = -\I \Omega_3, \quad \Omega(\zeta=-\I) = - \Omega_2, \quad \zeta \Omega(\zeta=0) = \Omega_1.
+\end{equation}
+For general $\zeta$, what we want to know is that
 that applying $I_\zeta$ to the first slot of $\Omega(\zeta)$ gives
 $\I \Omega(\zeta)$, so that $\Omega(\zeta) \in L_\zeta$.
 This can be checked (a bit laboriously) 
 \mmaref{verify-holsymp}
-using $I_i \omega_i = g$,
+using \eqref{eq:zeta-def}, $I_i \omega_i = g$,
 $I_i \omega_{i+1} = -\omega_{i+2}$, $I_i \omega_{i+2} = \omega_{i+1}$.
 
 Now, $\Omega(\zeta)$ blows up as $\zeta \to 0$ or 
@@ -1692,6 +1697,13 @@ This gives the desired holomorphic identification
 $L_\zeta \simeq \cO(-2)$ and finishes the proof.
 
 \currentposition
+
+\end{pf}
+
+We will use the formula \eqref{eq:hol-symp-family} frequently.
+Warning: different authors (and different papers by the same authors)
+have different conventions for the normalization of $\Omega(\zeta)$
+and the definition of $\zeta$.
 
 % Another way of getting at this is: identify $V$ with the imaginary
 % quaternions by taking $\omega_i \mapsto I_i$; 
@@ -1713,7 +1725,6 @@ $L_\zeta \simeq \cO(-2)$ and finishes the proof.
 % is such that the complex vector field corresponding to the 
 % \ti{raising} generator $X^+ \in \mathfrak{su}(2)_\C$
 % spans $T^{0,1}$. \fixme{...}
-\end{pf}
 
 \begin{defn}[Twistor space] Given a \hk manifold $X$, the \ti{twistor space} of $X$ is the smooth manifold
 \begin{equation}
@@ -1786,12 +1797,10 @@ This trivial-looking bit of extra structure will turn out to be
 very important!
 \item $\cZ$ carries a twisted fiberwise holomorphic symplectic form,
 \begin{equation}
-  \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \pi^* \cO(2) 
+  \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \pi^* \cO(2)
 \end{equation}
-(What this means: $\Omega^{2,0}_{fiber}(\cZ)$ is the \ti{quotient}
-of $\Omega^{2,0}(\cZ)$ by the holomorphic subbundle
-of forms $\de \zeta \wedge \alpha$,
-$\alpha \in \Omega^{1,0}(\cZ)$.)
+(Here $\Omega^{2,0}_{fiber}(\cZ) = \wedge^2 (T^{1,0}_{vert} \cZ)^*$,
+which carries a natural holomorphic structure.)
 \end{enumerate}
 
 \begin{example}[Twistor space of $\R^4$] \label{exa:R^4-twistor-space}
