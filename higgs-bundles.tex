@@ -1263,7 +1263,8 @@ the \hk structure (this is clear since nothing in $\omega_i$
 depends on the fiber coordinates).
 \end{example}
 
-\begin{exercise} Let $L$ be a line in $U$, oriented 
+\begin{exercise} \label{exc:preimages-of-lines} 
+Let $L$ be a line in $U$, oriented 
 in the direction $\vec s = (1,0,0)$. 
 Show that $\pi^{-1}(L)$ is a complex submanifold of $X$
 in the complex structure $I_1$. (Hint: it's sufficient
@@ -1350,8 +1351,13 @@ is isomorphic to $\R^4$ with its standard \hk structure.
 In particular, complex structure $I_1$ on $X$ has
 holomorphic coordinates $w_1 = y_0 + \I y_1$ and $z_1 = y_2 + \I y_3$.
 Thus the loci $z_1 = 0$ and $w_1 = 0$ are complex submanifolds of
-$I_1$. These correspond to $\theta = 0$ and $\theta = \pi$, 
+$I_1$, intersecting at a single point.
+These correspond to $\theta = 0$ and $\theta = \pi$, 
 i.e. the preimages in $X$ of the two half-lines $x_2 = x_3 = 0$, $\pm x_1 \ge 0$.
+(From Exercise \ref{exc:preimages-of-lines} we already knew that
+the preimage of the half-line is a complex manifold, \ti{except} at the 
+point over $x = 0$. The discussion above shows that it actually extends
+to an honest complex manifold even over $x=0$.)
 
 \insfig{higgs-bundles-6}{0.9}
 
