@@ -990,13 +990,13 @@ Thus $SO(3)$ naturally acts on the set of
 
 \subsection{First examples}
 
-\begin{example}[Flat quaternionic space] \label{exa:R4} The quaternions
+\begin{example}[Flat quaternionic space] \label{exa:R4}
 Being a real vector space, $\bbH$ is
 a manifold of real dimension $4$.
 If we identify $T_p \bbH \simeq \bbH$ in the obvious way,
 the quaternion norm $\norm{q}^2 = q \bar{q}$
 induces a metric $g$ on $\bbH$.
-the operations of left-multiplication by $\I$, $\J$ and $\K$
+The operations of left-multiplication by $\I$, $\J$ and $\K$
 give complex structures $I_1$, $I_2$, $I_3$ on $\bbH$,
 obeying the quaternion algebra.
 Evidently these are all covariantly constant, so
@@ -1845,7 +1845,8 @@ Indeed,
 \end{align}
 matching \eqref{eq:hol-symp-family}.
 
-It follows that $w(\zeta)$ and $z(\zeta)$ are fiberwise holomorphic.
+It follows (using the result of \autoref{exc:hsymp-holomorphy} below)
+that $w(\zeta)$ and $z(\zeta)$ are fiberwise holomorphic.
 But they are evidently also holomorphic in $\zeta$. So they are 
 holomorphic functions on $\cZ$.
 Thus we have two coordinate systems on $\cZ$:
@@ -1863,9 +1864,13 @@ In the holomorphic coordinates this becomes
 \begin{equation} \label{eq:involution-R4}
   \rho(\zeta, z, w) = (-1/\bar\zeta, -\bar w / \bar\zeta, \bar z / \bar \zeta).
 \end{equation}
-
 \end{example}
 
+\begin{exercise} \label{exc:hsymp-holomorphy}
+If $X$ is a complex manifold, with $\dim_\C X = 2$, with holomorphic symplectic form
+$\Omega$, and $\Omega = \alpha \wedge \beta$ for $\alpha,\beta \in \Omega^1(X)$, 
+show that in fact $\alpha, \beta \in \Omega^{1,0}(X)$.
+\end{exercise}
 
 \begin{example}[Twistor space of $\R^3 \times S^1$]  \label{exa:R3S1-twistor-space}
 For $\R^3 \times S^1$ the picture is more interesting.
@@ -1885,10 +1890,16 @@ Thus the transition map is
 \begin{equation}
   (\zeta', \eta', \cX') = (1 / \zeta, \eta / \zeta^2, \cX \exp(\I \eta / \zeta) )
 \end{equation}
-If we let $L$ denote the line bundle over $\cO(2) \to S^2$ with 
-transition function $e^{\I \eta / \zeta}$, what we just showed
-is that $\cZ$ is the total space of $L$ with the
-zero section deleted.
+So $\eta$ is a local coordinate on the fiber of $\cO(2) \to S^2$;
+let $L$ denote the line bundle over $\cO(2) \to S^2$ with 
+transition function $e^{\I \eta / 2 \zeta}$; what we just showed
+is that $\cZ$ is the total space of $L^2$, with the
+zero section deleted (because $\cX$ never takes the value $0$.)
+
+Note that in particular $\cZ$ is \ti{not} algebraic, because of the
+appearance of the exponential function here. (Were it algebraic,
+it would follow on general grounds that $L$ is pulled back from 
+the base $\C\PP^1$, but that's not the case here (I think.))
 \end{example}
 
 \begin{exercise} Write down the holomorphic symplectic form 
@@ -1918,21 +1929,23 @@ Let's start with the slightly easier case $\tau = \I$.
 In this case the periodicity is just shifts of $x_0$ and $x_1$
 by $2\pi$.
 Away from $\zeta = 0$ and $\zeta = \infty$, we can write
-holomorphic coordinates as \fixme{typo here? recheck!}
+holomorphic coordinates as
 \begin{align*}
-  \cX_A &= \exp \left(\frac{z_1}{2\zeta} + \I x_1 + \frac{\bar{z}_1}{2} \zeta \right),\\
-  \cX_B &= \exp \left(\frac{\I z_1}{2\zeta} - \I x_0 - \frac{\I \bar{z}_1}{2}  \zeta \right).
+  \cX_A &= \exp \left(\frac{z_1}{2\zeta} - \I x_1 + \frac{\bar{z}_1}{2} \zeta \right),\\
+  \cX_B &= \exp \left(\frac{\I z_1}{2\zeta} + \I x_0 - \frac{\I \bar{z}_1}{2}  \zeta \right).
 \end{align*}
 As a check, note that at $\zeta = 1$ we have
-$\cX_A = \exp(x_2 + \I x_1)$, $\cX_B = \exp(-x_3 - \I x_0)$, holomorphic
+$\cX_A = \exp(x_2 - \I x_1)$, $\cX_B = \exp(-x_3 + \I x_0)$, holomorphic
 for $I_3$,
 and at $\zeta = -\I$ we have
-$\cX_A = \exp(x_3 + \I x_1)$, $\cX_B = \exp(-x_2 - \I x_0)$,
+$\cX_A = \exp(- x_3 - \I x_1)$, $\cX_B = \exp(-x_2 + \I x_0)$,
 holomorphic for $I_2$.
 In general we compute directly
 \begin{equation} \label{eq:hol-symp-R2T2}
-  \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = \Omega(\zeta).
+  \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta),
 \end{equation}
+which shows in particular that $\cX_A$ and $\cX_B$ are holomorphic
+on $(X,I_\zeta)$.
 Thus, for all $\zeta \in \C^\times$, we get in structure $I_\zeta$
 \begin{equation}
  X \simeq \C^\times \times \C^\times. 
