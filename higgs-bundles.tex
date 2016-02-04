@@ -1,4 +1,4 @@
-\documentclass[12pt,letterpaper,reqno]{amsart}
+\documentclass[12pt,letterpaper,reqno]{article}
 
 % \usepackage{mathtools}
 \usepackage{epsfig}
@@ -220,6 +220,8 @@
 \newcommand{\dwrt}[1]{\frac{\partial}{\partial#1}}
 \newcommand{\eps}{\epsilon}
 
+\newcommand{\mmaref}[1]{}
+
 \newcommand{\ti}[1]{\textit{#1}}
 
 \DeclareMathOperator{\ad}{ad}
@@ -256,6 +258,10 @@
 {\textbf {{Moduli of Higgs Bundles}}} \\
 Preliminary draft
 \end{center}
+
+\tableofcontents
+\renewcommand{\listtheoremname}{Quick reference}
+\listoftheorems[onlynamed]
 
 \section{Introductory motivation}
 
@@ -934,17 +940,19 @@ and cyclic permutations.
 namely $v \mapsto g(v,\cdot)$.)
 \end{cor}
 
-% \begin{prop}[Condition for forms $\omega_i$ to give a \hk metric] \label{prop:omega-hk-condition}
-% Suppose $X$ is a smooth manifold with symplectic forms 
-% $\omega_1, \omega_2, \omega_3$, obeying the condition that
-% \begin{equation}
-% -\omega_1 \omega_3^{-1} \omega_2 = -\omega_2 \omega_1^{-1} \omega_3 = -\omega_3 \omega_2^{-1} \omega_1,
-% \end{equation}
-% and that this quantity, $g$, 
-% is \ti{positive definite} as a symmetric bilinear form.
-% Then $g$ is a \hk metric on $X$,
-% with $\omega_i$ the associated \kahler forms.
-% \end{prop}
+\begin{prop}[Condition for forms $\omega_i$ to give a \hk metric] \label{prop:omega-hk-condition}
+Suppose $X$ is a smooth manifold with symplectic forms 
+$\omega_1, \omega_2, \omega_3$, obeying the condition that
+\begin{equation}
+-\omega_1 \omega_3^{-1} \omega_2 = -\omega_2 \omega_1^{-1} \omega_3 = -\omega_3 \omega_2^{-1} \omega_1,
+\end{equation}
+and that this quantity, $g$, 
+is \ti{positive definite} as a symmetric bilinear form.
+Then $g$ is a \hk metric on $X$,
+with $\omega_i$ the associated \kahler forms.
+\end{prop}
+\begin{pf} \fixme{...}
+\end{pf}
 
 \begin{exercise}
 Suppose $(X,g,I_1,I_2,I_3)$ is a \hk manifold. Fix any $\vec s = (s_1,s_2,s_3) \in S^2 \subset \R^3$, and set
@@ -983,17 +991,11 @@ Thus $SO(3)$ naturally acts on the set of
 \subsection{First examples}
 
 \begin{example}[Flat quaternionic space] \label{exa:R4} The quaternions
-$\bbH$ can be identified with $\R^4$
-via the map
-\begin{equation}
-  x_0 + x_1 \I + x_2 \J + x_3 \K \mapsto (x_0,x_1,x_2,x_3).
-\end{equation}
-This makes $\bbH$ into a manifold of real 
-dimension $4$.
-The standard metric on $\R^4$ induces a metric
-$g$ on $\bbH$.
-If we identify $T_p \bbH \simeq \bbH$ 
-in the obvious way,
+Being a real vector space, $\bbH$ is
+a manifold of real dimension $4$.
+If we identify $T_p \bbH \simeq \bbH$ in the obvious way,
+the quaternion norm $\norm{q}^2 = q \bar{q}$
+induces a metric $g$ on $\bbH$.
 the operations of left-multiplication by $\I$, $\J$ and $\K$
 give complex structures $I_1$, $I_2$, $I_3$ on $\bbH$,
 obeying the quaternion algebra.
@@ -1001,7 +1003,14 @@ Evidently these are all covariantly constant, so
 $g$ is \kahler for all three of these complex
 structures, and thus $\bbH$ is \hk.
 
-The symplectic forms are
+To introduce coordinates we
+identify $\bbH$ with $\R^4$
+via the map
+\begin{equation}
+  x_0 + x_1 \I + x_2 \J + x_3 \K \mapsto (x_0,x_1,x_2,x_3).
+\end{equation}
+
+Then the symplectic forms are
 \begin{align}
   \omega_1 &= \de x_0 \wedge \de x_1 + \de x_2 \wedge \de x_3, \\
   \omega_2 &= \de x_0 \wedge \de x_2 + \de x_3 \wedge \de x_1, \\
@@ -1621,7 +1630,7 @@ for an arbitrary complex structure $I_{\vec s}$, and can
 even arrange that the resulting holomorphic symplectic
 forms vary holomorphically:
 
-\begin{prop}[Holomorphic symplectic forms on a \hk manifold
+\begin{lem}[Holomorphic symplectic forms on a \hk manifold
 vary holomorphically over $S^2$] Suppose $X$ is a \hk manifold. 
 Let 
 \begin{equation}
@@ -1637,7 +1646,7 @@ Then:
 \item If we equip $S^2$ with its standard 
 complex structure, $L$ is a \ti{holomorphic} line subbundle of the trivial rank $3$ holomorphic bundle $S^2 \times V$, canonically isomorphic to $\cO(-2) \to \C\PP^1$.
 \end{enumerate}
-\end{prop}
+\end{lem}
 
 \begin{pf}
 For (1) it's enough to compute for $\vec{s} = (1,0,0)$, and there note
@@ -1664,10 +1673,10 @@ Now consider the holomorphic family of 2-forms
   \Omega(\zeta) = \frac{\omega_2 + \I \omega_3}{2\zeta} - \omega_1 + \frac{- \omega_2 + \I \omega_3}{2} \zeta.
 \end{equation}
 We want to know
-%(see {\tt verify-holsymp.nb}) 
 that applying $I_\zeta$ to the first slot of $\Omega(\zeta)$ gives
 $\I \Omega(\zeta)$, so that $\Omega(\zeta) \in L_\zeta$.
 This can be checked (a bit laboriously) 
+\mmaref{verify-holsymp}
 using $I_i \omega_i = g$,
 $I_i \omega_{i+1} = -\omega_{i+2}$, $I_i \omega_{i+2} = \omega_{i+1}$.
 
@@ -1787,24 +1796,39 @@ $\alpha \in \Omega^{1,0}(\cZ)$.)
 
 \begin{example}[Twistor space of $\R^4$] \label{exa:R^4-twistor-space}
 For the standard \hk structure on $\bbH$ all this becomes very 
-concrete. The holomorphic $2$-form \eqref{eq:hol-symp-family}
+concrete. 
+If we define
+\begin{align}
+  w(\zeta) &= w_1 + \I \bar{z}_1 \zeta, \\
+  z(\zeta) &= z_1 - \I \bar{w}_1 \zeta,
+\end{align}
+then the holomorphic $2$-form \eqref{eq:hol-symp-family}
 can be written as
 \begin{equation}
-  \Omega(\zeta) = \frac{1}{2\zeta} \de z(\zeta) \wedge \de w(\zeta)
+  \Omega(\zeta) = \frac{1}{2\zeta} \de w(\zeta) \wedge \de z(\zeta)
 \end{equation}
-where
+Indeed,
 \begin{align}
-  z(\zeta) &= z_1 + \bar{w}_1 \zeta, \\
-  w(\zeta) &= w_1 - \bar{z}_1 \zeta.
+  \frac{1}{2\zeta} \de w(\zeta) \wedge \de z(\zeta) &= \frac{1}{2\zeta} (\de w_1 \wedge \de z_1 - \I \zeta (\de w_1 \wedge \de \bar{w}_i + \de z_1 \wedge \de \bar{z}_1) + \zeta^2 \de \bar{z}_1 \wedge \de \bar{w}_1) \\
+  &= \frac{\omega_2 + \I \omega_3}{2\zeta} - \omega_1 + \frac{-\omega_2 + \I \omega_3}{2} \zeta
 \end{align}
+matching \eqref{eq:hol-symp-family}.
+
 Thus we have two coordinate systems: $(\zeta, z(\zeta), w(\zeta))$
 covering the patch $\zeta \neq \infty$ and $(1/\zeta, z(\zeta)/\zeta, w(\zeta)/\zeta)$ covering $\zeta \neq 0$. This identifies
 $\cZ$ as the total space of the rank $2$ holomorphic bundle
 \begin{equation}
   \cO(1) \oplus \cO(1) \to S^2.
 \end{equation}
-\fixme{describe the involution $\rho$}
+The involution $\rho$ acts by \fixme{check}
+\begin{equation} \label{eq:involution-R4}
+  (\zeta, z, w) \to (-1/\bar\zeta, \bar w / \bar\zeta, -\bar z / \bar \zeta).
+\end{equation}
+
 \end{example}
+
+\begin{exercise} Check that the formula \eqref{eq:involution-R4} is correct.
+\end{exercise}
 
 \subsection{More examples}
 
@@ -1819,11 +1843,14 @@ $\cZ$ as the total space of the rank $2$ holomorphic bundle
 
 \subsection{\Hk quotients}
 
-...
+\subsection{More formal developments}
+
+\begin{prop}[\Hk manifolds are Ricci-flat] If $X$ is a \hk manifold,
+then the \hk metric $g$ is Ricci-flat.
+\end{prop}
 
 \fixme{reduced holonomy}
 
-\fixme{Ricci-flatness}
 
 
 \section{Higgs bundles for $G = U(1)$}
