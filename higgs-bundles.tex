@@ -1386,7 +1386,8 @@ $(\mu_1, \mu_2, \mu_3)$. Show that the image of $\vec\mu$ is the complement of a
 point in $\R^3$; by shifting each $\mu_i$ by a constant we can arrange
 that this point is $0 \in \R^3$. Then show that $\vec\mu$ realizes
 $\R^4 \setminus \{0\}$ as principal $U(1)$ bundle over $\R^3 \setminus \{0\}$,
-and that the metric is of the form in \autoref{exa:gibbons-hawking-R4}.
+and that the metric is of the form in \autoref{exa:gibbons-hawking-R4},
+up to a factor $4\pi$.
 (Hint: at some points it is convenient to consider the complex combination 
 $\mu_2 + \I \mu_3$, which is a moment map for the holomorphic symplectic
 form $\Omega_1$.)
@@ -1697,8 +1698,6 @@ these two patches, differing by the transition function $\zeta^{-2}$.
 This gives the desired holomorphic identification
 $L_\zeta \simeq \cO(-2)$ and finishes the proof.
 
-\currentposition
-
 \end{pf}
 
 We will use the formula \eqref{eq:hol-symp-family} frequently.
@@ -1962,6 +1961,8 @@ Thus, for all $\zeta \in \C^\times$, we get in structure $I_\zeta$
  X \simeq \C^\times \times \C^\times. 
 \end{equation}
 
+\currentposition
+
 For $\tau \neq \I$ the picture is very similar, just with slightly
 more complicated formulas:
 \begin{align*}
@@ -2004,18 +2005,11 @@ $(X,I_\zeta) \simeq \C^\times \times \C^\times$.
 % \end{exercise}
 
 Next let us describe some of the abstract properties of $\cZ$:
-\begin{prop}[Properties of twistor space]
+\begin{prop}[Properties of twistor spaces] \label{prop:twistor-space-properties}
 Suppose $X$ is a \hk manifold with twistor space $\cZ$. Then:
 \begin{enumerate}
 \item $\cZ$ is a complex manifold, with a 
   holomorphic projection $\pi: \cZ \to S^2$.
-  The fiber $\pi^{-1}(\vec s)$ is isomorphic to
-  $(X,I_{\vec s})$ as a complex manifold. 
-\item $\cZ$, as a bundle over $S^2$, 
-has holomorphic \ti{sections} $s_x$ corresponding
-to the points $x \in X$.
-The normal bundle to $s_x(S^2) \subset \cZ$ is isomorphic
-to $\cO(1)^{\oplus 2n}$.
 \item $\cZ$ carries a twisted fiberwise holomorphic symplectic form,
 \begin{equation}
   \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \pi^* \cO(2)
@@ -2027,7 +2021,6 @@ All the other structures are compatible with $\rho$:
 \begin{enumerate}
 \item $\rho$ covers the antipodal involution $\sigma$ on $S^2$
 \fixme{add commutative diagram},
-\item $s_x(-\vec s) = \rho(s_x(s))$,
 \item $\rho^* \Omega = -\overline\Omega$.
 (To formulate this condition we need some care, since 
 $\Omega$ is twisted by $\cO(2)$; we fix a lift
@@ -2039,11 +2032,38 @@ trivially.)
 \end{prop}
 
 \begin{pf}
-We already proved (1). For (2) set
+We already proved (1). 
+For (3) use the $\Omega$ of \eqref{eq:hol-symp-family}.
+Finally for (4) take
+\begin{equation}
+  \rho(x, \vec s) = (x, - \vec s).
+\end{equation}
+The statement that $\rho^* \Omega = -\bar\Omega$ then 
+amounts to the fact that if we substitute $- 1 / \bar\zeta$
+in \eqref{eq:hol-symp-family} we get $-\bar\Omega$.
+\end{pf}
+
+The fiber $\pi^{-1}(\vec s)$ is isomorphic to
+$(X,I_{\vec s})$ as a complex manifold.
+
+\begin{prop}[Real sections of twistor spaces]
+Suppose $X$ is a \hk manifold with twistor space $\cZ$.
+Then
+$\cZ$, as a bundle over $S^2$, 
+has holomorphic \ti{sections} $s_x$ corresponding
+to the points $x \in X$.
+These sections are \ti{real}, i.e. $s_x(-\vec s) = \rho(s_x(s))$.
+The normal bundle to $s_x(S^2) \subset \cZ$ is isomorphic
+to $\cO(1)^{\oplus 2n}$.
+\end{prop}
+
+\begin{pf}
+Set
 \begin{equation}
   s_x(\zeta) = (x,\zeta).
 \end{equation}
-The desired statement about the normal bundle to $s_x(S^2)$ follows from
+Evidently this is a holomorphic and real section.
+The desired statement about the normal bundle follows from
 \autoref{lem:10-forms-hol}: indeed choosing a basis
 $\{\alpha_1, \dots, \alpha_{2n}\}$ 
 for the $2n$-dimensional vector space
@@ -2055,20 +2075,29 @@ over $\{\zeta \neq \infty\}$. The transition function
 relating these two trivializations is $1/\zeta {\mathbf 1}$,
 showing the conormal bundle is $\cO(-1)^{\oplus 2n}$,
 thus the normal bundle is $\cO(1)^{\oplus 2n}$ as desired.
-For (3) use the $\Omega$ of \eqref{eq:hol-symp-family}.
-Finally for (4) take
-\begin{equation}
-  \rho(x, \vec s) = (x, - \vec s).
-\end{equation}
-The statement that $\rho^* \Omega = -\bar\Omega$ then 
-amounts to the fact that if we substitute $- 1 / \bar\zeta$
-in \eqref{eq:hol-symp-family} we get $-\bar\Omega$.
 \end{pf}
 
-
 \begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
+Suppose given a manifold $\cZ$ carrying all the structures
+of \autoref{prop:twistor-space-properties}. Then let $X$
+be the space of all real holomorphic sections of $\cZ$.
+$X$ carries a canonically defined \hk metric. If $\cZ$ is the twistor space of a
+\hk manifold $X'$, then $X' \subset X$, and the \hk structures
+agree.
 \end{thm}
-\fixme{...}
+
+Two remarks about this:
+\begin{itemize}
+\item I do not know any example for which $X' \neq X$, but it seems hard
+in general to rule out the possibility that $\cZ$ could have some 
+other real sections having nothing to do with the points of the original $X$.
+\item The space of \ti{all} holomorphic sections of $\cZ$ provides
+a natural \ti{complexification} of $X$. For example, when $X = \bbH$,
+$\cZ$ is the total space of $\cO(1) \oplus \cO(1) \to S^2$. 
+The space of sections of this bundle is a complex 4-dimensional vector space,
+equipped with a real structure; we recover the original $\bbH$
+by restricting to the real points.
+\end{itemize}
 
 \subsection{More examples}
 
