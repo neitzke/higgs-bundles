@@ -1906,7 +1906,12 @@ $\Omega$ and the real structure $\rho$ in these complex
 coordinates for $\cZ$.
 \end{exercise}
 
-\begin{example}[$\R^2 \times T^2$]
+The next example is a key one: it has many of the features 
+which appear for moduli spaces of Higgs bundles (in fact 
+this example literally occurs as the moduli space of 
+Higgs bundles on the curve $C = T^2$ with gauge group
+$G = U(1)$.)
+\begin{example}[$\R^2 \times T^2$] \label{exa:R2T2}
 Now fix some $\tau \in \C$, with $\im \tau > 0$, 
 and let $X$ be $\R^4$ modulo shifts of $w_1$ by
 the lattice 
@@ -1915,7 +1920,7 @@ the lattice
 \end{equation}
 (The funny prefactor is engineered 
 so that the area of $\C / \Lambda_\tau$
-is $(2\pi)^2$, independent of $\tau$).
+is $(2\pi)^2$, independent of $\tau$.)
 Note that in choosing to shift $w_1$, as opposed to some other complex
 coordinate, we have privileged the complex structure $I_1$. 
 In structure $I_1$, moreover, we see immediately that
@@ -1965,23 +1970,26 @@ Thus, for all $\zeta \in \C^\times$, we get in structure $I_\zeta$
 
 For $\tau \neq \I$ the picture is very similar, just with slightly
 more complicated formulas:
-\begin{align*}
-  \cX_A &= \exp \left(\zeta^{-1} \frac{z_1}{2 \sqrt{\im \tau}} - \I \theta_1 + \zeta \frac{\bar{z}_1}{2\sqrt{\im \tau}} \right),\\
-  \cX_B &= \exp \left(\zeta^{-1} \frac{\tau z_1}{2\sqrt{\im \tau}} + \I \theta_0 + \zeta \frac{\bar \tau \bar {z}_1}{2\sqrt{\im \tau}} \right),
-\end{align*}
+\begin{equation}
+\cX_{A,B} = \exp \left(\zeta^{-1} Z_{A,B} + \I \theta_{A,B} + \zeta\bar{Z}_{A,B} \right)
+\end{equation}
 where we introduced
 \begin{align}
-  \theta_0 &= \sqrt{\im \tau} x_0 - \frac{\re \tau}{\sqrt{\im \tau}} x_1, \\
-  \theta_1 &= \frac{1}{\sqrt{\im \tau}} x_1.
+  \theta_A = -\frac{1}{\sqrt{\im \tau}} x_1, & \qquad
+  \theta_B = \sqrt{\im \tau} x_0 - \frac{\re \tau}{\sqrt{\im \tau}} x_1, \\
+  Z_A = \frac{z_1}{2 \sqrt{\im \tau}}, & \qquad  Z_B = \tau Z_A.
 \end{align}
-The point of these coordinates that the $\Z^2$ action
-just shifts $\theta_0$ and $\theta_1$ independently by multiples of $2 \pi$;
-the $I_1$-holomorphic combination is $w_1 = x_0 + \I x_1 = \theta_0 + \tau \theta_1$.
-Then we have again
+In these coordinates the $\Z^2$ action
+just shifts $\theta_A$ and $\theta_B$ independently by 
+multiples of $2 \pi$. The $I_1$-holomorphic combination of these 
+is $\theta_B - \tau \theta_A$.
+
+We have again
 \begin{equation} \label{eq:hol-symp-R2T2}
   \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta)
 \end{equation}
-and so again $X \simeq \C^\times \times \C^\times$.
+and so again $\cX_A$ and $\cX_B$ are holomorphic, giving
+$X \simeq \C^\times \times \C^\times$.
 In particular, for $\zeta \in \C^\times$, the space
 $(X,I_\zeta)$ as a complex manifold \ti{does not} depend on $\tau$.
 
@@ -2037,8 +2045,8 @@ trivially.)
 
 \begin{pf}
 We already proved (1). 
-For (3) use the $\Omega$ of \eqref{eq:hol-symp-family}.
-Finally for (4) take
+For (2) use the $\Omega$ of \eqref{eq:hol-symp-family}.
+Finally for (3) take
 \begin{equation}
   \rho(x, \vec s) = (x, - \vec s).
 \end{equation}
@@ -2081,6 +2089,13 @@ showing the conormal bundle is $\cO(-1)^{\oplus 2n}$,
 thus the normal bundle is $\cO(1)^{\oplus 2n}$ as desired.
 \end{pf}
 
+The real sections can be thought of
+as horizontal for a sort of nonlinear flat connection
+which gives the identification between
+the fibers of $\cZ$.
+
+\insfig{higgs-bundles-7}{0.7}
+
 \begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
 \label{thm:hk-twistor-construction}
 Suppose given a manifold $\cZ$ carrying all the structures
@@ -2106,6 +2121,43 @@ by restricting to the real points.
 \end{itemize}
 
 \subsection{More examples}
+
+\begin{example}[Semiflat metric in one dimension] \label{exa:semiflat-1d}
+This is a generalization of \autoref{exa:R2T2} to allow a
+bundle of tori, with varying modulus.
+
+Fix a $1$-dimensional complex manifold $\cB$,
+and holomorphic functions 
+\begin{equation}
+  Z_{A,B}: \cB \to \C
+\end{equation}
+such that the quantity
+\begin{equation}
+  \tau = \frac{\de Z_B}{\de Z_A}
+\end{equation}
+is valued in the upper half-plane.
+Then let $X$ be $\cB \times T^2$, with $T^2$
+coordinatized by $\theta_{A,B} \in \R / 2 \pi \Z$.
+Finally, just as in \autoref{exa:R2T2}, define functions
+$\cX_{A,B}: X \to \C^\times$ by
+\begin{equation}
+  \cX_{A,B} = \exp \left(\zeta^{-1} Z_{A,B} + \I \theta_{A,B} + \zeta\bar{Z}_{A,B} \right),
+\end{equation}
+and for any $\zeta \in \C^\times$ 
+define $\Omega(\zeta) \in \Omega^2(X)$ by
+\begin{equation}
+  \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta).
+\end{equation}
+\end{example}
+
+\begin{exercise} Show that there is a \hk structure on the 
+space $X$ in \autoref{exa:semiflat-1d}, with holomorphic symplectic
+form $\Omega(\zeta)$. (One way to do this --- maybe not
+the simplest --- is to identify
+$X$ as a quotient of a Gibbons-Hawking space, 
+with base $U = \cB \times \R$, and $V = \im \tau$.)
+What is the complex manifold $(X,I_1)$?
+\end{exercise}
 
 \begin{example}[Ooguri-Vafa space] \fixme{...}
 \end{example}
