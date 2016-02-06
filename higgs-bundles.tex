@@ -270,9 +270,9 @@ of genus $g \ge 2$ and a compact connected
 Lie group $G$, e.g. $G = U(1)$, $G = SU(2)$. 
 Built from these data there is a
 moduli space $$\cM = \cM^H(C,G)$$
-It is \ti{almost} a manifold --- has some singularities, but also
-some components without singularities, and at first we can focus
-on the parts without singularities.
+It is \ti{almost} a manifold: it has some singularities, but also
+some connected components without singularities, and 
+at first we can focus on the parts without singularities.
 It can be seen in various ways:
 
 \begin{itemize}
@@ -323,13 +323,17 @@ different complex structures,
 fitting together in a specific way; thus $\cM$ gives rise to
 many complex manifolds which look quite different from one
 another, but are nevertheless canonically diffeomorphic.
-Loosely speaking, one complex structure comes from the Riemann 
-surface $C$, another comes from $G_\C$.
-An \hk structure is rather rigid and gives a lot of constraints, e.g.
+Loosely speaking, all these complex structures are generated 
+by two basic ones: one of these comes from the complex structure
+of the Riemann surface $C$, the other comes from the complex
+structure of $G_\C$.
+
+A \hk structure is rather rigid and gives a lot of constraints, e.g.
 it implies that the metric on $\cM$ is Ricci-flat, and even lets 
 us say some things about what the metric looks like (much
-more than we can say for ``generic'' Ricci-flat metrics);
-also allows us to study the \ti{topology} of $\cM$, e.g. 
+more than we can say for ``generic'' Ricci-flat metrics
+or even Ricci-flat \kahler metrics);
+it also allows us to study the \ti{topology} of $\cM$, e.g. 
 its Betti numbers.
 
 Our first major aim is to understand this structure --- first 
@@ -342,11 +346,17 @@ fits into supersymmetric quantum field theory; but this is
 mostly beyond the scope of this course.)
 
 
-\section{Symplectic geometry: some facts}
+\section{Local symplectic, complex and \kahler geometry: a quick review}
 
-This is mainly intended as a review
-and to fix some notation. \fixme{should put some
-references here?}
+This is only intended as a review and to fix notation.
+There are many references for the material on complex
+and \kahler geometry: one
+good one is \cite{MR2093043}.
+
+
+\subsection{Symplectic manifolds}
+
+\fixme{should put some references here?}
 
 \begin{defn}[Nondegenerate $2$-form]
 Suppose $V$ is a vector space over $\R$ or $\C$.
@@ -361,7 +371,7 @@ is an isomorphism.
 
 \begin{prop}[Standard basis for a nondegenerate $2$-form] 
 \label{prop:standard-nondegenerate-2-form}
-If $V$ is a vector space over $\R$ or $\C$, and
+If $V$ is a finite-dimensional vector space over $\R$ or $\C$, and
 $\omega \in \wedge^2(V)$ is nondegenerate, then $V$ has 
 dimension $2n$ for some $n$, and there
 exists a basis $\{e_1, \dots, e_n, f_1, \dots, f_n\}$ for $V$
@@ -447,13 +457,6 @@ on $X$,
 \end{equation}
 
 
-\section{Local complex and \kahler geometry: a quick review}
-
-This is only intended as a review and to fix notation.
-There are many references for this material: one
-good one is \cite{MR2093043}.
-
-
 \subsection{Complex manifolds} 
 In this section $X$ is a smooth manifold.
 
@@ -487,6 +490,11 @@ is one obeying
 almost complex structure, \autoref{def:holomorphic-maps} becomes the standard
 definition of holomorphic function (Cauchy-Riemann equations).
 \end{exercise}
+
+\begin{defn}[Antiholomorphic maps] \label{def:antiholomorphic-maps} If $(X,I_X)$ and $(Y,I_Y)$ are almost
+complex manifolds, an \ti{antiholomorphic map} $\phi: X \to Y$
+is a holomorphic map $(X,I_X) \to (Y,-I_Y)$.
+\end{defn}
 
 \begin{defn}[Complex structures] \label{def:complex-structures} An almost complex structure $I$ on $X$ is \ti{integrable}, 
 or a \ti{complex structure}, if there is a covering of $X$ by open sets $U_\alpha$ with holomorphic diffeomorphisms $\phi_\alpha: U_\alpha \to V_\alpha \subset \C^n$ (where on $\C^n$ we take the
@@ -638,13 +646,18 @@ $\psi \in \Omega^0(E)$, the $(0,1)$ part of $D \psi$
 is $\bar\partial_E \psi$.
 \end{defn}
 
-\begin{defn}[Chern connection]
+\begin{defn}[Chern connection] \label{def:chern-connection}
 If $E$ is a holomorphic vector bundle over $X$ with
 a Hermitian metric $h$, the \ti{Chern connection} 
 in $E$ is the unique connection which is 
 $h$-unitary and compatible with the holomorphic
 structure.
 \end{defn}
+
+\begin{exercise} Show that \autoref{def:chern-connection} makes
+sense, i.e. that there indeed \ti{is} a unique
+connection in $E$ with the claimed properties.
+\end{exercise}
 
 \subsection{Hermitian and \kahler metrics}
 Throughout this section $(X,I)$ is an almost complex manifold.
@@ -798,6 +811,35 @@ a subgroup isomorphic to $U(n)$.
 \end{prop}
 
 
+\subsection{Holomorphic symplectic forms}
+
+\begin{defn}[Holomorphic symplectic form] If $(X,I)$ is a complex manifold, 
+$\Omega \in \Omega^{2,0}(X)$ is a \ti{holomorphic
+symplectic form} if $\de \Omega = 0$
+and $\Omega$ is nondegenerate
+in the holomorphic sense, i.e. it induces
+an isomorphism $T^{1,0}X \to (T^{1,0} X)^*$.
+In this case we call $(X,I,\Omega)$ a \ti{holomorphic symplectic
+manifold}.
+\end{defn}
+Note that this definitely does \ti{not} mean that $\Omega$ is nondegenerate on the whole $T_\C X$. Indeed, since $\Omega$ is 
+of type $(2,0)$ its contraction with any $v \in T^{0,1} X$ vanishes.
+
+Morally you should think of a holomorphic symplectic form $\Omega$
+as something like the analytic continuation of a real 
+symplectic form from some real subspace of $X$.
+
+\begin{prop}[Holomorphic symplectic manifolds have dimension $4n$] 
+\label{prop:hol-symp-dimension-4n} If $(X,I,\Omega)$ is a holomorphic symplectic manifold,
+then $\dim_\R X$ is a multiple of $4$.
+\end{prop} 
+\begin{pf} The holomorphic symplectic form $\Omega$ restricts to a nondegenerate form on each fiber of the complex vector 
+bundle $T^{1,0} X$.
+Using \autoref{prop:standard-nondegenerate-2-form}, it follows
+that $T^{1,0} X$ has even complex dimension.
+\end{pf}
+
+
 \section{Hyperk\"ahler manifolds}
 
 Useful (and inspiring) references are \cite{MR88f:53087,Hitchin-hk,MR1798605,boalch-notes}.
@@ -829,15 +871,6 @@ and $(\omega_1,\omega_2,\omega_3) = (\omega_I,\omega_J,\omega_K)$.
 \end{gather}
 \end{exercise}
 
-\begin{defn}[Holomorphic symplectic form] If $(X,I)$ is a complex manifold, 
-$\Omega \in \Omega^{2,0}(X)$ is a \ti{holomorphic
-symplectic form} if $\de \Omega = 0$
-and $\Omega$ is nondegenerate in the holomorphic sense, i.e. it induces
-an isomorphism $T^{1,0}X \to (T^{1,0} X)^*$.
-\end{defn}
-(Note that this definitely does \ti{not} mean that $\Omega$ is nondegenerate on the whole $T_\C X$. Indeed, since $\Omega$ is 
-of type $(2,0)$ its contraction with any $v \in T^{0,1} X$ vanishes.)
-
 \begin{prop}[\Hk manifolds are holomorphic symplectic] \label{prop:hyperkahler-is-hol-symplectic}
 If $X$ is \hk then $\Omega_1 = \omega_2 + \I \omega_3$ is a \ti{holomorphic symplectic form} with respect to structure $I_1$ (and similarly with the indices 
 $1,2,3$ cyclically permuted.)
@@ -868,10 +901,7 @@ The remaining claims are obtained by cyclic permutations.
 
 \begin{cor}[\Hk manifolds have dimension $4n$] If $X$ is \hk then $\dim_\R X$ is a multiple of $4$.
 \end{cor}
-\begin{pf} The holomorphic symplectic form $\Omega_1$ restricts to a nondegenerate
-form on each fiber of the complex vector bundle $T^{1,0}_{I_1} X$.
-Using \autoref{prop:standard-nondegenerate-2-form}, it follows
-that $T^{1,0}_{I_1} X$ has even complex dimension.
+\begin{pf} This follows directly from \autoref{prop:hol-symp-dimension-4n}.
 \end{pf}
 
 \begin{prop}[Holomorphic symplectic form determines complex structure] \label{prop:hol-symp-to-complex}
@@ -2211,8 +2241,8 @@ Now define a torus bundle over $\cB$ by
 \begin{equation}
   X = \Hom(\Gamma, U(1)),
 \end{equation}
-i.e. the fiber of $X$ over $u \in \cB$ is $\Hom(\Gamma_u, U(1))$.
-This is indeed a torus $(S^1)^2$.
+i.e. the fiber of $X$ over $u \in \cB$ is $\Hom(\Gamma_u, U(1))$,
+which is indeed a torus $(S^1)^2$.
 Given a local section $\gamma$ of $\Gamma$ over a patch
 $U \subset \cB$, we have the evaluation map
 \begin{equation}
@@ -2255,10 +2285,9 @@ then the \hk metric $g$ is Ricci-flat.
 
 
 
-\section{Higgs bundles for $G = U(1)$}
+\section{Higgs bundles}
 
-Fix a compact Riemann surface $C$ of genus $g$,
-and the Lie group $G = U(1)$.
+Fix a compact Riemann surface $C$ and a compact Lie group $G$.
 
 \printbibliography
 
