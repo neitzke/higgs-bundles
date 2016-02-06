@@ -1334,8 +1334,8 @@ To see this explicitly take
 \begin{align}
   y_0 &= \sqrt{r/\pi} \sin(\theta/2) \cos\left(\varphi + \chi\right), \\
   y_1 &= \sqrt{r/\pi} \sin(\theta/2) \sin\left(\varphi + \chi\right), \\
-  y_2 &= \sqrt{r/\pi} \cos(\theta/2) \cos\left(-\chi\right), \\
-  y_3 &= \sqrt{r/\pi} \cos(\theta/2) \sin\left(-\chi\right),
+  y_2 &= -\sqrt{r/\pi} \cos(\theta/2) \sin\left(\chi\right), \\
+  y_3 &= -\sqrt{r/\pi} \cos(\theta/2) \cos\left(\chi\right),
 \end{align}
 and then compute directly that
 \begin{equation}
@@ -1354,7 +1354,6 @@ and $\bar X / U(1) = \R^3$. In other words, starting
 from $X$ we can ``fill in the missing fiber over $0$''
 in a smooth \hk way, and the resulting \hk manifold
 is isomorphic to $\R^4$ with its standard \hk structure.
-\fixme{I only checked $\omega_1$ comes out right}
 \end{exercise}
 
 In particular, complex structure $I_1$ on $X$ has
@@ -1384,13 +1383,14 @@ respect to all of the $\omega_i$.
 If we identify $\fu(1) \simeq \R$, we obtain a map $\vec\mu: \R^4 \to \R^3$ given by
 $(\mu_1, \mu_2, \mu_3)$. Show that the image of $\vec\mu$ is the complement of a 
 point in $\R^3$; by shifting each $\mu_i$ by a constant we can arrange
-that this point is $0 \in \R^3$. Then show that $\vec\mu$ realizes
-$\R^4 \setminus \{0\}$ as principal $U(1)$ bundle over $\R^3 \setminus \{0\}$,
-and that the metric is of the form in \autoref{exa:gibbons-hawking-R4},
-up to a factor $4\pi$.
+that this point is $0 \in \R^3$. Then show that
+the map $2 \pi \vec\mu$ realizes
+$\R^4 \setminus \{0\}$ as a principal $U(1)$ bundle 
+over $\R^3 \setminus \{0\}$,
+and that the metric is of the form in \autoref{exa:gibbons-hawking-R4}.
 (Hint: at some points it is convenient to consider the complex combination 
 $\mu_2 + \I \mu_3$, which is a moment map for the holomorphic symplectic
-form $\Omega_1$.)
+form $\Omega_1$.) \fixme{check overall factor in moment map}
 \end{exercise}
 
 % This was also true of $\bbH$ of course 
@@ -2085,7 +2085,8 @@ thus the normal bundle is $\cO(1)^{\oplus 2n}$ as desired.
 \label{thm:hk-twistor-construction}
 Suppose given a manifold $\cZ$ carrying all the structures
 of \autoref{prop:twistor-space-properties}. Then let $X$
-be the space of all real holomorphic sections of $\cZ$.
+be the space of all real holomorphic sections of $\cZ$
+having normal bundle isomorphic to $\cO(1)^{\oplus 2n}$.
 $X$ carries a canonically defined \hk metric. If $\cZ$ is the twistor space of a
 \hk manifold $X'$, then $X' \subset X$, and the \hk structures
 agree.
