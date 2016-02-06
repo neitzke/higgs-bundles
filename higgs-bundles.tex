@@ -1985,7 +1985,7 @@ multiples of $2 \pi$. The $I_1$-holomorphic combination of these
 is $\theta_B - \tau \theta_A$.
 
 We have again
-\begin{equation} \label{eq:hol-symp-R2T2}
+\begin{equation}
   \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta)
 \end{equation}
 and so again $\cX_A$ and $\cX_B$ are holomorphic, giving
@@ -2122,7 +2122,7 @@ by restricting to the real points.
 
 \subsection{More examples}
 
-\begin{example}[Semiflat metric in one dimension] \label{exa:semiflat-1d}
+\begin{example}[Semiflat metric in one dimension, trivially fibered] \label{exa:semiflat-1d}
 This is a generalization of \autoref{exa:R2T2} to allow a
 bundle of tori, with varying modulus.
 
@@ -2148,24 +2148,93 @@ define $\Omega(\zeta) \in \Omega^2_\C(X)$ by
 \begin{equation}
   \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta).
 \end{equation}
+To recover \autoref{exa:R2T2}, take $\cB = \C$, 
+$Z_A = z$, $Z_B = \tau z$.
 \end{example}
 
-\begin{exercise} Show that there is a \hk structure on the 
+\begin{exercise} \label{exc:semiflat-1d-hk} Show that there is a \hk structure on the 
 space $X$ in \autoref{exa:semiflat-1d}, with holomorphic symplectic
-form $\Omega(\zeta)$. (One way to do this --- maybe not
-the simplest --- is to identify
-$X$ as a quotient of a Gibbons-Hawking space, 
-with base $U = \cB \times \R$, and $V = \im \tau$.)
-What is the complex manifold $(X,I_1)$?
+form $\Omega(\zeta)$. 
+What can you say about the complex manifold $(X,I_1)$?
+Show that the group $U(1) \times U(1)$ acts
+by triholomorphic isometries on $X$ (translations on
+the torus fibers).
 \end{exercise}
 
-\begin{example}[Ooguri-Vafa space] \fixme{...}
+\begin{exercise} Consider again the \hk manifold from 
+\autoref{exc:semiflat-1d-hk}. Choose a contractible patch 
+$W \subset \cB$
+on which the function $Z_A$ is injective. Using $Z_A$ to
+embed $W \hookrightarrow \C$, we can view $U = W \times \R$ as a subset
+of $\C \times \R \simeq \R^3$. Then the function $V = \im \tau$ is
+a positive harmonic function on $U$. We can thus consider the
+Gibbons-Hawking space (\autoref{exa:incomplete-gibbons-hawking})
+associated to this data. It has translation invariance in 
+the $\R$ direction. Show that the \hk manifold from 
+\autoref{exc:semiflat-1d-hk} is isomorphic to the quotient 
+of this Gibbons-Hawking space by $\Z \subset \R$.
+\end{exercise}
+
+\begin{example}[Semiflat metric in one dimension, nontrivially fibered] \label{exa:semiflat-1d-general}
+Here is a further generalization of \autoref{exa:semiflat-1d},
+to allow a torus \ti{bundle} with nontrivial monodromy.
+The notation needed to take care of this monodromy 
+makes things look considerably more complicated,
+but the local geometry is exactly
+the same as \autoref{exa:semiflat-1d}.
+
+We again fix a 1-dimensional complex manifold $\cB$.
+Now we also fix a local system $\Gamma$ of rank $2$ lattices
+over $\cB$, equipped with an antisymmetric integer-valued pairing
+\begin{equation}
+ \IP{\cdot, \cdot}: \Gamma \times \Gamma \to \Z
+\end{equation}
+and a map 
+\begin{equation}
+  Z: \Gamma \to \C
+\end{equation}
+such that
+\begin{itemize}
+\item $Z$ is a homomorphism on each fiber --- i.e. for each 
+point $u \in \cB$, we get a homomorphism $Z(u): \Gamma_u \to \C$,
+\item $Z$ is holomorphic, if we equip $\Gamma$ with the complex
+structure it acquires as a covering space of $\cB$. (Said otherwise: if 
+we choose a section $\gamma$ of $\Gamma$ over some 
+patch $U \subset \cB$, then $Z$ induces a function $Z_\gamma: U \to \C$,
+and the condition is that this function should always be holomorphic.)
+\end{itemize}
+(To recover \autoref{exa:semiflat-1d}, take $\Gamma$ to be the
+trivial local system with fiber $\Z^2$, and then for 
+$\gamma = (a,b)$ take $Z_\gamma = a Z_A + b Z_B$.)
+
+Now define a torus bundle over $\cB$ by
+\begin{equation}
+  X = \Hom(\Gamma, U(1)),
+\end{equation}
+i.e. the fiber of $X$ over $u \in \cB$ is $\Hom(\Gamma_u, U(1))$.
+This is indeed a torus $(S^1)^2$.
+Given a local section $\gamma$ of $\Gamma$ over a patch
+$U \subset \cB$, we have the evaluation map
+\begin{equation}
+  \varphi_\gamma: X \vert_U \to U(1).
+\end{equation}
+Then finally we define a map
+\begin{equation}
+  \cX: \Gamma \to \C^\times
+\end{equation}
+by
+\begin{equation}
+  \cX_\gamma = \exp \left(\zeta^{-1} Z_\gamma + \zeta\bar{Z}_\gamma \right) \varphi_\gamma.
+\end{equation}
+
+\fixme{...}
+
 \end{example}
 
-\begin{example}[K3 surface] \fixme{...}
-\end{example}
 
-\subsection{\Hk quotients}
+
+\begin{example}[Ooguri-Vafa space]
+\end{example}
 
 \subsection{More formal developments}
 
@@ -2173,7 +2242,16 @@ What is the complex manifold $(X,I_1)$?
 then the \hk metric $g$ is Ricci-flat.
 \end{prop}
 
+\begin{prop}[Compact holomorphic symplectic manifolds are \hk] \fixme{...}
+\end{prop}
+
+\begin{example}[K3 surface] \fixme{...}
+\end{example}
+
 \fixme{reduced holonomy}
+
+
+\subsection{\Hk quotients}
 
 
 
