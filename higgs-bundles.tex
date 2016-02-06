@@ -2015,12 +2015,16 @@ Suppose $X$ is a \hk manifold with twistor space $\cZ$. Then:
   \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \pi^* \cO(2)
 \end{equation}
 where $\Omega^{2,0}_{fiber}(\cZ) = \wedge^2 (T^{1,0}_{vert} \cZ)^*$.
-\item $\cZ$ carries a \ti{real structure} $\rho: \cZ \to \cZ$,
-i.e. an antiholomorphic involution.
-All the other structures are compatible with $\rho$:
+\item $\cZ$ carries a \ti{real structure} (antiholomorphic involution)
+$\rho: \cZ \to \cZ$, such that:
 \begin{enumerate}
-\item $\rho$ covers the antipodal involution $\sigma$ on $S^2$
-\fixme{add commutative diagram},
+\item $\rho$ covers the antipodal involution $\sigma$ on $S^2$:
+\begin{center}
+\begin{tikzcd}
+\cZ \arrow[r,"\rho"] \arrow[d] & \cZ \arrow[d] \\
+S^2 \arrow[r,"\sigma"] & S^2
+\end{tikzcd}
+\end{center}
 \item $\rho^* \Omega = -\overline\Omega$.
 (To formulate this condition we need some care, since 
 $\Omega$ is twisted by $\cO(2)$; we fix a lift
@@ -2078,6 +2082,7 @@ thus the normal bundle is $\cO(1)^{\oplus 2n}$ as desired.
 \end{pf}
 
 \begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
+\label{thm:hk-twistor-construction}
 Suppose given a manifold $\cZ$ carrying all the structures
 of \autoref{prop:twistor-space-properties}. Then let $X$
 be the space of all real holomorphic sections of $\cZ$.
@@ -2086,7 +2091,7 @@ $X$ carries a canonically defined \hk metric. If $\cZ$ is the twistor space of a
 agree.
 \end{thm}
 
-Two remarks about this:
+Two remarks about \autoref{thm:hk-twistor-construction}:
 \begin{itemize}
 \item I do not know any example for which $X' \neq X$, but it seems hard
 in general to rule out the possibility that $\cZ$ could have some 
