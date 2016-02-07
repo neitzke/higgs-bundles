@@ -217,6 +217,7 @@
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lVert#1\rVert}
 \newcommand{\IP}[1]{\langle#1\rangle}
+\newcommand{\DIP}[1]{\langle\!\langle#1\rangle\!\rangle}
 \newcommand{\dwrt}[1]{\frac{\partial}{\partial#1}}
 \newcommand{\eps}{\epsilon}
 
@@ -2126,16 +2127,27 @@ the fibers of $\cZ$.
 
 \insfig{higgs-bundles-7}{0.7}
 
+\begin{defn}[Pseudo-\hk structure] Suppose $X$ is a smooth manifold.
+A \ti{pseudo-\hk structure} 
+on $X$ is all the data of a \hk structure except that we 
+do not impose the condition that $g$ be positive definite.
+\end{defn}
+
 \begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
 \label{thm:hk-twistor-construction}
 Suppose given a manifold $\cZ$ carrying all the structures
 of \autoref{prop:twistor-space-properties}. Then let $X$
 be the space of all real holomorphic sections of $\cZ$
 having normal bundle isomorphic to $\cO(1)^{\oplus 2n}$.
-$X$ carries a canonically defined \hk metric. If $\cZ$ is the twistor space of a
+$X$ carries a canonical structure of smooth manifold and a 
+canonical pseudo-\hk structure. 
+If $\cZ$ is the twistor space of a
 \hk manifold $X'$, then $X' \subset X$, and the \hk structures
 agree.
 \end{thm}
+
+\begin{pf} \fixme{need a little deformation theory to set this up!}
+\end{pf}
 
 Two remarks about \autoref{thm:hk-twistor-construction}:
 \begin{itemize}
@@ -2250,17 +2262,50 @@ $U \subset \cB$, we have the evaluation map
 \end{equation}
 Then finally we define a map
 \begin{equation}
-  \cX: \Gamma \to \C^\times
+  \cX: \Gamma \times \C^\times \to \C^\times
 \end{equation}
 by
 \begin{equation}
   \cX_\gamma = \exp \left(\zeta^{-1} Z_\gamma + \zeta\bar{Z}_\gamma \right) \varphi_\gamma.
 \end{equation}
+Fixing a local section $\gamma$ of $\Gamma$ over $U \subset \cB$,
+this gives a function
+\begin{equation}
+  \cX_\gamma: U \times \C^\times \to \C^\times
+\end{equation}
+Now fix a local basis $\{\gamma_1, \dots, \gamma_n\}$ of $\Gamma$
+over $U \subset \cB$, let $\eps_{ij} = \IP{\gamma_i, \gamma_j}$, 
+let $\eps^{ij}$ be the inverse of the matrix $\eps_{ij}$
+($\eps^{ij} \eps_{jk} = \delta^i_k$),
+and finally define $\Omega(\zeta) \in \Omega^2_\C(X\vert_U)$
+by
+\begin{equation}
+  \Omega(\zeta) = \I \sum_{i,j = 1}^n \eps^{ij} \frac{\de \cX_{\gamma_i}(\zeta) \wedge \de \cX_{\gamma_j}(\zeta)}{\cX_i(\zeta) \cX_j(\zeta)}.
+\end{equation}
+Although we defined it over a patch $U \subset \cB$,
+the $\Omega$ obtained is independent of the choice of
+basis $\{\gamma_i\}$, and thus it extends to a form
+$\Omega(\zeta) \in \Omega^2_\C(X)$.
+We can write it more compactly as
+\begin{equation}
+  \Omega(\zeta) = \I \DIP{\de \log \cX(\zeta), \de \log \cX(\zeta)}
+\end{equation}
+where $\DIP{\cdot,\cdot}$ denotes the inverse pairing,
+$\Gamma^* \times \Gamma^* \to \Z$, and we think of
+$\de \log \cX(\zeta)$ as a 1-form valued in $\Gamma^*$.
 
-\fixme{...}
+\fixme{need positivity condition}
 
 \end{example}
 
+\begin{exercise} Show that the $2$-form $\Omega(\zeta)$ in
+\autoref{exa:semiflat-1d-general} is the holomorphic symplectic
+form for a \hk structure on $X$. Note that this \hk structure does
+not have a global $U(1) \times U(1)$ action, but it does have
+it \ti{locally}, i.e. on patches where $\Gamma$ can be trivialized.
+\fixme{give a reference
+for this metric?}
+\end{exercise}
 
 
 \begin{example}[Ooguri-Vafa space]
@@ -2272,7 +2317,14 @@ by
 then the \hk metric $g$ is Ricci-flat.
 \end{prop}
 
-\begin{prop}[Compact holomorphic symplectic manifolds are \hk] \fixme{...}
+\begin{prop}[Compact \kahler holomorphic symplectic manifolds are \hk] 
+Suppose $X$ is a compact \kahler manifold with a holomorphic
+symplectic form $\Omega \in \Omega^{2,0}(X)$. Fix any class
+$\alpha \in H^2_{dR}(X)$ which is a \kahler class, i.e. there exists
+\ti{some} \kahler metric on $X$ with $[\omega] = \alpha$.
+Then there exists a unique \hk structure on $X$ such 
+that $[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$
+for some $c \in \R$.
 \end{prop}
 
 \begin{example}[K3 surface] \fixme{...}
