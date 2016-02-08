@@ -220,6 +220,7 @@
 \newcommand{\DIP}[1]{\langle\!\langle#1\rangle\!\rangle}
 \newcommand{\dwrt}[1]{\frac{\partial}{\partial#1}}
 \newcommand{\eps}{\epsilon}
+\newcommand{\simarrow}{\xrightarrow\sim}
 
 \newcommand{\mmaref}[1]{}
 
@@ -818,7 +819,7 @@ a subgroup isomorphic to $U(n)$.
 \end{prop}
 
 
-\subsection{Holomorphic symplectic forms}
+\subsection{Holomorphic symplectic manifolds}
 
 \begin{defn}[Holomorphic symplectic form] If $(X,I)$ is a complex manifold, 
 $\Omega \in \Omega^{2,0}(X)$ is a \ti{holomorphic
@@ -845,6 +846,41 @@ bundle $T^{1,0} X$.
 Using \autoref{prop:standard-nondegenerate-2-form}, it follows
 that $T^{1,0} X$ has even complex dimension.
 \end{pf}
+
+\begin{prop}[Holomorphic symplectic form determines complex structure] \label{prop:hol-symp-to-complex}
+Suppose $X$ is a manifold smooth with $\dim_\R X = 2n$, 
+with $\Omega \in \Omega^2_\C(X)$, such that $\de \Omega = 0$ and
+\begin{equation}
+ T_\C X = \ker \Omega \oplus \ker \overline\Omega. 
+\end{equation}
+Then there is a 
+unique complex structure $I$ on $X$, for which $\Omega$
+is a holomorphic symplectic form.
+\end{prop}
+\begin{pf} We define a complex-linear operator 
+$I_\C$ on $T_\C X$ to act by $-\I$ on
+$\ker \Omega$, and by $+\I$ on $\ker \overline\Omega$.
+This $I_\C$ obeys $I_\C v = \overline{I_\C \bar{v}}$, so it is the 
+complexification of a real-linear operator $I$ on $TX$,
+which gives an almost complex structure.
+The integrability of $I$ is equivalent to requiring
+that $T^{0,1} X = \ker \Omega$ is an integrable distribution,
+i.e. that if $v,w$ are sections of $\ker \Omega$ then $[v,w]$
+is also a section of $\ker \Omega$.
+This follows from $\de \Omega = 0$ and the covariant formula
+for $\de$: for any third vector field $y$ we have
+\begin{equation}
+  \de \Omega(v,w,y) = v \Omega(w,y) + w \Omega(y,v) + y \Omega(v,w)
+  - \Omega([v,w],y) - \Omega([y,v],w) - \Omega([w,y],v)
+\end{equation}
+and now all terms vanish except the one we want:
+\begin{equation}
+  0 = -\Omega([v,w],y)
+\end{equation}
+so $[v,w]$ is a section of $\ker \Omega$ as desired.
+
+\end{pf}
+
 
 
 \section{Hyperk\"ahler manifolds}
@@ -909,40 +945,6 @@ The remaining claims are obtained by cyclic permutations.
 \begin{cor}[\Hk manifolds have dimension $4n$] If $X$ is \hk then $\dim_\R X$ is a multiple of $4$.
 \end{cor}
 \begin{pf} This follows directly from \autoref{prop:hol-symp-dimension-4n}.
-\end{pf}
-
-\begin{prop}[Holomorphic symplectic form determines complex structure] \label{prop:hol-symp-to-complex}
-Suppose $X$ is a manifold with $\dim_\R X = 2n$, 
-with $\Omega \in \Omega^2_\C(X)$, such that $\de \Omega = 0$ and
-\begin{equation}
- T_\C X = \ker \Omega \oplus \ker \overline\Omega. 
-\end{equation}
-Then there is a 
-unique complex structure $I$ on $X$, for which $\Omega$
-is a holomorphic symplectic form.
-\end{prop}
-\begin{pf} We define a complex-linear operator 
-$I_\C$ on $T_\C X$ to act by $-\I$ on
-$\ker \Omega$, and by $+\I$ on $\ker \overline\Omega$.
-This $I_\C$ obeys $I_\C v = \overline{I_\C \bar{v}}$, so it is the 
-complexification of a real-linear operator $I$ on $TX$,
-which gives an almost complex structure.
-The integrability of $I$ is equivalent to requiring
-that $T^{0,1} X = \ker \Omega$ is an integrable distribution,
-i.e. that if $v,w$ are sections of $\ker \Omega$ then $[v,w]$
-is also a section of $\ker \Omega$.
-This follows from $\de \Omega = 0$ and the covariant formula
-for $\de$: for any third vector field $y$ we have
-\begin{equation}
-  \de \Omega(v,w,y) = v \Omega(w,y) + w \Omega(y,v) + y \Omega(v,w)
-  - \Omega([v,w],y) - \Omega([y,v],w) - \Omega([w,y],v)
-\end{equation}
-and now all terms vanish except the one we want:
-\begin{equation}
-  0 = -\Omega([v,w],y)
-\end{equation}
-so $[v,w]$ is a section of $\ker \Omega$ as desired.
-
 \end{pf}
 
 \begin{prop}[Explicit formula for the complex structures on a 
@@ -1802,6 +1804,61 @@ an alternative proof of \autoref{lem:hol-symp-hol}.
 % \ti{raising} generator $X^+ \in \mathfrak{su}(2)_\C$
 % spans $T^{0,1}$. \fixme{...}
 
+There is also a less computational approach to \autoref{lem:hol-symp-hol}
+and \autoref{lem:10-forms-hol}, as follows.
+\begin{prop}[Second approach to holomorphic family of 
+holomorphic symplectic forms on \hk manifold] Suppose $X$ is a \hk manifold of 
+real dimension $4n$.
+Then there is a decomposition
+\begin{equation}
+  T_\C X \simeq H \otimes E
+\end{equation}
+with the following properties:
+\begin{enumerate}
+\item $H$ is a rank $2$ complex bundle
+$H$, with a canonical trivialization $\{h_1, h_2\}$.
+We write $\eps_H = h_1 \wedge h_2 \in \wedge^2(H)$.
+\item $E$ is a rank $2n$ complex bundle, with a nondegenerate
+$\eps_E \in \wedge^2(E)$.
+\item The Levi-Civita connection is induced by a connection 
+$\nabla_E$ on $E$ and the trivial connection $\nabla_H$ on $H$.
+\item $\eps_E$ is covariantly constant for $\nabla_E$.
+\item The \hk metric $g$ is \fixme{check factors}
+\begin{equation}
+  g(h_1 \otimes e_1, h_2 \otimes e_2) = \omega_H(h_1, h_2) \omega_E(e_1, e_2).
+\end{equation}
+\item Given an element $h \in H$, define
+$\Omega_h \in \Omega^2_\C(X)$ by
+\begin{equation} \label{eq:hol-symp-from-H}
+  \Omega_h(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h,h_1) \eps_H(h,h_2) \eps_E(e_1,e_2).
+\end{equation}
+Then $\Omega_h$ is a holomorphic symplectic form for a complex
+structure $I_h$ on $X$.
+Moreover the map $h \mapsto \Omega_h$
+gives an isomorphism $\Sym^2(H) \simarrow V$, where $V$ is the vector
+space of \autoref{lem:hol-symp-hol}.
+\item $I_h = I_{\lambda h}$ for any $\lambda \in \C^\times$, 
+so we get complex structures labeled by points
+of $\PP(H) \simeq \C\PP^1$. Identifying $\C\PP^1 \simeq S^2$
+these are the complex structures $I_{\vec s}$.
+The projection $\Sym^2(H) \setminus \{0\} \to \PP(H)$ realizes
+$\Sym^2(H) \setminus \{0\}$ as the complement of the zero
+section in $\cO(-2) \to \C\PP^1$. Thus $\Omega_h$ defines an 
+isomorphism $\cO(-2) \simeq L$ where $L$ is the line bundle of
+\autoref{lem:hol-symp-hol}.
+\item If we choose $h = h_1 + \zeta h_2$,
+then
+\begin{equation}
+  \Omega_h = \zeta \Omega(\zeta)
+\end{equation}
+where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
+\fixme{check factors}
+\end{enumerate}
+\end{prop}
+
+\begin{pf} \fixme{...}
+\end{pf}
+
 \begin{defn}[Twistor space] Given a \hk manifold $X$, the \ti{twistor space} of $X$ is the smooth manifold
 \begin{equation}
   \cZ = X \times S^2
@@ -1939,7 +1996,7 @@ the base $\C\PP^1$, but that's not the case here (I think.))
 \end{example}
 
 \begin{exercise} Write down the holomorphic symplectic form 
-$\Omega$ and the real structure $\rho$ in these complex 
+$\Omega$ in these complex 
 coordinates for $\cZ$.
 \end{exercise}
 
