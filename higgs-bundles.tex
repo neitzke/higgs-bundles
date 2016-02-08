@@ -1078,11 +1078,10 @@ or better, an affine space modeled on $\bbH^n$, or even
 better, an affine space modeled on a quaternionic vector space.
 \end{example}
 
-
-
 \begin{exercise} \label{exc:flat-space-computing}
-Verify the explicit formulas for the symplectic forms
-$\omega_i$ on $\bbH$, and write a formula for $\omega_{\vec s}$.
+Verify the explicit formulas \eqref{eq:symplectic-forms-R4} 
+for the symplectic forms $\omega_i$ on $\bbH$, and write a 
+formula for $\omega_{\vec s}$.
 \end{exercise}
 
 $\bbH$ has a lot of symmetry. For example, $\bbH$ acts 
@@ -1187,7 +1186,8 @@ paired up with the circle direction to make a $\C^\times$.
 
 \begin{example}[Incomplete Gibbons-Hawking spaces] \label{exa:incomplete-gibbons-hawking}
 Now we generalize from $\R^3 \times S^1$ to a more general
-\hk space with $U(1)$ action, i.e. we consider a principal
+\hk space with $U(1)$ action. We begin with the case of 
+a \ti{free} action, i.e. a principal
 $U(1)$ bundle.
 
 Fix some open set $U \subset \R^3$ and
@@ -1203,19 +1203,18 @@ then we have $\de F = 0$.
 Fix a principal $U(1)$ bundle $X$ over $U$, carrying a connection
 $\Theta$ whose curvature is $F$.
 (Such an $X$ exists if and only if $[F/2\pi]$ lies in 
-the image of $H^2(U,\Z) \to H^2(U,\R)$.) 
+the image of $H^2(U,\Z) \to H^2_{dR}(U,\R)$.) 
 Globally this means a 1-form $\Theta$ on $X$
 such that $\de \Theta = F$ (more precisely on the RHS we have
 the pullback of $F$ to $X$) and $\Theta \cdot \partial_\chi = 1$,
-where $\partial_\chi$ denotes the vector field generating
-the $U(1)$ action.
-If we choose a local
+where $\partial_\chi$ denotes the vector field on $X$ 
+generating the $U(1)$ action. If we choose a local
 trivialization of the $U(1)$-bundle $X$ over a patch
 $U_\alpha \subset U$, with local 
 fiber coordinate $\chi_{\alpha} \in \R / 2 \pi \Z$, then $\Theta$ 
 is locally of the form
 \begin{equation}
- \Theta = A_\alpha + \de \chi_{\alpha} 
+ \Theta = A_\alpha + \de \chi_{\alpha},
 \end{equation}
 with $A_\alpha \in \Omega^1(U_\alpha)$, $\de A_\alpha = F$.
 \newcommand{\tTheta}{\tilde\Theta}
@@ -1804,8 +1803,8 @@ an alternative proof of \autoref{lem:hol-symp-hol}.
 % \ti{raising} generator $X^+ \in \mathfrak{su}(2)_\C$
 % spans $T^{0,1}$. \fixme{...}
 
-There is also a less computational approach to \autoref{lem:hol-symp-hol}
-and \autoref{lem:10-forms-hol}, as follows.
+There is also a less computational approach to
+\autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}:
 \begin{prop}[Second approach to holomorphic family of 
 holomorphic symplectic forms on \hk manifold] Suppose $X$ is a \hk manifold of 
 real dimension $4n$.
@@ -1823,7 +1822,7 @@ $\eps_E \in \wedge^2(E)$.
 \item The Levi-Civita connection is induced by a connection 
 $\nabla_E$ on $E$ and the trivial connection $\nabla_H$ on $H$.
 \item $\eps_E$ is covariantly constant for $\nabla_E$.
-\item The \hk metric $g$ is \fixme{check factors}
+\item The \hk metric $g$ is
 \begin{equation}
   g(h_1 \otimes e_1, h_2 \otimes e_2) = \omega_H(h_1, h_2) \omega_E(e_1, e_2).
 \end{equation}
@@ -1841,9 +1840,14 @@ space of \autoref{lem:hol-symp-hol}.
 so we get complex structures labeled by points
 of $\PP(H) \simeq \C\PP^1$. Identifying $\C\PP^1 \simeq S^2$
 these are the complex structures $I_{\vec s}$.
-The projection $\Sym^2(H) \setminus \{0\} \to \PP(H)$ realizes
-$\Sym^2(H) \setminus \{0\}$ as the complement of the zero
-section in $\cO(-2) \to \C\PP^1$. Thus $\Omega_h$ defines an 
+The projection 
+\begin{equation}
+   H \setminus \{0\} \to \PP(H)
+\end{equation} 
+realizes
+$H \setminus \{0\}$ as the complement of the zero
+section in $\cO(-1) \to \C\PP^1$. Since $\Omega_h$ depends
+quadratically on $h \in H$, it thus defines an 
 isomorphism $\cO(-2) \simeq L$ where $L$ is the line bundle of
 \autoref{lem:hol-symp-hol}.
 \item If we choose $h = h_1 + \zeta h_2$,
