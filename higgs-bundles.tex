@@ -787,12 +787,18 @@ in $TX$ which is torsion-free and has $\nabla g = 0$.) \fixme{...}
 \end{pf}
 
 
-
-
 In particular \autoref{cor:kahler-cc} implies that any complex 
 submanifold of a \kahler manifold is again \kahler. Combining this 
 with the fact that $\C\PP^n$ admits a \kahler metric
 (Fubini-Study), we obtain a huge supply of examples.
+
+\begin{prop}[Ricci form for \kahler manifold is
+curvature of canonical bundle] \label{prop:ricci-form-canonical}
+If $(X,I,g)$ is \kahler, the 
+Ricci form $R(v,w) = Ric(Iv,w)$ is equal to the curvature of the
+induced Hermitian metric on the canonical line 
+bundle $K = \wedge^{n,0} T^*X$. 
+\end{prop}
 
 Finally we quickly recall the notion of special holonomy. Recall that for any Riemannian metric $g$ the parallel transport of Levi-Civita preserves $g$, so that 
 for any $p \in X$ the holonomy group $Hol_\nabla(p) \subset GL(T_p X)$ 
@@ -2300,30 +2306,44 @@ $\de \log \cX(\zeta)$ as a 1-form valued in $\Gamma^*$.
 
 \begin{exercise} Show that the $2$-form $\Omega(\zeta)$ in
 \autoref{exa:semiflat-1d-general} is the holomorphic symplectic
-form for a \hk structure on $X$. Note that this \hk structure does
-not have a global $U(1) \times U(1)$ action, but it does have
-it \ti{locally}, i.e. on patches where $\Gamma$ can be trivialized.
+form for a \hk structure on $X$. Show that each fiber of the 
+projection to $\cB$ is a flat torus. (This is the reason why
+this metric is called ``semiflat.'')
 \fixme{give a reference
 for this metric?}
 \end{exercise}
+This \hk structure does
+not have a global $U(1) \times U(1)$ action, but it does have
+it \ti{locally}, i.e. on patches where $\Gamma$ can be trivialized.
 
-
-\begin{example}[Ooguri-Vafa space]
+\begin{example}[Ooguri-Vafa space] \fixme{...}
 \end{example}
+
 
 \subsection{More formal developments}
 
 \begin{prop}[\Hk manifolds are Ricci-flat] If $X$ is a \hk manifold,
 then the \hk metric $g$ is Ricci-flat.
 \end{prop}
+\begin{pf} View $X$ as a
+\kahler manifold in structure $I_1$. The canonical bundle $K$
+with its induced Levi-Civita connection
+admits the global covariantly constant section $\Omega_1$,
+so its curvature is zero; thus, by 
+\autoref{prop:ricci-form-canonical}, $Ric = 0$.
+\end{pf}
 
-\begin{prop}[Compact \kahler holomorphic symplectic manifolds are \hk] 
-Suppose $X$ is a compact \kahler manifold with a holomorphic
-symplectic form $\Omega \in \Omega^{2,0}(X)$. Fix any class
-$\alpha \in H^2_{dR}(X)$ which is a \kahler class, i.e. there exists
-\ti{some} \kahler metric on $X$ with $[\omega] = \alpha$.
-Then there exists a unique \hk structure on $X$ such 
-that $[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$
+\begin{prop}[Compact, \kahler, uniquely holomorphic symplectic, simply connected manifolds are uniquely \hk]
+Suppose that:
+\begin{itemize}
+  \item $X$ is a compact complex manifold,
+  \item the space of holomorphic symplectic forms on $X$ is 1-complex-dimensional, spanned by $\Omega \in \Omega^{2,0}(X)$,
+  \item $X$ is simply connected,
+  \item $\alpha \in H^2_{dR}(X)$ is a \kahler class, 
+i.e. there exists some \kahler metric on $X$ with $[\omega] = \alpha$.
+\end{itemize}
+Then there exists a unique \hk structure $(X,I_1,I_2,I_3,g)$ such that
+$[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$
 for some $c \in \R$.
 \end{prop}
 
