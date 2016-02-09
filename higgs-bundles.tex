@@ -682,7 +682,18 @@ is
 \end{equation}
 \end{defn}
 
-\begin{exercise}If $g$ is a Hermitian metric on $(X,I)$ check that
+\begin{defn}[Positive form] If $\omega \in \Omega^{1,1}_\R(X)$,
+$\omega$ is \ti{positive} if the symmetric pairing
+\begin{equation}
+   g(v,w) = \omega(v,Iw)
+\end{equation} 
+is positive definite.
+\end{defn}
+
+Naturally, if $g$ is an honest Hermitian metric, then the
+associated fundamental form is positive.
+
+\begin{exercise} If $g$ is a Hermitian metric on $(X,I)$ check that
 \begin{equation}
   {\mathrm {vol}}_g = \frac{\omega^n}{n!}
 \end{equation}
@@ -1816,15 +1827,21 @@ with the following properties:
 \begin{enumerate}
 \item $H$ is a rank $2$ complex bundle
 $H$, with a canonical trivialization $\{h_1, h_2\}$.
-We write $\eps_H = h_1 \wedge h_2 \in \wedge^2(H)$.
+We write $\eps_H = h_1 \wedge h_2 \in \wedge^2(H)$,
+and define a pseudoreal structure $\overline{h_1} = h_2$,
+$\overline{h_2} = -h_1$; then $\overline{\eps_H} = \eps_H$.
 \item $E$ is a rank $2n$ complex bundle, with a nondegenerate
-$\eps_E \in \wedge^2(E)$.
+$\eps_E \in \wedge^2(E)$, and a pseudoreal structure
+such that $\overline{\eps_E} = \eps_E$.
+\item The combination of the pseudoreal structures on $E$ and $H$
+gives the real structure on $T_\C X$.
 \item The Levi-Civita connection is induced by a connection 
 $\nabla_E$ on $E$ and the trivial connection $\nabla_H$ on $H$.
-\item $\eps_E$ is covariantly constant for $\nabla_E$.
+\item $\eps_E$ and the pseudoreal structure are covariantly 
+constant for $\nabla_E$.
 \item The \hk metric $g$ is
 \begin{equation}
-  g(h_1 \otimes e_1, h_2 \otimes e_2) = \omega_H(h_1, h_2) \omega_E(e_1, e_2).
+  g(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h_1, h_2) \eps_E(e_1, e_2).
 \end{equation}
 \item Given an element $h \in H$, define
 $\Omega_h \in \Omega^2_\C(X)$ by
@@ -1833,7 +1850,7 @@ $\Omega_h \in \Omega^2_\C(X)$ by
 \end{equation}
 Then $\Omega_h$ is a holomorphic symplectic form for a complex
 structure $I_h$ on $X$.
-Moreover the map $h \mapsto \Omega_h$
+Moreover the map $h \otimes h \mapsto \Omega_h$
 gives an isomorphism $\Sym^2(H) \simarrow V$, where $V$ is the vector
 space of \autoref{lem:hol-symp-hol}.
 \item $I_h = I_{\lambda h}$ for any $\lambda \in \C^\times$, 
@@ -1856,11 +1873,12 @@ then
   \Omega_h = \zeta \Omega(\zeta)
 \end{equation}
 where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
-\fixme{check factors}
+% I checked this by hand for R^4
 \end{enumerate}
 \end{prop}
 
-\begin{pf} \fixme{...}
+\begin{pf} \fixme{...} Here is the idea. 
+
 \end{pf}
 
 \begin{defn}[Twistor space] Given a \hk manifold $X$, the \ti{twistor space} of $X$ is the smooth manifold
@@ -1921,7 +1939,6 @@ so the second term is in $T^{0,1} X$; thus the whole RHS is
 in $T^{0,1} \cZ$, which is what we want.
 \end{pf}
 
-
 \begin{example}[Twistor space of $\R^4$] \label{exa:R4-twistor-space}
 For the standard \hk structure on $\bbH$ all this becomes very 
 concrete. 
@@ -1963,6 +1980,9 @@ In the holomorphic coordinates this becomes
 \end{equation}
 \end{example}
 
+
+\subsection{First examples of twistor spaces}
+
 \begin{exercise} \label{exc:hsymp-holomorphy}
 If $X$ is a complex manifold, with $\dim_\C X = 2$, with holomorphic symplectic form
 $\Omega$, and $\Omega = \alpha \wedge \beta$ for $\alpha,\beta \in \Omega^1(X)$, 
@@ -1996,7 +2016,7 @@ zero section deleted (because $\cX$ never takes the value $0$.)
 Note that in particular $\cZ$ is \ti{not} algebraic, because of the
 appearance of the exponential function here. (Were it algebraic,
 it would follow on general grounds that $L$ is pulled back from 
-the base $\C\PP^1$, but that's not the case here (I think.))
+the base $\C\PP^1$, but that's not the case here.)
 \end{example}
 
 \begin{exercise} Write down the holomorphic symplectic form 
@@ -2083,7 +2103,7 @@ multiples of $2 \pi$. The $I_1$-holomorphic combination of these
 is $\theta_B - \tau \theta_A$.
 
 We have again
-\begin{equation}
+\begin{equation} \label{eq:hol-symp-R2T2-general}
   \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta)
 \end{equation}
 and so again $\cX_A$ and $\cX_B$ are holomorphic, giving
@@ -2094,7 +2114,9 @@ $(X,I_\zeta)$ as a complex manifold \ti{does not} depend on $\tau$.
 \end{example}
 
 \begin{exercise}
-Check \eqref{eq:hol-symp-R2T2}. As we have explained,
+Check \eqref{eq:hol-symp-R2T2}, or more generally 
+\eqref{eq:hol-symp-R2T2-general}. 
+As we have explained,
 this immediately implies that $\cX_A$ and $\cX_B$ are indeed
 holomorphic functions on $\cZ$. You could also
 try checking this directly from the definition of 
@@ -2109,6 +2131,8 @@ $(X,I_\zeta) \simeq \C^\times \times \C^\times$.
 
 % \begin{exercise} Check that the formula \eqref{eq:involution-R4} is correct.
 % \end{exercise}
+
+\subsection{More on twistor spaces}
 
 Next let us describe some of the abstract properties of $\cZ$:
 \begin{prop}[Properties of twistor spaces] \label{prop:twistor-space-properties}
@@ -2131,12 +2155,10 @@ $\rho: \cZ \to \cZ$, such that:
 S^2 \arrow[r,"\sigma"] & S^2
 \end{tikzcd}
 \end{center}
-\item $\rho^* \Omega = -\overline\Omega$.
-(To formulate this condition we need some care, since 
-$\Omega$ is twisted by $\cO(2)$; we fix a lift
-of $\rho$ to $\cO(2)$ by requiring that in the
-standard trivialization of $\cO(2)$, $\rho$ acts
-trivially.)
+\item $\rho^* \Omega = \overline\Omega$.
+(In formulating this condition we use the standard real
+structure on $\cO(2)$ covering $\sigma$, induced from the
+map $(x,y) \mapsto (-y,x)$ on $\cO(1)$.)
 \end{enumerate}
 \end{enumerate}
 \end{prop}
@@ -2148,7 +2170,7 @@ Finally for (3) take
 \begin{equation}
   \rho(x, \vec s) = (x, - \vec s).
 \end{equation}
-The statement that $\rho^* \Omega = -\bar\Omega$ then 
+The statement that $\rho^* \Omega = \bar\Omega$ then 
 amounts to the fact that if we substitute $- 1 / \bar\zeta$
 in \eqref{eq:hol-symp-family} we get $-\bar\Omega$.
 \end{pf}
@@ -2196,7 +2218,8 @@ the fibers of $\cZ$.
 
 \begin{defn}[Pseudo-\hk structure] Suppose $X$ is a smooth manifold.
 A \ti{pseudo-\hk structure} 
-on $X$ is all the data of a \hk structure except that we 
+on $X$ is all the data $(X, g, I_1, I_2, I_3)$
+of a \hk structure except that we 
 do not impose the condition that $g$ be positive definite.
 \end{defn}
 
@@ -2207,13 +2230,39 @@ of \autoref{prop:twistor-space-properties}. Then let $X$
 be the space of all real holomorphic sections of $\cZ$
 having normal bundle isomorphic to $\cO(1)^{\oplus 2n}$.
 $X$ carries a canonical structure of smooth manifold and a 
-canonical pseudo-\hk structure. 
-If $\cZ$ is the twistor space of a
-\hk manifold $X'$, then $X' \subset X$, and the \hk structures
-agree.
+canonical pseudo-\hk structure. If $\cZ$ is the twistor space of a
+pseudo-\hk manifold $X'$, then $X' \subset X$, and the 
+pseudo-\hk structures agree.
 \end{thm}
 
-\begin{pf} \fixme{need a little deformation theory to set this up!}
+\begin{pf} We need some results from deformation theory.
+\fixme{give reference}
+The deformations of a compact complex submanifold $Y \subset \cZ$
+are ``controlled by'' the sheaf cohomology of the normal bundle.
+The simplest situation is the situation where $H^1(Y,N) = 0$.
+In this case the set parameterizing the deformations is 
+actually a complex manifold, and its tangent space at a given 
+$Y$ is $H^0(Y,N)$. We are going to apply this to the situation
+where $Y$ is the image of one of the sections of $\cZ$.
+Then $N \simeq \cO(1)^{\oplus 2n}$. The first bit of good 
+news is that in this situation we indeed have $H^1(Y,N) = 0$.
+Moreover, since $N \otimes \cO(-1)$ is trivial
+we have
+\begin{equation}
+  H^0(Y,N) \simeq H^0(N \otimes \cO(-1)) \otimes H^0(\cO(1)).
+\end{equation}
+Finally, on $H^0(N \otimes \cO(-1))$ we have a skew pairing
+given by $\Omega$, while on $H^0(\cO(1))$ there is a canonical
+skew pairing, concretely
+\begin{equation}
+  \omega{a_1 + b_1 \zeta, a_2 + b_2 \zeta} = a_1 b_2 - a_2 b_1.
+\end{equation}
+Combining these two gives a \ti{symmetric} pairing on 
+$H^0(N)$. This is the \ti{complexified} tangent space to 
+the desired $X$. Keeping track of real structures we see
+that this pairing descends to a \ti{real} symmetric pairing
+on the real tangent space. Then finally we have to check
+that this pairing actually gives a \hk metric. \fixme{...}
 \end{pf}
 
 Two remarks about \autoref{thm:hk-twistor-construction}:
@@ -2264,10 +2313,11 @@ $Z_A = z$, $Z_B = \tau z$.
 \begin{exercise} \label{exc:semiflat-1d-hk} Show that there is a \hk structure on the 
 space $X$ in \autoref{exa:semiflat-1d}, with holomorphic symplectic
 form $\Omega(\zeta)$. 
+Compute the symplectic forms $\omega_i$ and the metric $g$.
 What can you say about the complex manifold $(X,I_1)$?
 Show that the group $U(1) \times U(1)$ acts
 by triholomorphic isometries on $X$ (translations on
-the torus fibers).
+the torus fibers.)
 \end{exercise}
 
 \begin{exercise} Consider again the \hk manifold from 
@@ -2302,7 +2352,7 @@ and a map
 \begin{equation}
   Z: \Gamma \to \C
 \end{equation}
-such that
+such that:
 \begin{itemize}
 \item $Z$ is a homomorphism on each fiber --- i.e. for each 
 point $u \in \cB$, we get a homomorphism $Z(u): \Gamma_u \to \C$,
@@ -2311,6 +2361,13 @@ structure it acquires as a covering space of $\cB$. (Said otherwise: if
 we choose a section $\gamma$ of $\Gamma$ over some 
 patch $U \subset \cB$, then $Z$ induces a function $Z_\gamma: U \to \C$,
 and the condition is that this function should always be holomorphic.)
+\item Choosing a local basis
+$\{\gamma_1,\gamma_2\}$ with $\IP{\gamma_1,\gamma_2} = 1$,
+the $2$-form
+\begin{equation}
+\omega = \de Z_{\gamma_1} \wedge \de \bar{Z}_{\gamma_2} - \de Z_{\gamma_2} \wedge \de \bar{Z}_{\gamma_1}
+\end{equation}
+is \ti{positive}.
 \end{itemize}
 (To recover \autoref{exa:semiflat-1d}, take $\Gamma$ to be the
 trivial local system with fiber $\Z^2$, and then for 
@@ -2340,18 +2397,16 @@ this gives a function
 \begin{equation}
   \cX_\gamma: U \times \C^\times \to \C^\times
 \end{equation}
-Now fix a local basis $\{\gamma_1, \dots, \gamma_n\}$ of $\Gamma$
-over $U \subset \cB$, let $\eps_{ij} = \IP{\gamma_i, \gamma_j}$, 
-let $\eps^{ij}$ be the inverse of the matrix $\eps_{ij}$
-($\eps^{ij} \eps_{jk} = \delta^i_k$),
+Now fix a local basis $\{\gamma_1, \gamma_2\}$ of $\Gamma$
+over $U \subset \cB$, with $\IP{\gamma_1,\gamma_2} = 1$,
 and finally define $\Omega(\zeta) \in \Omega^2_\C(X\vert_U)$
 by
 \begin{equation}
-  \Omega(\zeta) = \I \sum_{i,j = 1}^n \eps^{ij} \frac{\de \cX_{\gamma_i}(\zeta) \wedge \de \cX_{\gamma_j}(\zeta)}{\cX_i(\zeta) \cX_j(\zeta)}.
+  \Omega(\zeta) = \I \frac{\de \cX_{\gamma_1}(\zeta) \wedge \de \cX_{\gamma_2}(\zeta)}{\cX_1(\zeta) \cX_2(\zeta)}.
 \end{equation}
 Although we defined it over a patch $U \subset \cB$,
 the $\Omega$ obtained is independent of the choice of
-basis $\{\gamma_i\}$, and thus it extends to a form
+basis $\{\gamma_1,\gamma_2\}$, and thus it extends to a form
 $\Omega(\zeta) \in \Omega^2_\C(X)$.
 We can write it more compactly as
 \begin{equation}
@@ -2361,13 +2416,16 @@ where $\DIP{\cdot,\cdot}$ denotes the inverse pairing,
 $\Gamma^* \times \Gamma^* \to \Z$, and we think of
 $\de \log \cX(\zeta)$ as a 1-form valued in $\Gamma^*$.
 
-\fixme{need positivity condition}
 
 \end{example}
 
 \begin{exercise} Show that the $2$-form $\Omega(\zeta)$ in
 \autoref{exa:semiflat-1d-general} is the holomorphic symplectic
-form for a \hk structure on $X$. Show that each fiber of the 
+form for a \hk structure on $X$. Compute the symplectic forms
+$\omega_i$ and the \hk metric $g$.
+(The computation needed here should be almost 
+identical to the one in \autoref{exc:semiflat-1d-hk}).
+Show that each fiber of the 
 projection to $\cB$ is a flat torus. (This is the reason why
 this metric is called ``semiflat.'')
 \fixme{give a reference
@@ -2381,7 +2439,7 @@ it \ti{locally}, i.e. on patches where $\Gamma$ can be trivialized.
 \end{example}
 
 
-\subsection{More formal developments}
+\subsection{Differential geometry of \hk manifolds}
 
 \begin{prop}[\Hk manifolds are Ricci-flat] If $X$ is a \hk manifold,
 then the \hk metric $g$ is Ricci-flat.
@@ -2407,6 +2465,15 @@ Then there exists a unique \hk structure $(X,I_1,I_2,I_3,g)$ such that
 $[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$
 for some $c \in \R$.
 \end{prop}
+
+\begin{pf} The main tool is the theorem of Yau, which says 
+that there exists a unique Ricci-flat \kahler
+metric $g$ on $X$ with $[\omega] = \alpha$.
+Now let $I_1$ be the given complex structure on $X$,
+and $\omega_1 = \omega$.
+What we need to show is 
+that $g$ is actually a \hk metric.\fixme{...}
+\end{pf}
 
 \begin{example}[K3 surface] \fixme{...}
 \end{example}
