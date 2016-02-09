@@ -1877,7 +1877,7 @@ where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
 \end{enumerate}
 \end{prop}
 
-\begin{pf} \fixme{...} Here is the idea. 
+\begin{pf} \fixme{...}
 
 \end{pf}
 
@@ -2084,8 +2084,6 @@ Thus, for all $\zeta \in \C^\times$, we get in structure $I_\zeta$
  X \simeq \C^\times \times \C^\times. 
 \end{equation}
 
-\currentposition
-
 For $\tau \neq \I$ the picture is very similar, just with slightly
 more complicated formulas:
 \begin{equation}
@@ -2235,17 +2233,24 @@ pseudo-\hk manifold $X'$, then $X' \subset X$, and the
 pseudo-\hk structures agree.
 \end{thm}
 
-\begin{pf} We need some results from deformation theory.
-\fixme{give reference}
+\begin{pf} We need some results from deformation theory of 
+complex manifolds. A useful reference for this stuff is
+\cite{MR2093043}. Here I can only give a sketch of how it works.
+
 The deformations of a compact complex submanifold $Y \subset \cZ$
-are ``controlled by'' the sheaf cohomology of the normal bundle.
+are ``controlled by'' the sheaf cohomology of the 
+holomorphic normal bundle $N = T\cZ / TY$.
 The simplest situation is the situation where $H^1(Y,N) = 0$.
 In this case the set parameterizing the deformations is 
 actually a complex manifold, and its tangent space at a given 
-$Y$ is $H^0(Y,N)$. We are going to apply this to the situation
+$Y$ is $H^0(Y,N)$. 
+
+We are going to apply this to the situation
 where $Y$ is the image of one of the sections of $\cZ$.
-Then $N \simeq \cO(1)^{\oplus 2n}$. The first bit of good 
-news is that in this situation we indeed have $H^1(Y,N) = 0$.
+Then $Y \simeq \C\PP^1$ and $N \simeq \cO(1)^{\oplus 2n}$.
+The first bit of good 
+news is that in this situation we indeed have $H^1(Y,N) = 0$,
+because $H^1(\C\PP^1, \cO(1)) = 0$.
 Moreover, since $N \otimes \cO(-1)$ is trivial
 we have
 \begin{equation}
@@ -2255,14 +2260,18 @@ Finally, on $H^0(N \otimes \cO(-1))$ we have a skew pairing
 given by $\Omega$, while on $H^0(\cO(1))$ there is a canonical
 skew pairing, concretely
 \begin{equation}
-  \omega{a_1 + b_1 \zeta, a_2 + b_2 \zeta} = a_1 b_2 - a_2 b_1.
+  \omega(a_1 + b_1 \zeta, a_2 + b_2 \zeta) = a_1 b_2 - a_2 b_1.
 \end{equation}
 Combining these two gives a \ti{symmetric} pairing on 
-$H^0(N)$. This is the \ti{complexified} tangent space to 
-the desired $X$. Keeping track of real structures we see
+$H^0(N) \simeq T_\C X$. Keeping track of real structures we see
 that this pairing descends to a \ti{real} symmetric pairing
-on the real tangent space. Then finally we have to check
+on $TX$. 
+
+Next we have to check
 that this pairing actually gives a \hk metric. \fixme{...}
+
+Finally we should check that this \hk metric agrees with
+the one on $X'$. \fixme{...}
 \end{pf}
 
 Two remarks about \autoref{thm:hk-twistor-construction}:
@@ -2313,12 +2322,20 @@ $Z_A = z$, $Z_B = \tau z$.
 \begin{exercise} \label{exc:semiflat-1d-hk} Show that there is a \hk structure on the 
 space $X$ in \autoref{exa:semiflat-1d}, with holomorphic symplectic
 form $\Omega(\zeta)$. 
+(Hint: since we know $\Omega(\zeta)$ concretely, we can compute
+directly what the $\omega_i$ and $g$ must be. What is not immediately
+obvious is that they obey the necessary algebraic relations to
+give a \hk metric. You can obtain this as a consequence of the twistor
+reconstruction, \autoref{thm:hk-twistor-construction}: all you 
+have to do is construct $\cZ$ with the required structures.)
 Compute the symplectic forms $\omega_i$ and the metric $g$.
 What can you say about the complex manifold $(X,I_1)$?
 Show that the group $U(1) \times U(1)$ acts
 by triholomorphic isometries on $X$ (translations on
 the torus fibers.)
 \end{exercise}
+
+\currentposition
 
 \begin{exercise} Consider again the \hk manifold from 
 \autoref{exc:semiflat-1d-hk}. Choose a contractible patch 
