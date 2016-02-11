@@ -2666,16 +2666,41 @@ which looks locally like the locus $\{zw=0\} \subset \C^2$.)
 
 \subsection{Differential geometry of \hk manifolds}
 
-\begin{prop}[\Hk manifolds are Ricci-flat] If $X$ is a \hk manifold,
+\begin{prop}[\Hk manifolds are Ricci-flat] \label{prop:hk-ricci-flat}
+If $X$ is a \hk manifold,
 then the \hk metric $g$ is Ricci-flat.
 \end{prop}
 \begin{pf} View $X$ as a
-\kahler manifold in structure $I_1$. The canonical bundle $K$
+\kahler manifold in structure $I_1$, with $\dim_\C X = n$. 
+The canonical bundle $K_X = \wedge^n (T^*)^{1,0} X$
 with its induced Levi-Civita connection
 admits the global covariantly constant section $\Omega_1$,
 so its curvature is zero; thus, by 
 \autoref{prop:ricci-form-canonical}, $Ric = 0$.
 \end{pf}
+
+\autoref{prop:hk-ricci-flat} suggests one possible strategy
+for constructing examples of \hk structures: first construct
+a Ricci-flat \kahler metric and then try to prove it is actually
+part of an \hk structure. To implement this strategy the next
+theorem is the key tool.
+
+\begin{thm}[Yau's theorem: existence of Ricci-flat \kahler metrics] \label{thm:yau-ricci-flat-kahler}
+\fixme{add reference} Suppose that:
+\begin{itemize}
+  \item $X$ is a compact complex manifold,
+  \item the canonical bundle $K_X$ is trivial (as a complex line bundle),
+  \item $\alpha \in H^2_{dR}(X)$ is a \kahler class, 
+i.e. there exists some \kahler metric on $X$ with $[\omega] = \alpha$.
+\end{itemize}
+Then there exists a unique Ricci-flat \kahler metric on $X$ 
+with $[\omega] = \alpha$.
+\end{thm}
+
+Note that \autoref{thm:yau-ricci-flat-kahler} 
+is not explicit: it
+guarantees the existence of \ti{some} Ricci-flat metric but
+tells us relatively little about what that metric actually is.
 
 \begin{thm}[Compact, \kahler, uniquely holomorphic symplectic, simply connected manifolds are uniquely \hk] \label{thm:hol-symp-is-hk}
 \fixme{ref Beauville?}
@@ -2694,7 +2719,7 @@ for some $c \in \R$.
 \begin{pf} Since $\Omega^n$ is a nowhere vanishing 
 holomorphic section of the canonical bundle $K_X$, 
 we have $c_1(X) = 0$; thus we can use
-Yau's theorem (solution of the Calabi conjecture) 
+\autoref{thm:yau-ricci-flat-kahler}
 to conclude that there exists a unique Ricci-flat \kahler
 metric $g$ on $X$ with $[\omega] = \alpha$.
 Now let $I_1$ be the given complex structure on $X$,
@@ -2744,10 +2769,6 @@ by rescaling the part in each eigenspace \ti{separately},
 to get other holomorphic symplectic forms on $X$,
 violating our assumption.
 \end{pf}
-
-Note that \autoref{thm:hol-symp-is-hk} is not explicit: Yau's theorem
-guarantees the existence of \ti{some} Ricci-flat metric but
-tells us relatively little about what that metric actually is.
 
 \begin{example}[K3 surface] \fixme{...}
 \fixme{SYZ fibration} \fixme{Gross-Wilson picture}
