@@ -1433,7 +1433,7 @@ If we identify $\fu(1) \simeq \R$, we obtain a map $\vec\mu: \R^4 \to \R^3$ give
 $(\mu_1, \mu_2, \mu_3)$. Show that the image of $\vec\mu$ is the complement of a 
 point in $\R^3$; by shifting each $\mu_i$ by a constant we can arrange
 that this point is $0 \in \R^3$. Then show that
-the map $2 \pi \vec\mu$ realizes
+the map $\vec\mu$ realizes
 $\R^4 \setminus \{0\}$ as a principal $U(1)$ bundle 
 over $\R^3 \setminus \{0\}$,
 and that the metric is of the form in \autoref{exa:gibbons-hawking-R4}.
@@ -1528,7 +1528,12 @@ We then make the same change of coordinates
 to $(y_0,y_1,y_2,y_3)$ we made in 
 \autoref{exa:gibbons-hawking-R4}, and compute that $\delta V$
 and $\delta \Theta$ do not contribute to the $\omega_i$ at
-$y=0$: thus the \hk structure indeed extends to $y=0$.
+$y=0$: in other words, in these coordinates we have
+\begin{equation} \label{eq:gibbons-hawking-near-singularity}
+  \omega_i = \de y_0 \wedge \de y_i + \de y_{i+1} \wedge \de y_{i+2} + \delta \omega_i
+\end{equation}
+where $\delta \omega_i$ vanishes at $y = 0$. It follows
+that the \hk structure indeed extends over $y = 0$.
 \end{example}
 
 \begin{example}[Eguchi-Hanson space]
@@ -1550,10 +1555,16 @@ Then $\pi^{-1}(x_1 x_2)$ has the topology of $S^2$.
 Show that this $S^2$ is a complex submanifold of $X$, with
 respect to the two complex structures $I_{\vec s}$ where $\vec s$
 is the direction from $x_1$ to $x_2$ or vice versa.
+(The trickiest point is to see that it is really a manifold,
+even when the two endpoints are included. Hint: by a rotation,
+we can assume without loss of generality that $\vec s = (1,0,0)$.
+Then away from the endpoints this $S^2$ is the locus
+$z_1 = 0$, with $z_1$ given in \eqref{eq:hol-forms-GH}.)
 \end{exercise}
 
 \begin{exercise}
-Compute the area of this $S^2$, in the \hk metric $g$. (Hint: complex
+Show that the area of this $S^2$, in the \hk metric $g$, 
+is $\norm{x_1 - x_2}$. (Hint: complex
 submanifolds of \kahler manifolds are \ti{calibrated} ---
 the area is just $\int \omega_{\vec s}$.)
 \end{exercise}
@@ -1660,14 +1671,15 @@ information than just a family of complex manifolds.
 Similarly by taking multiple singularities in $V$ we could
 obtain the ``multi-Taub-NUT'' family of metrics.
 
-\subsection{The twistor family}
 
-Given a \hk manifold $X$ we have seen that we get a 
-family of complex manifolds $(X,I_{\vec s})$.
-This family can be assembled into a \ti{single}
-complex manifold, equipped with some extra structure,
-which in fact contains all the information necessary
-to reconstruct the original \hk $X$.
+\subsection{The twistor family, first approach}
+
+% Given a \hk manifold $X$ we have seen that we get a 
+% family of complex manifolds $(X,I_{\vec s})$.
+% This family can be assembled into a \ti{single}
+% complex manifold, equipped with some extra structure,
+% which in fact contains all the information necessary
+% to reconstruct the original \hk $X$.
 
 % Morally, the key fact is that the vector
 % bundle $T^{1,0}_{I_{\vec s}} X$ actually varies
@@ -1814,8 +1826,58 @@ an alternative proof of \autoref{lem:hol-symp-hol}.
 % \ti{raising} generator $X^+ \in \mathfrak{su}(2)_\C$
 % spans $T^{0,1}$. \fixme{...}
 
+
+\subsection{The twistor family, second approach}
+
+\fixme{this section is in progress}
+
 There is also a less computational approach to
-\autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}:
+\autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}.
+It begins with a more incisive examination of 
+the local structure.
+
+\begin{defn}[Quaternionic vector space] A \ti{quaternionic
+vector space} is a real vector space $V$ with endomorphisms
+$I_1$, $I_2$, $I_3$ obeying the quaternion algebra.
+\end{defn}
+
+\begin{defn}[\Hk vector space] A \ti{\hk vector space} is a quaternionic vector space $V$, with a symmetric 
+bilinear form $g$ obeying for all $i$
+\begin{equation}
+  g(I_i v, I_i w) = g(v,w).
+\end{equation}
+\end{defn}
+
+\begin{defn}[Twistorial vector space] A \ti{twistorial vector space}
+is a holomorphic vector bundle $W \to S^2$, such that
+$W \otimes \cO(-1)$ is trivial, equipped with
+\begin{itemize}
+   \item a fiberwise nondegenerate section $\Omega$ of $\wedge^2 W^* \otimes \cO(2)$,
+   \item a ``real'' structure $\rho: \sigma^* W \simarrow \bar{W}$, where
+   $\sigma$ is the antipodal map of $\C\PP^1$.
+ \end{itemize} 
+\end{defn}
+
+\begin{prop}[Twistorial description of quaternionic vector spaces] 
+The category of \hk vector spaces
+is equivalent to the category of twistorial vector spaces.
+\end{prop}
+
+\begin{pf} Given a \hk vector space $V$, we
+construct a vector bundle $W \to S^2$ by
+choosing
+\begin{equation}
+ W_{\vec s} = \ker(I_{\vec s} + \I).
+\end{equation}
+Given a twistorial vector space $W$,
+we obtain a quaternionic vector space
+by
+\begin{equation}
+  V = H^0(W)
+\end{equation}
+
+\end{pf}
+
 \begin{prop}[Second approach to holomorphic family of 
 holomorphic symplectic forms on \hk manifold] Suppose $X$ is a \hk manifold of 
 real dimension $4n$.
@@ -1881,6 +1943,9 @@ where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
 
 \end{pf}
 
+
+\subsection{The twistor space}
+
 \begin{defn}[Twistor space] Given a \hk manifold $X$, the \ti{twistor space} of $X$ is the smooth manifold
 \begin{equation}
   \cZ = X \times S^2
@@ -1939,6 +2004,162 @@ so the second term is in $T^{0,1} X$; thus the whole RHS is
 in $T^{0,1} \cZ$, which is what we want.
 \end{pf}
 
+\begin{prop}[Properties of twistor spaces] \label{prop:twistor-space-properties}
+Suppose $X$ is a \hk manifold with twistor space $\cZ$. Then:
+\begin{enumerate}
+\item $\cZ$ is a complex manifold, with a 
+  holomorphic projection $\pi: \cZ \to S^2$.
+\item $\cZ$ carries a twisted fiberwise holomorphic symplectic form,
+\begin{equation}
+  \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \pi^* \cO(2)
+\end{equation}
+where $\Omega^{2,0}_{fiber}(\cZ) = \wedge^2 (T^{1,0}_{vert} \cZ)^*$.
+\item $\cZ$ carries a \ti{real structure} (antiholomorphic involution)
+$\rho: \cZ \to \cZ$, such that:
+\begin{enumerate}
+\item $\rho$ covers the antipodal involution $\sigma$ on $S^2$:
+\begin{center}
+\begin{tikzcd}
+\cZ \arrow[r,"\rho"] \arrow[d] & \cZ \arrow[d] \\
+S^2 \arrow[r,"\sigma"] & S^2
+\end{tikzcd}
+\end{center}
+\item $\rho^* \Omega = \overline\Omega$.
+(In formulating this condition we use the standard
+conjugate-linear lift of $\sigma$ to act on $\cO(2)$.)
+\end{enumerate}
+\end{enumerate}
+\end{prop}
+
+\begin{pf}
+We already proved (1). 
+For (2) use the $\Omega$ of \eqref{eq:hol-symp-family}.
+Finally for (3) take
+\begin{equation}
+  \rho(x, \vec s) = (x, - \vec s).
+\end{equation}
+The statement that $\rho^* \Omega = \bar\Omega$ then 
+amounts to the fact that if we substitute $- 1 / \bar\zeta$
+in \eqref{eq:hol-symp-family} we get $-\bar\Omega$.
+\end{pf}
+
+The fiber $\pi^{-1}(\vec s)$ is isomorphic to
+$(X,I_{\vec s})$ as a complex manifold.
+
+\begin{prop}[Real sections of twistor spaces]
+Suppose $X$ is a \hk manifold with twistor space $\cZ$.
+Then
+$\cZ$, as a bundle over $S^2$, 
+has holomorphic \ti{sections} $s_x$ corresponding
+to the points $x \in X$.
+These sections are \ti{real}, i.e. $s_x(-\vec s) = \rho(s_x(s))$.
+The normal bundle to $s_x(S^2) \subset \cZ$ is isomorphic
+to $\cO(1)^{\oplus 2n}$.
+\end{prop}
+
+\begin{pf}
+Set
+\begin{equation}
+  s_x(\zeta) = (x,\zeta).
+\end{equation}
+Evidently this is a holomorphic and real section.
+The desired statement about the normal bundle follows from
+\autoref{lem:10-forms-hol}: indeed choosing a basis
+$\{\alpha_1, \dots, \alpha_{2n}\}$ 
+for the $2n$-dimensional vector space
+$(T^{1,0}_{x,I_1} X)^*$ we get two 
+trivializations of the conormal bundle to $s_x(S^2)$, by the sections
+$\{(1 + \zeta I_3) \alpha_i \oplus 0 \}$ 
+over $\{\zeta \neq 0\}$ and $\{(1/\zeta + I_3) \alpha_i\} \oplus 0$
+over $\{\zeta \neq \infty\}$. The transition function
+relating these two trivializations is $1/\zeta {\mathbf 1}$,
+showing the conormal bundle is $\cO(-1)^{\oplus 2n}$,
+thus the normal bundle is $\cO(1)^{\oplus 2n}$ as desired.
+\end{pf}
+
+The real sections can be thought of
+as horizontal for a sort of nonlinear flat connection
+which gives the identification between
+the fibers of $\cZ$.
+
+\insfig{higgs-bundles-7}{0.7}
+
+\begin{defn}[Pseudo-\hk structure] Suppose $X$ is a smooth manifold.
+A \ti{pseudo-\hk structure} 
+on $X$ is all the data $(X, g, I_1, I_2, I_3)$
+of a \hk structure except that we 
+do not impose the condition that $g$ be positive definite.
+\end{defn}
+
+\begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
+\label{thm:hk-twistor-construction}
+Suppose given a manifold $\cZ$ carrying all the structures
+of \autoref{prop:twistor-space-properties}. Then let $X$
+be the space of all real holomorphic sections of $\cZ$
+having normal bundle isomorphic to $\cO(1)^{\oplus 2n}$.
+$X$ carries a canonical structure of smooth manifold and a 
+canonical pseudo-\hk structure. If $\cZ$ is the twistor space of a
+pseudo-\hk manifold $X'$, then $X' \subset X$, and the 
+pseudo-\hk structures agree.
+\end{thm}
+
+\begin{pf} We need some results from deformation theory of 
+complex manifolds. A useful reference for this stuff is
+\cite{MR2093043}. Here I can only give a sketch of how it works.
+
+The deformations of a compact complex submanifold $Y \subset \cZ$
+are ``controlled by'' the sheaf cohomology of the 
+holomorphic normal bundle $N = T\cZ / TY$.
+The simplest situation is the situation where $H^1(Y,N) = 0$.
+In this case the set parameterizing the deformations is 
+actually a complex manifold, and its tangent space at a given 
+$Y$ is $H^0(Y,N)$. 
+
+We are going to apply this to the situation
+where $Y$ is the image of one of the sections of $\cZ$.
+Then $Y \simeq \C\PP^1$ and $N \simeq \cO(1)^{\oplus 2n}$.
+The first bit of good 
+news is that in this situation we indeed have $H^1(Y,N) = 0$,
+because $H^1(\C\PP^1, \cO(1)) = 0$.
+Moreover, since $N \otimes \cO(-1)$ is trivial
+we have
+\begin{equation}
+  H^0(Y,N) \simeq H^0(N \otimes \cO(-1)) \otimes H^0(\cO(1)).
+\end{equation}
+Finally, on $H^0(N \otimes \cO(-1))$ we have a skew pairing
+given by $\Omega$, while on $H^0(\cO(1))$ there is a canonical
+skew pairing, concretely
+\begin{equation}
+  \omega(a_1 + b_1 \zeta, a_2 + b_2 \zeta) = a_1 b_2 - a_2 b_1.
+\end{equation}
+Combining these two gives a \ti{symmetric} pairing on 
+$H^0(N) \simeq T_\C X$. Keeping track of real structures we see
+that this pairing descends to a \ti{real} symmetric pairing
+on $TX$. 
+
+Next we have to check
+that this pairing actually gives a \hk metric. \fixme{...}
+
+Finally we should check that this \hk metric agrees with
+the one on $X'$. \fixme{...}
+\end{pf}
+
+Two remarks about \autoref{thm:hk-twistor-construction}:
+\begin{itemize}
+\item I do not know any example for which $X' \neq X$, but it seems hard
+in general to rule out the possibility that $\cZ$ could have some 
+other real sections having nothing to do with the points of the original $X$.
+\item The space of \ti{all} holomorphic sections of $\cZ$ provides
+a natural \ti{complexification} of $X$. For example, when $X = \bbH$,
+$\cZ$ is the total space of $\cO(1) \oplus \cO(1) \to S^2$. 
+The space of sections of this bundle is a complex 4-dimensional vector space,
+equipped with a real structure; we recover the original $\bbH$
+by restricting to the real points.
+\end{itemize}
+
+
+\subsection{First examples of twistor spaces}
+
 \begin{example}[Twistor space of $\R^4$] \label{exa:R4-twistor-space}
 For the standard \hk structure on $\bbH$ all this becomes very 
 concrete. 
@@ -1979,9 +2200,6 @@ In the holomorphic coordinates this becomes
   \rho(\zeta, z, w) = (-1/\bar\zeta, -\bar w / \bar\zeta, \bar z / \bar \zeta).
 \end{equation}
 \end{example}
-
-
-\subsection{First examples of twistor spaces}
 
 \begin{exercise} \label{exc:hsymp-holomorphy}
 If $X$ is a complex manifold, with $\dim_\C X = 2$, with holomorphic symplectic form
@@ -2130,165 +2348,6 @@ $(X,I_\zeta) \simeq \C^\times \times \C^\times$.
 % \begin{exercise} Check that the formula \eqref{eq:involution-R4} is correct.
 % \end{exercise}
 
-\subsection{More on twistor spaces}
-
-Next let us describe some of the abstract properties of $\cZ$:
-\begin{prop}[Properties of twistor spaces] \label{prop:twistor-space-properties}
-Suppose $X$ is a \hk manifold with twistor space $\cZ$. Then:
-\begin{enumerate}
-\item $\cZ$ is a complex manifold, with a 
-  holomorphic projection $\pi: \cZ \to S^2$.
-\item $\cZ$ carries a twisted fiberwise holomorphic symplectic form,
-\begin{equation}
-  \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \pi^* \cO(2)
-\end{equation}
-where $\Omega^{2,0}_{fiber}(\cZ) = \wedge^2 (T^{1,0}_{vert} \cZ)^*$.
-\item $\cZ$ carries a \ti{real structure} (antiholomorphic involution)
-$\rho: \cZ \to \cZ$, such that:
-\begin{enumerate}
-\item $\rho$ covers the antipodal involution $\sigma$ on $S^2$:
-\begin{center}
-\begin{tikzcd}
-\cZ \arrow[r,"\rho"] \arrow[d] & \cZ \arrow[d] \\
-S^2 \arrow[r,"\sigma"] & S^2
-\end{tikzcd}
-\end{center}
-\item $\rho^* \Omega = \overline\Omega$.
-(In formulating this condition we use the standard real
-structure on $\cO(2)$ covering $\sigma$, induced from the
-map $(x,y) \mapsto (-y,x)$ on $\cO(1)$.)
-\end{enumerate}
-\end{enumerate}
-\end{prop}
-
-\begin{pf}
-We already proved (1). 
-For (2) use the $\Omega$ of \eqref{eq:hol-symp-family}.
-Finally for (3) take
-\begin{equation}
-  \rho(x, \vec s) = (x, - \vec s).
-\end{equation}
-The statement that $\rho^* \Omega = \bar\Omega$ then 
-amounts to the fact that if we substitute $- 1 / \bar\zeta$
-in \eqref{eq:hol-symp-family} we get $-\bar\Omega$.
-\end{pf}
-
-The fiber $\pi^{-1}(\vec s)$ is isomorphic to
-$(X,I_{\vec s})$ as a complex manifold.
-
-\begin{prop}[Real sections of twistor spaces]
-Suppose $X$ is a \hk manifold with twistor space $\cZ$.
-Then
-$\cZ$, as a bundle over $S^2$, 
-has holomorphic \ti{sections} $s_x$ corresponding
-to the points $x \in X$.
-These sections are \ti{real}, i.e. $s_x(-\vec s) = \rho(s_x(s))$.
-The normal bundle to $s_x(S^2) \subset \cZ$ is isomorphic
-to $\cO(1)^{\oplus 2n}$.
-\end{prop}
-
-\begin{pf}
-Set
-\begin{equation}
-  s_x(\zeta) = (x,\zeta).
-\end{equation}
-Evidently this is a holomorphic and real section.
-The desired statement about the normal bundle follows from
-\autoref{lem:10-forms-hol}: indeed choosing a basis
-$\{\alpha_1, \dots, \alpha_{2n}\}$ 
-for the $2n$-dimensional vector space
-$(T^{1,0}_{x,I_1} X)^*$ we get two 
-trivializations of the conormal bundle to $s_x(S^2)$, by the sections
-$\{(1 + \zeta I_3) \alpha_i \oplus 0 \}$ 
-over $\{\zeta \neq 0\}$ and $\{(1/\zeta + I_3) \alpha_i\} \oplus 0$
-over $\{\zeta \neq \infty\}$. The transition function
-relating these two trivializations is $1/\zeta {\mathbf 1}$,
-showing the conormal bundle is $\cO(-1)^{\oplus 2n}$,
-thus the normal bundle is $\cO(1)^{\oplus 2n}$ as desired.
-\end{pf}
-
-The real sections can be thought of
-as horizontal for a sort of nonlinear flat connection
-which gives the identification between
-the fibers of $\cZ$.
-
-\insfig{higgs-bundles-7}{0.7}
-
-\begin{defn}[Pseudo-\hk structure] Suppose $X$ is a smooth manifold.
-A \ti{pseudo-\hk structure} 
-on $X$ is all the data $(X, g, I_1, I_2, I_3)$
-of a \hk structure except that we 
-do not impose the condition that $g$ be positive definite.
-\end{defn}
-
-\begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
-\label{thm:hk-twistor-construction}
-Suppose given a manifold $\cZ$ carrying all the structures
-of \autoref{prop:twistor-space-properties}. Then let $X$
-be the space of all real holomorphic sections of $\cZ$
-having normal bundle isomorphic to $\cO(1)^{\oplus 2n}$.
-$X$ carries a canonical structure of smooth manifold and a 
-canonical pseudo-\hk structure. If $\cZ$ is the twistor space of a
-pseudo-\hk manifold $X'$, then $X' \subset X$, and the 
-pseudo-\hk structures agree.
-\end{thm}
-
-\begin{pf} We need some results from deformation theory of 
-complex manifolds. A useful reference for this stuff is
-\cite{MR2093043}. Here I can only give a sketch of how it works.
-
-The deformations of a compact complex submanifold $Y \subset \cZ$
-are ``controlled by'' the sheaf cohomology of the 
-holomorphic normal bundle $N = T\cZ / TY$.
-The simplest situation is the situation where $H^1(Y,N) = 0$.
-In this case the set parameterizing the deformations is 
-actually a complex manifold, and its tangent space at a given 
-$Y$ is $H^0(Y,N)$. 
-
-We are going to apply this to the situation
-where $Y$ is the image of one of the sections of $\cZ$.
-Then $Y \simeq \C\PP^1$ and $N \simeq \cO(1)^{\oplus 2n}$.
-The first bit of good 
-news is that in this situation we indeed have $H^1(Y,N) = 0$,
-because $H^1(\C\PP^1, \cO(1)) = 0$.
-Moreover, since $N \otimes \cO(-1)$ is trivial
-we have
-\begin{equation}
-  H^0(Y,N) \simeq H^0(N \otimes \cO(-1)) \otimes H^0(\cO(1)).
-\end{equation}
-Finally, on $H^0(N \otimes \cO(-1))$ we have a skew pairing
-given by $\Omega$, while on $H^0(\cO(1))$ there is a canonical
-skew pairing, concretely
-\begin{equation}
-  \omega(a_1 + b_1 \zeta, a_2 + b_2 \zeta) = a_1 b_2 - a_2 b_1.
-\end{equation}
-Combining these two gives a \ti{symmetric} pairing on 
-$H^0(N) \simeq T_\C X$. Keeping track of real structures we see
-that this pairing descends to a \ti{real} symmetric pairing
-on $TX$. 
-
-Next we have to check
-that this pairing actually gives a \hk metric. \fixme{...}
-
-Finally we should check that this \hk metric agrees with
-the one on $X'$. \fixme{...}
-\end{pf}
-
-Two remarks about \autoref{thm:hk-twistor-construction}:
-\begin{itemize}
-\item I do not know any example for which $X' \neq X$, but it seems hard
-in general to rule out the possibility that $\cZ$ could have some 
-other real sections having nothing to do with the points of the original $X$.
-\item The space of \ti{all} holomorphic sections of $\cZ$ provides
-a natural \ti{complexification} of $X$. For example, when $X = \bbH$,
-$\cZ$ is the total space of $\cO(1) \oplus \cO(1) \to S^2$. 
-The space of sections of this bundle is a complex 4-dimensional vector space,
-equipped with a real structure; we recover the original $\bbH$
-by restricting to the real points.
-\end{itemize}
-
-\subsection{More examples}
-
 \begin{example}[Semiflat metric in one dimension, trivially fibered] \label{exa:semiflat-1d}
 This is a generalization of \autoref{exa:R2T2} to allow a
 bundle of tori, with varying modulus.
@@ -2326,8 +2385,14 @@ form $\Omega(\zeta)$.
 directly what the $\omega_i$ and $g$ must be. What is not immediately
 obvious is that they obey the necessary algebraic relations to
 give a \hk metric. You can obtain this as a consequence of the twistor
-reconstruction, \autoref{thm:hk-twistor-construction}: all you 
-have to do is construct $\cZ$ with the required structures.)
+reconstruction, \autoref{thm:hk-twistor-construction}: then all you 
+have to do is construct $\cZ$ with the required structures.
+The tricky point is the condition on normal bundles: what does
+it mean concretely about the functions $\cX_{A,B}$?)
+\end{exercise}
+
+\begin{exercise} This is a continuation of
+\autoref{exc:semiflat-1d-hk}.
 Compute the symplectic forms $\omega_i$ and the metric $g$.
 What can you say about the complex manifold $(X,I_1)$?
 Show that the group $U(1) \times U(1)$ acts
@@ -2445,14 +2510,78 @@ identical to the one in \autoref{exc:semiflat-1d-hk}).
 Show that each fiber of the 
 projection to $\cB$ is a flat torus. (This is the reason why
 this metric is called ``semiflat.'')
-\fixme{give a reference
-for this metric?}
 \end{exercise}
 This \hk structure does
 not have a global $U(1) \times U(1)$ action, but it does have
 it \ti{locally}, i.e. on patches where $\Gamma$ can be trivialized.
 
-\begin{example}[Ooguri-Vafa space] \fixme{...}
+So far we have considered
+honest torus fibrations. Now we move on to the first example 
+where we have \ti{singular} fibers.
+
+\begin{example}[Ooguri-Vafa space] \cite{OV1996} 
+We return to the Gibbons-Hawking
+ansatz, \autoref{exa:gibbons-hawking}. The idea is to make a circle
+bundle with a $\Z$ shift symmetry; then on dividing out by the $\Z$
+action we will get a $T^2$ bundle. The simplest thing to try
+would be to take the 1-dimensional lattice of points
+\begin{equation}
+  x_n = (n,0,0) \in \R^3
+\end{equation}
+and then define
+\begin{equation}
+  V = \sum_{n \in \Z} \frac{1}{4\pi\norm{x-x_n}}.
+\end{equation}
+However there is a difficulty: for large enough $n$
+we have
+\begin{equation}
+  \frac{1}{4 \pi \norm{x-x_n}} \approx \frac{1}{4 \pi \abs{n}}
+\end{equation}
+and thus this sum is logarithmically divergent. We
+can remove this divergence by ``subtracting an infinite constant'',
+i.e. we define
+\begin{equation}
+  V = \frac{1}{4 \pi \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{4\pi\abs{n}} \right) + C
+\end{equation}
+where $C$ is any constant.
+Now the divergence problem is cured, but at the price of
+losing the positivity when we are far from the lattice.
+To get an idea of the difficulty, recall the 
+coordinate $z = z_1 = x_2 + \I x_3$,
+and consider the limit of large $\abs{z}$: here
+we may replace the sum of point sources $\sum \delta(x-x_n)$
+by a continuous string source $\delta(z) \de x_3$, where now
+$\delta$ denotes the \ti{two}-dimensional delta function.
+The resulting $V$ obeys a two-dimensional Laplace equation,
+\begin{equation}
+  \Delta V = -\delta(z).
+\end{equation} 
+Thus for large $\abs{z}$ (much larger than $1$) we expect
+\begin{equation} \label{eq:ooguri-vafa-V-approx}
+  V \approx -\frac{1}{2\pi} \log \abs{z} + C' + C
+\end{equation}
+for some constant $C'$. 
+(This expectation can be made rigorous using the Poisson summation
+formula, which moreover shows that the corrections are
+exponentially suppressed in $\abs{z}$.)
+
+Let us briefly consider the Gibbons-Hawking metric in this approximation, i.e. taking $V$ to be exactly given by
+\eqref{eq:ooguri-vafa-V-approx}.
+For $\abs{z} > e^{2 \pi(C' + C)}$
+we will lose positivity, so the biggest base we can take is 
+\begin{equation}
+U = \{\abs{z} < e^{2 \pi(C' + C)}\} \times \R. 
+\end{equation}
+This Gibbons-Hawking metric is translation
+invariant in the $x_3$ direction, and after dividing out by 
+$\Z$ it becomes
+one of the semiflat metrics of \autoref{exa:semiflat-1d-general}.
+However, this metric has a bad singularity at $z=0$.
+
+The \ti{exact} metric shares the bad large-$\abs{z}$ behavior
+of the approximate one, but is better at small $\abs{z}$.
+\fixme{...}
+
 \end{example}
 
 
@@ -2479,8 +2608,9 @@ Suppose that:
 i.e. there exists some \kahler metric on $X$ with $[\omega] = \alpha$.
 \end{itemize}
 Then there exists a unique \hk structure $(X,I_1,I_2,I_3,g)$ such that
-$[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$
+$[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$, 
 for some $c \in \R$.
+where $c = \left(\int_X \omega_1^{2n}\right) / \left(\int_X \Omega \wedge \bar\Omega)^n \right). $
 \end{prop}
 
 \begin{pf} The main tool is the theorem of Yau, which says 
@@ -2489,7 +2619,16 @@ metric $g$ on $X$ with $[\omega] = \alpha$.
 Now let $I_1$ be the given complex structure on $X$,
 and $\omega_1 = \omega$.
 What we need to show is 
-that $g$ is actually a \hk metric.\fixme{...}
+that $g$ is actually a \hk metric.
+First, a Bochner argument shows that $\Omega$ is covariantly
+constant. Thus, if we define 
+\begin{equation}
+  c = \frac{\omega_1^{2n}}{(\Omega \wedge \bar\Omega)^n},
+\end{equation}
+$c$ is a constant. Now define $\omega_2$ and $\omega_3$ by
+$\omega_2 + \I \omega_3 = c \Omega$, and define
+$I_2 = \omega_1^{-1} \omega_3$, $I_3 = \omega_2^{-1} \omega_1$.
+
 \end{pf}
 
 \begin{example}[K3 surface] \fixme{...}
