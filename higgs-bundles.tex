@@ -133,6 +133,8 @@
 \declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,notefont=\normalfont\bfseries, notebraces={(}{)}]{theorem}
 \declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,bodyfont=\normalfont,notefont=\normalfont\bfseries, notebraces={(}{)}]{noital}
 \declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,bodyfont=\normalfont\color{darkgreen},notefont=\normalfont\bfseries, notebraces={(}{)}]{green}
+\declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,bodyfont=\normalfont,notefont=\normalfont\bfseries,qed=$\qedsymbol$,notebraces={(}{)}]{proofstyle}
+
 
 \declaretheorem[name=Theorem,numberwithin=section,style=theorem]{thm}
 \declaretheorem[name=Proposition,sibling=thm,style=theorem]{prop}
@@ -141,7 +143,7 @@
 \declaretheorem[name=Definition,sibling=thm,style=noital]{defn}
 \declaretheorem[name=Example,sibling=thm,style=noital]{example}
 \declaretheorem[name=Exercise,numberwithin=section,style=green]{exercise}
-\declaretheorem[name=Proof,style=noital,numbered=no]{pf}
+\declaretheorem[name=Proof,style=proofstyle,numbered=no]{pf}
 
 \numberwithin{equation}{section}
 
@@ -889,7 +891,6 @@ and now all terms vanish except the one we want:
   0 = -\Omega([v,w],y)
 \end{equation}
 so $[v,w]$ is a section of $\ker \Omega$ as desired.
-
 \end{pf}
 
 
@@ -1758,7 +1759,6 @@ Thus we have two holomorphic trivializations of $L_\zeta$ over
 these two patches, differing by the transition function $\zeta^{-2}$.
 This gives the desired holomorphic identification
 $L_\zeta \simeq \cO(-2)$ and finishes the proof.
-
 \end{pf}
 
 We will use the formula \eqref{eq:hol-symp-family} frequently.
@@ -1873,9 +1873,9 @@ Given a twistorial vector space $W$,
 we obtain a quaternionic vector space
 by
 \begin{equation}
-  V = H^0(W)
+  V = H^0(W).
 \end{equation}
-
+\fixme{...}
 \end{pf}
 
 \begin{prop}[Second approach to holomorphic family of 
@@ -1940,7 +1940,6 @@ where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
 \end{prop}
 
 \begin{pf} \fixme{...}
-
 \end{pf}
 
 
@@ -2149,11 +2148,13 @@ Two remarks about \autoref{thm:hk-twistor-construction}:
 \item I do not know any example for which $X' \neq X$, but it seems hard
 in general to rule out the possibility that $\cZ$ could have some 
 other real sections having nothing to do with the points of the original $X$.
-\item The space of \ti{all} holomorphic sections of $\cZ$ provides
+\item The space $X_\C$ of \ti{all} holomorphic sections of $\cZ$ has an antiholomorphic
+involution induced by $\rho$; $X$ is the fixed locus. It thus provides
 a natural \ti{complexification} of $X$. For example, when $X = \bbH$,
-$\cZ$ is the total space of $\cO(1) \oplus \cO(1) \to S^2$. 
-The space of sections of this bundle is a complex 4-dimensional vector space,
-equipped with a real structure; we recover the original $\bbH$
+$\cZ$ is the total space of $\cO(1) \oplus \cO(1) \to S^2$ 
+(see \autoref{exa:R4-twistor-space}).
+Then $X_\C$ is a complex 4-dimensional vector space,
+equipped with a real structure; we recover the original $X = \bbH$
 by restricting to the real points.
 \end{itemize}
 
@@ -2193,13 +2194,16 @@ $\cZ$ as the total space of the rank $2$ holomorphic bundle
 \begin{equation}
   \cO(1) \oplus \cO(1) \to S^2.
 \end{equation}
-This space comes with a natural antiholomorphic involution:
-on $\R^4 \times S^2$ it is simply $\rho(x,\vec s) = (x,-\vec s)$.
-In the holomorphic coordinates this becomes
+The antiholomorphic involution $\rho$ is
 \begin{equation} \label{eq:involution-R4}
   \rho(\zeta, z, w) = (-1/\bar\zeta, -\bar w / \bar\zeta, \bar z / \bar \zeta).
 \end{equation}
 \end{example}
+
+\begin{exercise}
+Verify the formula \eqref{eq:involution-R4} for the antiholomorphic
+involution.
+\end{exercise}
 
 \begin{exercise} \label{exc:hsymp-holomorphy}
 If $X$ is a complex manifold, with $\dim_\C X = 2$, with holomorphic symplectic form
@@ -2237,8 +2241,8 @@ it would follow on general grounds that $L$ is pulled back from
 the base $\C\PP^1$, but that's not the case here.)
 \end{example}
 
-\begin{exercise} Write down the holomorphic symplectic form 
-$\Omega$ in these complex 
+\begin{exercise} Write down the (fiberwise, twisted) holomorphic symplectic form 
+$\Omega$ and the antiholomorphic involution in these complex 
 coordinates for $\cZ$.
 \end{exercise}
 
@@ -2341,7 +2345,14 @@ the complex structure on $\cZ$.
 
 \begin{exercise}
 Check that $(\cX_A, \cX_B)$ indeed give a \ti{biholomorphism}
-$(X,I_\zeta) \simeq \C^\times \times \C^\times$.
+$(X,I_\zeta) \simeq \C^\times \times \C^\times$,
+and thus $(\cX_A, \cX_B, \zeta)$ give a biholomorphism between
+an open subset of $\cZ$ and $\C^\times \times \C^\times \times \C^\times$.
+\end{exercise}
+
+\begin{exercise}
+Write the antiholomorphic involution $\rho$ in terms
+of $(\cX_A, \cX_B, \zeta)$.
 \end{exercise}
 
 
@@ -2384,7 +2395,8 @@ form $\Omega(\zeta)$.
 (Hint: since we know $\Omega(\zeta)$ concretely, we can compute
 directly what the $\omega_i$ and $g$ must be. What is not immediately
 obvious is that they obey the necessary algebraic relations to
-give a \hk metric. You can obtain this as a consequence of the twistor
+give a \hk metric. You could verify this directly, but 
+you can also obtain it as a consequence of the twistor
 reconstruction, \autoref{thm:hk-twistor-construction}: then all you 
 have to do is construct $\cZ$ with the required structures.
 The tricky point is the condition on normal bundles: what does
@@ -2562,7 +2574,7 @@ Thus for large $\abs{z}$ (much larger than $1$) we expect
 \end{equation}
 for some constant $C'$. 
 (This expectation can be made rigorous using the Poisson summation
-formula, which moreover shows that the corrections are
+formula, which also shows that the corrections are
 exponentially suppressed in $\abs{z}$.)
 
 Let us briefly consider the Gibbons-Hawking metric in this approximation, i.e. taking $V$ to be exactly given by
@@ -2598,7 +2610,7 @@ so its curvature is zero; thus, by
 \autoref{prop:ricci-form-canonical}, $Ric = 0$.
 \end{pf}
 
-\begin{prop}[Compact, \kahler, uniquely holomorphic symplectic, simply connected manifolds are uniquely \hk]
+\begin{thm}[Compact, \kahler, uniquely holomorphic symplectic, simply connected manifolds are uniquely \hk] \label{thm:hol-symp-is-hk}
 Suppose that:
 \begin{itemize}
   \item $X$ is a compact complex manifold,
@@ -2611,7 +2623,7 @@ Then there exists a unique \hk structure $(X,I_1,I_2,I_3,g)$ such that
 $[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$, 
 for some $c \in \R$.
 where $c = \left(\int_X \omega_1^{2n}\right) / \left(\int_X \Omega \wedge \bar\Omega)^n \right). $
-\end{prop}
+\end{thm}
 
 \begin{pf} The main tool is the theorem of Yau, which says 
 that there exists a unique Ricci-flat \kahler
@@ -2628,8 +2640,12 @@ constant. Thus, if we define
 $c$ is a constant. Now define $\omega_2$ and $\omega_3$ by
 $\omega_2 + \I \omega_3 = c \Omega$, and define
 $I_2 = \omega_1^{-1} \omega_3$, $I_3 = \omega_2^{-1} \omega_1$.
-
+\fixme{...}
 \end{pf}
+
+Note that \autoref{thm:hol-symp-is-hk} is not explicit: Yau's Theorem
+guarantees the existence of \ti{some} Ricci-flat metric but
+tells us relatively little about what that metric actually is.
 
 \begin{example}[K3 surface] \fixme{...}
 \end{example}
