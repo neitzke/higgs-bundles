@@ -2560,10 +2560,14 @@ Thus for large $\abs{z}$ (much larger than $1$) we expect
 \begin{equation} \label{eq:ooguri-vafa-V-approx}
   V \approx -\frac{1}{2\pi} \log \abs{z} + C' + C
 \end{equation}
-for some constant $C'$. 
-(This expectation can be made rigorous using the Poisson summation
-formula, which moreover shows that the corrections are
-exponentially suppressed in $\abs{z}$.)
+for some constant $C'$.\footnote{This expectation can be made rigorous using the Poisson summation formula, which gives in fact
+\begin{equation}
+  V = -\frac{1}{2\pi} \log \abs{z/\Lambda} + C + \frac{1}{\pi} \sum_{n=1}^\infty \cos (2 \pi n x_3) K_0(2 \pi n \abs{z})
+\end{equation}
+where $\Lambda = 2 e^{-\gamma}$, $\gamma$ is Euler's constant,
+and $K_0$ is the modified Bessel function. This function has asymptotics
+$K_0(M) \sim \sqrt\frac{\pi}{2M} e^{-M}$, so each term in the 
+sum is exponentially small as $\abs{z} \to \infty$.}
 
 Let us briefly consider the Gibbons-Hawking metric in this approximation, i.e. taking $V$ to be exactly given by
 \eqref{eq:ooguri-vafa-V-approx}.
@@ -2580,10 +2584,11 @@ However, this metric has a bad singularity at $z=0$.
 
 The \ti{exact} metric shares the bad large-$\abs{z}$ behavior
 of the approximate one, but is better at small $\abs{z}$.
-\fixme{...}
-
+The fiber over a generic $z$ is a compact complex torus (circle
+fibration over a circle), while over $z=0$ we get a singular
+fiber (torus with a node, aka ``ordinary double point,'' a place
+which looks locally like the locus $\{zw=0\} \subset \C^2$.)
 \end{example}
-
 
 \subsection{Differential geometry of \hk manifolds}
 
