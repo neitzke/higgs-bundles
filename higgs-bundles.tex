@@ -963,20 +963,20 @@ The remaining claims are obtained by cyclic permutations.
 \hk manifold in terms of $\omega_i$]
 If $X$ is \hk then
 \begin{equation}
-I_1 = \omega_2^{-1} \omega_3
+I_1 = \omega_3^{-1} \omega_2
 \end{equation}
 and cyclic permutations.
-(What this formula really means: view $\omega_3$ as a map $TX \to T^* X$
-namely $v \mapsto \omega_3(v,\cdot)$,
-and $\omega_2^{-1}$ as a map $T^* X \to TX$
-namely $\omega_2(v,\cdot) \mapsto v$; then the composition
-$\omega_2^{-1} \omega_3: TX \to TX$ is $I_1$.)
+(What this formula really means: view $\omega_2$ as a map $TX \to T^* X$
+namely $v \mapsto \omega_2(v,\cdot)$,
+and $\omega_3^{-1}$ as a map $T^* X \to TX$
+namely $\omega_3(v,\cdot) \mapsto v$; then the composition
+$\omega_3^{-1} \omega_2: TX \to TX$ is $I_1$.)
 \end{prop}
 \begin{pf}
-What we have to check is that $\omega_2(I_1 v,\cdot) = \omega_3(v,\cdot)$.
+What we have to check is that $\omega_3(I_1 v,\cdot) = \omega_2(v,\cdot)$.
 But
 \begin{equation}
- \omega_2(I_1 v,\cdot) = g(I_2 I_1 v,\cdot) = g(-I_3 v, \cdot) = \omega_3(v,\cdot)
+ \omega_3(I_1 v,\cdot) = g(I_3 I_1 v,\cdot) = g(I_2 v, \cdot) = \omega_2(v,\cdot)
 \end{equation}
 as desired.
 \end{pf}
@@ -2602,7 +2602,7 @@ fiber (torus with a node, aka ``ordinary double point,'' a place
 which looks locally like the locus $\{zw=0\} \subset \C^2$.)
 \end{example}
 
-\insfig{higgs-bundles-8}{1.0}
+\insfig{higgs-bundles-8}{0.85}
 
 
 \subsection{Differential geometry of \hk manifolds}
@@ -2633,25 +2633,37 @@ for some $c \in \R$.
 where $c = \left(\int_X \omega_1^{2n}\right) / \left(\int_X \Omega \wedge \bar\Omega)^n \right). $
 \end{thm}
 
-\begin{pf} The main tool is the theorem of Yau, which says 
-that there exists a unique Ricci-flat \kahler
+\begin{pf} Since $\Omega^n$ is a nowhere vanishing 
+holomorphic section of the canonical bundle $K_X$, 
+we have $c_1(X) = 0$; thus we can use
+Yau's theorem (solution of the Calabi conjecture) 
+to conclude that there exists a unique Ricci-flat \kahler
 metric $g$ on $X$ with $[\omega] = \alpha$.
 Now let $I_1$ be the given complex structure on $X$,
 and $\omega_1 = \omega$.
 What we need to show is 
 that $g$ is actually a \hk metric.
-First, a Bochner argument shows that $\Omega$ is covariantly
-constant. Thus, if we define 
+
+First, recall the $L^2$ inner product $\IP{\cdot,\cdot}$ on $\Omega^*(X)$, and
+the Laplacian $\Delta_{\bar \partial} = \bar\partial \bar\partial^* + \bar\partial^* \bar\partial$
+which has in particular $\Delta_{\bar \partial} \Omega = 0$.
+A Weitzenbock formula (using the fact that $Ric = 0$)
+says $\Delta_{\bar\partial} = \nabla^* \nabla$, \fixme{give ref}
+and thus
+\begin{equation}
+  0 = \IP{\Omega, \Delta_{\bar \partial} \Omega} = \IP{\nabla\Omega,\nabla\Omega},
+\end{equation}
+so $\nabla \Omega = 0$. Thus, if we define
 \begin{equation}
   c = \frac{\omega_1^{2n}}{(\Omega \wedge \bar\Omega)^n},
 \end{equation}
 $c$ is a constant. Now define $\omega_2$ and $\omega_3$ by
 $\omega_2 + \I \omega_3 = c \Omega$, and define
-$I_2 = \omega_1^{-1} \omega_3$, $I_3 = \omega_2^{-1} \omega_1$.
+$I_2 = g^{-1} \omega_2$, $I_3 = g^{-1} \omega_3$.
 \fixme{...}
 \end{pf}
 
-Note that \autoref{thm:hol-symp-is-hk} is not explicit: Yau's Theorem
+Note that \autoref{thm:hol-symp-is-hk} is not explicit: Yau's theorem
 guarantees the existence of \ti{some} Ricci-flat metric but
 tells us relatively little about what that metric actually is.
 
