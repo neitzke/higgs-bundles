@@ -204,8 +204,10 @@
 \newcommand{\cE}{{\mathcal E}}
 \newcommand{\vs}{\not\!v}
 \newcommand{\kahler}{K\"ahler\xspace}
+\newcommand{\kq}{/\!\!/}
 \newcommand{\hk}{hyperk\"ahler\xspace}
 \newcommand{\Hk}{Hyperk\"ahler\xspace}
+\newcommand{\hkq}{/\!\!/\!\!/\!\!/}
 \newcommand{\del}{\ensuremath{\partial}}
 \newcommand{\delbar}{\ensuremath{\overline{\partial}}}
 \newcommand{\I}{{\mathrm i}}
@@ -421,10 +423,9 @@ for all $Z \in \fg$ we have
 % \end{equation}
 % i.e.
 \begin{equation} \label{eq:moment-map-condition-3}
-  \iota_{\rho(Z)} \omega = \de \mu_Z.
+  \iota_{\rho(Z)} \omega = \de \mu_Z,
 \end{equation}
-(Some authors would require in addition that the 
-map \eqref{eq:moment-map} should be $G$-equivariant.)
+and in addition the map \eqref{eq:moment-map} is $G$-equivariant.
 \end{defn}
 In particular, the moment map $\mu$ 
 \ti{determines} the $G$-action.
@@ -459,6 +460,36 @@ on $X$,
 \begin{equation}
   \mu(x_1,x_2) = -\half (x_1^2 + x_2^2).
 \end{equation}
+
+\begin{defn}[Symplectic quotient]
+Suppose $X$ is a symplectic manifold, with a Lie group $G$
+acting on it, with moment map $\mu$. Then the \ti{symplectic quotient}
+is
+\begin{equation}
+  X \kq G = \mu^{-1}(0) / G.
+\end{equation}
+\end{defn}
+
+\begin{prop}[Symplectic quotient is symplectic]
+If $G$ acts freely
+on $\mu^{-1}(0)$, then $X \kq G$ is a manifold,
+\begin{equation}
+  \dim (X \kq G) = \dim X - 2 \dim G,
+\end{equation}
+and $\omega$ descends to a symplectic form on $X \kq G$.
+\end{prop}
+\begin{pf}
+From the fact that $G$ acts freely on $\mu^{-1}(0)$,
+$\omega$ is nondegenerate, and \eqref{eq:moment-map-condition-3},
+it follows that $0$ is a regular value of $\mu$;
+thus $Y = \mu^{-1}(0)$ is a submanifold of $X$,
+with $\dim Y = \dim X - \dim G$.
+Then $X \kq G = Y / G$ is also a manifold of the desired 
+dimension.
+
+It remains to check that $\omega$ descends to a
+symplectic form. We want to \fixme{...}
+\end{pf}
 
 
 \subsection{Complex manifolds} 
@@ -830,6 +861,29 @@ which one can prove:
 the holonomy group at a point is contained in
 a subgroup isomorphic to $U(n)$.
 \end{prop}
+
+
+\subsection{\kahler quotients}
+
+\begin{prop}[Symplectic quotients of \kahler manifolds 
+are \kahler] \label{prop:kahler-quotients-are-kahler} 
+Suppose $X$ is a \kahler manifold, with a group
+$G$ acting on $X$ preserving both $g$ and $I$ (thus it
+also preserves $\omega$), with a moment map $\mu$.
+Then the induced metric on the symplectic quotient $X \kq G$
+is \kahler.
+\end{prop}
+\begin{pf} \fixme{...}
+\end{pf}
+
+\begin{example}[Projective space as a \kahler quotient]
+Take $X = \C^n$ with its standard symplectic form
+\begin{equation}
+\omega = \frac{\I}{2} \sum_i \de z_i \wedge \de \bar{z}_i.
+\end{equation}
+\fixme{...}
+\end{example}
+
 
 
 \subsection{Holomorphic symplectic manifolds}
@@ -2600,6 +2654,11 @@ The fiber over a generic $z$ is a compact complex torus (circle
 fibration over a circle), while over $z=0$ we get a singular
 fiber (torus with a node, aka ``ordinary double point,'' a place
 which looks locally like the locus $\{zw=0\} \subset \C^2$.)
+
+\fixme{tricky point: choice of $U(1)$ action when we glue}
+
+\fixme{describe twistor picture?}
+
 \end{example}
 
 \insfig{higgs-bundles-8}{0.85}
@@ -2619,18 +2678,17 @@ so its curvature is zero; thus, by
 \end{pf}
 
 \begin{thm}[Compact, \kahler, uniquely holomorphic symplectic, simply connected manifolds are uniquely \hk] \label{thm:hol-symp-is-hk}
+\fixme{ref Beauville?}
 Suppose that:
 \begin{itemize}
   \item $X$ is a compact complex manifold,
   \item the space of holomorphic symplectic forms on $X$ is 1-complex-dimensional, spanned by $\Omega \in \Omega^{2,0}(X)$,
-  \item $X$ is simply connected,
   \item $\alpha \in H^2_{dR}(X)$ is a \kahler class, 
 i.e. there exists some \kahler metric on $X$ with $[\omega] = \alpha$.
 \end{itemize}
 Then there exists a unique \hk structure $(X,I_1,I_2,I_3,g)$ such that
 $[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$, 
 for some $c \in \R$.
-where $c = \left(\int_X \omega_1^{2n}\right) / \left(\int_X \Omega \wedge \bar\Omega)^n \right). $
 \end{thm}
 
 \begin{pf} Since $\Omega^n$ is a nowhere vanishing 
@@ -2653,14 +2711,38 @@ and thus
 \begin{equation}
   0 = \IP{\Omega, \Delta_{\bar \partial} \Omega} = \IP{\nabla\Omega,\nabla\Omega},
 \end{equation}
-so $\nabla \Omega = 0$. Thus, if we define
-\begin{equation}
-  c = \frac{\omega_1^{2n}}{(\Omega \wedge \bar\Omega)^n},
-\end{equation}
-$c$ is a constant. Now define $\omega_2$ and $\omega_3$ by
-$\omega_2 + \I \omega_3 = c \Omega$, and define
+so $\nabla \Omega = 0$. 
+% Thus, if we define
+% \begin{equation}
+%   c = \frac{\omega_1^{2n}}{(\Omega \wedge \bar\Omega)^n},
+% \end{equation}
+% $c$ is a constant. 
+Now define $\omega_2$ and $\omega_3$ by
+$\omega_2 + \I \omega_3 = \Omega$, and define
 $I_2 = g^{-1} \omega_2$, $I_3 = g^{-1} \omega_3$.
-\fixme{...}
+It is straightforward to show $I_2 I_1 = -I_3$, $I_3 I_1 = I_2$;
+also $\Omega g^{-1} \Omega = 0$, so
+$(I_2 + \I I_3)^2 = 0$, so $I_2^2 = I_3^2$ and
+$I_2 I_3 = -I_3 I_2$.
+Using the structure theorem 
+for skew-symmetric matrices, $I_2^2$ is
+diagonalizable with all eigenvalues negative.
+All that remains is to show that they are all equal;
+then by an overall rescaling of $\omega_2$
+and $\omega_3$ we can arrange they are all $-1$,
+which completes the proof.
+
+So, suppose that the eigenvalues of
+$I_2^2$ are not all equal.
+Then decompose $TX$ into eigenspaces of $I_2^2$.
+The structure theorem shows that these eigenspaces are
+preserved by $I_2$, and since $I_3^2 = I_2^2$,
+we get similarly that they are preserved by $I_3$.
+Then using $I_2^2 I_1 = -I_2 I_3$ they are also 
+preserved by $I_1$. But in this case we can change $\Omega$
+by rescaling the part in each eigenspace \ti{separately},
+to get other holomorphic symplectic forms on $X$,
+violating our assumption.
 \end{pf}
 
 Note that \autoref{thm:hol-symp-is-hk} is not explicit: Yau's theorem
@@ -2668,6 +2750,7 @@ guarantees the existence of \ti{some} Ricci-flat metric but
 tells us relatively little about what that metric actually is.
 
 \begin{example}[K3 surface] \fixme{...}
+\fixme{SYZ fibration} \fixme{Gross-Wilson picture}
 \end{example}
 
 \fixme{reduced holonomy}
@@ -2675,6 +2758,46 @@ tells us relatively little about what that metric actually is.
 
 \subsection{\Hk quotients}
 
+\begin{defn}[\Hk moment map] Suppose $X$ is \hk and a Lie group
+$G$ acts on $X$ by isometries preserving the \hk structure.
+Then a \ti{\hk moment map} for this action is a map
+\begin{equation}
+  \mu = (\mu_1, \mu_2, \mu_3): X \to \fg \otimes \R^3
+\end{equation}
+where $\mu_i$ is a moment map for the action with respect
+to $\omega_i$.
+\end{defn}
+
+\begin{defn}[\Hk quotient] Suppose $X$ is \hk and a Lie group
+$G$ acts on $X$, with \hk moment map $\mu$.
+Then the \ti{\hk quotient}
+of $X$ by $G$ is
+\begin{equation}
+  X \hkq G = \mu^{-1}(0) / G.
+\end{equation}
+\end{defn}
+
+\begin{thm}[\Hk quotients are \hk] If $G$ acts freely on
+$\mu^{-1}(0)$, then $X \hkq G$ is a manifold, with
+\begin{equation}
+  \dim_\R (X \hkq G) = \dim_\R X - 4 \dim_\R G,
+\end{equation}
+and the quotient metric on $X \hkq G$ is \hk.
+\end{thm}
+\begin{pf} Consider the function 
+\begin{equation}
+ M_1 = \mu_2 + \I \mu_3: X \to \fg_\C. 
+\end{equation}
+A short computation \fixme{do it} shows that $M_1$ is 
+$I_1$-holomorphic. Thus $Y = M_1^{-1}(0)$ is an $I_1$-complex
+submanifold, which implies $Y$ is \kahler.
+Now $G$ acts on $Y$
+preserving $\omega_1$, with moment map $\mu_1$,
+and we have $X \hkq G = Y \kq G$.
+Thus by \autoref{prop:kahler-quotients-are-kahler} the
+quotient metric on $X \hkq G$ is \kahler.
+\fixme{...}
+\end{pf}
 
 
 \section{Higgs bundles}
