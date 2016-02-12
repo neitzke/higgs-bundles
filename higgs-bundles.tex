@@ -2413,6 +2413,15 @@ of $(\cX_A, \cX_B, \zeta)$.
 % \begin{exercise} Check that the formula \eqref{eq:involution-R4} is correct.
 % \end{exercise}
 
+
+\subsection{Semiflat metrics}
+
+Now we start considering more interesting torus fibrations.
+The \hk metrics we describe below appeared first in
+\cite{Cecotti:1989qn}; see also \cite{Freed:1997dp}
+for a more mathematically oriented exposition,
+and closely related discussion in \cite{Hitchin:2005uu}.
+
 \begin{example}[Semiflat metric in one dimension, trivially fibered] \label{exa:semiflat-1d}
 This is a generalization of \autoref{exa:R2T2} to allow a
 bundle of tori, with varying modulus.
@@ -2511,7 +2520,7 @@ and the condition is that this function should always be holomorphic.)
 $\{\gamma_1,\gamma_2\}$ with $\IP{\gamma_1,\gamma_2} = 1$,
 the $2$-form
 \begin{equation}
-\omega = \de Z_{\gamma_1} \wedge \de \bar{Z}_{\gamma_2} - \de Z_{\gamma_2} \wedge \de \bar{Z}_{\gamma_1}
+\omega = \de Z_{\gamma_2} \wedge \de \bar{Z}_{\gamma_1} - \de Z_{\gamma_1} \wedge \de \bar{Z}_{\gamma_2}
 \end{equation}
 is \ti{positive}.
 \end{itemize}
@@ -2561,8 +2570,6 @@ We can write it more compactly as
 where $\DIP{\cdot,\cdot}$ denotes the inverse pairing,
 $\Gamma^* \times \Gamma^* \to \Z$, and we think of
 $\de \log \cX(\zeta)$ as a 1-form valued in $\Gamma^*$.
-
-
 \end{example}
 
 \begin{exercise} Show that the $2$-form $\Omega(\zeta)$ in
@@ -2578,6 +2585,9 @@ this metric is called ``semiflat.'')
 This \hk structure does
 not have a global $U(1) \times U(1)$ action, but it does have
 it \ti{locally}, i.e. on patches where $\Gamma$ can be trivialized.
+
+
+\subsection{The Ooguri-Vafa space}
 
 So far we have considered
 honest torus fibrations. Now we move on to the first example 
@@ -2652,11 +2662,11 @@ of the approximate one, but is better at small $\abs{z}$. It is not
 translation invariant in the $x_1$ direction anymore, but does 
 have the discrete $\Z$ symmetry $x_1 \to x_1 + n$, preserving
 the \hk structure.
-After dividing out by this $\Z$ action we obtain the \hk Ooguri-Vafa manifold;
-call this $X$.
+After dividing out by this $\Z$ action we obtain a \hk 
+space $X$, the Ooguri-Vafa manifold.
 
-As usual, in complex structure $I_1$, $X$ has the holomorphic 
-function $z$. 
+As usual for Gibbons-Hawking spaces, 
+in complex structure $I_1$, $X$ has the holomorphic function $z$. 
 The fiber of $X$ over a generic $z$ is a compact complex torus (circle
 fibration over a circle), while over $z=0$ we get a singular
 fiber (torus with a node, aka ``ordinary double point,'' a place
@@ -2668,7 +2678,7 @@ which looks locally like the locus $\{xy=0\} \subset \C^2$.)
 
 \end{example}
 
-\insfig{higgs-bundles-8}{0.85}
+\insfig{higgs-bundles-8}{0.92}
 
 \begin{exercise} Let $X$ be the Gibbons-Hawking
 \hk manifold with $V$ given by \eqref{eq:ooguri-vafa-V-approx}.
@@ -2715,9 +2725,10 @@ Note that \autoref{thm:yau-ricci-flat-kahler}
 is not explicit: it
 guarantees the existence of \ti{some} Ricci-flat metric but
 tells us relatively little about what that metric actually is.
+A nice sketch of the proof can be found in \cite{Joyce}.
 
-\begin{thm}[Compact, \kahler, uniquely holomorphic symplectic, simply connected manifolds are uniquely \hk] \label{thm:hol-symp-is-hk}
-\fixme{ref Beauville?}
+\begin{thm}[Compact, \kahler, uniquely holomorphic symplectic manifolds are uniquely \hk] \label{thm:hol-symp-is-hk}
+\fixme{ref Beauville?} \fixme{need simply connected?}
 Suppose that:
 \begin{itemize}
   \item $X$ is a compact complex manifold,
