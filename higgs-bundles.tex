@@ -479,16 +479,40 @@ on $\mu^{-1}(0)$, then $X \kq G$ is a manifold,
 and $\omega$ descends to a symplectic form on $X \kq G$.
 \end{prop}
 \begin{pf}
-From the fact that $G$ acts freely on $\mu^{-1}(0)$,
-$\omega$ is nondegenerate, and \eqref{eq:moment-map-condition-3},
-it follows that $0$ is a regular value of $\mu$;
-thus $Y = \mu^{-1}(0)$ is a submanifold of $X$,
+Let $Y = \mu^{-1}(0)$.
+We want to show that $0$ is a regular value of $\mu$,
+i.e. that $\de \mu: T_x X \to \fg^*$ is surjective
+whenever $x \in Y$. This 
+is equivalent to saying that for every $Z \in \fg$
+we have $\de \mu_Z(x) \neq 0$.
+But by \eqref{eq:moment-map-condition-3} this just means
+that $\iota_{\rho(Z)} \omega \neq 0$,
+which is true since $\rho(Z) \neq 0$ ($G$ acts freely)
+and $\omega$ is nondegenerate.
+Thus $Y$ is a submanifold of $X$,
 with $\dim Y = \dim X - \dim G$.
 Then $X \kq G = Y / G$ is also a manifold of the desired 
 dimension.
 
 It remains to check that $\omega$ descends to a
-symplectic form. We want to \fixme{...}
+symplectic form: 
+\begin{itemize} 
+\item $\omega$ is well defined
+on $T(Y/G)$: that means we want $\omega(v,w) = 0$
+when $v$ is tangent to the $G$-orbit, i.e. when $v = \rho(Z)$
+for some $Z$, and $w \in TY$. This follows directly from
+\eqref{eq:moment-map-condition-3}.
+\item $\omega$ is nondegenerate on $T(Y/G)$:
+the symplectic orthogonal complement of $TY$ has dimension
+$(\dim G)$, and contains $\rho(\fg)$ by
+\eqref{eq:moment-map-condition-3}, so it must be equal
+to $\rho(\fg)$. But this means that any vector which
+annihilates all of $TY$ is zero in $T(Y/G)$, i.e.
+$\omega$ is nondegenerate on $T(Y/G)$.
+\item $\omega$ is closed on $Y/G$: this follows 
+from the fact that $\de \omega = 0$ on $Y$ and the
+quotient map $Y \to Y/G$ is a submersion.
+\end{itemize}
 \end{pf}
 
 
