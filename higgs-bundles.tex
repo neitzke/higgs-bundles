@@ -242,6 +242,7 @@
 \DeclareMathOperator{\Bun}{Bun}
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\grad}{grad}
 
 \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
@@ -399,6 +400,9 @@ $\omega \in \Omega^2(X)$, such that
 and $\omega(x)$ is nondegenerate for every $x \in X$.
 \end{defn}
 
+
+\subsection{Symplectic quotients}
+
 \begin{defn}[Moment map]
 Suppose $X$ is a symplectic manifold, with symplectic form $\omega$,
 acted on by a real Lie group $G$, with Lie algebra
@@ -462,7 +466,7 @@ on $X$,
 \end{equation}
 
 \begin{defn}[Symplectic quotient]
-Suppose $X$ is a symplectic manifold, with a Lie group $G$
+Suppose $X$ is a symplectic manifold, with a compact group $G$
 acting on it, with moment map $\mu$. Then the \ti{symplectic quotient}
 is
 \begin{equation}
@@ -471,6 +475,8 @@ is
 \end{defn}
 
 \begin{prop}[Symplectic quotient is symplectic]
+Suppose $X$ is a symplectic manifold, with a compact group $G$
+acting on it, with moment map $\mu$.
 If $G$ acts freely
 on $\mu^{-1}(0)$, then $X \kq G$ is a manifold,
 \begin{equation}
@@ -865,19 +871,61 @@ a subgroup isomorphic to $U(n)$.
 
 \subsection{\kahler quotients}
 
+\begin{defn}[Horizontal vectors]
+Suppose $X$ is a Riemannian manifold, with a compact group
+$G$ acting freely on $X$ preserving $g$. 
+Then the \ti{horizontal vectors} on $X$ are the
+ones orthogonal to all $\rho(Z)$ for $Z \in \fg$.
+\end{defn}
+
+There is a canonical identification between $T(X/G)$
+and the space of horizontal vectors $H \subset TX$.
+
+\begin{defn}[Induced metric on a quotient]
+Suppose $X$ is a Riemannian manifold, with a compact group
+$G$ acting freely on $X$ preserving $g$. 
+The \ti{induced metric} on $X/G$ is the Riemannian metric 
+obtained
+by identifying $T(X/G)$ with the space of horizontal
+vectors $H \subset TX$, and then using $g \vert_H$.
+\end{defn}
+
 \begin{prop}[Symplectic quotients of \kahler manifolds 
 are \kahler] \label{prop:kahler-quotients-are-kahler} 
-Suppose $X$ is a \kahler manifold, with a group
+Suppose $X$ is a \kahler manifold, with a compact group
 $G$ acting on $X$ preserving both $g$ and $I$ (thus it
 also preserves $\omega$), with a moment map $\mu$.
 Then the induced metric on the symplectic quotient $X \kq G$
 is \kahler.
 \end{prop}
-\begin{pf} \fixme{...}
+\begin{pf} First we want to see that there is a natural 
+almost complex structure on $X \kq G$. The tangent space
+$T(X \kq G)$ is the orthocomplement in $TX$ of the
+span of the vectors $\grad \mu_Z$ for $Z \in \fg$
+and the vectors $\rho(Z)$ for $Z \in \fg$.
+But 
+\begin{equation}
+  g(\grad \mu_Z, v) = \de \mu_Z \cdot v = \omega(\rho(Z),v) = g(I \rho(Z), v)
+\end{equation}
+so $\grad \mu_Z = I \rho(Z)$. Since $I$ acts orthogonally,
+it follows that $T(X \kq G)$ is preserved by $I$.
+
+Now we need to check that the induced Levi-Civita connection
+on $T(X \kq G)$ preserves $I$.
+The Levi-Civita connection $\nabla^{X \kq G}$ can be obtained
+by starting with the Levi-Civita connection $\nabla^X$, restricting
+to a connection in $TX$ over $Y = \mu^{-1}(0)$, and then 
+projecting orthogonally to $T(X \kq G)$. 
+(To see this, one just needs to check that this projection indeed
+gives a metric-compatible and torsion-free connection.) Then 
+the desired statement follows from the fact that $I$ is covariantly
+constant for $\nabla_X$ and commutes with the orthogonal 
+projection.
 \end{pf}
 
 \begin{example}[Projective space as a \kahler quotient]
-Take $X = \C^n$ with its standard symplectic form
+Take $X = \C^n$ with its standard \kahler metric, for
+which
 \begin{equation}
 \omega = \frac{\I}{2} \sum_i \de z_i \wedge \de \bar{z}_i.
 \end{equation}
