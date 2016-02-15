@@ -918,7 +918,8 @@ vectors $H \subset TX$, and then using $g \vert_H$.
 are \kahler] \label{prop:kahler-quotients-are-kahler} 
 Suppose $X$ is a \kahler manifold, with a compact group
 $G$ acting on $X$ preserving both $g$ and $I$ (thus it
-also preserves $\omega$), with a moment map $\mu$.
+also preserves $\omega$), with a moment map $\mu$,
+and such that $G$ acts freely on $\mu^{-1}(0)$.
 Then the induced metric on the symplectic quotient $X \kq G$
 is \kahler.
 \end{prop}
@@ -953,10 +954,33 @@ which
 \begin{equation}
 \omega = \frac{\I}{2} \sum_i \de z_i \wedge \de \bar{z}_i.
 \end{equation}
-\fixme{...}
+This $\omega$ is preserved by the $U(1)$ action simultaneously
+rotating all $z_i$,
+\begin{equation}
+  z_i \mapsto e^{\I \alpha} z_i,
+\end{equation}
+with moment map (identifying $\fu(1) \simeq \R$ as usual)
+\begin{equation}
+  \mu = - \half \sum_{i=1}^n \abs{z_i}^2 + c,
+\end{equation}
+where $c \in \R$ is arbitrary.
+
+Now we consider the symplectic quotient $X \kq U(1)$. If $c = 0$
+then $U(1)$ does not act freely on $\mu^{-1}(0)$. If $c < 0$ then $0$
+is a regular value, but in a trivial way: $\mu^{-1}(0)$ is empty.
+The interesting case is $c > 0$, in which case
+\begin{equation}
+  \mu^{-1}(0) = \left\{ \sum \abs{z_i}^2 = 2c \right\} \simeq S^{2n-1}
+\end{equation}
+and dividing out by $U(1)$ gives (at least as a set) $\C\PP^{n-1}$.
 \end{example}
 
-
+\begin{exercise}
+Check that the induced complex structure on $\C^n \kq U(1)$,
+promised by \autoref{prop:kahler-quotients-are-kahler}, is indeed
+the standard one on $\C\PP^{n-1}$. How does changing
+the choice of $c$ change the \kahler structure?
+\end{exercise}
 
 \subsection{Holomorphic symplectic manifolds}
 
