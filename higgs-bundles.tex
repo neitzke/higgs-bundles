@@ -2972,11 +2972,13 @@ and $\omega_1 = \omega$.
 What we need to show is 
 that $g$ is actually a \hk metric.
 
-First, recall the $L^2$ inner product $\IP{\cdot,\cdot}$ on $\Omega^*(X)$, and
+First we use the ``Bochner principle'' which says that holomorphic
+objects on Ricci-flat compact manifolds are covariantly constant. More precisely:
+recall the $L^2$ inner product $\IP{\cdot,\cdot}$ on $\Omega^*(X)$, and
 the Laplacian $\Delta_{\bar \partial} = \bar\partial \bar\partial^* + \bar\partial^* \bar\partial$
 which has in particular $\Delta_{\bar \partial} \Omega = 0$.
 A Weitzenbock formula (using the fact that $Ric = 0$)
-says $\Delta_{\bar\partial} = \nabla^* \nabla$, \fixme{give ref}
+says $\Delta_{\bar\partial} = \nabla^* \nabla$, \fixme{Bochner-Yano 1953}
 and thus
 \begin{equation}
   0 = \IP{\Omega, \Delta_{\bar \partial} \Omega} = \IP{\nabla\Omega,\nabla\Omega},
@@ -2987,6 +2989,7 @@ so $\nabla \Omega = 0$.
 %   c = \frac{\omega_1^{2n}}{(\Omega \wedge \bar\Omega)^n},
 % \end{equation}
 % $c$ is a constant. 
+
 Now define $\omega_2$ and $\omega_3$ by
 $\omega_2 + \I \omega_3 = \Omega$, and define
 $I_2 = g^{-1} \omega_2$, $I_3 = g^{-1} \omega_3$.
@@ -3009,17 +3012,73 @@ The structure theorem shows that these eigenspaces are
 preserved by $I_2$, and since $I_3^2 = I_2^2$,
 we get similarly that they are preserved by $I_3$.
 Then using $I_2^2 I_1 = -I_2 I_3$ they are also 
-preserved by $I_1$. But in this case we can change $\Omega$
+preserved by $I_1$. 
+Moreover, since $I_2$ is covariantly constant,
+the eigenspaces are also preserved by parallel transport.
+But in this case we can change $\Omega$
 by rescaling the part in each eigenspace \ti{separately},
 to get other holomorphic symplectic forms on $X$,
 violating our assumption.
 \end{pf}
 
-\begin{example}[K3 surface] \fixme{...}
-\fixme{SYZ fibration} \fixme{Gross-Wilson picture}
+\begin{example}[K3 surface] 
+Now let's construct a \hk space with torus fibers over the \ti{compact}
+base $\C\PP^1$. The idea: for each $u \in \C\PP^1$ write
+\begin{equation} \label{eq:sigma-u}
+  \Sigma_u = \{ y^2 z = x^3 + A(u) xz^2 + B(u) z^3 \} \subset \C\PP^2
+\end{equation}
+and let $X$ be the union of the $\Sigma_u$.
+
+How to make this do what we want globally?
+Want $X$ to carry a global holomorphic $2$-form. On each fiber we have
+the holomorphic $1$-form $\de x / y$. Want to wedge this with
+a holomorphic $1$-form coming from the base. Such a $1$-form doesn't exist, 
+because $K_{\C\PP^1} \simeq \cO(-2)$. But this does mean there is
+a nowhere vanishing \ti{twisted} $1$-form,
+\begin{equation}
+  \eta \in H^0(K_{\C\PP^1}) \otimes \cO(2)
+\end{equation}
+Our desired holomorphic symplectic form will be
+\begin{equation}
+  \Omega = \eta \wedge \frac{\de x}{y}.
+\end{equation}
+So for this to make global sense, $\frac{\de x}{y}$ needs to be
+valued in $\cO(-2)$. Also for the equation \eqref{eq:sigma-u}
+to make sense, $y^2 z$ and $x^3$ must be valued in the same place.
+To make all this work we make $x$ valued in $\cO(4)$, $y$ in $\cO(6)$,
+and $z$ in $\cO(0)$. Then $A(u)$ must be a (fixed) section of $\cO(8)$
+and $B(u)$ a section of $\cO(12)$. With $A$ and $B$ chosen,
+finally we can define:
+\begin{equation}
+  X = \{ y^2 z = x^3 + A(u) xz^2 + B(u) z^3 \} \subset \PP[\cO(4) \oplus \cO(6) \oplus \cO(0)] \to \C\PP^1
+\end{equation}
+(What this notation $\PP[\cO(4) \oplus \cO(6) \oplus \cO(0)]$ means: we take the locus where $x$, $y$, $z$ don't 
+simultaneously vanish, then quotient by simultaneous rescalings of $x$, $y$, $z$.)
+The fiber $\Sigma_u$ is \ti{smooth} as long as the polynomial
+$x^3 + A(u) x + B(u)$ doesn't have any double zeroes in $x$,
+i.e. as long as the discriminant
+\begin{equation}
+  \Delta(u) = 27 B(u)^2 - 4 A(u)^3
+\end{equation}
+does not vanish. Since $\Delta$ is a section of $\cO(24)$,
+if it has no multiple zeroes we get $24$ singular fibers ---
+each a nodal torus (like the one in the Ooguri-Vafa space.)
+It is straightforward moreover to check that if $\Delta$ has no multiple zeroes
+then the total space of $X$ is smooth.
+It carries the holomorphic symplectic form $\Omega$.
+
+Finally, this $X$ is in fact \kahler. \fixme{simple proof? view it 
+as vanishing locus of a section of $\cO(12,3)$ over weighted projective 
+space $\C^5 / \C^\times \times \C^\times$?}
+Thus by \autoref{thm:hol-symp-is-hk}, $X$ admits \hk metrics.
+
+\fixme{...}
+\fixme{Gross-Wilson picture}
 \end{example}
 
-\fixme{reduced holonomy}
+\begin{exercise} Check that if $\Delta$ has no multiple
+zeroes then $X$ is smooth.
+\end{exercise}
 
 
 \subsection{\Hk quotients}
