@@ -246,6 +246,7 @@
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Span}{Span}
 \DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\rank}{rank}
 
 \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
@@ -3169,6 +3170,17 @@ We are going to define a moduli space $\Bun_{K,d}(C)$ parameterizing
 equivalence classes of ``stable'' holomorphic bundles over $C$ of rank $K$
 and degree $d$. Moreover this space is naturally \kahler (where 
 it is smooth).
+
+\begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$
+is
+\begin{equation}
+  \mu(E) = \frac{\deg E}{\rank E}.
+\end{equation}
+\end{defn}
+
+\begin{defn}[Stable holomorphic vector bundle] A holomorphic vector bundle $E$ over $C$ is called
+\ti{stable} if \fixme{...}
+\end{defn}
 
 We fix a single rank $K$ complex vector bundle $E$, of degree $d$.
 (All such bundles are equivalent; just fix one.)
