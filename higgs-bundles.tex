@@ -163,6 +163,7 @@
 \newcommand{\fm}{{\mathfrak m}}
 \newcommand{\fr}{{\mathfrak r}}
 \newcommand{\fu}{{\mathfrak u}}
+\newcommand{\fG}{{\mathfrak G}}
 
 \newcommand{\cC}{\ensuremath{\mathcal C}}
 \newcommand{\cG}{\ensuremath{\mathcal G}}
@@ -217,6 +218,8 @@
 \newcommand{\de}{\mathrm{d}}
 \newcommand{\ab}{\mathrm{ab}}
 \newcommand{\vol}{\mathrm{vol}}
+\renewcommand{\sf}{\mathrm{sf}}
+\newcommand{\inst}{\mathrm{inst}}
 
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lVert#1\rVert}
@@ -2653,7 +2656,7 @@ over $U \subset \cB$, with $\IP{\gamma_1,\gamma_2} = 1$,
 and finally define $\Omega(\zeta) \in \Omega^2_\C(X\vert_U)$
 by
 \begin{equation}
-  \Omega(\zeta) = \I \frac{\de \cX_{\gamma_1}(\zeta) \wedge \de \cX_{\gamma_2}(\zeta)}{\cX_1(\zeta) \cX_2(\zeta)}.
+  \Omega(\zeta) = \I \frac{\de \cX_{\gamma_1}(\zeta) \wedge \de \cX_{\gamma_2}(\zeta)}{\cX_{\gamma_1}(\zeta) \cX_{\gamma_2}(\zeta)}.
 \end{equation}
 Although we defined it over a patch $U \subset \cB$,
 the $\Omega$ obtained is independent of the choice of
@@ -2770,17 +2773,138 @@ which looks locally like the locus $\{xy=0\} \subset \C^2$.)
 
 \fixme{tricky point: choice of $U(1)$ action when we glue}
 
-\fixme{describe twistor picture?}
-
 \end{example}
 
 \insfig{higgs-bundles-8}{0.92}
 
-\begin{exercise} Let $X$ be the Gibbons-Hawking
+\begin{exercise} \label{exc:ooguri-vafa-semiflat} Let $X$ be the Gibbons-Hawking
 \hk manifold with $V$ given by \eqref{eq:ooguri-vafa-V-approx}.
 Verify that $X / \Z$ is an example of a semiflat metric as in 
 \autoref{exa:semiflat-1d-general}. What are $\Gamma$ and $Z$?
 \end{exercise}
+
+\begin{exercise} \label{exc:ooguri-vafa-holomorphic-discs} \cite{ovmh} Let $X$ be the Ooguri-Vafa space.
+Show that there is an $I_\zeta$-holomorphic disc in $X$
+with boundary on the torus fiber over $z$, if and 
+only if $\zeta = z / \abs{z}$. (Hint: to see that the disc \ti{does}
+exist, you can construct it directly, along the lines of our 
+earlier constructions of holomorphic spheres in Gibbons-Hawking spaces; 
+to see that it \ti{doesn't} exist,
+use the fact that the integral of $\Omega(\zeta)$ over such 
+a disc would have to vanish.)
+\end{exercise}
+
+\begin{example}[Twistor description of Ooguri-Vafa space]
+As with our previous examples, we may ask: what are the holomorphic
+functions on $X$ in complex structure $I_\zeta$?
+One global holomorphic function is easy to construct: it is
+\begin{equation}
+  \cX_1 = \exp \left(\zeta^{-1} z + \I x_1 + \zeta \bar{z}\right).
+\end{equation}
+To get a second coordinate is considerably more difficult.
+If we wanted to get a function on the \ti{approximate}
+Ooguri-Vafa space we could use the function written 
+in \autoref{exa:semiflat-1d-general},
+\begin{equation} \label{eq:Xsf-ooguri-vafa}
+  \cX_2^{\sf} = \exp \left(\zeta^{-1} Z_2 + \I \chi + \zeta \bar{Z}_2 \right),
+\end{equation}
+where
+\begin{equation}
+  Z_2 = \frac{1}{2 \pi \I} (z \log (z/\Lambda) - z).
+\end{equation}
+The formula \eqref{eq:Xsf-ooguri-vafa} does not define a global
+function on $X$, for two reasons: first, $\chi$ is only a \ti{local} fiber
+coordinate; second, $Z_2$ is multivalued because of the logarithm.
+We choose the principal branch of the logarithm, so that there
+is a cut at $z / \Lambda \in \R_-$, and also take a trivialization
+of the circle bundle defining $X$ on the complement of this cut.
+It is possible to choose this trivialization in such a way that
+when we cross the cut we get $\chi \to \chi + x_1$.
+With these choices made, \eqref{eq:Xsf-ooguri-vafa} defines
+an honest function on the complement of the cut, and crossing
+the cut leads to the jumps $Z_2 \to Z_2 + z$ and $\chi \to \chi + x_1$,
+which combine to give $\cX_2 \to \cX_2 \cX_1$.
+(Compare the result of \autoref{exc:ooguri-vafa-semiflat}.)
+
+The function $\cX_2^\sf$ is \ti{not} holomorphic on the
+exact Ooguri-Vafa space. However it turns out that we can
+find a holomorphic function which has the same \ti{asymptotic}
+behavior as $\zeta \to 0,\infty$.
+Namely we write
+\begin{equation}
+  \cX_2 = \cX_2^{\sf} \cX_2^{\inst}
+\end{equation}
+where the ``correction'' is
+\begin{align} \label{eq:Xinst-ooguri-vafa}
+  \cX_2^\inst(\zeta) = \exp & \left[ \frac{\I}{4 \pi} \int_{\ell_+} \frac{\de \zeta'}{\zeta'} \frac{\zeta' + \zeta}{\zeta' - \zeta} \log(1 - \cX_1(\zeta')) \right. \\
+  - & \left. \frac{\I}{4 \pi} \int_{\ell_-} \frac{\de \zeta'}{\zeta'} \frac{\zeta' + \zeta}{\zeta' - \zeta} \log(1 - \cX_1(\zeta')^{-1}) \right],
+\end{align}
+with 
+\begin{equation}
+  \ell_\pm = \{ \pm z/\zeta' \in \R_- \}.
+\end{equation}
+Note that the integrals indeed converge, because of our careful choice
+of the integration contours.
+
+To see that $\cX_2$ is indeed a holomorphic function on $X$, 
+one can compute directly that the
+holomorphic symplectic form \eqref{eq:hol-symp-family}
+is given by
+\begin{equation} \label{eq:hol-symp-ooguri-vafa}
+  \Omega(\zeta) = \I \frac{\de \cX_1(\zeta) \wedge \de \cX_2(\zeta)}{\cX_1(\zeta) \cX_2(\zeta)}
+\end{equation}
+(this computation can be found in \cite{Gaiotto:2008cd}.)
+
+One tricky aspect of this story is that the function $\cX_2$ is 
+actually only \ti{piecewise} holomorphic. Indeed, the integrals
+in \eqref{eq:Xinst-ooguri-vafa} are not defined when $\zeta \in \ell_\pm$.
+One can however compute the \ti{limits} from the two sides, 
+\begin{equation}
+  \cX_2^\pm = \lim_{\eps \to 0^\pm} \cX_2(\zeta \e^{\I \eps}),
+\end{equation}
+by deforming the contour of integration so that it lies along
+$\ell_\pm$ except for a little ``detour'' around $\zeta$.
+\insfig{higgs-bundles-9}{0.8}
+Then the two limits differ by the integral around the pole
+at $\zeta = \zeta'$, which can be evaluated by the residue theorem,
+giving \fixme{check sign}
+\begin{align}
+  \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta)) \text{ for } \zeta \in \ell_+, \label{eq:ooguri-vafa-cluster-1} \\
+  \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta)^{-1})^{-1} \text{ for } \zeta \in \ell_-. \label{eq:ooguri-vafa-cluster-2}
+\end{align}
+Fortunately the holomorphic symplectic form \eqref{eq:hol-symp-ooguri-vafa} 
+is still smooth --- 
+thus, despite the fact that $\cX_2$ has this
+discontinuity, the pair of holomorphic functions 
+$(\cX_1, \cX_2)$ is perfectly good for 
+the purpose of constructing the twistor space.
+
+$\cX_2^\inst$ is bounded as $\zeta \to 0$ and $\zeta \to \infty$.
+Thus the asymptotics of $\cX_2$ are essentially the 
+same as those of $\cX_2^\sf$, as we wanted.
+
+\end{example}
+
+
+Let us briefly comment on the relation of this example to mirror symmetry.
+For any fixed $\zeta$, the space $(X,I_\zeta)$
+has two open domains $\im(z / \zeta) > 0$ and $\im(z / \zeta) < 0$. 
+In each of these domains
+we have a pair of holomorphic coordinates $(\cX_1, \cX_2)$, which moreover
+are Darboux coordinates in the sense of \eqref{eq:hol-symp-ooguri-vafa}.
+These coordinates can be analytically continued beyond their respective
+domains, and on the overlaps the analytic continuations differ by the
+jumps \eqref{eq:ooguri-vafa-cluster-1}, \eqref{eq:ooguri-vafa-cluster-2}.
+This kind of description of the space $X$ is reminiscent of a general
+approach for constructing Calabi-Yau manifolds by gluing
+together tori $(\C^\times)^{2n}$, employed by
+Kontsevich-Soibelman, Gross-Siebert, Auroux, Gross-Hacking-Keel.
+In that approach the gluing maps are supposed to be related to
+holomorphic discs on a mirror manifold. In the present example
+the mirror manifold is just $X$ again, and the holomorphic discs
+in question are the ones in \autoref{exc:ooguri-vafa-holomorphic-discs}.
+\fixme{watch out for factors of $\I$}
+
 
 \subsection{Differential geometry of \hk manifolds}
 
@@ -2900,27 +3024,29 @@ violating our assumption.
 
 \subsection{\Hk quotients}
 
-\begin{defn}[\Hk moment map] Suppose $X$ is \hk and a Lie group
+\begin{defn}[\Hk moment map] Suppose $X$ is \hk and a compact group
 $G$ acts on $X$ by isometries preserving the \hk structure.
 Then a \ti{\hk moment map} for this action is a map
 \begin{equation}
-  \mu = (\mu_1, \mu_2, \mu_3): X \to \fg \otimes \R^3
+  \vec\mu = (\mu_1, \mu_2, \mu_3): X \to \fg \otimes \R^3
 \end{equation}
 where $\mu_i$ is a moment map for the action with respect
 to $\omega_i$.
 \end{defn}
 
-\begin{defn}[\Hk quotient] Suppose $X$ is \hk and a Lie group
+\begin{defn}[\Hk quotient] Suppose $X$ is \hk and a compact group
 $G$ acts on $X$, with \hk moment map $\mu$.
 Then the \ti{\hk quotient}
 of $X$ by $G$ is
 \begin{equation}
-  X \hkq G = \mu^{-1}(0) / G.
+  X \hkq G = \vec\mu^{-1}(0) / G.
 \end{equation}
 \end{defn}
 
-\begin{thm}[\Hk quotients are \hk] If $G$ acts freely on
-$\mu^{-1}(0)$, then $X \hkq G$ is a manifold, with
+\begin{thm}[\Hk quotients are \hk] Suppose $X$ is \hk and a
+compact group $G$ acts on $X$, with \hk moment map $\mu$.
+Also suppose $G$ acts freely on
+$\vec\mu^{-1}(0)$. Then $X \hkq G$ is a manifold, with
 \begin{equation}
   \dim_\R (X \hkq G) = \dim_\R X - 4 \dim_\R G,
 \end{equation}
@@ -2930,21 +3056,66 @@ and the quotient metric on $X \hkq G$ is \hk.
 \begin{equation}
  M_1 = \mu_2 + \I \mu_3: X \to \fg_\C. 
 \end{equation}
-A short computation \fixme{do it} shows that $M_1$ is 
-$I_1$-holomorphic. Thus $Y = M_1^{-1}(0)$ is an $I_1$-complex
-submanifold, which implies $Y$ is \kahler.
-Now $G$ acts on $Y$
+For any $Z \in \fg$ we have
+\begin{equation}
+\de M_1 \cdot Z = \iota_{\rho(Z)} \Omega_1 \in \Omega^{1,0}(X),
+\end{equation} 
+so $M_1$ is holomorphic.
+Thus $Y = M_1^{-1}(0)$ is an $I_1$-complex
+submanifold. Now $G$ acts on $Y$
 preserving $\omega_1$, with moment map $\mu_1$,
-and we have $X \hkq G = Y \kq G$.
+and we have 
+\begin{equation}
+ X \hkq G = \vec\mu^{-1}(0) / G = (M_1^{-1}(0) \cap \mu_1^{-1}(0)) / G = Y \kq G.
+\end{equation}
 Thus by \autoref{prop:kahler-quotients-are-kahler} the
-quotient metric on $X \hkq G$ is \kahler.
-\fixme{...}
+quotient metric on $X \hkq G$ is \kahler for $I_1$.
+Similarly it is \kahler for $I_2$, $I_3$.
 \end{pf}
+
+We remark that the 
+twistor space of $X \hkq G$ can be obtained from 
+$\cZ$ by fiberwise holomorphic symplectic quotient.
 
 
 \section{Higgs bundles}
 
-Fix a compact Riemann surface $C$ and a compact Lie group $G$.
+From now on we fix a compact Riemann surface $C$, with 
+a \kahler metric.
+
+
+\subsection{Moduli of stable vector bundles}
+
+Fix a rank $K \ge 1$ and a degree $d \in \Z$.
+We are going to define a moduli space $\Bun_{K,d}(C)$ parameterizing
+equivalence classes of ``stable'' holomorphic bundles over $C$ of rank $K$
+and degree $d$. Moreover this space is naturally \kahler (where 
+it is smooth).
+
+We fix a single rank $K$ complex vector bundle $E$, of degree $d$.
+(All such bundles are equivalent; just fix one.)
+
+The space we want to describe is, from one point of view,
+the space of all $\bar\partial$ operators on $E$, modulo
+equivalence. Here ``equivalence'' means the (infinite-dimensional,
+complex) group $\fG_\C$ of sections of $GL(E)$.
+
+The neat trick, explained in \cite{MR85k:14006}, 
+is to think of this as a \kahler
+quotient in an infinite-dimensional setting. 
+Namely we first fix a Hermitian metric on $E$.
+After so doing, we have an infinite-dimensional real group
+$\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
+
+Now we  $\cA$ of \ti{all} connections on $E$.
+This is an infinite-dimensional affine space, modeled
+on the linear space $\Omega^{1}(\End E)$.
+On the latter space we have a natural symplectic form
+\fixme{...}
+
+\begin{equation}
+  \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
+\end{equation}
 
 \printbibliography
 
