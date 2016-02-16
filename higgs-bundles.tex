@@ -2751,7 +2751,7 @@ The resulting $V$ obeys a two-dimensional Laplace equation,
 \end{equation} 
 Thus for large $\abs{z}$ (much larger than $1$) we expect
 \begin{equation} \label{eq:ooguri-vafa-V-approx}
-  V \approx -\frac{1}{2\pi} \log \abs{z} + C' + C
+  V \approx V^\sf = -\frac{1}{2\pi} \log \abs{z} + C' + C
 \end{equation}
 for some constant $C'$.\footnote{This expectation can be made rigorous using the Poisson summation formula, which gives in fact
 \begin{equation}
@@ -2763,7 +2763,8 @@ $K_0(M) \sim \sqrt\frac{\pi}{2M} e^{-M}$, so each term in the
 sum is exponentially small as $\abs{z} \to \infty$.}
 
 Let us briefly consider the Gibbons-Hawking metric in the approximation
-where $V$ is exactly given by \eqref{eq:ooguri-vafa-V-approx}.
+where $V$ is exactly given by
+$V^\sf$ of \eqref{eq:ooguri-vafa-V-approx}.
 For $\abs{z} > e^{2 \pi(C' + C)}$
 we will lose positivity, so the biggest base we can take is 
 \begin{equation}
@@ -2775,12 +2776,16 @@ $\Z$ (acting by $x_1 \to x_1 + n$) we obtain
 one of the semiflat metrics of \autoref{exa:semiflat-1d-general}.
 However, this metric has a bad singularity at $z=0$.
 
-The Gibbons-Hawking metric obtained from \eqref{eq:ooguri-vafa-V} 
+The Gibbons-Hawking metric obtained from the full $V$ 
+of \eqref{eq:ooguri-vafa-V} rather than $V^\sf$ 
 shares the bad large-$\abs{z}$ behavior
 of the approximate one, but is better at small $\abs{z}$. It is not 
 translation invariant in the $x_1$ direction anymore, but does 
 have the discrete $\Z$ symmetry $x_1 \to x_1 + n$, preserving
-the \hk structure.
+the \hk structure. (In fact, there is a subtle choice here:
+the $\Z$ action on the base has to be lifted to the total space
+of the $U(1)$ bundle $X$, and there are a circle's worth of ways
+to do this.)
 After dividing out by this $\Z$ action we obtain a \hk 
 space $X$, the Ooguri-Vafa manifold.
 
@@ -2791,8 +2796,6 @@ fibration over a circle), while over $z=0$ we get a singular
 fiber (torus with a node, aka ``ordinary double point,'' a place
 which looks locally like the locus $\{xy=0\} \subset \C^2$.)
 
-\fixme{tricky point: choice of $U(1)$ action when we glue}
-
 \end{example}
 
 \insfig{higgs-bundles-8}{0.92}
@@ -2800,7 +2803,11 @@ which looks locally like the locus $\{xy=0\} \subset \C^2$.)
 \begin{exercise} \label{exc:ooguri-vafa-semiflat} Let $X$ be the Gibbons-Hawking
 \hk manifold with $V$ given by \eqref{eq:ooguri-vafa-V-approx}.
 Verify that $X / \Z$ is an example of a semiflat metric as in 
-\autoref{exa:semiflat-1d-general}. What are $\Gamma$ and $Z$?
+\autoref{exa:semiflat-1d-general}, where $\Gamma$ is a rank $2$
+local system of lattices, whose monodromy around the origin
+is given by the action of
+$\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} \in SL(2,\Z)$.
+What is the map $Z$?
 \end{exercise}
 
 \begin{exercise} \label{exc:ooguri-vafa-holomorphic-discs} \cite{ovmh} Let $X$ be the Ooguri-Vafa space.
@@ -3170,30 +3177,89 @@ twistor space of $X \hkq G$ can be obtained from
 $\cZ$ by fiberwise holomorphic symplectic quotient.
 
 
-\section{Higgs bundles}
+\section{Moduli of bundles}
 
 From now on we fix a compact Riemann surface $C$, with 
 a \kahler metric.
 
-
-\subsection{Moduli of stable vector bundles}
-
-Fix a rank $K \ge 1$ and a degree $d \in \Z$.
 We are going to define a moduli space $\Bun_{K,d}(C)$ parameterizing
-equivalence classes of ``stable'' holomorphic bundles over $C$ of rank $K$
-and degree $d$. Moreover this space is naturally \kahler (where 
-it is smooth).
+equivalence classes of ``stable'' holomorphic bundles over $C$ of 
+rank $K$ and degree $d$. Moreover this space is naturally 
+\kahler (where it is smooth).
 
-\begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$
-is
+A very nice reference on this material is \fixme{Thaddeus}.
+
+
+\subsection{Stable vector bundles}
+
+\begin{defn}[Degree of a vector bundle] The \ti{degree} of a 
+complex vector bundle $E$ over $C$ is
+\begin{equation}
+  \deg E = c_1(E) \cdot C.
+\end{equation}
+\fixme{should define this in some more primitive way}
+\end{defn}
+
+\begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
 \begin{equation}
   \mu(E) = \frac{\deg E}{\rank E}.
 \end{equation}
 \end{defn}
 
-\begin{defn}[Stable holomorphic vector bundle] A holomorphic vector bundle $E$ over $C$ is called
-\ti{stable} if \fixme{...}
+\begin{defn}[Stable holomorphic vector bundle] A holomorphic vector bundle $E$ over $C$ is called:
+\begin{itemize}
+\item \ti{stable} if, for every holomorphic subbundle $E' \subset E$,
+we have $\mu(E) < \mu(E')$,
+\item \ti{semistable} if, for every holomorphic subbundle 
+$E' \subset E$, we have $\mu(E) \le \mu(E')$,
+\item \ti{unstable} otherwise.
+\end{itemize}
 \end{defn}
+
+\begin{example}[Stability for bundles over $\C\PP^1$]
+Grothendieck's lemma says that all holomorphic vector 
+bundles over $\C\PP^1$ are direct sums of line bundles,
+$E = \bigoplus_{i=1}^k \cO(n_i)$.
+The slope of such a bundle is
+\begin{equation}
+\mu(E) = \frac{\sum n_i}{k}.  
+\end{equation}
+Thus $E$ is unstable unless
+all $n_i$ are equal; if all $n_i$ are equal it is
+semistable; it is stable only if $k<2$.
+\end{example}
+
+\begin{example}[Instability of $\cO(-1) \oplus \cO(1)$]
+What does it mean to say that the bundle $\cO(-1) \oplus \cO(1)$
+is unstable? One way to think of it is to consider a certain
+$1$-parameter family of vector bundles $E_t$, obtained
+as \ti{extensions}
+\begin{equation}
+  0 \to \cO(-1) \to E_t \to \cO(1) \to 0,
+\end{equation}
+parameterized by classes $t \in H^1(\cO(2)) \simeq \C$.
+Concretely what this means is that we take the bundle
+$\cO(-1) \oplus \cO(1)$ and modify its transition function
+on the overlap between north-pole and south-pole patches
+to \fixme{check}
+\begin{equation}
+  \begin{pmatrix} z & t \\ 0 & z^{-1} \end{pmatrix}
+\end{equation}
+For $t \neq 0$ we have $E_t \simeq \cO(0) \oplus \cO(0)$
+while for $t = 0$ instead $E_t \simeq \cO(1) \oplus \cO(-1)$.
+Thus we have the unstable bundle 
+$\cO(1) \oplus \cO(-1)$
+precisely at $t = 0$, which under the 
+slightest perturbation ``decays'' to the semistable one
+$\cO(0) \oplus \cO(0)$.
+\end{example}
+
+\begin{exercise}
+Check that indeed for $t \neq 0$ we have $E_t \simeq \cO(0) \oplus \cO(0)$.
+\end{exercise}
+
+
+\subsection{Moduli spaces}
 
 We fix a single rank $K$ complex vector bundle $E$, of degree $d$.
 (All such bundles are equivalent; just fix one.)
@@ -3210,15 +3276,17 @@ Namely we first fix a Hermitian metric on $E$.
 After so doing, we have an infinite-dimensional real group
 $\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
 
-Now we  $\cA$ of \ti{all} connections on $E$.
+Now we look at the space $\cA$ of \ti{all} unitary 
+connections on $E$.
 This is an infinite-dimensional affine space, modeled
 on the linear space $\Omega^{1}(\End E)$.
 On the latter space we have a natural symplectic form
-\fixme{...}
-
 \begin{equation}
   \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
 \end{equation}
+Moreover the group $\cG$ acts on $\cA$, preserving
+$\omega$, with moment map
+\fixme{...}
 
 \printbibliography
 
