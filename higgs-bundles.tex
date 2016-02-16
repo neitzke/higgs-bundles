@@ -2968,7 +2968,7 @@ tells us relatively little about what that metric actually is.
 A nice sketch of the proof can be found in \cite{Joyce}.
 
 \begin{thm}[Compact, \kahler, uniquely holomorphic symplectic manifolds are uniquely \hk] \label{thm:hol-symp-is-hk}
-\fixme{ref Beauville?} \fixme{need simply connected?}
+\fixme{ref Beauville?} \fixme{need $X$ simply connected? it's part of the usual statement, but doesn't seem to be used in the proof!}
 Suppose that:
 \begin{itemize}
   \item $X$ is a compact complex manifold,
@@ -3017,27 +3017,32 @@ It is straightforward to show $I_2 I_1 = -I_3$, $I_3 I_1 = I_2$;
 also $\Omega g^{-1} \Omega = 0$, so
 $(I_2 + \I I_3)^2 = 0$, so $I_2^2 = I_3^2$ and
 $I_2 I_3 = -I_3 I_2$.
+Moreover, by construction $I_2$ is skew-symmetric with
+respect to an orthogonal basis, since its matrix in such 
+a basis is just the matrix of $\omega_2$.
 Using the structure theorem 
-for skew-symmetric matrices, $I_2^2$ is
-diagonalizable with all eigenvalues negative.
-All that remains is to show that they are all equal;
+for skew-symmetric matrices, it follows that $I_2$ is
+a direct sum of blocks like $\begin{pmatrix} 0 & c_i \\ -c_i & 0 \end{pmatrix}$.
+All that remains is to show that all of the $c_i$
+appearing in this decomposition are equal;
 then by an overall rescaling of $\omega_2$
-and $\omega_3$ we can arrange they are all $-1$,
+and $\omega_3$ we can arrange they are all $1$,
 which completes the proof.
 
-So, suppose that the eigenvalues of
-$I_2^2$ are not all equal.
-Then decompose $TX$ into eigenspaces of $I_2^2$.
-The structure theorem shows that these eigenspaces are
-preserved by $I_2$, and since $I_3^2 = I_2^2$,
-we get similarly that they are preserved by $I_3$.
+So, suppose that the $c_i$ are not all equal.
+Then decompose $TX$ into blocks $E_i$ labeled by
+the distinct $c_i$. Evidently the $E_i$ are preserved
+by $I_2$. We have a similar block decomposition for the
+action of $I_3$, and since $I_3^2 = I_2^2$, the blocks 
+must coincide. So the $E_i$ are also preserved by $I_3$.
 Then using $I_2^2 I_1 = -I_2 I_3$ they are also 
 preserved by $I_1$. 
 Moreover, since $I_2$ is covariantly constant,
-the eigenspaces are also preserved by parallel transport.
-But in this case we can change $\Omega$
-by rescaling the part in each eigenspace \ti{separately},
-to get other holomorphic symplectic forms on $X$,
+the $E_i$ are also preserved by parallel transport.
+But in this case we can construct a covariantly constant endomorphism
+of $TX$ which acts by a different constant on each $E_i$.
+Then applying this endomorphism to $\Omega$
+we would get other holomorphic symplectic forms on $X$,
 violating our assumption.
 \end{pf}
 
@@ -3051,7 +3056,7 @@ and let $X$ be the union of the $\Sigma_u$.
 
 How to make this do what we want globally?
 Want $X$ to carry a global holomorphic $2$-form. On each fiber we have
-the holomorphic $1$-form $\de x / y$. Want to wedge this with
+the holomorphic $1$-form $\de x / y$. We want to wedge this with
 a holomorphic $1$-form coming from the base. Such a $1$-form doesn't exist, 
 because $K_{\C\PP^1} \simeq \cO(-2)$. But this does mean there is
 a nowhere vanishing \ti{twisted} $1$-form,
@@ -3081,8 +3086,16 @@ i.e. as long as the discriminant
   \Delta(u) = 27 B(u)^2 - 4 A(u)^3
 \end{equation}
 does not vanish. Since $\Delta$ is a section of $\cO(24)$,
-if it has no multiple zeroes we get $24$ singular fibers ---
-each a nodal torus (like the one in the Ooguri-Vafa space.)
+if it has no multiple zeroes we get $24$ singular fibers. 
+To look more closely at the singular fibers, note that
+at each of them we have $A(u) \neq 0$ and $B(u) \neq 0$
+(otherwise $\Delta$ would have a higher-order zero at $u$).
+Thus the singular fiber is of the form
+\begin{equation}
+  \{ y^2 z = x^3 + A x z^2 + B z^3 \} \subset \C\PP^2
+\end{equation}
+with $A, B \neq 0$ and $27B^2 - 4A^3 = 0$. This
+gives a nodal torus (like the one in the Ooguri-Vafa space.)
 It is straightforward moreover to check that if $\Delta$ has no multiple zeroes
 then the total space of $X$ is smooth.
 It carries the holomorphic symplectic form $\Omega$.
