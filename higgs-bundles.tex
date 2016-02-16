@@ -500,15 +500,19 @@ which is true since $\rho(Z) \neq 0$ ($G$ acts freely)
 and $\omega$ is nondegenerate.
 Thus $Y$ is a submanifold of $X$,
 with $\dim Y = \dim X - \dim G$.
-Then $X \kq G = Y / G$ is also a manifold of the desired 
-dimension.
+$G$ is a compact group acting freely on $Y$.
+It follows that $X \kq G = Y / G$ is also a manifold, of the desired 
+dimension. The tangent space $T(X \kq G) = T(Y/G) = TY / \rho(\fg)$.
+\fixme{give reference for this; note it's 
+important that $G$ is compact, else have counterexamples 
+like $\R$ acting on the torus by an irrational translation}
 
 It remains to check that $\omega$ descends to a
 symplectic form: 
 \begin{itemize} 
 \item $\omega$ is well defined
 on $T(Y/G)$: that means we want $\omega(v,w) = 0$
-when $v$ is tangent to the $G$-orbit, i.e. when $v = \rho(Z)$
+when $v = \rho(Z)$
 for some $Z$, and $w \in TY$. This follows directly from
 \eqref{eq:moment-map-condition-3}.
 \item $\omega$ is nondegenerate on $T(Y/G)$:
@@ -905,16 +909,19 @@ Then the \ti{horizontal vectors} on $X$ are the
 ones orthogonal to all $\rho(Z)$ for $Z \in \fg$.
 \end{defn}
 
-There is a canonical identification between $T(X/G)$
-and the space of horizontal vectors $H \subset TX$.
+Letting $H \subset TX$ be the space of horizontal vectors,
+using orthogonal projection we obtain
+a canonical identification 
+\begin{equation}
+  T(X/G) = TX / \rho(\fg) \simeq H.
+\end{equation}
 
 \begin{defn}[Induced metric on a quotient]
 Suppose $X$ is a Riemannian manifold, with a compact group
 $G$ acting freely on $X$ preserving $g$. 
-The \ti{induced metric} on $X/G$ is the Riemannian metric 
-obtained
-by identifying $T(X/G)$ with the space of horizontal
-vectors $H \subset TX$, and then using $g \vert_H$.
+The \ti{induced metric} on $X/G$ is just $g \vert_H$
+(where we identified $T(X/G)$ with the space of horizontal
+vectors $H$ as above.)
 \end{defn}
 
 \begin{prop}[Symplectic quotients of \kahler manifolds 
@@ -928,9 +935,10 @@ is \kahler.
 \end{prop}
 \begin{pf} First we want to see that there is a natural 
 almost complex structure on $X \kq G$. The tangent space
-$T(X \kq G)$ is the orthocomplement in $TX$ of the
-span of the vectors $\grad \mu_Z$ for $Z \in \fg$
-and the vectors $\rho(Z)$ for $Z \in \fg$.
+$T(X \kq G)$ is
+\begin{equation}
+  T(X \kq G) = \left(\{ \grad \mu_Z: Z \in \fg \} \oplus \{ \rho(Z): Z \in \fg \}\right)^\perp \subset TX.
+\end{equation}
 But 
 \begin{equation}
   g(\grad \mu_Z, v) = \de \mu_Z \cdot v = \omega(\rho(Z),v) = g(I \rho(Z), v)
@@ -938,17 +946,20 @@ But
 so $\grad \mu_Z = I \rho(Z)$. Since $I$ acts orthogonally,
 it follows that $T(X \kq G)$ is preserved by $I$.
 
-Now we need to check that the induced Levi-Civita connection
-on $T(X \kq G)$ preserves $I$.
-The Levi-Civita connection $\nabla^{X \kq G}$ can be obtained
+Now we need to check that the Levi-Civita connection
+$\nabla^{X \kq G}$ on $T(X \kq G)$ preserves $I$.
+$\nabla^{X \kq G}$ can be obtained
 by starting with the Levi-Civita connection $\nabla^X$, restricting
 to a connection in $TX$ over $Y = \mu^{-1}(0)$, and then 
-projecting orthogonally to $T(X \kq G)$. 
-(To see this, one just needs to check that this projection indeed
-gives a metric-compatible and torsion-free connection.) Then 
+projecting orthogonally to $T(X \kq G)$, i.e. for
+$v,w \in \Vect(X \kq G) \subset \Vect(X)$,
+\begin{equation}
+\nabla_w^{X \kq G} (v) = \pi(\nabla_w^X v)
+\end{equation}
+(To see this, one needs to check that this formula indeed
+gives a metric-compatible and torsion-free connection. \fixme{...}) Then 
 the desired statement follows from the fact that $I$ is covariantly
-constant for $\nabla_X$ and commutes with the orthogonal 
-projection.
+constant for $\nabla^X$ and commutes with $\pi$.
 \end{pf}
 
 \begin{example}[Projective space as a \kahler quotient]
@@ -984,6 +995,14 @@ promised by \autoref{prop:kahler-quotients-are-kahler}, is indeed
 the standard one on $\C\PP^{n-1}$. How does changing
 the choice of $c$ change the \kahler structure?
 \end{exercise}
+
+There is another way of thinking about this example: instead of
+taking $\C^n \kq U(1)$ we could try to take $\C^n / \C^\times$.
+Actually this quotient is badly behaved as it stands, because of the
+point $0 \in \C^n$, but we certainly do have
+\begin{equation}
+  (\C^n \setminus \{0\}) / \C^\times = \C\PP^{n-1} = \C^n \kq U(1).
+\end{equation}
 
 \subsection{Holomorphic symplectic manifolds}
 
