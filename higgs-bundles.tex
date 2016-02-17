@@ -2750,17 +2750,22 @@ The resulting $V$ obeys a two-dimensional Laplace equation,
   \Delta V = -\delta(z).
 \end{equation} 
 Thus for large $\abs{z}$ (much larger than $1$) we expect
-\begin{equation} \label{eq:ooguri-vafa-V-approx}
-  V \approx V^\sf = -\frac{1}{2\pi} \log \abs{z} + C' + C
-\end{equation}
-for some constant $C'$.\footnote{This expectation can be made rigorous using the Poisson summation formula, which gives in fact
 \begin{equation}
-  V = -\frac{1}{2\pi} \log \abs{z/\Lambda} + C + \frac{1}{\pi} \sum_{n=1}^\infty \cos (2 \pi n x_3) K_0(2 \pi n \abs{z})
+  V \approx -\frac{1}{2\pi} \log \abs{z} + C' + C
 \end{equation}
-where $\Lambda = 2 e^{-\gamma}$, $\gamma$ is Euler's constant,
+for some constant $C'$.
+This expectation can be made rigorous using the Poisson summation formula, which gives in fact
+\begin{equation} \label{eq:V-ooguri-vafa-resummed}
+  V = -\frac{1}{2\pi} \log \abs{z/\Lambda} + \frac{1}{\pi} \sum_{n=1}^\infty \cos (2 \pi n x_3) K_0(2 \pi n \abs{z})
+\end{equation}
+where $\Lambda = 2 e^{-\gamma+2 \pi C}$, $\gamma$ is Euler's constant,
 and $K_0$ is the modified Bessel function. This function has asymptotics
 $K_0(M) \sim \sqrt\frac{\pi}{2M} e^{-M}$, so each term in the 
-sum is exponentially small as $\abs{z} \to \infty$.}
+sum is exponentially small as $\abs{z} \to \infty$.
+Dropping these exponentially suppressed terms we get
+\begin{equation}  \label{eq:ooguri-vafa-V-approx}
+  V \approx V^\sf = -\frac{1}{2\pi} \log \abs{z/\Lambda}.
+\end{equation}
 
 Let us briefly consider the Gibbons-Hawking metric in the approximation
 where $V$ is exactly given by
@@ -2774,7 +2779,8 @@ The resulting Gibbons-Hawking metric is translation
 invariant in the $x_1$ direction. After dividing out by 
 $\Z$ (acting by $x_1 \to x_1 + n$) we obtain
 one of the semiflat metrics of \autoref{exa:semiflat-1d-general}.
-However, this metric has a bad singularity at $z=0$.
+However, this metric seems very unlikely to admit a reasonable
+extension over $z = 0$.
 
 The Gibbons-Hawking metric obtained from the full $V$ 
 of \eqref{eq:ooguri-vafa-V} rather than $V^\sf$ 
@@ -2782,10 +2788,13 @@ shares the bad large-$\abs{z}$ behavior
 of the approximate one, but is better at small $\abs{z}$. It is not 
 translation invariant in the $x_1$ direction anymore, but does 
 have the discrete $\Z$ symmetry $x_1 \to x_1 + n$, preserving
-the \hk structure. (In fact, there is a subtle choice here:
+the \hk structure. \footnote{There is a subtle choice here:
 the $\Z$ action on the base has to be lifted to the total space
 of the $U(1)$ bundle $X$, and there are a circle's worth of ways
-to do this.)
+to do this. Thus the Ooguri-Vafa metric depends on two parameters:
+the real parameter $C$ in \eqref{eq:ooguri-vafa-V} --- which we have 
+absorbed into $\Lambda$ --- and also a circle-valued
+parameter controlling this gluing.}
 After dividing out by this $\Z$ action we obtain a \hk 
 space $X$, the Ooguri-Vafa manifold.
 
@@ -2819,6 +2828,10 @@ earlier constructions of holomorphic spheres in Gibbons-Hawking spaces;
 to see that it \ti{doesn't} exist,
 use the fact that the integral of $\Omega(\zeta)$ over such 
 a disc would have to vanish.)
+\end{exercise}
+
+\begin{exercise} Use the Poisson summation formula to verify
+\eqref{eq:V-ooguri-vafa-resummed}.
 \end{exercise}
 
 \begin{example}[Twistor description of Ooguri-Vafa space]
@@ -2887,17 +2900,17 @@ actually only \ti{piecewise} holomorphic. Indeed, the integrals
 in \eqref{eq:Xinst-ooguri-vafa} are not defined when $\zeta \in \ell_\pm$.
 One can however compute the \ti{limits} from the two sides, 
 \begin{equation}
-  \cX_2^\pm = \lim_{\eps \to 0^\pm} \cX_2(\zeta \e^{\I \eps}),
+  \cX_2^\pm(\zeta) = \lim_{\eps \to 0^\pm} \cX_2(\zeta \e^{\I \eps}),
 \end{equation}
 by deforming the contour of integration so that it lies along
 $\ell_\pm$ except for a little ``detour'' around $\zeta$.
 \insfig{higgs-bundles-9}{0.8}
 Then the two limits differ by the integral around the pole
 at $\zeta = \zeta'$, which can be evaluated by the residue theorem,
-giving \fixme{check sign}
+giving
 \begin{align}
-  \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta)) \text{ for } \zeta \in \ell_+, \label{eq:ooguri-vafa-cluster-1} \\
-  \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta)^{-1})^{-1} \text{ for } \zeta \in \ell_-. \label{eq:ooguri-vafa-cluster-2}
+  \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta))^{-1} \text{ for } \zeta \in \ell_+, \label{eq:ooguri-vafa-cluster-1} \\
+  \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta)^{-1}) \text{ for } \zeta \in \ell_-. \label{eq:ooguri-vafa-cluster-2}
 \end{align}
 Fortunately the holomorphic symplectic form \eqref{eq:hol-symp-ooguri-vafa} 
 is still smooth --- 
