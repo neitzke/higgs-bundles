@@ -359,10 +359,51 @@ mostly beyond the scope of this course.)
 
 \section{Local symplectic, complex and \kahler geometry: a quick review}
 
-This is only intended as a review and to fix notation.
+This is only intended as a review, to fix notation, and to
+give references for some facts we will need.
+
 There are many references for the material on complex
 and \kahler geometry: one
 good one is \cite{MR2093043}.
+
+In general ``manifold'' will mean a finite-dimensional smooth manifold.
+Occasionally we will need to talk about infinite-dimensional
+Hilbert manifolds, but then we will always say ``Hilbert manifold''
+instead of just ``manifold.''
+
+
+\subsection{Quotients}
+
+\begin{prop} \label{prop:free-proper-quotients-are-manifolds} 
+Suppose $X$ is a smooth manifold with a Lie group $G$
+acting properly (inverse images of compact sets in $X$
+are compact in $G \times X$)
+and freely (stabilizers of all points in $X$ are trivial).
+Let $\rho: \fg \to \Vect(X)$ be the infinitesimal action.
+Then:
+\begin{itemize}
+\item The quotient $X / G$ (the set of $G$-orbits on $X$) 
+has a natural structure of smooth manifold, compatible with
+the quotient topology.
+\item The differential of the projection $X \to X/G$
+is surjective and gives an isomorphism
+\begin{equation}
+TX / \rho(\fg) \simeq T(X/G).
+\end{equation}
+\end{itemize}
+\end{prop}
+
+Note that the requirement that the $G$-action be proper is 
+important. One 
+can easily construct non-Hausdorff quotients by letting $G$ be say
+an infinite discrete group.
+For a spectacularly bad example,
+let $M$ be the torus $T^2 \simeq \R^2 / \Z^2$, and consider
+the action of $\R$ by translations in an irrational direction,
+e.g. let $t \in \R$ act by $(x,y) \mapsto (x+t,y+\sqrt{2}t)$. 
+Then the quotient $T^2 / \R$ has the indiscrete topology,
+so it is definitely not a manifold.
+If $G$ is compact then the action is always proper.
 
 
 \subsection{Symplectic manifolds}
@@ -502,11 +543,9 @@ and $\omega$ is nondegenerate.
 Thus $Y$ is a submanifold of $X$,
 with $\dim Y = \dim X - \dim G$.
 $G$ is a compact group acting freely on $Y$.
-It follows that $X \kq G = Y / G$ is also a manifold, of the desired 
-dimension. The tangent space $T(X \kq G) = T(Y/G) = TY / \rho(\fg)$.
-\fixme{give reference for this; note it's 
-important that $G$ is compact, else have counterexamples 
-like $\R$ acting on the torus by an irrational translation}
+Then by \autoref{prop:free-proper-quotients-are-manifolds}, 
+$X \kq G = Y / G$ is also a manifold, of the desired 
+dimension, and $T(X \kq G) = T(Y/G) = TY / \rho(\fg)$.
 
 It remains to check that $\omega$ descends to a
 symplectic form: 
@@ -3189,6 +3228,8 @@ We remark that the
 twistor space of $X \hkq G$ can be obtained from 
 $\cZ$ by fiberwise holomorphic symplectic quotient.
 
+\fixme{also Gibbons-Hawking spaces}
+
 
 \section{Moduli of bundles}
 
@@ -3200,7 +3241,10 @@ equivalence classes of ``stable'' holomorphic bundles over $C$ of
 rank $K$ and degree $d$. Moreover this space is naturally 
 \kahler (where it is smooth).
 
-A very nice reference on this material is \fixme{Thaddeus}.
+Although we will not use this fact, $\Bun_{K,d}(C)$ is actually
+algebraic. For those who are algebraically inclined, a 
+very nice introductory reference to this 
+material is \fixme{Thaddeus}.
 
 
 \subsection{Stable vector bundles}
@@ -3240,6 +3284,8 @@ The slope of such a bundle is
 Thus $E$ is unstable unless
 all $n_i$ are equal; if all $n_i$ are equal it is
 semistable; it is stable only if $k<2$.
+Note that semistable bundles of degree $d$ and rank $k$ exist
+if and only if $k \vert d$, $k > 1$.
 \end{example}
 
 \begin{example}[Instability of $\cO(-1) \oplus \cO(1)$]
@@ -3274,32 +3320,59 @@ Check that indeed for $t \neq 0$ we have $E_t \simeq \cO(0) \oplus \cO(0)$.
 
 \subsection{Moduli spaces}
 
-We fix a single rank $K$ complex vector bundle $E$, of degree $d$.
-(All such bundles are equivalent; just fix one.)
-
-The space we want to describe is, from one point of view,
-the space of all $\bar\partial$ operators on $E$, modulo
-equivalence. Here ``equivalence'' means the (infinite-dimensional,
+All rank $K$ complex vector bundles of degree $d$ are equivalent.
+Thus, suppose we fix a single rank $K$ complex vector bundle $E$, 
+of degree $d$; then every holomorphic vector bundle of rank $K$
+and degree $d$ is equivalent to $(E, \bar\partial_E)$ for some
+$\bar\partial_E$.
+Thus the moduli space we want to describe could be thought of as
+the (infinite-dimensional) space $\cA$ of 
+all $\bar\partial_E$, modulo
+equivalence --- where now ``equivalence'' means
+the (infinite-dimensional,
 complex) group $\fG_\C$ of sections of $GL(E)$.
+So formally we want to say
+\begin{equation} \label{eq:bunG-formal-quotient}
+  \Bun_{K,d}(C) = \cA / \fG_\C.
+\end{equation}
 
-The neat trick, explained in \cite{MR85k:14006}, 
-is to think of this as a \kahler
-quotient in an infinite-dimensional setting. 
-Namely we first fix a Hermitian metric on $E$.
+It is not so easy to make a ``nice'' space in this way.
+The difficulty comes from the 
+fact that $\fG_\C$ is a complex group.
+(Of course $\fG_\C$ is also infinite-dimensional,
+but that's not really the problem!)
+
+One neat trick for getting around this problem, 
+explained in \cite{MR85k:14006}, 
+is to think of $\fG_\C$ as the complexification of a
+group $\fG$ whose action is proper, and then interpret \eqref{eq:bunG-formal-quotient}
+as a \kahler quotient (still infinite-dimensional.)
+For this purpose, let us fix a Hermitian metric $h$ on $E$.
 After so doing, we have an infinite-dimensional real group
 $\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
+Now we look again at the space $\cA$. Each $\bar\partial_E \in \cA$
+can be extended in a unique way to a unitary connection
+on $E$ (Chern connection), and conversely, each 
+unitary connection can be restricted to a $\bar\partial_E$ operator.
+Thus, viewed this way, $\cA$ becomes
+simply the space of all unitary
+connections on $(E,h)$.
 
-Now we look at the space $\cA$ of \ti{all} unitary 
-connections on $E$.
-This is an infinite-dimensional affine space, modeled
-on the linear space $\Omega^{1}(\End E)$.
+$\cA$ is an infinite-dimensional affine space, modeled
+on the linear space $\Omega^{1}(\fu(E))$.
 On the latter space we have a natural symplectic form
 \begin{equation}
   \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
 \end{equation}
-Moreover the group $\cG$ acts on $\cA$, preserving
-$\omega$, with moment map
-\fixme{...}
+So this gives a symplectic structure on $\cA$.
+Moreover $\fG$ acts on $\cA$.
+
+\begin{prop}[$\fG$ action on $\cA$ preserves symplectic structure]
+\end{prop}
+
+\begin{prop}[Moment map for $\fG$ action on $\cA$]
+\end{prop}
+
 
 \printbibliography
 
