@@ -2458,6 +2458,16 @@ $\Omega$ and the antiholomorphic involution in these complex
 coordinates for $\cZ$.
 \end{exercise}
 
+% \begin{example}[Twistor spaces of Gibbons-Hawking spaces]
+% Now suppose $X$ is a Gibbons-Hawking space (\autoref{exa:gibbons-hawking}).
+% In this case the geometry of $\cZ$ is more interesting yet.
+
+% To get some idea of what it looks like, let us start by
+% trying to describe the space of holomorphic functions on
+% $X$ in a single fixed complex structure, say $I_1$.
+% \fixme{...}
+% \end{example}
+
 The next example is a key one: it has many of the features 
 which appear for moduli spaces of Higgs bundles (in fact 
 this example literally occurs as the moduli space of 
@@ -2625,7 +2635,8 @@ it mean concretely about the functions $\cX_{A,B}$?)
 \end{exercise}
 
 \begin{exercise} This is a continuation of
-\autoref{exc:semiflat-1d-hk}.
+\autoref{exc:semiflat-1d-hk}, but actually it can be done independently, 
+\ti{assuming} the result of that exercise.
 Compute the symplectic forms $\omega_i$ and the metric $g$.
 What can you say about the complex manifold $(X,I_1)$?
 Show that the group $U(1) \times U(1)$ acts
@@ -2751,7 +2762,7 @@ So far we have considered
 honest torus fibrations. Now we move on to the first example 
 where we have \ti{singular} fibers.
 
-\begin{example}[Ooguri-Vafa space] \cite{OV1996} 
+\begin{example}[Ooguri-Vafa space] \label{exa:ooguri-vafa} \cite{OV1996} 
 We return to the Gibbons-Hawking
 ansatz, \autoref{exa:gibbons-hawking}. The idea is to make a circle
 bundle with a $\Z$ shift symmetry; then on dividing out by the $\Z$
@@ -2809,10 +2820,10 @@ Dropping these exponentially suppressed terms we get
 Let us briefly consider the Gibbons-Hawking metric in the approximation
 where $V$ is exactly given by
 $V^\sf$ of \eqref{eq:ooguri-vafa-V-approx}.
-For $\abs{z} > e^{2 \pi(C' + C)}$
+For $\abs{z} > \Lambda$
 we will lose positivity, so the biggest base we can take is 
 \begin{equation}
-U = \{\abs{z} < e^{2 \pi(C' + C)}\} \times \R. 
+U = \{\abs{z} < \Lambda \} \times \R. 
 \end{equation}
 The resulting Gibbons-Hawking metric is translation
 invariant in the $x_1$ direction. After dividing out by 
@@ -2861,7 +2872,7 @@ What is the map $Z$?
 \begin{exercise} \label{exc:ooguri-vafa-holomorphic-discs} \cite{ovmh} Let $X$ be the Ooguri-Vafa space.
 Show that there is an $I_\zeta$-holomorphic disc in $X$
 with boundary on the torus fiber over $z$, if and 
-only if $\zeta = z / \abs{z}$. (Hint: to see that the disc \ti{does}
+only if $\zeta = \pm z / \abs{z}$. (Hint: to see that the disc \ti{does}
 exist, you can construct it directly, along the lines of our 
 earlier constructions of holomorphic spheres in Gibbons-Hawking spaces; 
 to see that it \ti{doesn't} exist,
@@ -2925,28 +2936,35 @@ with
 Note that the integrals indeed converge, because of our careful choice
 of the integration contours.
 
-To see that $\cX_2$ is indeed a holomorphic function on $X$, 
+What is surprising here is that $\cX_2$ given by this strange formula
+is actually an $I_\zeta$-holomorphic function on $X$.
+To see that this is indeed true,
 one can compute directly that the
 holomorphic symplectic form \eqref{eq:hol-symp-family}
 is given by
 \begin{equation} \label{eq:hol-symp-ooguri-vafa}
-  \Omega(\zeta) = \I \frac{\de \cX_1(\zeta) \wedge \de \cX_2(\zeta)}{\cX_1(\zeta) \cX_2(\zeta)}
+  \Omega(\zeta) = \I \frac{\de \cX_1(\zeta) \wedge \de \cX_2(\zeta)}{\cX_1(\zeta) \cX_2(\zeta)}.
 \end{equation}
-(this computation can be found in \cite{Gaiotto:2008cd}.)
+This computation can be found in \cite{Gaiotto:2008cd}, or try it yourself ---
+the idea is that even though the integrals \eqref{eq:Xinst-ooguri-vafa} cannot
+be evaluated in closed form, once we plug into \eqref{eq:hol-symp-ooguri-vafa}
+and Fourier expand in $e^{\I x_1}$ we obtain integrals which \ti{can} be done,
+producing Bessel functions which eventually get matched to those appearing
+in \eqref{eq:V-ooguri-vafa-resummed}.
 
-One tricky aspect of this story is that the function $\cX_2$ is 
+A tricky aspect of this story is that the function $\cX_2$ is 
 actually only \ti{piecewise} holomorphic. Indeed, the integrals
 in \eqref{eq:Xinst-ooguri-vafa} are not defined when $\zeta \in \ell_\pm$.
-One can however compute the \ti{limits} from the two sides, 
+One can however see that the \ti{limits} from the two sides exist, 
 \begin{equation}
   \cX_2^\pm(\zeta) = \lim_{\eps \to 0^\pm} \cX_2(\zeta \e^{\I \eps}),
 \end{equation}
 by deforming the contour of integration so that it lies along
 $\ell_\pm$ except for a little ``detour'' around $\zeta$.
 \insfig{higgs-bundles-9}{0.8}
-Then the two limits differ by the integral around the pole
+Thus the two limits differ by the integral around the pole
 at $\zeta = \zeta'$, which can be evaluated by the residue theorem,
-giving
+giving the jump formulas
 \begin{align}
   \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta))^{-1} \text{ for } \zeta \in \ell_+, \label{eq:ooguri-vafa-cluster-1} \\
   \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta)^{-1}) \text{ for } \zeta \in \ell_-. \label{eq:ooguri-vafa-cluster-2}
@@ -2984,6 +3002,25 @@ the mirror manifold is just $X$ again, and the holomorphic discs
 in question are the ones in \autoref{exc:ooguri-vafa-holomorphic-discs}.
 \fixme{watch out for factors of $\I$}
 
+One of the important features of the Ooguri-Vafa space is that
+it describes the local geometry near singular fibers of more interesting
+elliptically fibered \hk spaces; but more precisely we need a slight
+generalization for this purpose:
+
+\begin{defn}[Generalized Ooguri-Vafa space]
+We reconsider \autoref{exa:ooguri-vafa} with a slight modification:
+instead of adding just a \ti{constant} to $V$ we allow something 
+more general, replacing \eqref{eq:ooguri-vafa-V}
+by 
+\begin{equation} \label{eq:gen-ooguri-vafa-V}
+  V = \frac{1}{4 \pi \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{4\pi\abs{n}} \right) + f
+\end{equation}
+where $f$ is any smooth harmonic function which is invariant under the
+shift $x_3 \to x_3 + 1$. All of the constructions then go through as 
+before and give
+a \hk metric which is torus fibered over some disc in the complex plane,
+with one nodal fiber.
+\end{defn}
 
 \subsection{Differential geometry of \hk manifolds}
 
@@ -3025,7 +3062,6 @@ tells us relatively little about what that metric actually is.
 A nice sketch of the proof can be found in \cite{Joyce}.
 
 \begin{thm}[Compact, \kahler, uniquely holomorphic symplectic manifolds are uniquely \hk] \label{thm:hol-symp-is-hk}
-\fixme{ref Beauville?} \fixme{need $X$ simply connected? it's part of the usual statement, but doesn't seem to be used in the proof!}
 Suppose that:
 \begin{itemize}
   \item $X$ is a compact complex manifold,
@@ -3034,8 +3070,8 @@ Suppose that:
 i.e. there exists some \kahler metric on $X$ with $[\omega] = \alpha$.
 \end{itemize}
 Then there exists a unique \hk structure $(X,I_1,I_2,I_3,g)$ such that
-$[\omega_1] = \alpha$ and $\omega_2 + \I \omega_3 = c \Omega$, 
-for some $c \in \R$.
+$[\omega_1] = \alpha$, $I_1$ is the given complex structure on $X$, 
+and $\omega_2 + \I \omega_3 = c \Omega$ for some $c \in \R$.
 \end{thm}
 
 \begin{pf} Since $\Omega^n$ is a nowhere vanishing 
@@ -3051,12 +3087,20 @@ that $g$ is actually a \hk metric.
 
 First we use the ``Bochner principle'' which says that holomorphic
 objects on Ricci-flat compact manifolds are covariantly constant. More precisely:
-recall the $L^2$ inner product $\IP{\cdot,\cdot}$ on $\Omega^*(X)$, and
-the Laplacian $\Delta_{\bar \partial} = \bar\partial \bar\partial^* + \bar\partial^* \bar\partial$
-which has in particular $\Delta_{\bar \partial} \Omega = 0$.
-A Weitzenbock formula (using the fact that $Ric = 0$)
-says $\Delta_{\bar\partial} = \nabla^* \nabla$, \fixme{Bochner-Yano 1953}
-and thus
+let $\IP{\cdot,\cdot}$ denote the $L^2$ inner product on $\Omega^*(X)$ or 
+$\Omega^*(X) \otimes TX$. Recall 
+the $\bar\partial$-Laplacian
+\begin{equation}
+  \Delta_{\bar \partial} = \bar\partial \bar\partial^* + \bar\partial^* \bar\partial,
+\end{equation}
+which has in particular $\Delta_{\bar \partial} \Omega = 0$ (trivially, since
+$\bar\partial^* \Omega = 0$ for degree reasons.)
+A Weitzenbock formula (see \cite{MR2325093} for a proof), plus the fact that 
+$Ric = 0$, gives a simple relation between this and the covariant Laplacian:
+\begin{equation}
+\Delta_{\bar\partial} = \nabla^* \nabla.
+\end{equation}
+Thus we have
 \begin{equation}
   0 = \IP{\Omega, \Delta_{\bar \partial} \Omega} = \IP{\nabla\Omega,\nabla\Omega},
 \end{equation}
@@ -3078,8 +3122,9 @@ Moreover, by construction $I_2$ is skew-symmetric with
 respect to an orthogonal basis, since its matrix in such 
 a basis is just the matrix of $\omega_2$.
 Using the structure theorem 
-for skew-symmetric matrices, it follows that $I_2$ is
-a direct sum of blocks like $\begin{pmatrix} 0 & c_i \\ -c_i & 0 \end{pmatrix}$.
+for skew-symmetric matrices, it follows that in some 
+orthogonal basis $I_2$ is a direct sum of blocks
+$\begin{pmatrix} 0 & c_i \\ -c_i & 0 \end{pmatrix}$ with all $c_i > 0$.
 All that remains is to show that all of the $c_i$
 appearing in this decomposition are equal;
 then by an overall rescaling of $\omega_2$
@@ -3089,58 +3134,62 @@ which completes the proof.
 So, suppose that the $c_i$ are not all equal.
 Then decompose $TX$ into blocks $E_i$ labeled by
 the distinct $c_i$. Evidently the $E_i$ are preserved
-by $I_2$. We have a similar block decomposition for the
+by $I_2$, and $E_i$ can be characterized as the $-c_i^2$
+eigenspace of $I_2^2$. 
+We have a similar block decomposition for the
 action of $I_3$, and since $I_3^2 = I_2^2$, the blocks 
 must coincide. So the $E_i$ are also preserved by $I_3$.
 Then using $I_2^2 I_1 = -I_2 I_3$ they are also 
-preserved by $I_1$. 
+preserved by $I_1$.
 Moreover, since $I_2$ is covariantly constant,
 the $E_i$ are also preserved by parallel transport.
 But in this case we can construct a covariantly constant endomorphism
-of $TX$ which acts by a different constant on each $E_i$.
+of $TX$ which acts by a different constant on each $E_i$, and
+thus commutes with $I_1$.
 Then applying this endomorphism to $\Omega$
 we would get other holomorphic symplectic forms on $X$,
 violating our assumption.
 \end{pf}
 
-\begin{example}[K3 surface] 
+\begin{example}[Elliptically fibered K3 surface]  \label{exa:elliptically-fibered-k3}
 Now let's construct a \hk space with torus fibers over the \ti{compact}
-base $\C\PP^1$. The idea: for each $u \in \C\PP^1$ write
-\begin{equation} \label{eq:sigma-u}
-  \Sigma_u = \{ y^2 z = x^3 + A(u) xz^2 + B(u) z^3 \} \subset \C\PP^2
+base $\C\PP^1$. The idea: for each $u \in \C\PP^1$ we will write
+\begin{equation} \label{eq:X-u}
+  X_u = \{ y^2 z = x^3 + A(u) xz^2 + B(u) z^3 \} \subset \C\PP^2,
 \end{equation}
-and let $X$ be the union of the $\Sigma_u$.
+and let $X$ be the union of the $X_u$.
 
-How to make this do what we want globally?
-Want $X$ to carry a global holomorphic $2$-form. On each fiber we have
-the holomorphic $1$-form $\de x / y$. We want to wedge this with
-a holomorphic $1$-form coming from the base. Such a $1$-form doesn't exist, 
-because $K_{\C\PP^1} \simeq \cO(-2)$. But this does mean there is
+We want $X$ to carry a global holomorphic $2$-form. How can we make it?
+On each fiber $X_u$ we have the holomorphic $1$-form $\de x / y$. 
+We want to wedge this with
+a holomorphic $1$-form coming from the base. Such a $1$-form 
+doesn't literally exist, because $K_{\C\PP^1} \simeq \cO(-2)$; but there is
 a nowhere vanishing \ti{twisted} $1$-form,
 \begin{equation}
-  \eta \in H^0(K_{\C\PP^1}) \otimes \cO(2)
+  \eta \in H^0(K_{\C\PP^1} \otimes \cO(2)).
 \end{equation}
 Our desired holomorphic symplectic form will be
 \begin{equation}
   \Omega = \eta \wedge \frac{\de x}{y}.
 \end{equation}
-So for this to make global sense, $\frac{\de x}{y}$ needs to be
-valued in $\cO(-2)$. Also for the equation \eqref{eq:sigma-u}
+For this to make global sense, $\de x/y$ needs to be
+valued in $\cO(-2)$. Also, for the equation \eqref{eq:X-u}
 to make sense, $y^2 z$ and $x^3$ must be valued in the same place.
-To make all this work we make $x$ valued in $\cO(4)$, $y$ in $\cO(6)$,
+To make all this work, we make $x$ valued in $\cO(4)$, $y$ in $\cO(6)$,
 and $z$ in $\cO(0)$. Then $A(u)$ must be a (fixed) section of $\cO(8)$
-and $B(u)$ a section of $\cO(12)$. With $A$ and $B$ chosen,
-finally we can define:
+and $B(u)$ a section of $\cO(12)$.
+Finally we define:\footnote{What the notation $\PP[\cO(4) \oplus \cO(6) \oplus \cO(0)]$ means: we take the locus where $x$, $y$, $z$ don't 
+simultaneously vanish, then quotient by simultaneous rescalings 
+$(x,y,z) \to (\lambda x, \lambda y, \lambda z)$ with $\lambda \in \C^\times$; 
+this defines a bundle over $\C\PP^1$ with each fiber isomorphic to $\C\PP^2$.}
 \begin{equation}
   X = \{ y^2 z = x^3 + A(u) xz^2 + B(u) z^3 \} \subset \PP[\cO(4) \oplus \cO(6) \oplus \cO(0)] \to \C\PP^1
 \end{equation}
-(What this notation $\PP[\cO(4) \oplus \cO(6) \oplus \cO(0)]$ means: we take the locus where $x$, $y$, $z$ don't 
-simultaneously vanish, then quotient by simultaneous rescalings of $x$, $y$, $z$.)
-The fiber $\Sigma_u$ is \ti{smooth} as long as the polynomial
+The fiber $X_u$ is \ti{smooth} as long as the polynomial
 $x^3 + A(u) x + B(u)$ doesn't have any double zeroes in $x$,
 i.e. as long as the discriminant
 \begin{equation}
-  \Delta(u) = 27 B(u)^2 - 4 A(u)^3
+  \Delta(u) = 27 B(u)^2 + 4 A(u)^3
 \end{equation}
 does not vanish. Since $\Delta$ is a section of $\cO(24)$,
 if it has no multiple zeroes we get $24$ singular fibers. 
@@ -3156,19 +3205,38 @@ gives a nodal torus (like the one in the Ooguri-Vafa space.)
 It is straightforward moreover to check that if $\Delta$ has no multiple zeroes
 then the total space of $X$ is smooth.
 It carries the holomorphic symplectic form $\Omega$.
-
-Finally, this $X$ is in fact \kahler. \fixme{simple proof? view it 
-as vanishing locus of a section of $\cO(12,3)$ over weighted projective 
-space $\C^5 / \C^\times \times \C^\times$?}
+Finally, $X$ is \kahler. \fixme{simple proof? add \kahler
+form coming from $\C\PP^2$ fibers to ones coming from base?}
 Thus by \autoref{thm:hol-symp-is-hk}, $X$ admits \hk metrics.
 
-\fixme{...}
-\fixme{Gross-Wilson picture}
+We have obtained a family of \hk manifolds: one for each
+$(A(u),B(u),\alpha)$, where
+$A(u) \in H^0(\cO(8))$, $B(u) \in H^0(\cO(12))$ 
+are such that $\Delta(u)$ has only
+simple zeroes, and $\alpha$ is a \kahler class.
 \end{example}
+
+\begin{exercise} Check that the $1$-form $\de x / y$ is
+holomorphic on the curve \eqref{eq:X-u}.
+\end{exercise}
 
 \begin{exercise} Check that if $\Delta$ has no multiple
 zeroes then $X$ is smooth.
 \end{exercise}
+
+In general, Yau's Theorem gives very little by way of explicit information
+about the Ricci-flat metrics it provides. In the case of the K3 surface
+we have at least some \ti{asymptotic} information, thanks to the following
+theorem.
+
+\begin{thm}[Gross-Wilson asymptotic description of K3 metrics] \cite{MR1863732}
+Fix an elliptically fibered K3 surface $X$ as in 
+\autoref{exa:elliptically-fibered-k3}. There exists a family
+of \kahler classes $\alpha(R) \in H^{1,1}_\R(X)$, 
+parameterized by $R \in \R_+$, such that the corresponding \hk metrics $g(R)$
+\fixme{...}
+\end{thm}
+
 
 \currentposition
 
