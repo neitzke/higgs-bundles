@@ -503,6 +503,11 @@ i.e. the $G$-action preserves $\omega$.
 But even if the $G$-action preserves $\omega$,
 a moment map still may not exist.
 
+Conversely, if a moment map $\mu$ does exist and $Z(\fg)$
+is nontrivial, we can get
+another moment map by taking 
+$\mu + c$ where $c \in Z(\fg)$.
+
 \begin{exercise}
 Suppose $X = \R^2$ with $\omega = \de x_1 \wedge \de x_2$, and
 $G = SO(2) = U(1) = \{e^{\I \alpha}: \alpha \in \R \}$.
@@ -3315,6 +3320,14 @@ where $\mu_i$ is a moment map for the action with respect
 to $\omega_i$.
 \end{defn}
 
+\begin{exercise} Suppose
+$X$ is a Gibbons-Hawking space as in \autoref{exa:gibbons-hawking}.
+Then $X$ has a $U(1)$ action by isometries
+preserving the \hk structure and also has a projection $X \to \R^3$.
+Show that this projection is a \hk moment map for the $U(1)$ action
+(when we identify $\fu(1) \simeq \R$ as usual).
+\end{exercise}
+
 \begin{defn}[\Hk quotient] Suppose $X$ is \hk and a compact group
 $G$ acts on $X$, with \hk moment map $\mu$.
 Then the \ti{\hk quotient}
@@ -3360,22 +3373,41 @@ it, using the fact that the \kahler quotient is also ``like''
 a quotient by a complexification $G_\C$. From this point of view
 we could write formally
 \begin{equation}
-  X \hkq G = M_1^{-1}(0) / G_\C
+  X \hkq G = M_1^{-1}(0) / G_\C = X \kq G_\C
 \end{equation}
 i.e. it looks like a \ti{holomorphic} version of the usual
 symplectic quotient. This point of view is useful for 
 constructing the twistor space of $X \hkq G$: it arises
-as a \ti{fiberwise} holomorphic symplectic quotient.
+as a \ti{fiberwise} version of the holomorphic symplectic quotient,
+i.e. formally
+\begin{equation}
+  \cZ(X \hkq G) = \cZ(X) \kq G_\C
+\end{equation}
 
-\begin{example}[Multi-Gibbons-Hawking spaces as \hk quotients]
-We begin with the space $\bbH^{n+1}$. 
-In structure $I_1$ it is naturally identified with
+\begin{example}[Multi-Eguchi-Hanson spaces as \hk quotients]
+We begin with the space $X = \bbH^{n+1}$. 
+In structure $I_1$, $X$ is naturally identified with
 $\C^{2n+2}$ with coordinates $(z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
-It has a triholomorphic $U(1)^n$ action (coming from $SU(2)_R$ action on 
-each factor)
+It has a triholomorphic $U(1)^{n+1}$ action (coming from $SU(2)_R$ action on 
+each factor), acting by $z_i \to e^{\I \alpha_i} z_i$,
+$w_i \to e^{-\I \alpha_i} w_i$, which has a standard moment map 
+$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$, given by \fixme{check sign}
+\begin{align}
+  \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
+  \mu_{i,2} + \I \mu_{i,3} &= w_i z_i.
+\end{align}
+Now consider the ``center of mass'' subgroup $G \subset U(1)^{n+1}$
+given by the condition $\prod_i g_i = 1$.
+We have $G \simeq U(1)^n$.
+Choose points $\vec c_1, \dots, \vec c_{n+1} \in \R^3$ and 
+consider the \hk quotient
+\begin{equation}
+  Y = X \hkq_{\vec c} G.
+\end{equation}
+Claim: this quotient is actually a multi-Eguchi-Hanson space
+as in \autoref{exa:multi-eguchi-hanson}, where the 
+differences of the $\vec c_i$ are the positions $x_i$.
 \fixme{...}
-Now choose points $x_1, \dots, x_{n+1} \in \R^3$. We use these to 
-define a moment map for the $U(1)^{n+1}$ action \fixme{...}
 \end{example}
 
 
