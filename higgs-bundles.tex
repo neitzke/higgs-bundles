@@ -538,7 +538,7 @@ which also has a canonical action of $G$. Verify that
 gives a moment map for this action.
 \end{exercise}
 
-\begin{defn}[Symplectic quotient]
+\begin{defn}[Symplectic quotient] \cite{MR0402819}
 Suppose $X$ is a symplectic manifold, with a compact group $G$
 acting on it, with moment map $\mu$. Then the \ti{symplectic quotient}
 is
@@ -546,6 +546,14 @@ is
   X \kq G = \mu^{-1}(0) / G.
 \end{equation}
 \end{defn}
+
+More generally, for $c \in [\fg,\fg]^\perp$ we can define
+\begin{equation}
+  X \kq_c G = \mu^{-1}(c) / G.
+\end{equation}
+(This is equivalent to changing our choice of $\mu$ to $\mu' = \mu+c$,
+so there is no essential loss of generality in always taking $c = 0$,
+but sometimes one or the other description is more convenient.)
 
 \begin{prop}[Symplectic quotient is symplectic]
 Suppose $X$ is a symplectic manifold, with a compact group $G$
@@ -606,8 +614,9 @@ Show that $G$ acts freely on $\mu^{-1}(0)$ and
 \begin{equation}
 T^*X \kq G \simeq T^*(X/G)
 \end{equation}
-as symplectic manifolds.
+as symplectic manifolds. \fixme{check!}
 \end{exercise}
+
 
 \subsection{Complex manifolds} 
 In this section $X$ is a smooth manifold.
