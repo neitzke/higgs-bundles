@@ -241,6 +241,7 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Bun}{Bun}
 \DeclareMathOperator{\Vect}{Vect}
@@ -368,7 +369,7 @@ good one is \cite{MR2093043}.
 
 In general ``manifold'' will mean a finite-dimensional smooth manifold.
 Occasionally we will need to talk about infinite-dimensional
-Hilbert manifolds, but then we will always say ``Hilbert manifold''
+Banach manifolds, but then we will always say ``Banach manifold''
 instead of just ``manifold.''
 
 
@@ -408,8 +409,6 @@ If $G$ is compact then the action is always proper.
 
 \subsection{Symplectic manifolds}
 
-\fixme{should put some references here?}
-
 \begin{defn}[Nondegenerate $2$-form]
 Suppose $V$ is a vector space over $\R$ or $\C$.
 We say $\omega \in \wedge^2(V)$ is \ti{nondegenerate}
@@ -444,6 +443,17 @@ $\omega \in \Omega^2(X)$, such that
 \end{equation}
 and $\omega(x)$ is nondegenerate for every $x \in X$.
 \end{defn}
+
+\begin{example}[Cotangent bundle is a symplectic manifold]
+If $X$ is any manifold and $Y = T^* X$, then $Y$ carries a canonical
+$1$-form (``Liouville form''), $\lambda \in \Omega^1(Y)$:
+in coordinates one would write 
+$\lambda = p_i \de q^i$, or more invariantly, for $v \in TY$
+we have $\lambda(x,p) \cdot v = p \cdot \pi_* v$.
+Then there is a canonical symplectic form $\omega = \de \lambda$:
+in coordinates it would be $\omega = \de p_i \wedge \de q^i$.
+\end{example}
+
 
 
 \subsection{Symplectic quotients}
@@ -510,6 +520,16 @@ on $X$,
   \mu(x_1,x_2) = -\half (x_1^2 + x_2^2).
 \end{equation}
 
+\begin{exercise} \label{exc:cotangent-moment-map}
+Suppose $X$ is any manifold, with a compact
+group $G$ acting. Then $T^* X$ is a symplectic manifold
+which also has a canonical action of $G$. Verify that
+\begin{equation}
+  \mu_Z(x,p) = p \cdot \rho(Z)
+\end{equation}
+gives a moment map for this action.
+\end{exercise}
+
 \begin{defn}[Symplectic quotient]
 Suppose $X$ is a symplectic manifold, with a compact group $G$
 acting on it, with moment map $\mu$. Then the \ti{symplectic quotient}
@@ -568,6 +588,18 @@ quotient map $Y \to Y/G$ is a submersion.
 \end{itemize}
 \end{pf}
 
+The next exercise gives (perhaps) some motivation
+for the notion of symplectic quotient:
+
+\begin{exercise} Suppose $X$ is a smooth manifold
+with a compact group $G$ acting freely. Let $\mu$
+be the moment map of \autoref{exc:cotangent-moment-map}.
+Show that $G$ acts freely on $\mu^{-1}(0)$ and
+\begin{equation}
+T^*X \kq G \simeq T^*(X/G)
+\end{equation}
+as symplectic manifolds.
+\end{exercise}
 
 \subsection{Complex manifolds} 
 In this section $X$ is a smooth manifold.
@@ -969,16 +1001,19 @@ are \kahler] \label{prop:kahler-quotients-are-kahler}
 Suppose $X$ is a \kahler manifold, with a compact group
 $G$ acting on $X$ preserving both $g$ and $I$ (thus it
 also preserves $\omega$), with a moment map $\mu$,
-and such that $G$ acts freely on $\mu^{-1}(0)$.
+and such that $G$ acts freely on $Y = \mu^{-1}(0)$.
 Then the induced metric on the symplectic quotient $X \kq G$
 is \kahler.
 \end{prop}
 \begin{pf} First we want to see that there is a natural 
 almost complex structure on $X \kq G$. The tangent space
 $T(X \kq G)$ is
-\begin{equation}
-  T(X \kq G) = \left(\{ \grad \mu_Z: Z \in \fg \} \oplus \{ \rho(Z): Z \in \fg \}\right)^\perp \subset TX.
-\end{equation}
+\begin{align}
+  T(X \kq G) &= T(Y / G)  \\
+  &= \{ \rho(Z): Z \in \fg \}^\perp \subset TY \\
+  &= 
+  \left(\{ \grad \mu_Z: Z \in \fg \} \oplus \{ \rho(Z): Z \in \fg \}\right)^\perp \subset TX.
+\end{align}
 But 
 \begin{equation}
   g(\grad \mu_Z, v) = \de \mu_Z \cdot v = \omega(\rho(Z),v) = g(I \rho(Z), v)
@@ -1043,6 +1078,18 @@ point $0 \in \C^n$, but we certainly do have
 \begin{equation}
   (\C^n \setminus \{0\}) / \C^\times = \C\PP^{n-1} = \C^n \kq U(1).
 \end{equation}
+The explanation is that each 
+$\C^\times$-orbit contains exactly one $U(1)$-orbit
+lying inside $\mu^{-1}(0)$, except for the orbit $\{0\}$.
+
+This is part of a general story: at least 
+in good situations, the \kahler quotient by a group $G$ 
+is related to the ordinary quotient by a \ti{complexification}
+$G_\C$. Such a quotient is typically badly behaved since $G_\C$ is
+not compact; but it becomes
+better behaved after throwing away some ``bad'' points, like
+the point $0 \in \C^n$ in the above example.
+
 
 \subsection{Holomorphic symplectic manifolds}
 
@@ -2594,7 +2641,7 @@ and closely related discussion in \cite{Hitchin:2005uu}.
 This is a generalization of \autoref{exa:R2T2} to allow a
 bundle of tori, with varying modulus.
 
-Fix a $1$-dimensional complex manifold $\cB$,
+Fix a $1$-dimensional complex manifold $\cB$
 and holomorphic functions 
 \begin{equation}
   Z_{A,B}: \cB \to \C
@@ -2609,7 +2656,7 @@ coordinatized by $\theta_{A,B} \in \R / 2 \pi \Z$.
 Finally, just as in \autoref{exa:R2T2}, define functions
 $\cX_{A,B}: X \to \C^\times$ by
 \begin{equation}
-  \cX_{A,B} = \exp \left(\zeta^{-1} Z_{A,B} + \I \theta_{A,B} + \zeta\bar{Z}_{A,B} \right),
+  \cX_{A,B} = \exp \left(\zeta^{-1} Z_{A,B} + \I \theta_{A,B} + \zeta \bar{Z}_{A,B} \right),
 \end{equation}
 and for any $\zeta \in \C^\times$ 
 define $\Omega(\zeta) \in \Omega^2_\C(X)$ by
@@ -2881,7 +2928,7 @@ a disc would have to vanish.)
 \end{exercise}
 
 \begin{exercise} Use the Poisson summation formula to verify
-\eqref{eq:V-ooguri-vafa-resummed}.
+\eqref{eq:V-ooguri-vafa-resummed}. \fixme{warning, this is hard}
 \end{exercise}
 
 \begin{example}[Twistor description of Ooguri-Vafa space]
@@ -3007,7 +3054,7 @@ it describes the local geometry near singular fibers of more interesting
 elliptically fibered \hk spaces; but more precisely we need a slight
 generalization for this purpose:
 
-\begin{defn}[Generalized Ooguri-Vafa space]
+\begin{defn}[Generalized Ooguri-Vafa space] \label{exa:gen-ooguri-vafa}
 We reconsider \autoref{exa:ooguri-vafa} with a slight modification:
 instead of adding just a \ti{constant} to $V$ we allow something 
 more general, replacing \eqref{eq:ooguri-vafa-V}
@@ -3151,7 +3198,7 @@ we would get other holomorphic symplectic forms on $X$,
 violating our assumption.
 \end{pf}
 
-\begin{example}[Elliptically fibered K3 surface]  \label{exa:elliptically-fibered-k3}
+\begin{example}[Elliptically fibered K3 surface] \label{exa:elliptically-fibered-k3}
 Now let's construct a \hk space with torus fibers over the \ti{compact}
 base $\C\PP^1$. The idea: for each $u \in \C\PP^1$ we will write
 \begin{equation} \label{eq:X-u}
@@ -3226,17 +3273,32 @@ zeroes then $X$ is smooth.
 
 In general, Yau's Theorem gives very little by way of explicit information
 about the Ricci-flat metrics it provides. In the case of the K3 surface
-we have at least some \ti{asymptotic} information, thanks to the following
-theorem.
-
-\begin{thm}[Gross-Wilson asymptotic description of K3 metrics] \cite{MR1863732}
+we have at least some \ti{asymptotic} information, thanks to the work
+of Gross-Wilson \cite{MR1863732}. 
+\ti{Very roughly} this says the following.
 Fix an elliptically fibered K3 surface $X$ as in 
-\autoref{exa:elliptically-fibered-k3}. There exists a family
+\autoref{exa:elliptically-fibered-k3}. The base $\C\PP^1$
+has a natural \kahler metric.
+Moreover there exists a family
 of \kahler classes $\alpha(R) \in H^{1,1}_\R(X)$, 
-parameterized by $R \in \R_+$, such that the corresponding \hk metrics $g(R)$
-\fixme{...}
-\end{thm}
-
+parameterized by $R \in \R_+$, such that the corresponding \hk metrics
+$g(R)$ can be described concretely: 
+\begin{equation}
+    g(R) \approx g_{app}(R) + O(e^{-M R})
+\end{equation} 
+where $M$ is controlled by the distance between the singular fibers,
+and $g_{app}(R)$ are obtained by
+taking generalized Ooguri-Vafa metrics (\autoref{exa:gen-ooguri-vafa})
+in small discs around the $24$ singular fibers and gluing them to
+semiflat metrics (\autoref{exa:semiflat-1d-general})
+on the rest of $X$ --- where the holomorphic data $Z_\gamma$ entering
+the semiflat metric
+are certain periods of the holomorphic symplectic form 
+$R \Omega$ --- and then dividing by $R^2$. 
+Then the torus fibers of $g(R)$ have
+area $4 \pi^2 / R^2$. As $R \to \infty$ these metrics 
+have a Gromov-Hausdorff limit,
+in which the torus fibers collapse onto the \kahler base $\C\PP^1$.
 
 \currentposition
 
@@ -3292,11 +3354,29 @@ quotient metric on $X \hkq G$ is \kahler for $I_1$.
 Similarly it is \kahler for $I_2$, $I_3$.
 \end{pf}
 
-We remark that the 
-twistor space of $X \hkq G$ can be obtained from 
-$\cZ$ by fiberwise holomorphic symplectic quotient.
+So this single \hk quotient space can be viewed as a \kahler 
+quotient in many different ways. There is also yet another way to think of
+it, using the fact that the \kahler quotient is also ``like''
+a quotient by a complexification $G_\C$. From this point of view
+we could write formally
+\begin{equation}
+  X \hkq G = M_1^{-1}(0) / G_\C
+\end{equation}
+i.e. it looks like a \ti{holomorphic} version of the usual
+symplectic quotient. This point of view is useful for 
+constructing the twistor space of $X \hkq G$: it arises
+as a \ti{fiberwise} holomorphic symplectic quotient.
 
-\fixme{also Gibbons-Hawking spaces}
+\begin{example}[Multi-Gibbons-Hawking spaces as \hk quotients]
+We begin with the space $\bbH^{n+1}$. 
+In structure $I_1$ it is naturally identified with
+$\C^{2n+2}$ with coordinates $(z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
+It has a triholomorphic $U(1)^n$ action (coming from $SU(2)_R$ action on 
+each factor)
+\fixme{...}
+Now choose points $x_1, \dots, x_{n+1} \in \R^3$. We use these to 
+define a moment map for the $U(1)^{n+1}$ action \fixme{...}
+\end{example}
 
 
 \section{Moduli of bundles}
@@ -3312,7 +3392,7 @@ rank $K$ and degree $d$. Moreover this space is naturally
 Although we will not use this fact, $\Bun_{K,d}(C)$ is actually
 algebraic. For those who are algebraically inclined, a 
 very nice introductory reference to this 
-material is \fixme{Thaddeus}.
+material is \cite{MR98b:14010}.
 
 
 \subsection{Stable vector bundles}
@@ -3322,7 +3402,6 @@ complex vector bundle $E$ over $C$ is
 \begin{equation}
   \deg E = c_1(E) \cdot C.
 \end{equation}
-\fixme{should define this in some more primitive way}
 \end{defn}
 
 \begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
@@ -3379,6 +3458,11 @@ $\cO(1) \oplus \cO(-1)$
 precisely at $t = 0$, which under the 
 slightest perturbation ``decays'' to the semistable one
 $\cO(0) \oplus \cO(0)$.
+
+This means that if we naively try to construct a moduli space of bundles
+over $\C\PP^1$ up to equivalence, any open set around the unstable
+bundle $\cO(1) \oplus \cO(-1)$ necessarily contains $\cO(0) \oplus \cO(0)$,
+i.e. the space would have to be non-Hausdorff.
 \end{example}
 
 \begin{exercise}
@@ -3413,7 +3497,8 @@ but that's not really the problem!)
 One neat trick for getting around this problem, 
 explained in \cite{MR85k:14006}, 
 is to think of $\fG_\C$ as the complexification of a
-group $\fG$ whose action is proper, and then interpret \eqref{eq:bunG-formal-quotient}
+group $\fG$ whose action is better controlled, and 
+then interpret \eqref{eq:bunG-formal-quotient}
 as a \kahler quotient (still infinite-dimensional.)
 For this purpose, let us fix a Hermitian metric $h$ on $E$.
 After so doing, we have an infinite-dimensional real group
@@ -3430,16 +3515,23 @@ $\cA$ is an infinite-dimensional affine space, modeled
 on the linear space $\Omega^{1}(\fu(E))$.
 On the latter space we have a natural symplectic form
 \begin{equation}
-  \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
+  \omega(\alpha,\beta) = \frac{1}{8 \pi^2} \int_C \Tr(\alpha \wedge \beta).
 \end{equation}
 So this gives a symplectic structure on $\cA$.
 Moreover $\fG$ acts on $\cA$.
 
-\begin{prop}[$\fG$ action on $\cA$ preserves symplectic structure]
+\begin{prop}[Moment map for $\fG$ action on $\cA$]
+The action of $\fG$ on $\cA$ preserves the symplectic 
+structure and admits a moment map, given by
+\begin{equation}
+  \mu(D) = F_D.
+\end{equation}
+(More precisely, this means: suppose given an element $Z \in \Lie \fG$,
+represented by a smooth section of $\End E$; 
+then we have $\mu_Z(D) = \int_C Z F_D$.)
 \end{prop}
 
-\begin{prop}[Moment map for $\fG$ action on $\cA$]
-\end{prop}
+Thus at least formally we should expect that $\mu(D)$
 
 
 \printbibliography
