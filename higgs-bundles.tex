@@ -386,13 +386,15 @@ Then:
 \item The quotient $X / G$ (the set of $G$-orbits on $X$) 
 has a natural structure of smooth manifold, compatible with
 the quotient topology.
-\item The differential of the projection $X \to X/G$
+\item The differential of the projection $X \to X/G$ 
 is surjective and gives an isomorphism
 \begin{equation}
 TX / \rho(\fg) \simeq T(X/G).
 \end{equation}
 \end{itemize}
 \end{prop}
+
+\insfig{higgs-bundles-10}{0.8}
 
 Note that the requirement that the $G$-action be proper is 
 important. One 
@@ -515,7 +517,11 @@ action of $G$, i.e. $c \in [\fg,\fg]^\perp \subset \fg^*$.
 Suppose $X = \R^2$ with $\omega = \de x_1 \wedge \de x_2$, and
 $G = SO(2) = U(1) = \{e^{\I \alpha}: \alpha \in \R \}$.
 Then $\fu(1)$ is $1$-dimensional, spanned by $\partial_\alpha$.
-Show that the rotation action of $U(1)$ on $X$ 
+Show that the counterclockwise rotation action of $U(1)$ on $X$, 
+given by the matrices
+\begin{equation}
+   \begin{pmatrix} \cos \alpha & - \sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix},
+ \end{equation} 
 has a moment map $\mu: \R^2 \to \fu(1)^*$, given by
 \begin{equation}
   \mu(x_1,x_2) \cdot \partial_\alpha = -\half (x_1^2 + x_2^2).
@@ -533,7 +539,7 @@ Suppose $X$ is any manifold, with a compact
 group $G$ acting. Then $T^* X$ is a symplectic manifold
 which also has a canonical action of $G$. Verify that
 \begin{equation}
-  \mu_Z(x,p) = p \cdot (\rho(Z)(x))
+  \mu_Z(x,p) = p \cdot (\rho(Z)(x)) \qquad x \in X, p \in T^*_x X
 \end{equation}
 gives a moment map for this action.
 \end{exercise}
@@ -1074,12 +1080,14 @@ Thus we might dream that as complex manifolds we would have
 \begin{equation}
   X \kq G = X / G_\C.
 \end{equation}
-If we try to realize this dream literally, we will run into 
+If this were literally true it would give an ``easy'' way of thinking about
+the complex structure on $X \kq G$.
+But if we try to realize this dream literally, we will run into 
 problems, since there is no reason for the vector fields
 $I \rho(Z)$ on $X$ to be complete: thus we cannot necessarily
 integrate them to a group action.
 Even if they are complete, 
-we can still have some problems, because $G_\C$ 
+we can still have problems, because $G_\C$ 
 is not a compact group, so $X / G_\C$
 is not guaranteed to be a nice space.
 The next example
@@ -3106,7 +3114,8 @@ by
   V = \frac{1}{4 \pi \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{4\pi\abs{n}} \right) + f
 \end{equation}
 where $f$ is any smooth harmonic function which is invariant under the
-shift $x_3 \to x_3 + 1$. All of the constructions then go through as 
+shift $x_3 \to x_3 + 1$. All of the constructions
+in \autoref{exa:ooguri-vafa} then go through as 
 before and give
 a \hk metric which is torus fibered over some disc in the complex plane,
 with one nodal fiber.
