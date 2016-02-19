@@ -206,9 +206,11 @@
 \newcommand{\vs}{\not\!v}
 \newcommand{\kahler}{K\"ahler\xspace}
 \newcommand{\kq}{/\!\!/}
+\newcommand{\kql}[1]{/\!\!/\!\!_#1\,}
 \newcommand{\hk}{hyperk\"ahler\xspace}
 \newcommand{\Hk}{Hyperk\"ahler\xspace}
 \newcommand{\hkq}{/\!\!/\!\!/\!\!/}
+\newcommand{\hkql}[1]{/\!\!/\!\!/\!\!/\!\!_#1\,}
 \newcommand{\del}{\ensuremath{\partial}}
 \newcommand{\delbar}{\ensuremath{\overline{\partial}}}
 \newcommand{\I}{{\mathrm i}}
@@ -386,13 +388,15 @@ Then:
 \item The quotient $X / G$ (the set of $G$-orbits on $X$) 
 has a natural structure of smooth manifold, compatible with
 the quotient topology.
-\item The differential of the projection $X \to X/G$
+\item The differential of the projection $X \to X/G$ 
 is surjective and gives an isomorphism
 \begin{equation}
 TX / \rho(\fg) \simeq T(X/G).
 \end{equation}
 \end{itemize}
 \end{prop}
+
+\insfig{higgs-bundles-10}{0.8}
 
 Note that the requirement that the $G$-action be proper is 
 important. One 
@@ -446,12 +450,18 @@ and $\omega(x)$ is nondegenerate for every $x \in X$.
 
 \begin{example}[Cotangent bundle is a symplectic manifold]
 If $X$ is any manifold and $Y = T^* X$, then $Y$ carries a canonical
-$1$-form (``Liouville form''), $\lambda \in \Omega^1(Y)$:
-in coordinates one would write 
-$\lambda = p_i \de q^i$, or more invariantly, for $v \in TY$
-we have $\lambda(x,p) \cdot v = p \cdot \pi_* v$.
-Then there is a canonical symplectic form $\omega = \de \lambda$:
-in coordinates it would be $\omega = \de p_i \wedge \de q^i$.
+$1$-form (``Liouville form''), $\lambda \in \Omega^1(Y)$,
+defined as follows: 
+\begin{equation}
+  \lambda(x,p) \cdot v = p \cdot \pi_* v \qquad x \in X, p \in T^*_x X, v \in TY.
+\end{equation}
+In coordinates one would write 
+$\lambda = p_i \de q^i$.
+Then there is a canonical symplectic form 
+\begin{equation}
+\omega = \de \lambda.  
+\end{equation}
+In coordinates $\omega = \de p_i \wedge \de q^i$.
 \end{example}
 
 
@@ -484,7 +494,8 @@ for all $Z \in \fg$ we have
 \begin{equation} \label{eq:moment-map-condition-3}
   \iota_{\rho(Z)} \omega = \de \mu_Z,
 \end{equation}
-and in addition the map \eqref{eq:moment-map} is $G$-equivariant.
+and in addition the map \eqref{eq:moment-map} is $G$-equivariant
+(for the $G$-action on $X$ and the coadjoint $G$-action on $\fg^*$).
 \end{defn}
 In particular, the moment map $\mu$ 
 \ti{determines} the $G$-action.
@@ -499,15 +510,27 @@ Cartan's ``magic formula''
 \end{equation}
 and the fact that $\de \omega = 0$,
 this is equivalent to requiring $\cL_{\rho(Z)}\omega = 0$,
-i.e. the $G$-action preserves $\omega$.
+i.e. the $G$-action preserves $\omega$ infinitesimally.
 But even if the $G$-action preserves $\omega$,
-a moment map still may not exist.
+a moment map still may not exist.\footnote{When $G$ is compact, 
+moment maps exist at least
+\ti{locally} on $X$, though maybe not globally. When $G$ is not
+compact there can even be a local obstruction.}
+
+Conversely, if a moment map $\mu$ does exist and $\fg$
+has nontrivial center, we can get another moment map by taking 
+$\mu' = \mu + c$, where $c$ is fixed by the \ti{coadjoint}
+action of $G$, i.e. $c \in [\fg,\fg]^\perp \subset \fg^*$.
 
 \begin{exercise}
 Suppose $X = \R^2$ with $\omega = \de x_1 \wedge \de x_2$, and
 $G = SO(2) = U(1) = \{e^{\I \alpha}: \alpha \in \R \}$.
 Then $\fu(1)$ is $1$-dimensional, spanned by $\partial_\alpha$.
-Show that the rotation action of $U(1)$ on $X$ 
+Show that the counterclockwise rotation action of $U(1)$ on $X$, 
+given by the matrices
+\begin{equation}
+   \begin{pmatrix} \cos \alpha & - \sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix},
+ \end{equation} 
 has a moment map $\mu: \R^2 \to \fu(1)^*$, given by
 \begin{equation}
   \mu(x_1,x_2) \cdot \partial_\alpha = -\half (x_1^2 + x_2^2).
@@ -525,19 +548,27 @@ Suppose $X$ is any manifold, with a compact
 group $G$ acting. Then $T^* X$ is a symplectic manifold
 which also has a canonical action of $G$. Verify that
 \begin{equation}
-  \mu_Z(x,p) = p \cdot \rho(Z)
+  \mu_Z(x,p) = p \cdot (\rho(Z)(x)) \qquad x \in X, p \in T^*_x X
 \end{equation}
 gives a moment map for this action.
 \end{exercise}
 
-\begin{defn}[Symplectic quotient]
-Suppose $X$ is a symplectic manifold, with a compact group $G$
+\begin{defn}[Symplectic quotient] \cite{MR0402819}
+Suppose $X$ is a symplectic manifold, with a Lie group $G$
 acting on it, with moment map $\mu$. Then the \ti{symplectic quotient}
 is
 \begin{equation}
   X \kq G = \mu^{-1}(0) / G.
 \end{equation}
 \end{defn}
+
+More generally, for $c \in [\fg,\fg]^\perp$ we can define
+\begin{equation}
+  X \kql{c} G = \mu^{-1}(c) / G.
+\end{equation}
+(This is equivalent to changing our choice of $\mu$ to $\mu' = \mu+c$,
+so there is no essential loss of generality in always taking $c = 0$,
+but sometimes one or the other description is more convenient.)
 
 \begin{prop}[Symplectic quotient is symplectic]
 Suppose $X$ is a symplectic manifold, with a compact group $G$
@@ -584,7 +615,8 @@ annihilates all of $TY$ is zero in $T(Y/G)$, i.e.
 $\omega$ is nondegenerate on $T(Y/G)$.
 \item $\omega$ is closed on $Y/G$: this follows 
 from the fact that $\de \omega = 0$ on $Y$ and the
-quotient map $Y \to Y/G$ is a submersion.
+quotient map $\pi: Y \to Y/G$ is a submersion (so that
+$\pi^*(\de \omega) = 0 \implies \de \omega = 0$.)
 \end{itemize}
 \end{pf}
 
@@ -598,8 +630,9 @@ Show that $G$ acts freely on $\mu^{-1}(0)$ and
 \begin{equation}
 T^*X \kq G \simeq T^*(X/G)
 \end{equation}
-as symplectic manifolds.
+as symplectic manifolds. \fixme{check!}
 \end{exercise}
+
 
 \subsection{Complex manifolds} 
 In this section $X$ is a smooth manifold.
@@ -975,25 +1008,26 @@ a subgroup isomorphic to $U(n)$.
 \subsection{\kahler quotients}
 
 \begin{defn}[Horizontal vectors]
-Suppose $X$ is a Riemannian manifold, with a compact group
-$G$ acting freely on $X$ preserving $g$. 
-Then the \ti{horizontal vectors} on $X$ are the
-ones orthogonal to all $\rho(Z)$ for $Z \in \fg$.
-\end{defn}
-
-Letting $H \subset TX$ be the space of horizontal vectors,
-using orthogonal projection we obtain
-a canonical identification 
+Suppose $X$ is a Riemannian manifold, with a Lie group
+$G$ acting freely on $X$.
+The \ti{horizontal distribution} on $X$ is
 \begin{equation}
-  T(X/G) = TX / \rho(\fg) \simeq H.
+  H = \{ \rho(Z): Z \in \fg \}^\perp \subset TX.
 \end{equation}
+\end{defn}
 
 \begin{defn}[Induced metric on a quotient]
 Suppose $X$ is a Riemannian manifold, with a compact group
-$G$ acting freely on $X$ preserving $g$. 
-The \ti{induced metric} on $X/G$ is just $g \vert_H$
-(where we identified $T(X/G)$ with the space of horizontal
-vectors $H$ as above.)
+$G$ acting freely on $X$ preserving $g$.
+Using orthogonal projection we have
+a canonical identification
+\begin{equation}
+  T(X/G) = TX / \rho(\fg) \simeq H.
+\end{equation}
+The \ti{induced metric} on $X/G$ is $g \vert_H$.
+This is a Riemannian metric on $X/G$.
+(Note that it is well defined
+because $g$ is $G$-invariant.)
 \end{defn}
 
 \begin{prop}[Symplectic quotients of \kahler manifolds 
@@ -1018,7 +1052,11 @@ But
 \begin{equation}
   g(\grad \mu_Z, v) = \de \mu_Z \cdot v = \omega(\rho(Z),v) = g(I \rho(Z), v)
 \end{equation}
-so $\grad \mu_Z = I \rho(Z)$. Since $I$ acts orthogonally,
+so 
+\begin{equation}
+ \grad \mu_Z = I \rho(Z). 
+\end{equation}
+Since $I$ acts orthogonally,
 it follows that $T(X \kq G)$ is preserved by $I$.
 
 Now we need to check that the Levi-Civita connection
@@ -1032,10 +1070,38 @@ $v,w \in \Vect(X \kq G) \subset \Vect(X)$,
 \nabla_w^{X \kq G} (v) = \pi(\nabla_w^X v)
 \end{equation}
 (To see this, one needs to check that this formula indeed
-gives a metric-compatible and torsion-free connection. \fixme{...}) Then 
+gives a metric-compatible and torsion-free connection.) Then 
 the desired statement follows from the fact that $I$ is covariantly
 constant for $\nabla^X$ and commutes with $\pi$.
 \end{pf}
+
+Infinitesimally what we have just done is to 
+identify $T(X \kq G)$ with the orthocomplement
+of the space generated by 
+vectors $\rho(Z)$ and $I \rho(Z)$, for $Z \in \fg$.
+There is another way of thinking about this:
+these vector fields generate a copy of the \ti{complexified}
+Lie algebra $\fg_\C$ inside of $\Vect(X)$.
+So infinitesimally it looks as if we are
+taking an ordinary quotient, but a quotient
+by some complexification $G_\C$ rather than
+the original $G$. 
+Thus we might dream that as complex manifolds we would have
+\begin{equation}
+  X \kq G = X / G_\C.
+\end{equation}
+If this were literally true it would give an ``easy'' way of thinking about
+the complex structure on $X \kq G$.
+But if we try to realize this dream literally, we will run into 
+problems, since there is no reason for the vector fields
+$I \rho(Z)$ on $X$ to be complete: thus we cannot necessarily
+integrate them to a group action.
+Even if they are complete, 
+we can still have problems, because $G_\C$ 
+is not a compact group, so $X / G_\C$
+is not guaranteed to be a nice space.
+The next example
+explores this a bit.
 
 \begin{example}[Projective space as a \kahler quotient]
 Take $X = \C^n$ with its standard \kahler metric, for
@@ -1071,24 +1137,19 @@ the standard one on $\C\PP^{n-1}$. How does changing
 the choice of $c$ change the \kahler structure?
 \end{exercise}
 
-There is another way of thinking about this example: instead of
-taking $\C^n \kq U(1)$ we could try to take $\C^n / \C^\times$.
-Actually this quotient is badly behaved as it stands, because of the
+Following the philosophy we just described, instead of taking
+$\C^n \kq U(1)$ we could try to take $\C^n / \C^\times$.
+This quotient is badly behaved (non-Hausdorff) as it stands, because of the
 point $0 \in \C^n$, but we certainly do have
 \begin{equation}
   (\C^n \setminus \{0\}) / \C^\times = \C\PP^{n-1} = \C^n \kq U(1).
 \end{equation}
-The explanation is that each 
-$\C^\times$-orbit contains exactly one $U(1)$-orbit
-lying inside $\mu^{-1}(0)$, except for the orbit $\{0\}$.
-
-This is part of a general story: at least 
-in good situations, the \kahler quotient by a group $G$ 
-is related to the ordinary quotient by a \ti{complexification}
-$G_\C$. Such a quotient is typically badly behaved since $G_\C$ is
-not compact; but it becomes
-better behaved after throwing away some ``bad'' points, like
-the point $0 \in \C^n$ in the above example.
+The ``explanation'' of this phenomenon is that each 
+$\C^\times$-orbit on $X$ meets $\mu^{-1}(0)$ in
+exactly one $U(1)$-orbit, 
+except for the orbit $\{0\}$ which does not 
+meet $\mu^{-1}(0)$ at all, and thus must be thrown out 
+if we want to compare with $X \kq G$. 
 
 
 \subsection{Holomorphic symplectic manifolds}
@@ -3063,7 +3124,8 @@ by
   V = \frac{1}{4 \pi \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{4\pi\abs{n}} \right) + f
 \end{equation}
 where $f$ is any smooth harmonic function which is invariant under the
-shift $x_3 \to x_3 + 1$. All of the constructions then go through as 
+shift $x_3 \to x_3 + 1$. All of the constructions
+in \autoref{exa:ooguri-vafa} then go through as 
 before and give
 a \hk metric which is torus fibered over some disc in the complex plane,
 with one nodal fiber.
@@ -3315,6 +3377,14 @@ where $\mu_i$ is a moment map for the action with respect
 to $\omega_i$.
 \end{defn}
 
+\begin{exercise} Suppose
+$X$ is a Gibbons-Hawking space as in \autoref{exa:gibbons-hawking}.
+Then $X$ has a $U(1)$ action by isometries
+preserving the \hk structure and also has a projection $X \to \R^3$.
+Show that this projection is a \hk moment map for the $U(1)$ action
+(when we identify $\fu(1) \simeq \R$ as usual).
+\end{exercise}
+
 \begin{defn}[\Hk quotient] Suppose $X$ is \hk and a compact group
 $G$ acts on $X$, with \hk moment map $\mu$.
 Then the \ti{\hk quotient}
@@ -3360,22 +3430,41 @@ it, using the fact that the \kahler quotient is also ``like''
 a quotient by a complexification $G_\C$. From this point of view
 we could write formally
 \begin{equation}
-  X \hkq G = M_1^{-1}(0) / G_\C
+  X \hkq G = M_1^{-1}(0) / G_\C = X \kq G_\C
 \end{equation}
-i.e. it looks like a \ti{holomorphic} version of the usual
-symplectic quotient. This point of view is useful for 
+i.e. it looks like $X \hkq G$ is a \ti{holomorphic symplectic} version 
+of the usual symplectic quotient. This point of view is useful for 
 constructing the twistor space of $X \hkq G$: it arises
-as a \ti{fiberwise} holomorphic symplectic quotient.
+as a \ti{fiberwise} version of the holomorphic symplectic quotient,
+i.e. formally
+\begin{equation}
+  \cZ(X \hkq G) = \cZ(X) \kq G_\C
+\end{equation}
 
-\begin{example}[Multi-Gibbons-Hawking spaces as \hk quotients]
-We begin with the space $\bbH^{n+1}$. 
-In structure $I_1$ it is naturally identified with
+\begin{example}[Multi-Eguchi-Hanson spaces as \hk quotients]
+We begin with the space $X = \bbH^{n+1}$. 
+In structure $I_1$, $X$ is naturally identified with
 $\C^{2n+2}$ with coordinates $(z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
-It has a triholomorphic $U(1)^n$ action (coming from $SU(2)_R$ action on 
-each factor)
+It has a triholomorphic $U(1)^{n+1}$ action (coming from $SU(2)_R$ action on 
+each factor), acting by $z_i \to e^{\I \alpha_i} z_i$,
+$w_i \to e^{-\I \alpha_i} w_i$, which has a standard moment map 
+$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$, given by \fixme{check sign}
+\begin{align}
+  \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
+  \mu_{i,2} + \I \mu_{i,3} &= w_i z_i.
+\end{align}
+Now consider the ``center of mass'' subgroup $G \subset U(1)^{n+1}$
+given by the condition $\prod_i g_i = 1$.
+We have $G \simeq U(1)^n$.
+Choose points $\vec c_1, \dots, \vec c_{n+1} \in \R^3$ and 
+consider the \hk quotient
+\begin{equation}
+  Y = X \hkq_{\vec c} G.
+\end{equation}
+Claim: this quotient is actually a multi-Eguchi-Hanson space
+as in \autoref{exa:multi-eguchi-hanson}, where the 
+differences of the $\vec c_i$ are the positions $x_i$.
 \fixme{...}
-Now choose points $x_1, \dots, x_{n+1} \in \R^3$. We use these to 
-define a moment map for the $U(1)^{n+1}$ action \fixme{...}
 \end{example}
 
 
