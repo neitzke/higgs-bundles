@@ -578,7 +578,13 @@ on $\mu^{-1}(0)$, then $X \kq G$ is a manifold,
 \begin{equation}
   \dim (X \kq G) = \dim X - 2 \dim G,
 \end{equation}
-and $\omega$ descends to a symplectic form on $X \kq G$.
+and there is a symplectic form $\omega_{X \kq G}$
+on $X \kq G$,
+with the property
+\begin{equation} \label{eq:symplectic-quotient-form}
+  \pi^* \omega_{X \kq G} = \iota^* \omega
+\end{equation}
+where $\iota: \mu^{-1}(0) \hookrightarrow X$ is the inclusion.
 \end{prop}
 \begin{pf}
 Let $Y = \mu^{-1}(0)$.
@@ -599,7 +605,12 @@ $X \kq G = Y / G$ is also a manifold, of the desired
 dimension, and $T(X \kq G) = T(Y/G) = TY / \rho(\fg)$.
 
 It remains to check that $\omega$ descends to a
-symplectic form $\omega_{X \kq G}$: 
+symplectic form $\omega_{X \kq G}$. According
+to \eqref{eq:symplectic-quotient-form} we should define
+$\omega_{X \kq G}(v,w) = \omega(\tilde v, \tilde w)$
+where $\pi_* \tilde v = v$, $\pi_* \tilde w = w$,
+and $\tilde v$, $\tilde w$ $\in TY$.
+Then:
 \begin{itemize} 
 \item $\omega_{X \kq G}$ is well defined
 on $T(X \kq G) = T(Y/G)$: that means we want $\omega(v,w) = 0$
@@ -615,7 +626,7 @@ annihilates all of $TY$ is zero in $T(Y/G)$, i.e.
 $\omega$ is nondegenerate on $T(Y/G)$.
 \item $\omega_{X \kq G}$ is closed on $Y/G$: 
 letting $\pi: Y \to Y/G$ be the quotient map,
-and on $Y$ we have $\omega = \pi^* \omega_{X \kq G}$,
+on $Y$ we have $\iota^* \omega = \pi^* \omega_{X \kq G}$,
 so that $\de (\pi^* \omega_{X \kq G}) = 0$,
 ie $\pi^* \de \omega_{X \kq G} = 0$.
 Since $\pi$ is a submersion this implies
@@ -1152,7 +1163,28 @@ $\C^\times$-orbit on $X$ meets $\mu^{-1}(0)$ in
 exactly one $U(1)$-orbit, 
 except for the orbit $\{0\}$ which does not 
 meet $\mu^{-1}(0)$ at all, and thus must be thrown out 
-if we want to compare with $X \kq G$. 
+if we want to compare with $X \kq G$.
+
+Now more generally, how should we compare $X \kq G$ and $X / G_\C$?
+They would be equal if each $G_\C$-orbit met $\mu^{-1}(0)$
+in a single $G$-orbit. At least, we can say that
+each $G$-orbit $O$ in $\mu^{-1}(0)$ is contained in some $G_\C$-orbit $O_\C$,
+and then we can ask: does $O_\C$ meet $\mu^{-1}(0)$ anywhere \ti{else}?
+In many cases there is a convexity argument which shows 
+that this can't happen: namely one finds a $f$ on $G_\C / G$ 
+such that the orbits in $\mu^{-1}(0)$ are
+exactly the minima of this function, and moreover shows that $f$ 
+is convex along geodesics in $G_\C / G$, so its minimum is unique
+if it exists. So then at least we have 
+$X \kq G \subset X / G_\C$. The remaining question is whether there might
+be some orbits which don't meet $\mu^{-1}(0)$ at all. Generally there are
+(like the orbit of $0 \in \C^n$ above);
+these are the \ti{unstable} orbits in $X / G_\C$, which need to be 
+thrown out; after restricting to their complement $X^s$, we finally get
+the desired
+\begin{equation}
+  X \kq G \simeq X^s / G_\C.
+\end{equation}
 
 
 \subsection{Holomorphic symplectic manifolds}
@@ -3484,7 +3516,8 @@ rank $K$ and degree $d$. Moreover this space is naturally
 Although we will not use this fact, $\Bun_{K,d}(C)$ is actually
 algebraic. For those who are algebraically inclined, a 
 very nice introductory reference to this 
-material is \cite{MR98b:14010}.
+material is \cite{MR98b:14010}. The notes 
+\cite{MR2408226} also appear very good.
 
 
 \subsection{Stable vector bundles}
