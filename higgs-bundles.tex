@@ -3461,9 +3461,9 @@ Similarly it is \kahler for $I_2$, $I_3$.
 
 So this single \hk quotient space can be viewed as a \kahler 
 quotient in many different ways. There is also yet another way to think of
-it, using the fact that the \kahler quotient is also ``like''
-a quotient by a complexification $G_\C$. From this point of view
-we could write formally
+it, using the fact that the \kahler quotient is like
+a quotient by a complexification $G_\C$. Were this precisely 
+true we would have
 \begin{equation}
   X \hkq G = M_1^{-1}(0) / G_\C = X \kq G_\C
 \end{equation}
@@ -3476,17 +3476,21 @@ i.e. formally
   \cZ(X \hkq G) = \cZ(X) \kq G_\C
 \end{equation}
 
+\begin{example}[Hyperkahler quotient of $\bbH$ by $U(1)$]
+\fixme{...}
+\end{example}
+
 \begin{example}[Multi-Eguchi-Hanson spaces as \hk quotients]
 We begin with the space $X = \bbH^{n+1}$. 
 In structure $I_1$, $X$ is naturally identified with
-$\C^{2n+2}$ with coordinates $(z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
+$\C^{2n+2}$ with coordinates $(z_0, w_0, z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
 It has a triholomorphic $U(1)^{n+1}$ action (coming from $SU(2)_R$ action on 
 each factor), acting by $z_i \to e^{\I \alpha_i} z_i$,
 $w_i \to e^{-\I \alpha_i} w_i$, which has a standard moment map 
-$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$, given by \fixme{check sign}
+$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$, given by
 \begin{align}
   \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
-  \mu_{i,2} + \I \mu_{i,3} &= w_i z_i.
+  \mu_{i,2} + \I \mu_{i,3} &= -\I w_i z_i.
 \end{align}
 Now consider the ``center of mass'' subgroup $G \subset U(1)^{n+1}$
 given by the condition $\prod_i g_i = 1$.
@@ -3494,19 +3498,19 @@ We have $G \simeq U(1)^n$.
 Choose points $\vec c_1, \dots, \vec c_{n+1} \in \R^3$ and 
 consider the \hk quotient
 \begin{equation}
-  Y = X \hkq_{\vec c} G.
+  Y = X \hkql{{\vec c}} G.
 \end{equation}
-Claim: this quotient is actually a multi-Eguchi-Hanson space
-as in \autoref{exa:multi-eguchi-hanson}, where the 
-differences of the $\vec c_i$ are the positions $x_i$.
-\fixme{...}
+We claim this quotient is a multi-Eguchi-Hanson space
+as in \autoref{exa:multi-eguchi-hanson}, with $n$ singularities
+at the positions $x_i = \vec c_i - \vec c_0$.
+
 \end{example}
 
 
 \section{Moduli of bundles}
 
 From now on we fix a compact Riemann surface $C$, with 
-a \kahler metric.
+a \kahler metric, of total area $1$.
 
 We are going to define a moduli space $\Bun_{K,d}(C)$ parameterizing
 equivalence classes of ``stable'' holomorphic bundles over $C$ of 
@@ -3525,9 +3529,15 @@ material is \cite{MR98b:14010}. The notes
 \begin{defn}[Degree of a vector bundle] The \ti{degree} of a 
 complex vector bundle $E$ over $C$ is
 \begin{equation}
-  \deg E = c_1(E) \cdot C.
+  \deg E = \frac{1}{2\pi} \int_C \Tr F_D
 \end{equation}
+where $F_D \in \Omega^2(\End E)$ is the curvature of any
+connection $D$ in $E$.
 \end{defn}
+
+\begin{exercise} Show that $\deg E$ is well defined, independent
+of the choice of connection $D$.
+\end{exercise}
 
 \begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
 \begin{equation}
@@ -3538,26 +3548,32 @@ complex vector bundle $E$ over $C$ is
 \begin{defn}[Stable holomorphic vector bundle] A holomorphic vector bundle $E$ over $C$ is called:
 \begin{itemize}
 \item \ti{stable} if, for every holomorphic subbundle $E' \subset E$,
-we have $\mu(E) < \mu(E')$,
+we have $\mu(E') < \mu(E)$,
 \item \ti{semistable} if, for every holomorphic subbundle 
-$E' \subset E$, we have $\mu(E) \le \mu(E')$,
+$E' \subset E$, we have $\mu(E') \le \mu(E)$,
 \item \ti{unstable} otherwise.
 \end{itemize}
 \end{defn}
 
+\begin{exercise} \label{exc:coprime-semistable-is-stable} 
+Show that if $(K,d) = 1$ then every semistable bundle of rank $K$
+and degree $d$ is stable.
+\end{exercise}
+
+
 \begin{example}[Stability for bundles over $\C\PP^1$]
 Grothendieck's lemma says that all holomorphic vector 
 bundles over $\C\PP^1$ are direct sums of line bundles,
-$E = \bigoplus_{i=1}^k \cO(n_i)$.
+$E = \bigoplus_{i=1}^K \cO(n_i)$.
 The slope of such a bundle is
 \begin{equation}
-\mu(E) = \frac{\sum n_i}{k}.  
+\mu(E) = \frac{\sum n_i}{K}.  
 \end{equation}
 Thus $E$ is unstable unless
 all $n_i$ are equal; if all $n_i$ are equal it is
-semistable; it is stable only if $k<2$.
-Note that semistable bundles of degree $d$ and rank $k$ exist
-if and only if $k \vert d$, $k > 1$.
+semistable; it is stable only if $K<2$.
+Note that semistable bundles of degree $d$ and rank $K$ exist
+if and only if $K \vert d$, $K > 1$.
 \end{example}
 
 \begin{example}[Instability of $\cO(-1) \oplus \cO(1)$]
@@ -3639,25 +3655,125 @@ connections on $(E,h)$.
 $\cA$ is an infinite-dimensional affine space, modeled
 on the linear space $\Omega^{1}(\fu(E))$.
 On the latter space we have a natural symplectic form
+\fixme{some analytic niceties needed here}
 \begin{equation}
-  \omega(\alpha,\beta) = \frac{1}{8 \pi^2} \int_C \Tr(\alpha \wedge \beta).
+  \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
 \end{equation}
 So this gives a symplectic structure on $\cA$.
-Moreover $\fG$ acts on $\cA$.
+Moreover $\fG$ acts on $\cA$, by pullback.
 
-\begin{prop}[Moment map for $\fG$ action on $\cA$]
-The action of $\fG$ on $\cA$ preserves the symplectic 
-structure and admits a moment map, given by
+\begin{prop}[Moment map for $\fG$ action on $\cA$] \label{prop:unitary-connections-moment-map}
+The action of $\fG$ on $\cA$ (thought of as a space of 
+unitary connections $D$) admits a moment map, given by
 \begin{equation}
-  \mu(D) = F_D.
+  \mu(D) = -F_D.
 \end{equation}
 (More precisely, this means: suppose given an element $Z \in \Lie \fG$,
 represented by a smooth section of $\End E$; 
-then we have $\mu_Z(D) = \int_C Z F_D$.)
+then we have $\mu_Z(D) = -\int_C \Tr(Z F_D)$.)
 \end{prop}
 
-Thus at least formally we should expect that $\mu(D)$
+\begin{pf} The key facts are the action of $Z \in \Lie \fG$ 
+by infinitesimal gauge transformation,
+\begin{equation} \label{eq:inf-gauge}
+  \rho(Z) = DZ
+\end{equation}
+and the differential of $\mu_Z$, acting on a tangent vector
+$\beta \in \Omega^1(\fu(E)) = T\cA$:
+\begin{equation} \label{eq:diff-moment-map}
+\de \mu_Z \cdot \beta = - \int_C \Tr (Z \, D\beta).
+\end{equation}
+We compute
+\begin{align}
+  \omega(\rho(Z), \beta) &= \int_C \Tr (DZ \wedge \beta) \\
+  &= -\int_C \Tr (Z \, D\beta) \\
+  &= \de \mu_Z \cdot \beta.
+\end{align}
+\end{pf}
 
+\begin{exercise}
+Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
+\end{exercise}
+
+\autoref{prop:unitary-connections-moment-map} says in particular that 
+$\mu^{-1}(0)$ is the subset of $\cA$
+consisting of \ti{flat} connections. This is empty
+unless $d=0$. More generally for arbitrary $d$
+we can consider connections with central curvature,
+the constant determined by the degree:
+\begin{equation}
+  Y = \mu^{-1}\left(c\right), \qquad c = - 2\pi\frac{d}{K} \omega {\textbf 1}.
+\end{equation}
+Then we define:
+
+\begin{defn}[Moduli spaces of (semi)stable bundles]
+Let $\cA' \subset \cA$ be the subset of \ti{irreducible}
+unitary connections. Then
+\begin{equation}
+  \Bun^s_{K,d}(C) = \cA' \kql{c} \fG, \qquad \Bun_{K,d}(C) = \cA \kql{c} \fG.
+\end{equation}
+\end{defn}
+
+Note that these are both infinite-dimensional quotients.
+Nevertheless they still make sense, at least
+as sets --- in fact $\Bun^s_{K,d}(C)$ is even a manifold,
+and $\Bun_{K,d}(C)$ is compact, 
+though we haven't proved this yet.
+
+\begin{thm}[Narasimhan-Seshadri theorem for rank $1$]
+Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
+and the stability condition is vacuous.
+Then any point of $\cA$ lies in the $\fG_\C$-orbit of
+$\bar\partial_D$ for a unique $[D] \in \Bun_{1,d}(C)$.
+\end{thm}
+
+\begin{pf} \fixme{abelian Hodge theory}
+\end{pf}
+
+\begin{thm}[Narasimhan-Seshadri theorem]
+For any $[D] \in \Bun^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
+induces the structure of \ti{stable} holomorphic vector bundle on $E$.
+Conversely, any stable holomorphic structure 
+on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \Bun^s_{K,d}(C)$.
+\fixme{check!}
+\end{thm}
+
+\begin{pf} We just discuss the case $d=0$, and also just give a sketch,
+lifted from \cite{MR710055}.
+
+First suppose $[D] \in \Bun^s_{K,d}(C)$. Thus $D$
+is an irreducible flat connection. Suppose that $E' \subset E$ is some
+subbundle preserved by $\bar\partial_D$; we want to show that $\deg E' < 0$.
+This is an instance of the general principle that ``curvature decreases
+in holomorphic subbundles;'' for the relevant computation 
+see e.g. \cite{MR95d:14001}.
+
+Conversely suppose we have some $D$ such that $\bar\partial_D$ 
+induces a stable holomorphic structure. Now we want to find a
+\ti{flat} connection which induces the same holomorphic structure,
+i.e. is in the same $\fG_\C$-orbit. Call this orbit $\cO$.
+The idea is to consider the ``Yang-Mills functional''
+given by the $L^2$ norm of $F_D$, 
+\begin{equation}
+ \norm{F}^2 = \int_C F \wedge \star F
+\end{equation}
+Suppose we work formally for a moment, avoiding questions of
+smoothness etc.
+And suppose we are at a minimum of $\norm{F_D}^2$ 
+in $\cO$.
+Then we can show that we must have $\norm{F_D}^2 = 0$ 
+(else a gauge transformation with parameter $Z$ obeying
+$\nabla^* \nabla Z = \star F_D$ would reduce 
+$\norm{F_D}^2$.) So all we need to do is show that the
+minimum of $\norm{F_D}^2$ is actually attained in $\cO$.
+
+For this, the idea is to construct a convergent 
+minimizing sequence of connections $F_D$, and then 
+study the limiting connection. If it belongs to 
+$\cO$ then we are done. If it doesn't, then we show
+that the holomorphic bundle is actually unstable.
+\fixme{remark on induction, rank 1 case}
+\end{pf}
 
 \printbibliography
 
