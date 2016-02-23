@@ -3454,29 +3454,30 @@ For any $Z \in \fg$ we have
 \end{equation} 
 so $M_1$ is holomorphic.
 Thus $Y = M_1^{-1}(0)$ is an $I_1$-complex
-submanifold (hence in fact \kahler). Now $G$ acts on $Y$
+submanifold, hence in particular \kahler for $\omega_1$. Moreover $G$ acts on $Y$
 preserving $\omega_1$, with moment map $\mu_1$,
 and we have 
 \begin{equation}
  X \hkq G = \vec\mu^{-1}(0) / G = (M_1^{-1}(0) \cap \mu_1^{-1}(0)) / G = Y \kq G.
 \end{equation}
-Thus by \autoref{prop:kahler-quotients-are-kahler} the
+Thus by \autoref{prop:kahler-quotients-are-kahler}, $I_1$ descends 
+to the quotient $X \hkq G$, and the
 quotient metric on $X \hkq G$ is \kahler for $I_1$.
 Similarly it is \kahler for $I_2$, $I_3$.
 \end{pf}
 
 So this single \hk quotient space can be viewed as a \kahler 
 quotient in many different ways. There is also yet another way to think of
-it, using the fact that the \kahler quotient is (modulo issues of stability)
+it, using the fact that the \kahler quotient is (ignoring issues of stability)
 a quotient by a complexification $G_\C$. Thus modulo stability we have
 \begin{equation}
   X \hkq G = M_1^{-1}(0) / G_\C = X \kq G_\C
 \end{equation}
 i.e. it looks like $X \hkq G$ is a \ti{holomorphic symplectic} version 
-of the usual symplectic quotient. This point of view is useful for 
+of the symplectic quotient. This point of view is useful for 
 constructing the twistor space of $X \hkq G$: it arises
 as a \ti{fiberwise} version of the holomorphic symplectic quotient,
-i.e. (again modulo issues of stability)
+i.e. (again ignoring issues of stability)
 \begin{equation}
   \cZ(X \hkq G) = \cZ(X) \kq G_\C
 \end{equation}
@@ -3554,7 +3555,7 @@ there.
 
 \currentposition
 
-\begin{example}[Modifying \hk manifolds with $U(1)$ symmetry] \label{exa:modifying-hk-with-circle}
+\begin{example}[Modifying \hk manifolds with $U(1)$ symmetry] \label{exa:modifying-hk-with-circle} \cite{modif-hk}
 Suppose $X$ is any \hk manifold with a $U(1)$ action by triholomorphic
 isometries, with a moment map $\vec\mu_X$. Then we can consider 
 \begin{equation}
@@ -3568,19 +3569,18 @@ action on $X'$, with moment map
 \end{equation}
 Note the $U(1)$ action is free except at points $(x,0)$
 where $x \in X$ is a fixed point of the $U(1)$ action there.
-
-Now we consider the \hk quotient
+Thus provided we choose $\vec\mu_X$ so that it does not vanish
+at these points $x$, the \hk quotient
 \begin{equation}
-  Y = X' \hkq U(1).
+  Y = X' \hkq U(1)
 \end{equation}
-
-If $\mu_X(x) \neq 0$ at the fixed points then $Y$ will be a \hk 
-manifold, of the same dimension as $X'$. \fixme{...}
-
+is a \hk manifold, of the same dimension as $X$. We think of it
+as a \ti{modification} of $X$.
 \end{example}
 
 \begin{example}[Multi-Eguchi-Hanson spaces as \hk quotients]
-This is a special case of \autoref{exa:modifying-hk-with-circle}.
+This is a special case of \autoref{exa:modifying-hk-with-circle},
+but we describe it directly.
 We begin with the space $X = \bbH^{n+1}$. 
 In structure $I_1$, $X$ is naturally identified with
 $\C^{2n+2}$ with coordinates $(z_0, w_0, z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
@@ -3629,15 +3629,15 @@ material is \cite{MR98b:14010}. The notes
 \begin{defn}[Degree of a vector bundle] The \ti{degree} of a 
 complex vector bundle $E$ over $C$ is
 \begin{equation}
-  \deg E = \frac{1}{2\pi} \int_C \Tr F_D
+  \deg E = c_1(E) \cdot [C] \in \Z.
+\end{equation}
+It can also be written
+\begin{equation}
+  \deg E = \frac{1}{2 \pi} \int_C F_D
 \end{equation}
 where $F_D \in \Omega^2(\End E)$ is the curvature of any
 connection $D$ in $E$.
 \end{defn}
-
-\begin{exercise} Show that $\deg E$ is well defined, independent
-of the choice of connection $D$.
-\end{exercise}
 
 \begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
 \begin{equation}
