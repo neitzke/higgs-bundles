@@ -3438,7 +3438,14 @@ $\vec\mu^{-1}(0)$. Then $X \hkq G$ is a manifold, with
 \end{equation}
 and the quotient metric on $X \hkq G$ is \hk.
 \end{thm}
-\begin{pf} Consider the function 
+\begin{pf} First note that if $G$ acts freely on 
+$\vec\mu^{-1}(0)$ then $0$ is a regular value
+for $\vec\mu$, so that $Y = \vec\mu^{-1}(0)$ is
+a manifold of dimension $\dim_\R X - 3 \dim_\R G$, 
+with $G$ acting freely.
+Thus $X \hkq G = Y / G$ is a manifold, of the desired dimension.
+
+Consider the function 
 \begin{equation}
  M_1 = \mu_2 + \I \mu_3: X \to \fg_\C. 
 \end{equation}
@@ -3480,7 +3487,33 @@ i.e. formally
 \fixme{...}
 \end{example}
 
+\begin{example}[Modifying \hk manifolds with $U(1)$ symmetry] \label{exa:modifying-hk-with-circle}
+Suppose $X$ is any \hk manifold with a $U(1)$ action by triholomorphic
+isometries, with a moment map $\vec\mu_X$. Then we can consider 
+\begin{equation}
+X' = X \times \bbH.  
+\end{equation}
+Putting our standard $U(1) \subset SU(2)_R$ action on $\bbH$, with
+its standard moment map $\vec\mu_{\bbH}$, we get a diagonal $U(1)$
+action on $X'$, with moment map
+\begin{equation}
+  \vec\mu = \vec\mu_X + \vec\mu_{\bbH}.
+\end{equation}
+Note the $U(1)$ action is free except at points $(x,0)$
+where $x \in X$ is a fixed point of the $U(1)$ action there.
+
+Now we consider the \hk quotient
+\begin{equation}
+  Y = X' \hkq U(1).
+\end{equation}
+
+If $\mu_X(x) \neq 0$ at the fixed points then $Y$ will be a \hk 
+manifold, of the same dimension as $X'$. \fixme{...}
+
+\end{example}
+
 \begin{example}[Multi-Eguchi-Hanson spaces as \hk quotients]
+This is a special case of \autoref{exa:modifying-hk-with-circle}.
 We begin with the space $X = \bbH^{n+1}$. 
 In structure $I_1$, $X$ is naturally identified with
 $\C^{2n+2}$ with coordinates $(z_0, w_0, z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
