@@ -3397,7 +3397,6 @@ area $4 \pi^2 / R^2$. As $R \to \infty$ these metrics
 have a Gromov-Hausdorff limit,
 in which the torus fibers collapse onto the \kahler base $\C\PP^1$.
 
-\currentposition
 
 
 \subsection{\Hk quotients}
@@ -3451,11 +3450,11 @@ Consider the function
 \end{equation}
 For any $Z \in \fg$ we have
 \begin{equation}
-\de M_1 \cdot Z = \iota_{\rho(Z)} \Omega_1 \in \Omega^{1,0}(X),
+\de M_1 \cdot Z = \iota_{\rho(Z)}(\omega_2 + \I \omega_3) = \iota_{\rho(Z)} \Omega_1 \in \Omega^{1,0}(X),
 \end{equation} 
 so $M_1$ is holomorphic.
 Thus $Y = M_1^{-1}(0)$ is an $I_1$-complex
-submanifold. Now $G$ acts on $Y$
+submanifold (hence in fact \kahler). Now $G$ acts on $Y$
 preserving $\omega_1$, with moment map $\mu_1$,
 and we have 
 \begin{equation}
@@ -3468,9 +3467,8 @@ Similarly it is \kahler for $I_2$, $I_3$.
 
 So this single \hk quotient space can be viewed as a \kahler 
 quotient in many different ways. There is also yet another way to think of
-it, using the fact that the \kahler quotient is like
-a quotient by a complexification $G_\C$. Were this precisely 
-true we would have
+it, using the fact that the \kahler quotient is (modulo issues of stability)
+a quotient by a complexification $G_\C$. Thus modulo stability we have
 \begin{equation}
   X \hkq G = M_1^{-1}(0) / G_\C = X \kq G_\C
 \end{equation}
@@ -3478,14 +3476,83 @@ i.e. it looks like $X \hkq G$ is a \ti{holomorphic symplectic} version
 of the usual symplectic quotient. This point of view is useful for 
 constructing the twistor space of $X \hkq G$: it arises
 as a \ti{fiberwise} version of the holomorphic symplectic quotient,
-i.e. formally
+i.e. (again modulo issues of stability)
 \begin{equation}
   \cZ(X \hkq G) = \cZ(X) \kq G_\C
 \end{equation}
 
 \begin{example}[Hyperkahler quotient of $\bbH$ by $U(1)$]
-\fixme{...}
+Suppose $X = \bbH$ with its standard \hk structure, and the standard
+$U(1) \subset SU(2)_R$ action.
+Then we have the moment maps
+\begin{align}
+  \mu_{1} &= \half (\abs{w}^2 - \abs{z}^2) + c, \\
+  M_1 = \mu_{2} + \I \mu_{3} &= -\I w z + \alpha,
+\end{align}
+for constants $c \in \R$ and $\alpha \in \C$.
+Let us first compute $X \hkq U(1)$ directly. First we
+want to determine $\vec\mu^{-1}(0)$. Setting $M_1 = 0$
+means
+\begin{equation} \label{eq:H-complex-mm}
+ wz = - \I \alpha 
+\end{equation}
+Assuming $\alpha \neq 0$ for a moment,
+this gives a $\C^\times$ parameterized by say $w$,
+with $z = - \I \alpha / w$. Now we consider the condition
+$\mu_1 = 0$: this says
+\begin{equation} \label{eq:H-real-mm}
+  0 = \half\left(\abs{w}^2 - \frac{\abs{\alpha}^2}{\abs{w}^2}\right) + c
+\end{equation}
+which has a single positive solution for $\abs{w}^2$, irrespective of
+the value of $c$. Thus $\vec\mu^{-1}(0)$ is a circle, parameterized
+by the phase of $w$. Finally dividing out by $U(1)$ gives a single point,
+so in this case we got $\bbH \hkq U(1) = \{ pt \}$.
+
+If $\alpha = 0$ the story looks a little different: the condition 
+\eqref{eq:H-complex-mm} says 
+\begin{equation}
+wz = 0,
+\end{equation}
+and the condition $\mu_1 = 0$ becomes
+\begin{equation}
+  \abs{w}^2 - \abs{z}^2 = - 2c.
+\end{equation}
+So if $c > 0$ we get $w = 0$, $\abs{z} = \sqrt{2c}$, and dividing out by $U(1)$
+gives a point as before. Similarly if $c < 0$ we get $z = 0$, $\abs{w} = \sqrt{2c}$,
+and dividing out by $U(1)$
+gives a point. If $c = 0$ then we are in the singular situation $w = z = 0$,
+so $U(1)$ does not act freely.
+
+Thus altogether we have found that if $(\alpha,c) \neq (0,0)$ we have
+$\bbH \hkq U(1) = \{ pt \}$, and if $(\alpha,c) = (0,0)$, $U(1)$ does not
+act freely on $\vec\mu^{-1}(0)$. (It happens that we get a point anyway,
+but morally speaking we should consider this as a singular situation, where
+we would not expect to get a manifold.)
+
+Note that although the analysis looks different for $\alpha \neq 0$
+and $\alpha = 0, c \neq 0$ the eventual conclusion is the same.
+This is as we should expect: $(\alpha, c)$ are just different components
+of a single \hk moment map, and could be rotated into one another by action of $SU(2)_R$.
+Said otherwise, the analysis looks unsymmetric only because we chose to work in the
+complex coordinates given by the arbitrarily-chosen complex structure $I_1$.
+
+Finally note that the ``hard'' part in this example was solving the real
+equation \eqref{eq:H-real-mm} which came from $\mu_1 = 0$. If we are only
+interested in getting the quotient as a complex manifold in structure $I_1$,
+we could try to sidestep this problem by looking instead at
+$M_1^{-1}(0) / \C^\times$, which modulo problems of stability is supposed
+to be equal to the desired $\bbH \hkq U(1)$. For $\alpha \neq 0$, 
+$M_1^{-1}(0)$ is $\{ zw = - \I \alpha \}$, a single $\C^\times$-orbit,
+which indeed is stable (it intersects the locus $\mu_1 = 0$).
+For $\alpha = 0$ it's trickier: the locus $zw = 0$ contains two
+$\C^\times$-orbits --- one open and one just the point $z = w = 0$. 
+For $c \neq 0$ the open orbit is stable;
+for $c = 0$ the point orbit is stable, but $U(1)$ doesn't act freely
+there.
+
 \end{example}
+
+\currentposition
 
 \begin{example}[Modifying \hk manifolds with $U(1)$ symmetry] \label{exa:modifying-hk-with-circle}
 Suppose $X$ is any \hk manifold with a $U(1)$ action by triholomorphic
