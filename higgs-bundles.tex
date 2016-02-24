@@ -3658,15 +3658,44 @@ material is \cite{MR98b:14010}. The notes
 \begin{defn}[Degree of a vector bundle] The \ti{degree} of a 
 complex vector bundle $E$ over $C$ is
 \begin{equation}
-  \deg E = c_1(E) \cdot [C] \in \Z.
+  \deg E = c_1(E) \cdot [C] \in \Z,
 \end{equation}
-It can also be written
+where $c_1$ denotes the first Chern class.
+\end{defn}
+
+\begin{prop}[Chern-Weil formula for degree] \label{prop:chern-weil-degree}
 \begin{equation}
-  \deg E = \frac{1}{2 \pi} \int_C F_D
+  \deg E = \frac{1}{2 \pi} \int_C \Tr F_D
 \end{equation}
 where $F_D \in \Omega^2(\End E)$ is the curvature of any
 connection $D$ in $E$.
-\end{defn}
+\end{prop}
+
+In practice \autoref{prop:chern-weil-degree} is what we will use.
+The only reason we do not adopt this as the definition is that
+it does not make immediately manifest the fact that $\deg E$ is an 
+\ti{integer}.
+
+Another interpretation of the degree which is useful for developing 
+intuition is:
+\begin{prop} Suppose $E$ is a complex vector bundle over $C$, of rank $K$.
+Fix sections $e_1, \dots, e_K$ of $E$ which are transverse in the sense
+that they give a trivialization of $E$ away from finitely many points
+$z_i \in C$. Let $a_i \in \Z$ denote the winding
+number of the determinant $\det(e_1, \dots, e_K)$ evaluated 
+on a small circle around $z_i$ (measured relative to a local trivialization
+of $E$ which extends over $z_i$). Then
+\begin{equation}
+  \deg E = \sum_i a_i.
+\end{equation}
+In particular, if $E$ is a holomorphic line bundle, choose a meromorphic
+section $e$ of $E$, and then $\deg E$ is the number of zeroes of $e$
+minus the number of poles (counted with multiplicity.)
+\end{prop}
+
+\begin{exercise} Show that the line bundle $\cO(n)$ over $\C\PP^1$
+has degree $n$.
+\end{exercise}
 
 \begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
 \begin{equation}
