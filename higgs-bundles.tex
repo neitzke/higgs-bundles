@@ -3862,11 +3862,32 @@ the constant determined by the degree:
 \begin{equation}
   Y = \mu^{-1}\left(c\right), \qquad c = - 2\pi\frac{d}{K} \omega {\textbf 1}.
 \end{equation}
-Then we define:
+We want to take the symplectic quotient $\cA \kql{c} \fG$.
+As a technical preliminary we need to understand the extent to 
+which $\fG$ acts freely on $\cA$.
+
+\begin{defn}[Irreducible connections]
+We call a unitary connection $D$ in $E$ \ti{irreducible} if there does not
+exist any subbundle $E' \subset E$ such that $D$ preserves $E'$.
+\end{defn}
+
+\begin{prop}[Gauge group acts almost freely on irreducible connections]
+If $g \in \fG$ and $D$ is an irreducible connection, then $D^g = D$
+if and only if $g$ acts on $E$ by multiplication by a constant scalar.
+\end{prop}
+\begin{pf} $D^g = g$ if and only if $g$ is constant under the parallel 
+transport of $D$. In particular this means that $g$ is determined by
+its value at a single point of $C$. Moreover this value cannot be arbitrary:
+it has to commute with the parallel transport around any loop.
+Thus if $g$ were not a constant its eigenspaces would be preserved by parallel 
+transport, which would contradict the irreducibility of $D$.
+\end{pf}
+
+Let $\cA' \subset \cA$ be the subset of irreducible
+unitary connections.
+Now we define:
 
 \begin{defn}[Moduli spaces of (semi)stable bundles]
-Let $\cA' \subset \cA$ be the subset of \ti{irreducible}
-unitary connections. Then
 \begin{equation}
   \Bun^s_{K,d}(C) = \cA' \kql{c} \fG, \qquad \Bun_{K,d}(C) = \cA \kql{c} \fG.
 \end{equation}
@@ -3874,9 +3895,11 @@ unitary connections. Then
 
 Note that these are both infinite-dimensional quotients.
 Nevertheless they still make sense, at least
-as sets --- in fact $\Bun^s_{K,d}(C)$ is even a manifold,
+as topological spaces --- in fact $\Bun^s_{K,d}(C)$ is even a manifold
 and $\Bun_{K,d}(C)$ is compact, 
 though we haven't proved this yet.
+The justification for the names of these spaces will be provided
+by \autoref{thm:narasimhan-seshadri} below.
 
 \begin{thm}[Narasimhan-Seshadri theorem for rank $1$]
 Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
@@ -3888,7 +3911,7 @@ $\bar\partial_D$ for a unique $[D] \in \Bun_{1,d}(C)$.
 \begin{pf} \fixme{abelian Hodge theory}
 \end{pf}
 
-\begin{thm}[Narasimhan-Seshadri theorem]
+\begin{thm}[Narasimhan-Seshadri theorem] \label{thm:narasimhan-seshadri}
 For any $[D] \in \Bun^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
 induces the structure of \ti{stable} holomorphic vector bundle on $E$.
 Conversely, any stable holomorphic structure 
