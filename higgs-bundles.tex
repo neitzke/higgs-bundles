@@ -2937,8 +2937,9 @@ To get an idea of the difficulty, recall the
 coordinate $z = z_1 = x_2 + \I x_3$,
 and consider the limit of large $\abs{z}$: here
 we may replace the sum of point sources $\sum \delta(x-x_n)$
-by a continuous string source $\delta(z) \de x_3$, where now
+by a continuous string source $\delta(z) \de x_1$, where now
 $\delta$ denotes the \ti{two}-dimensional delta function.
+\insfig{higgs-bundles-11}{1.1}
 The resulting $V$ obeys a two-dimensional Laplace equation,
 \begin{equation}
   \Delta V = -\delta(z).
@@ -2950,39 +2951,49 @@ Thus for large $\abs{z}$ (much larger than $1$) we expect
 for some constant $C'$.
 This expectation can be made rigorous using the Poisson summation formula, which gives in fact
 \begin{equation} \label{eq:V-ooguri-vafa-resummed}
-  V = -\frac{1}{2\pi} \log \abs{z/\Lambda} + \frac{1}{\pi} \sum_{n=1}^\infty \cos (2 \pi n x_3) K_0(2 \pi n \abs{z})
+  V = -\frac{1}{2\pi} \log \abs{z/\Lambda} + \frac{1}{\pi} \sum_{n=1}^\infty \cos (2 \pi n x_1) K_0(2 \pi n \abs{z})
 \end{equation}
 where $\Lambda = 2 e^{-\gamma+2 \pi C}$, $\gamma$ is Euler's constant,
 and $K_0$ is the modified Bessel function. This function has asymptotics
 $K_0(M) \sim \sqrt\frac{\pi}{2M} e^{-M}$, so each term in the 
-sum is exponentially small as $\abs{z} \to \infty$.
+sum is exponentially small for large $\abs{z}$.
 Dropping these exponentially suppressed terms we get
 \begin{equation}  \label{eq:ooguri-vafa-V-approx}
   V \approx V^\sf = -\frac{1}{2\pi} \log \abs{z/\Lambda}.
 \end{equation}
 
-Let us briefly consider the Gibbons-Hawking metric in the approximation
-where $V$ is exactly given by
-$V^\sf$ of \eqref{eq:ooguri-vafa-V-approx}.
-For $\abs{z} > \Lambda$
-we will lose positivity, so the biggest base we can take is 
+Let us briefly consider the Gibbons-Hawking metric
+where $V$ is \ti{exactly} given by
+$V^\sf$ of \eqref{eq:ooguri-vafa-V-approx} (i.e. we consider the
+``approximation'' where we drop the sum in \eqref{eq:V-ooguri-vafa-resummed}.)
+For $\abs{z} \ge \Lambda$
+we will not have $V > 0$, so the biggest base we can take is 
 \begin{equation}
 U = \{\abs{z} < \Lambda \} \times \R. 
 \end{equation}
-The resulting Gibbons-Hawking metric is translation
-invariant in the $x_1$ direction. After dividing out by 
-$\Z$ (acting by $x_1 \to x_1 + n$) we obtain
-one of the semiflat metrics of \autoref{exa:semiflat-1d-general}.
-However, this metric seems very unlikely to admit a reasonable
+The resulting Gibbons-Hawking metric $g^\sf$ is
+invariant under continuous translations 
+in the $x_1$ direction, $x_1 \to x_1 + \alpha$ for any $\alpha \in \R$. 
+In particular, it is invariant under the discrete subgroup
+$\Z \subset \R$
+acting by $x_1 \to x_1 + n$.
+After dividing out by this action $g^\sf$ descends to
+one of the semiflat metrics of \autoref{exa:semiflat-1d-general}, torus
+fibered over the punctured disc $0 < \abs{z} < \Lambda$:
+see \autoref{exc:ooguri-vafa-semiflat} below.
+However, this quotient metric seems very unlikely to admit a reasonable
 extension over $z = 0$.
 
-The Gibbons-Hawking metric obtained from the full $V$ 
+The Gibbons-Hawking metric $g$ obtained from the full $V$ 
 of \eqref{eq:ooguri-vafa-V} rather than $V^\sf$ 
 shares the bad large-$\abs{z}$ behavior
-of the approximate one, but is better at small $\abs{z}$. It is not 
-translation invariant in the $x_1$ direction anymore, but does 
-have the discrete $\Z$ symmetry $x_1 \to x_1 + n$, preserving
-the \hk structure. \footnote{There is a subtle choice here:
+of the approximate one. Indeed, when $1 \ll \abs{z} < \Lambda$,
+$g$ is very well approximated by $g^\sf$.
+At small $\abs{z}$, though, the behavior of $g$ is much better than that
+of $g^\sf$. It is not invariant under continuous translations in 
+the $x_1$ direction, but does still have the discrete $\Z$ 
+symmetry $x_1 \to x_1 + n$, preserving
+the \hk structure.\footnote{There is a subtle choice here:
 the $\Z$ action on the base has to be lifted to the total space
 of the $U(1)$ bundle $X$, and there are a circle's worth of ways
 to do this. Thus the Ooguri-Vafa metric depends on two parameters:
@@ -2990,7 +3001,10 @@ the real parameter $C$ in \eqref{eq:ooguri-vafa-V} --- which we have
 absorbed into $\Lambda$ --- and also a circle-valued
 parameter controlling this gluing.}
 After dividing out by this $\Z$ action we obtain a \hk 
-space $X$, the Ooguri-Vafa manifold.
+space $X$, the Ooguri-Vafa manifold. Crucially, the Ooguri-Vafa
+manifold and its \hk structure \ti{do} extend even over $z=0$, since near
+the singularities of $V$ we have the usual behavior
+$V \sim \frac{1}{4 \pi r}$ as in \autoref{exa:gibbons-hawking}.
 
 As usual for Gibbons-Hawking spaces, 
 in complex structure $I_1$, $X$ has the holomorphic function $z$. 
@@ -3006,9 +3020,10 @@ which looks locally like the locus $\{xy=0\} \subset \C^2$.)
 \begin{exercise} \label{exc:ooguri-vafa-semiflat} Let $X$ be the Gibbons-Hawking
 \hk manifold with $V$ given by \eqref{eq:ooguri-vafa-V-approx}.
 Verify that $X / \Z$ is an example of a semiflat metric as in 
-\autoref{exa:semiflat-1d-general}, where $\Gamma$ is a rank $2$
-local system of lattices, whose monodromy around the origin
-is given by the action of
+\autoref{exa:semiflat-1d-general}, where the base $\cB$ is the 
+punctured disc $0 < \abs{z} < \Lambda$, and $\Gamma$ is a rank $2$
+local system of lattices, whose monodromy around $z=0$
+is given by
 $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} \in SL(2,\Z)$.
 What is the map $Z$?
 \end{exercise}
