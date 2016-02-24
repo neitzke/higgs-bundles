@@ -3421,11 +3421,24 @@ in which the torus fibers collapse onto the \kahler base $\C\PP^1$.
 $G$ acts on $X$ by isometries preserving the \hk structure.
 Then a \ti{\hk moment map} for this action is a map
 \begin{equation}
-  \vec\mu = (\mu_1, \mu_2, \mu_3): X \to \fg \otimes \R^3
+  \vec\mu = (\mu_1, \mu_2, \mu_3): X \to \fg^* \otimes \R^3
 \end{equation}
 where $\mu_i$ is a moment map for the action with respect
 to $\omega_i$.
 \end{defn}
+
+\begin{exercise} Suppose $\vec\mu$ is a \hk moment map as above.
+Then for $\vec s \in S^2$, defining
+\begin{equation}
+  \mu_{\vec s}: X \to \fg^*
+\end{equation}
+by
+\begin{equation}
+  \mu_{\vec s} = \vec\mu \cdot \vec s
+\end{equation}
+show that $\mu_{\vec s}$ is a moment map for the action 
+with respect to $\omega_{\vec s}$.
+\end{exercise}
 
 \begin{exercise} Suppose
 $X$ is a Gibbons-Hawking space as in \autoref{exa:gibbons-hawking}.
