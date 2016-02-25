@@ -3457,23 +3457,38 @@ of $X$ by $G$ is
 \end{equation}
 \end{defn}
 
-\begin{thm}[\Hk quotients are \hk] Suppose $X$ is \hk and a
+\begin{thm}[\Hk quotients are \hk] \label{thm:hk-quotients-are-hk} 
+Suppose $X$ is \hk and a
 compact group $G$ acts on $X$, with \hk moment map $\mu$.
 Also suppose $G$ acts freely on
-$\vec\mu^{-1}(0)$. Then $X \hkq G$ is a manifold, with
+$\vec \mu^{-1}(0)$. Then $X \hkq G$ is a manifold, with
 \begin{equation}
   \dim_\R (X \hkq G) = \dim_\R X - 4 \dim_\R G,
 \end{equation}
 and the quotient metric on $X \hkq G$ is \hk.
 \end{thm}
-\begin{pf} First note that if $G$ acts freely on 
+\begin{pf} First we show that if $G$ acts freely on 
 $\vec\mu^{-1}(0)$ then $0$ is a regular value
-for $\vec\mu$, so that $Y = \vec\mu^{-1}(0)$ is
-a manifold of dimension $\dim_\R X - 3 \dim_\R G$, 
-with $G$ acting freely.
-Thus $X \hkq G = Y / G$ is a manifold, of the desired dimension.
+for $\vec\mu$. 
 
-Consider the function 
+To show $\de\vec\mu$ surjective
+it is sufficient to show that the equation
+\begin{equation}
+  \de \mu_1 \cdot Z_1 + \de \mu_2 \cdot Z_2 + \de \mu_3 \cdot Z_3 = 0
+\end{equation}
+implies $Z_1 = Z_2 = Z_3 = 0$.
+We may rewrite this as
+\begin{equation}
+  \iota_{\rho(Z_1)} \omega_1 + \iota_{\rho(Z_2)} \omega_2 + \iota_{\rho(Z_3)} \omega_3 = 0
+\end{equation}
+which in turn is equivalent to
+\begin{equation}
+  I_1 \rho(Z_1) + I_2 \rho(Z_2) + I_3 \rho(Z_3) = 0.
+\end{equation}
+To show this implies $Z_1 = Z_2 = Z_3 = 0$ is the content of \autoref{exc:quat-linear-indep} below. Using this result, we get that $0$ is indeed a regular
+ value for $\vec\mu$, so $\vec\mu^{-1}(0)$ is a manifold.
+
+Now, consider the function 
 \begin{equation}
  M_1 = \mu_2 + \I \mu_3: X \to \fg_\C. 
 \end{equation}
@@ -3495,7 +3510,20 @@ quotient metric on $X \hkq G$ is \kahler for $I_1$.
 Similarly it is \kahler for $I_2$, $I_3$.
 \end{pf}
 
-So this single \hk quotient space can be viewed as a \kahler 
+\begin{exercise} \label{exc:quat-linear-indep}
+Suppose $V$ is a quaternionic vector space, 
+with a real subspace $W \subset V$, such that
+$I_i W \cap W = \{ 0 \}$ for $i = 1,2,3$.
+Suppose also
+\begin{equation}
+ w_0 + I_1 w_1 + I_2 w_2 + I_3 w_3 = 0, \qquad w_i \in W.
+\end{equation}
+Then show that $w_0 = w_1 = w_2 = w_3 = 0$. \fixme{warning, this is 
+unchecked so far!}
+\end{exercise}
+
+The idea of \autoref{thm:hk-quotients-are-hk} is 
+that the single \hk quotient space can be realized as a \kahler 
 quotient in many different ways. There is also yet another way to think of
 it, using the fact that the \kahler quotient is (ignoring issues of stability)
 a quotient by a complexification $G_\C$. Thus modulo stability we have
