@@ -246,6 +246,7 @@
 \DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Bun}{Bun}
+\DeclareMathOperator{\uharm}{UHarm}
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Span}{Span}
 \DeclareMathOperator{\grad}{grad}
@@ -3374,6 +3375,13 @@ $(A(u),B(u),\alpha)$, where
 $A(u) \in H^0(\cO(8))$, $B(u) \in H^0(\cO(12))$ 
 are such that $\Delta(u)$ has only
 simple zeroes, and $\alpha$ is a \kahler class.
+
+As we vary $A(u)$, $B(u)$
+and $\alpha$
+the diffeomorphism type of the space does not change, so we could think 
+of this as a family of \hk structures on a single smooth manifold. 
+Most of the complex structures on this smooth manifold are \ti{not} of the
+type we constructed here: indeed most of them are not even algebraic.
 \end{example}
 
 \begin{exercise} Check that the $1$-form $\de x / y$ is
@@ -3641,12 +3649,12 @@ at the positions $x_i = \vec c_i - \vec c_0$.
 From now on we fix a compact Riemann surface $C$, with 
 a \kahler metric, of total area $1$.
 
-We are going to define a moduli space $\Bun_{K,d}(C)$ parameterizing
+We are going to define a moduli space $\uharm_{K,d}(C)$ parameterizing
 equivalence classes of ``stable'' holomorphic bundles over $C$ of 
 rank $K$ and degree $d$. Moreover this space is naturally 
 \kahler (where it is smooth).
 
-Although we will not use this fact, $\Bun_{K,d}(C)$ is actually
+Although we will not use this fact, $\uharm_{K,d}(C)$ is actually
 algebraic. For those who are algebraically inclined, a 
 very nice introductory reference to this 
 material is \cite{MR98b:14010}. The notes 
@@ -3660,7 +3668,8 @@ complex vector bundle $E$ over $C$ is
 \begin{equation}
   \deg E = c_1(E) \cdot [C] \in \Z,
 \end{equation}
-where $c_1$ denotes the first Chern class.
+where $c_1(E) \in H^2(C,\Z)$ denotes the first Chern class,
+and $[C] \in H_0(C,\Z)$ the fundamental class.
 \end{defn}
 
 \begin{prop}[Chern-Weil formula for degree] \label{prop:chern-weil-degree}
@@ -3771,20 +3780,26 @@ Check that indeed for $t \neq 0$ we have $E_t \simeq \cO(0) \oplus \cO(0)$.
 
 \subsection{Moduli spaces}
 
-All rank $K$ complex vector bundles of degree $d$ are equivalent.
+\begin{prop}[Classification of complex vector bundles]
+All rank $K$ complex vector bundles over $C$ of degree $d$ are equivalent.
+\end{prop}
+
 Thus, suppose we fix a single rank $K$ complex vector bundle $E$, 
 of degree $d$; then every holomorphic vector bundle of rank $K$
 and degree $d$ is equivalent to $(E, \bar\partial_E)$ for some
 $\bar\partial_E$.
-Thus the moduli space we want to describe could be thought of as
-the (infinite-dimensional) space $\cA$ of 
-all $\bar\partial_E$, modulo
-equivalence --- where now ``equivalence'' means
+
+Let $\cA$ denote the space of all $\bar\partial_E$.
+This is an affine space modeled on the infinite-dimensional 
+complex linear space $\Omega^{0,1}(\End E)$.
+
+The moduli space we want to describe could be thought of as
+$\cA$ modulo equivalence --- where now ``equivalence'' means
 the (infinite-dimensional,
 complex) group $\fG_\C$ of sections of $GL(E)$.
 So formally we want to say
 \begin{equation} \label{eq:bunG-formal-quotient}
-  \Bun_{K,d}(C) = \cA / \fG_\C.
+  \uharm_{K,d}(C) = \cA / \fG_\C.
 \end{equation}
 
 It is not so easy to make a ``nice'' space in this way.
@@ -3802,22 +3817,36 @@ as a \kahler quotient (still infinite-dimensional.)
 For this purpose, let us fix a Hermitian metric $h$ on $E$.
 After so doing, we have an infinite-dimensional real group
 $\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
-Now we look again at the space $\cA$. Each $\bar\partial_E \in \cA$
+
+Each $\bar\partial_E \in \cA$
 can be extended in a unique way to a unitary connection
 on $E$ (Chern connection), and conversely, each 
 unitary connection can be restricted to a $\bar\partial_E$ operator.
-Thus, viewed this way, $\cA$ becomes
+Viewed this way, $\cA$ becomes
 simply the space of all unitary
-connections on $(E,h)$.
+connections on $E$.
+This is an affine space, modeled
+on the infinite-dimensional \ti{real} linear space $\Omega^{1}(\fu(E))$.
+The compatibility of these two pictures of $\cA$ 
+is summarized in the next exercise:
 
-$\cA$ is an infinite-dimensional affine space, modeled
-on the linear space $\Omega^{1}(\fu(E))$.
-On the latter space we have a natural symplectic form
+\begin{exercise} Show that the real linear space 
+$\Omega^{1}(\fu(E))$ carries a natural complex structure $I$,
+and with this complex structure it is canonically identified
+with the complex linear space $\Omega^{0,1}(\End E)$.
+\end{exercise}
+
+On $\Omega^{1}(\fu(E))$ we have a natural symplectic form
 \fixme{some analytic niceties needed here}
 \begin{equation}
   \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
 \end{equation}
 So this gives a symplectic structure on $\cA$.
+
+\begin{exercise} Verify that the complex and symplectic structures
+on $\cA$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
+\end{exercise}
+Thus $\cA$ is \kahler.
 Moreover $\fG$ acts on $\cA$, by conjugation,
 \begin{equation}
   D \mapsto D^g = g D g^{-1}.
@@ -3826,15 +3855,19 @@ Moreover $\fG$ acts on $\cA$, by conjugation,
 \begin{prop}[Moment map for $\fG$ action on $\cA$] \label{prop:unitary-connections-moment-map}
 The action of $\fG$ on $\cA$ (thought of as a space of 
 unitary connections $D$) admits a moment map, given by
+(in the sense of distributions)
 \begin{equation}
-  \mu(D) = -F_D.
+  \mu(D) = - F_D + 2 \pi \frac{d}{K} {\textbf 1} \omega .
 \end{equation}
-(More precisely, this means: suppose given an element $Z \in \Lie \fG$,
-represented by a smooth section of $\End E$; 
-then we have $\mu_Z(D) = -\int_C \Tr(Z F_D)$.)
+More precisely, this means: suppose given an element 
+$Z \in \Lie \fG = \Omega^0(\fu(E))$,
+then we have 
+\begin{equation}
+  \mu_Z(D) = -\int_C \Tr(Z F_D) + 2 \pi \frac{d}{K} \int_C \omega \Tr(Z).
+\end{equation}
 \end{prop}
 
-\begin{pf} The key facts are the action of $Z \in \Lie \fG$ 
+\begin{pf} The key facts are the action of $Z \in \Lie \fG = \Omega^0(\fu(E))$ 
 by infinitesimal gauge transformation,
 \begin{equation} \label{eq:inf-gauge}
   \rho(Z) = DZ
@@ -3858,16 +3891,31 @@ Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 
 \autoref{prop:unitary-connections-moment-map} says in particular that 
 $\mu^{-1}(0)$ is the subset of $\cA$
-consisting of \ti{flat} connections. This is empty
-unless $d=0$. More generally for arbitrary $d$
-we can consider connections with central curvature,
-the constant determined by the degree:
-\begin{equation}
-  Y = \mu^{-1}\left(c\right), \qquad c = - 2\pi\frac{d}{K} \omega {\textbf 1}.
+consisting of connections with
+\begin{equation} \label{eq:harmonic-curvature}
+  F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega.
 \end{equation}
-We want to take the symplectic quotient $\cA \kql{c} \fG$.
+In the important special case $d=0$, \eqref{eq:harmonic-curvature}
+just says that $D$ is a \ti{flat} connection.
+For $d \neq 0$, \eqref{eq:harmonic-curvature} says at least that $D$ is
+\ti{projectively} flat, i.e. it would descend to a flat connection 
+on the bundle $\PP(E)$ of projective spaces, and moreover the remaining
+central curvature is completely fixed.
+
+We remark that $\omega$ is an arbitrary positive $2$-form 
+on $C$ with total integral $1$.
+At least formally we can imagine taking $\omega$ to be more and more 
+concentrated at a single point $z_0$, until in the limit we get
+$\omega = \delta(z_0)$. In this limit the connections $D$ obeying
+\eqref{eq:harmonic-curvature} are becoming
+flat away from $z_0$, but singular at $z_0$, with the holonomy around $z_0$
+of finite order given by multiplication by the root of unity 
+$e^{2 \pi \I d / K}$.
+
+Following our plan, 
+we want to take the symplectic quotient $\cA \kq \fG = \mu^{-1}(0) / G$.
 As a technical preliminary we need to understand the extent to 
-which $\fG$ acts freely on $\cA$.
+which $\fG$ acts freely on $\mu^{-1}(0)$.
 
 \begin{defn}[Irreducible connections]
 We call a unitary connection $D$ in $E$ \ti{irreducible} if there does not
@@ -3879,53 +3927,88 @@ If $g \in \fG$ and $D$ is an irreducible connection, then $D^g = D$
 if and only if $g$ acts on $E$ by multiplication by a constant scalar.
 \end{prop}
 \begin{pf} $D^g = D$ if and only if $g$ is constant under the parallel 
-transport of $D$. In particular this means that $g$ is determined by
+transport of $D$. This means that $g$ is determined by
 its value at a single point of $C$. Moreover this value cannot be arbitrary:
 it has to commute with the parallel transport around any loop.
 Thus if $g$ were not a constant its eigenspaces would be preserved by parallel 
 transport, which would contradict the irreducibility of $D$.
 \end{pf}
 
-Let $\cA' \subset \cA$ be the subset of irreducible
+Let $\cA^s \subset \cA$ be the subset of irreducible
 unitary connections.
 Now we define:
 
-\begin{defn}[Moduli spaces of (semi)stable bundles]
+\begin{defn}[Moduli spaces of unitary harmonic bundles]
 \begin{equation}
-  \Bun^s_{K,d}(C) = \cA' \kql{c} \fG, \qquad \Bun_{K,d}(C) = \cA \kql{c} \fG.
+  \uharm^s_{K,d}(C) = \cA^s \kql{c} \fG, \qquad \uharm_{K,d}(C) = \cA \kql{c} \fG.
 \end{equation}
 \end{defn}
 
 Note that these are both infinite-dimensional quotients.
 Nevertheless they still make sense, at least
-as topological spaces --- in fact $\Bun^s_{K,d}(C)$ is even a manifold
-and $\Bun_{K,d}(C)$ is compact, 
-though we haven't proved this yet.
-The justification for the names of these spaces will be provided
-by \autoref{thm:narasimhan-seshadri} below.
+as topological spaces.
+
+\begin{prop}[Basic properties of $\uharm_{K,d}(C)$] 
+We have the following.
+\begin{itemize}
+\item $\uharm^s_{K,d}(C)$ is a \kahler manifold, of complex dimension $(g-1)K^2+1$.
+\item $\uharm_{K,d}(C)$ is compact.
+\item For any $n \in \Z$,
+\begin{equation}
+\uharm^s_{K,d}(C) \simeq \uharm^s_{K,d+nK}(C), \qquad
+\uharm_{K,d}(C) \simeq \uharm_{K,d+nK}(C).
+\end{equation} 
+\end{itemize}
+\end{prop}
+
+\begin{pf}
+We have described $\uharm^s_{K,d}(C)$ as a symplectic quotient
+by the group $\fG / \C^\times$, which acts freely (note that the moment 
+map $\mu$ actually descends to this quotient!) Formally the tangent space
+at a given flat connection $D$ should be the kernel of $\de \mu$ 
+modulo $\rho(\Lie (\fG / \C^\times))$: in other words we want
+the cohomology of the complex
+\begin{equation}
+  0 \to \Omega^0(\fu(E)) / \C \xrightarrow{D} \Omega^1(\fu(E)) \xrightarrow{D} \Omega^2(\fu(E)) \to 0
+\end{equation}
+at the middle position. (It's indeed a complex, 
+because $D^2 = F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega$ \fixme{...} )
+We have to pay proper respect to the fact that we are dealing here
+with \ti{infinite-dimensional} spaces. Fortunately the complex
+is \ti{elliptic}.\footnote{This means that the corresponding symbol
+complex over $T^* C$ is exact off the zero section: indeed the symbol
+is just wedging with $p$.} This means in particular that we get a good local
+structure: the operator 
+\begin{equation}
+ \hat{D} = D \oplus D^*: \Omega^1 \to \Omega^2 \oplus \Omega^0 
+\end{equation}
+is \ti{Fredholm}, i.e. it has closed range, and finite-dimensional 
+kernel and cokernel. The tangent space we are after is the kernel.
+\fixme{index theorem}
+\end{pf}
 
 \begin{thm}[Narasimhan-Seshadri theorem for rank $1$]
 Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
 and the stability condition is vacuous.
 Then any point of $\cA$ lies in the $\fG_\C$-orbit of
-$\bar\partial_D$ for a unique $[D] \in \Bun_{1,d}(C)$.
+$\bar\partial_D$ for a unique $[D] \in \uharm_{1,d}(C)$.
 \end{thm}
 
 \begin{pf} \fixme{abelian Hodge theory}
 \end{pf}
 
 \begin{thm}[Narasimhan-Seshadri theorem] \label{thm:narasimhan-seshadri}
-For any $[D] \in \Bun^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
+For any $[D] \in \uharm^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
 induces the structure of \ti{stable} holomorphic vector bundle on $E$.
 Conversely, any stable holomorphic structure 
-on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \Bun^s_{K,d}(C)$.
+on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \uharm^s_{K,d}(C)$.
 \fixme{check!}
 \end{thm}
 
 \begin{pf} We just discuss the case $d=0$, and also just give a sketch,
 lifted from \cite{MR710055}.
 
-First suppose $[D] \in \Bun^s_{K,d}(C)$. Thus $D$
+First suppose $[D] \in \uharm^s_{K,d}(C)$. Thus $D$
 is an irreducible flat connection. Suppose that $E' \subset E$ is some
 subbundle preserved by $\bar\partial_D$; we want to show that $\deg E' < 0$.
 This is an instance of the general principle that ``curvature decreases
