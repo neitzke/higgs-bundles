@@ -2181,122 +2181,122 @@ an alternative proof of \autoref{lem:hol-symp-hol}.
 % is such that the complex vector field corresponding to the 
 % \ti{raising} generator $X^+ \in \mathfrak{su}(2)_\C$
 % spans $T^{0,1}$. \fixme{...}
+ 
 
+% \subsection{The twistor family, second approach}
 
-\subsection{The twistor family, second approach}
+% \fixme{this section is in progress}
 
-\fixme{this section is in progress}
+% There is also a less computational approach to
+% \autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}.
+% It begins with a more incisive examination of 
+% the local structure.
 
-There is also a less computational approach to
-\autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}.
-It begins with a more incisive examination of 
-the local structure.
+% \begin{defn}[Quaternionic vector space] A \ti{quaternionic
+% vector space} is a real vector space $V$ with endomorphisms
+% $I_1$, $I_2$, $I_3$ obeying the quaternion algebra.
+% \end{defn}
 
-\begin{defn}[Quaternionic vector space] A \ti{quaternionic
-vector space} is a real vector space $V$ with endomorphisms
-$I_1$, $I_2$, $I_3$ obeying the quaternion algebra.
-\end{defn}
+% \begin{defn}[\Hk vector space] A \ti{\hk vector space} is a quaternionic vector space $V$, with a symmetric 
+% bilinear form $g$ obeying for all $i$
+% \begin{equation}
+%   g(I_i v, I_i w) = g(v,w).
+% \end{equation}
+% \end{defn}
 
-\begin{defn}[\Hk vector space] A \ti{\hk vector space} is a quaternionic vector space $V$, with a symmetric 
-bilinear form $g$ obeying for all $i$
-\begin{equation}
-  g(I_i v, I_i w) = g(v,w).
-\end{equation}
-\end{defn}
+% \begin{defn}[Twistorial vector space] A \ti{twistorial vector space}
+% is a holomorphic vector bundle $W \to S^2$, such that
+% $W \otimes \cO(-1)$ is trivial, equipped with
+% \begin{itemize}
+%    \item a fiberwise nondegenerate section $\Omega$ of $\wedge^2 W^* \otimes \cO(2)$,
+%    \item a ``real'' structure $\rho: \sigma^* W \simarrow \bar{W}$, where
+%    $\sigma$ is the antipodal map of $\C\PP^1$.
+%  \end{itemize} 
+% \end{defn}
 
-\begin{defn}[Twistorial vector space] A \ti{twistorial vector space}
-is a holomorphic vector bundle $W \to S^2$, such that
-$W \otimes \cO(-1)$ is trivial, equipped with
-\begin{itemize}
-   \item a fiberwise nondegenerate section $\Omega$ of $\wedge^2 W^* \otimes \cO(2)$,
-   \item a ``real'' structure $\rho: \sigma^* W \simarrow \bar{W}$, where
-   $\sigma$ is the antipodal map of $\C\PP^1$.
- \end{itemize} 
-\end{defn}
+% \begin{prop}[Twistorial description of quaternionic vector spaces] 
+% The category of \hk vector spaces
+% is equivalent to the category of twistorial vector spaces.
+% \end{prop}
 
-\begin{prop}[Twistorial description of quaternionic vector spaces] 
-The category of \hk vector spaces
-is equivalent to the category of twistorial vector spaces.
-\end{prop}
+% \begin{pf} Given a \hk vector space $V$, we
+% construct a vector bundle $W \to S^2$ by
+% choosing
+% \begin{equation}
+%  W_{\vec s} = \ker(I_{\vec s} + \I).
+% \end{equation}
+% Given a twistorial vector space $W$,
+% we obtain a quaternionic vector space
+% by
+% \begin{equation}
+%   V = H^0(W).
+% \end{equation}
+% \fixme{...}
+% \end{pf}
 
-\begin{pf} Given a \hk vector space $V$, we
-construct a vector bundle $W \to S^2$ by
-choosing
-\begin{equation}
- W_{\vec s} = \ker(I_{\vec s} + \I).
-\end{equation}
-Given a twistorial vector space $W$,
-we obtain a quaternionic vector space
-by
-\begin{equation}
-  V = H^0(W).
-\end{equation}
-\fixme{...}
-\end{pf}
+% \begin{prop}[Second approach to holomorphic family of 
+% holomorphic symplectic forms on \hk manifold] Suppose $X$ is a \hk manifold of 
+% real dimension $4n$.
+% Then there is a decomposition
+% \begin{equation}
+%   T_\C X \simeq H \otimes E
+% \end{equation}
+% with the following properties:
+% \begin{enumerate}
+% \item $H$ is a rank $2$ complex bundle
+% $H$, with a canonical trivialization $\{h_1, h_2\}$.
+% We write $\eps_H = h_1 \wedge h_2 \in \wedge^2(H)$,
+% and define a pseudoreal structure $\overline{h_1} = h_2$,
+% $\overline{h_2} = -h_1$; then $\overline{\eps_H} = \eps_H$.
+% \item $E$ is a rank $2n$ complex bundle, with a nondegenerate
+% $\eps_E \in \wedge^2(E)$, and a pseudoreal structure
+% such that $\overline{\eps_E} = \eps_E$.
+% \item The combination of the pseudoreal structures on $E$ and $H$
+% gives the real structure on $T_\C X$.
+% \item The Levi-Civita connection is induced by a connection 
+% $\nabla_E$ on $E$ and the trivial connection $\nabla_H$ on $H$.
+% \item $\eps_E$ and the pseudoreal structure are covariantly 
+% constant for $\nabla_E$.
+% \item The \hk metric $g$ is
+% \begin{equation}
+%   g(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h_1, h_2) \eps_E(e_1, e_2).
+% \end{equation}
+% \item Given an element $h \in H$, define
+% $\Omega_h \in \Omega^2_\C(X)$ by
+% \begin{equation} \label{eq:hol-symp-from-H}
+%   \Omega_h(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h,h_1) \eps_H(h,h_2) \eps_E(e_1,e_2).
+% \end{equation}
+% Then $\Omega_h$ is a holomorphic symplectic form for a complex
+% structure $I_h$ on $X$.
+% Moreover the map $h \otimes h \mapsto \Omega_h$
+% gives an isomorphism $\Sym^2(H) \simarrow V$, where $V$ is the vector
+% space of \autoref{lem:hol-symp-hol}.
+% \item $I_h = I_{\lambda h}$ for any $\lambda \in \C^\times$, 
+% so we get complex structures labeled by points
+% of $\PP(H) \simeq \C\PP^1$. Identifying $\C\PP^1 \simeq S^2$
+% these are the complex structures $I_{\vec s}$.
+% The projection 
+% \begin{equation}
+%    H \setminus \{0\} \to \PP(H)
+% \end{equation} 
+% realizes
+% $H \setminus \{0\}$ as the complement of the zero
+% section in $\cO(-1) \to \C\PP^1$. Since $\Omega_h$ depends
+% quadratically on $h \in H$, it thus defines an 
+% isomorphism $\cO(-2) \simeq L$ where $L$ is the line bundle of
+% \autoref{lem:hol-symp-hol}.
+% \item If we choose $h = h_1 + \zeta h_2$,
+% then
+% \begin{equation}
+%   \Omega_h = \zeta \Omega(\zeta)
+% \end{equation}
+% where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
+% % I checked this by hand for R^4
+% \end{enumerate}
+% \end{prop}
 
-\begin{prop}[Second approach to holomorphic family of 
-holomorphic symplectic forms on \hk manifold] Suppose $X$ is a \hk manifold of 
-real dimension $4n$.
-Then there is a decomposition
-\begin{equation}
-  T_\C X \simeq H \otimes E
-\end{equation}
-with the following properties:
-\begin{enumerate}
-\item $H$ is a rank $2$ complex bundle
-$H$, with a canonical trivialization $\{h_1, h_2\}$.
-We write $\eps_H = h_1 \wedge h_2 \in \wedge^2(H)$,
-and define a pseudoreal structure $\overline{h_1} = h_2$,
-$\overline{h_2} = -h_1$; then $\overline{\eps_H} = \eps_H$.
-\item $E$ is a rank $2n$ complex bundle, with a nondegenerate
-$\eps_E \in \wedge^2(E)$, and a pseudoreal structure
-such that $\overline{\eps_E} = \eps_E$.
-\item The combination of the pseudoreal structures on $E$ and $H$
-gives the real structure on $T_\C X$.
-\item The Levi-Civita connection is induced by a connection 
-$\nabla_E$ on $E$ and the trivial connection $\nabla_H$ on $H$.
-\item $\eps_E$ and the pseudoreal structure are covariantly 
-constant for $\nabla_E$.
-\item The \hk metric $g$ is
-\begin{equation}
-  g(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h_1, h_2) \eps_E(e_1, e_2).
-\end{equation}
-\item Given an element $h \in H$, define
-$\Omega_h \in \Omega^2_\C(X)$ by
-\begin{equation} \label{eq:hol-symp-from-H}
-  \Omega_h(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h,h_1) \eps_H(h,h_2) \eps_E(e_1,e_2).
-\end{equation}
-Then $\Omega_h$ is a holomorphic symplectic form for a complex
-structure $I_h$ on $X$.
-Moreover the map $h \otimes h \mapsto \Omega_h$
-gives an isomorphism $\Sym^2(H) \simarrow V$, where $V$ is the vector
-space of \autoref{lem:hol-symp-hol}.
-\item $I_h = I_{\lambda h}$ for any $\lambda \in \C^\times$, 
-so we get complex structures labeled by points
-of $\PP(H) \simeq \C\PP^1$. Identifying $\C\PP^1 \simeq S^2$
-these are the complex structures $I_{\vec s}$.
-The projection 
-\begin{equation}
-   H \setminus \{0\} \to \PP(H)
-\end{equation} 
-realizes
-$H \setminus \{0\}$ as the complement of the zero
-section in $\cO(-1) \to \C\PP^1$. Since $\Omega_h$ depends
-quadratically on $h \in H$, it thus defines an 
-isomorphism $\cO(-2) \simeq L$ where $L$ is the line bundle of
-\autoref{lem:hol-symp-hol}.
-\item If we choose $h = h_1 + \zeta h_2$,
-then
-\begin{equation}
-  \Omega_h = \zeta \Omega(\zeta)
-\end{equation}
-where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
-% I checked this by hand for R^4
-\end{enumerate}
-\end{prop}
-
-\begin{pf} \fixme{...}
-\end{pf}
+% \begin{pf} \fixme{...}
+% \end{pf}
 
 
 \subsection{The twistor space}
