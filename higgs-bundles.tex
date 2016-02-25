@@ -2754,16 +2754,21 @@ coordinate $\eta$. (The same situation occurred in \autoref{exa:R3S1-twistor-spa
 To complete our description of $\cZ$ we need (in each patch) one more local holomorphic coordinate. The answer turns out as follows.
 If the singularities of $V$ are at points $x_1, \dots, x_n$ define
 corresponding sections $\eta_1, \dots, \eta_n$ of $\cO(2)$ by
-\eqref{eq:eta-GH}. Then $\cZ$ is parameterized by the $\cO(2)$-valued
+\eqref{eq:eta-GH}. Then $\cZ$ carries an $\cO(2)$-valued
 coordinate $\eta$ and two $\cO(n)$-valued coordinates $u$, $v$,
 obeying the equation
 \begin{equation}
   uv = \prod_{i=1}^n (\eta - \eta_i).
 \end{equation}
-More invariantly we could say
+More invariantly we could say that we have a map
 \begin{equation}
- \cZ = \left\{ uv = \prod_{i=1}^n (\eta - \eta_i) \right\} \subset [(\cO(n) \oplus \cO(2) \oplus \cO(2)) \to \C\PP^1].
+ \cZ \to \left\{ uv = \prod_{i=1}^n (\eta - \eta_i) \right\} \subset [(\cO(n) \oplus \cO(2) \oplus \cO(2)) \to \C\PP^1].
 \end{equation}
+This map is an isomorphism on most of the fibers, but not on 
+the fibers over $\zeta$ for which some $\eta_i$ coincide.
+In these fibers the map contracts some complex submanifolds.
+\fixme{should say more here!}
+
 The holomorphic symplectic form is
 \begin{equation}
   \Omega = \I \frac{\de u \wedge \de v}{n \frac{\partial}{\partial \eta} \prod (\eta - \eta_i)}.
