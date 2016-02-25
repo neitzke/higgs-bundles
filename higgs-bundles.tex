@@ -571,7 +571,7 @@ More generally, for $c \in [\fg,\fg]^\perp$ we can define
 so there is no essential loss of generality in always taking $c = 0$,
 but sometimes one or the other description is more convenient.)
 
-\begin{prop}[Symplectic quotient is symplectic]
+\begin{prop}[Symplectic quotient is symplectic] \label{prop:symplectic-quotient-is-symplectic}
 Suppose $X$ is a symplectic manifold, with a compact group $G$
 acting on it, with moment map $\mu$.
 If $G$ acts freely
@@ -1777,7 +1777,7 @@ to an honest complex manifold even over $x=0$.)
 
 There is a more conceptual way of arriving at \autoref{exa:gibbons-hawking-R4}:
 
-\begin{exercise}
+\begin{exercise} \label{exc:R4-moment-maps}
 Consider again the standard \hk structure on $\R^4$ 
 (\autoref{exa:R4}), which is acted on by $SU(2)_R$.
 Show that there is a subgroup $U(1) \subset SU(2)_R$ which acts
@@ -2182,122 +2182,122 @@ an alternative proof of \autoref{lem:hol-symp-hol}.
 % is such that the complex vector field corresponding to the 
 % \ti{raising} generator $X^+ \in \mathfrak{su}(2)_\C$
 % spans $T^{0,1}$. \fixme{...}
+ 
 
+% \subsection{The twistor family, second approach}
 
-\subsection{The twistor family, second approach}
+% \fixme{this section is in progress}
 
-\fixme{this section is in progress}
+% There is also a less computational approach to
+% \autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}.
+% It begins with a more incisive examination of 
+% the local structure.
 
-There is also a less computational approach to
-\autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}.
-It begins with a more incisive examination of 
-the local structure.
+% \begin{defn}[Quaternionic vector space] A \ti{quaternionic
+% vector space} is a real vector space $V$ with endomorphisms
+% $I_1$, $I_2$, $I_3$ obeying the quaternion algebra.
+% \end{defn}
 
-\begin{defn}[Quaternionic vector space] A \ti{quaternionic
-vector space} is a real vector space $V$ with endomorphisms
-$I_1$, $I_2$, $I_3$ obeying the quaternion algebra.
-\end{defn}
+% \begin{defn}[\Hk vector space] A \ti{\hk vector space} is a quaternionic vector space $V$, with a symmetric 
+% bilinear form $g$ obeying for all $i$
+% \begin{equation}
+%   g(I_i v, I_i w) = g(v,w).
+% \end{equation}
+% \end{defn}
 
-\begin{defn}[\Hk vector space] A \ti{\hk vector space} is a quaternionic vector space $V$, with a symmetric 
-bilinear form $g$ obeying for all $i$
-\begin{equation}
-  g(I_i v, I_i w) = g(v,w).
-\end{equation}
-\end{defn}
+% \begin{defn}[Twistorial vector space] A \ti{twistorial vector space}
+% is a holomorphic vector bundle $W \to S^2$, such that
+% $W \otimes \cO(-1)$ is trivial, equipped with
+% \begin{itemize}
+%    \item a fiberwise nondegenerate section $\Omega$ of $\wedge^2 W^* \otimes \cO(2)$,
+%    \item a ``real'' structure $\rho: \sigma^* W \simarrow \bar{W}$, where
+%    $\sigma$ is the antipodal map of $\C\PP^1$.
+%  \end{itemize} 
+% \end{defn}
 
-\begin{defn}[Twistorial vector space] A \ti{twistorial vector space}
-is a holomorphic vector bundle $W \to S^2$, such that
-$W \otimes \cO(-1)$ is trivial, equipped with
-\begin{itemize}
-   \item a fiberwise nondegenerate section $\Omega$ of $\wedge^2 W^* \otimes \cO(2)$,
-   \item a ``real'' structure $\rho: \sigma^* W \simarrow \bar{W}$, where
-   $\sigma$ is the antipodal map of $\C\PP^1$.
- \end{itemize} 
-\end{defn}
+% \begin{prop}[Twistorial description of quaternionic vector spaces] 
+% The category of \hk vector spaces
+% is equivalent to the category of twistorial vector spaces.
+% \end{prop}
 
-\begin{prop}[Twistorial description of quaternionic vector spaces] 
-The category of \hk vector spaces
-is equivalent to the category of twistorial vector spaces.
-\end{prop}
+% \begin{pf} Given a \hk vector space $V$, we
+% construct a vector bundle $W \to S^2$ by
+% choosing
+% \begin{equation}
+%  W_{\vec s} = \ker(I_{\vec s} + \I).
+% \end{equation}
+% Given a twistorial vector space $W$,
+% we obtain a quaternionic vector space
+% by
+% \begin{equation}
+%   V = H^0(W).
+% \end{equation}
+% \fixme{...}
+% \end{pf}
 
-\begin{pf} Given a \hk vector space $V$, we
-construct a vector bundle $W \to S^2$ by
-choosing
-\begin{equation}
- W_{\vec s} = \ker(I_{\vec s} + \I).
-\end{equation}
-Given a twistorial vector space $W$,
-we obtain a quaternionic vector space
-by
-\begin{equation}
-  V = H^0(W).
-\end{equation}
-\fixme{...}
-\end{pf}
+% \begin{prop}[Second approach to holomorphic family of 
+% holomorphic symplectic forms on \hk manifold] Suppose $X$ is a \hk manifold of 
+% real dimension $4n$.
+% Then there is a decomposition
+% \begin{equation}
+%   T_\C X \simeq H \otimes E
+% \end{equation}
+% with the following properties:
+% \begin{enumerate}
+% \item $H$ is a rank $2$ complex bundle
+% $H$, with a canonical trivialization $\{h_1, h_2\}$.
+% We write $\eps_H = h_1 \wedge h_2 \in \wedge^2(H)$,
+% and define a pseudoreal structure $\overline{h_1} = h_2$,
+% $\overline{h_2} = -h_1$; then $\overline{\eps_H} = \eps_H$.
+% \item $E$ is a rank $2n$ complex bundle, with a nondegenerate
+% $\eps_E \in \wedge^2(E)$, and a pseudoreal structure
+% such that $\overline{\eps_E} = \eps_E$.
+% \item The combination of the pseudoreal structures on $E$ and $H$
+% gives the real structure on $T_\C X$.
+% \item The Levi-Civita connection is induced by a connection 
+% $\nabla_E$ on $E$ and the trivial connection $\nabla_H$ on $H$.
+% \item $\eps_E$ and the pseudoreal structure are covariantly 
+% constant for $\nabla_E$.
+% \item The \hk metric $g$ is
+% \begin{equation}
+%   g(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h_1, h_2) \eps_E(e_1, e_2).
+% \end{equation}
+% \item Given an element $h \in H$, define
+% $\Omega_h \in \Omega^2_\C(X)$ by
+% \begin{equation} \label{eq:hol-symp-from-H}
+%   \Omega_h(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h,h_1) \eps_H(h,h_2) \eps_E(e_1,e_2).
+% \end{equation}
+% Then $\Omega_h$ is a holomorphic symplectic form for a complex
+% structure $I_h$ on $X$.
+% Moreover the map $h \otimes h \mapsto \Omega_h$
+% gives an isomorphism $\Sym^2(H) \simarrow V$, where $V$ is the vector
+% space of \autoref{lem:hol-symp-hol}.
+% \item $I_h = I_{\lambda h}$ for any $\lambda \in \C^\times$, 
+% so we get complex structures labeled by points
+% of $\PP(H) \simeq \C\PP^1$. Identifying $\C\PP^1 \simeq S^2$
+% these are the complex structures $I_{\vec s}$.
+% The projection 
+% \begin{equation}
+%    H \setminus \{0\} \to \PP(H)
+% \end{equation} 
+% realizes
+% $H \setminus \{0\}$ as the complement of the zero
+% section in $\cO(-1) \to \C\PP^1$. Since $\Omega_h$ depends
+% quadratically on $h \in H$, it thus defines an 
+% isomorphism $\cO(-2) \simeq L$ where $L$ is the line bundle of
+% \autoref{lem:hol-symp-hol}.
+% \item If we choose $h = h_1 + \zeta h_2$,
+% then
+% \begin{equation}
+%   \Omega_h = \zeta \Omega(\zeta)
+% \end{equation}
+% where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
+% % I checked this by hand for R^4
+% \end{enumerate}
+% \end{prop}
 
-\begin{prop}[Second approach to holomorphic family of 
-holomorphic symplectic forms on \hk manifold] Suppose $X$ is a \hk manifold of 
-real dimension $4n$.
-Then there is a decomposition
-\begin{equation}
-  T_\C X \simeq H \otimes E
-\end{equation}
-with the following properties:
-\begin{enumerate}
-\item $H$ is a rank $2$ complex bundle
-$H$, with a canonical trivialization $\{h_1, h_2\}$.
-We write $\eps_H = h_1 \wedge h_2 \in \wedge^2(H)$,
-and define a pseudoreal structure $\overline{h_1} = h_2$,
-$\overline{h_2} = -h_1$; then $\overline{\eps_H} = \eps_H$.
-\item $E$ is a rank $2n$ complex bundle, with a nondegenerate
-$\eps_E \in \wedge^2(E)$, and a pseudoreal structure
-such that $\overline{\eps_E} = \eps_E$.
-\item The combination of the pseudoreal structures on $E$ and $H$
-gives the real structure on $T_\C X$.
-\item The Levi-Civita connection is induced by a connection 
-$\nabla_E$ on $E$ and the trivial connection $\nabla_H$ on $H$.
-\item $\eps_E$ and the pseudoreal structure are covariantly 
-constant for $\nabla_E$.
-\item The \hk metric $g$ is
-\begin{equation}
-  g(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h_1, h_2) \eps_E(e_1, e_2).
-\end{equation}
-\item Given an element $h \in H$, define
-$\Omega_h \in \Omega^2_\C(X)$ by
-\begin{equation} \label{eq:hol-symp-from-H}
-  \Omega_h(h_1 \otimes e_1, h_2 \otimes e_2) = \eps_H(h,h_1) \eps_H(h,h_2) \eps_E(e_1,e_2).
-\end{equation}
-Then $\Omega_h$ is a holomorphic symplectic form for a complex
-structure $I_h$ on $X$.
-Moreover the map $h \otimes h \mapsto \Omega_h$
-gives an isomorphism $\Sym^2(H) \simarrow V$, where $V$ is the vector
-space of \autoref{lem:hol-symp-hol}.
-\item $I_h = I_{\lambda h}$ for any $\lambda \in \C^\times$, 
-so we get complex structures labeled by points
-of $\PP(H) \simeq \C\PP^1$. Identifying $\C\PP^1 \simeq S^2$
-these are the complex structures $I_{\vec s}$.
-The projection 
-\begin{equation}
-   H \setminus \{0\} \to \PP(H)
-\end{equation} 
-realizes
-$H \setminus \{0\}$ as the complement of the zero
-section in $\cO(-1) \to \C\PP^1$. Since $\Omega_h$ depends
-quadratically on $h \in H$, it thus defines an 
-isomorphism $\cO(-2) \simeq L$ where $L$ is the line bundle of
-\autoref{lem:hol-symp-hol}.
-\item If we choose $h = h_1 + \zeta h_2$,
-then
-\begin{equation}
-  \Omega_h = \zeta \Omega(\zeta)
-\end{equation}
-where $\Omega(\zeta)$ was given in \eqref{eq:hol-symp-family}.
-% I checked this by hand for R^4
-\end{enumerate}
-\end{prop}
-
-\begin{pf} \fixme{...}
-\end{pf}
+% \begin{pf} \fixme{...}
+% \end{pf}
 
 
 \subsection{The twistor space}
@@ -2448,7 +2448,7 @@ do not impose the condition that $g$ be positive definite.
 \end{defn}
 
 \begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
-\label{thm:hk-twistor-construction}
+\label{thm:hk-twistor-construction} \cite{Hitchin:1986ea}
 Suppose given a manifold $\cZ$ carrying all the structures
 of \autoref{prop:twistor-space-properties}. Then let $X$
 be the space of all real holomorphic sections of $\cZ$
@@ -3465,23 +3465,38 @@ of $X$ by $G$ is
 \end{equation}
 \end{defn}
 
-\begin{thm}[\Hk quotients are \hk] Suppose $X$ is \hk and a
+\begin{thm}[\Hk quotients are \hk] \label{thm:hk-quotients-are-hk} 
+Suppose $X$ is \hk and a
 compact group $G$ acts on $X$, with \hk moment map $\mu$.
 Also suppose $G$ acts freely on
-$\vec\mu^{-1}(0)$. Then $X \hkq G$ is a manifold, with
+$\vec \mu^{-1}(0)$. Then $X \hkq G$ is a manifold, with
 \begin{equation}
   \dim_\R (X \hkq G) = \dim_\R X - 4 \dim_\R G,
 \end{equation}
 and the quotient metric on $X \hkq G$ is \hk.
 \end{thm}
-\begin{pf} First note that if $G$ acts freely on 
+\begin{pf} First we show that if $G$ acts freely on 
 $\vec\mu^{-1}(0)$ then $0$ is a regular value
-for $\vec\mu$, so that $Y = \vec\mu^{-1}(0)$ is
-a manifold of dimension $\dim_\R X - 3 \dim_\R G$, 
-with $G$ acting freely.
-Thus $X \hkq G = Y / G$ is a manifold, of the desired dimension.
+for $\vec\mu$. 
 
-Consider the function 
+To show $\de\vec\mu$ surjective
+it is sufficient to show that the equation
+\begin{equation}
+  \de \mu_1 \cdot Z_1 + \de \mu_2 \cdot Z_2 + \de \mu_3 \cdot Z_3 = 0
+\end{equation}
+implies $Z_1 = Z_2 = Z_3 = 0$.
+We may rewrite this as
+\begin{equation}
+  \iota_{\rho(Z_1)} \omega_1 + \iota_{\rho(Z_2)} \omega_2 + \iota_{\rho(Z_3)} \omega_3 = 0
+\end{equation}
+which in turn is equivalent to
+\begin{equation}
+  I_1 \rho(Z_1) + I_2 \rho(Z_2) + I_3 \rho(Z_3) = 0.
+\end{equation}
+To show this implies $Z_1 = Z_2 = Z_3 = 0$ is the content of \autoref{exc:quat-linear-indep} below. Using this result, we get that $0$ is indeed a regular
+ value for $\vec\mu$, so $\vec\mu^{-1}(0)$ is a manifold.
+
+Now, consider the function 
 \begin{equation}
  M_1 = \mu_2 + \I \mu_3: X \to \fg_\C. 
 \end{equation}
@@ -3503,7 +3518,20 @@ quotient metric on $X \hkq G$ is \kahler for $I_1$.
 Similarly it is \kahler for $I_2$, $I_3$.
 \end{pf}
 
-So this single \hk quotient space can be viewed as a \kahler 
+\begin{exercise} \label{exc:quat-linear-indep}
+Suppose $V$ is a quaternionic vector space, 
+with a real subspace $W \subset V$, such that
+$I_i W \cap W = \{ 0 \}$ for $i = 1,2,3$.
+Suppose also
+\begin{equation}
+ w_0 + I_1 w_1 + I_2 w_2 + I_3 w_3 = 0, \qquad w_i \in W.
+\end{equation}
+Then show that $w_0 = w_1 = w_2 = w_3 = 0$. \fixme{warning, this is 
+unchecked so far!}
+\end{exercise}
+
+The idea of \autoref{thm:hk-quotients-are-hk} is 
+that the single \hk quotient space can be realized as a \kahler 
 quotient in many different ways. There is also yet another way to think of
 it, using the fact that the \kahler quotient is (ignoring issues of stability)
 a quotient by a complexification $G_\C$. Thus modulo stability we have
@@ -3516,20 +3544,24 @@ constructing the twistor space of $X \hkq G$: it arises
 as a \ti{fiberwise} version of the holomorphic symplectic quotient,
 i.e. (again ignoring issues of stability)
 \begin{equation}
-  \cZ(X \hkq G) = \cZ(X) \kq G_\C
+  \cZ(X \hkq G) = \cZ(X) \kq G_\C.
 \end{equation}
 
 \begin{example}[Hyperkahler quotient of $\bbH$ by $U(1)$]
 Suppose $X = \bbH$ with its standard \hk structure, and the standard
-$U(1) \subset SU(2)_R$ action.
-Then we have the moment maps
+$U(1) \subset SU(2)_R$ action from \autoref{exc:R4-moment-maps}.
+It follows from the result of \autoref{exc:R4-moment-maps}
+that for any choice of $\vec\mu$, $\vec\mu^{-1}(0)$ is a circle,
+and thus $\bbH \hkq U(1)$ is a point.
+
+Let us look in more detail at how this goes.
+We have the moment maps
 \begin{align}
   \mu_{1} &= \half (\abs{w}^2 - \abs{z}^2) + c, \\
   M_1 = \mu_{2} + \I \mu_{3} &= -\I w z + \alpha,
 \end{align}
 for constants $c \in \R$ and $\alpha \in \C$.
-Let us first compute $X \hkq U(1)$ directly. First we
-want to determine $\vec\mu^{-1}(0)$. Setting $M_1 = 0$
+We want to determine $\vec\mu^{-1}(0)$. Setting $M_1 = 0$
 means
 \begin{equation} \label{eq:H-complex-mm}
  wz = - \I \alpha 
@@ -3616,19 +3648,18 @@ as a \ti{modification} of $X$.
 \end{example}
 
 \begin{example}[Multi-Eguchi-Hanson spaces as \hk quotients]
-This is a special case of \autoref{exa:modifying-hk-with-circle},
-but we describe it directly.
-We begin with the space $X = \bbH^{n+1}$. 
+Take $X = \bbH^{n+1}$. 
 In structure $I_1$, $X$ is naturally identified with
 $\C^{2n+2}$ with coordinates $(z_0, w_0, z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
 It has a triholomorphic $U(1)^{n+1}$ action (coming from $SU(2)_R$ action on 
 each factor), acting by $z_i \to e^{\I \alpha_i} z_i$,
 $w_i \to e^{-\I \alpha_i} w_i$, which has a standard moment map 
-$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$, given by
-\begin{align}
-  \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
-  \mu_{i,2} + \I \mu_{i,3} &= -\I w_i z_i.
-\end{align}
+$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$.
+% , given by
+% \begin{align}
+%   \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
+%   \mu_{i,2} + \I \mu_{i,3} &= -\I w_i z_i.
+% \end{align}
 Now consider the ``center of mass'' subgroup $G \subset U(1)^{n+1}$
 given by the condition $\prod_i g_i = 1$.
 We have $G \simeq U(1)^n$.
@@ -3640,6 +3671,7 @@ consider the \hk quotient
 We claim this quotient is a multi-Eguchi-Hanson space
 as in \autoref{exa:multi-eguchi-hanson}, with $n$ singularities
 at the positions $x_i = \vec c_i - \vec c_0$.
+\fixme{explain how}
 
 \end{example}
 
@@ -3751,13 +3783,13 @@ as \ti{extensions}
 \begin{equation}
   0 \to \cO(-1) \to E_t \to \cO(1) \to 0,
 \end{equation}
-parameterized by classes $t \in H^1(\cO(2)) \simeq \C$.
+parameterized by classes $t \in H^1(\cO(-2)) \simeq \C$.
 Concretely what this means is that we take the bundle
 $\cO(-1) \oplus \cO(1)$ and modify its transition function
 on the overlap between north-pole and south-pole patches
-to \fixme{check}
+to
 \begin{equation}
-  \begin{pmatrix} z & t \\ 0 & z^{-1} \end{pmatrix}
+  \begin{pmatrix} z^{-1} & t \\ 0 & z \end{pmatrix}.
 \end{equation}
 For $t \neq 0$ we have $E_t \simeq \cO(0) \oplus \cO(0)$
 while for $t = 0$ instead $E_t \simeq \cO(1) \oplus \cO(-1)$.
@@ -3775,6 +3807,12 @@ i.e. the space would have to be non-Hausdorff.
 
 \begin{exercise}
 Check that indeed for $t \neq 0$ we have $E_t \simeq \cO(0) \oplus \cO(0)$.
+Hint: use the fact that the transition matrix can be factorized into
+one piece polynomial in $z$ and one piece polynomial in $z^{-1}$ 
+(``Birkhoff factorization''),
+\begin{equation}
+   \begin{pmatrix} z^{-1} & t \\ 0 & z \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & t^{-1}z \end{pmatrix} \begin{pmatrix} -t^{-1} & 0 \\ z^{-1} & t \end{pmatrix}.
+\end{equation} 
 \end{exercise}
 
 
