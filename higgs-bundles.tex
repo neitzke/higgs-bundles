@@ -2726,6 +2726,50 @@ of $(\cX_A, \cX_B, \zeta)$.
 % \begin{exercise} Check that the formula \eqref{eq:involution-R4} is correct.
 % \end{exercise}
 
+\begin{example}[Twistor spaces of multi-Eguchi-Hanson metrics] \label{exa:multi-eguchi-hanson-twistor}
+Now we consider the twistor spaces of the metrics
+of \autoref{exa:multi-eguchi-hanson}.
+
+We have commented before that in complex structure $I_1$ there
+is a holomorphic function $z_1 = x_2 + \I x_3$.
+Now we want to extend this function by adding $\zeta$ dependence,
+so that it becomes a holomorphic function $\eta$ on $\cZ$.
+One way of thinking of it is:
+for each $\zeta$ we get a complex coordinate by considering
+the \ti{holomorphic moment map} of the $U(1)$ action 
+with respect to $\Omega(\zeta)$. Concretely this gives
+\begin{equation} \label{eq:eta-GH}
+  \eta = \frac{x_2 + \I x_3}{2} - \I x_1 \zeta + \frac{x_2 - \I x_3}{2} \zeta^2. 
+\end{equation}
+This function blows up at $\zeta = \infty$, but near there we can 
+switch to the function $\eta' = \eta / \zeta^2$. Globally the pair
+$(\eta,\eta')$ gives a \ti{holomorphic map} 
+from $\cZ$ to the total space of the bundle
+$\cO(2) \to \C\PP^1$. or more prosaically, we have an $\cO(2)$-valued
+coordinate $\eta$. (The same situation occurred in \autoref{exa:R3S1-twistor-space}.)
+
+To complete our description of $\cZ$ we need (in each patch) one more local holomorphic coordinate. The answer turns out as follows.
+If the singularities of $V$ are at points $x_1, \dots, x_n$ define
+corresponding sections $\eta_1, \dots, \eta_n$ of $\cO(2)$ by
+\eqref{eq:eta-GH}. Then $\cZ$ is parameterized by the $\cO(2)$-valued
+coordinate $\eta$ and two $\cO(n)$-valued coordinates $U$, $V$,
+obeying the equation
+\begin{equation}
+  UV = \prod_{i=1}^n \eta - \eta_i.
+\end{equation}
+The holomorphic symplectic form is
+\begin{equation}
+  \Omega = \frac{\de U \wedge \de V}{n \frac{\partial}{\partial \eta} \prod (\eta - \eta_i)}.
+\end{equation}
+(Note that then $n=1$ we just have $UV = \eta$, i.e. $\eta$ can be eliminated
+and we just get $U$, $V$ parameterizing $\cO(1) \oplus \cO(1)$, as we should.)
+\end{example}
+
+\begin{exercise} Show that the description of the twistor space in \autoref{exa:multi-eguchi-hanson-twistor} is indeed correct. 
+(Hint: one way to do this is to construct in some concrete way 
+the functions $U$, $V$.)
+\end{exercise}
+
 
 \subsection{Semiflat metrics}
 
@@ -3834,7 +3878,11 @@ complex linear space $\Omega^{0,1}(\End E)$.
 The moduli space we want to describe could be thought of as
 $\cA$ modulo equivalence --- where now ``equivalence'' means
 the (infinite-dimensional,
-complex) group $\fG_\C$ of sections of $GL(E)$.
+complex) group $\fG_\C$ of sections of $GL(E)$,
+which acts on $\cA$ by conjugation:
+\begin{equation}
+  D \mapsto D^g = g D g^{-1}.  
+\end{equation}
 So formally we want to say
 \begin{equation} \label{eq:bunG-formal-quotient}
   \uharm_{K,d}(C) = \cA / \fG_\C.
