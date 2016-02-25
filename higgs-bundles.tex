@@ -3968,7 +3968,7 @@ The action of $\fG$ on $\cA$ (thought of as a space of
 unitary connections $D$) admits a moment map, given by
 (in the sense of distributions)
 \begin{equation}
-  \mu(D) = - F_D + 2 \pi \frac{d}{K} {\textbf 1} \omega .
+  \mu(D) = F_D - 2 \pi \frac{d}{K} {\textbf 1} \omega .
 \end{equation}
 More precisely, this means: suppose given an element 
 $Z \in \Lie \fG = \Omega^0(\fu(E))$,
@@ -3981,17 +3981,17 @@ then we have
 \begin{pf} The key facts are the action of $Z \in \Lie \fG = \Omega^0(\fu(E))$ 
 by infinitesimal gauge transformation,
 \begin{equation} \label{eq:inf-gauge}
-  \rho(Z) = DZ
+  \rho(Z) = -DZ
 \end{equation}
 and the differential of $\mu_Z$, acting on a tangent vector
 $\beta \in \Omega^1(\fu(E)) = T\cA$:
 \begin{equation} \label{eq:diff-moment-map}
-\de \mu_Z \cdot \beta = - \int_C \Tr (Z \, D\beta).
+\de \mu_Z \cdot \beta = \int_C \Tr (Z \, D\beta).
 \end{equation}
 We compute
 \begin{align}
-  \omega(\rho(Z), \beta) &= \int_C \Tr (DZ \wedge \beta) \\
-  &= -\int_C \Tr (Z \, D\beta) \\
+  \omega(\rho(Z), \beta) &= -\int_C \Tr (DZ \wedge \beta) \\
+  &= \int_C \Tr (Z \, D\beta) \\
   &= \de \mu_Z \cdot \beta.
 \end{align}
 \end{pf}
