@@ -2755,24 +2755,36 @@ To complete our description of $\cZ$ we need (in each patch) one more local holo
 If the singularities of $V$ are at points $x_1, \dots, x_n$ define
 corresponding sections $\eta_1, \dots, \eta_n$ of $\cO(2)$ by
 \eqref{eq:eta-GH}. Then $\cZ$ is parameterized by the $\cO(2)$-valued
-coordinate $\eta$ and two $\cO(n)$-valued coordinates $U$, $V$,
+coordinate $\eta$ and two $\cO(n)$-valued coordinates $u$, $v$,
 obeying the equation
 \begin{equation}
-  UV = \prod_{i=1}^n (\eta - \eta_i).
+  uv = \prod_{i=1}^n (\eta - \eta_i).
 \end{equation}
-The holomorphic symplectic form is \fixme{check sign}
+More invariantly we could say
 \begin{equation}
-  \Omega = \I \frac{\de U \wedge \de V}{n \frac{\partial}{\partial \eta} \prod (\eta - \eta_i)}.
+ \cZ = \left\{ uv = \prod_{i=1}^n (\eta - \eta_i) \right\} \subset [(\cO(n) \oplus \cO(2) \oplus \cO(2)) \to \C\PP^1].
 \end{equation}
-(Note that then $n=1$ we just have $UV = \eta$, i.e. $\eta$ can be eliminated
-and we just get $U$, $V$ parameterizing $\cO(1) \oplus \cO(1)$, as we should.)
+The holomorphic symplectic form is
+\begin{equation}
+  \Omega = \I \frac{\de u \wedge \de v}{n \frac{\partial}{\partial \eta} \prod (\eta - \eta_i)}.
+\end{equation}
+(Note that when $n=1$ we just have $uv = \eta$, i.e. $\eta$ can be eliminated
+and we just get $u$, $v$ parameterizing $\cO(1) \oplus \cO(1)$, as we should.)
 \end{example}
 
 \begin{exercise} Show that the description of the twistor space in \autoref{exa:multi-eguchi-hanson-twistor} is indeed correct. 
-(Hint: one way to do this is to construct in some concrete way 
-the functions $U$, $V$, as solutions of the Cauchy-Riemann equations;
-these equations are determined by the $(0,1)$ vector fields we gave 
-in \eqref{eq:gibbons-hawking-01-vectors}.)
+(Hint: construct 
+the functions $u$, $v$, concretely as solutions of the Cauchy-Riemann equations.
+These equations are determined by the $(0,1)$ vector fields we gave 
+in \eqref{eq:gibbons-hawking-01-vectors}. The idea is to 
+consider what these equations become in the special case where 
+we look at a function which is locally of the form $u = f(x) e^{\I \chi}$ ---
+or more invariantly, a function which obeys $\partial_\chi u = \I u$.
+Such functions are equivalently sections of a line bundle over
+the base $\R^3 \setminus \{x_i\}$, carrying a canonical connection,
+and the Cauchy-Riemann equations take a nice form in terms of this line
+bundle. Similarly $v$ will be a section of the dual line bundle,
+locally of the form $v = g(x) e^{-\I \chi}$).
 \end{exercise}
 
 
@@ -3670,8 +3682,6 @@ there.
 
 \end{example}
 
-\currentposition
-
 \begin{example}[Modifying \hk manifolds with $U(1)$ symmetry] \label{exa:modifying-hk-with-circle} \cite{modif-hk}
 Suppose $X$ is any \hk manifold with a $U(1)$ action by triholomorphic
 isometries, with a moment map $\vec\mu_X$. Then we can consider 
@@ -3722,14 +3732,13 @@ as in \autoref{exa:multi-eguchi-hanson}, with $n$ singularities
 at the positions $x_i$.
 
 To describe this we take the quotient at the level of the twistor space.
-
 Beginning from the $\cO(1)$-valued coordinates $z_i$, $w_i$
-on $\bbH^n$, the desired coordinates are the $(\C^\times)^n$-invariant combinations $U = \prod z_i$ and $V = \prod w_i$ plus the moment 
-map $\eta$ for the surviving diagonal $U(1)$ action, and the moment 
+on $\bbH^n$, the desired coordinates are the $(\C^\times)^n$-invariant combinations $u = \prod z_i$ and $v = \prod w_i$ plus the holomorphic moment 
+map $\eta$ for the surviving diagonal $\C^\times$ action, and the moment 
 map conditions imply
-$UV = \prod \eta - \eta_i$ as desired.
+$uv = \prod \eta - \eta_i$ as desired.
 
-\fixme{explain how}
+\fixme{explain how?}
 
 \end{example}
 
@@ -3821,14 +3830,16 @@ and degree $d$ is stable.
 \begin{example}[Stability for bundles over $\C\PP^1$]
 Grothendieck's lemma says that all holomorphic vector 
 bundles over $\C\PP^1$ are direct sums of line bundles,
-$E = \bigoplus_{i=1}^K \cO(n_i)$.
-The slope of such a bundle is
+$E = \bigoplus_{i=1}^K \cO(n_i)$, and moreover that
+two such sums are isomorphic only if they include the
+same $n_i$.
+The slope of such a bundle is the average of the $n_i$,
 \begin{equation}
 \mu(E) = \frac{\sum n_i}{K}.  
 \end{equation}
 Thus $E$ is unstable unless
 all $n_i$ are equal; if all $n_i$ are equal it is
-semistable; it is stable only if $K<2$.
+semistable; it is stable only if $K=1$.
 Note that semistable bundles of degree $d$ and rank $K$ exist
 if and only if $K \vert d$, $K > 1$.
 \end{example}
@@ -3988,6 +3999,8 @@ We compute
 \begin{exercise}
 Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 \end{exercise}
+
+\currentposition
 
 \autoref{prop:unitary-connections-moment-map} says in particular that 
 $\mu^{-1}(0)$ is the subset of $\cA$
