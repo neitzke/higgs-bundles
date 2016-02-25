@@ -1613,8 +1613,11 @@ where we introduced
   z_1 = x_2 + \I x_3, \qquad 
   \alpha_1 = V^{-1} \tTheta + \I \de x_1.
 \end{equation}
-Then $\ker \Omega_1$ is spanned by $\hat\partial_2 + \I \hat\partial_3$
-and $2 \pi V \partial_\chi + \I \hat\partial_1$, where $\partial_\chi$ 
+Then $\ker \Omega_1$ is spanned by
+\begin{equation} \label{eq:gibbons-hawking-01-vectors}
+ \hat\partial_2 + \I \hat\partial_3, \qquad 2 \pi V \partial_\chi + \I \hat\partial_1,  
+\end{equation}
+ where $\partial_\chi$ 
 is the globally defined generator of the $U(1)$ action 
 (shifting $\chi$),  and $\hat \partial_i$ means
 the parallel lift of $\partial_i$ from $\R^3$ to $X$, i.e. the lift
@@ -2755,11 +2758,11 @@ corresponding sections $\eta_1, \dots, \eta_n$ of $\cO(2)$ by
 coordinate $\eta$ and two $\cO(n)$-valued coordinates $U$, $V$,
 obeying the equation
 \begin{equation}
-  UV = \prod_{i=1}^n \eta - \eta_i.
+  UV = \prod_{i=1}^n (\eta - \eta_i).
 \end{equation}
-The holomorphic symplectic form is
+The holomorphic symplectic form is \fixme{check sign}
 \begin{equation}
-  \Omega = \frac{\de U \wedge \de V}{n \frac{\partial}{\partial \eta} \prod (\eta - \eta_i)}.
+  \Omega = \I \frac{\de U \wedge \de V}{n \frac{\partial}{\partial \eta} \prod (\eta - \eta_i)}.
 \end{equation}
 (Note that then $n=1$ we just have $UV = \eta$, i.e. $\eta$ can be eliminated
 and we just get $U$, $V$ parameterizing $\cO(1) \oplus \cO(1)$, as we should.)
@@ -2767,7 +2770,9 @@ and we just get $U$, $V$ parameterizing $\cO(1) \oplus \cO(1)$, as we should.)
 
 \begin{exercise} Show that the description of the twistor space in \autoref{exa:multi-eguchi-hanson-twistor} is indeed correct. 
 (Hint: one way to do this is to construct in some concrete way 
-the functions $U$, $V$.)
+the functions $U$, $V$, as solutions of the Cauchy-Riemann equations;
+these equations are determined by the $(0,1)$ vector fields we gave 
+in \eqref{eq:gibbons-hawking-01-vectors}.)
 \end{exercise}
 
 
@@ -3692,29 +3697,39 @@ as a \ti{modification} of $X$.
 \end{example}
 
 \begin{example}[Multi-Eguchi-Hanson spaces as \hk quotients]
-Take $X = \bbH^{n+1}$. 
+Take $X = \bbH^{n}$. 
 In structure $I_1$, $X$ is naturally identified with
-$\C^{2n+2}$ with coordinates $(z_0, w_0, z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
-It has a triholomorphic $U(1)^{n+1}$ action (coming from $SU(2)_R$ action on 
+$\C^{2n}$ with coordinates $(z_1, w_1, \dots, z_{n}, w_{n})$.
+It has a triholomorphic $U(1)^{n}$ action (coming from $SU(2)_R$ action on 
 each factor), acting by $z_i \to e^{\I \alpha_i} z_i$,
-$w_i \to e^{-\I \alpha_i} w_i$, which has a standard moment map 
-$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$.
+$w_i \to e^{-\I \alpha_i} w_i$, which has the standard moment map 
+$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n}$.
 % , given by
 % \begin{align}
 %   \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
 %   \mu_{i,2} + \I \mu_{i,3} &= -\I w_i z_i.
 % \end{align}
-Now consider the ``center of mass'' subgroup $G \subset U(1)^{n+1}$
+Now consider the ``center of mass'' subgroup $G \subset U(1)^{n}$
 given by the condition $\prod_i g_i = 1$.
-We have $G \simeq U(1)^n$.
-Choose points $\vec c_1, \dots, \vec c_{n+1} \in \R^3$ and 
-consider the \hk quotient
+We have $G \simeq U(1)^{n-1}$.
+Choose a tuple $x = (x_1, \dots, x_n) \in \R^3$. The tuple
+$(x_1, \dots, x_n)$ gives an element of $\fg^*$.
+Now we consider the \hk quotient
 \begin{equation}
-  Y = X \hkql{{\vec c}} G.
+  Y = X \hkql{{x}} G.
 \end{equation}
 We claim this quotient is a multi-Eguchi-Hanson space
 as in \autoref{exa:multi-eguchi-hanson}, with $n$ singularities
-at the positions $x_i = \vec c_i - \vec c_0$.
+at the positions $x_i$.
+
+To describe this we take the quotient at the level of the twistor space.
+
+Beginning from the $\cO(1)$-valued coordinates $z_i$, $w_i$
+on $\bbH^n$, the desired coordinates are the $(\C^\times)^n$-invariant combinations $U = \prod z_i$ and $V = \prod w_i$ plus the moment 
+map $\eta$ for the surviving diagonal $U(1)$ action, and the moment 
+map conditions imply
+$UV = \prod \eta - \eta_i$ as desired.
+
 \fixme{explain how}
 
 \end{example}
