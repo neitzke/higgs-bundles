@@ -570,7 +570,7 @@ More generally, for $c \in [\fg,\fg]^\perp$ we can define
 so there is no essential loss of generality in always taking $c = 0$,
 but sometimes one or the other description is more convenient.)
 
-\begin{prop}[Symplectic quotient is symplectic]
+\begin{prop}[Symplectic quotient is symplectic] \label{prop:symplectic-quotient-is-symplectic}
 Suppose $X$ is a symplectic manifold, with a compact group $G$
 acting on it, with moment map $\mu$.
 If $G$ acts freely
@@ -1776,7 +1776,7 @@ to an honest complex manifold even over $x=0$.)
 
 There is a more conceptual way of arriving at \autoref{exa:gibbons-hawking-R4}:
 
-\begin{exercise}
+\begin{exercise} \label{exc:R4-moment-maps}
 Consider again the standard \hk structure on $\R^4$ 
 (\autoref{exa:R4}), which is acted on by $SU(2)_R$.
 Show that there is a subgroup $U(1) \subset SU(2)_R$ which acts
@@ -2447,7 +2447,7 @@ do not impose the condition that $g$ be positive definite.
 \end{defn}
 
 \begin{thm}[(Re)construction of \hk manifolds from twistor spaces]
-\label{thm:hk-twistor-construction}
+\label{thm:hk-twistor-construction} \cite{Hitchin:1986ea}
 Suppose given a manifold $\cZ$ carrying all the structures
 of \autoref{prop:twistor-space-properties}. Then let $X$
 be the space of all real holomorphic sections of $\cZ$
@@ -3536,20 +3536,24 @@ constructing the twistor space of $X \hkq G$: it arises
 as a \ti{fiberwise} version of the holomorphic symplectic quotient,
 i.e. (again ignoring issues of stability)
 \begin{equation}
-  \cZ(X \hkq G) = \cZ(X) \kq G_\C
+  \cZ(X \hkq G) = \cZ(X) \kq G_\C.
 \end{equation}
 
 \begin{example}[Hyperkahler quotient of $\bbH$ by $U(1)$]
 Suppose $X = \bbH$ with its standard \hk structure, and the standard
-$U(1) \subset SU(2)_R$ action.
-Then we have the moment maps
+$U(1) \subset SU(2)_R$ action from \autoref{exc:R4-moment-maps}.
+It follows from the result of \autoref{exc:R4-moment-maps}
+that for any choice of $\vec\mu$, $\vec\mu^{-1}(0)$ is a circle,
+and thus $\bbH \hkq U(1)$ is a point.
+
+Let us look in more detail at how this goes.
+We have the moment maps
 \begin{align}
   \mu_{1} &= \half (\abs{w}^2 - \abs{z}^2) + c, \\
   M_1 = \mu_{2} + \I \mu_{3} &= -\I w z + \alpha,
 \end{align}
 for constants $c \in \R$ and $\alpha \in \C$.
-Let us first compute $X \hkq U(1)$ directly. First we
-want to determine $\vec\mu^{-1}(0)$. Setting $M_1 = 0$
+We want to determine $\vec\mu^{-1}(0)$. Setting $M_1 = 0$
 means
 \begin{equation} \label{eq:H-complex-mm}
  wz = - \I \alpha 
@@ -3636,19 +3640,18 @@ as a \ti{modification} of $X$.
 \end{example}
 
 \begin{example}[Multi-Eguchi-Hanson spaces as \hk quotients]
-This is a special case of \autoref{exa:modifying-hk-with-circle},
-but we describe it directly.
-We begin with the space $X = \bbH^{n+1}$. 
+Take $X = \bbH^{n+1}$. 
 In structure $I_1$, $X$ is naturally identified with
 $\C^{2n+2}$ with coordinates $(z_0, w_0, z_1, w_1, \dots, z_{n+1}, w_{n+1})$.
 It has a triholomorphic $U(1)^{n+1}$ action (coming from $SU(2)_R$ action on 
 each factor), acting by $z_i \to e^{\I \alpha_i} z_i$,
 $w_i \to e^{-\I \alpha_i} w_i$, which has a standard moment map 
-$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$, given by
-\begin{align}
-  \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
-  \mu_{i,2} + \I \mu_{i,3} &= -\I w_i z_i.
-\end{align}
+$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n+3}$.
+% , given by
+% \begin{align}
+%   \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
+%   \mu_{i,2} + \I \mu_{i,3} &= -\I w_i z_i.
+% \end{align}
 Now consider the ``center of mass'' subgroup $G \subset U(1)^{n+1}$
 given by the condition $\prod_i g_i = 1$.
 We have $G \simeq U(1)^n$.
@@ -3660,6 +3663,7 @@ consider the \hk quotient
 We claim this quotient is a multi-Eguchi-Hanson space
 as in \autoref{exa:multi-eguchi-hanson}, with $n$ singularities
 at the positions $x_i = \vec c_i - \vec c_0$.
+\fixme{explain how}
 
 \end{example}
 
