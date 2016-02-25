@@ -3818,7 +3818,10 @@ On the latter space we have a natural symplectic form
   \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
 \end{equation}
 So this gives a symplectic structure on $\cA$.
-Moreover $\fG$ acts on $\cA$, by pullback.
+Moreover $\fG$ acts on $\cA$, by conjugation,
+\begin{equation}
+  D \mapsto D^g = g D g^{-1}.
+\end{equation}
 
 \begin{prop}[Moment map for $\fG$ action on $\cA$] \label{prop:unitary-connections-moment-map}
 The action of $\fG$ on $\cA$ (thought of as a space of 
@@ -3875,7 +3878,7 @@ exist any subbundle $E' \subset E$ such that $D$ preserves $E'$.
 If $g \in \fG$ and $D$ is an irreducible connection, then $D^g = D$
 if and only if $g$ acts on $E$ by multiplication by a constant scalar.
 \end{prop}
-\begin{pf} $D^g = g$ if and only if $g$ is constant under the parallel 
+\begin{pf} $D^g = D$ if and only if $g$ is constant under the parallel 
 transport of $D$. In particular this means that $g$ is determined by
 its value at a single point of $C$. Moreover this value cannot be arbitrary:
 it has to commute with the parallel transport around any loop.
