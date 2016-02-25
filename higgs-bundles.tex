@@ -3742,13 +3742,13 @@ as \ti{extensions}
 \begin{equation}
   0 \to \cO(-1) \to E_t \to \cO(1) \to 0,
 \end{equation}
-parameterized by classes $t \in H^1(\cO(2)) \simeq \C$.
+parameterized by classes $t \in H^1(\cO(-2)) \simeq \C$.
 Concretely what this means is that we take the bundle
 $\cO(-1) \oplus \cO(1)$ and modify its transition function
 on the overlap between north-pole and south-pole patches
-to \fixme{check}
+to
 \begin{equation}
-  \begin{pmatrix} z & t \\ 0 & z^{-1} \end{pmatrix}
+  \begin{pmatrix} z^{-1} & t \\ 0 & z \end{pmatrix}.
 \end{equation}
 For $t \neq 0$ we have $E_t \simeq \cO(0) \oplus \cO(0)$
 while for $t = 0$ instead $E_t \simeq \cO(1) \oplus \cO(-1)$.
@@ -3766,6 +3766,12 @@ i.e. the space would have to be non-Hausdorff.
 
 \begin{exercise}
 Check that indeed for $t \neq 0$ we have $E_t \simeq \cO(0) \oplus \cO(0)$.
+Hint: use the fact that the transition matrix can be factorized into
+one piece polynomial in $z$ and one piece polynomial in $z^{-1}$ 
+(``Birkhoff factorization''),
+\begin{equation}
+   \begin{pmatrix} z^{-1} & t \\ 0 & z \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & t^{-1}z \end{pmatrix} \begin{pmatrix} -t^{-1} & 0 \\ z^{-1} & t \end{pmatrix}.
+\end{equation} 
 \end{exercise}
 
 
