@@ -1897,7 +1897,7 @@ where $\delta \omega_i$ vanishes at $y = 0$. It follows
 that the \hk structure indeed extends over $y = 0$.
 \end{example}
 
-\begin{example}[Eguchi-Hanson space]
+\begin{example}[Eguchi-Hanson space] \label{exa:eguchi-hanson}
 This is a case of \autoref{exa:gibbons-hawking}
 with two singularities. Fix distinct points
 $x_1, x_2 \in \R^3$, let $U = \R^3$, and 
@@ -2762,19 +2762,27 @@ obeying the equation
 \end{equation}
 More invariantly we could say that we have a map
 \begin{equation}
- \cZ \to \left\{ uv = \prod_{i=1}^n (\eta - \eta_i) \right\} \subset [(\cO(n) \oplus \cO(2) \oplus \cO(2)) \to \C\PP^1].
+ \pi: \cZ \to \left\{ uv = \prod_{i=1}^n (\eta - \eta_i) \right\} \subset [(\cO(n) \oplus \cO(2) \oplus \cO(2)) \to \C\PP^1].
 \end{equation}
-This map is an isomorphism on most of the fibers, but not on 
-the fibers over $\zeta$ for which some $\eta_i$ coincide.
-In these fibers the map contracts some complex submanifolds.
-\fixme{should say more here!}
+This map is an isomorphism on all but finitely many fibers:
+the exception is the fibers over $\zeta$ for which some $\eta_i(\zeta)$ become
+equal. In these fibers we have some compact complex submanifolds,
+the $S^2$'s discussed in \autoref{exa:multi-eguchi-hanson};
+these get contracted by the map $\pi$. Thus for most values of $\zeta$,
+$(\cM, I_\zeta)$ is an affine variety, while for finitely many special 
+values $(\cM, I_\zeta)$ is a resolution of a singular affine variety. 
+The simple example $n=2$, \autoref{exa:eguchi-hanson}, is an affine variety
+$\{uv = (\eta - \eta_1)(\eta - \eta_2)\}$ in all structures $I_\zeta$ except 
+for two; in those special structures we get
+$T^* \C\PP^1$, realized as a resolution of the singular
+variety $uv = (\eta - \eta_1)^2$.
 
 The holomorphic symplectic form is
 \begin{equation}
   \Omega = \I \frac{\de u \wedge \de v}{n \frac{\partial}{\partial \eta} \prod (\eta - \eta_i)}.
 \end{equation}
-(Note that when $n=1$ we just have $uv = \eta$, i.e. $\eta$ can be eliminated
-and we just get $u$, $v$ parameterizing $\cO(1) \oplus \cO(1)$, as we should.)
+Note that when $n=1$ we just have $uv = \eta$, i.e. $\eta$ can be eliminated
+and we just get $u$, $v$ parameterizing $\cO(1) \oplus \cO(1)$, as we should.
 \end{example}
 
 \begin{exercise} Show that the description of the twistor space in \autoref{exa:multi-eguchi-hanson-twistor} is indeed correct. 
