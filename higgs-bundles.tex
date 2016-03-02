@@ -3119,7 +3119,8 @@ One global holomorphic function is easy to construct: it is
 \end{equation}
 To get a second coordinate is considerably more difficult.
 If we wanted to get a function on the \ti{approximate}
-Ooguri-Vafa space we could use the function written 
+Ooguri-Vafa space with $V = V^\sf$, 
+we could use the function written 
 in \autoref{exa:semiflat-1d-general},
 \begin{equation} \label{eq:Xsf-ooguri-vafa}
   \cX_2^{\sf} = \exp \left(\zeta^{-1} Z_2 + \I \chi + \zeta \bar{Z}_2 \right),
@@ -3139,13 +3140,14 @@ when we cross the cut we get $\chi \to \chi + x_1$.
 With these choices made, \eqref{eq:Xsf-ooguri-vafa} defines
 an honest function on the complement of the cut, and crossing
 the cut leads to the jumps $Z_2 \to Z_2 + z$ and $\chi \to \chi + x_1$,
-which combine to give $\cX_2 \to \cX_2 \cX_1$.
+which combine to give $\cX_2^\sf \to \cX_2^\sf \cX_1$.
 (Compare the result of \autoref{exc:ooguri-vafa-semiflat}.)
 
 The function $\cX_2^\sf$ is \ti{not} holomorphic on the
-exact Ooguri-Vafa space. However it turns out that we can
-find a holomorphic function which has the same \ti{asymptotic}
-behavior as $\zeta \to 0,\infty$.
+full Ooguri-Vafa space, with the full $V$.
+However it turns out that we can
+find a true holomorphic function $\cX_2$ which has the same \ti{asymptotic}
+behavior as $\cX_2^\sf$ as we take $\zeta \to 0$ or $\zeta\to\infty$.
 Namely we write
 \begin{equation}
   \cX_2 = \cX_2^{\sf} \cX_2^{\inst}
@@ -3973,13 +3975,14 @@ The action of $\fG$ on $\cA$ (thought of as a space of
 unitary connections $D$) admits a moment map, given by
 (in the sense of distributions)
 \begin{equation}
-  \mu(D) = F_D - 2 \pi \frac{d}{K} {\textbf 1} \omega .
+  \mu(D) = F_D - 2 \pi \frac{d}{K} {\textbf 1} \omega_C 
 \end{equation}
+where $\omega_C$ denotes the \kahler form on $C$.
 More precisely, this means: suppose given an element 
 $Z \in \Lie \fG = \Omega^0(\fu(E))$,
 then we have 
 \begin{equation}
-  \mu_Z(D) = \int_C \Tr(Z F_D) - 2 \pi \frac{d}{K} \int_C \omega \Tr(Z).
+  \mu_Z(D) = \int_C \Tr(Z F_D) - 2 \pi \frac{d}{K} \int_C \omega_C \Tr(Z).
 \end{equation}
 \end{prop}
 
@@ -4011,7 +4014,7 @@ Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 $\mu^{-1}(0)$ is the subset of $\cA$
 consisting of connections with
 \begin{equation} \label{eq:harmonic-curvature}
-  F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega.
+  F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega_C.
 \end{equation}
 In the important special case $d=0$, \eqref{eq:harmonic-curvature}
 just says that $D$ is a \ti{flat} connection.
@@ -4020,11 +4023,11 @@ For $d \neq 0$, \eqref{eq:harmonic-curvature} says at least that $D$ is
 on the bundle $\PP(E)$ of projective spaces, and moreover the remaining
 central curvature is completely fixed.
 
-We remark that $\omega$ is an arbitrary positive $2$-form 
+We remark that $\omega_C$ is an arbitrary positive $2$-form 
 on $C$ with total integral $1$.
-At least formally we can imagine taking $\omega$ to be more and more 
+At least formally we can imagine taking $\omega_C$ to be more and more 
 concentrated at a single point $z_0$, until in the limit we get
-$\omega = \delta(z_0)$. In this limit the connections $D$ obeying
+$\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
 \eqref{eq:harmonic-curvature} are becoming
 flat away from $z_0$, but singular at $z_0$, with the holonomy around $z_0$
 of finite order given by multiplication by the root of unity 
@@ -4090,7 +4093,7 @@ the cohomology of the complex
   0 \to \Omega^0(\fu(E)) / \C \xrightarrow{D} \Omega^1(\fu(E)) \xrightarrow{D} \Omega^2(\fu(E)) \to 0
 \end{equation}
 at the middle position. (It's indeed a complex, 
-because $D^2 = F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega$ \fixme{...} )
+because $D^2 = F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega_C$ \fixme{...} )
 We have to pay proper respect to the fact that we are dealing here
 with \ti{infinite-dimensional} spaces. Fortunately the complex
 is \ti{elliptic}.\footnote{This means that the corresponding symbol
