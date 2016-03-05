@@ -2990,9 +2990,9 @@ would be to take the 1-dimensional lattice of points
 \begin{equation}
   x_n = (n,0,0) \in \R^3
 \end{equation}
-and then define
+and then take $V$ to be
 \begin{equation}
-  V = \sum_{n \in \Z} \frac{1}{4\pi\norm{x-x_n}}.
+ \sum_{n \in \Z} \frac{1}{4\pi\norm{x-x_n}}.
 \end{equation}
 However there is a difficulty: for large enough $n$
 we have
@@ -3065,7 +3065,8 @@ shares the bad large-$\abs{z}$ behavior
 of the approximate one. Indeed, when $1 \ll \abs{z} < \Lambda$,
 $g$ is very well approximated by $g^\sf$.
 At small $\abs{z}$, though, the behavior of $g$ is much better than that
-of $g^\sf$. It is not invariant under continuous translations in 
+of $g^\sf$: it is smooth. 
+$g$ is not invariant under continuous translations in 
 the $x_1$ direction, but does still have the discrete $\Z$ 
 symmetry $x_1 \to x_1 + n$, preserving
 the \hk structure.\footnote{There is a subtle choice here:
@@ -3074,10 +3075,12 @@ of the $U(1)$ bundle $X$, and there are a circle's worth of ways
 to do this. Thus the Ooguri-Vafa metric depends on two parameters:
 the real parameter $C$ in \eqref{eq:ooguri-vafa-V} --- which we have 
 absorbed into $\Lambda$ --- and also a circle-valued
-parameter controlling this gluing.}
+parameter controlling this gluing. It is actually natural to combine
+these into a single \ti{complex} parameter $\Lambda$; this is the
+point of view taken in \cite{Gaiotto:2008cd}.}
 After dividing out by this $\Z$ action we obtain a \hk 
 space $X$, the Ooguri-Vafa manifold. Crucially, the Ooguri-Vafa
-manifold and its \hk structure \ti{do} extend even over $z=0$, since near
+manifold and its \hk structure \ti{do} extend smoothly over $z=0$, since near
 the singularities of $V$ we have the usual behavior
 $V \sim \frac{1}{4 \pi r}$ as in \autoref{exa:gibbons-hawking}.
 
@@ -3281,7 +3284,7 @@ part of an \hk structure. To implement this strategy the next
 theorem is the key tool.
 
 \begin{thm}[Yau's theorem: existence of Ricci-flat \kahler metrics] \label{thm:yau-ricci-flat-kahler}
-\fixme{add reference} Suppose that:
+\cite{yau-thm} Suppose that:
 \begin{itemize}
   \item $X$ is a compact complex manifold,
   \item the canonical bundle $K_X$ is trivial (as a complex line bundle),
@@ -3946,17 +3949,20 @@ as a \kahler quotient (still infinite-dimensional.)
 For this purpose, let us fix a Hermitian metric $h$ on $E$.
 After so doing, we have an infinite-dimensional real group
 $\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
+Let $\cA_h$ denote the space of all $h$-unitary connections
+on $E$.
 
-Each $\bar\partial_E \in \cA$
-can be extended in a unique way to a unitary connection
-on $E$ (Chern connection), and conversely, each 
-unitary connection can be restricted to a $\bar\partial_E$ operator.
-Viewed this way, $\cA$ becomes
-simply the space of all unitary
-connections on $E$.
-This is an affine space, modeled
+\begin{prop} $\cA \simeq \cA_h$.
+\end{prop}
+\begin{pf} Each $\bar\partial \in \cA$
+can be extended in a canonical way to a unitary connection $D \in \cA_h$
+(Chern connection), and conversely, each unitary connection $D \in \cA_h$ 
+can be restricted to $\bar\partial_D \in \cA$.
+\end{pf}
+
+$\cA_h$ is an affine space, modeled
 on the infinite-dimensional \ti{real} linear space $\Omega^{1}(\fu(E))$.
-The compatibility of these two pictures of $\cA$ 
+The compatibility of these two pictures 
 is summarized in the next exercise:
 
 \begin{exercise} Show that the real linear space 
@@ -3970,7 +3976,7 @@ On $\Omega^{1}(\fu(E))$ we have a natural symplectic form
 \begin{equation}
   \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
 \end{equation}
-So this gives a symplectic structure on $\cA$.
+So this gives a symplectic structure on $\cA_h$.
 
 \begin{exercise} Verify that the complex and symplectic structures
 on $\cA$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
@@ -3982,8 +3988,7 @@ Moreover $\fG$ acts on $\cA$, by conjugation,
 \end{equation}
 
 \begin{prop}[Moment map for $\fG$ action on $\cA$] \label{prop:unitary-connections-moment-map}
-The action of $\fG$ on $\cA$ (thought of as a space of 
-unitary connections $D$) admits a moment map, given by
+The action of $\fG$ on $\cA_h$ admits a moment map, given by
 (in the sense of distributions)
 \begin{equation}
   \mu(D) = F_D - 2 \pi \frac{d}{K} {\textbf 1} \omega_C 
@@ -3997,13 +4002,13 @@ then we have
 \end{equation}
 \end{prop}
 
-\begin{pf} The key facts are the action of $Z \in \Lie \fG = \Omega^0(\fu(E))$ 
-by infinitesimal gauge transformation,
+\begin{pf} The key facts are the action of 
+$Z \in \Lie \fG = \Omega^0(\fu(E))$ by infinitesimal gauge transformation,
 \begin{equation} \label{eq:inf-gauge}
   \rho(Z) = -DZ
 \end{equation}
 and the differential of $\mu_Z$, acting on a tangent vector
-$\beta \in \Omega^1(\fu(E)) = T\cA$:
+$\beta \in \Omega^1(\fu(E)) = T\cA_h$:
 \begin{equation} \label{eq:diff-moment-map}
 \de \mu_Z \cdot \beta = \int_C \Tr (Z \, D\beta).
 \end{equation}
@@ -4022,7 +4027,7 @@ Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 \currentposition
 
 \autoref{prop:unitary-connections-moment-map} says in particular that 
-$\mu^{-1}(0)$ is the subset of $\cA$
+$\mu^{-1}(0)$ is the subset of $\cA_h$
 consisting of connections with
 \begin{equation} \label{eq:harmonic-curvature}
   F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega_C.
@@ -4078,7 +4083,8 @@ Now we define:
 
 Note that these are both infinite-dimensional quotients.
 Nevertheless they still make sense, at least
-as topological spaces.
+as topological spaces. Now we will see that they have
+much better structure.
 
 \begin{prop}[Basic properties of $\uharm_{K,d}(C)$] 
 We have the following.
