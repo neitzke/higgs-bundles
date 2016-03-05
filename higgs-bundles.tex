@@ -2536,7 +2536,7 @@ can be written as
 \end{equation}
 Indeed,
 \begin{align}
-  \frac{1}{2\zeta} \de w(\zeta) \wedge \de z(\zeta) &= \frac{1}{2\zeta} (\de w_1 \wedge \de z_1 + \zeta (\de w_1 \wedge \de \bar{w}_i + \de z_1 \wedge \de \bar{z}_1) - \zeta^2 \de \bar{z}_1 \wedge \de \bar{w}_1) \\
+  \frac{1}{2\zeta} \de w(\zeta) \wedge \de z(\zeta) &= \frac{1}{2\zeta} (\de w_1 \wedge \de z_1 + \zeta (\de w_1 \wedge \de \bar{w}_1 + \de z_1 \wedge \de \bar{z}_1) - \zeta^2 \de \bar{z}_1 \wedge \de \bar{w}_1) \\
   &= \frac{\omega_2 + \I \omega_3}{2\zeta} - \I\omega_1 + \frac{\omega_2 - \I \omega_3}{2} \zeta
 \end{align}
 matching \eqref{eq:hol-symp-family}.
@@ -2760,7 +2760,7 @@ corresponding sections $\eta_1, \dots, \eta_n$ of $\cO(2)$ by
 \eqref{eq:eta-GH}. Then $\cZ$ carries an $\cO(2)$-valued
 coordinate $\eta$ and two $\cO(n)$-valued coordinates $u$, $v$,
 obeying the equation
-\begin{equation}
+\begin{equation} \label{eq:multi-eh-uv}
   uv = \prod_{i=1}^n (\eta - \eta_i).
 \end{equation}
 More invariantly we could say that we have a map
@@ -2784,8 +2784,12 @@ The holomorphic symplectic form is
 \begin{equation}
   \Omega = \I \frac{\de u \wedge \de v}{n \frac{\partial}{\partial \eta} \prod (\eta - \eta_i)}.
 \end{equation}
-Note that when $n=1$ we just have $uv = \eta$, i.e. $\eta$ can be eliminated
-and we just get $u$, $v$ parameterizing $\cO(1) \oplus \cO(1)$, as we should.
+Note that when $n=1$ the equation \eqref{eq:multi-eh-uv} can be
+eliminated by solving
+for $\eta$, leaving the coordinates $u$, $v$ parameterizing
+$\cO(1) \oplus \cO(1)$;
+this matches the twistor space of $\R^4$ (\autoref{exa:R4-twistor-space}), 
+as it should.
 \end{example}
 
 \begin{exercise} Show that the description of the twistor space in \autoref{exa:multi-eguchi-hanson-twistor} is indeed correct. 
@@ -2828,7 +2832,7 @@ such that the quantity
 is valued in the upper half-plane.
 Then let $X$ be $\cB \times T^2$, with $T^2$
 coordinatized by $\theta_{A,B} \in \R / 2 \pi \Z$.
-Finally, just as in \autoref{exa:R2T2}, define functions
+Finally, much like \autoref{exa:R2T2}, define functions
 $\cX_{A,B}: X \to \C^\times$ by
 \begin{equation}
   \cX_{A,B} = \exp \left(\zeta^{-1} Z_{A,B} + \I \theta_{A,B} + \zeta \bar{Z}_{A,B} \right),
@@ -2839,7 +2843,7 @@ define $\Omega(\zeta) \in \Omega^2_\C(X)$ by
   \frac{\de \cX_A \wedge \de \cX_B}{\cX_A \cX_B} = -\I \Omega(\zeta).
 \end{equation}
 To recover \autoref{exa:R2T2}, take $\cB = \C$, 
-$Z_A = z$, $Z_B = \tau z$.
+$Z_A = z$, $Z_B = \tau z$, $\theta_A = - x_1$, $\theta_B = x_0$.
 \end{example}
 
 \begin{exercise} \label{exc:semiflat-1d-hk} Show that there is a \hk structure on the 
@@ -3006,7 +3010,7 @@ and thus this sum is logarithmically divergent. We
 can remove this divergence by ``subtracting an infinite constant'',
 i.e. we define
 \begin{equation} \label{eq:ooguri-vafa-V}
-  V = \frac{1}{8 \pi^2 \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{8\pi^2 \abs{n}} \right) + C
+  V = \frac{1}{4 \pi \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{8\pi^2 \abs{n}} \right) + C
 \end{equation}
 where $C$ is any constant.
 Now the divergence problem is cured, but we get a 
@@ -3047,10 +3051,11 @@ Let us briefly consider the Gibbons-Hawking metric
 where $V$ is \ti{exactly} given by
 $V^\sf$ of \eqref{eq:ooguri-vafa-V-approx} (i.e. we consider the
 ``approximation'' where we drop the sum in \eqref{eq:V-ooguri-vafa-resummed}.)
-For $\abs{z} \ge \Lambda$
+$V^\sf$ is singular at $z=0$, and
+for $\abs{z} \ge \Lambda$
 we will not have $V > 0$, so the biggest base we can take is 
 \begin{equation}
-U = \{\abs{z} < \Lambda \} \times \R. 
+U = \{0 < \abs{z} < \Lambda \} \times \R. 
 \end{equation}
 The resulting Gibbons-Hawking metric $g^\sf$ is
 invariant under continuous translations 
@@ -3087,7 +3092,7 @@ point of view taken in \cite{Gaiotto:2008cd}.}
 After dividing out by this $\Z$ action we obtain a \hk 
 space $X$, the Ooguri-Vafa manifold. Crucially, the Ooguri-Vafa
 manifold and its \hk structure \ti{do} extend smoothly over $z=0$, since near
-the singularities of $V$ we have the usual behavior
+the point singularities of $V$ we have the usual behavior
 $V \sim \frac{1}{4 \pi r}$ as in \autoref{exa:gibbons-hawking}.
 
 As usual for Gibbons-Hawking spaces, 
@@ -3122,7 +3127,8 @@ What is the map $Z$?
 \begin{exercise} \label{exc:ooguri-vafa-holomorphic-discs} \cite{ovmh} Let $X$ be the Ooguri-Vafa space.
 Show that there is an $I_\zeta$-holomorphic disc in $X$
 with boundary on the torus fiber over $z$, if and 
-only if $\zeta = \pm z / \abs{z}$. (Hint: to see that the disc \ti{does}
+only if $\zeta = \pm \I \frac{z}{\abs{z}}$. 
+(Hint: to see that the disc \ti{does}
 exist, you can construct it directly, along the lines of our 
 earlier constructions of holomorphic spheres in Gibbons-Hawking spaces; 
 to see that it \ti{doesn't} exist,
@@ -3154,7 +3160,7 @@ in \autoref{exa:semiflat-1d-general},
 \begin{equation} \label{eq:Xsf-ooguri-vafa}
   \cX_B^{\sf} = \exp \left(\zeta^{-1} Z_B + \I \chi + \zeta \bar{Z}_B \right),
 \end{equation}
-where \fixme{check factor}
+where
 \begin{equation}
   Z_B = \frac{1}{4 \pi \I} (z \log (z/\Lambda) - z).
 \end{equation}
@@ -3290,15 +3296,46 @@ are Darboux coordinates in the sense of \eqref{eq:hol-symp-ooguri-vafa}.
 These coordinates can be analytically continued beyond their respective
 domains, and on the overlaps the analytic continuations differ by the
 jumps \eqref{eq:ooguri-vafa-cluster-1}, \eqref{eq:ooguri-vafa-cluster-2}.
+In other words, our picture of $X$ is that it is glued together from 
+two patches, each patch 
+canonically mapping to $\C^\times \times \C^\times$ 
+(probably embedded in $\C^\times \times \C^\times$ though I do not
+think this has quite been proven),
+overlapping in a domain with two connected components,
+with the transition functions 
+\eqref{eq:ooguri-vafa-cluster-1}, \eqref{eq:ooguri-vafa-cluster-2}
+on the two components.
+(Strictly speaking this description omits the fiber over $z = 0$;
+the functions $\cX_A$, $\cX_B$ actually do extend over 
+this fiber, but $\cX_B$ can vanish there, so they no longer map
+to $\C^\times \times \C^\times$.)
+
 This kind of description of the space $X$ is reminiscent of a general
 approach for constructing Calabi-Yau manifolds by gluing
-together tori $(\C^\times)^{2n}$, employed by
-Kontsevich-Soibelman, Gross-Siebert, Auroux, Gross-Hacking-Keel.
-In that approach the gluing maps are supposed to be related to
-holomorphic discs on a mirror manifold. In the present example
-the mirror manifold is just $X$ again, and the holomorphic discs
-in question are the ones in \autoref{exc:ooguri-vafa-holomorphic-discs}.
-\fixme{watch out for factors of $\I$}
+together tori $(\C^\times)^{2n}$, employed (in some form) by
+Kontsevich-Soibelman, Gross-Siebert, Auroux, Gross-Hacking-Keel, following
+the ideas of Strominger-Yau-Zaslow.
+In that approach one focuses on a single complex structure on $X$, 
+for which  the torus fibers are special Lagrangian: that means 
+we need some $I_\zeta$ with $\abs{\zeta} = 1$. 
+Let us take structure $I_3$ i.e.
+$\zeta = 1$. The gluing maps are supposed to be related to
+holomorphic discs on a mirror manifold $X^\vee$, which is thought of
+just as a symplectic manifold, but which is also 
+realized as a torus fibration over the same base as $X$. In some sense 
+the locus where the gluing takes place is to be identified with the 
+locus of torus fibers in $X^\vee$ 
+which contain boundaries of holomorphic 
+discs in $X^\vee$. 
+
+In the case of the Ooguri-Vafa space
+the mirror manifold $X^\vee$ is $X$ again with 
+its symplectic structure $\omega_2$, i.e. $\zeta = \I$.
+Then indeed the two gluing maps we just discussed correspond to two
+holomorphic discs in $X^\vee$, namely the ones
+in \autoref{exc:ooguri-vafa-holomorphic-discs}:
+note that these have boundaries on the fibers with $z \in \R$,
+precisely the locus where the discontinuities of $\cX_B(\zeta = 1)$ are.
 
 One of the important features of the Ooguri-Vafa space is that
 it describes the local geometry near singular fibers of more interesting
@@ -3311,10 +3348,10 @@ instead of adding just a \ti{constant} to $V$ we allow something
 more general, replacing \eqref{eq:ooguri-vafa-V}
 by 
 \begin{equation} \label{eq:gen-ooguri-vafa-V}
-  V = \frac{1}{4 \pi \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{4\pi\abs{n}} \right) + f
+  V = \frac{1}{4\pi \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{8\pi^2\abs{n}} \right) + f
 \end{equation}
 where $f$ is any smooth harmonic function which is invariant under the
-shift $x_3 \to x_3 + 1$. All of the constructions
+shift $x_3 \to x_3 + 2 \pi n$. All of the constructions
 in \autoref{exa:ooguri-vafa} then go through as 
 before and give
 a \hk metric which is torus fibered over some disc in the complex plane,
