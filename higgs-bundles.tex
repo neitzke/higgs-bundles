@@ -2989,9 +2989,9 @@ We return to the Gibbons-Hawking
 ansatz, \autoref{exa:gibbons-hawking}. The idea is to make a circle
 bundle with a $\Z$ shift symmetry; then on dividing out by the $\Z$
 action we will get a $T^2$ bundle. The simplest thing to try
-would be to take the 1-dimensional lattice of points \fixme{oops, need to put a 2pi in here}
+would be to take the 1-dimensional lattice of points
 \begin{equation}
-  x_n = (n,0,0) \in \R^3
+  x_n = (2 \pi n,0,0) \in \R^3
 \end{equation}
 and then take $V$ to be
 \begin{equation}
@@ -3000,38 +3000,41 @@ and then take $V$ to be
 However there is a difficulty: for large enough $n$
 we have
 \begin{equation}
-  \frac{1}{4 \pi \norm{x-x_n}} \approx \frac{1}{4 \pi \abs{n}}
+  \frac{1}{4 \pi \norm{x-x_n}} \approx \frac{1}{8 \pi^2 \abs{n}}
 \end{equation}
 and thus this sum is logarithmically divergent. We
 can remove this divergence by ``subtracting an infinite constant'',
 i.e. we define
 \begin{equation} \label{eq:ooguri-vafa-V}
-  V = \frac{1}{4 \pi \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{4\pi\abs{n}} \right) + C
+  V = \frac{1}{8 \pi^2 \norm{x}} + \sum_{n \neq 0 \in \Z} \left( \frac{1}{4\pi\norm{x-x_n}} - \frac{1}{8\pi^2 \abs{n}} \right) + C
 \end{equation}
 where $C$ is any constant.
-Now the divergence problem is cured, but at the price of
-losing the positivity when we are far from the lattice.
+Now the divergence problem is cured, but we get a 
+new problem: because we have
+introduced some minus signs it is not clear that $V$ 
+is positive, and indeed $V$ is \ti{not} positive when
+$x$ is far from the lattice of singularities.
 To get an idea of the difficulty, recall the 
 coordinate $z = z_1 = x_2 + \I x_3$,
 and consider the limit of large $\abs{z}$: here
 we may replace the sum of point sources $\sum \delta(x-x_n)$
-by a continuous string source $\delta(z) \de x_1$, where now
+by a continuous string source $\frac{1}{2\pi} \delta(z) \de x_1$, where now
 $\delta$ denotes the \ti{two}-dimensional delta function.
 \insfig{higgs-bundles-11}{1.1}
-The resulting $V$ obeys a two-dimensional Laplace equation,
+Such a source would lead to a two-dimensional Laplace equation,
 \begin{equation}
-  \Delta V = -\delta(z).
+  \Delta V = -\frac{1}{2\pi}\delta(z).
 \end{equation} 
-Thus for large $\abs{z}$ (much larger than $1$) we expect
+Thus for $\abs{z} \gg 1$ we expect
 \begin{equation}
-  V \approx -\frac{1}{2\pi} \log \abs{z} + C' + C
+  V \approx -\frac{1}{4\pi^2} \log \abs{z} + C' + C
 \end{equation}
 for some constant $C'$.
 This expectation can be made rigorous using the Poisson summation formula, which gives in fact
 \begin{equation} \label{eq:V-ooguri-vafa-resummed}
-  V = -\frac{1}{2\pi} \log \abs{z/\Lambda} + \frac{1}{\pi} \sum_{n=1}^\infty \cos (2 \pi n x_1) K_0(2 \pi n \abs{z})
+  V = -\frac{1}{4\pi^2} \log \abs{z/\Lambda} + \frac{1}{2\pi^2} \sum_{n=1}^\infty \cos (n x_1) K_0(n \abs{z})
 \end{equation}
-where $\Lambda = 2 e^{-\gamma+2 \pi C}$, $\gamma$ is Euler's constant,
+where $\Lambda = 4 \pi e^{-\gamma+2 \pi C}$, $\gamma$ is Euler's constant,
 and $K_0$ is the modified Bessel function. This function has asymptotics
 $K_0(M) \sim \sqrt\frac{\pi}{2M} e^{-M}$, so each term in the 
 sum is exponentially small for large $\abs{z}$.
@@ -3054,7 +3057,7 @@ invariant under continuous translations
 in the $x_1$ direction, $x_1 \to x_1 + \alpha$ for any $\alpha \in \R$. 
 In particular, it is invariant under the discrete subgroup
 $\Z \subset \R$
-acting by $x_1 \to x_1 + n$.
+acting by $x_1 \to x_1 + 2 \pi n$.
 After dividing out by this action $g^\sf$ descends to
 one of the semiflat metrics of \autoref{exa:semiflat-1d-general}, torus
 fibered over the punctured disc $0 < \abs{z} < \Lambda$:
@@ -3071,14 +3074,14 @@ At small $\abs{z}$, though, the behavior of $g$ is much better than that
 of $g^\sf$: it is smooth. 
 $g$ is not invariant under continuous translations in 
 the $x_1$ direction, but does still have the discrete $\Z$ 
-symmetry $x_1 \to x_1 + n$, preserving
+symmetry $x_1 \to x_1 + 2 \pi n$, preserving
 the \hk structure.\footnote{There is a subtle choice here:
 the $\Z$ action on the base has to be lifted to the total space
 of the $U(1)$ bundle $X$, and there are a circle's worth of ways
 to do this. Thus the Ooguri-Vafa metric depends on two parameters:
 the real parameter $C$ in \eqref{eq:ooguri-vafa-V} --- which we have 
 absorbed into $\Lambda$ --- and also a circle-valued
-parameter controlling this gluing. It is actually natural to combine
+parameter controlling this choice. It is actually natural to combine
 these into a single \ti{complex} parameter $\Lambda$; this is the
 point of view taken in \cite{Gaiotto:2008cd}.}
 After dividing out by this $\Z$ action we obtain a \hk 
@@ -3097,6 +3100,13 @@ which looks locally like the locus $\{xy=0\} \subset \C^2$.)
 \end{example}
 
 \insfig{higgs-bundles-8}{0.92}
+
+\begin{exercise} Let $X$ be the Gibbons-Hawking
+\hk manifold with $V = V^\sf$ given by \eqref{eq:ooguri-vafa-V-approx}.
+Write a formula for the connection form $\Theta$ relative to 
+some trivialization of $X$ as a $U(1)$ bundle away from the
+line $z = 0$.
+\end{exercise}
 
 \begin{exercise} \label{exc:ooguri-vafa-semiflat} Let $X$ be the Gibbons-Hawking
 \hk manifold with $V = V^\sf$ given by \eqref{eq:ooguri-vafa-V-approx}.
@@ -3142,15 +3152,15 @@ Ooguri-Vafa space with $V = V^\sf$,
 we could use the function written 
 in \autoref{exa:semiflat-1d-general},
 \begin{equation} \label{eq:Xsf-ooguri-vafa}
-  \cX_B^{\sf} = \exp \left(\zeta^{-1} Z_2 + \I \chi + \zeta \bar{Z}_2 \right),
+  \cX_B^{\sf} = \exp \left(\zeta^{-1} Z_B + \I \chi + \zeta \bar{Z}_B \right),
 \end{equation}
 where \fixme{check factor}
 \begin{equation}
-  Z_2 = \frac{1}{4 \pi \I} (z \log (z/\Lambda) - z).
+  Z_B = \frac{1}{4 \pi \I} (z \log (z/\Lambda) - z).
 \end{equation}
 The formula \eqref{eq:Xsf-ooguri-vafa} does not define a global
 function on $X$, for two reasons: first, $\chi$ is only a \ti{local} fiber
-coordinate; second, $Z_2$ is multivalued because of the logarithm.
+coordinate; second, $Z_B$ is multivalued because of the logarithm.
 We choose the principal branch of the logarithm, so that there
 is a cut at $z / \Lambda \in \R_-$, and also take a trivialization
 of the circle bundle defining $X$ on the complement of this cut.
@@ -3158,7 +3168,8 @@ It is possible to choose this trivialization in such a way that
 when we cross the cut we get $\chi \to \chi + x_1$.
 With these choices made, \eqref{eq:Xsf-ooguri-vafa} defines
 an honest function on the complement of the cut, and crossing
-the cut leads to the jumps $Z_2 \to Z_2 + z$ and $\chi \to \chi + x_1$,
+the cut leads to the jumps $Z_B \to Z_B + \frac{z}{2}$ 
+and $\chi \to \chi - x_1$,
 which combine to give $\cX_B^\sf \to \cX_B^\sf \cX_A$.
 The fact that the jump of $\cX_B^\sf$ is by multiplication with a
 \ti{holomorphic} function is to be expected, since $\cX_B^\sf$
