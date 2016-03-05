@@ -2735,9 +2735,12 @@ of \autoref{exa:multi-eguchi-hanson}.
 
 We have commented before that in complex structure $I_1$ there
 is a holomorphic function $z_1 = x_2 + \I x_3$.
-Now we want to extend this function by adding $\zeta$ dependence,
-so that it becomes a holomorphic function $\eta$ on $\cZ$.
-One way of thinking of it is:
+Of course we can get a similar function in any complex structure
+$I_\zeta$.
+Now we want to choose the normalizations of these functions
+in such a way that they vary holomorphically with $\zeta$, and thus give
+a holomorphic function $\eta$ on $\cZ$.
+One way of thinking about this is:
 for each $\zeta$ we get a complex coordinate by considering
 the \ti{holomorphic moment map} of the $U(1)$ action 
 with respect to $\Omega(\zeta)$. Concretely this gives
@@ -2986,7 +2989,7 @@ We return to the Gibbons-Hawking
 ansatz, \autoref{exa:gibbons-hawking}. The idea is to make a circle
 bundle with a $\Z$ shift symmetry; then on dividing out by the $\Z$
 action we will get a $T^2$ bundle. The simplest thing to try
-would be to take the 1-dimensional lattice of points
+would be to take the 1-dimensional lattice of points \fixme{oops, need to put a 2pi in here}
 \begin{equation}
   x_n = (n,0,0) \in \R^3
 \end{equation}
@@ -3096,7 +3099,7 @@ which looks locally like the locus $\{xy=0\} \subset \C^2$.)
 \insfig{higgs-bundles-8}{0.92}
 
 \begin{exercise} \label{exc:ooguri-vafa-semiflat} Let $X$ be the Gibbons-Hawking
-\hk manifold with $V$ given by \eqref{eq:ooguri-vafa-V-approx}.
+\hk manifold with $V = V^\sf$ given by \eqref{eq:ooguri-vafa-V-approx}.
 Verify that $X / \Z$ is an example of a semiflat metric as in 
 \autoref{exa:semiflat-1d-general}, where the base $\cB$ is the 
 punctured disc $0 < \abs{z} < \Lambda$, and $\Gamma$ is a rank $2$
@@ -3122,23 +3125,28 @@ a disc would have to vanish.)
 \end{exercise}
 
 \begin{example}[Twistor description of Ooguri-Vafa space]
+Let $X$ be the Ooguri-Vafa space as in \autoref{exa:ooguri-vafa}.
 As with our previous examples, we may ask: what are the holomorphic
 functions on $X$ in complex structure $I_\zeta$?
 One global holomorphic function is easy to construct: it is
 \begin{equation}
-  \cX_1 = \exp \left(\zeta^{-1} z + \I x_1 + \zeta \bar{z}\right).
+  \cX_A = \exp \left(\zeta^{-1} \frac{z}{2} - \I x_1 + \zeta \frac{\bar{z}}{2}\right).
 \end{equation}
+This is the same formula \eqref{eq:eta-GH} we have encountered
+earlier, except that we have exponentiated it, to make it well defined
+on the quotient by the $\Z$ action $x_1 \to x_1 + 2 \pi n$.
+
 To get a second coordinate is considerably more difficult.
-If we wanted to get a function on the \ti{approximate}
+If we wanted to get a holomorphic function on the \ti{approximate}
 Ooguri-Vafa space with $V = V^\sf$, 
 we could use the function written 
 in \autoref{exa:semiflat-1d-general},
 \begin{equation} \label{eq:Xsf-ooguri-vafa}
-  \cX_2^{\sf} = \exp \left(\zeta^{-1} Z_2 + \I \chi + \zeta \bar{Z}_2 \right),
+  \cX_B^{\sf} = \exp \left(\zeta^{-1} Z_2 + \I \chi + \zeta \bar{Z}_2 \right),
 \end{equation}
-where
+where \fixme{check factor}
 \begin{equation}
-  Z_2 = \frac{1}{2 \pi \I} (z \log (z/\Lambda) - z).
+  Z_2 = \frac{1}{4 \pi \I} (z \log (z/\Lambda) - z).
 \end{equation}
 The formula \eqref{eq:Xsf-ooguri-vafa} does not define a global
 function on $X$, for two reasons: first, $\chi$ is only a \ti{local} fiber
@@ -3151,52 +3159,57 @@ when we cross the cut we get $\chi \to \chi + x_1$.
 With these choices made, \eqref{eq:Xsf-ooguri-vafa} defines
 an honest function on the complement of the cut, and crossing
 the cut leads to the jumps $Z_2 \to Z_2 + z$ and $\chi \to \chi + x_1$,
-which combine to give $\cX_2^\sf \to \cX_2^\sf \cX_1$.
-(Compare the result of \autoref{exc:ooguri-vafa-semiflat}.)
+which combine to give $\cX_B^\sf \to \cX_B^\sf \cX_A$.
+The fact that the jump of $\cX_B^\sf$ is by multiplication with a
+\ti{holomorphic} function is to be expected, since $\cX_B^\sf$
+is itself holomorphic on both sides of the cut.
+(Compare the result of \autoref{exc:ooguri-vafa-semiflat}, where
+the same situation is described in a more global way, by introducing
+a local system with nontrivial monodromy instead of working
+with an explicit branch cut.)
 
-The function $\cX_2^\sf$ is \ti{not} holomorphic on the
-full Ooguri-Vafa space, with the full $V$.
+Changing from $V^\sf$ to the full $V$
+changes the Cauchy-Riemann equations, in such a way 
+that the function $\cX_B^\sf$ is \ti{not} holomorphic anymore
+(though $\cX_A$ still is.)
 However it turns out that we can
-find a true holomorphic function $\cX_2$ which has the same \ti{asymptotic}
-behavior as $\cX_2^\sf$ as we take $\zeta \to 0$ or $\zeta\to\infty$.
-Namely we write
+find a true holomorphic function $\cX_B$ which has the same \ti{asymptotic}
+behavior as $\cX_B^\sf$ as we take $\zeta \to 0$ or $\zeta\to\infty$.
+
+The formula will look slightly bizarre at first exposure:
+we write
 \begin{equation}
-  \cX_2 = \cX_2^{\sf} \cX_2^{\inst}
+  \cX_B = \cX_B^{\sf} \cX_B^{\inst}
 \end{equation}
 where the ``correction'' is
 \begin{align} \label{eq:Xinst-ooguri-vafa}
-  \cX_2^\inst(\zeta) = \exp & \left[ \frac{\I}{4 \pi} \int_{\ell_+} \frac{\de \zeta'}{\zeta'} \frac{\zeta' + \zeta}{\zeta' - \zeta} \log(1 - \cX_1(\zeta')) \right. \\
-  - & \left. \frac{\I}{4 \pi} \int_{\ell_-} \frac{\de \zeta'}{\zeta'} \frac{\zeta' + \zeta}{\zeta' - \zeta} \log(1 - \cX_1(\zeta')^{-1}) \right],
+  \cX_B^\inst(\zeta) = \exp & \left[ \frac{\I}{4 \pi} \int_{\ell_+} \frac{\de \zeta'}{\zeta'} \frac{\zeta' + \zeta}{\zeta' - \zeta} \log(1 - \cX_A(\zeta')) \right. \\
+  - & \left. \frac{\I}{4 \pi} \int_{\ell_-} \frac{\de \zeta'}{\zeta'} \frac{\zeta' + \zeta}{\zeta' - \zeta} \log(1 - \cX_A(\zeta')^{-1}) \right],
 \end{align}
 with 
 \begin{equation}
   \ell_\pm = \{ \pm z/\zeta' \in \R_- \}.
 \end{equation}
 Note that the integrals indeed converge, because of our careful choice
-of the integration contours.
+of the integration contours: along these contours $\cX_A(\zeta')$ is 
+exponentially decaying, so that $\log(1 - \cX_A(\zeta'))$ is also
+exponentially decaying.
 
-What is surprising here is that $\cX_2$ given by this strange formula
+What is surprising here is that $\cX_B$
 is actually an $I_\zeta$-holomorphic function on $X$.
 To see that this is indeed true,
-one can compute directly that the
-holomorphic symplectic form \eqref{eq:hol-symp-family}
+one can compute directly (\autoref{exc:ov-check-symplectic}) 
+that the holomorphic symplectic form \eqref{eq:hol-symp-family}
 is given by
 \begin{equation} \label{eq:hol-symp-ooguri-vafa}
-  \Omega(\zeta) = \I \frac{\de \cX_1(\zeta) \wedge \de \cX_2(\zeta)}{\cX_1(\zeta) \cX_2(\zeta)}.
+  \Omega(\zeta) = \I \frac{\de \cX_A(\zeta) \wedge \de \cX_B(\zeta)}{\cX_A(\zeta) \cX_B(\zeta)}.
 \end{equation}
-This computation can be found in \cite{Gaiotto:2008cd}, or try it yourself ---
-the idea is that even though the integrals \eqref{eq:Xinst-ooguri-vafa} cannot
-be evaluated in closed form, once we plug into \eqref{eq:hol-symp-ooguri-vafa}
-and Fourier expand in $e^{\I x_1}$ we obtain integrals which \ti{can} be done,
-producing Bessel functions which eventually get matched to those appearing
-in \eqref{eq:V-ooguri-vafa-resummed}.
-
-A tricky aspect of this story is that the function $\cX_2$ is 
+A tricky aspect of this story is that the function $\cX_B$ is 
 actually only \ti{piecewise} holomorphic. Indeed, the integrals
 in \eqref{eq:Xinst-ooguri-vafa} are not defined when $\zeta \in \ell_\pm$.
 One can however see that the \ti{limits} from the two sides exist, 
 \begin{equation}
-  \cX_2^\pm(\zeta) = \lim_{\eps \to 0^\pm} \cX_2(\zeta \e^{\I \eps}),
+  \cX_B^\pm(\zeta) = \lim_{\eps \to 0^\pm} \cX_B(\zeta \e^{\I \eps}),
 \end{equation}
 by deforming the contour of integration so that it lies along
 $\ell_\pm$ except for a little ``detour'' around $\zeta$.
@@ -3205,28 +3218,63 @@ Thus the two limits differ by the integral around the pole
 at $\zeta = \zeta'$, which can be evaluated by the residue theorem,
 giving the jump formulas
 \begin{align}
-  \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta))^{-1} \text{ for } \zeta \in \ell_+, \label{eq:ooguri-vafa-cluster-1} \\
-  \cX_2^+(\zeta) &= \cX_2^-(\zeta)(1 - \cX_1(\zeta)^{-1}) \text{ for } \zeta \in \ell_-. \label{eq:ooguri-vafa-cluster-2}
+  \cX_B^+(\zeta) &= \cX_B^-(\zeta)(1 - \cX_A(\zeta))^{-1} \text{ for } \zeta \in \ell_+, \label{eq:ooguri-vafa-cluster-1} \\
+  \cX_B^+(\zeta) &= \cX_B^-(\zeta)(1 - \cX_A(\zeta)^{-1}) \text{ for } \zeta \in \ell_-. \label{eq:ooguri-vafa-cluster-2}
 \end{align}
-Fortunately the holomorphic symplectic form \eqref{eq:hol-symp-ooguri-vafa} 
-is still smooth --- 
-thus, despite the fact that $\cX_2$ has this
-discontinuity, the pair of holomorphic functions 
-$(\cX_1, \cX_2)$ is perfectly good for 
-the purpose of constructing the twistor space.
 
-$\cX_2^\inst$ is bounded as $\zeta \to 0$ and $\zeta \to \infty$.
-Thus the asymptotics of $\cX_2$ are essentially the 
-same as those of $\cX_2^\sf$, as we wanted.
+In light of this discontinuity the formula  \eqref{eq:hol-symp-ooguri-vafa}
+might seem strange: how can it be that $\Omega(\zeta)$ given by this 
+formula is still well defined and smooth, when $\cX_B(\zeta)$ is not?
+The point is that the jumps \eqref{eq:ooguri-vafa-cluster-1}, 
+\eqref{eq:ooguri-vafa-cluster-2} are actually \ti{symplectomorphisms}.
+Indeed, writing $x = \log \cX_A$ and $y = \log \cX_B$ to 
+simplify notation a bit, these jumps are both of the form
+\begin{equation}
+  (x,y) \mapsto (x,y + f(x))
+\end{equation}
+and of course the form
+\begin{equation}
+  \Omega = \de x \wedge \de y
+\end{equation}
+is invariant under this transformation. Thus, if we have a pair
+of functions $(x,y)$ which are smooth except for 
+a discontinuity of this sort at some codimension-1 wall,
+$\Omega$ is perfectly smooth (or more precisely it admits a
+smooth extension over the wall).
+
+$\cX_B^\inst$ is bounded as $\zeta \to 0$ and $\zeta \to \infty$.
+In this sense the asymptotics of $\cX_B$ are essentially the 
+same as those of $\cX_B^\sf$, as we claimed.
 
 \end{example}
+
+\begin{exercise} \label{exc:ov-check-symplectic} 
+Verify the formula \eqref{eq:hol-symp-ooguri-vafa}.
+This computation is a slight adaptation of one in 
+\cite{Gaiotto:2008cd}, but it may be more interesting to try
+it yourself; the idea is that even though the integrals
+\eqref{eq:Xinst-ooguri-vafa} cannot
+be evaluated in closed form, once we plug into \eqref{eq:hol-symp-ooguri-vafa}
+and Fourier expand in $e^{\I x_1}$ under the integral sign
+we obtain integrals which \ti{can} be done,
+producing Bessel functions which eventually get matched to those appearing
+in \eqref{eq:V-ooguri-vafa-resummed}.
+The key integral identity needed is
+\begin{equation} \label{eq:bessel-integral-identity}
+ \int_{0}^\infty \frac{\de t}{t} t^n \exp \left( -M (t^{-1} + t) \right) = 2 K_{n}(2 M).
+\end{equation}
+
+\end{exercise}
+
+\begin{exercise} Verify that $\cX_B^\inst$ is bounded as $\zeta \to 0$ and $\zeta \to \infty$.
+\end{exercise}
 
 
 Let us briefly comment on the relation of this example to mirror symmetry.
 For any fixed $\zeta$, the space $(X,I_\zeta)$
 has two open domains $\im(z / \zeta) > 0$ and $\im(z / \zeta) < 0$. 
 In each of these domains
-we have a pair of holomorphic coordinates $(\cX_1, \cX_2)$, which moreover
+we have a pair of holomorphic coordinates $(\cX_A, \cX_B)$, which moreover
 are Darboux coordinates in the sense of \eqref{eq:hol-symp-ooguri-vafa}.
 These coordinates can be analytically continued beyond their respective
 domains, and on the overlaps the analytic continuations differ by the
