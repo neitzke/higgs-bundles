@@ -3229,10 +3229,11 @@ One can however see that the \ti{limits} from the two sides exist,
   \cX_B^\pm(\zeta) = \lim_{\eps \to 0^\pm} \cX_B(\zeta \e^{\I \eps}),
 \end{equation}
 by deforming the contour of integration so that it lies along
-$\ell_\pm$ except for a little ``detour'' around $\zeta$.
+$\ell_\pm$ except for a little semicircular detour around the
+pole of the integrand at $\zeta' = \zeta$.
 \insfig{higgs-bundles-9}{0.8}
 Thus the two limits differ by the integral around the pole
-at $\zeta = \zeta'$, which can be evaluated by the residue theorem,
+at $\zeta' = \zeta$, which can be evaluated by the residue theorem,
 giving the jump formulas
 \begin{align}
   \cX_B^+(\zeta) &= \cX_B^-(\zeta)(1 - \cX_A(\zeta))^{-1} \text{ for } \zeta \in \ell_+, \label{eq:ooguri-vafa-cluster-1} \\
@@ -3721,7 +3722,7 @@ i.e. (again ignoring issues of stability)
   \cZ(X \hkq G) = \cZ(X) \kq G_\C.
 \end{equation}
 
-\begin{example}[Hyperkahler quotient of $\bbH$ by $U(1)$]
+\begin{example}[Hyperkahler quotient of $\bbH$ by $U(1)$] \label{exa:hk-quotients-of-H}
 Suppose $X = \bbH$ with its standard \hk structure, and the standard
 $U(1) \subset SU(2)_R$ action from \autoref{exc:R4-moment-maps}.
 It follows from the result of \autoref{exc:R4-moment-maps}
@@ -3828,8 +3829,9 @@ In structure $I_1$, $X$ is naturally identified with
 $\C^{2n}$ with coordinates $(z_1, w_1, \dots, z_{n}, w_{n})$.
 It has a triholomorphic $U(1)^{n}$ action (coming from $SU(2)_R$ action on 
 each factor), acting by $z_i \to e^{\I \alpha_i} z_i$,
-$w_i \to e^{-\I \alpha_i} w_i$, which has the standard moment map 
-$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n}$.
+$w_i \to e^{-\I \alpha_i} w_i$, which has a moment map 
+$X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n}$,
+just given by $n$ copies of the one in \autoref{exa:hk-quotients-of-H}.
 % , given by
 % \begin{align}
 %   \mu_{i,1} &= \half (\abs{w_i}^2 - \abs{z_i}^2), \\
@@ -3838,7 +3840,7 @@ $X \to \R^3 \otimes_\R \fu(1)^{n+1} \simeq \R^{3n}$.
 Now consider the ``center of mass'' subgroup $G \subset U(1)^{n}$
 given by the condition $\prod_i g_i = 1$.
 We have $G \simeq U(1)^{n-1}$.
-Choose a tuple $x = (x_1, \dots, x_n) \in \R^3$. The tuple
+Choose a tuple $x = (x_1, \dots, x_n) \in \R^{3n}$. The tuple
 $(x_1, \dots, x_n)$ gives an element of $\fg^*$.
 Now we consider the \hk quotient
 \begin{equation}
@@ -3848,14 +3850,52 @@ We claim this quotient is a multi-Eguchi-Hanson space
 as in \autoref{exa:multi-eguchi-hanson}, with $n$ singularities
 at the positions $x_i$.
 
-To describe this we take the quotient at the level of the twistor space.
-Beginning from the $\cO(1)$-valued coordinates $z_i$, $w_i$
-on $\bbH^n$, the desired coordinates are the $(\C^\times)^n$-invariant combinations $u = \prod z_i$ and $v = \prod w_i$ plus the holomorphic moment 
-map $\eta$ for the surviving diagonal $\C^\times$ action, and the moment 
-map conditions imply
-$uv = \prod \eta - \eta_i$ as desired.
+To describe this we study the quotient at the level of the 
+twistor space.
+So we begin with the twistor space of $\bbH^n$, which is 
+$\cO(1)^{\oplus 2n}$, with 
+$\cO(1)$-valued coordinates $z_i$, $w_i$.
+The action of $G$ here complexifies nicely to an
+action of $G_\C = (\C^\times)^n$.
+The moment map for the $i$-th $\C^\times$ action is
+$-\I w_i z_i$. Thus in taking the symplectic 
+quotient by $G_\C$ we first impose the moment map 
+conditions
+\begin{equation} \label{eq:eh-quotient-moment-map-conditions}
+  -\I (w_1 z_1 - w_i z_i) = \eta_1 - \eta_i
+\end{equation}
+for all $i$, where $\eta_i$ is the section of
+$\cO(2)$ corresponding to the point $x_i \in \R^3$.
 
-\fixme{explain how?}
+We still need to divide out by the $G_\C$-action.
+To write the result in a compact way,
+we define an $\cO(2)$-valued function by
+\begin{equation} \label{eq:eh-quotient-overall-moment-map}
+  \eta = \I w_1 z_1 + \eta_1.
+\end{equation}
+This is a natural object to consider: it is
+a moment map for the remaining
+$\C^\times$
+action, for which a representative generator is 
+$w_1 \to e^{\I \alpha} w_1$, $z_1 \to e^{-\I \alpha} z_1$.
+Now combining \eqref{eq:eh-quotient-moment-map-conditions}
+and \eqref{eq:eh-quotient-overall-moment-map} we get
+\begin{equation} \label{eq:eh-quotient-moment-cond-simplified}
+  \I w_i z_i = \eta - \eta_i.
+\end{equation}
+Finally defining the $G_\C$-invariant coordinates 
+$u = \prod_{i=1}^n w_i$ and
+$v = \prod_{i=1}^n (\I z_i)$,
+and taking the product over all $i$ in 
+\eqref{eq:eh-quotient-moment-cond-simplified}, we get
+\begin{equation}
+  u v = \prod_{i=1}^n (\eta - \eta_i).
+\end{equation}
+We have seen this equation before: it is obeyed
+by the functions $u,v,\eta$ on the twistor space
+for a multi-Eguchi-Hanson space 
+(\autoref{exa:multi-eguchi-hanson-twistor}).
+\fixme{still need to show the space is literally equal}
 
 \end{example}
 
