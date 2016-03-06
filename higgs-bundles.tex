@@ -4080,6 +4080,76 @@ for a multi-Eguchi-Hanson space
 \end{example}
 
 
+\section{Transition to infinite dimensions}
+
+Although our main eventual interest is in finite-dimensional
+\hk spaces, the way we construct them will involve a
+detour into infinite dimensions: namely we will divide
+infinite-dimensional vector spaces by infinite-dimensional
+groups, in such a way that the quotient is finite-dimensional.
+
+In this section, to get prepared, we briefly describe 
+the necessary modifications of some
+of our constructions to the infinite-dimensional setting.
+
+\begin{defn}[Banach space] A \ti{Banach space} is 
+a vector space $V$ over $\R$ or $\C$, equipped with a 
+topology in which $V$ is complete, and such that there
+exists a norm on $V$ inducing the topology.
+\end{defn}
+
+Whenever necessary we will \ti{choose} a particular norm inducing
+the topology. One has to check that all of our statements
+which use a norm are actually independent of the choice of norm.
+
+\begin{defn}[Norm of a linear functional] Say $V$ is a Banach 
+space over $\R$ (resp. $\C$), and we have a 
+linear map $\eta: V \to \R$ (resp. $\C$). Then we define
+\begin{equation}
+  \norm{\eta} = \sup_{v \in V: \norm{v}=1} \abs{\eta(v)}.
+\end{equation}
+We say $\eta$ is \ti{bounded} if $\norm{\eta} < \infty$.
+\end{defn}
+
+Unlike the finite-dimensional situation, even linear maps
+on Banach spaces need not be continuous:
+
+\begin{prop}[Continuous = bounded] If $V$ is a Banach space
+over $\R$ (resp. $\C$), a linear map $\eta: V \to \R$ 
+(resp. $\C$) is continuous if and only if it is bounded.
+\end{prop}
+
+\begin{defn}[Dual of Banach space] If $V$ is a Banach space
+over $\R$ (resp. $\C$),
+$V^*$ is the space of all continuous linear maps $V \to \R$ 
+(resp. $\C$). $V^*$ is a Banach space.
+\end{defn}
+
+\begin{defn}[Nondegenerate $2$-form]
+Suppose $V$ is a Banach space.
+We say an antisymmetric bilinear pairing 
+$\omega: V \times V \to \R$ is a \ti{nondegenerate $2$-form}
+if it is continuous in each factor separately and the map
+\begin{align}
+  V &\to V^* \\
+  v &\mapsto \iota_v \omega = \omega(v,\cdot)
+\end{align}
+is an injection.
+\end{defn}
+
+Some authors refer to this as a \ti{weakly} nondegenerate
+form, reserving ``nondenegerate'' for the case when
+$v \mapsto \iota_v \omega$ is a bijection, not only an injection.
+
+\begin{defn}[Banach manifold] A \ti{Banach manifold} is
+\fixme{...}
+\end{defn}
+
+From now on in this section let $X$ be a Banach manifold.
+
+\fixme{...}
+
+
 \section{Moduli of bundles}
 
 From now on we fix a compact Riemann surface $C$, with 
