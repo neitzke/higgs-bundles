@@ -222,6 +222,9 @@
 \newcommand{\vol}{\mathrm{vol}}
 \renewcommand{\sf}{\mathrm{sf}}
 \newcommand{\inst}{\mathrm{inst}}
+\newcommand{\dR}{\mathrm{dR}}
+\newcommand{\closed}{\mathrm{closed}}
+\newcommand{\exact}{\mathrm{exact}}
 
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lVert#1\rVert}
@@ -1020,9 +1023,157 @@ a subgroup isomorphic to $U(n)$.
 \end{prop}
 
 
+\subsection{Hodge theory}
+
+Here we recall the basic statements of (abelian) Hodge theory.
+\fixme{refs}
+
+\begin{defn}[de Rham cohomology] \label{def:de-Rham}
+Suppose $X$ is any manifold. Then we define
+\begin{equation}
+  H^{k}_{\dR}(X) = \frac{\im \de \cap \Omega^k(X)}{\ker \de \cap \Omega^k(X)}.
+\end{equation}
+\end{defn}
+
+\begin{thm}[de Rham theorem for compact manifolds]
+If $X$ is compact, then there is a canonical isomorphism 
+\begin{equation}
+  H^k_\dR(X) \simeq H^k(X,\R).
+\end{equation}
+\end{thm}
+
+\begin{defn}[Formal adjoint of $\de$]
+If $X$ is a Riemannian manifold of dimension $n$,
+the formal adjoint of $\de$
+is the operator 
+\begin{equation}
+  \de^*: \Omega^{k}(X) \to \Omega^{k-1}(X)
+\end{equation}
+given by
+\begin{equation}
+  \de^* = (-1)^{n(k+1)+1} \star \de \star.
+\end{equation}
+\end{defn}
+
+If $X$ is a compact Riemannian manifold, we have
+the $L^2$ pairing on $\Omega^*(X)$ given by
+\begin{equation}
+  \IP{\alpha,\beta} = \int_X \IP{\alpha(x),\beta(x)} \, \de vol_X = \int_X \alpha \wedge \star \beta.
+\end{equation}
+
+\begin{lem}[Formal adjoint is actual adjoint on compact manifold]
+If $X$ is a compact Riemannian manifold, $\de^*$ is the actual adjoint
+with respect to the $L^2$ pairing, i.e.
+\begin{equation}
+  \IP{\de^* \alpha,\beta} = \IP{\alpha,\de \beta}.
+\end{equation}
+\end{lem}
+
+\begin{defn}[Laplace operator on Riemannian manifold]
+If $X$ is a Riemannian manifold, we define the form Laplacian
+\begin{equation}
+  \Delta: \Omega^k(X) \to \Omega^k(X)
+\end{equation}
+by
+\begin{equation}
+  \Delta = \de \de^* + \de^* \de.
+\end{equation}
+\end{defn}
+
+\begin{defn}[Harmonic forms]
+If $X$ is a Riemannian manifold, we define the space of
+\ti{harmonic} forms as
+\begin{equation}
+  \cH(X) = \ker \Delta.
+\end{equation}
+It decomposes as $\cH(X) = \bigoplus_{k=0}^n \cH^k(X)$,
+where $\cH^k(X) = \cH(X) \cap \Omega^k(X)$.
+\end{defn}
+
+\begin{prop}[Poincare duality for harmonic forms] \label{prop:poincare-duality}
+Let $X$ be a Riemannian manifold of dimension $n$. 
+The Hodge star gives an isomorphism
+\begin{equation}
+  \star: \cH^k(X) \to \cH^{n-k}(X).
+\end{equation}
+\end{prop}
+
+\begin{thm}[Abelian Hodge theory for compact Riemannian manifolds] 
+\label{thm:abelian-hodge-riemannian}
+Let $X$ be a compact Riemannian manifold. Then:
+\begin{itemize}
+\item $\cH(X) = \ker \de \cap \ker \de^*$.
+\item For any class
+$[\alpha] \in H^k_\dR(X)$, there exists a unique harmonic
+representative, $\alpha' \in [\alpha] \cap \cH^k(X)$.
+\end{itemize}
+\end{thm}
+
+\begin{example}[Harmonic forms of degree $0$ or $n$] \label{exa:harmonic-forms-degree-0n}
+If $X$ is any compact Riemannian manifold of dimension $n$,
+then \autoref{thm:abelian-hodge-riemannian} says 
+$\cH^0(X) = \ker \de$, i.e. the only harmonic functions on a 
+compact manifold are constants. Then using 
+\autoref{prop:poincare-duality} we get dually that 
+$\cH^n(X)$ consists of all scalar multiples of the 
+Riemannian volume form on $X$.
+\end{example}
+
+\begin{defn}[Dolbeault cohomology] \label{def:dolbeault}
+Let $X$ be a complex manifold. Then we define
+\begin{equation}
+  H^{p,q}_{\bar\partial}(X) = \frac{\im \bar\partial \cap \Omega^{p,q}(X)}{\ker \bar\partial \cap \Omega^{p,q}(X)}.
+\end{equation}
+\end{defn}
+
+\begin{defn}[Formal adjoints of $\partial$, $\bar\partial$]
+If $X$ is a complex manifold, the formal adjoints of
+$\partial$ and $\bar\partial$ are 
+\begin{equation}
+  \partial^*: \Omega^{p,q}(X) \to \Omega^{p-1,q}(X), \qquad \bar\partial^*: \Omega^{p,q}(X) \to \Omega^{p,q-1}(X)
+\end{equation}
+given by
+\begin{equation}
+\partial^* = - \star \bar\partial \star, \qquad \bar\partial^* = - \star \partial \star.
+\end{equation}
+\end{defn}
+
+\begin{thm}[Abelian Hodge theorem for compact \kahler manifolds] \label{thm:abelian-hodge-kahler}
+Let $X$ be a compact \kahler manifold of complex dimension $n$. Then:
+\begin{itemize}
+  \item $\cH_\C(X) = \ker \bar\partial \cap \ker \bar\partial^* = \ker \partial \cap \ker \partial^*$.
+  \item If we define
+  \begin{equation}
+    \cH^{p,q}(X) = \cH_\C(X) \cap \Omega^{p,q}(X)
+  \end{equation}
+  then
+  \begin{equation}
+    \cH_\C(X) = \bigoplus_{p,q = 0}^n \cH^{p,q}(X).
+  \end{equation}
+  \item For any class $[\alpha] \in H^{p,q}_{\bar\partial}(X)$,
+  there exists a unique harmonic representative, $\alpha' \in [\alpha] \cap \cH^{p,q}(X)$.
+\end{itemize}
+\end{thm}
+
+\begin{lem}[$\partial\bar\partial$-lemma] \label{lem:ddbar-lemma}
+Suppose $X$ is a compact \kahler manifold, $\alpha \in \Omega^{p,q}(X)$
+and $\de \alpha = 0$. Then the following are equivalent:
+\begin{itemize}
+  \item $\alpha \in \im \de$,
+  \item $\alpha \in \im \partial$,
+  \item $\alpha \in \im \bar\partial$,
+  \item $\alpha \in \im \partial \bar\partial$. 
+\end{itemize}
+If $\alpha \in \Omega^{p,p}_\R(X)$ then these are
+also equivalent to
+\begin{itemize}
+  \item $\alpha \in \im \left(\I \partial \bar\partial: \Omega^{p-1,p-1}_\R(X) \to \Omega^{p,p}_\R(X)\right)$.
+\end{itemize}
+\end{lem}
+
 \subsection{\kahler quotients}
 
-\begin{defn}[Horizontal vectors]
+\begin{defn}[Horizontal distribution]
 Suppose $X$ is a Riemannian manifold, with a Lie group
 $G$ acting freely on $X$.
 The \ti{horizontal distribution} on $X$ is
@@ -1571,7 +1722,7 @@ then we have $\de F = 0$.
 Fix a principal $U(1)$ bundle $X$ over $U$, carrying a connection
 $\Theta$ whose curvature is $F$.
 (Such an $X$ exists if and only if $[F/2\pi]$ lies in 
-the image of $H^2(U,\Z) \to H^2_{dR}(U,\R)$.) 
+the image of $H^2(U,\Z) \to H^2_{\dR}(U,\R)$.) 
 Globally this means a 1-form $\Theta$ on $X$
 such that $\de \Theta = F$ (more precisely on the RHS we have
 the pullback of $F$ to $X$) and $\Theta \cdot \partial_\chi = 1$,
@@ -3385,7 +3536,7 @@ theorem is the key tool.
 \begin{itemize}
   \item $X$ is a compact complex manifold,
   \item the canonical bundle $K_X$ is trivial (as a complex line bundle),
-  \item $\alpha \in H^2_{dR}(X)$ is a \kahler class, 
+  \item $\alpha \in H^2_{\dR}(X)$ is a \kahler class, 
 i.e. there exists some \kahler metric on $X$ with $[\omega] = \alpha$.
 \end{itemize}
 Then there exists a unique Ricci-flat \kahler metric on $X$ 
@@ -3403,7 +3554,7 @@ Suppose that:
 \begin{itemize}
   \item $X$ is a compact complex manifold,
   \item the space of holomorphic symplectic forms on $X$ is 1-complex-dimensional, spanned by $\Omega \in \Omega^{2,0}(X)$,
-  \item $\alpha \in H^2_{dR}(X)$ is a \kahler class, 
+  \item $\alpha \in H^2_{\dR}(X)$ is a \kahler class, 
 i.e. there exists some \kahler metric on $X$ with $[\omega] = \alpha$.
 \end{itemize}
 Then there exists a unique \hk structure $(X,I_1,I_2,I_3,g)$ such that
@@ -4126,15 +4277,15 @@ Moreover $\fG$ acts on $\cA$, by conjugation,
 \begin{prop}[Moment map for $\fG$ action on $\cA$] \label{prop:unitary-connections-moment-map}
 The action of $\fG$ on $\cA_h$ admits a moment map, given by
 (in the sense of distributions)
-\begin{equation}
-  \mu(D) = F_D - 2 \pi \frac{d}{K} {\textbf 1} \omega_C 
+\begin{equation} \label{eq:gauge-moment-map}
+  \mu(D) = F_D + 2 \pi \I \frac{d}{K} {\textbf 1} \omega_C 
 \end{equation}
 where $\omega_C$ denotes the \kahler form on $C$.
 More precisely, this means: suppose given an element 
 $Z \in \Lie \fG = \Omega^0(\fu(E))$,
 then we have 
 \begin{equation}
-  \mu_Z(D) = \int_C \Tr(Z F_D) - 2 \pi \frac{d}{K} \int_C \omega_C \Tr(Z).
+  \mu_Z(D) = \int_C \Tr(Z F_D) + 2 \pi \I \frac{d}{K} \int_C \omega_C \Tr(Z).
 \end{equation}
 \end{prop}
 
@@ -4166,8 +4317,26 @@ Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 $\mu^{-1}(0)$ is the subset of $\cA_h$
 consisting of connections with
 \begin{equation} \label{eq:harmonic-curvature}
-  F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega_C.
+  F_D = -2 \pi \I \frac{d}{K} {\mathbf 1} \omega_C.
 \end{equation}
+
+\begin{defn}[Einstein connection] 
+If $X$ is a Riemannian manifold and $E$ a complex
+vector bundle over $X$ with connection $D$, we say $D$ is 
+\ti{Einstein} if the curvature $F_D \in \Omega^2(\End E)$
+is
+\begin{equation}
+  F_D = \I {\mathbf 1} \alpha
+\end{equation}
+where $\alpha \in \Omega^2(X)$ is harmonic.
+\end{defn}
+
+\begin{exercise} Show that \eqref{eq:harmonic-curvature}
+is equivalent to the condition that $D$ is an Einstein 
+connection over the \kahler Riemann surface $C$.
+(Hint: see \autoref{exa:harmonic-forms-degree-0n}.)
+\end{exercise}
+
 In the important special case $d=0$, \eqref{eq:harmonic-curvature}
 just says that $D$ is a \ti{flat} connection.
 For $d \neq 0$, \eqref{eq:harmonic-curvature} says at least that $D$ is
@@ -4183,12 +4352,12 @@ $\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
 \eqref{eq:harmonic-curvature} are becoming
 flat away from $z_0$, but singular at $z_0$, with the holonomy around $z_0$
 of finite order given by multiplication by the root of unity 
-$e^{2 \pi \I d / K}$.
+$e^{-2 \pi \I d / K}$.
 
 Following our plan, 
 we want to take the symplectic quotient $\cA \kq \fG = \mu^{-1}(0) / G$.
 As a technical preliminary we need to understand the extent to 
-which $\fG$ acts freely on $\mu^{-1}(0)$.
+which $\fG$ acts freely and properly on $\mu^{-1}(0)$.
 
 \begin{defn}[Irreducible connections]
 We call a unitary connection $D$ in $E$ \ti{irreducible} if there does not
@@ -4207,6 +4376,12 @@ Thus if $g$ were not a constant its eigenspaces would be preserved by parallel
 transport, which would contradict the irreducibility of $D$.
 \end{pf}
 
+\begin{prop}[Unitary gauge group acts properly]
+The action of $\fG$ on $\cA$ is proper.
+\end{prop}
+\begin{pf} \fixme{...}
+\end{pf}
+
 Let $\cA^s \subset \cA$ be the subset of irreducible
 unitary connections.
 Now we define:
@@ -4222,18 +4397,13 @@ Nevertheless they still make sense, at least
 as topological spaces. Now we will see that they have
 much better structure.
 
-\begin{prop}[Basic properties of $\uharm_{K,d}(C)$] 
+\begin{thm}[Basic properties of $\uharm_{K,d}(C)$] \label{thm:uharm-basics}
 We have the following.
 \begin{itemize}
 \item $\uharm^s_{K,d}(C)$ is a \kahler manifold, of complex dimension $(g-1)K^2+1$.
 \item $\uharm_{K,d}(C)$ is compact.
-\item For any $n \in \Z$,
-\begin{equation}
-\uharm^s_{K,d}(C) \simeq \uharm^s_{K,d+nK}(C), \qquad
-\uharm_{K,d}(C) \simeq \uharm_{K,d+nK}(C).
-\end{equation} 
 \end{itemize}
-\end{prop}
+\end{thm}
 
 \begin{pf}
 We have described $\uharm^s_{K,d}(C)$ as a symplectic quotient
@@ -4245,8 +4415,8 @@ the cohomology of the complex
 \begin{equation}
   0 \to \Omega^0(\fu(E)) / \C \xrightarrow{D} \Omega^1(\fu(E)) \xrightarrow{D} \Omega^2(\fu(E)) \to 0
 \end{equation}
-at the middle position. (It's indeed a complex, 
-because $D^2 = F_D = 2 \pi \frac{d}{K} {\mathbf 1} \omega_C$ \fixme{...} )
+at the middle position. (It's indeed a complex: $D^2 = 0$ acting
+on sections of $\fu(E)$, since $F_D = 2 \pi \I $ is central.)
 We have to pay proper respect to the fact that we are dealing here
 with \ti{infinite-dimensional} spaces. Fortunately the complex
 is \ti{elliptic}.\footnote{This means that the corresponding symbol
@@ -4261,15 +4431,77 @@ kernel and cokernel. The tangent space we are after is the kernel.
 \fixme{index theorem}
 \end{pf}
 
-\begin{thm}[Narasimhan-Seshadri theorem for rank $1$]
-Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
-and the stability condition is vacuous.
-Then any point of $\cA$ lies in the $\fG_\C$-orbit of
-$\bar\partial_D$ for a unique $[D] \in \uharm_{1,d}(C)$.
-\end{thm}
-
-\begin{pf} \fixme{abelian Hodge theory}
+\begin{cor}[$\uharm_{K,d}(C)$ is nice when $(d,K)$ = 1]
+When $(d,K) = 1$, $\uharm_{K,d}(C)$ is a compact
+\kahler manifold, of dimension $(g-1)K^2 + 1$.
+\end{cor}
+\begin{pf} This is just the combination of \autoref{thm:uharm-basics}
+and \autoref{exc:coprime-semistable-is-stable}.
 \end{pf}
+
+\begin{lem}[Existence of Einstein connections on line bundles] \label{lem:einstein-connections-on-line-bundles}
+Suppose $\cL$ is a holomorphic line bundle over $C$. Then there
+exists a unique Hermitian metric $h$ on $\cL$ such that the Chern
+connection $D_h$ is Einstein.
+\end{lem}
+\begin{pf}
+First choose some arbitrary $h$ on $\cL$. The curvature of the Chern
+connection is then $F_{D_h} \in \Omega^2(C)$, 
+which generally is not harmonic. What we want to do is to
+improve $h$ to some $h'$ so that $F_{D_{h'}} \in \cH^2(C)$.
+We can write $h' = e^f h$ for some real-valued function $f$ on $C$.
+Then we have
+\begin{equation}
+  F_{D_{h'}} = F_{D_h} + \partial \bar\partial f.
+\end{equation}
+Now we can apply the
+abelian Hodge theorem (\autoref{thm:abelian-hodge-riemannian})
+to the cohomology class $[\I F_{D_h}] \in H^{2}_\dR(C)$.
+It says that there exists a unique $\beta \in \Omega^1(C)$
+such that
+\begin{equation}
+ \I F_{D_h} + \de \beta \in \cH^2(C).
+\end{equation}
+But then the $\partial \bar\partial$-lemma (\autoref{lem:ddbar-lemma})
+says that $\de \alpha$ can also be written as
+$\I \partial \bar\partial f$ for some real function $f$.
+This gives the desired $f$.
+\end{pf}
+
+There is another way of thinking about this result, which
+unfortunately will bring up a slightly confusing point.
+Namely, suppose we consider \fixme{...}
+
+% \begin{thm}[Narasimhan-Seshadri theorem for rank $1$]
+% Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
+% and the stability condition is vacuous.
+% Then any point of $\cA$ lies in the $\fG_\C$-orbit of
+% $\bar\partial_D$ for a unique $[D] \in \uharm_{1,d}(C)$.
+% \end{thm}
+
+% \begin{pf} \fixme{abelian Hodge theory}
+% \end{pf}
+
+\begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
+Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
+Then the map $E \to E \otimes \cL$ gives a holomorphic 
+isometry of \kahler manifolds
+\begin{equation}
+\uharm^s_{K,d}(C) \simarrow \uharm^s_{K,d+Kd'}(C).
+\end{equation}
+\end{prop}
+\begin{pf}
+By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
+a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
+suppose given an Einstein connection $D$ in $E$. Then the connection
+$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ is also Einstein. 
+This gives the desired map.
+\end{pf}
+
+\begin{exercise} Verify that the map in 
+\autoref{prop:tensor-line-is-isometry} is a holomorphic
+isometry of \kahler manifolds.
+\end{exercise}
 
 \begin{thm}[Narasimhan-Seshadri theorem] \label{thm:narasimhan-seshadri}
 For any $[D] \in \uharm^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
