@@ -218,6 +218,7 @@
 \newcommand{\J}{{\mathrm j}}
 \newcommand{\K}{{\mathrm k}}
 \newcommand{\e}{{\mathrm e}}
+\newcommand\bid{{\mathbf 1}}
 \newcommand{\de}{\mathrm{d}}
 \newcommand{\ab}{\mathrm{ab}}
 \newcommand{\vol}{\mathrm{vol}}
@@ -238,6 +239,7 @@
 \newcommand{\mmaref}[1]{}
 
 \newcommand{\ti}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textbf{#1}}
 
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\im}{Im}
@@ -270,7 +272,7 @@
 
 \pagestyle{fancy}
 \lhead{{\tiny \color{gray} \tt \gitAuthorIsoDate}}
-\chead{\tiny \ti{Moduli of Higgs Bundles, preliminary and incomplete draft}}
+\chead{\tiny \ti{Moduli of Higgs Bundles, \ti{preliminary} and \ti{incomplete} draft}}
 \rhead{{\tiny \color{gray} \tt \gitAbbrevHash}}
 \lfoot{}
 \cfoot{}
@@ -281,9 +283,9 @@
 
 
 \begin{center} 
-{\textbf {{Moduli of Higgs Bundles}}} \\
+\tb{Moduli of Higgs Bundles} \\
 Andrew Neitzke \\
-Preliminary and incomplete draft
+\tb{Preliminary} and \tb{incomplete} draft
 \end{center}
 
 {These are the notes for a \ti{currently ongoing} (Spring 2016)
@@ -402,20 +404,23 @@ There are many references for the material on complex
 and \kahler geometry: one
 good one is \cite{MR2093043}.
 
-In general ``manifold'' will mean a finite-dimensional smooth manifold.
-Occasionally we will need to talk about infinite-dimensional
-Banach manifolds, but then we will always say ``Banach manifold''
-instead of just ``manifold.''
-
+In this section ``manifold'' will mean a finite-dimensional
+smooth manifold. (Later we will occasionally need to talk about 
+infinite-dimensional Banach manifolds, but then we will 
+always say ``Banach manifold'' instead of just ``manifold.''
 
 \subsection{Quotients}
 
-\begin{prop} \label{prop:free-proper-quotients-are-manifolds} 
+\begin{prop}[Free proper quotients are manifolds] \label{prop:free-proper-quotients-are-manifolds} 
 Suppose $X$ is a smooth manifold with a Lie group $G$
 acting properly (inverse images of compact sets in $X$
 are compact in $G \times X$)
 and freely (stabilizers of all points in $X$ are trivial).
-Let $\rho: \fg \to \Vect(X)$ be the infinitesimal action.
+Let $\fg = \Lie G$ and let
+\begin{equation}
+\rho: \fg \to \Vect(X)  
+\end{equation}
+be the infinitesimal action.
 Then:
 \begin{itemize}
 \item The quotient $X / G$ (the set of $G$-orbits on $X$) 
@@ -481,34 +486,42 @@ $\omega \in \Omega^2(X)$, such that
 and $\omega(x)$ is nondegenerate for every $x \in X$.
 \end{defn}
 
-\begin{example}[Cotangent bundle is a symplectic manifold]
+\begin{defn}[Exact symplectic manifold]
+An \ti{exact symplectic manifold} is a tuple $(X,\omega,\lambda)$
+where $(X,\omega)$ is a symplectic manifold and $\lambda \in \Omega^1(X)$ has $\de \lambda = \omega$.
+\end{defn}
+
+\begin{example}[Cotangent bundle is an exact symplectic manifold]
 If $X$ is any manifold and $Y = T^* X$, then $Y$ carries a canonical
 $1$-form (``Liouville form''), $\lambda \in \Omega^1(Y)$,
 defined as follows: 
 \begin{equation}
   \lambda(x,p) \cdot v = p \cdot \pi_* v \qquad x \in X, p \in T^*_x X, v \in TY.
 \end{equation}
-In coordinates one would write 
-$\lambda = p_i \de q^i$.
-Then there is a canonical symplectic form 
+Then there is a canonical symplectic form on $Y$ given by
 \begin{equation}
 \omega = \de \lambda.  
 \end{equation}
-In coordinates $\omega = \de p_i \wedge \de q^i$.
 \end{example}
 
+\begin{exercise}
+Show that, in the canonical coordinate system $(p_i,q_i)$
+on $T^* X$ induced by a coordinate system $(q_i)$ on $X$, 
+we have 
+$\lambda = \sum_{i=1}^n p_i \de q_i$, and
+$\omega = \sum_{i=1}^n \de p_i \wedge \de q_i$.
+\end{exercise}
 
 
 \subsection{Symplectic quotients}
 
 \begin{defn}[Moment map]
 Suppose $X$ is a symplectic manifold, with symplectic form $\omega$,
-acted on by a real Lie group $G$, with Lie algebra
-$\fg$. By differentiating the $G$-action at the identity,
-we obtain a map
+acted on by a real Lie group $G$. Let $\fg = \Lie G$ and let
 \begin{equation}
-  \rho: \fg \to \Vect(X).
+\rho: \fg \to \Vect(X)  
 \end{equation}
+be the infinitesimal action.
 Suppose given a function
 \begin{equation} \label{eq:moment-map}
  \mu: X \to \fg^* 
@@ -599,9 +612,17 @@ More generally, for $c \in [\fg,\fg]^\perp$ we can define
 \begin{equation}
   X \kql{c} G = \mu^{-1}(c) / G.
 \end{equation}
-(This is equivalent to changing our choice of $\mu$ to $\mu' = \mu+c$,
+This is equivalent to changing our choice of $\mu$ to $\mu' = \mu+c$,
 so there is no essential loss of generality in always taking $c = 0$,
-but sometimes one or the other description is more convenient.)
+but sometimes one or the other description is more convenient.\footnote{Some authors define more generally for arbitrary 
+$c \in \fg^*$
+\begin{equation}
+  X \kq_c G = \mu^{-1}(c) / G_c
+\end{equation}
+where $G_c \subset G$ is the stabilizer of $c$. This construction
+gives rise to many interesting symplectic manifolds; especially,
+applying this to the $G$-action on $T^* G$ itself gives the
+symplectic structures on coadjoint orbits \cite{MR0402819}.}
 
 \begin{prop}[Symplectic quotient is symplectic] \label{prop:symplectic-quotient-is-symplectic}
 Suppose $X$ is a symplectic manifold, with a compact group $G$
@@ -1396,14 +1417,19 @@ Using \autoref{prop:standard-nondegenerate-2-form}, it follows
 that $T^{1,0} X$ has even complex dimension.
 \end{pf}
 
+Actually much more is true: 
+locally $X$ admits holomorphic ``Darboux'' coordinate systems
+$(p_1, \dots, p_n, q_1, \dots, q_n)$
+such that $\Omega = \sum_{i=1}^n \de p_i \wedge \de q_i$.
+
 \begin{prop}[Holomorphic symplectic form determines complex structure] \label{prop:hol-symp-to-complex}
-Suppose $X$ is a manifold smooth with $\dim_\R X = 2n$, 
+Suppose $X$ is a smooth manifold with $\dim_\R X = 2n$, 
 with $\Omega \in \Omega^2_\C(X)$, such that $\de \Omega = 0$ and
 \begin{equation}
  T_\C X = \ker \Omega \oplus \ker \overline\Omega. 
 \end{equation}
 Then there is a 
-unique complex structure $I$ on $X$, for which $\Omega$
+unique complex structure $I$ on $X$ for which $\Omega$
 is a holomorphic symplectic form.
 \end{prop}
 \begin{pf} We define a complex-linear operator 
@@ -4193,7 +4219,7 @@ it does not make immediately manifest the fact that $\deg E$ is an
 
 Another interpretation of the degree which is useful for developing 
 intuition is:
-\begin{prop} Suppose $E$ is a complex vector bundle over $C$, of rank $K$.
+\begin{prop}\label{Degree counts zeroes} Suppose $E$ is a complex vector bundle over $C$, of rank $K$.
 Fix sections $e_1, \dots, e_K$ of $E$ which are transverse in the sense
 that they give a trivialization of $E$ away from finitely many points
 $z_i \in C$. Let $a_i \in \Z$ denote the winding
@@ -4338,7 +4364,8 @@ $\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
 Let $\cA_h$ denote the space of all $h$-unitary connections
 on $E$.
 
-\begin{prop} $\cA \simeq \cA_h$.
+\begin{prop}[Unitary connections = holomorphic structures] 
+$\cA \simeq \cA_h$.
 \end{prop}
 \begin{pf} Each $\bar\partial \in \cA$
 can be extended in a canonical way to a unitary connection $D \in \cA_h$
@@ -4416,7 +4443,7 @@ Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 $\mu^{-1}(0)$ is the subset of $\cA_h$
 consisting of connections with
 \begin{equation} \label{eq:harmonic-curvature}
-  F_D = -2 \pi \I \frac{d}{K} {\mathbf 1} \omega_C.
+  F_D = -2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{equation}
 
 \begin{defn}[Einstein connection] 
@@ -4425,7 +4452,7 @@ vector bundle over $X$ with connection $D$, we say $D$ is
 \ti{Einstein} if the curvature $F_D \in \Omega^2(\End E)$
 is
 \begin{equation}
-  F_D = \I {\mathbf 1} \alpha
+  F_D = \I \bid \alpha
 \end{equation}
 where $\alpha \in \Omega^2(X)$ is harmonic.
 \end{defn}
@@ -4499,7 +4526,7 @@ much better structure.
 \begin{thm}[Basic properties of $\uharm_{K,d}(C)$] \label{thm:uharm-basics}
 We have the following.
 \begin{itemize}
-\item $\uharm^s_{K,d}(C)$ is a \kahler manifold, of complex dimension $(g-1)K^2+1$.
+\item $\uharm^s_{K,d}(C)$ is a \kahler manifold, of complex dimension $(g-1)K^2+1$ where $g$ is the genus of $C$.
 \item $\uharm_{K,d}(C)$ is compact.
 \end{itemize}
 \end{thm}
@@ -4515,9 +4542,13 @@ the cohomology of the complex
   0 \to \Omega^0(\fu(E)) / \C \xrightarrow{D} \Omega^1(\fu(E)) \xrightarrow{D} \Omega^2(\fu(E)) \to 0
 \end{equation}
 at the middle position. (It's indeed a complex: $D^2 = 0$ acting
-on sections of $\fu(E)$, since $F_D = 2 \pi \I $ is central.)
+on sections of $\fu(E)$, since $F_D \sim \bid$ and hence 
+is central.) 
+
 We have to pay proper respect to the fact that we are dealing here
-with \ti{infinite-dimensional} spaces. Fortunately the complex
+with \ti{infinite-dimensional} spaces. \fixme{describe the needed
+Sobolev stuff}
+Fortunately the complex
 is \ti{elliptic}.\footnote{This means that the corresponding symbol
 complex over $T^* C$ is exact off the zero section: indeed the symbol
 is just wedging with $p$.} This means in particular that we get a good local
@@ -4532,11 +4563,24 @@ kernel and cokernel. The tangent space we are after is the kernel.
 
 \begin{cor}[$\uharm_{K,d}(C)$ is nice when $(d,K)$ = 1]
 When $(d,K) = 1$, $\uharm_{K,d}(C)$ is a compact
-\kahler manifold, of dimension $(g-1)K^2 + 1$.
+\kahler manifold.
 \end{cor}
 \begin{pf} This is just the combination of \autoref{thm:uharm-basics}
 and \autoref{exc:coprime-semistable-is-stable}.
 \end{pf}
+
+\begin{example}[Jacobians]
+The special case $K=1$ is very concrete. \fixme{...}
+\end{example}
+
+\begin{example}[Stable bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $2$. \fixme{...}
+\end{example}
+
+\begin{prop}[Formula for the \kahler metric on $\uharm_{K,d}(C)$]
+\fixme{...}
+\end{prop}
+
+\fixme{material below needs to be organized}
 
 \begin{lem}[Existence of Einstein connections on line bundles] \label{lem:einstein-connections-on-line-bundles}
 Suppose $\cL$ is a holomorphic line bundle over $C$. Then there
@@ -4569,7 +4613,10 @@ This gives the desired $f$.
 
 There is another way of thinking about this result, which
 unfortunately will bring up a slightly confusing point.
-Namely, suppose we consider \fixme{...}
+Namely, suppose we consider a fixed line bundle $E$, with a
+fixed Hermitian metric. Then the analogue of ``changing the 
+Hermitian metric'' is ``making a gauge transformation
+valued in $\fG_\C$ but not in $\fG$.'' \fixme{...}
 
 % \begin{thm}[Narasimhan-Seshadri theorem for rank $1$]
 % Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
@@ -4593,9 +4640,17 @@ isometry of \kahler manifolds
 By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
 a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
 suppose given an Einstein connection $D$ in $E$. Then the connection
-$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ is also Einstein. 
-This gives the desired map.
+$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
+\begin{equation} \label{eq:additivity-of-curvature}
+ F_{D'} = F_D + F_{D_\cL} 
+\end{equation}
+(note in writing this equation we used
+the fact that $\End(E') \simeq \End(E)$).
+Thus $D'$ is also Einstein. This gives the desired map.
 \end{pf}
+
+\begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
+\end{exercise}
 
 \begin{exercise} Verify that the map in 
 \autoref{prop:tensor-line-is-isometry} is a holomorphic
