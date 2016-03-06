@@ -20,6 +20,7 @@
 \usepackage{thmtools}
 \usepackage{dashrule}
 \usepackage[missing=]{gitinfo2}
+\usepackage{fancyhdr}
 
 \definecolor{darkred}{rgb}{0.5,0.1,0.1}
 \definecolor{darkgreen}{rgb}{0.0,0.45,0.05}
@@ -267,19 +268,47 @@
 
 \begin{document}
 
+\pagestyle{fancy}
+\lhead{{\tiny \color{gray} \tt \gitAuthorIsoDate}}
+\chead{\tiny \ti{Moduli of Higgs Bundles, preliminary and incomplete draft}}
+\rhead{{\tiny \color{gray} \tt \gitAbbrevHash}}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.5pt}
+
 \setcounter{page}{1}
 
-{\noindent \tiny \color{gray} \tt \gitAuthorIsoDate \hfill
-\gitAbbrevHash}
 
 \begin{center} 
 {\textbf {{Moduli of Higgs Bundles}}} \\
-Preliminary draft
+Andrew Neitzke \\
+Preliminary and incomplete draft
 \end{center}
+
+{These are the notes for a \ti{currently ongoing} (Spring 2016)
+course at UT Austin. They are
+extremely incomplete, unreliable, full of mistakes and omissions, 
+and being updated frequently. The latest PDF can always be found
+at
+\begin{center}
+\small \tt{www.ma.utexas.edu/users/neitzke/teaching/392C-higgs-bundles/higgs-bundles.pdf}
+\end{center}
+Please send corrections/improvements to
+\begin{center}
+\small \tt{neitzke@math.utexas.edu}
+\end{center}
+or as pull requests to the source repository hosted at
+\begin{center}
+\small \tt{github.com/neitzke/higgs-bundles}
+\end{center}
+}
 
 \tableofcontents
 \renewcommand{\listtheoremname}{Quick reference}
 \listoftheorems[onlynamed]
+
+\newpage
 
 \section{Introductory motivation}
 
