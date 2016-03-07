@@ -175,6 +175,7 @@
 \newcommand{\cK}{\ensuremath{\mathcal K}}
 \newcommand{\cZ}{\ensuremath{\mathcal Z}}
 \newcommand{\cM}{\ensuremath{\mathcal M}}
+\newcommand{\cN}{\ensuremath{\mathcal N}}
 \newcommand{\cO}{\ensuremath{\mathcal O}}
 \newcommand{\cH}{\ensuremath{\mathcal H}}
 \newcommand{\cX}{\ensuremath{\mathcal X}}
@@ -252,7 +253,6 @@
 \DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Bun}{Bun}
-\DeclareMathOperator{\uharm}{UHarm}
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Span}{Span}
 \DeclareMathOperator{\grad}{grad}
@@ -448,7 +448,7 @@ If $G$ is compact then the action is always proper.
 
 \subsection{Symplectic manifolds}
 
-\begin{defn}[Nondegenerate $2$-form]
+\begin{defn}[Nondegenerate skew pairing] \label{def:nondegenerate-skew-pairing}
 Suppose $V$ is a vector space over $\R$ or $\C$.
 We say $\omega \in \wedge^2(V)$ is \ti{nondegenerate}
 if the map
@@ -459,8 +459,8 @@ if the map
 is an isomorphism.
 \end{defn}
 
-\begin{prop}[Standard basis for a nondegenerate $2$-form] 
-\label{prop:standard-nondegenerate-2-form}
+\begin{prop}[Standard basis for a nondegenerate skew pairing] 
+\label{prop:standard-nondegenerate-skew-pairing}
 If $V$ is a finite-dimensional vector space over $\R$ or $\C$, and
 $\omega \in \wedge^2(V)$ is nondegenerate, then $V$ has 
 dimension $2n$ for some $n$, and there
@@ -473,7 +473,7 @@ such that
 \end{align}
 \end{prop}
 
-\begin{defn}[Symplectic manifold]
+\begin{defn}[Symplectic manifold] \label{def:symplectic-manifold}
 A \ti{symplectic manifold} is a pair $(X,\omega)$
 where $X$ is a smooth manifold and
 $\omega \in \Omega^2(X)$, such that
@@ -512,7 +512,7 @@ $\omega = \sum_{i=1}^n \de p_i \wedge \de q_i$.
 
 \subsection{Symplectic quotients}
 
-\begin{defn}[Moment map]
+\begin{defn}[Moment map] \label{def:moment-map}
 Suppose $X$ is a symplectic manifold, with symplectic form $\omega$,
 acted on by a real Lie group $G$. Let $\fg = \Lie G$ and let
 \begin{equation}
@@ -526,14 +526,6 @@ Suppose given a function
 and for $Z \in \fg$ write $\mu_Z = \mu \cdot Z$.
 We say $\mu$ is a \ti{moment map} for the $G$-action if 
 for all $Z \in \fg$ we have
-% \begin{equation}
-%   \rho(Z) = \omega^{-1}(\de \mu_Z),
-% \end{equation}
-% i.e. for any $v \in \Vect(X)$
-% \begin{equation}
-%   \omega(\rho(Z), v) = v (\mu_Z),
-% \end{equation}
-% i.e.
 \begin{equation} \label{eq:moment-map-condition-3}
   \iota_{\rho(Z)} \omega = \de \mu_Z,
 \end{equation}
@@ -1410,7 +1402,7 @@ then $\dim_\R X$ is a multiple of $4$.
 \end{prop} 
 \begin{pf} The holomorphic symplectic form $\Omega$ restricts to a nondegenerate form on each fiber of the complex vector 
 bundle $T^{1,0} X$.
-Using \autoref{prop:standard-nondegenerate-2-form}, it follows
+Using \autoref{prop:standard-nondegenerate-skew-pairing}, it follows
 that $T^{1,0} X$ has even complex dimension.
 \end{pf}
 
@@ -4114,6 +4106,10 @@ groups, in such a way that the quotient is finite-dimensional.
 In this section, to get prepared, we briefly describe 
 the necessary modifications of some
 of our constructions to the infinite-dimensional setting.
+It might be a good idea to skip this section until you feel 
+the need to look at it.
+
+\subsection{Banach spaces}
 
 \begin{defn}[Banach space] A \ti{Banach space} is 
 a vector space $V$ over $\R$ or $\C$, equipped with a 
@@ -4148,30 +4144,46 @@ $V^*$ is the space of all continuous linear maps $V \to \R$
 (resp. $\C$). $V^*$ is a Banach space.
 \end{defn}
 
-\begin{example}[Sobolev spaces] If $E$ is a complex
-vector bundle over a Riemannian manifold $X$, and $k \ge 0$,
-$1 < p < \infty$, we define the \ti{Sobolev space}
-$L^p_k(E)$ to be the completion of the space of smooth
-compactly supported sections of $E$, with respect to a certain
-norm $\norm{\cdot}$. \fixme{...}
+\begin{example}[Sobolev spaces] Suppose $E$ is a complex
+vector bundle with Hermitian metric $h$
+over a compact Riemannian manifold $X$. Then for $k \in \Z_{\ge 0}$ and 
+$1 < p < \infty$, we define the \ti{Sobolev norm}
+on smooth sections of $E$ as follows.
+First fix an $h$-unitary connection $\nabla$ on $E$.
+Then write
+\begin{equation}
+  \norm{s}^2_{p,k} = \int_X \left(\norm{s}^2 + \norm{\nabla s}^2 + \norm {\nabla \nabla s}^2 +
+    \cdots + \norm{\nabla^k s}^2\right) \de vol_X.
+\end{equation}
+(Here the various terms are sections of tensor bundles $E \otimes (TX)^m$,
+considered with the norms induced by $h$ and the metric on $X$.)
+Then $L^p_k(E)$ is the \ti{completion} of the space of smooth
+sections of $E$ with respect to $\norm{\cdot}_{p,k}$.
+While the precise norm depends on the choice of $\nabla$, the 
+Banach space $L^p_k(E)$ actually does not depend on this choice.
 \end{example}
 
+Crudely speaking, $L^p_k(E)$ consists of functions which are $L^p$ and 
+have $k$ derivatives that are also in $L^p$.
+There is actually an extension of this definition to arbitrary $k \in \R$
+(fractional number of derivatives!) which is a bit more technical to describe:
+to get the required norm $\norm{\cdot}_{p,k}$ 
+one has to use a partition of unity to reduce to a patch of $\R^n$,
+then use Fourier transform. There is an efficient description of this in
+\cite{MR2359489}, which I like. When $k<0$ these should be thought of
+as distributions, and indeed $L^p_{-k}(E)$ is the dual of
+$L^p_k(E)$.
+Alternatively, morally $L^p_{-k}(E)$ means sections of $E$ 
+which are a locally bit singular, but become $L^p$ after they 
+are integrated $k$ times.
 
-\begin{defn}[Nondegenerate $2$-form]
-Suppose $V$ is a Banach space.
-We say an antisymmetric bilinear pairing 
-$\omega: V \times V \to \R$ is a \ti{nondegenerate $2$-form}
-if it is continuous in each factor separately and the map
-\begin{align}
-  V &\to V^* \\
-  v &\mapsto \iota_v \omega = \omega(v,\cdot)
-\end{align}
-is an injection.
-\end{defn}
+We will only need the case $p=2$, i.e. we will work always with 
+$L^2$ objects admitting various numbers of derivatives.
 
-Some authors refer to this as a \ti{weakly} nondegenerate
-form, reserving ``nondenegerate'' for the case when
-$v \mapsto \iota_v \omega$ is a bijection, not only an injection.
+
+\subsection{Banach manifolds}
+
+A good review of this material is in \cite{MR0158410}.
 
 \begin{defn}[Banach manifold] A (smooth) \ti{Banach manifold} is
 a Hausdorff topological space $X$, equipped with a maximal
@@ -4186,20 +4198,79 @@ are smooth.
 
 From now on in this section let $X$ be a Banach manifold.
 
-\fixme{...}
+\begin{defn}[Vector bundle] Vector bundles $V$ over $X$
+are defined in the usual way: they are themselves Banach manifolds
+with projection $\pi: V \to X$, admitting local trivializations with
+smooth transition functions.
+\end{defn}
+
+\begin{defn}[Tangent bundle and differentials] For $x \in X$ the \ti{tangent space} $T_x X$
+is defined in the ``classical'' way: we take 
+$\sqcup_{\alpha: x \in U_\alpha} V_\alpha$, modulo
+the relation that $v \in V_\alpha \sim v' \in V_{\alpha'}$ if
+$v' = Jv$, where $J: U_\alpha \to U_{\alpha'}$ is the differential
+of the transition map $\phi_{\alpha'}^{-1} \circ \phi_\alpha$.
+This is again a Banach space. The $T_x X$ fit together into a vector bundle
+over $X$. For a smooth map $f: X \to Y$ one then gets in the usual 
+way a smooth map $\de f: TX \to TY$.
+\end{defn}
+
+\begin{defn}[Cotangent bundle and differential forms] The cotangent bundle, 
+differential forms, and the $\de$ operator can be defined by the same 
+constructions as usual.
+\end{defn}
+
+
+\subsection{Symplectic forms and symplectic quotients}
+
+\begin{defn}[Symplectic Banach manifold]
+The definition of symplectic Banach manifold is the same as
+\autoref{def:symplectic-manifold}, except that the notion
+of nondegeneracy is in the weak sense: we require only that
+the map
+\begin{align}
+  T_x X &\to T^*_x X \\
+  T_x X &\mapsto \iota_v \omega = \omega(v,\cdot)
+\end{align}
+is an \ti{injection} for each $x \in X$,
+not an isomorphism.
+\end{defn}
+
+Some authors refer to this as a \ti{weakly} symplectic
+form, reserving ``nondenegerate'' for the case when
+$v \mapsto \iota_v \omega$ is a bijection, not only an injection.
+
+\begin{defn}[Banach Lie group]
+The definition of Banach Lie group is just as in the 
+finite-dimensional case: it is a 
+Banach manifold equipped with a group structure,
+such that the multiplication and inversion maps
+are smooth. \fixme{ref Glockner-Neeb coming out Apr 14?}
+\fixme{ref Neeb on Infinite-Dimensional Lie Groups?}
+\end{defn}
+
+\begin{defn}[Moment map] \label{def:banach-moment-map}
+The definition of moment map is the same as \autoref{def:moment-map}
+with one difference: instead of mapping to $\fg^*$
+we just require that $\mu$ maps to some Banach space $W$
+which has a nondegenerate pairing with $\fg$.
+\end{defn}
 
 
 \section{Moduli of bundles}
 
-From now on we fix a compact Riemann surface $C$, with 
-a \kahler metric, of total area $1$.
+In this section fix a compact Riemann surface ($1$-dimensional
+complex manifold) $C$, with a \kahler metric, of total area $1$:
+\begin{equation}
+  \int_C \omega_C = 1.
+\end{equation}
 
-We are going to define a moduli space $\uharm_{K,d}(C)$ parameterizing
-equivalence classes of ``stable'' holomorphic bundles over $C$ of 
+We are going to define a moduli space $\cN_{K,d}(C)$ parameterizing
+equivalence classes of holomorphic bundles over $C$ of 
 rank $K$ and degree $d$. Moreover this space is naturally 
 \kahler (where it is smooth).
 
-Although we will not use this fact, $\uharm_{K,d}(C)$ is actually
+Although we will not use this fact, $\cN_{K,d}(C)$ is actually
 algebraic. For those who are algebraically inclined, a 
 very nice introductory reference to this 
 material is \cite{MR98b:14010}. The notes 
@@ -4356,7 +4427,7 @@ which acts on $\cA$ by conjugation:
 \end{equation}
 So formally we want to say
 \begin{equation} \label{eq:bunG-formal-quotient}
-  \uharm_{K,d}(C) = \cA / \fG_\C.
+  \cN_{K,d}(C) = \cA / \fG_\C.
 \end{equation}
 
 It is not so easy to make a ``nice'' space in this way.
@@ -4527,7 +4598,7 @@ Now we define:
 
 \begin{defn}[Moduli spaces of unitary harmonic bundles]
 \begin{equation}
-  \uharm^s_{K,d}(C) = \cA^s \kql{c} \fG, \qquad \uharm_{K,d}(C) = \cA \kql{c} \fG.
+  \cN^s_{K,d}(C) = \cA^s \kql{c} \fG, \qquad \cN_{K,d}(C) = \cA \kql{c} \fG.
 \end{equation}
 \end{defn}
 
@@ -4536,16 +4607,16 @@ Nevertheless they still make sense, at least
 as topological spaces. Now we will see that they have
 much better structure.
 
-\begin{thm}[Basic properties of $\uharm_{K,d}(C)$] \label{thm:uharm-basics}
+\begin{thm}[Basic properties of $\cN_{K,d}(C)$] \label{thm:uharm-basics}
 We have the following.
 \begin{itemize}
-\item $\uharm^s_{K,d}(C)$ is a \kahler manifold, of complex dimension $(g-1)K^2+1$ where $g$ is the genus of $C$.
-\item $\uharm_{K,d}(C)$ is compact.
+\item $\cN^s_{K,d}(C)$ is a \kahler manifold, of complex dimension $(g-1)K^2+1$ where $g$ is the genus of $C$.
+\item $\cN_{K,d}(C)$ is compact.
 \end{itemize}
 \end{thm}
 
 \begin{pf}
-We have described $\uharm^s_{K,d}(C)$ as a symplectic quotient
+We have described $\cN^s_{K,d}(C)$ as a symplectic quotient
 by the group $\fG / \C^\times$, which acts freely (note that the moment 
 map $\mu$ actually descends to this quotient!) Formally the tangent space
 at a given flat connection $D$ should be the kernel of $\de \mu$ 
@@ -4574,8 +4645,8 @@ kernel and cokernel. The tangent space we are after is the kernel.
 \fixme{index theorem}
 \end{pf}
 
-\begin{cor}[$\uharm_{K,d}(C)$ is nice when $(d,K)$ = 1]
-When $(d,K) = 1$, $\uharm_{K,d}(C)$ is a compact
+\begin{cor}[$\cN_{K,d}(C)$ is nice when $(d,K)$ = 1]
+When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
 \kahler manifold.
 \end{cor}
 \begin{pf} This is just the combination of \autoref{thm:uharm-basics}
@@ -4632,7 +4703,7 @@ valued in $\fG_\C$ but not in $\fG$.'' \fixme{...}
 % Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
 % and the stability condition is vacuous.
 % Then any point of $\cA$ lies in the $\fG_\C$-orbit of
-% $\bar\partial_D$ for a unique $[D] \in \uharm_{1,d}(C)$.
+% $\bar\partial_D$ for a unique $[D] \in \cN_{1,d}(C)$.
 % \end{thm}
 
 % \begin{pf} \fixme{abelian Hodge theory}
@@ -4643,7 +4714,7 @@ Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
 Then the map $E \to E \otimes \cL$ gives a holomorphic 
 isometry of \kahler manifolds
 \begin{equation}
-\uharm^s_{K,d}(C) \simarrow \uharm^s_{K,d+Kd'}(C).
+\cN^s_{K,d}(C) \simarrow \cN^s_{K,d+Kd'}(C).
 \end{equation}
 \end{prop}
 \begin{pf}
@@ -4668,17 +4739,17 @@ isometry of \kahler manifolds.
 \end{exercise}
 
 \begin{thm}[Narasimhan-Seshadri theorem] \label{thm:narasimhan-seshadri}
-For any $[D] \in \uharm^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
+For any $[D] \in \cN^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
 induces the structure of \ti{stable} holomorphic vector bundle on $E$.
 Conversely, any stable holomorphic structure 
-on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \uharm^s_{K,d}(C)$.
+on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \cN^s_{K,d}(C)$.
 \fixme{check!}
 \end{thm}
 
 \begin{pf} We just discuss the case $d=0$, and also just give a sketch,
 lifted from \cite{MR710055}.
 
-First suppose $[D] \in \uharm^s_{K,d}(C)$. Thus $D$
+First suppose $[D] \in \cN^s_{K,d}(C)$. Thus $D$
 is an irreducible flat connection. Suppose that $E' \subset E$ is some
 subbundle preserved by $\bar\partial_D$; we want to show that $\deg E' < 0$.
 This is an instance of the general principle that ``curvature decreases
