@@ -22,9 +22,10 @@
 \usepackage[missing=]{gitinfo2}
 \usepackage{fancyhdr}
 
+\definecolor{darkblue}{rgb}{0.1,0.1,0.7}
 \definecolor{darkred}{rgb}{0.5,0.1,0.1}
-\definecolor{darkgreen}{rgb}{0.0,0.45,0.05}
-\hypersetup{colorlinks=true,urlcolor=darkred,linkcolor=darkred,citecolor=darkred}
+\definecolor{darkgreen}{rgb}{0.0,0.42,0.06}
+\hypersetup{colorlinks=true,urlcolor=darkred,linkcolor=darkblue,citecolor=darkred}
 \definecolor{shadecolor}{rgb}{0.85,0.85,0.85}
 
 % Bibliography formatting
@@ -135,7 +136,6 @@
 \declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,bodyfont=\normalfont,notefont=\normalfont\bfseries, notebraces={(}{)}]{noital}
 \declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,bodyfont=\normalfont\color{darkgreen},notefont=\normalfont\bfseries, notebraces={(}{)}]{green}
 \declaretheoremstyle[spaceabove=0.25cm,spacebelow=0.25cm,bodyfont=\normalfont,notefont=\normalfont\bfseries,qed=$\qedsymbol$,notebraces={(}{)}]{proofstyle}
-
 
 \declaretheorem[name=Theorem,numberwithin=section,style=theorem]{thm}
 \declaretheorem[name=Proposition,sibling=thm,style=theorem]{prop}
@@ -261,7 +261,7 @@
 \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
 
-\newcommand{\fixme}[1]{{\color{blue}{[#1]}}}
+\newcommand{\fixme}[1]{{\color{orange}{[#1]}}}
 \newcommand{\currentposition}{{\color{blue} \noindent\makebox[\linewidth]{\hdashrule{\paperwidth}{1pt}{3mm}}}}
 
 % \mathtoolsset{showonlyrefs}
@@ -272,7 +272,7 @@
 
 \pagestyle{fancy}
 \lhead{{\tiny \color{gray} \tt \gitAuthorIsoDate}}
-\chead{\tiny \ti{Moduli of Higgs Bundles, \ti{preliminary} and \ti{incomplete} draft}}
+\chead{\tiny \ti{Moduli of Higgs Bundles, \tb{preliminary} and \tb{incomplete} draft}}
 \rhead{{\tiny \color{gray} \tt \gitAbbrevHash}}
 \lfoot{}
 \cfoot{}
@@ -294,15 +294,15 @@ extremely incomplete, unreliable, full of mistakes and omissions,
 and being updated frequently. The latest PDF can always be found
 at
 \begin{center}
-\small \tt{www.ma.utexas.edu/users/neitzke/teaching/392C-higgs-bundles/higgs-bundles.pdf}
+\small \url{http://ma.utexas.edu/users/neitzke/teaching/392C-higgs-bundles/higgs-bundles.pdf}
 \end{center}
 Please send corrections/improvements to
 \begin{center}
-\small \tt{neitzke@math.utexas.edu}
+\small \tt\href{mailto:neitzke@math.utexas.edu}{neitzke@math.utexas.edu}
 \end{center}
 or as pull requests to the source repository hosted at
 \begin{center}
-\small \tt{github.com/neitzke/higgs-bundles}
+\small \url{http://github.com/neitzke/higgs-bundles}
 \end{center}
 }
 
