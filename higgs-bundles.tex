@@ -4137,7 +4137,7 @@ linear map $\eta: V \to \R$ (resp. $\C$). Then we define
 We say $\eta$ is \ti{bounded} if $\norm{\eta} < \infty$.
 \end{defn}
 
-Unlike the finite-dimensional situation, even linear maps
+Unlike the finite-dimensional situation, linear maps
 on Banach spaces need not be continuous:
 
 \begin{prop}[Continuous = bounded] If $V$ is a Banach space
@@ -4150,6 +4150,15 @@ over $\R$ (resp. $\C$),
 $V^*$ is the space of all continuous linear maps $V \to \R$ 
 (resp. $\C$). $V^*$ is a Banach space.
 \end{defn}
+
+\begin{example}[Sobolev spaces] If $E$ is a complex
+vector bundle over a Riemannian manifold $X$, and $k \ge 0$,
+$1 < p < \infty$, we define the \ti{Sobolev space}
+$L^p_k(E)$ to be the completion of the space of smooth
+compactly supported sections of $E$, with respect to a certain
+norm $\norm{\cdot}$. \fixme{...}
+\end{example}
+
 
 \begin{defn}[Nondegenerate $2$-form]
 Suppose $V$ is a Banach space.
@@ -4167,8 +4176,15 @@ Some authors refer to this as a \ti{weakly} nondegenerate
 form, reserving ``nondenegerate'' for the case when
 $v \mapsto \iota_v \omega$ is a bijection, not only an injection.
 
-\begin{defn}[Banach manifold] A \ti{Banach manifold} is
-\fixme{...}
+\begin{defn}[Banach manifold] A (smooth) \ti{Banach manifold} is
+a Hausdorff topological space $X$, equipped with a maximal
+atlas of open charts $U_\alpha$ with smooth injective maps
+\begin{equation}
+  \phi_\alpha: U_\alpha \to V_\alpha
+\end{equation}
+such that each $V_\alpha$ is a Banach space, $\phi_\alpha(U_\alpha)$
+is an open subset, and the transition maps $\phi_\alpha \circ \phi_\beta^{-1}$ 
+are smooth.
 \end{defn}
 
 From now on in this section let $X$ be a Banach manifold.
@@ -4219,7 +4235,7 @@ it does not make immediately manifest the fact that $\deg E$ is an
 
 Another interpretation of the degree which is useful for developing 
 intuition is:
-\begin{prop}\label{Degree counts zeroes} Suppose $E$ is a complex vector bundle over $C$, of rank $K$.
+\begin{prop}[Degree counts zeroes] Suppose $E$ is a complex vector bundle over $C$, of rank $K$.
 Fix sections $e_1, \dots, e_K$ of $E$ which are transverse in the sense
 that they give a trivialization of $E$ away from finitely many points
 $z_i \in C$. Let $a_i \in \Z$ denote the winding
@@ -4576,9 +4592,6 @@ The special case $K=1$ is very concrete. \fixme{...}
 \begin{example}[Stable bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $2$. \fixme{...}
 \end{example}
 
-\begin{prop}[Formula for the \kahler metric on $\uharm_{K,d}(C)$]
-\fixme{...}
-\end{prop}
 
 \fixme{material below needs to be organized}
 
