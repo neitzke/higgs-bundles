@@ -4720,7 +4720,7 @@ unitary connections. Now we define:
 
 \begin{defn}[Moduli spaces of unitary harmonic bundles]
 \begin{equation}
-  \cN^s_{K,d}(C) = \cA^s \kql{c} \fG, \qquad \cN_{K,d}(C) = \cA \kql{c} \fG.
+  \cN^s_{K,d}(C) = \cA^s \kq \fG, \qquad \cN_{K,d}(C) = \cA \kq \fG.
 \end{equation}
 \end{defn}
 
@@ -4729,14 +4729,9 @@ Nevertheless they still make sense, at least
 as topological spaces. Now we will see that they have
 much better structure.
 
-\begin{thm}[Basic properties of $\cN_{K,d}(C)$] \label{thm:uharm-basics}
-We have the following.
-\begin{itemize}
-\item $\cN^s_{K,d}(C)$ is a \kahler manifold, of complex dimension $(g-1)K^2+1$ where $g$ is the genus of $C$.
-\item $\cN_{K,d}(C)$ is compact.
-\end{itemize}
+\begin{thm}[$\cN^s_{K,d}(C)$ is a \kahler manifold] \label{thm:N-is-kahler}
+$\cN^s_{K,d}(C)$ is a \kahler manifold.
 \end{thm}
-
 \begin{pf}
 First we state the \ti{formal} picture.
 $\cN^s_{K,d}(C)$ arises as a symplectic quotient
@@ -4771,6 +4766,16 @@ is \ti{Fredholm}, i.e. it has closed range, and finite-dimensional
 kernel and cokernel. The tangent space we are after is the kernel.
 \fixme{index theorem}
 \end{pf}
+
+\begin{thm}[Dimension of $\cN^s_{K,d}(C)$]
+$\dim_\C \cN^s_{K,d}(C) = (g-1)K^2+1$ where $g$ is the genus of $C$.
+\end{thm}
+\begin{pf} \fixme{index theorem}
+\end{pf}
+
+\begin{thm}[Compactness of $\cN_{K,d}(C)$]
+$\cN_{K,d}(C)$ is compact.
+\end{thm}
 
 \begin{cor}[$\cN_{K,d}(C)$ is nice when $(d,K)$ = 1]
 When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
