@@ -1104,14 +1104,14 @@ a subgroup isomorphic to $U(n)$.
 Here we recall the basic statements of (abelian) Hodge theory.
 \fixme{refs}
 
-\begin{defn}[de Rham cohomology] \label{def:de-Rham}
+\begin{defn}[de Rham cohomology] \label{def:de-rham}
 Suppose $X$ is any manifold. Then we define
 \begin{equation}
   H^{k}_{\dR}(X) = \frac{\im \de \cap \Omega^k(X)}{\ker \de \cap \Omega^k(X)}.
 \end{equation}
 \end{defn}
 
-\begin{thm}[de Rham theorem for compact manifolds]
+\begin{thm}[de Rham theorem for compact manifolds] \label{thm:de-rham}
 If $X$ is compact, then there is a canonical isomorphism 
 \begin{equation}
   H^k_\dR(X) \simeq H^k(X,\R).
@@ -4276,7 +4276,8 @@ Then write
 (Here the various terms are sections of tensor bundles $E \otimes (TX)^m$,
 considered with the norms induced by $h$ and the metric on $X$.)
 Then $L^p_k(E)$ is the \ti{completion} of the space of smooth
-sections of $E$ with respect to $\norm{\cdot}_{p,k}$.
+sections of $E$ with respect to $\norm{\cdot}_{p,k}$ (modulo identification
+of functions which agree almost everywhere).
 While the precise norm depends on the choice of $\nabla$, the 
 different Banach spaces $L^p_k(E)$ we obtain from the different
 norms are all isomorphic.
@@ -4946,26 +4947,22 @@ by the 1-dimensional subspace spanned by $\star \bid$.)
 \begin{thm}[Dimension of $\cN^s_{K,d}(C)$] \label{thm:dimension-of-N}
 $\dim_\C \cN^s_{K,d}(C) = (g-1)K^2+1$ where $g$ is the genus of $C$.
 \end{thm}
-\begin{pf} This can be obtained as an application of 
-the Atiyah-Singer Index Theorem, which gives a formula 
-for the index 
+\begin{pf} We will compute the index
 \begin{equation}
-  \ind \hat{D} = \dim \ker \hat{D} - \dim \coker \hat{D}
+  \ind \hat{D} = \dim \ker \hat{D} - \dim \coker \hat{D}.
 \end{equation}
-when $\hat{D}$ is \ti{any} elliptic
-differential operator over a compact manifold. 
-The formula is complicated, but all we need to know is that 
-it does not depend on all details
-of $\hat{D}$ --- it depends only on the symbol, i.e.
-the highest-degree terms of the differential operator.
-
-For the operator $\hat{D}$ we have here, the symbol
+Very generally, for any elliptic operator, this could be 
+computed by the Atiyah-Singer Index Theorem; in the present
+case though, all we need to know is one of the basic
+preliminaries in the proof of that theorem, namely the fact that
+$\ind \hat{D}$ only depends on the symbol of $\hat{D}$. 
+Indeed, for the operator $\hat{D}$ we have, the symbol
 is the same as that for the trivial connection on 
 the trivial rank $K$ bundle (in local coordinates $D = \de + A$, 
 and the $A$ part is lower-order.) But for the trivial 
 connection we just get $K^2$ copies of the de Rham 
-complex, whose index is known: it is $-\chi(C) = 2g-2$.
-Thus the index formula gives
+complex, whose index is known by de Rham's theorem
+(\autoref{thm:de-rham}): it is $-\chi(C) = 2g-2$. Thus we get
 \begin{equation}
   \ind \hat{D} = (2g-2) K^2.
 \end{equation}
