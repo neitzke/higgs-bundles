@@ -258,6 +258,9 @@
 \DeclareMathOperator{\Span}{Span}
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Jac}{Jac}
 
 \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
@@ -622,7 +625,7 @@ which also has a canonical action of $G$. Verify that
 gives a moment map for this action.
 \end{exercise}
 
-\begin{defn}[Symplectic quotient] \cite{MR0402819}
+\begin{defn}[Symplectic quotient] \label{def:symplectic-quotient} \cite{MR0402819}
 Suppose $X$ is a symplectic manifold, with a Lie group $G$
 acting on it, with moment map $\mu$. Then the \ti{symplectic quotient}
 is
@@ -4323,6 +4326,14 @@ This is just like the usual definition of submanifold
 the key extra word in the infinite-dimensional setting
 is ``closed.''
 
+\begin{defn}[Weakly regular value] Given $f: X \to Y$, $y \in Y$
+is a \ti{weakly regular value} of $f$ if
+\begin{itemize}
+  \item $f^{-1}(y)$ is a submanifold of $X$,
+  \item $T (f^{-1}(y)) = \ker \de f$.
+\end{itemize}
+\end{defn}
+
 \subsection{Symplectic forms and symplectic quotients}
 
 \begin{defn}[Symplectic Banach manifold]
@@ -4353,9 +4364,24 @@ $T_e G$ and acquires the Lie bracket in the usual way.
 \fixme{ref Neeb on Infinite-Dimensional Lie Groups?}
 \end{defn}
 
-\begin{defn}[Moment map] \label{def:banach-moment-map}
-The definition of moment map is the same as \autoref{def:moment-map}.
+\begin{defn}[Moment maps and symplectic quotients] \label{def:banach-moment-map}
+The definition of moment maps and symplectic quotients are the same 
+as \autoref{def:moment-map} and \autoref{def:symplectic-quotient}.
 \end{defn}
+
+\begin{thm}[Symplectic quotient is symplectic]
+Suppose $X$ is a symplectic Banach manifold, with a group $G$
+acting properly on it, with moment map $\mu$. 
+If $G$ acts freely on $\mu^{-1}(0)$, \fixme{are we sure this is really
+sufficient condition? if so then we are saying that things are
+exactly as in the finite-dimensional situation!}
+then $X \kq G$ is a Banach manifold, and there is a 
+symplectic form $\omega_{X \kq G}$ on $X \kq G$, with the
+property
+\begin{equation}
+  \pi^* \omega_{X \kq G} = \iota^* \omega.
+\end{equation}
+\end{thm}
 
 
 \section{Moduli of bundles}
@@ -4378,7 +4404,7 @@ material is \cite{MR98b:14010}. The notes
 \cite{MR2408226} also appear very good.
 
 
-\subsection{Stable vector bundles}
+\subsection{Degree of vector bundles}
 
 \begin{defn}[Degree of a vector bundle] The \ti{degree} of a 
 complex vector bundle $E$ over $C$ is
@@ -4422,6 +4448,442 @@ minus the number of poles (counted with multiplicity.)
 \begin{exercise} Show that the line bundle $\cO(n)$ over $\C\PP^1$
 has degree $n$.
 \end{exercise}
+
+
+
+\subsection{Moduli spaces by symplectic quotient}
+
+\begin{prop}[Classification of complex vector bundles]
+All rank $K$ complex vector bundles over $C$ of degree $d$ are equivalent.
+\end{prop}
+
+Thus, suppose we fix a single rank $K$ complex vector bundle $E$, 
+of degree $d$; then every holomorphic vector bundle of rank $K$
+and degree $d$ is equivalent to $(E, \bar\partial)$ for some
+$\bar\partial$-operator on $E$.
+
+Let $\cA^{\bar\partial}$ denote the space of all such $\bar\partial$.
+This is an affine space modeled on the infinite-dimensional 
+complex linear space $\Omega^{0,1}(\End E)$.
+
+The moduli space we want to describe could be thought of as
+$\cA^{\bar\partial}$ modulo equivalence --- where now ``equivalence'' means
+the (infinite-dimensional,
+complex) group $\fG_\C$ of sections of $GL(E)$,
+which acts on $\cA^{\bar\partial}$ by conjugation:
+\begin{equation}
+  D \mapsto D^g = g D g^{-1}.  
+\end{equation}
+So formally we want to say
+\begin{equation} \label{eq:bunG-formal-quotient}
+  \cN_{K,d}(C) = \cA^{\bar\partial} / \fG_\C.
+\end{equation}
+
+It is not so easy to make a ``nice'' space in this way.
+The difficulty comes from the 
+fact that $\fG_\C$ is a complex group.
+(Of course $\fG_\C$ is also infinite-dimensional,
+but that's not really the problem!)
+
+One neat trick for getting around this problem, 
+explained in \cite{MR85k:14006}, 
+is to think of $\fG_\C$ as the complexification of a
+group $\fG$ whose action is better controlled, and 
+then interpret \eqref{eq:bunG-formal-quotient}
+as a \kahler quotient (still infinite-dimensional.)
+For this purpose, let us fix a Hermitian metric $h$ on $E$.
+After so doing, we have an infinite-dimensional real group
+$\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
+Let $\cA^h$ denote the space of all $h$-unitary connections
+on $E$.
+$\cA^h$ is an affine space, modeled
+on the infinite-dimensional \ti{real} linear space $\Omega^{1}(\fu(E))$.
+
+\begin{prop}[Unitary connections = holomorphic structures] 
+$\cA^{\bar\partial} \simeq \cA^h$.
+\end{prop}
+\begin{pf} Each $\bar\partial \in \cA^{\bar\partial}$
+can be extended in a canonical way to a unitary connection $D \in \cA^h$
+(Chern connection), and conversely, each unitary connection $D \in \cA^h$ 
+can be restricted to an operator $\bar\partial \in \cA^{\bar\partial}$.
+\end{pf}
+
+The compatibility of these two pictures of the space 
+is summarized in the next exercise:
+
+\begin{exercise} Show that the real linear space 
+$\Omega^{1}(\fu(E))$ carries a natural complex structure $I$,
+and with this complex structure it is canonically identified
+with the complex linear space $\Omega^{0,1}(\End E)$.
+\end{exercise}
+
+On $\Omega^{1}(\fu(E))$ we have a natural pairing
+\begin{equation} \label{eq:symplectic-form-A}
+  \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
+\end{equation}
+We would like to think of this as a symplectic form.
+
+Strictly speaking, though, we have only defined the notion
+of ``symplectic form'' for Banach manifolds.
+So now is a good time to switch to that setting.
+We fix some $k > 1$ (you can imagine that it is very big,
+say $k = 100$), and replace $\cA^h$ by the larger space $\cA^h_k$
+of $L^2_k$ connections. $\cA^h_k$ is a Banach manifold,
+in fact an affine space modeled on the Banach space
+$\Omega^1_k(\End E) = L^2_k(T^* \otimes \End E)$. 
+Then \eqref{eq:symplectic-form-A} gives a symplectic 
+structure on $\cA^h_k$.
+From now on we will throw in the subscript $k$ to pass 
+to $L^2_k$ versions of the various spaces of sections
+we need to consider. On a first reading, you might profit
+by ignoring the $k$'s and pretending that we work always
+with $C^\infty$ objects.
+
+Altogether we now have a single space $\cA_k$ with both symplectic and
+complex structures.
+\begin{exercise} Verify that the complex and symplectic structures
+on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
+\end{exercise}
+Thus $\cA_k$ is \kahler.
+Moreover $\fG_{k+1}$ acts on $\cA_k$ by conjugation,
+\begin{equation}
+  D \mapsto D^g = g D g^{-1}, \qquad D \in \cA^h_k.
+\end{equation}
+This action preserves the \kahler structure.
+
+\begin{prop}[Moment map for $\fG_{k+1}$ action on $\cA_k$] \label{prop:unitary-connections-moment-map}
+The action of $\fG_{k+1}$ on $\cA_k$ admits a moment map, given by
+\begin{equation} \label{eq:gauge-moment-map}
+  \mu(D) = F_D + 2 \pi \I \frac{d}{K} {\textbf 1} \omega_C 
+\end{equation}
+where $\omega_C$ denotes the \kahler form on $C$.
+More precisely, this means: suppose given an element 
+$Z \in \Lie \fG_{k+1} = \Omega^0_{k+1}(\fu(E))$,
+then we have 
+\begin{equation}
+  \mu_Z(D) = \int_C \Tr(Z F_D) + 2 \pi \I \frac{d}{K} \int_C \omega_C \Tr(Z).
+\end{equation}
+\end{prop}
+
+\begin{pf} The key facts are the action of 
+$Z \in \Lie \fG_{k+1} = \Omega^0_{k+1}(\fu(E))$ by infinitesimal gauge transformation,
+\begin{equation} \label{eq:inf-gauge}
+  \rho(Z) = -DZ
+\end{equation}
+and the differential of $\mu_Z$, acting on a tangent vector
+$\beta \in \Omega^1_{k}(\fu(E)) = T\cA^h_k$:
+\begin{equation} \label{eq:diff-moment-map}
+\de \mu_Z \cdot \beta = \int_C \Tr (Z \, D\beta).
+\end{equation}
+We compute
+\begin{align}
+  \omega(\rho(Z), \beta) &= -\int_C \Tr (DZ \wedge \beta) \\
+  &= \int_C \Tr (Z \, D\beta) \\
+  &= \de \mu_Z \cdot \beta.
+\end{align}
+\end{pf}
+
+\begin{exercise}
+Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
+\end{exercise}
+
+\currentposition
+
+\begin{exercise}
+Check that $\mu$ given by \eqref{eq:gauge-moment-map}
+is $\fG$-equivariant.
+\end{exercise}
+
+\autoref{prop:unitary-connections-moment-map} says in particular that 
+$\mu^{-1}(0)$ is the subset of $\cA^h_k$
+consisting of connections with
+\begin{equation} \label{eq:harmonic-curvature}
+  F_D = -2 \pi \I \frac{d}{K} \bid \omega_C.
+\end{equation}
+Let us put this funny-looking formula in a more general context:
+
+\begin{defn}[Einstein connection] 
+If $X$ is a Riemannian manifold and $E$ a complex
+vector bundle over $X$ with connection $D$, we say $D$ is 
+\ti{Einstein} if the curvature $F_D \in \Omega^2(\End E)$
+is
+\begin{equation}
+  F_D = \I \bid \alpha
+\end{equation}
+where $\alpha \in \Omega^2(X)$ is harmonic.
+\end{defn}
+
+\begin{exercise} Show that \eqref{eq:harmonic-curvature}
+is equivalent to the condition that $D$ is an Einstein 
+connection over the \kahler Riemann surface $C$.
+(Hint: see \autoref{exa:harmonic-forms-degree-0n}.)
+\end{exercise}
+
+In the important special case $d=0$, \eqref{eq:harmonic-curvature}
+just says that $D$ is a \ti{flat} connection.
+For $d \neq 0$, \eqref{eq:harmonic-curvature} says at least that $D$ is
+\ti{projectively} flat, i.e. it would descend to a flat connection 
+on the bundle $\PP(E)$ of projective spaces, and moreover the remaining
+central curvature is completely fixed.
+
+We remark that $\omega_C$ is an arbitrary positive $2$-form 
+on $C$ with total integral $1$.
+At least formally we can imagine taking $\omega_C$ to be more and more 
+concentrated at a single point $z_0$, until in the limit we get
+$\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
+\eqref{eq:harmonic-curvature} are becoming
+flat away from $z_0$, but developing a singularity 
+at $z_0$, with the holonomy around $z_0$
+of finite order, given by multiplication by the root of unity 
+$e^{-2 \pi \I d / K}$.
+
+\insfig{higgs-bundles-13}{0.95}
+
+Following our plan, 
+we want to take the symplectic quotient $\cA_k \kq \fG_{k+1} = \mu^{-1}(0) / \fG_{k+1}$.
+As a technical preliminary we need to understand the extent to 
+which $\fG_{k+1}$ acts freely and properly on $\mu^{-1}(0)$.
+
+\begin{defn}[Irreducible connections]
+We call a unitary connection $D$ in $E$ \ti{irreducible} if there does not
+exist any subbundle $E' \subset E$ such that $D$ preserves $E'$.
+\end{defn}
+
+\begin{prop}[Gauge group acts almost freely on irreducible connections] \label{prop:gauge-group-almost-free-on-irreducible}
+If $g \in \fG_{k+1}$ and $D$ is an irreducible connection, then $D^g = D$
+if and only if $g$ acts on $E$ by multiplication by a constant scalar.
+\end{prop}
+\begin{pf} $D^g = D$ if and only if $g$ is constant under the parallel 
+transport of $D$. This means that $g$ is determined by
+its value at a single point of $C$. Moreover this value cannot be arbitrary:
+it has to commute with the parallel transport around any loop.
+Thus if $g$ were not a constant its eigenspaces would be preserved by parallel 
+transport, which would contradict the irreducibility of $D$.
+\end{pf}
+
+Letting $\cA^s_{k} \subset \cA_k$ be the set of irreducible connections,
+and defining the ``effective gauge group''
+\begin{equation}
+ \fG^\eff_{k+1} = \fG_{k+1} / U(1)
+\end{equation}
+we could rephrase \autoref{prop:gauge-group-almost-free-on-irreducible}
+as saying that $\fG^\eff_{k+1}$ acts freely on $\cA^s_k$.
+
+\begin{exercise} Show that the moment map $\mu$ given in 
+\eqref{eq:gauge-moment-map} descends to give a 
+moment map for $\fG^\eff_{k+1}$.
+\end{exercise}
+
+\begin{prop}[Unitary gauge group acts properly] \label{prop:gauge-group-proper}
+The action of $\fG_{k+1}$ on $\cA_k$ is proper.
+\end{prop}
+\begin{pf} \fixme{...}
+\end{pf}
+
+Encouraged by \autoref{prop:gauge-group-almost-free-on-irreducible}
+and \autoref{prop:gauge-group-proper}, let $\cA^s \subset \cA$ be the 
+subset of irreducible unitary connections, and define:
+
+\begin{defn}[Moduli spaces of Einstein connections]
+\begin{equation}
+  \cN^s_{K,d}(C) = \cA^s_k \kq \fG^\eff_{k+1}, \qquad \cN_{K,d}(C) = \cA_k \kq \fG^\eff_{k+1},
+\end{equation}
+where we use \eqref{eq:gauge-moment-map} to define $\mu$.
+\end{defn}
+
+These are both infinite-dimensional quotients.
+Nevertheless they still make sense, at least
+as topological spaces. Our experience with finite-dimensional
+quotients would suggest that $\cN^s_{K,d}(C)$ should be a \kahler
+manifold, and this is indeed true, as we will show momentarily.
+
+First we look a bit more at the \ti{formal} picture.
+The tangent space to $\cN_{K,d}^s(C)$
+at a given Einstein connection $D$ should be the kernel of $\de \mu$ 
+modulo $\rho(\Lie (\fG^\eff))$. A nice way to say this is that 
+the tangent space should be the cohomology $H^1$ of the complex
+\begin{equation} \label{eq:gauge-complex}
+  0 \to \Omega^0_{k+1}(\fu(E)) \xrightarrow{D} \Omega^1_k(\fu(E)) \xrightarrow{D} \Omega^2_{k-1}(\fu(E)) \to 0
+\end{equation}
+(It's indeed a complex: $D^2 = 0$ acting
+on sections of $\fu(E)$, since $F_D \sim \bid$ and hence 
+is central. Of course this is as it should be since infinitesimal
+gauge transformations should be tangent to $\mu^{-1}(0)$.)
+Fortunately this complex
+is \ti{elliptic}.\footnote{This means that the corresponding symbol
+complex over $T^* C$ is exact off the zero section: indeed the symbol
+is just wedging with $p$.} This has the following encouraging
+consequences:
+
+\begin{prop}[Elliptic regularity for the gauge complex]
+Define
+\begin{equation}
+ \hat{D} = D \oplus D^*: \Omega^1_k \to \Omega^2_{k-1} \oplus \Omega^0_{k-1}.
+\end{equation}
+Then $\hat{D}$ is \ti{Fredholm}, i.e. it has closed range, 
+and finite-dimensional 
+kernel and cokernel.
+Moreover, $\ker \hat{D}$ and $\coker \hat{D}$ contain only
+smooth sections (so in particular they are independent of $k$.)
+\end{prop}
+
+We will need the following preliminary:
+\begin{lem}[Cohomology vanishing for the gauge complex] 
+\label{lem:cohomology-vanishing-gauge-complex}
+If $D \in \cA^s_k$, then
+$H^0$ and $H^2$ of the complex \eqref{eq:gauge-complex} are both
+$1$-dimensional.
+\end{lem}
+\begin{pf}
+Any $D$-constant section of $\fu(E)$ must be a constant multiple
+of $\bid$, since $D$ is an irreducible connection: this gives
+the desired statement for $H^0$. For $H^2$ we essentially
+use Poincare duality. More precisely, we need to use the
+Fredholm property of $\hat D$, which tells us that $H^2$ can 
+be identified with $\ker D^* \subset \Omega^2_{k-1}(\fu(E))$.
+On the other hand we have
+\begin{equation}
+  D^* = - \star D \star
+\end{equation}
+so any $\alpha \in H^2$ has $D \star \alpha = 0$; said
+otherwise, $H^2$ is just spanned by $\star (\bid)$.
+\end{pf}
+
+Morally what we used here is just the statement that 
+$\fG$ acts freely on $\cA^s_k$.
+Now we are ready to prove that $\cN$ is well behaved:
+\begin{thm}[$\cN^s_{K,d}(C)$ is \kahler] \label{thm:N-is-kahler}
+$\cN^s_{K,d}(C)$ is a \kahler manifold.
+\end{thm}
+\begin{pf}
+First we want 
+to show that $\mu^{-1}(0) \subset \cA^s_{k}$ is a submanifold. 
+This follows from the
+Banach space inverse function theorem. \fixme{...}
+\end{pf}
+
+\begin{thm}[Dimension of $\cN^s_{K,d}(C)$] \label{thm:dimension-of-N}
+$\dim_\C \cN^s_{K,d}(C) = (g-1)K^2+1$ where $g$ is the genus of $C$.
+\end{thm}
+\begin{pf} This can be obtained as an application of 
+the Atiyah-Singer Index Theorem, which gives a formula 
+for the index 
+\begin{equation}
+  \ind \hat{D} = \dim \ker \hat{D} - \dim \coker \hat{D}
+\end{equation}
+when $\hat{D}$ is \ti{any} elliptic
+differential operator over a compact manifold. 
+The formula is complicated, but all we need to know is that 
+it does not depend on all details
+of $\hat{D}$ --- it depends only on the symbol, i.e.
+the highest-degree terms of the differential operator.
+
+For the operator $\hat{D}$ we have here, the symbol
+is the same as that for the trivial connection on 
+the trivial rank $K$ bundle (in local coordinates $D = \de + A$, 
+and the $A$ part is lower-order.) But for the trivial 
+connection we just get $K^2$ copies of the de Rham 
+complex, whose index is known: it is $-\chi(C) = 2g-2$.
+Thus the index formula gives
+\begin{equation}
+  \ind \hat{D} = (2g-2) K^2.
+\end{equation}
+On the other hand \autoref{lem:cohomology-vanishing-gauge-complex}
+says
+\begin{equation}
+  \dim \coker \hat{D} = 2.
+\end{equation}
+Combining these gives the desired result.
+\end{pf}
+
+The formula in \autoref{thm:dimension-of-N} looks a bit
+suspicious for $g < 2$. But in these cases
+the only way to have an irreducible Einstein 
+connection is to have $K=1$, in which case we get dimension
+$0$ for $g=0$ and dimension $1$ for $g=1$, which is indeed
+correct --- see \autoref{exa:jacobians} below.
+
+\begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
+Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
+Then the map $E \to E \otimes \cL$ gives a holomorphic 
+isometry of \kahler manifolds
+\begin{equation}
+\cN^s_{K,d}(C) \simarrow \cN^s_{K,d+Kd'}(C).
+\end{equation}
+\end{prop}
+\begin{pf}
+By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
+a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
+suppose given an Einstein connection $D$ in $E$. Then the connection
+$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
+\begin{equation} \label{eq:additivity-of-curvature}
+ F_{D'} = F_D + F_{D_\cL} \bid
+\end{equation}
+(note in writing this equation we used
+the fact that $\End(E') \simeq \End(E)$).
+Thus $D'$ is also Einstein. This gives the desired map.
+\end{pf}
+
+As a consequence of \autoref{prop:tensor-line-is-isometry}, one can say
+loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$.''
+However, one does not quite get a \ti{canonical} isomorphism.
+
+\begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
+\end{exercise}
+
+\begin{exercise} Verify that the map in 
+\autoref{prop:tensor-line-is-isometry} is a holomorphic
+isometry of \kahler manifolds.
+\end{exercise}
+
+\begin{example}[Jacobians] \label{exa:jacobians}
+The special case $K=1$ is very concrete. In light of 
+\autoref{prop:tensor-line-is-isometry} all degrees are
+essentially the same, so let us consider $d=0$. Then we
+introduce the notation
+\begin{equation}
+ \Jac(C) = \cN^s_{1,0}(C),
+\end{equation}
+and call $\Jac(C)$ the \ti{Jacobian} of $C$.
+It is the space of flat connections on the trivial line
+bundle over $C$, modulo gauge equivalence.
+Taking holonomies around loops gives a map
+\begin{equation}
+  \Jac(C) \to H^1(C, U(1)).
+\end{equation}
+In fact this map is an isomorphism. To see this, it's enough
+to show that, if $a \in \Omega^1(C)$ and $\oint_\wp a = 0$
+for all paths $\wp$ in $C$, then $a$ is exact; but that is just 
+the Poincare lemma.
+
+Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$. In particular,
+topologically (even symplectically) it does not depend on
+the complex structure of $C$.
+\end{example}
+
+\begin{thm}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
+$\cN_{K,d}(C)$ is compact. \fixme{...}
+\end{thm}
+
+\begin{exercise} \label{exc:coprime-einstein-is-irreducible} 
+Show that if $(d,K)=1$ then $\cN_{K,d}(C) = \cN_{K,d}^s(C)$. 
+\end{exercise}
+
+\begin{cor}[$\cN_{K,d}(C)$ is nice when $(d,K)$ = 1]
+When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
+\kahler manifold.
+\end{cor}
+\begin{pf} This is just the combination of \autoref{thm:N-is-kahler},
+\autoref{thm:Ns-is-compact}, and 
+\autoref{exc:coprime-einstein-is-irreducible}.
+\end{pf}
+
+\begin{example}[Stable bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $2$. \fixme{...}
+\end{example}
+
+
+
+\subsection{Stable vector bundles}
 
 \begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
 \begin{equation}
@@ -4503,295 +4965,8 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 \end{exercise}
 
 
-\subsection{Moduli spaces}
 
-\begin{prop}[Classification of complex vector bundles]
-All rank $K$ complex vector bundles over $C$ of degree $d$ are equivalent.
-\end{prop}
-
-Thus, suppose we fix a single rank $K$ complex vector bundle $E$, 
-of degree $d$; then every holomorphic vector bundle of rank $K$
-and degree $d$ is equivalent to $(E, \bar\partial)$ for some
-$\bar\partial$-operator on $E$.
-
-Let $\cA^{\bar\partial}$ denote the space of all such $\bar\partial$.
-This is an affine space modeled on the infinite-dimensional 
-complex linear space $\Omega^{0,1}(\End E)$.
-
-The moduli space we want to describe could be thought of as
-$\cA^{\bar\partial}$ modulo equivalence --- where now ``equivalence'' means
-the (infinite-dimensional,
-complex) group $\fG_\C$ of sections of $GL(E)$,
-which acts on $\cA^{\bar\partial}$ by conjugation:
-\begin{equation}
-  D \mapsto D^g = g D g^{-1}.  
-\end{equation}
-So formally we want to say
-\begin{equation} \label{eq:bunG-formal-quotient}
-  \cN_{K,d}(C) = \cA^{\bar\partial} / \fG_\C.
-\end{equation}
-
-It is not so easy to make a ``nice'' space in this way.
-The difficulty comes from the 
-fact that $\fG_\C$ is a complex group.
-(Of course $\fG_\C$ is also infinite-dimensional,
-but that's not really the problem!)
-
-One neat trick for getting around this problem, 
-explained in \cite{MR85k:14006}, 
-is to think of $\fG_\C$ as the complexification of a
-group $\fG$ whose action is better controlled, and 
-then interpret \eqref{eq:bunG-formal-quotient}
-as a \kahler quotient (still infinite-dimensional.)
-For this purpose, let us fix a Hermitian metric $h$ on $E$.
-After so doing, we have an infinite-dimensional real group
-$\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
-Let $\cA^h$ denote the space of all $h$-unitary connections
-on $E$.
-
-\begin{prop}[Unitary connections = holomorphic structures] 
-$\cA^{\bar\partial} \simeq \cA^h$.
-\end{prop}
-\begin{pf} Each $\bar\partial \in \cA^{\bar\partial}$
-can be extended in a canonical way to a unitary connection $D \in \cA^h$
-(Chern connection), and conversely, each unitary connection $D \in \cA^h$ 
-can be restricted to an operator $\bar\partial \in \cA^{\bar\partial}$.
-\end{pf}
-
-$\cA^h$ is an affine space, modeled
-on the infinite-dimensional \ti{real} linear space $\Omega^{1}(\fu(E))$.
-
-The compatibility of these two pictures 
-is summarized in the next exercise:
-
-\begin{exercise} Show that the real linear space 
-$\Omega^{1}(\fu(E))$ carries a natural complex structure $I$,
-and with this complex structure it is canonically identified
-with the complex linear space $\Omega^{0,1}(\End E)$.
-\end{exercise}
-
-On $\Omega^{1}(\fu(E))$ we have a natural pairing
-\begin{equation} \label{eq:symplectic-form-A}
-  \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
-\end{equation}
-We would like to think of this as a symplectic form.
-
-Strictly speaking, though, we have only defined the notion
-of ``symplectic form'' for Banach manifolds.
-So now is a good time to switch to that setting.
-We fix some $k > 1$ (you can imagine that it is very big,
-say $k = 100$), and replace $\cA^h$ by the larger space $\cA^h_k$
-of $L^2_k$ connections. $\cA^h_k$ is a Banach manifold,
-in fact an affine space modeled on the Banach space
-$\Omega^1_k(\End E) = L^2_1(T^* \otimes \End E)$. 
-Then \eqref{eq:symplectic-form-A} gives a symplectic 
-structure on $\cA^h$.
-From now on we will throw in the subscript $k$ to pass 
-to $L^2_k$ versions of the various spaces of sections
-we need to consider. On a first reading, you might profit
-by ignoring the $k$'s and pretending that we work always
-with $C^\infty$ objects.
-
-Altogether we now have a single space $\cA_k$ with both symplectic and
-complex structures.
-\begin{exercise} Verify that the complex and symplectic structures
-on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
-\end{exercise}
-Thus $\cA_k$ is \kahler.
-Moreover $\fG_{k+1}$ acts on $\cA_k$ by conjugation,
-\begin{equation}
-  D \mapsto D^g = g D g^{-1}, \qquad D \in \cA^h_k.
-\end{equation}
-This action preserves the \kahler structure.
-
-\begin{prop}[Moment map for $\fG$ action on $\cA_k$] \label{prop:unitary-connections-moment-map}
-The action of $\fG$ on $\cA_k$ admits a moment map, given by
-\begin{equation} \label{eq:gauge-moment-map}
-  \mu(D) = F_D + 2 \pi \I \frac{d}{K} {\textbf 1} \omega_C 
-\end{equation}
-where $\omega_C$ denotes the \kahler form on $C$.
-More precisely, this means: suppose given an element 
-$Z \in \Lie \fG = \Omega^0(\fu(E))$,
-then we have 
-\begin{equation}
-  \mu_Z(D) = \int_C \Tr(Z F_D) + 2 \pi \I \frac{d}{K} \int_C \omega_C \Tr(Z).
-\end{equation}
-\end{prop}
-
-\begin{pf} The key facts are the action of 
-$Z \in \Lie \fG = \Omega^0(\fu(E))$ by infinitesimal gauge transformation,
-\begin{equation} \label{eq:inf-gauge}
-  \rho(Z) = -DZ
-\end{equation}
-and the differential of $\mu_Z$, acting on a tangent vector
-$\beta \in \Omega^1(\fu(E)) = T\cA^h$:
-\begin{equation} \label{eq:diff-moment-map}
-\de \mu_Z \cdot \beta = \int_C \Tr (Z \, D\beta).
-\end{equation}
-We compute
-\begin{align}
-  \omega(\rho(Z), \beta) &= -\int_C \Tr (DZ \wedge \beta) \\
-  &= \int_C \Tr (Z \, D\beta) \\
-  &= \de \mu_Z \cdot \beta.
-\end{align}
-\end{pf}
-
-\begin{exercise}
-Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
-\end{exercise}
-
-\currentposition
-
-\autoref{prop:unitary-connections-moment-map} says in particular that 
-$\mu^{-1}(0)$ is the subset of $\cA^h_k$
-consisting of connections with
-\begin{equation} \label{eq:harmonic-curvature}
-  F_D = -2 \pi \I \frac{d}{K} \bid \omega_C.
-\end{equation}
-Let us put this funny-looking formula in a more general context:
-
-\begin{defn}[Einstein connection] 
-If $X$ is a Riemannian manifold and $E$ a complex
-vector bundle over $X$ with connection $D$, we say $D$ is 
-\ti{Einstein} if the curvature $F_D \in \Omega^2(\End E)$
-is
-\begin{equation}
-  F_D = \I \bid \alpha
-\end{equation}
-where $\alpha \in \Omega^2(X)$ is harmonic.
-\end{defn}
-
-\begin{exercise} Show that \eqref{eq:harmonic-curvature}
-is equivalent to the condition that $D$ is an Einstein 
-connection over the \kahler Riemann surface $C$.
-(Hint: see \autoref{exa:harmonic-forms-degree-0n}.)
-\end{exercise}
-
-In the important special case $d=0$, \eqref{eq:harmonic-curvature}
-just says that $D$ is a \ti{flat} connection.
-For $d \neq 0$, \eqref{eq:harmonic-curvature} says at least that $D$ is
-\ti{projectively} flat, i.e. it would descend to a flat connection 
-on the bundle $\PP(E)$ of projective spaces, and moreover the remaining
-central curvature is completely fixed.
-
-We remark that $\omega_C$ is an arbitrary positive $2$-form 
-on $C$ with total integral $1$.
-At least formally we can imagine taking $\omega_C$ to be more and more 
-concentrated at a single point $z_0$, until in the limit we get
-$\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
-\eqref{eq:harmonic-curvature} are becoming
-flat away from $z_0$, but developing a singularity 
-at $z_0$, with the holonomy around $z_0$
-of finite order, given by multiplication by the root of unity 
-$e^{-2 \pi \I d / K}$.
-
-\insfig{higgs-bundles-13}{0.95}
-
-Following our plan, 
-we want to take the symplectic quotient $\cA_k \kq \fG_{k+1} = \mu^{-1}(0) / \fG_{k+1}$.
-As a technical preliminary we need to understand the extent to 
-which $\fG_{k+1}$ acts freely and properly on $\mu^{-1}(0)$.
-
-\begin{defn}[Irreducible connections]
-We call a unitary connection $D$ in $E$ \ti{irreducible} if there does not
-exist any subbundle $E' \subset E$ such that $D$ preserves $E'$.
-\end{defn}
-
-\begin{prop}[Gauge group acts almost freely on irreducible connections]
-If $g \in \fG_{k+1}$ and $D$ is an irreducible connection, then $D^g = D$
-if and only if $g$ acts on $E$ by multiplication by a constant scalar.
-\end{prop}
-\begin{pf} $D^g = D$ if and only if $g$ is constant under the parallel 
-transport of $D$. This means that $g$ is determined by
-its value at a single point of $C$. Moreover this value cannot be arbitrary:
-it has to commute with the parallel transport around any loop.
-Thus if $g$ were not a constant its eigenspaces would be preserved by parallel 
-transport, which would contradict the irreducibility of $D$.
-\end{pf}
-
-\begin{prop}[Unitary gauge group acts properly]
-The action of $\fG_{k+1}$ on $\cA_k$ is proper.
-\end{prop}
-\begin{pf} \fixme{...}
-\end{pf}
-
-Let $\cA^s \subset \cA$ be the subset of irreducible
-unitary connections. Now we define:
-
-\begin{defn}[Moduli spaces of unitary harmonic bundles]
-\begin{equation}
-  \cN^s_{K,d}(C) = \cA^s \kq \fG, \qquad \cN_{K,d}(C) = \cA \kq \fG.
-\end{equation}
-\end{defn}
-
-Note that these are both infinite-dimensional quotients.
-Nevertheless they still make sense, at least
-as topological spaces. Now we will see that they have
-much better structure.
-
-\begin{thm}[$\cN^s_{K,d}(C)$ is a \kahler manifold] \label{thm:N-is-kahler}
-$\cN^s_{K,d}(C)$ is a \kahler manifold.
-\end{thm}
-\begin{pf}
-First we state the \ti{formal} picture.
-$\cN^s_{K,d}(C)$ arises as a symplectic quotient
-by the ``effective gauge group''
-\begin{equation}
- \fG^\eff = \fG / \C^\times
-\end{equation} 
-which acts freely (note that the moment 
-map $\mu$ descends to this quotient!) Formally the tangent space
-at a given flat connection $D$ should be the kernel of $\de \mu$ 
-modulo $\rho(\Lie (\fG^\eff))$: in other words we want
-the cohomology of the complex
-\begin{equation}
-  0 \to \Omega^0(\fu(E)) / \C \xrightarrow{D} \Omega^1(\fu(E)) \xrightarrow{D} \Omega^2(\fu(E)) \to 0
-\end{equation}
-at the middle position. (It's indeed a complex: $D^2 = 0$ acting
-on sections of $\fu(E)$, since $F_D \sim \bid$ and hence 
-is central.) 
-
-We have to pay proper respect to the fact that we are dealing here
-with \ti{infinite-dimensional} spaces. \fixme{describe the needed
-Sobolev stuff}
-Fortunately the complex
-is \ti{elliptic}.\footnote{This means that the corresponding symbol
-complex over $T^* C$ is exact off the zero section: indeed the symbol
-is just wedging with $p$.} This means in particular that we get a good local
-structure: the operator 
-\begin{equation}
- \hat{D} = D \oplus D^*: \Omega^1 \to \Omega^2 \oplus \Omega^0 
-\end{equation}
-is \ti{Fredholm}, i.e. it has closed range, and finite-dimensional 
-kernel and cokernel. The tangent space we are after is the kernel.
-\fixme{index theorem}
-\end{pf}
-
-\begin{thm}[Dimension of $\cN^s_{K,d}(C)$]
-$\dim_\C \cN^s_{K,d}(C) = (g-1)K^2+1$ where $g$ is the genus of $C$.
-\end{thm}
-\begin{pf} \fixme{index theorem}
-\end{pf}
-
-\begin{thm}[Compactness of $\cN_{K,d}(C)$]
-$\cN_{K,d}(C)$ is compact.
-\end{thm}
-
-\begin{cor}[$\cN_{K,d}(C)$ is nice when $(d,K)$ = 1]
-When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
-\kahler manifold.
-\end{cor}
-\begin{pf} This is just the combination of \autoref{thm:uharm-basics}
-and \autoref{exc:coprime-semistable-is-stable}.
-\end{pf}
-
-\begin{example}[Jacobians]
-The special case $K=1$ is very concrete. \fixme{...}
-\end{example}
-
-\begin{example}[Stable bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $2$. \fixme{...}
-\end{example}
-
+\subsection{Holomorphic description}
 
 \fixme{material below needs to be organized}
 
@@ -4841,38 +5016,6 @@ valued in $\fG_\C$ but not in $\fG$.'' \fixme{...}
 % \begin{pf} \fixme{abelian Hodge theory}
 % \end{pf}
 
-\begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
-Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
-Then the map $E \to E \otimes \cL$ gives a holomorphic 
-isometry of \kahler manifolds
-\begin{equation}
-\cN^s_{K,d}(C) \simarrow \cN^s_{K,d+Kd'}(C).
-\end{equation}
-\end{prop}
-\begin{pf}
-By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
-a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
-suppose given an Einstein connection $D$ in $E$. Then the connection
-$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
-\begin{equation} \label{eq:additivity-of-curvature}
- F_{D'} = F_D + F_{D_\cL} 
-\end{equation}
-(note in writing this equation we used
-the fact that $\End(E') \simeq \End(E)$).
-Thus $D'$ is also Einstein. This gives the desired map.
-\end{pf}
-
-As a consequence of \autoref{prop:tensor-line-is-isometry}, one can say
-loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$.''
-However, one does not quite get a \ti{canonical} isomorphism.
-
-\begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
-\end{exercise}
-
-\begin{exercise} Verify that the map in 
-\autoref{prop:tensor-line-is-isometry} is a holomorphic
-isometry of \kahler manifolds.
-\end{exercise}
 
 \begin{thm}[Narasimhan-Seshadri theorem] \label{thm:narasimhan-seshadri}
 For any $[D] \in \cN^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
