@@ -4180,14 +4180,9 @@ this method would not be so different from what we do here.
 \subsection{Banach spaces}
 
 \begin{defn}[Banach space] A \ti{Banach space} is 
-a vector space $V$ over $\R$ or $\C$, equipped with a 
-topology in which $V$ is complete, and such that there
-exists a norm on $V$ inducing the topology.
+a normed vector space $V$ over $\R$ or $\C$, which
+is complete as a metric space.
 \end{defn}
-
-Whenever necessary we will \ti{choose} a particular norm inducing
-the topology. One has to check that all of our statements
-which use a norm are actually independent of the choice of norm.
 
 \begin{defn}[Norm of a linear functional] Say $V$ is a Banach 
 space over $\R$ (resp. $\C$), and we have a 
@@ -4205,6 +4200,13 @@ on Banach spaces need not be continuous:
 over $\R$ (resp. $\C$), a linear map $\eta: V \to \R$ 
 (resp. $\C$) is continuous if and only if it is bounded.
 \end{prop}
+
+Loosely speaking, we want to consider two Banach spaces as
+``the same'' if there is a bounded linear isomorphism
+between them, even if that isomorphism does not preserve the 
+norm. So we can think of a Banach space as coming not with 
+a single norm but with a bunch of them, all inducing the 
+same topology, and all more or less equally good.
 
 \begin{defn}[Dual of Banach space] If $V$ is a Banach space
 over $\R$ (resp. $\C$),
@@ -4276,7 +4278,8 @@ considered with the norms induced by $h$ and the metric on $X$.)
 Then $L^p_k(E)$ is the \ti{completion} of the space of smooth
 sections of $E$ with respect to $\norm{\cdot}_{p,k}$.
 While the precise norm depends on the choice of $\nabla$, the 
-Banach space $L^p_k(E)$ actually does not depend on this choice.
+different Banach spaces $L^p_k(E)$ we obtain from the different
+norms are all isomorphic.
 \end{example}
 
 Crudely speaking, $L^p_k(E)$ consists of functions which are $L^p$ and 
