@@ -4230,7 +4230,10 @@ Some authors would call this a ``weakly nondegerate'' pairing.
 I emphasize that it is not the same as requiring the induced maps
 to be \ti{isomorphisms}.
 
-\begin{defn}[Complemented subspace] \fixme{...}
+\begin{defn}[Complemented subspace] If $V$ is a Banach space
+and $W \subset V$ a closed subspace, we say $W$ is 
+\ti{complemented} if there exists a closed subspace $W' \subset V$
+such that $W \cap W' = \{0\}$ and $W + W' = V$.
 \end{defn}
 
 \begin{exercise} Suppose $V$ is a Banach space and
@@ -4238,8 +4241,24 @@ to be \ti{isomorphisms}.
  Show that $W$ is complemented.
 \end{exercise}
 
+\begin{defn}[Derivatives of maps of Banach spaces]
+If $f: V \to W$ is a map of Banach spaces,
+we say $f$ is \ti{differentiable} and $\de f: V \to W$ its
+\ti{derivative} if for all $v \in V$ we have
+\begin{equation}
+  \lim_{h \to 0} \frac{\norm{f(v+h) - f(v) - \de f(h)}}{\norm{h}} = 0.
+\end{equation}
+\end{defn}
 
-\section{Sobolev spaces}
+
+\begin{thm}[Inverse function theorem for Banach spaces]
+Suppose $f: V \to W$ is a smooth map of Banach spaces, and for some
+$v \in V$ the map $\de f(v): V \to W$ is a bounded isomorphism.
+Then $f$ admits a smooth inverse on an open neighborhood of
+$f(v) \in W$.
+\end{thm}
+
+\subsection{Sobolev spaces}
 
 \begin{example}[Sobolev spaces] Suppose $E$ is a complex
 vector bundle with Hermitian metric $h$
@@ -4377,29 +4396,12 @@ $T_e G$ and acquires the Lie bracket in the usual way.
 \end{defn}
 
 \begin{prop}[Free proper quotients are Banach manifolds] \label{prop:free-proper-quotients-are-banach-manifolds}
-Suppose $X$ is a Banach manifold with a Banach Lie group $G$
-acting properly and freely.
-Suppose also that the tangent spaces to orbits, 
-$T_x (Gx) \subset T_x X$, are closed and complemented.
-Let $\fg = \Lie G$ and let
-\begin{equation}
-\rho: \fg \to \Vect(X)
-\end{equation}
-be the infinitesimal action.
-Then:
-\begin{itemize}
-\item The quotient $X / G$ (the set of $G$-orbits on $X$) 
-has a natural structure of Banach manifold, compatible with
-the quotient topology.
-\item The differential of the projection $X \to X/G$ 
-is surjective and gives an isomorphism
-\begin{equation}
-TX / \rho(\fg) \simeq T(X/G).
-\end{equation}
-\end{itemize}
+This is just like \autoref{prop:free-proper-quotients-are-manifolds}
+except that we need the extra hypothesis that the
+tangent spaces to orbits, 
+$T_x (Gx) \subset T_x X$, are closed and complemented. \fixme{ref Bourbaki}
 \end{prop}
 
-\fixme{ref Bourbaki}
 
 In the situation where we will use 
 \autoref{prop:free-proper-quotients-are-banach-manifolds}, the 
@@ -4415,15 +4417,22 @@ as \autoref{def:moment-map} and \autoref{def:symplectic-quotient}.
 \begin{thm}[Symplectic quotient is symplectic]
 Suppose $X$ is a symplectic Banach manifold, with a group $G$
 acting properly on it, with moment map $\mu$. 
-If $G$ acts freely on $\mu^{-1}(0)$, \fixme{are we sure this is really
-sufficient condition? if so then we are saying that things are
-exactly as in the finite-dimensional situation!}
-then $X \kq G$ is a Banach manifold, and there is a 
+Suppose that $G$ acts freely on $\mu^{-1}(0)$, the tangent
+spaces $T = T_x (Gx)$ to $G$-orbits are complemented
+by $T^{\perp_\omega}$, and
+\begin{equation}
+  T = (T^{\perp_\omega})^{\perp_\omega}.
+\end{equation}
+Then $X \kq G$ is a Banach manifold, and there is a 
 symplectic form $\omega_{X \kq G}$ on $X \kq G$, with the
 property
 \begin{equation}
   \pi^* \omega_{X \kq G} = \iota^* \omega.
 \end{equation}
+\fixme{need to check the conditions on $G$ action are 
+really enough to get $\mu^{-1}(0)$ to be a manifold; idea:
+they mean $\de \mu$ is surjective onto some smaller space
+than $\fg^*$}
 \end{thm}
 
 
@@ -4582,16 +4591,20 @@ we need to consider. On a first reading, you might profit
 by ignoring the $k$'s and pretending that we work always
 with $C^\infty$ objects.
 
-Altogether we now have a single space $\cA_k$ with both symplectic and
+Altogether we now have a single space $\cA_k$ $(\simeq \cA^{\bar\partial}_k \simeq \cA^h_k)$ with both symplectic and
 complex structures.
 \begin{exercise} Verify that the complex and symplectic structures
 on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
 \end{exercise}
 Thus $\cA_k$ is \kahler.
-Moreover $\fG_{k+1}$ acts on $\cA_k$ by conjugation,
+Moreover, it carries a natural action of $\fG_{k+1}$:
+\begin{prop} For $k>1$, the action of $\fG$ on $\cA^h$ by conjugation,
 \begin{equation}
   D \mapsto D^g = g D g^{-1}, \qquad D \in \cA^h_k.
 \end{equation}
+extends to an action of $\fG_{k+1}$ on $\cA_k$.
+\end{prop}
+
 This action preserves the \kahler structure.
 
 \begin{prop}[Moment map for $\fG_{k+1}$ action on $\cA_k$] \label{prop:unitary-connections-moment-map}
@@ -4804,6 +4817,7 @@ to show that $\mu^{-1}(0) \subset \cA^s_{k}$ is a submanifold.
 This follows from the
 Banach space inverse function theorem (applied to a quotient
 by the 1-dimensional subspace spanned by $\star \bid$.)
+\fixme{...}
 \end{pf}
 
 \begin{thm}[Dimension of $\cN^s_{K,d}(C)$] \label{thm:dimension-of-N}
