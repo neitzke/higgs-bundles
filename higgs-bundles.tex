@@ -225,6 +225,7 @@
 \newcommand{\vol}{\mathrm{vol}}
 \renewcommand{\sf}{\mathrm{sf}}
 \newcommand{\inst}{\mathrm{inst}}
+\newcommand{\eff}{\mathrm{eff}}
 \newcommand{\dR}{\mathrm{dR}}
 \newcommand{\closed}{\mathrm{closed}}
 \newcommand{\exact}{\mathrm{exact}}
@@ -276,8 +277,6 @@
 \rhead{{\tiny \color{gray} \tt \gitAbbrevHash}}
 \renewcommand{\headrulewidth}{0.5pt}
 
-\setcounter{page}{1}
-
 
 \begin{center} 
 \tb{Moduli of Higgs Bundles} \\
@@ -308,6 +307,9 @@ or as pull requests to the source repository hosted at
 \listoftheorems[onlynamed]
 
 \newpage
+
+%\setcounter{page}{1}
+
 
 \section{Introductory motivation}
 
@@ -394,25 +396,52 @@ mostly beyond the scope of this course.)
 
 \section{Local symplectic, complex and \kahler geometry: a quick review}
 
-This is only intended as a review, to fix notation, and to
-give references for some facts we will need.
+This section is only intended as a review, to fix notation, and to
+give references for some facts we will need: we will not give 
+complete proofs here.
 
 There are many references for the material on complex
 and \kahler geometry: one
 good one is \cite{MR2093043}.
 
 In this section ``manifold'' will mean a finite-dimensional
-smooth manifold. (Later we will occasionally need to talk about 
+manifold. (Later we will need to talk about 
 infinite-dimensional Banach manifolds, but then we will 
 always say ``Banach manifold'' instead of just ``manifold.''
 
 \subsection{Quotients}
 
-\begin{prop}[Free proper quotients are manifolds] \label{prop:free-proper-quotients-are-manifolds} 
-Suppose $X$ is a smooth manifold with a Lie group $G$
-acting properly (inverse images of compact sets in $X$
-are compact in $G \times X$)
-and freely (stabilizers of all points in $X$ are trivial).
+\begin{defn}[Free action] \label{def:free} Suppose $X$ is a manifold 
+with a Lie group $G$ acting. We say the action is \ti{free} if 
+the stabilizers of all $x \in X$ are trivial.
+\end{defn}
+
+\begin{defn}[Proper action] \label{def:proper}
+Suppose $X$ is a manifold 
+with a Lie group $G$ acting. We say the action is \ti{proper} if 
+inverse images of compact sets in $X$
+are compact in $G \times X$.
+\end{defn}
+
+\begin{prop}[Compact group actions are proper]
+If $G$ is compact, then any action of $G$ on a manifold is proper.
+\end{prop}
+
+\begin{defn}[Slice] \label{def:slice}
+Suppose $X$ is a manifold with a Lie group $G$ acting freely, 
+and $x \in X$.
+A \ti{slice at $x$} for this action is a
+submanifold $S_x \subset X$, with $x \in S_x$, 
+such that for every $g \in G$ we have $g S_x \cap S_x = \emptyset$,
+and the action map $G \times S_x \to X$ is a diffeomorphism
+onto some neighborhood of $x$.
+\end{defn}
+
+\insfig{higgs-bundles-10}{1.1}
+
+\begin{prop}[Free proper quotients are manifolds] \label{prop:free-proper-quotients-are-manifolds}
+Suppose $X$ is a manifold with a Lie group $G$
+acting properly and freely.
 Let $\fg = \Lie G$ and let
 \begin{equation}
 \rho: \fg \to \Vect(X)  
@@ -421,7 +450,7 @@ be the infinitesimal action.
 Then:
 \begin{itemize}
 \item The quotient $X / G$ (the set of $G$-orbits on $X$) 
-has a natural structure of smooth manifold, compatible with
+has a natural structure of manifold, compatible with
 the quotient topology.
 \item The differential of the projection $X \to X/G$ 
 is surjective and gives an isomorphism
@@ -431,7 +460,13 @@ TX / \rho(\fg) \simeq T(X/G).
 \end{itemize}
 \end{prop}
 
-\insfig{higgs-bundles-10}{0.8}
+We do not review the proof here, but only comment that it 
+relies on the existence of a slice $S_x$ around any $x \in X$.
+If $G$ is compact then this is relatively easy (choose a 
+$G$-invariant Riemannian metric on $X$ and then
+let $S_x$ be the exponential of a small disc in the normal bundle
+to the orbit $Gx$ at $x$). If $G$ is non-compact but still acts properly
+then it is more difficult, but proven in \cite{MR0126506}.
 
 Note that the requirement that the $G$-action be proper is 
 important. One 
@@ -443,7 +478,6 @@ the action of $\R$ by translations in an irrational direction,
 e.g. let $t \in \R$ act by $(x,y) \mapsto (x+t,y+\sqrt{2}t)$. 
 Then the quotient $T^2 / \R$ has the indiscrete topology,
 so it is definitely not a manifold.
-If $G$ is compact then the action is always proper.
 
 
 \subsection{Symplectic manifolds}
@@ -475,7 +509,7 @@ such that
 
 \begin{defn}[Symplectic manifold] \label{def:symplectic-manifold}
 A \ti{symplectic manifold} is a pair $(X,\omega)$
-where $X$ is a smooth manifold and
+where $X$ is a manifold and
 $\omega \in \Omega^2(X)$, such that
 \begin{equation}
   \de \omega = 0
@@ -680,7 +714,7 @@ $\de \omega_{X \kq G} = 0$ as desired.
 The next exercise gives (perhaps) some motivation
 for the notion of symplectic quotient:
 
-\begin{exercise} Suppose $X$ is a smooth manifold
+\begin{exercise} Suppose $X$ is a manifold
 with a compact group $G$ acting freely. Let $\mu$
 be the moment map of \autoref{exc:cotangent-moment-map}.
 Show that $G$ acts freely on $\mu^{-1}(0)$ and
@@ -692,7 +726,7 @@ as symplectic manifolds. \fixme{check!}
 
 
 \subsection{Complex manifolds} 
-In this section $X$ is a smooth manifold.
+In this section $X$ is a manifold.
 
 \begin{defn}[Almost complex structure]
 An \ti{almost complex structure} on $X$ is a smooth section $I$ of $\End(TX)$ with $I^2 = -1$. An \ti{almost complex manifold} is a pair $(X,I)$ where $I$ is an almost complex structure.
@@ -1412,7 +1446,7 @@ $(p_1, \dots, p_n, q_1, \dots, q_n)$
 such that $\Omega = \sum_{i=1}^n \de p_i \wedge \de q_i$.
 
 \begin{prop}[Holomorphic symplectic form determines complex structure] \label{prop:hol-symp-to-complex}
-Suppose $X$ is a smooth manifold with $\dim_\R X = 2n$, 
+Suppose $X$ is a manifold with $\dim_\R X = 2n$, 
 with $\Omega \in \Omega^2_\C(X)$, such that $\de \Omega = 0$ and
 \begin{equation}
  T_\C X = \ker \Omega \oplus \ker \overline\Omega. 
@@ -1543,7 +1577,7 @@ namely $v \mapsto g(v,\cdot)$.)
 \end{cor}
 
 \begin{prop}[Condition for forms $\omega_i$ to give a \hk metric] \label{prop:omega-hk-condition}
-Suppose $X$ is a smooth manifold with symplectic forms 
+Suppose $X$ is a manifold with symplectic forms 
 $\omega_1, \omega_2, \omega_3$, obeying the condition that
 \begin{equation}
 -\omega_1 \omega_3^{-1} \omega_2 = -\omega_2 \omega_1^{-1} \omega_3 = -\omega_3 \omega_2^{-1} \omega_1,
@@ -2018,7 +2052,7 @@ In other words, this metric is obtained by dividing
 out the metric of $\R^4 / \{ 0 \}$ by a subgroup 
 $\Z_k \subset U(1)$. In turn this $U(1) \subset SU(2)_R$, so this is a special case of the quotients
 described in \autoref{exa:H-quotients}. Unlike the case $k=1$, here we \ti{cannot}
-fill in the missing point to make a smooth manifold (if we could, we would have a 
+fill in the missing point to make a manifold (if we could, we would have a 
 point whose link is the lens space $S^3 / \Z_k$.)
 \end{example}
 
@@ -2192,7 +2226,7 @@ Cartan matrix of type $A_{k-1}$.)
 \begin{example}[ALE spaces] \label{exa:ALE-spaces}
 One can consider the minimal resolutions $X_\Gamma$
 of the singularities at the origin in \autoref{exa:H-quotients}.
-Then $X_\Gamma$ is an honest smooth manifold, 
+Then $X_\Gamma$ is an honest manifold, 
 carrying a natural family 
 of complete \hk metrics \cite{MR90d:53055}.
 These metrics asymptotically approach
@@ -2500,7 +2534,7 @@ an alternative proof of \autoref{lem:hol-symp-hol}.
 
 \subsection{The twistor space}
 
-\begin{defn}[Twistor space] Given a \hk manifold $X$, the \ti{twistor space} of $X$ is the smooth manifold
+\begin{defn}[Twistor space] Given a \hk manifold $X$, the \ti{twistor space} of $X$ is the manifold
 \begin{equation}
   \cZ = X \times S^2
 \end{equation}
@@ -2638,7 +2672,7 @@ the fibers of $\cZ$.
 
 \insfig{higgs-bundles-7}{0.7}
 
-\begin{defn}[Pseudo-\hk structure] Suppose $X$ is a smooth manifold.
+\begin{defn}[Pseudo-\hk structure] Suppose $X$ is a manifold.
 A \ti{pseudo-\hk structure} 
 on $X$ is all the data $(X, g, I_1, I_2, I_3)$
 of a \hk structure except that we 
@@ -2651,7 +2685,7 @@ Suppose given a manifold $\cZ$ carrying all the structures
 of \autoref{prop:twistor-space-properties}. Then let $X$
 be the space of all real holomorphic sections of $\cZ$
 having normal bundle isomorphic to $\cO(1)^{\oplus 2n}$.
-$X$ carries a canonical structure of smooth manifold and a 
+$X$ carries a canonical structure of manifold and a 
 canonical pseudo-\hk structure. If $\cZ$ is the twistor space of a
 pseudo-\hk manifold $X'$, then $X' \subset X$, and the 
 pseudo-\hk structures agree.
@@ -3750,8 +3784,8 @@ simple zeroes, and $\alpha$ is a \kahler class.
 As we vary $A(u)$, $B(u)$
 and $\alpha$
 the diffeomorphism type of the space does not change, so we could think 
-of this as a family of \hk structures on a single smooth manifold. 
-Most of the complex structures on this smooth manifold are \ti{not} of the
+of this as a family of \hk structures on a single manifold. 
+Most of the complex structures on this manifold are \ti{not} of the
 type we constructed here: indeed most of them are not even algebraic.
 \end{example}
 
@@ -4109,6 +4143,37 @@ of our constructions to the infinite-dimensional setting.
 It might be a good idea to skip this section until you feel 
 the need to look at it.
 
+Let us motivate a bit what we have to do.
+The most obvious infinite-dimensional spaces in our context
+are spaces of $C^\infty$ sections of vector bundles.
+In order to develop the symplectic quotient
+directly in this context we would need (at least) 
+a version of the inverse function theorem.
+
+For this purpose we will pass to \ti{completions}
+of the spaces of $C^\infty$ sections with 
+respect to certain ``Sobolev'' norms.
+This has the advantage that these completions are Banach spaces, for which 
+more off-the-shelf technology exists, including a
+reasonable inverse function theorem. In the end we will have to 
+pass from the completions back to the $C^\infty$ spaces of
+our real interest. The theory of elliptic regularity ensures
+that this works without difficulty.
+
+You may wonder why we do not look for some version
+of the inverse function theorem which works for the spaces of 
+$C^\infty$ sections directly. Actually a candidate theorem 
+does exist: it is called the Nash-Moser theorem. It applies 
+to a rather specific sort of infinite-dimensional spaces, 
+namely \ti{tame Frechet spaces}, and to \ti{tame maps} between them.
+The spaces of $C^\infty$ sections are indeed tame Frechet spaces,
+and the maps we need to consider are tame maps.
+But this tameness seems to be essentially equivalent to
+the existence of Sobolev norms and the statement that the maps 
+are well behaved with respect to these; so in the end perhaps
+this method would not be so different from what we do here.
+\fixme{ref Diez?}
+
 \subsection{Banach spaces}
 
 \begin{defn}[Banach space] A \ti{Banach space} is 
@@ -4143,6 +4208,24 @@ over $\R$ (resp. $\C$),
 $V^*$ is the space of all continuous linear maps $V \to \R$ 
 (resp. $\C$). $V^*$ is a Banach space.
 \end{defn}
+
+\begin{defn}[Nondegenerate pairing of Banach spaces] If $V$, $W$
+are Banach spaces over $\R$, a \ti{nondegenerate pairing}
+between $V$ and $W$ is a bilinear map
+\begin{equation}
+  V \times W \to \R
+\end{equation}
+continuous in each factor,
+such that the induced maps
+\begin{equation}
+  V \to W^*, \qquad W \to V^*
+\end{equation}
+are injections.
+\end{defn}
+
+Some authors would call this a ``weakly nondegerate'' pairing.
+I emphasize that it is not the same as requiring the induced maps
+to be \ti{isomorphisms}.
 
 \begin{example}[Sobolev spaces] Suppose $E$ is a complex
 vector bundle with Hermitian metric $h$
@@ -4215,11 +4298,30 @@ over $X$. For a smooth map $f: X \to Y$ one then gets in the usual
 way a smooth map $\de f: TX \to TY$.
 \end{defn}
 
+This definition of tangent vectors is equivalent to taking 
+equivalence classes of curves with the same $1$-jet, 
+but generally \ti{not} equivalent to looking at derivations acting on
+smooth functions (in general there are more derivations
+than tangent vectors, unless the model Banach space
+is reflexive; on the other hand our main application will
+be to Sobolev spaces, which \ti{are} reflexive, so maybe
+we needn't worry too much about this.) \fixme{right?}
+
 \begin{defn}[Cotangent bundle and differential forms] The cotangent bundle, 
 differential forms, and the $\de$ operator can be defined by the same 
 constructions as usual.
 \end{defn}
 
+\begin{defn}[Submanifold] A subset $Y \subset X$ is a \ti{submanifold}
+if for every $y \in Y$ there exists a chart $U_\alpha$ of $X$, 
+such that $\phi_\alpha(Y \cap U_\alpha) = W_\alpha \cap \phi_\alpha(U_\alpha)$
+for some \ti{closed} subspace $W_\alpha \subset V_\alpha$.
+\end{defn}
+
+This is just like the usual definition of submanifold
+(sometimes called ``embedded submanifold'' as opposed to immersed);
+the key extra word in the infinite-dimensional setting
+is ``closed.''
 
 \subsection{Symplectic forms and symplectic quotients}
 
@@ -4241,19 +4343,18 @@ form, reserving ``nondenegerate'' for the case when
 $v \mapsto \iota_v \omega$ is a bijection, not only an injection.
 
 \begin{defn}[Banach Lie group]
-The definition of Banach Lie group is just as in the 
+The definition of Banach Lie group $G$ is just as in the 
 finite-dimensional case: it is a 
 Banach manifold equipped with a group structure,
 such that the multiplication and inversion maps
-are smooth. \fixme{ref Glockner-Neeb coming out Apr 14?}
+are smooth. The Lie algebra $\fg$ is defined as
+$T_e G$ and acquires the Lie bracket in the usual way.
+\fixme{ref Glockner-Neeb coming out Apr 14?}
 \fixme{ref Neeb on Infinite-Dimensional Lie Groups?}
 \end{defn}
 
 \begin{defn}[Moment map] \label{def:banach-moment-map}
-The definition of moment map is the same as \autoref{def:moment-map}
-with one difference: instead of mapping to $\fg^*$
-we just require that $\mu$ maps to some Banach space $W$
-which has a nondegenerate pairing with $\fg$.
+The definition of moment map is the same as \autoref{def:moment-map}.
 \end{defn}
 
 
@@ -4410,24 +4511,24 @@ All rank $K$ complex vector bundles over $C$ of degree $d$ are equivalent.
 
 Thus, suppose we fix a single rank $K$ complex vector bundle $E$, 
 of degree $d$; then every holomorphic vector bundle of rank $K$
-and degree $d$ is equivalent to $(E, \bar\partial_E)$ for some
-$\bar\partial_E$.
+and degree $d$ is equivalent to $(E, \bar\partial)$ for some
+$\bar\partial$-operator on $E$.
 
-Let $\cA$ denote the space of all $\bar\partial_E$.
+Let $\cA^{\bar\partial}$ denote the space of all such $\bar\partial$.
 This is an affine space modeled on the infinite-dimensional 
 complex linear space $\Omega^{0,1}(\End E)$.
 
 The moduli space we want to describe could be thought of as
-$\cA$ modulo equivalence --- where now ``equivalence'' means
+$\cA^{\bar\partial}$ modulo equivalence --- where now ``equivalence'' means
 the (infinite-dimensional,
 complex) group $\fG_\C$ of sections of $GL(E)$,
-which acts on $\cA$ by conjugation:
+which acts on $\cA^{\bar\partial}$ by conjugation:
 \begin{equation}
   D \mapsto D^g = g D g^{-1}.  
 \end{equation}
 So formally we want to say
 \begin{equation} \label{eq:bunG-formal-quotient}
-  \cN_{K,d}(C) = \cA / \fG_\C.
+  \cN_{K,d}(C) = \cA^{\bar\partial} / \fG_\C.
 \end{equation}
 
 It is not so easy to make a ``nice'' space in this way.
@@ -4445,20 +4546,21 @@ as a \kahler quotient (still infinite-dimensional.)
 For this purpose, let us fix a Hermitian metric $h$ on $E$.
 After so doing, we have an infinite-dimensional real group
 $\fG$ of \ti{unitary} equivalences, i.e. sections of $U(E)$.
-Let $\cA_h$ denote the space of all $h$-unitary connections
+Let $\cA^h$ denote the space of all $h$-unitary connections
 on $E$.
 
 \begin{prop}[Unitary connections = holomorphic structures] 
-$\cA \simeq \cA_h$.
+$\cA^{\bar\partial} \simeq \cA^h$.
 \end{prop}
-\begin{pf} Each $\bar\partial \in \cA$
-can be extended in a canonical way to a unitary connection $D \in \cA_h$
-(Chern connection), and conversely, each unitary connection $D \in \cA_h$ 
-can be restricted to $\bar\partial_D \in \cA$.
+\begin{pf} Each $\bar\partial \in \cA^{\bar\partial}$
+can be extended in a canonical way to a unitary connection $D \in \cA^h$
+(Chern connection), and conversely, each unitary connection $D \in \cA^h$ 
+can be restricted to an operator $\bar\partial \in \cA^{\bar\partial}$.
 \end{pf}
 
-$\cA_h$ is an affine space, modeled
+$\cA^h$ is an affine space, modeled
 on the infinite-dimensional \ti{real} linear space $\Omega^{1}(\fu(E))$.
+
 The compatibility of these two pictures 
 is summarized in the next exercise:
 
@@ -4468,25 +4570,42 @@ and with this complex structure it is canonically identified
 with the complex linear space $\Omega^{0,1}(\End E)$.
 \end{exercise}
 
-On $\Omega^{1}(\fu(E))$ we have a natural symplectic form
-\fixme{some analytic niceties needed here}
-\begin{equation}
+On $\Omega^{1}(\fu(E))$ we have a natural pairing
+\begin{equation} \label{eq:symplectic-form-A}
   \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
 \end{equation}
-So this gives a symplectic structure on $\cA_h$.
+We would like to think of this as a symplectic form.
 
+Strictly speaking, though, we have only defined the notion
+of ``symplectic form'' for Banach manifolds.
+So now is a good time to switch to that setting.
+We fix some $k > 1$ (you can imagine that it is very big,
+say $k = 100$), and replace $\cA^h$ by the larger space $\cA^h_k$
+of $L^2_k$ connections. $\cA^h_k$ is a Banach manifold,
+in fact an affine space modeled on the Banach space
+$\Omega^1_k(\End E) = L^2_1(T^* \otimes \End E)$. 
+Then \eqref{eq:symplectic-form-A} gives a symplectic 
+structure on $\cA^h$.
+From now on we will throw in the subscript $k$ to pass 
+to $L^2_k$ versions of the various spaces of sections
+we need to consider. On a first reading, you might profit
+by ignoring the $k$'s and pretending that we work always
+with $C^\infty$ objects.
+
+Altogether we now have a single space $\cA_k$ with both symplectic and
+complex structures.
 \begin{exercise} Verify that the complex and symplectic structures
-on $\cA$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
+on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
 \end{exercise}
-Thus $\cA$ is \kahler.
-Moreover $\fG$ acts on $\cA$, by conjugation,
+Thus $\cA_k$ is \kahler.
+Moreover $\fG_{k+1}$ acts on $\cA_k$ by conjugation,
 \begin{equation}
-  D \mapsto D^g = g D g^{-1}.
+  D \mapsto D^g = g D g^{-1}, \qquad D \in \cA^h_k.
 \end{equation}
+This action preserves the \kahler structure.
 
-\begin{prop}[Moment map for $\fG$ action on $\cA$] \label{prop:unitary-connections-moment-map}
-The action of $\fG$ on $\cA_h$ admits a moment map, given by
-(in the sense of distributions)
+\begin{prop}[Moment map for $\fG$ action on $\cA_k$] \label{prop:unitary-connections-moment-map}
+The action of $\fG$ on $\cA_k$ admits a moment map, given by
 \begin{equation} \label{eq:gauge-moment-map}
   \mu(D) = F_D + 2 \pi \I \frac{d}{K} {\textbf 1} \omega_C 
 \end{equation}
@@ -4505,7 +4624,7 @@ $Z \in \Lie \fG = \Omega^0(\fu(E))$ by infinitesimal gauge transformation,
   \rho(Z) = -DZ
 \end{equation}
 and the differential of $\mu_Z$, acting on a tangent vector
-$\beta \in \Omega^1(\fu(E)) = T\cA_h$:
+$\beta \in \Omega^1(\fu(E)) = T\cA^h$:
 \begin{equation} \label{eq:diff-moment-map}
 \de \mu_Z \cdot \beta = \int_C \Tr (Z \, D\beta).
 \end{equation}
@@ -4524,11 +4643,12 @@ Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 \currentposition
 
 \autoref{prop:unitary-connections-moment-map} says in particular that 
-$\mu^{-1}(0)$ is the subset of $\cA_h$
+$\mu^{-1}(0)$ is the subset of $\cA^h_k$
 consisting of connections with
 \begin{equation} \label{eq:harmonic-curvature}
   F_D = -2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{equation}
+Let us put this funny-looking formula in a more general context:
 
 \begin{defn}[Einstein connection] 
 If $X$ is a Riemannian manifold and $E$ a complex
@@ -4560,14 +4680,17 @@ At least formally we can imagine taking $\omega_C$ to be more and more
 concentrated at a single point $z_0$, until in the limit we get
 $\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
 \eqref{eq:harmonic-curvature} are becoming
-flat away from $z_0$, but singular at $z_0$, with the holonomy around $z_0$
-of finite order given by multiplication by the root of unity 
+flat away from $z_0$, but developing a singularity 
+at $z_0$, with the holonomy around $z_0$
+of finite order, given by multiplication by the root of unity 
 $e^{-2 \pi \I d / K}$.
 
+\insfig{higgs-bundles-13}{0.95}
+
 Following our plan, 
-we want to take the symplectic quotient $\cA \kq \fG = \mu^{-1}(0) / G$.
+we want to take the symplectic quotient $\cA_k \kq \fG_{k+1} = \mu^{-1}(0) / \fG_{k+1}$.
 As a technical preliminary we need to understand the extent to 
-which $\fG$ acts freely and properly on $\mu^{-1}(0)$.
+which $\fG_{k+1}$ acts freely and properly on $\mu^{-1}(0)$.
 
 \begin{defn}[Irreducible connections]
 We call a unitary connection $D$ in $E$ \ti{irreducible} if there does not
@@ -4575,7 +4698,7 @@ exist any subbundle $E' \subset E$ such that $D$ preserves $E'$.
 \end{defn}
 
 \begin{prop}[Gauge group acts almost freely on irreducible connections]
-If $g \in \fG$ and $D$ is an irreducible connection, then $D^g = D$
+If $g \in \fG_{k+1}$ and $D$ is an irreducible connection, then $D^g = D$
 if and only if $g$ acts on $E$ by multiplication by a constant scalar.
 \end{prop}
 \begin{pf} $D^g = D$ if and only if $g$ is constant under the parallel 
@@ -4587,14 +4710,13 @@ transport, which would contradict the irreducibility of $D$.
 \end{pf}
 
 \begin{prop}[Unitary gauge group acts properly]
-The action of $\fG$ on $\cA$ is proper.
+The action of $\fG_{k+1}$ on $\cA_k$ is proper.
 \end{prop}
 \begin{pf} \fixme{...}
 \end{pf}
 
 Let $\cA^s \subset \cA$ be the subset of irreducible
-unitary connections.
-Now we define:
+unitary connections. Now we define:
 
 \begin{defn}[Moduli spaces of unitary harmonic bundles]
 \begin{equation}
@@ -4616,11 +4738,16 @@ We have the following.
 \end{thm}
 
 \begin{pf}
-We have described $\cN^s_{K,d}(C)$ as a symplectic quotient
-by the group $\fG / \C^\times$, which acts freely (note that the moment 
-map $\mu$ actually descends to this quotient!) Formally the tangent space
+First we state the \ti{formal} picture.
+$\cN^s_{K,d}(C)$ arises as a symplectic quotient
+by the ``effective gauge group''
+\begin{equation}
+ \fG^\eff = \fG / \C^\times
+\end{equation} 
+which acts freely (note that the moment 
+map $\mu$ descends to this quotient!) Formally the tangent space
 at a given flat connection $D$ should be the kernel of $\de \mu$ 
-modulo $\rho(\Lie (\fG / \C^\times))$: in other words we want
+modulo $\rho(\Lie (\fG^\eff))$: in other words we want
 the cohomology of the complex
 \begin{equation}
   0 \to \Omega^0(\fu(E)) / \C \xrightarrow{D} \Omega^1(\fu(E)) \xrightarrow{D} \Omega^2(\fu(E)) \to 0
@@ -4729,6 +4856,10 @@ $D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature
 the fact that $\End(E') \simeq \End(E)$).
 Thus $D'$ is also Einstein. This gives the desired map.
 \end{pf}
+
+As a consequence of \autoref{prop:tensor-line-is-isometry}, one can say
+loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$.''
+However, one does not quite get a \ti{canonical} isomorphism.
 
 \begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
 \end{exercise}
