@@ -4171,11 +4171,11 @@ to a rather specific sort of infinite-dimensional spaces,
 namely \ti{tame Frechet spaces}, and to \ti{tame maps} between them.
 The spaces of $C^\infty$ sections are indeed tame Frechet spaces,
 and the maps we need to consider are tame maps.
-But this tameness seems to be essentially equivalent to
+My impression is that this tameness is nearly equivalent to
 the existence of Sobolev norms and the statement that the maps 
 are well behaved with respect to these; so in the end perhaps
 this method would not be so different from what we do here.
-\fixme{ref Diez?}
+
 
 \subsection{Banach spaces}
 
@@ -4442,9 +4442,9 @@ than $\fg^*$, and $\de \mu$ is surjective there}
 \subsection{Ellipticity}
 
 We give here a very brief and sketchy account of 
-ellipticity. Something much nicer can be found in \fixme{Wells}.
+ellipticity. Something much nicer can be found in \cite{MR2359489}.
 
-Suppose $X$ is a compact manifold carrying
+Suppose $X$ is a manifold carrying
 vector bundles $E$, $F$. We 
 consider a smooth differential operator $D: E \to F$
 and a smooth section $f$ of $F$.
@@ -4460,26 +4460,25 @@ the Laplace operator in a Euclidean vector space $V$,
 \begin{equation}
   D = \sum_{i=1}^n \partial_i^2.
 \end{equation}
-
-We could try to ``solve'' \eqref{eq:Def}
+Here, we could try to solve \eqref{eq:Def}
 by Fourier transformation:
 at least formally the differentiations
 become multiplications, and we get
 \begin{equation}
-  \norm{p}^2 \hat{e}(p) = \hat{f}(p)
+  -\norm{p}^2 \hat{e}(p) = \hat{f}(p)
 \end{equation}
 for $p \in V^*$, which would be solved by
 \begin{equation}
-  \hat e(p) = \frac{\hat{f}(p)}{\norm{p}^2}
+  \hat e(p) = -\frac{\hat{f}(p)}{\norm{p}^2}
 \end{equation}
 or, returning to position space,
 \begin{equation} \label{eq:back-to-position}
-  e(x) = \int_{V^*} (\de vol_{V^*}) e^{\I p \cdot x} \frac{\hat{f}(p)}{\norm{p}^2}
+  e(x) = -\int_{V^*} (\de vol_{V^*}) e^{\I p \cdot x} \frac{\hat{f}(p)}{\norm{p}^2}
 \end{equation}
 This looks like it has some chance of working, at least if
 the behavior of $\hat f(p)$ near $p=0$ is somehow controlled.
-That problem has to do with the \ti{low frequency} modes of $f$, and 
-its analogue is different on a compact manifold: it becomes the
+That problem has to do with the \ti{low frequency} modes of $f$. 
+Its analogue is different on a compact manifold: it becomes the
 condition that $f$ is orthogonal to the kernel of $D^*$. Apart
 from this difficulty, this strategy really works and can be applied 
 to the Laplacian acting on functions on a compact Riemannian manifold $X$ 
@@ -4504,7 +4503,8 @@ Fourier transformed operator (\ti{symbol}) is invertible except
 at $p=0$ is what we call \ti{ellipticity}. It is associated
 with many good analytical properties, some of which we will
 use later on.
-These are basically based on the special case of the operator
+
+In fact, for our purposes we can basically specialize to the operator
 \begin{equation}
   \de + \de^*: \Omega^1(C) \to \Omega^2(C) \oplus \Omega^0(C)
 \end{equation}
@@ -4524,6 +4524,33 @@ Thus the symbol is
 \end{equation}
 which is indeed invertible except at $p_1 = p_2 = 0$.
 Thus this operator is elliptic.
+
+For the record, we can formulate things a little more precisely:
+\begin{defn}[Symbol of a differential operator] \label{def:symbol} 
+The (principal) 
+\ti{symbol} of an order $k$ differential operator $D$ mapping 
+between smooth vector bundles $E$ and $F$ over $X$ is a section
+$\sigma \in \pi^* \Hom(E,F)$, where $\pi: T^* X \to X$ is the projection.
+It has a fancy invariant definition, but the pedestrian way is
+to write the top-order part of $D$ in local coordinates for $X$ as
+\begin{equation}
+  \sum_{i_1, \dots, i_k} {P_{i_1 \cdots i_k}} \partial_{i_1} \cdots \partial_{i_k}
+\end{equation}
+where each $P_{i_1 \cdots i_k} \in \Hom(E,F)$, and then replace
+$\partial_{i} \to \I p_i$, where $p_i$ are the corresponding local
+coordinates on $T^* X$, to get
+\begin{equation}
+  \sigma = \I^k \sum_{i_1, \dots, i_k} {P_{i_1 \cdots i_k}} p_{i_1} \cdots p_{i_k}
+\end{equation}
+\end{defn}
+
+\begin{exercise} Verify that the definition \autoref{def:symbol}
+is well formulated, i.e. that the symbol $\sigma$ so obtained
+does not depend on the coordinate system we choose.
+\end{exercise}
+
+\begin{defn}[Elliptic differential operator] \fixme{...}
+\end{defn}
 
 
 \section{Moduli of bundles}
@@ -4733,8 +4760,6 @@ We compute
 Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 \end{exercise}
 
-\currentposition
-
 \begin{exercise}
 Check that $\mu$ given by \eqref{eq:gauge-moment-map}
 is $\fG$-equivariant.
@@ -4875,6 +4900,8 @@ Moreover, $\ker \hat{D}$ and $\coker \hat{D}$ contain only
 smooth sections (so in particular they are independent of $k$.)
 Finally $\coker \hat{D} = \ker \hat{D}^*$.
 \end{prop}
+
+\currentposition
 
 We will need the following preliminary:
 \begin{lem}[Almost-vanishing for the gauge complex] 
