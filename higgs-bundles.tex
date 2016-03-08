@@ -4230,6 +4230,17 @@ Some authors would call this a ``weakly nondegerate'' pairing.
 I emphasize that it is not the same as requiring the induced maps
 to be \ti{isomorphisms}.
 
+\begin{defn}[Complemented subspace] \fixme{...}
+\end{defn}
+
+\begin{exercise} Suppose $V$ is a Banach space and
+ $W \subset V$ is a closed subspace of finite codimension.
+ Show that $W$ is complemented.
+\end{exercise}
+
+
+\section{Sobolev spaces}
+
 \begin{example}[Sobolev spaces] Suppose $E$ is a complex
 vector bundle with Hermitian metric $h$
 over a compact Riemannian manifold $X$. Then for $k \in \Z_{\ge 0}$ and 
@@ -4326,13 +4337,14 @@ This is just like the usual definition of submanifold
 the key extra word in the infinite-dimensional setting
 is ``closed.''
 
-\begin{defn}[Weakly regular value] Given $f: X \to Y$, $y \in Y$
-is a \ti{weakly regular value} of $f$ if
-\begin{itemize}
-  \item $f^{-1}(y)$ is a submanifold of $X$,
-  \item $T (f^{-1}(y)) = \ker \de f$.
-\end{itemize}
-\end{defn}
+% \begin{defn}[Weakly regular value] Given $f: X \to Y$, $y \in Y$
+% is a \ti{weakly regular value} of $f$ if
+% \begin{itemize}
+%   \item $f^{-1}(y)$ is a submanifold of $X$,
+%   \item $T (f^{-1}(y)) = \ker \de f$.
+% \end{itemize}
+% \end{defn}
+
 
 \subsection{Symplectic forms and symplectic quotients}
 
@@ -4363,6 +4375,37 @@ $T_e G$ and acquires the Lie bracket in the usual way.
 \fixme{ref Glockner-Neeb coming out Apr 14?}
 \fixme{ref Neeb on Infinite-Dimensional Lie Groups?}
 \end{defn}
+
+\begin{prop}[Free proper quotients are Banach manifolds] \label{prop:free-proper-quotients-are-banach-manifolds}
+Suppose $X$ is a Banach manifold with a Banach Lie group $G$
+acting properly and freely.
+Suppose also that the tangent spaces to orbits, 
+$T_x (Gx) \subset T_x X$, are closed and complemented.
+Let $\fg = \Lie G$ and let
+\begin{equation}
+\rho: \fg \to \Vect(X)
+\end{equation}
+be the infinitesimal action.
+Then:
+\begin{itemize}
+\item The quotient $X / G$ (the set of $G$-orbits on $X$) 
+has a natural structure of Banach manifold, compatible with
+the quotient topology.
+\item The differential of the projection $X \to X/G$ 
+is surjective and gives an isomorphism
+\begin{equation}
+TX / \rho(\fg) \simeq T(X/G).
+\end{equation}
+\end{itemize}
+\end{prop}
+
+\fixme{ref Bourbaki}
+
+In the situation where we will use 
+\autoref{prop:free-proper-quotients-are-banach-manifolds}, the 
+tangent spaces to $G$-orbits have finite codimension; in that 
+case they are automatically complemented if they are closed.
+
 
 \begin{defn}[Moment maps and symplectic quotients] \label{def:banach-moment-map}
 The definition of moment maps and symplectic quotients are the same 
@@ -4759,7 +4802,8 @@ $\cN^s_{K,d}(C)$ is a \kahler manifold.
 First we want 
 to show that $\mu^{-1}(0) \subset \cA^s_{k}$ is a submanifold. 
 This follows from the
-Banach space inverse function theorem. \fixme{...}
+Banach space inverse function theorem (applied to a quotient
+by the 1-dimensional subspace spanned by $\star \bid$.)
 \end{pf}
 
 \begin{thm}[Dimension of $\cN^s_{K,d}(C)$] \label{thm:dimension-of-N}
