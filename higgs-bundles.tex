@@ -4431,9 +4431,96 @@ property
 \end{equation}
 \fixme{need to check the conditions on $G$ action are 
 really enough to get $\mu^{-1}(0)$ to be a manifold; idea:
-they mean $\de \mu$ is surjective onto some smaller space
-than $\fg^*$}
+they mean $\mu$ maps into some smaller space
+than $\fg^*$, and $\de \mu$ is surjective there}
 \end{thm}
+
+
+\subsection{Ellipticity}
+
+We give here a very brief and sketchy account of 
+ellipticity. Something much nicer can be found in \fixme{Wells}.
+
+Suppose $X$ is a compact manifold carrying
+vector bundles $E$, $F$. We 
+consider a smooth differential operator $D: E \to F$
+and a smooth section $f$ of $F$.
+We would like to know when we can solve the equation
+\begin{equation} \label{eq:Def}
+ D e = f
+\end{equation}
+for $e$, and what kind of regularity properties
+$e$ should have.
+
+To get oriented let us consider a very special case,
+the Laplace operator in a Euclidean vector space $V$,
+\begin{equation}
+  D = \sum_{i=1}^n \partial_i^2.
+\end{equation}
+
+We could try to ``solve'' \eqref{eq:Def}
+by Fourier transformation:
+at least formally the differentiations
+become multiplications, and we get
+\begin{equation}
+  \norm{p}^2 \hat{e}(p) = \hat{f}(p)
+\end{equation}
+for $p \in V^*$, which would be solved by
+\begin{equation}
+  \hat e(p) = \frac{\hat{f}(p)}{\norm{p}^2}
+\end{equation}
+or, returning to position space,
+\begin{equation} \label{eq:back-to-position}
+  e(x) = \int_{V^*} (\de vol_{V^*}) e^{\I p \cdot x} \frac{\hat{f}(p)}{\norm{p}^2}
+\end{equation}
+This looks like it has some chance of working, at least if
+the behavior of $\hat f(p)$ near $p=0$ is somehow controlled.
+That problem has to do with the \ti{low frequency} modes of $f$, and 
+its analogue is different on a compact manifold: it becomes the
+condition that $f$ is orthogonal to the kernel of $D^*$. Apart
+from this difficulty, this strategy really works and can be applied 
+to the Laplacian acting on functions on a compact Riemannian manifold $X$ 
+(with appropriate patching, partitions of unity and
+such).
+
+Moreover, the solutions obtained in this 
+way have very good regularity: if $f$ itself was smooth then they are also 
+smooth, essentially because we can differentiate under the integral sign in 
+\eqref{eq:back-to-position} --- this just introduces more powers of
+$p$, but $\hat f(p)$ decays fast enough that the integral still
+converges.
+
+In contrast, the same strategy would fail drastically for the 
+Laplacian on a manifold with indefinite signature metric.
+The problem is that in this case the factor $1 / \norm{p}^2$
+in \eqref{eq:back-to-position} has singularities propagating
+all the way out to $p = \infty$ rather than just at $p=0$.
+
+The property that the highest-order part of the 
+Fourier transformed operator (\ti{symbol}) is invertible except
+at $p=0$ is what we call \ti{ellipticity}. It is associated
+with many good analytical properties, some of which we will
+use later on.
+These are basically based on the special case of the operator
+\begin{equation}
+  \de + \de^*: \Omega^1(C) \to \Omega^2(C) \oplus \Omega^0(C)
+\end{equation}
+on a Riemannian 2-manifold $C$.
+In local coordinates around $x = 0$, orthonormal at $0$, 
+this operator could be written as
+\begin{equation}
+ f_1 \de x_2 + f_2 \de x_2 \mapsto (\partial_2 f_1 - \partial_1 f_2) \de x_1 \wedge \de x_2 + (\partial_1 f_1 + \partial_2 f_2)
+\end{equation}
+or relative to the obvious bases,
+\begin{equation}
+  \begin{pmatrix} \partial_2 & \partial_1 \\ -\partial_1 & \partial_2 \end{pmatrix}
+\end{equation}
+Thus the symbol is
+\begin{equation}
+  \begin{pmatrix} p_2 & p_1 \\ -p_1 & p_2 \end{pmatrix}
+\end{equation}
+which is indeed invertible except at $p_1 = p_2 = 0$.
+Thus this operator is elliptic.
 
 
 \section{Moduli of bundles}
@@ -4757,51 +4844,57 @@ First we look a bit more at the \ti{formal} picture.
 The tangent space to $\cN_{K,d}^s(C)$
 at a given Einstein connection $D$ should be the kernel of $\de \mu$ 
 modulo $\rho(\Lie (\fG^\eff))$. A nice way to say this is that 
-the tangent space should be the cohomology $H^1$ of the complex
+the tangent space ``should be'' the cohomology $H^1$ of the complex
 \begin{equation} \label{eq:gauge-complex}
-  0 \to \Omega^0_{k+1}(\fu(E)) \xrightarrow{D} \Omega^1_k(\fu(E)) \xrightarrow{D} \Omega^2_{k-1}(\fu(E)) \to 0
+  0 \to \Omega^0(\fu(E)) \xrightarrow{D} \Omega^1(\fu(E)) \xrightarrow{D} \Omega^2(\fu(E)) \to 0
 \end{equation}
 (It's indeed a complex: $D^2 = 0$ acting
 on sections of $\fu(E)$, since $F_D \sim \bid$ and hence 
 is central. Of course this is as it should be since infinitesimal
 gauge transformations should be tangent to $\mu^{-1}(0)$.)
-Fortunately this complex
-is \ti{elliptic}.\footnote{This means that the corresponding symbol
-complex over $T^* C$ is exact off the zero section: indeed the symbol
-is just wedging with $p$.} This has the following encouraging
+Fortunately the corresponding operator
+\begin{equation}
+ \hat{D} = D \oplus D^*: \Omega^1(\fu(E)) \to \Omega^2(\fu(E)) \oplus \Omega^0(\fu(E)).
+\end{equation}
+is elliptic, just as for the example of $\de + \de^*$ discussed
+above. This has the following encouraging
 consequences:
 
 \begin{prop}[Elliptic regularity for the gauge complex]
 Define
 \begin{equation}
- \hat{D} = D \oplus D^*: \Omega^1_k \to \Omega^2_{k-1} \oplus \Omega^0_{k-1}.
+ \hat{D} = D \oplus D^*: \Omega^1_k(\fu(E)) \to \Omega^2_{k-1}(\fu(E)) \oplus \Omega^0_{k-1}(\fu(E)).
 \end{equation}
 Then $\hat{D}$ is \ti{Fredholm}, i.e. it has closed range, 
 and finite-dimensional 
 kernel and cokernel.
 Moreover, $\ker \hat{D}$ and $\coker \hat{D}$ contain only
 smooth sections (so in particular they are independent of $k$.)
+Finally $\coker \hat{D} = \ker \hat{D}^*$.
 \end{prop}
 
 We will need the following preliminary:
-\begin{lem}[Cohomology vanishing for the gauge complex] 
+\begin{lem}[Almost-vanishing for the gauge complex] 
 \label{lem:cohomology-vanishing-gauge-complex}
 If $D \in \cA^s_k$, then
-$H^0$ and $H^2$ of the complex \eqref{eq:gauge-complex} are both
-$1$-dimensional.
+$\coker \hat{D}$ is $2$-dimensional.
 \end{lem}
+(Informally: both $H^0$ and $H^2$ of the complex \eqref{eq:gauge-complex} are
+$1$-dimensional.)
 \begin{pf}
-Any $D$-constant section of $\fu(E)$ must be a constant multiple
+We represent
+$\coker \hat{D}$ as $\ker \hat{D}^*$, where
+\begin{equation}
+  \hat{D}^* = D \oplus D^*: \Omega^0_k(\fu(E)) \oplus \Omega^2_k(\fu(E)) \to \Omega^1_{k-1}(\fu(E)).
+\end{equation}
+Any $\alpha \in \ker D \subset \Omega^0$ must be a constant multiple
 of $\bid$, since $D$ is an irreducible connection: this gives
-the desired statement for $H^0$. For $H^2$ we essentially
-use Poincare duality. More precisely, we need to use the
-Fredholm property of $\hat D$, which tells us that $H^2$ can 
-be identified with $\ker D^* \subset \Omega^2_{k-1}(\fu(E))$.
-On the other hand we have
+the desired statement for $\Omega^0$. For $\Omega^2$ we essentially
+use Poincare duality: we have
 \begin{equation}
   D^* = - \star D \star
 \end{equation}
-so any $\alpha \in H^2$ has $D \star \alpha = 0$; said
+so any $\alpha \in \ker D^* \subset \Omega^2$ has $D \star \alpha = 0$; said
 otherwise, $H^2$ is just spanned by $\star (\bid)$.
 \end{pf}
 
