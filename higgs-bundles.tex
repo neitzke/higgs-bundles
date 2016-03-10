@@ -4395,7 +4395,7 @@ Banach manifold equipped with a group structure,
 such that the multiplication and inversion maps
 are smooth. The Lie algebra $\fg$ is defined as
 $T_e G$ and acquires the Lie bracket in the usual way.
-\fixme{ref Glockner-Neeb coming out Apr 14?}
+%\fixme{ref Glockner-Neeb coming out Apr 14?}
 \fixme{ref Neeb on Infinite-Dimensional Lie Groups?}
 \end{defn}
 
@@ -4423,14 +4423,15 @@ acting properly on it, with moment map $\mu$.
 Suppose that $G$ acts freely on $\mu^{-1}(0)$, and we impose
 some additional conditions:
 \begin{itemize}
-\item there exists a dense subspace $W \subset \fg^*$, containing 
-$\im \mu$, carrying a Banach space topology (not necessarily the 
-induced topology) such that
-$\mu: X \to W$ is continuous, and $\im \mu \subset W$ is closed,
+\item $\mu^{-1}(0)$ is a submanifold of $X$,
+% \item there exists a dense subspace $W \subset \fg^*$, containing 
+% $\im \mu$, carrying a Banach space topology (not necessarily the 
+% induced topology) such that
+% $\mu: X \to W$ is continuous, and $\im \mu \subset W$ is closed,
 \item the tangent
 spaces $T = T_x (Gx)$ to $G$-orbits are closed and complemented,
 \item \begin{equation}
-  T = (T^{\perp_\omega})^{\perp_\omega},
+  T = (T^{\perp_\omega})^{\perp_\omega}.
 \end{equation}
 \end{itemize}
 Then $X \kq G$ is a Banach manifold, and there is a 
@@ -4440,35 +4441,29 @@ property
   \pi^* \omega_{X \kq G} = \iota^* \omega.
 \end{equation}
 \end{thm}
-\begin{pf} Follow the pattern of the proof
-of \autoref{prop:symplectic-quotient-is-symplectic}.
-The infinite-dimensional setting leads to the following
-hiccups:
-\begin{itemize}
-\item 
-To show that $\mu^{-1}(0)$ is a submanifold of $X$,
-we want as before to show that $0 \in W$ is a regular value for $\mu$.
-This will not be true for $\mu: X \to \fg^*$ but will be true
-for $\mu: X \to W$. Indeed we know that for any $Z \in \fg$
-we have $\de \mu_Z = \iota_{\rho(Z)} \omega \neq 0$ as before.
-Thus $\im \de \mu$ is not annihilated by any $Z \in \fg$.
+% \begin{pf} Follow the pattern of the proof
+% of \autoref{prop:symplectic-quotient-is-symplectic}.
+% The infinite-dimensional setting leads to the following
+% hiccups:
+% \begin{itemize}
+% \item 
+% To show that $\mu^{-1}(0)$ is a submanifold of $X$,
+% we want as before to show that $0 \in W$ is a regular value for $\mu$.
+% This will not be true for $\mu: X \to \fg^*$ but will be true
+% for $\mu: X \to W$. Indeed we know that for any $Z \in \fg$
+% we have $\de \mu_Z = \iota_{\rho(Z)} \omega \neq 0$ as before.
+% Thus $\im \de \mu \subset \fg^*$ is not annihilated by any $Z \in \fg$.
+% Now, by the Hahn-Banach theorem, if $\de\mu: TX \to W$ were
+% not surjective, then there would be some linear functional
+% $\eta \in W^*$ which annihilates $\im \de\mu$.
+% \fixme{but this doesn't seem to help}
 
-Since $W \subset \fg^*$ is dense this shows that 
-
-\end{itemize}
-\end{pf}
-
-
-The point of the peculiar hypothesis on $W$ in 
-\autoref{prop:banach-symplectic-quotient-is-symplectic} is that,
-in our applications below, $\mu$ is simply \ti{not} surjective onto
-$\fg^*$ in the usual sense: it is surjective only onto some dense
-subspace. Fortunately $\mu$ in our application has good
-regularity properties which allow us to define a stronger norm;
-in that stronger norm it actually has closed image.
+% \end{itemize}
+% \end{pf}
 
 
-\subsection{Ellipticity}
+
+\subsection{Ellipticity} \label{sec:ellipticity}
 
 We give here a very brief and sketchy account of 
 ellipticity. Something much nicer can be found in \cite{MR2359489}.
@@ -4557,19 +4552,19 @@ Thus this operator is elliptic.
 For the record, we can formulate things a little more precisely:
 \begin{defn}[Symbol of a differential operator] \label{def:symbol} 
 The (principal) 
-\ti{symbol} of an order $k$ differential operator $D$ mapping 
+\ti{symbol} of an order $\ell$ differential operator $D$ mapping 
 between smooth vector bundles $E$ and $F$ over $X$ is a section
 $\sigma \in \pi^* \Hom(E,F)$, where $\pi: T^* X \to X$ is the projection.
 It has a fancy invariant definition, but the pedestrian way is
 to write the top-order part of $D$ in local coordinates for $X$ as
 \begin{equation}
-  \sum_{i_1, \dots, i_k} {P_{i_1 \cdots i_k}} \partial_{i_1} \cdots \partial_{i_k}
+  \sum_{i_1, \dots, i_k} {F_{i_1 \cdots i_\ell}} \partial_{i_1} \cdots \partial_{i_\ell}
 \end{equation}
 where each $P_{i_1 \cdots i_k} \in \Hom(E,F)$, and then replace
 $\partial_{i} \to \I p_i$, where $p_i$ are the corresponding local
 coordinates on $T^* X$, to get
 \begin{equation}
-  \sigma = \I^k \sum_{i_1, \dots, i_k} {P_{i_1 \cdots i_k}} p_{i_1} \cdots p_{i_k}
+  \sigma = \I^\ell \sum_{i_1, \dots, i_k} {F_{i_1 \cdots i_\ell}} p_{i_1} \cdots p_{i_\ell}
 \end{equation}
 \end{defn}
 
@@ -4578,8 +4573,27 @@ is well formulated, i.e. that the symbol $\sigma$ so obtained
 does not depend on the coordinate system we choose.
 \end{exercise}
 
-\begin{defn}[Elliptic differential operator] \fixme{...}
+\begin{defn}[Elliptic differential operator] 
+A differential operator $D$ is elliptic if its
+symbol $\sigma \in \pi^* \Hom(E,F)$ is invertible
+at all points off the zero section of $T^* X$.
 \end{defn}
+
+\begin{thm}[Elliptic regularity] \label{thm:elliptic-regularity}
+Suppose $D$ is elliptic. Then for any $k$,
+$D$ extends to an operator acting on Sobolev spaces
+$$D: L^2_k(E) \to L^2_{k-\ell}(E),$$
+and we have:
+\begin{itemize}
+\item $D$ is \ti{Fredholm}, i.e. it has closed range, 
+and finite-dimensional 
+kernel and cokernel.
+\item $\ker D$ and $\coker D$ contain only
+smooth sections (so in particular they are independent of $k$.)
+\item The formal adjoint $D^*$ is also elliptic, and
+$\im D$ is the $L^2$ orthocomplement of $\ker D^*$.
+\end{itemize}
+\end{thm}
 
 
 \section{Moduli of bundles}
@@ -4909,25 +4923,24 @@ the tangent space ``should be'' the cohomology $H^1$ of the complex
 on sections of $\fu(E)$, since $F_D \sim \bid$ and hence 
 is central. Of course this is as it should be since infinitesimal
 gauge transformations should be tangent to $\mu^{-1}(0)$.)
-Fortunately this complex
-is \ti{elliptic} in the sense of \autoref{sec:ellipticity},
+To get some control over this infinite-dimensional
+problem, we first think of it in a slightly different way:
+instead of dividing out by the image of $D: \Omega^0 \to \Omega^1$
+we impose the gauge-fixing equation $D^* = 0$, where $D^*$ is the
+formal adjoint of $D$
+(the idea is that the kernel of $D^*$ should be an $L^2$ 
+orthocomplement to the image of $D$.)
+This leads us to consider the operator
+\begin{equation}
+ \hat{D} = D \oplus D^*: \Omega^1(\fu(E)) \to \Omega^2(\fu(E)) \oplus \Omega^0(\fu(E)).
+\end{equation}
+The good news then is that this operator is \ti{elliptic} in the sense of 
+\autoref{sec:ellipticity},
 just as for the example of $\de + \de^*$ discussed there
 (indeed the symbol is just $K^2$ copies of the symbol 
 of $\de + \de^*$.)
-Thus we get:
-
-\begin{prop}[Elliptic regularity for the gauge complex]
-Define
-\begin{equation}
- \hat{D} = D \oplus D^*: \Omega^1_k(\fu(E)) \to \Omega^2_{k-1}(\fu(E)) \oplus \Omega^0_{k-1}(\fu(E)).
-\end{equation}
-Then $\hat{D}$ is \ti{Fredholm}, i.e. it has closed range, 
-and finite-dimensional 
-kernel and cokernel.
-Moreover, $\ker \hat{D}$ and $\coker \hat{D}$ contain only
-smooth sections (so in particular they are independent of $k$.)
-Finally $\coker \hat{D} = \ker \hat{D}^*$.
-\end{prop}
+Thus we will be able to use the elliptic regularity
+theorem, \autoref{thm:elliptic-regularity}.
 
 \currentposition
 
@@ -4935,15 +4948,15 @@ We will need the following preliminary:
 \begin{lem}[Almost-vanishing for the gauge complex] 
 \label{lem:cohomology-vanishing-gauge-complex}
 If $D \in \cA^s_k$, then
-$\coker \hat{D}$ is $2$-dimensional.
+$\coker D \subset \Omega^2$ and $\coker D^* \subset \Omega^0$ are both $1$-dimensional.
 \end{lem}
-(Informally: both $H^0$ and $H^2$ of the complex \eqref{eq:gauge-complex} are
+(i.e. both $H^0$ and $H^2$ of the complex \eqref{eq:gauge-complex} are
 $1$-dimensional.)
 \begin{pf}
-We represent
-$\coker \hat{D}$ as $\ker \hat{D}^*$, where
+By elliptic regularity we can identify
+$\coker \hat{D} = \ker \hat{D}^*$, where
 \begin{equation}
-  \hat{D}^* = D \oplus D^*: \Omega^0_k(\fu(E)) \oplus \Omega^2_k(\fu(E)) \to \Omega^1_{k-1}(\fu(E)).
+  \hat{D}^* = D \oplus D^*: \Omega^0(\fu(E)) \oplus \Omega^2(\fu(E)) \to \Omega^1(\fu(E)).
 \end{equation}
 Any $\alpha \in \ker D \subset \Omega^0$ must be a constant multiple
 of $\bid$, since $D$ is an irreducible connection: this gives
@@ -4953,7 +4966,7 @@ use Poincare duality: we have
   D^* = - \star D \star
 \end{equation}
 so any $\alpha \in \ker D^* \subset \Omega^2$ has $D \star \alpha = 0$; said
-otherwise, $H^2$ is just spanned by $\star (\bid)$.
+otherwise, $\ker D^* \subset \Omega^2$ is just spanned by $\star (\bid)$.
 \end{pf}
 
 Morally what we used here is just the statement that 
@@ -4966,9 +4979,14 @@ $\cN^s_{K,d}(C)$ is a \kahler manifold.
 First we want 
 to show that $\mu^{-1}(0) \subset \cA^s_{k}$ is a submanifold. 
 This follows from the
-Banach space inverse function theorem (applied to a quotient
-by the 1-dimensional subspace spanned by $\star \bid$.)
-\fixme{...}
+Banach space inverse function theorem, applied to the map
+\begin{equation}
+\mu: \cA^s_k \to \Omega^2(\fu(E)) / (\star \bf 1).
+\end{equation}
+Then we can apply \autoref{prop:banach-symplectic-quotient-is-symplectic}
+to see that $\cN_{K,d}(C)$ is symplectic. The proof that it 
+is \kahler follows exactly the lines of the finite-dimensional
+case; see \cite{Tumpach2007} for an account.
 \end{pf}
 
 \begin{thm}[Dimension of $\cN^s_{K,d}(C)$] \label{thm:dimension-of-N}
@@ -5008,6 +5026,116 @@ connection is to have $K=1$, in which case we get dimension
 $0$ for $g=0$ and dimension $1$ for $g=1$, which is indeed
 correct --- see \autoref{exa:jacobians} below.
 
+
+\begin{example}[Jacobians] \label{exa:jacobians}
+The special case $K=1$ is very concrete. In light of 
+\autoref{prop:tensor-line-is-isometry} below, all degrees are
+essentially the same, so let us consider $d=0$. Then we
+introduce the notation
+\begin{equation}
+ \Jac(C) = \cN^s_{1,0}(C),
+\end{equation}
+and call $\Jac(C)$ the \ti{Jacobian} of $C$.
+It is the space of flat connections on the trivial line
+bundle over $C$, modulo gauge equivalence.
+Taking holonomies around loops gives a map
+\begin{equation}
+  \Jac(C) \to \Hom(\pi_1(C), U(1)) = H^1(C, U(1)).
+\end{equation}
+In fact this map is an isomorphism, as follows from
+\autoref{exc:connections-vs-representations} below.
+
+Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$. 
+Let us describe its symplectic and \kahler structures.
+At any $x \in \Jac(C)$ we have $T_x \Jac(C) = H^1(C,\R)$,
+and the symplectic form $\omega$ is just given 
+by the intersection pairing
+\begin{equation}
+  \omega(\alpha, \beta) = \int_C \alpha \wedge \beta.
+\end{equation}
+In particular,
+as a symplectic manifold, $\Jac(C)$ does not depend on
+the complex structure of $C$. On the other hand the
+\ti{complex} structure definitely does depend on the complex
+structure of $C$: it is the one inducing the 
+Hodge decomposition
+\begin{equation}
+  H^1(C,\C) = H^{0,1}(C) \oplus H^{1,0}(C).
+\end{equation}
+\end{example}
+
+\begin{exercise} \label{exc:connections-vs-representations} 
+Show that $\cN_{K,0}^s(C)$, considered as a set, 
+has a canonical bijection to the set of all irreducible representations
+$\pi_1(C) \to U(K)$ modulo equivalence. (Hint: this is actually the shadow
+of a stronger statement, namely that the category of flat connections is
+equivalent to the category of representations. So the real guts of the 
+question is to construct functors in both directions.)
+\end{exercise}
+
+\begin{exercise}
+Prove that the complex and symplectic structures on $\Jac(C)$
+induced by the \kahler quotient construction are the 
+ones claimed above.
+\end{exercise}
+
+\begin{thm}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
+$\cN_{K,d}(C)$ is compact. \fixme{use Uhlenbeck compactness}
+\end{thm}
+
+\begin{exercise} \label{exc:coprime-einstein-is-irreducible} 
+Show that if $(d,K)=1$ then $\cN_{K,d}(C) = \cN_{K,d}^s(C)$. 
+\end{exercise}
+
+\begin{cor}[$\cN_{K,d}(C)$ is nice when $(d,K)$ = 1]
+When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
+\kahler manifold.
+\end{cor}
+\begin{pf} This is just the combination of \autoref{thm:N-is-kahler},
+\autoref{thm:Ns-is-compact}, and 
+\autoref{exc:coprime-einstein-is-irreducible}.
+\end{pf}
+
+\begin{example}[Stable bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $2$. \fixme{...}
+\end{example}
+
+\begin{lem}[Existence of Einstein connections on line bundles] \label{lem:einstein-connections-on-line-bundles}
+Suppose $\cL$ is a holomorphic line bundle over $C$. Then there
+exists a unique Hermitian metric $h$ on $\cL$ such that the Chern
+connection $D_h$ is Einstein.
+\end{lem}
+\begin{pf}
+First choose some arbitrary $h$ on $\cL$. The curvature of the Chern
+connection is then $F_{D_h} \in \Omega^2(C)$, 
+which generally is not harmonic. What we want to do is to
+improve $h$ to some $h'$ so that $F_{D_{h'}} \in \cH^2(C)$.
+We can write $h' = e^f h$ for some real-valued function $f$ on $C$.
+Then we have
+\begin{equation}
+  F_{D_{h'}} = F_{D_h} + \partial \bar\partial f.
+\end{equation}
+Now we can apply the
+abelian Hodge theorem (\autoref{thm:abelian-hodge-riemannian})
+to the cohomology class $[\I F_{D_h}] \in H^{2}_\dR(C)$.
+It says that there exists a unique $\beta \in \Omega^1(C)$
+such that
+\begin{equation}
+ \I F_{D_h} + \de \beta \in \cH^2(C).
+\end{equation}
+But then the $\partial \bar\partial$-lemma (\autoref{lem:ddbar-lemma})
+says that $\de \alpha$ can also be written as
+$\I \partial \bar\partial f$ for some real function $f$.
+This gives the desired $f$.
+\end{pf}
+
+There is another way of thinking about this result, which
+unfortunately will bring up a slightly confusing point.
+Namely, suppose we consider a fixed line bundle $E$, with a
+fixed Hermitian metric. Then the analogue of ``changing the 
+Hermitian metric'' is ``making a gauge transformation
+valued in $\fG_\C$ but not in $\fG$.'' \fixme{...}
+
+
 \begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
 Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
 Then the map $E \to E \otimes \cL$ gives a holomorphic 
@@ -5040,51 +5168,6 @@ However, one does not quite get a \ti{canonical} isomorphism.
 \autoref{prop:tensor-line-is-isometry} is a holomorphic
 isometry of \kahler manifolds.
 \end{exercise}
-
-\begin{example}[Jacobians] \label{exa:jacobians}
-The special case $K=1$ is very concrete. In light of 
-\autoref{prop:tensor-line-is-isometry} all degrees are
-essentially the same, so let us consider $d=0$. Then we
-introduce the notation
-\begin{equation}
- \Jac(C) = \cN^s_{1,0}(C),
-\end{equation}
-and call $\Jac(C)$ the \ti{Jacobian} of $C$.
-It is the space of flat connections on the trivial line
-bundle over $C$, modulo gauge equivalence.
-Taking holonomies around loops gives a map
-\begin{equation}
-  \Jac(C) \to H^1(C, U(1)).
-\end{equation}
-In fact this map is an isomorphism. To see this, it's enough
-to show that, if $a \in \Omega^1(C)$ and $\oint_\wp a = 0$
-for all paths $\wp$ in $C$, then $a$ is exact; but that is just 
-the Poincare lemma.
-
-Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$. In particular,
-topologically (even symplectically) it does not depend on
-the complex structure of $C$.
-\end{example}
-
-\begin{thm}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
-$\cN_{K,d}(C)$ is compact. \fixme{...}
-\end{thm}
-
-\begin{exercise} \label{exc:coprime-einstein-is-irreducible} 
-Show that if $(d,K)=1$ then $\cN_{K,d}(C) = \cN_{K,d}^s(C)$. 
-\end{exercise}
-
-\begin{cor}[$\cN_{K,d}(C)$ is nice when $(d,K)$ = 1]
-When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
-\kahler manifold.
-\end{cor}
-\begin{pf} This is just the combination of \autoref{thm:N-is-kahler},
-\autoref{thm:Ns-is-compact}, and 
-\autoref{exc:coprime-einstein-is-irreducible}.
-\end{pf}
-
-\begin{example}[Stable bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $2$. \fixme{...}
-\end{example}
 
 
 
@@ -5175,41 +5258,6 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 
 \fixme{material below needs to be organized}
 
-\begin{lem}[Existence of Einstein connections on line bundles] \label{lem:einstein-connections-on-line-bundles}
-Suppose $\cL$ is a holomorphic line bundle over $C$. Then there
-exists a unique Hermitian metric $h$ on $\cL$ such that the Chern
-connection $D_h$ is Einstein.
-\end{lem}
-\begin{pf}
-First choose some arbitrary $h$ on $\cL$. The curvature of the Chern
-connection is then $F_{D_h} \in \Omega^2(C)$, 
-which generally is not harmonic. What we want to do is to
-improve $h$ to some $h'$ so that $F_{D_{h'}} \in \cH^2(C)$.
-We can write $h' = e^f h$ for some real-valued function $f$ on $C$.
-Then we have
-\begin{equation}
-  F_{D_{h'}} = F_{D_h} + \partial \bar\partial f.
-\end{equation}
-Now we can apply the
-abelian Hodge theorem (\autoref{thm:abelian-hodge-riemannian})
-to the cohomology class $[\I F_{D_h}] \in H^{2}_\dR(C)$.
-It says that there exists a unique $\beta \in \Omega^1(C)$
-such that
-\begin{equation}
- \I F_{D_h} + \de \beta \in \cH^2(C).
-\end{equation}
-But then the $\partial \bar\partial$-lemma (\autoref{lem:ddbar-lemma})
-says that $\de \alpha$ can also be written as
-$\I \partial \bar\partial f$ for some real function $f$.
-This gives the desired $f$.
-\end{pf}
-
-There is another way of thinking about this result, which
-unfortunately will bring up a slightly confusing point.
-Namely, suppose we consider a fixed line bundle $E$, with a
-fixed Hermitian metric. Then the analogue of ``changing the 
-Hermitian metric'' is ``making a gauge transformation
-valued in $\fG_\C$ but not in $\fG$.'' \fixme{...}
 
 % \begin{thm}[Narasimhan-Seshadri theorem for rank $1$]
 % Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
