@@ -1104,14 +1104,14 @@ a subgroup isomorphic to $U(n)$.
 Here we recall the basic statements of (abelian) Hodge theory.
 \fixme{refs}
 
-\begin{defn}[de Rham cohomology] \label{def:de-Rham}
+\begin{defn}[de Rham cohomology] \label{def:de-rham}
 Suppose $X$ is any manifold. Then we define
 \begin{equation}
   H^{k}_{\dR}(X) = \frac{\im \de \cap \Omega^k(X)}{\ker \de \cap \Omega^k(X)}.
 \end{equation}
 \end{defn}
 
-\begin{thm}[de Rham theorem for compact manifolds]
+\begin{thm}[de Rham theorem for compact manifolds] \label{thm:de-rham}
 If $X$ is compact, then there is a canonical isomorphism 
 \begin{equation}
   H^k_\dR(X) \simeq H^k(X,\R).
@@ -2377,7 +2377,7 @@ simultaneous eigenvectors. So by dimension counting we are done.
 Suppose $X$ is a \hk manifold. Then $T^{0,1}_{I_\zeta} X = (1 + \I \zeta I_3) T^{0,1}_{I_1} X$.
 \end{cor}
 \begin{pf} Take the complex conjugate of the statement in 
-\eqref{lem:10-forms-hol}, and use the metric to identify
+\autoref{lem:10-forms-hol}, and use the metric to identify
 $\bar T^* \simeq T$.
 \end{pf}
 
@@ -4171,7 +4171,7 @@ to a rather specific sort of infinite-dimensional spaces,
 namely \ti{tame Frechet spaces}, and to \ti{tame maps} between them.
 The spaces of $C^\infty$ sections are indeed tame Frechet spaces,
 and the maps we need to consider are tame maps.
-But this tameness seems to be essentially equivalent to
+My impression is that this tameness is nearly equivalent to
 the existence of Sobolev norms and the statement that the maps 
 are well behaved with respect to these; so in the end perhaps
 this method would not be so different from what we do here.
@@ -4180,14 +4180,9 @@ this method would not be so different from what we do here.
 \subsection{Banach spaces}
 
 \begin{defn}[Banach space] A \ti{Banach space} is 
-a vector space $V$ over $\R$ or $\C$, equipped with a 
-topology in which $V$ is complete, and such that there
-exists a norm on $V$ inducing the topology.
+a normed vector space $V$ over $\R$ or $\C$, which
+is complete as a metric space.
 \end{defn}
-
-Whenever necessary we will \ti{choose} a particular norm inducing
-the topology. One has to check that all of our statements
-which use a norm are actually independent of the choice of norm.
 
 \begin{defn}[Norm of a linear functional] Say $V$ is a Banach 
 space over $\R$ (resp. $\C$), and we have a 
@@ -4205,6 +4200,13 @@ on Banach spaces need not be continuous:
 over $\R$ (resp. $\C$), a linear map $\eta: V \to \R$ 
 (resp. $\C$) is continuous if and only if it is bounded.
 \end{prop}
+
+Loosely speaking, we want to consider two Banach spaces as
+``the same'' if there is a bounded linear isomorphism
+between them, even if that isomorphism does not preserve the 
+norm. So we can think of a Banach space as coming not with 
+a single norm but with a bunch of them, all inducing the 
+same topology, and all more or less equally good.
 
 \begin{defn}[Dual of Banach space] If $V$ is a Banach space
 over $\R$ (resp. $\C$),
@@ -4268,15 +4270,17 @@ on smooth sections of $E$ as follows.
 First fix an $h$-unitary connection $\nabla$ on $E$.
 Then write
 \begin{equation}
-  \norm{s}^2_{p,k} = \int_X \left(\norm{s}^2 + \norm{\nabla s}^2 + \norm {\nabla \nabla s}^2 +
-    \cdots + \norm{\nabla^k s}^2\right) \de vol_X.
+  \norm{s}^p_{p,k} = \int_X \left(\norm{s}^p + \norm{\nabla s}^p + \norm {\nabla \nabla s}^p +
+    \cdots + \norm{\nabla^k s}^p\right) \de vol_X.
 \end{equation}
 (Here the various terms are sections of tensor bundles $E \otimes (TX)^m$,
 considered with the norms induced by $h$ and the metric on $X$.)
 Then $L^p_k(E)$ is the \ti{completion} of the space of smooth
-sections of $E$ with respect to $\norm{\cdot}_{p,k}$.
+sections of $E$ with respect to $\norm{\cdot}_{p,k}$ (modulo identification
+of functions which agree almost everywhere).
 While the precise norm depends on the choice of $\nabla$, the 
-Banach space $L^p_k(E)$ actually does not depend on this choice.
+different Banach spaces $L^p_k(E)$ we obtain from the different
+norms are all isomorphic.
 \end{example}
 
 Crudely speaking, $L^p_k(E)$ consists of functions which are $L^p$ and 
@@ -4462,6 +4466,120 @@ $\fg^*$ in the usual sense: it is surjective only onto some dense
 subspace. Fortunately $\mu$ in our application has good
 regularity properties which allow us to define a stronger norm;
 in that stronger norm it actually has closed image.
+
+
+\subsection{Ellipticity}
+
+We give here a very brief and sketchy account of 
+ellipticity. Something much nicer can be found in \cite{MR2359489}.
+
+Suppose $X$ is a manifold carrying
+vector bundles $E$, $F$. We 
+consider a smooth differential operator $D: E \to F$
+and a smooth section $f$ of $F$.
+We would like to know when we can solve the equation
+\begin{equation} \label{eq:Def}
+ D e = f
+\end{equation}
+for $e$, and what kind of regularity properties
+$e$ should have.
+
+To get oriented let us consider a very special case,
+the Laplace operator in a Euclidean vector space $V$,
+\begin{equation}
+  D = \sum_{i=1}^n \partial_i^2.
+\end{equation}
+Here, we could try to solve \eqref{eq:Def}
+by Fourier transformation:
+at least formally the differentiations
+become multiplications, and we get
+\begin{equation}
+  -\norm{p}^2 \hat{e}(p) = \hat{f}(p)
+\end{equation}
+for $p \in V^*$, which would be solved by
+\begin{equation}
+  \hat e(p) = -\frac{\hat{f}(p)}{\norm{p}^2}
+\end{equation}
+or, returning to position space,
+\begin{equation} \label{eq:back-to-position}
+  e(x) = -\int_{V^*} (\de vol_{V^*}) e^{\I p \cdot x} \frac{\hat{f}(p)}{\norm{p}^2}
+\end{equation}
+This looks like it has some chance of working, at least if
+the behavior of $\hat f(p)$ near $p=0$ is somehow controlled.
+That problem has to do with the \ti{low frequency} modes of $f$. 
+Its analogue is different on a compact manifold: it becomes the
+condition that $f$ is orthogonal to the kernel of $D^*$. Apart
+from this difficulty, this strategy really works and can be applied 
+to the Laplacian acting on functions on a compact Riemannian manifold $X$ 
+(with appropriate patching, partitions of unity and
+such).
+
+Moreover, the solutions obtained in this 
+way have very good regularity: if $f$ itself was smooth then they are also 
+smooth, essentially because we can differentiate under the integral sign in 
+\eqref{eq:back-to-position} --- this just introduces more powers of
+$p$, but $\hat f(p)$ decays fast enough that the integral still
+converges.
+
+In contrast, the same strategy would fail drastically for the 
+Laplacian on a manifold with indefinite signature metric.
+The problem is that in this case the factor $1 / \norm{p}^2$
+in \eqref{eq:back-to-position} has singularities propagating
+all the way out to $p = \infty$ rather than just at $p=0$.
+
+The property that the highest-order part of the 
+Fourier transformed operator (\ti{symbol}) is invertible except
+at $p=0$ is what we call \ti{ellipticity}. It is associated
+with many good analytical properties, some of which we will
+use later on.
+
+In fact, for our purposes we can basically specialize to the operator
+\begin{equation}
+  \de + \de^*: \Omega^1(C) \to \Omega^2(C) \oplus \Omega^0(C)
+\end{equation}
+on a Riemannian 2-manifold $C$.
+In local coordinates around $x = 0$, orthonormal at $0$, 
+this operator could be written as
+\begin{equation}
+ f_1 \de x_2 + f_2 \de x_2 \mapsto (\partial_2 f_1 - \partial_1 f_2) \de x_1 \wedge \de x_2 + (\partial_1 f_1 + \partial_2 f_2)
+\end{equation}
+or relative to the obvious bases,
+\begin{equation}
+  \begin{pmatrix} \partial_2 & \partial_1 \\ -\partial_1 & \partial_2 \end{pmatrix}
+\end{equation}
+Thus the symbol is
+\begin{equation}
+  \begin{pmatrix} p_2 & p_1 \\ -p_1 & p_2 \end{pmatrix}
+\end{equation}
+which is indeed invertible except at $p_1 = p_2 = 0$.
+Thus this operator is elliptic.
+
+For the record, we can formulate things a little more precisely:
+\begin{defn}[Symbol of a differential operator] \label{def:symbol} 
+The (principal) 
+\ti{symbol} of an order $k$ differential operator $D$ mapping 
+between smooth vector bundles $E$ and $F$ over $X$ is a section
+$\sigma \in \pi^* \Hom(E,F)$, where $\pi: T^* X \to X$ is the projection.
+It has a fancy invariant definition, but the pedestrian way is
+to write the top-order part of $D$ in local coordinates for $X$ as
+\begin{equation}
+  \sum_{i_1, \dots, i_k} {P_{i_1 \cdots i_k}} \partial_{i_1} \cdots \partial_{i_k}
+\end{equation}
+where each $P_{i_1 \cdots i_k} \in \Hom(E,F)$, and then replace
+$\partial_{i} \to \I p_i$, where $p_i$ are the corresponding local
+coordinates on $T^* X$, to get
+\begin{equation}
+  \sigma = \I^k \sum_{i_1, \dots, i_k} {P_{i_1 \cdots i_k}} p_{i_1} \cdots p_{i_k}
+\end{equation}
+\end{defn}
+
+\begin{exercise} Verify that the definition \autoref{def:symbol}
+is well formulated, i.e. that the symbol $\sigma$ so obtained
+does not depend on the coordinate system we choose.
+\end{exercise}
+
+\begin{defn}[Elliptic differential operator] \fixme{...}
+\end{defn}
 
 
 \section{Moduli of bundles}
@@ -4671,8 +4789,6 @@ We compute
 Verify \eqref{eq:inf-gauge} and \eqref{eq:diff-moment-map}.
 \end{exercise}
 
-\currentposition
-
 \begin{exercise}
 Check that $\mu$ given by \eqref{eq:gauge-moment-map}
 is $\fG$-equivariant.
@@ -4785,49 +4901,58 @@ First we look a bit more at the \ti{formal} picture.
 The tangent space to $\cN_{K,d}^s(C)$
 at a given Einstein connection $D$ should be the kernel of $\de \mu$ 
 modulo $\rho(\Lie (\fG^\eff))$. A nice way to say this is that 
-the tangent space should be the cohomology $H^1$ of the complex
+the tangent space ``should be'' the cohomology $H^1$ of the complex
 \begin{equation} \label{eq:gauge-complex}
-  0 \to \Omega^0_{k+1}(\fu(E)) \xrightarrow{D} \Omega^1_k(\fu(E)) \xrightarrow{D} \Omega^2_{k-1}(\fu(E)) \to 0
+  0 \to \Omega^0(\fu(E)) \xrightarrow{D} \Omega^1(\fu(E)) \xrightarrow{D} \Omega^2(\fu(E)) \to 0
 \end{equation}
 (It's indeed a complex: $D^2 = 0$ acting
 on sections of $\fu(E)$, since $F_D \sim \bid$ and hence 
 is central. Of course this is as it should be since infinitesimal
 gauge transformations should be tangent to $\mu^{-1}(0)$.)
 Fortunately this complex
-is \ti{elliptic} in the sense of \autoref{sec:ellipticity}.
+is \ti{elliptic} in the sense of \autoref{sec:ellipticity},
+just as for the example of $\de + \de^*$ discussed there
+(indeed the symbol is just $K^2$ copies of the symbol 
+of $\de + \de^*$.)
 Thus we get:
 
 \begin{prop}[Elliptic regularity for the gauge complex]
 Define
 \begin{equation}
- \hat{D} = D \oplus D^*: \Omega^1_k \to \Omega^2_{k-1} \oplus \Omega^0_{k-1}.
+ \hat{D} = D \oplus D^*: \Omega^1_k(\fu(E)) \to \Omega^2_{k-1}(\fu(E)) \oplus \Omega^0_{k-1}(\fu(E)).
 \end{equation}
 Then $\hat{D}$ is \ti{Fredholm}, i.e. it has closed range, 
 and finite-dimensional 
 kernel and cokernel.
 Moreover, $\ker \hat{D}$ and $\coker \hat{D}$ contain only
 smooth sections (so in particular they are independent of $k$.)
+Finally $\coker \hat{D} = \ker \hat{D}^*$.
 \end{prop}
 
+\currentposition
+
 We will need the following preliminary:
-\begin{lem}[Cohomology vanishing for the gauge complex] 
+\begin{lem}[Almost-vanishing for the gauge complex] 
 \label{lem:cohomology-vanishing-gauge-complex}
 If $D \in \cA^s_k$, then
-$H^0$ and $H^2$ of the complex \eqref{eq:gauge-complex} are both
-$1$-dimensional.
+$\coker \hat{D}$ is $2$-dimensional.
 \end{lem}
+(Informally: both $H^0$ and $H^2$ of the complex \eqref{eq:gauge-complex} are
+$1$-dimensional.)
 \begin{pf}
-Any $D$-constant section of $\fu(E)$ must be a constant multiple
+We represent
+$\coker \hat{D}$ as $\ker \hat{D}^*$, where
+\begin{equation}
+  \hat{D}^* = D \oplus D^*: \Omega^0_k(\fu(E)) \oplus \Omega^2_k(\fu(E)) \to \Omega^1_{k-1}(\fu(E)).
+\end{equation}
+Any $\alpha \in \ker D \subset \Omega^0$ must be a constant multiple
 of $\bid$, since $D$ is an irreducible connection: this gives
-the desired statement for $H^0$. For $H^2$ we essentially
-use Poincare duality. More precisely, we need to use the
-Fredholm property of $\hat D$, which tells us that $H^2$ can 
-be identified with $\ker D^* \subset \Omega^2_{k-1}(\fu(E))$.
-On the other hand we have
+the desired statement for $\Omega^0$. For $\Omega^2$ we essentially
+use Poincare duality: we have
 \begin{equation}
   D^* = - \star D \star
 \end{equation}
-so any $\alpha \in H^2$ has $D \star \alpha = 0$; said
+so any $\alpha \in \ker D^* \subset \Omega^2$ has $D \star \alpha = 0$; said
 otherwise, $H^2$ is just spanned by $\star (\bid)$.
 \end{pf}
 
@@ -4849,26 +4974,22 @@ by the 1-dimensional subspace spanned by $\star \bid$.)
 \begin{thm}[Dimension of $\cN^s_{K,d}(C)$] \label{thm:dimension-of-N}
 $\dim_\C \cN^s_{K,d}(C) = (g-1)K^2+1$ where $g$ is the genus of $C$.
 \end{thm}
-\begin{pf} This can be obtained as an application of 
-the Atiyah-Singer Index Theorem, which gives a formula 
-for the index 
+\begin{pf} We will compute the index
 \begin{equation}
-  \ind \hat{D} = \dim \ker \hat{D} - \dim \coker \hat{D}
+  \ind \hat{D} = \dim \ker \hat{D} - \dim \coker \hat{D}.
 \end{equation}
-when $\hat{D}$ is \ti{any} elliptic
-differential operator over a compact manifold. 
-The formula is complicated, but all we need to know is that 
-it does not depend on all details
-of $\hat{D}$ --- it depends only on the symbol, i.e.
-the highest-degree terms of the differential operator.
-
-For the operator $\hat{D}$ we have here, the symbol
+Very generally, for any elliptic operator, this could be 
+computed by the Atiyah-Singer Index Theorem; in the present
+case though, all we need to know is one of the basic
+preliminaries in the proof of that theorem, namely the fact that
+$\ind \hat{D}$ only depends on the symbol of $\hat{D}$. 
+Indeed, for the operator $\hat{D}$ we have, the symbol
 is the same as that for the trivial connection on 
 the trivial rank $K$ bundle (in local coordinates $D = \de + A$, 
 and the $A$ part is lower-order.) But for the trivial 
 connection we just get $K^2$ copies of the de Rham 
-complex, whose index is known: it is $-\chi(C) = 2g-2$.
-Thus the index formula gives
+complex, whose index is known by de Rham's theorem
+(\autoref{thm:de-rham}): it is $-\chi(C) = 2g-2$. Thus we get
 \begin{equation}
   \ind \hat{D} = (2g-2) K^2.
 \end{equation}
