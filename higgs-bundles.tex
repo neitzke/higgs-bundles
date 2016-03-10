@@ -5045,17 +5045,44 @@ Taking holonomies around loops gives a map
 In fact this map is an isomorphism, as follows from
 \autoref{exc:connections-vs-representations} below.
 
-Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$. 
-Let us describe its symplectic and \kahler structures.
-At any $x \in \Jac(C)$ we have $T_x \Jac(C) = H^1(C,\R)$,
-and the symplectic form $\omega$ is just given 
-by the intersection pairing
-\begin{equation}
+Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$.
+In particular, using this description we see that $\Jac(C)$
+is \ti{independent} of the chosen metric on $C$.
+Moreover, from this description 
+we get an identification $T_x \Jac(C) \simeq H^1(C,\R)$.
+We could understand this identification more concretely
+as follows: identify $H^1(C,\R) = H^1_{dR}(C,\R)$
+using \autoref{thm:de-rham}; then
+shifting a flat connection by a closed $1$-form $\alpha$ gives
+another flat connection,
+this connection is gauge-equivalent to the original one
+if and only if $\alpha = \de \chi$ for some $\chi$.
+
+Let us now describe the symplectic and \kahler structures
+on $\Jac(C)$.
+Our realization of $T_x \Jac(C)$ via the symplectic quotient
+identifies it as $\ker (\de \oplus \de^*)$,
+i.e. as the space of harmonic forms $\cH^1(C)$.
+The relation to the description of $T_x \Jac(C)$
+above is just that in each cohomology class
+we choose the unique harmonic representative.
+Now, as usuual for symplectic quotients, 
+the symplectic form $\omega$ is just obtained by
+restriction of the original symplectic form \eqref{eq:symplectic-form-A}
+from $\cA$ to $\cH^1(C)$,
+\begin{equation} \label{eq:symplectic-form-jac}
   \omega(\alpha, \beta) = \int_C \alpha \wedge \beta.
 \end{equation}
-In particular,
-as a symplectic manifold, $\Jac(C)$ does not depend on
-the complex structure of $C$. On the other hand the
+This pairing in fact depends only on the cohomology classes of
+$\alpha$ and $\beta$, not on the actual harmonic forms
+chosen to represent them! Said otherwise, this formula represents
+an intrinsically defined symplectic form on $H^1(C,U(1))$.
+In particular this form does not depend on the complex structure
+we chose on $C$.
+Thus, as a symplectic manifold, $\Jac(C)$ does not depend on
+the complex structure of $C$.
+
+On the other hand the
 \ti{complex} structure definitely does depend on the complex
 structure of $C$: it is the one inducing the 
 Hodge decomposition
@@ -5074,9 +5101,9 @@ question is to construct functors in both directions.)
 \end{exercise}
 
 \begin{exercise}
-Prove that the complex and symplectic structures on $\Jac(C)$
-induced by the \kahler quotient construction are the 
-ones claimed above.
+Prove that the complex structure on $\Jac(C)$
+induced by the \kahler quotient construction is the 
+one claimed above.
 \end{exercise}
 
 \begin{thm}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
