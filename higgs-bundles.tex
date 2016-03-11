@@ -5049,7 +5049,10 @@ Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$.
 In particular, using this description we see that $\Jac(C)$
 is \ti{independent} of the chosen metric on $C$.
 Moreover, from this description 
-we get an identification $T_x \Jac(C) \simeq H^1(C,\R)$.
+we get an identification
+\begin{equation}
+ T_x \Jac(C) \simeq H^1(C,\R).
+\end{equation}
 We could understand this identification more concretely
 as follows: identify $H^1(C,\R) = H^1_{dR}(C,\R)$
 using \autoref{thm:de-rham}; then
@@ -5058,15 +5061,21 @@ another flat connection,
 this connection is gauge-equivalent to the original one
 if and only if $\alpha = \de \chi$ for some $\chi$.
 
+Our realization of $T_x \Jac(C)$ via the symplectic quotient
+identifies it as $\ker (\de \oplus \de^*)$, i.e. 
+the space of harmonic forms,
+\begin{equation}
+ T_x \Jac(C) \simeq \cH^1(C).
+\end{equation}
+The relation to the statement $T_x \Jac(C) \simeq H^1(C,\R)$
+above is the standard one given by the Hodge theorem,
+\autoref{thm:abelian-hodge-riemannian}:
+in each cohomology class we choose the unique 
+harmonic representative.
+
 Let us now describe the symplectic and \kahler structures
 on $\Jac(C)$.
-Our realization of $T_x \Jac(C)$ via the symplectic quotient
-identifies it as $\ker (\de \oplus \de^*)$,
-i.e. as the space of harmonic forms $\cH^1(C)$.
-The relation to the description of $T_x \Jac(C)$
-above is just that in each cohomology class
-we choose the unique harmonic representative.
-Now, as usuual for symplectic quotients, 
+As usual for symplectic quotients, 
 the symplectic form $\omega$ is just obtained by
 restriction of the original symplectic form \eqref{eq:symplectic-form-A}
 from $\cA$ to $\cH^1(C)$,
