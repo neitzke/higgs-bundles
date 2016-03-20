@@ -794,7 +794,8 @@ N_I = 0.
 \end{equation}
 \end{prop}
 \begin{pf} To show that integrability implies $N_I = 0$ is straightforward
-by directly computing in a local coordinate chart. The other direction
+by directly computing in a local holomorphic coordinate 
+chart. The other direction
 is much harder --- it is the content of the Newlander-Nirenberg theorem.
 \end{pf}
 
@@ -1692,7 +1693,7 @@ However, we do have the following. The
 unit sphere in ${\mathbb H}$ is a Lie group,
 which happens to be isomorphic to $SU(2)$.\footnote{The isomorphism
 can be given explicitly by the formula
-\begin{equation}
+\begin{equation} \label{eq:quaternions-into-su2}
   x_0 + x_1 \I + x_2 \J + x_3 \K \mapsto \begin{pmatrix} x_0+x_1\I & x_2+x_3\I \\ -x_2+x_3\I & x_0-x_1\I \end{pmatrix}
 \end{equation}
 but we will not need to use this anywhere.}
@@ -2363,7 +2364,7 @@ Suppose $X$ is a \hk manifold. Then $(T^*)^{1,0}_{I_\zeta} X = (1 - \I \zeta I_3
 \end{lem}
 
 \begin{pf}
-If $\beta \in T^{1,0}_{I_\zeta} X$ we may compute directly that
+If $\beta \in (T^*)^{1,0}_{I_\zeta} X$ we may compute directly that
 \begin{align}
 I_\zeta (1 + \zeta I_3) \beta &= \frac{((1 - \abs{\zeta}^2)I_1 - 2 \im \zeta I_2 + 2 \re \zeta I_3)(1 + \zeta I_3)\beta} {1 + \abs{\zeta}^2} \\
 &= \I (1 + \zeta I_3) \beta,
@@ -2419,56 +2420,150 @@ an alternative proof of \autoref{lem:hol-symp-hol}.
 % spans $T^{0,1}$. \fixme{...}
  
 
-% \subsection{The twistor family, second approach}
+\subsection{The twistor family, second approach}
 
-% \fixme{this section is in progress}
+In this section we fit
+\autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}
+into a slightly more abstract framework.
+The main aim is \autoref{prop:twistorial-and-quaternionic-vector-spaces}
+below, which says that a quaternionic vector space is 
+equivalent to a certain kind of vector bundle over
+$\C\PP^1$.
 
-% There is also a less computational approach to
-% \autoref{lem:hol-symp-hol} and \autoref{lem:10-forms-hol}.
-% It begins with a more incisive examination of 
-% the local structure.
+\begin{defn}[Quaternionic vector space] A \ti{quaternionic
+vector space} is a real vector space $V$ with endomorphisms
+$I_1$, $I_2$, $I_3$ obeying the quaternion algebra.
+\end{defn}
 
-% \begin{defn}[Quaternionic vector space] A \ti{quaternionic
-% vector space} is a real vector space $V$ with endomorphisms
-% $I_1$, $I_2$, $I_3$ obeying the quaternion algebra.
-% \end{defn}
+\begin{exercise} Suppose $V$ is a quaternionic vector space, of real 
+dimension $n$. Show that $n$ is a multiple of $4$, and the group of automorphisms of $V$ commuting with $\rho$ is isomorphic to
+$GL(\frac{n}{4}, \bbH)$.
+\fixme{need to use existence of basis}
+\end{exercise}
 
-% \begin{defn}[\Hk vector space] A \ti{\hk vector space} is a quaternionic vector space $V$, with a symmetric 
-% bilinear form $g$ obeying for all $i$
-% \begin{equation}
-%   g(I_i v, I_i w) = g(v,w).
-% \end{equation}
-% \end{defn}
+\begin{defn}[\Hk vector space] A \ti{\hk vector space} is a quaternionic vector space $V$, with a positive definite symmetric 
+bilinear form $g$ obeying for all $i$
+\begin{equation}
+  g(I_i v, I_i w) = g(v,w).
+\end{equation}
+\end{defn}
 
-% \begin{defn}[Twistorial vector space] A \ti{twistorial vector space}
-% is a holomorphic vector bundle $W \to S^2$, such that
-% $W \otimes \cO(-1)$ is trivial, equipped with
-% \begin{itemize}
-%    \item a fiberwise nondegenerate section $\Omega$ of $\wedge^2 W^* \otimes \cO(2)$,
-%    \item a ``real'' structure $\rho: \sigma^* W \simarrow \bar{W}$, where
-%    $\sigma$ is the antipodal map of $\C\PP^1$.
-%  \end{itemize} 
-% \end{defn}
+\begin{exercise} Suppose $V$ is a \hk vector space, of real dimension $4n$.
+Show that the group of automorphisms of $V$ preserving $(I_1,I_2,I_3,g)$
+is isomorphic to $Sp(n)$. \fixme{need to use existence of basis}
+\end{exercise}
 
-% \begin{prop}[Twistorial description of quaternionic vector spaces] 
-% The category of \hk vector spaces
-% is equivalent to the category of twistorial vector spaces.
-% \end{prop}
+\begin{defn}[Pseudoreal structure] Let $V$ be a complex
+vector space. A \ti{pseudoreal structure}
+on $V$ is a map $\rho: V \to V$ which is conjugate-linear
+and has $\rho^2 = -1$.
+\end{defn}
 
-% \begin{pf} Given a \hk vector space $V$, we
-% construct a vector bundle $W \to S^2$ by
-% choosing
-% \begin{equation}
-%  W_{\vec s} = \ker(I_{\vec s} + \I).
-% \end{equation}
-% Given a twistorial vector space $W$,
-% we obtain a quaternionic vector space
-% by
-% \begin{equation}
-%   V = H^0(W).
-% \end{equation}
-% \fixme{...}
-% \end{pf}
+\begin{exercise} Suppose $(V,\rho)$ is a pseudoreal vector space, of complex 
+dimension $n$. Show that $n$ is even, and the group of automorphisms
+of $V$ commuting with $\rho$ is isomorphic to $GL(\frac{n}{2}, \bbH)$.
+\fixme{need to use standard form for pseudoreal structure?}
+\end{exercise}
+
+This result suggests a close connection between pseudoreal vector spaces
+and quaternionic ones. We will now make this connection more explicit.
+Let $H = \C^2$,
+equipped with a pseudoreal structure
+\begin{equation} \label{eq:H-pseudoreal}
+  \rho_H(z,w) = (-\bar{w},\bar{z}),
+\end{equation}
+and a skew pairing,
+\begin{equation}
+  \varepsilon_H((z_1,w_1),(z_2,w_2)) = z_1 w_2 - w_1 z_2.
+\end{equation}
+The two combine to give a Hermitian metric on $H$,
+\begin{equation}
+  g_H((z_1,w_1),(z_2,w_2)) = \varepsilon_H((z_1,w_1),\rho_H(z_2,w_2)) = z_1 \bar{z}_2 + w_1 \bar{w}_2.
+\end{equation}
+$H$ has a $\C$-linear action of $\bbH$,
+given explicitly by \eqref{eq:quaternions-into-su2}.
+
+We can also think of $H$ as the vector space of global
+sections of $\cO(1) \to S^2$,
+\begin{equation}
+  H = H^0(\cO(1)).
+\end{equation}
+$\rho_H$ then comes from a ``pseudoReal'' structure
+on the line bundle $\cO(1)$: namely, if we let $\sigma$ denote
+the antipodal map of $\C\PP^1$, \eqref{eq:H-pseudoreal} gives
+\begin{equation}
+  \rho_{\cO(1)}: \sigma^* \cO(1) \simeq \overline{\cO(1)}.
+\end{equation}
+
+\begin{prop}[Linear algebra of quaternionic vector spaces]
+We have:
+\begin{itemize}
+\item If $V$ is a quaternionic vector space with $\dim_\R V = 4n$, then 
+there is a canonical decomposition of complex vector spaces
+\begin{equation}
+  V_\C \simeq H \otimes E,
+\end{equation}
+where $E$ is a complex vector space with $\dim_\C E = 2n$,
+equipped with a pseudoreal structure $\rho_E$. Moreover:
+\begin{itemize}
+  \item the real structure on $V_\C$ is $\rho_V = \rho_H \otimes \rho_E$,
+  \item the quaternion action on $V_\C$ is induced from the action on $H$.
+\end{itemize}
+This construction gives an equivalence between the category of
+quaternionic vector spaces $V$ and the category of pseudoreal 
+vector spaces $E$.
+
+\item If $V$ is a \hk vector space, then in addition there is
+a nondegenerate skew pairing $\varepsilon_E$ on $E$, such 
+that the complexification of $g$ is
+\begin{equation} 
+ g_\C = \varepsilon_H \otimes \varepsilon_E.
+\end{equation}
+This construction gives an equivalence between the category
+of \hk vector spaces $V$ and the category of pseudoreal vector spaces $E$
+with compatible skew pairings.
+\end{itemize}
+\end{prop}
+
+\begin{pf} \fixme{...}
+\end{pf}
+
+\begin{defn}[Twistorial vector space] A \ti{twistorial vector space}
+is a holomorphic vector bundle $W \to S^2$, such that
+$W \otimes \cO(-1)$ is trivial, equipped with
+a ``Real'' structure $\rho_W: \sigma^* W \simarrow \overline{W}$, where
+$\sigma$ is the antipodal map of $\C\PP^1$.
+\end{defn}
+
+\begin{defn}[Metric twistorial vector space] A \ti{metric twistorial
+vector space} is a twistorial vector space $W \to S^2$, equipped with
+a fiberwise nondegenerate $\Omega \in \wedge^2(W^*) \otimes \cO(2)$,
+compatible with the Real structures in the sense that
+\begin{equation}
+  (\rho_{\wedge^2 W^*} \otimes \rho_{\cO(2)})^*\Omega = \overline\Omega,
+\end{equation}
+and obeying a positivity condition \fixme{...}
+\end{defn}
+
+\begin{prop}[Twistorial description of quaternionic vector spaces] \label{prop:twistorial-and-quaternionic-vector-spaces}
+Given a quaternionic vector space $V$, we obtain a twistorial 
+vector space $W$ by taking
+\begin{equation}
+ W_{\vec s} = \ker(I_{\vec s} + \I) \subset V_\C.
+\end{equation}
+Given a twistorial vector space $W$, we obtain a 
+quaternionic vector space $V$ by taking
+\begin{equation}
+  V = H^0_\R(W)
+\end{equation}
+i.e. the space of sections invariant under $\rho_W$.
+If $V$ is a \hk vector space, then the corresponding $W$
+is a metric twistorial vector space, and vice versa.
+All of these constructions give equivalences of categories.
+\end{prop}
+
+\begin{pf} \fixme{...}
+\end{pf}
 
 % \begin{prop}[Second approach to holomorphic family of 
 % holomorphic symplectic forms on \hk manifold] Suppose $X$ is a \hk manifold of 
@@ -2643,7 +2738,7 @@ Then
 $\cZ$, as a bundle over $S^2$, 
 has holomorphic \ti{sections} $s_x$ corresponding
 to the points $x \in X$.
-These sections are \ti{real}, i.e. $s_x(-\vec s) = \rho(s_x(s))$.
+These sections are \ti{real}, i.e. $s_x(-\vec s) = \rho(s_x(\vec s))$.
 The normal bundle to $s_x(S^2) \subset \cZ$ is isomorphic
 to $\cO(1)^{\oplus 2n}$.
 \end{prop}
@@ -2712,28 +2807,42 @@ Then $Y \simeq \C\PP^1$ and $N \simeq \cO(1)^{\oplus 2n}$.
 The first bit of good 
 news is that in this situation we indeed have $H^1(Y,N) = 0$,
 because $H^1(\C\PP^1, \cO(1)) = 0$.
-Moreover, since $N \otimes \cO(-1)$ is trivial
-we have
-\begin{equation}
-  H^0(Y,N) \simeq H^0(N \otimes \cO(-1)) \otimes H^0(\cO(1)).
-\end{equation}
-Finally, on $H^0(N \otimes \cO(-1))$ we have a skew pairing
-given by $\Omega$, while on $H^0(\cO(1))$ there is a canonical
-skew pairing, concretely
-\begin{equation}
-  \omega(a_1 + b_1 \zeta, a_2 + b_2 \zeta) = a_1 b_2 - a_2 b_1.
-\end{equation}
-Combining these two gives a \ti{symmetric} pairing on 
-$H^0(N) \simeq T_\C X$. Keeping track of real structures we see
-that this pairing descends to a \ti{real} symmetric pairing
-on $TX$. 
+Moreover, $N$ carries the structure of metric
+twistorial vector space as in \autoref{...}, and thus by
+\autoref{...}, $H^0_\R(Y,N)$ is a \hk vector space.
+As $Y$ varies this gives $(I_1,I_2,I_3,g)$ on $X'$.
 
-Next we have to check
-that this pairing actually gives a \hk metric. \fixme{...}
-
-Finally we should check that this \hk metric agrees with
-the one on $X'$. \fixme{...}
+Finally we just have to check the integrability $\de \omega_i = 0$. 
+This follows directly from the fact that $\de \Omega = 0$ 
+on the fibers of $\cZ$ \fixme{...}
 \end{pf}
+
+% since $N \otimes \cO(-1)$ is trivial
+% we have
+% \begin{equation}
+%   H^0(N) \simeq H^0(N \otimes \cO(-1)) \otimes H^0(\cO(1)).
+% \end{equation}
+% Finally, on $H^0(N \otimes \cO(-1))$ we have a skew pairing
+% given by $\Omega$, while on $H^0(\cO(1))$ there is a canonical
+% skew pairing, concretely
+% \begin{equation}
+%   \omega(a_1 + b_1 \zeta, a_2 + b_2 \zeta) = a_1 b_2 - a_2 b_1.
+% \end{equation}
+% Combining these two gives a \ti{symmetric} pairing on 
+% $H^0(N) \simeq T_\C X$. 
+
+% We need to keep track of the real structures: indeed
+% the real structure on $H^(N)$ 
+
+% Keeping track of real structures we see
+% that this pairing descends to a \ti{real} symmetric pairing
+% on $TX$. 
+
+% Next we have to check
+% that this pairing actually gives a pseudo-\hk metric. \fixme{...}
+
+% Finally we should check that this pseudo-\hk metric agrees with
+% the one on $X'$. \fixme{...}
 
 Two remarks about \autoref{thm:hk-twistor-construction}:
 \begin{itemize}
@@ -4568,7 +4677,7 @@ coordinates on $T^* X$, to get
 \end{equation}
 \end{defn}
 
-\begin{exercise} Verify that the definition \autoref{def:symbol}
+\begin{exercise} Verify that \autoref{def:symbol}
 is well formulated, i.e. that the symbol $\sigma$ so obtained
 does not depend on the coordinate system we choose.
 \end{exercise}
@@ -4582,13 +4691,13 @@ at all points off the zero section of $T^* X$.
 \begin{thm}[Elliptic regularity] \label{thm:elliptic-regularity}
 Suppose $D$ is elliptic. Then for any $k$,
 $D$ extends to an operator acting on Sobolev spaces
-$$D: L^2_k(E) \to L^2_{k-\ell}(E),$$
+$$D_k: L^2_k(E) \to L^2_{k-\ell}(E),$$
 and we have:
 \begin{itemize}
-\item $D$ is \ti{Fredholm}, i.e. it has closed range, 
+\item $D_k$ is \ti{Fredholm}, i.e. it has closed range, 
 and finite-dimensional 
 kernel and cokernel.
-\item $\ker D$ and $\coker D$ contain only
+\item $\ker D_k$ and $\coker D_k$ contain only
 smooth sections (so in particular they are independent of $k$.)
 \item The formal adjoint $D^*$ is also elliptic, and
 $\im D$ is the $L^2$ orthocomplement of $\ker D^*$.
@@ -5009,7 +5118,7 @@ $\dim_\C \cN^s_{K,d}(C) = (g-1)K^2+1$ where $g$ is the genus of $C$.
 \end{equation}
 Very generally, for any elliptic operator, this could be 
 computed by the Atiyah-Singer Index Theorem. In the present
-case though, when the degree $d=0$,
+case, when the degree $d=0$,
 all we need to know is one of the basic
 preliminaries in the proof of that theorem, namely the fact that
 $\ind \hat{D}$ only depends on the symbol of $\hat{D}$. 
@@ -5058,30 +5167,32 @@ Taking holonomies around loops gives a map
 In fact this map is an isomorphism, as follows from
 \autoref{exc:connections-vs-representations} below.
 
-Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$.
-In particular, using this description we see that $\Jac(C)$
+Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$,
+of real dimension $2g$.
+In particular, using this description we see that 
+as a smooth manifold $\Jac(C)$
 is \ti{independent} of the chosen metric on $C$.
 Moreover, from this description 
 we get an identification
-\begin{equation}
+\begin{equation} \label{eq:tangent-to-jacobian-derham}
  T_x \Jac(C) \simeq H^1(C,\R).
 \end{equation}
-We could understand this identification more concretely
-as follows: identify $H^1(C,\R) = H^1_{dR}(C,\R)$
-using \autoref{thm:de-rham}; then
-shifting a flat connection by a closed $1$-form $\alpha$ gives
-another flat connection,
-this connection is gauge-equivalent to the original one
-if and only if $\alpha = \de \chi$ for some $\chi$.
-
-Our realization of $T_x \Jac(C)$ via the symplectic quotient
+% We could understand this identification more concretely
+% as follows: identify $H^1(C,\R) = H^1_{dR}(C,\R)$
+% using \autoref{thm:de-rham}; then
+% shifting a flat connection by a closed $1$-form $\alpha$ gives
+% another flat connection,
+% this connection is gauge-equivalent to the original one
+% if and only if $\alpha = \de \chi$ for some $\chi$.
+On the other hand, our realization of $T_x \Jac(C)$ via the symplectic quotient
 identifies it as $\ker (\de \oplus \de^*)$, i.e. 
 the space of harmonic forms,
-\begin{equation}
+\begin{equation} \label{eq:tangent-to-jacobian-harmonic}
  T_x \Jac(C) \simeq \cH^1(C).
 \end{equation}
-The relation to the statement $T_x \Jac(C) \simeq H^1(C,\R)$
-above is the standard one given by the Hodge theorem,
+The relation between \eqref{eq:tangent-to-jacobian-derham}
+and \eqref{eq:tangent-to-jacobian-harmonic}
+is the standard one given by the Hodge theorem,
 \autoref{thm:abelian-hodge-riemannian}:
 in each cohomology class we choose the unique 
 harmonic representative.
@@ -5115,6 +5226,24 @@ Thus the \kahler metric on $\Jac(C)$
 also depends on the complex structure of $C$.
 \end{example}
 
+\begin{exercise}
+Prove that the complex structure on $\Jac(C)$
+induced by the \kahler quotient construction is the 
+one claimed above.
+\end{exercise}
+
+\begin{exercise} \label{exc:metric-on-jac-C-genus-one}
+Write an explicit formula for the \kahler metric on $\Jac(C)$
+when $C$ has genus $1$, with complex modulus $\tau$.
+\end{exercise}
+
+\begin{exercise}
+Write an explicit formula for the \kahler metric on $\Jac(C)$
+when $C$ has genus $g \ge 1$. (You will need --- or rediscover ---
+the notion of \ti{period matrix} of $C$, generalizing the $\tau$
+which appeared in \autoref{exc:metric-on-jac-C-genus-one}.)
+\end{exercise}
+
 \begin{exercise} \label{exc:connections-vs-representations} 
 Show that $\cN_{K,0}^s(C)$, considered as a set, 
 has a canonical bijection to the set of all irreducible representations
@@ -5122,17 +5251,47 @@ $\pi_1(C) \to U(K)$ modulo equivalence. (Hint: this is actually the shadow
 of a stronger statement, namely that the category of flat connections is
 equivalent to the category of representations. So the real guts of the 
 question is to construct functors in both directions.)
+Similarly show that $\cN_{K,0}(C)$ has a canonical bijection to 
+the set of all representations
+$\pi_1(C) \to U(K)$ modulo equivalence. 
+Finally show (or at least sketch) that 
+these bijections are actually homeomorphisms.
 \end{exercise}
 
-\begin{exercise}
-Prove that the complex structure on $\Jac(C)$
-induced by the \kahler quotient construction is the 
-one claimed above.
+Now how about the case of general $d$, where we consider
+connections obeying \eqref{eq:harmonic-curvature} instead of
+just flat connections?
+We remark that $\omega_C$ is an arbitrary positive $2$-form 
+on $C$ with total integral $1$.
+At least formally we can imagine taking $\omega_C$ to be more and more 
+concentrated at a single point $z_0$, until in the limit we get
+$\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
+\eqref{eq:harmonic-curvature} are becoming
+flat away from $z_0$, but developing a singularity 
+at $z_0$, with the holonomy around $z_0$
+of finite order, given by multiplication by the root of unity 
+$e^{-2 \pi \I d / K}$. 
+
+\insfig{higgs-bundles-13}{0.95}
+
+This motivates the following:
+\begin{exercise} \label{exc:connections-vs-representations-general}
+Extend \autoref{exc:connections-vs-representations} to general 
+degrees $d$: in other words,
+give a description of $\cN_{K,d}^s(C)$ and $\cN_{K,d}(C)$
+as sets of equivalence classes of 
+representations of an \ti{extension} of $\pi_1(C)$
+by a finite group. (Hint: use the description of $C$ as 
+a polygon with edges identified.)
 \end{exercise}
 
-\begin{thm}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
-$\cN_{K,d}(C)$ is compact. \fixme{use Uhlenbeck compactness}
-\end{thm}
+We have already seen that when $K=1$, $\cN_{K,0}(C)$ is a compact
+\kahler torus. The behavior is almost as good
+for general $K$ and $d$:
+
+\begin{cor}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
+$\cN_{K,d}(C)$ is compact.
+\end{cor}
 
 \begin{exercise} \label{exc:coprime-einstein-is-irreducible} 
 Show that if $(d,K)=1$ then $\cN_{K,d}(C) = \cN_{K,d}^s(C)$. 
@@ -5146,9 +5305,6 @@ When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
 \autoref{thm:Ns-is-compact}, and 
 \autoref{exc:coprime-einstein-is-irreducible}.
 \end{pf}
-
-\begin{example}[Stable bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $2$. \fixme{...}
-\end{example}
 
 \begin{lem}[Existence of Einstein connections on line bundles] \label{lem:einstein-connections-on-line-bundles}
 Suppose $\cL$ is a holomorphic line bundle over $C$. Then there
@@ -5219,6 +5375,17 @@ However, one does not quite get a \ti{canonical} isomorphism.
 \autoref{prop:tensor-line-is-isometry} is a holomorphic
 isometry of \kahler manifolds.
 \end{exercise}
+
+\begin{example}[Bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case
+we have $\dim_\C \cN_{2,d}(C) = 5$. For $d=1$, this space is 
+a compact \kahler manifold. \autoref{prop:tensor-line-is-isometry} says
+that it has a natural action of the complex 2-dimensional torus
+$\Jac C$ by isometries. Dividing out this action we
+are left with a compact \kahler manifold of complex dimension $3$.
+\fixme{...}
+\end{example}
+
+
 
 
 
