@@ -4798,14 +4798,16 @@ has degree $n$.
 All rank $K$ complex vector bundles over $C$ of degree $d$ are equivalent.
 \end{prop}
 
+\begin{pf} \fixme{...}
+\end{pf}
+
 Thus, suppose we fix a single rank $K$ complex vector bundle $E$, 
 of degree $d$; then every holomorphic vector bundle of rank $K$
 and degree $d$ is equivalent to $(E, \bar\partial)$ for some
-$\bar\partial$-operator on $E$.
-
+$\bar\partial$-operator $\bar\partial$ on $E$.
 Let $\cA^{\bar\partial}$ denote the space of all such $\bar\partial$.
-This is an affine space modeled on the infinite-dimensional 
-complex linear space $\Omega^{0,1}(\End E)$.
+Then $\cA^{\bar\partial}$ is an affine space modeled on the 
+infinite-dimensional complex linear space $\Omega^{0,1}(\End E)$.
 
 The moduli space we want to describe could be thought of as
 $\cA^{\bar\partial}$ modulo equivalence --- where now ``equivalence'' means
@@ -4813,13 +4815,12 @@ the (infinite-dimensional,
 complex) group $\fG_\C$ of sections of $GL(E)$,
 which acts on $\cA^{\bar\partial}$ by conjugation:
 \begin{equation}
-  D \mapsto D^g = g D g^{-1}.  
+  D \mapsto D^g = (g^{-1})^* D = g D g^{-1}.  
 \end{equation}
 So formally we want to say
 \begin{equation} \label{eq:bunG-formal-quotient}
   \cN_{K,d}(C) = \cA^{\bar\partial} / \fG_\C.
 \end{equation}
-
 It is not so easy to make a ``nice'' space in this way.
 The difficulty comes from the 
 fact that $\fG_\C$ is a complex group.
@@ -4894,7 +4895,10 @@ Moreover, it carries a natural action of $\fG_{k+1}$:
 extends to an action of $\fG_{k+1}$ on $\cA_k$.
 \end{prop}
 
-This action preserves the \kahler structure.
+\begin{prop} The Lie algebra of $\fG_k$ is $\Omega^0_k(\End E)$.
+\end{prop}
+
+The action of $\fG_{k+1}$ on $\cA_k$ preserves the \kahler structure.
 
 \begin{prop}[Moment map for $\fG_{k+1}$ action on $\cA_k$] \label{prop:unitary-connections-moment-map}
 The action of $\fG_{k+1}$ on $\cA_k$ admits a moment map, given by
@@ -4968,19 +4972,6 @@ For $d \neq 0$, \eqref{eq:harmonic-curvature} says at least that $D$ is
 \ti{projectively} flat, i.e. it would descend to a flat connection 
 on the bundle $\PP(E)$ of projective spaces, and moreover the remaining
 central curvature is completely fixed.
-
-We remark that $\omega_C$ is an arbitrary positive $2$-form 
-on $C$ with total integral $1$.
-At least formally we can imagine taking $\omega_C$ to be more and more 
-concentrated at a single point $z_0$, until in the limit we get
-$\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
-\eqref{eq:harmonic-curvature} are becoming
-flat away from $z_0$, but developing a singularity 
-at $z_0$, with the holonomy around $z_0$
-of finite order, given by multiplication by the root of unity 
-$e^{-2 \pi \I d / K}$.
-
-\insfig{higgs-bundles-13}{0.95}
 
 Following our plan, 
 we want to take the symplectic quotient $\cA_k \kq \fG_{k+1} = \mu^{-1}(0) / \fG_{k+1}$.
@@ -5063,6 +5054,7 @@ the tangent space ``should be'' the cohomology $H^1$ of the complex
 on sections of $\fu(E)$, since $F_D \sim \bid$ and hence 
 is central. Of course this is as it should be since infinitesimal
 gauge transformations should be tangent to $\mu^{-1}(0)$.)
+
 To get some control over this infinite-dimensional
 problem, we first think of it in a slightly different way:
 instead of dividing out by the image of $D: \Omega^0 \to \Omega^1$
@@ -5077,7 +5069,7 @@ This leads us to consider the operator
 The good news then is that this operator is \ti{elliptic} in the sense of 
 \autoref{sec:ellipticity},
 just as for the example of $\de + \de^*$ discussed there
-(indeed the symbol is just $K^2$ copies of the symbol 
+(indeed the symbol of $\hat D$ is just $K^2$ copies of the symbol 
 of $\de + \de^*$.)
 Thus we will be able to use the elliptic regularity
 theorem, \autoref{thm:elliptic-regularity}.
@@ -5371,10 +5363,10 @@ the holomorphic line bundle $(E,\bar\partial)$ admits
 a Hermitian metric $h'$ such that the Chern connection
 for $(E, \bar\partial, h')$ is Einstein.
 But since all Hermitian metrics on $E$ are equivalent, there
-exists $g \in \fG_\C$ such that $g^* h = h'$. 
-(Concretely we can take $g$ defined by $g v = \sqrt{h'/h} v$.)
+exists $g \in \fG_\C$ such that $g^* h' = h$;
+concretely we can take $g$ defined by $g v = \sqrt{h/h'} v$.
 Then the Chern connection for
-$(E,\bar\partial^g, h)$ is Einstein, as desired. \fixme{check sign}
+$(E,\bar\partial^{g^{-1}}, h)$ is Einstein, as desired.
 \end{pf}
 
 \begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
