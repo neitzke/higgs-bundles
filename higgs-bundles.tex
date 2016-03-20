@@ -929,6 +929,13 @@ structure.
 \begin{exercise} Show that \autoref{def:chern-connection} makes
 sense, i.e. that there indeed \ti{is} a unique
 connection in $E$ with the claimed properties.
+Relative to a local holomorphic trivialization, show 
+that $D = \de + A$,
+where
+\begin{equation} \label{eq:chern-connection-local}
+  A = h^{-1} \partial h.
+\end{equation}
+
 \end{exercise}
 
 \subsection{Hermitian and \kahler metrics}
@@ -4608,8 +4615,12 @@ or, returning to position space,
 \begin{equation} \label{eq:back-to-position}
   e(x) = -\int_{V^*} (\de vol_{V^*}) e^{\I p \cdot x} \frac{\hat{f}(p)}{\norm{p}^2}
 \end{equation}
-This looks like it has some chance of working, at least if
-the behavior of $\hat f(p)$ near $p=0$ is somehow controlled.
+This looks like it has some chance of working.
+The large-$p$ behavior of the integrand is very good when $f$
+is smooth: indeed, in that case $\hat f(p)$ decays faster
+than any polynomial in $p$.
+The only problem is to control 
+the behavior of $\hat f(p)$ near $p=0$.
 That problem has to do with the \ti{low frequency} modes of $f$. 
 Its analogue is different on a compact manifold: it becomes the
 condition that $f$ is orthogonal to the kernel of $D^*$. Apart
@@ -4637,23 +4648,24 @@ at $p=0$ is what we call \ti{ellipticity}. It is associated
 with many good analytical properties, some of which we will
 use later on.
 
-In fact, for our purposes we can basically specialize to the operator
+Let us specialize to the operator
 \begin{equation}
   \de + \de^*: \Omega^1(C) \to \Omega^2(C) \oplus \Omega^0(C)
 \end{equation}
-on a Riemannian 2-manifold $C$.
+on a Riemannian 2-manifold $C$ (indeed this is essentially the 
+operator we will need below.)
 In local coordinates around $x = 0$, orthonormal at $0$, 
 this operator could be written as
 \begin{equation}
- f_1 \de x_2 + f_2 \de x_2 \mapsto (\partial_2 f_1 - \partial_1 f_2) \de x_1 \wedge \de x_2 + (\partial_1 f_1 + \partial_2 f_2)
+ f_1 \de x_1 + f_2 \de x_2 \mapsto (\partial_2 f_1 - \partial_1 f_2) \de x_1 \wedge \de x_2 + (\partial_1 f_1 + \partial_2 f_2)
 \end{equation}
-or relative to the obvious bases,
+or relative to the bases $\{\de x_1, \de x_2\}$ and $\{\de x_1 \wedge \de x_2, 1\}$,
 \begin{equation}
-  \begin{pmatrix} \partial_2 & \partial_1 \\ -\partial_1 & \partial_2 \end{pmatrix}
+  \begin{pmatrix} \partial_2 & -\partial_1 \\ \partial_1 & \partial_2 \end{pmatrix}
 \end{equation}
 Thus the symbol is
 \begin{equation}
-  \begin{pmatrix} p_2 & p_1 \\ -p_1 & p_2 \end{pmatrix}
+  \I \begin{pmatrix} p_2 & -p_1 \\ p_1 & p_2 \end{pmatrix}
 \end{equation}
 which is indeed invertible except at $p_1 = p_2 = 0$.
 Thus this operator is elliptic.
@@ -4703,6 +4715,14 @@ smooth sections (so in particular they are independent of $k$.)
 $\im D$ is the $L^2$ orthocomplement of $\ker D^*$.
 \end{itemize}
 \end{thm}
+
+This should be thought of as a broad generalization of the
+fact that harmonic functions on a compact Riemannian manifold 
+are smooth (in fact constant).
+
+% \begin{exercise} For any $\lambda \in \R$ consider the 
+% operator $\partial_x + \lambda$, acting on 
+% \end{exercise}
 
 
 \section{Moduli of bundles}
@@ -5316,10 +5336,11 @@ First choose some arbitrary $h$ on $\cL$. The curvature of the Chern
 connection is then $F_{D_h} \in \Omega^2(C)$, 
 which generally is not harmonic. What we want to do is to
 improve $h$ to some $h'$ so that $F_{D_{h'}} \in \cH^2(C)$.
-We can write $h' = e^f h$ for some real-valued function $f$ on $C$.
-Then we have \fixme{check sign}
+We can write $h' = e^f h$ for some $f: C \to \R$.
+
+Then we have, using \eqref{eq:chern-connection-local},
 \begin{equation}
-  F_{D_{h'}} = F_{D_h} + \partial \bar\partial f.
+  F_{D_{h'}} = F_{D_h} + \bar\partial \partial f.
 \end{equation}
 Now we can apply the
 abelian Hodge theorem (\autoref{thm:abelian-hodge-riemannian})
@@ -5335,13 +5356,26 @@ $\I \partial \bar\partial f$ for some real function $f$.
 This gives the desired $f$.
 \end{pf}
 
-There is another way of thinking about this result, which
-unfortunately will bring up a slightly confusing point.
-Namely, suppose we consider a fixed line bundle $E$, with a
-fixed Hermitian metric. Then the analogue of ``changing the 
-Hermitian metric'' is ``making a gauge transformation
-valued in $\fG_\C$ but not in $\fG$.'' \fixme{...}
+There is another way of thinking about this result.
+We return to our original context where $(E,h)$ is a \ti{fixed}
+Hermitian vector bundle of rank $K$, and consider the case $K=1$.
 
+\begin{cor}[Gauge-theoretic stability of line bundles] 
+Suppose $\bar\partial \in \cA^{\bar\partial}$.
+Then the $\fG_\C$-orbit of $\bar\partial$ contains 
+a point of $\mu^{-1}(0)$, i.e. an Einstein connection.
+\end{cor}
+
+\begin{pf} By \autoref{lem:einstein-connections-on-line-bundles} 
+the holomorphic line bundle $(E,\bar\partial)$ admits
+a Hermitian metric $h'$ such that the Chern connection
+for $(E, \bar\partial, h')$ is Einstein.
+But since all Hermitian metrics on $E$ are equivalent, there
+exists $g \in \fG_\C$ such that $g^* h = h'$. 
+(Concretely we can take $g$ defined by $g v = \sqrt{h'/h} v$.)
+Then the Chern connection for
+$(E,\bar\partial^g, h)$ is Einstein, as desired. \fixme{check sign}
+\end{pf}
 
 \begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
 Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
@@ -5384,8 +5418,6 @@ $\Jac C$ by isometries. Dividing out this action we
 are left with a compact \kahler manifold of complex dimension $3$.
 \fixme{...}
 \end{example}
-
-
 
 
 
@@ -5520,7 +5552,8 @@ smoothness etc.
 And suppose we are at a minimum of $\norm{F_D}^2$ 
 in $\cO$.
 Then we can show that we must have $\norm{F_D}^2 = 0$ 
-(else a gauge transformation with parameter $Z$ obeying
+(else a short computation shows that a 
+gauge transformation with parameter $Z$ obeying
 $\nabla^* \nabla Z = \star F_D$ would reduce 
 $\norm{F_D}^2$.) So all we need to do is show that the
 minimum of $\norm{F_D}^2$ is actually attained in $\cO$.
