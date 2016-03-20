@@ -4891,7 +4891,18 @@ moment map for $\fG^\eff_{k+1}$.
 \begin{prop}[Unitary gauge group acts properly] \label{prop:gauge-group-proper}
 The action of $\fG_{k+1}$ on $\cA_k$ is proper.
 \end{prop}
-\begin{pf} \fixme{...}
+\begin{pf} (\cite{MR909698} Proposition 7.1.14) What we need to show is that
+if we have a sequence $(g_n, D_n)$ in $\fG_{k+1} \times \cA_k$ such that the
+$D_n$ converge to some $D_\infty$, and the 
+gauge-transformed connections $D_n^{g_n}$ converge to some $D^*$, 
+then after passing to a subsequence, 
+the $g_n$ also converge to some $g_\infty$ with $D_\infty^{g_\infty} = D^*$.
+The idea is to take a subsequence
+of the $g_n$ which converges in a single fiber $E_x$ (this exists
+because the unitary group $U(E_x)$ is compact). Then the condition 
+$D_\infty^{g_\infty} = D^*$ is a differential equation on $g_\infty$
+which determines what it must be in all other fibers, and the fact
+that $D_n^{g_n} \to D^*$ forces $g_n \to g_\infty$.
 \end{pf}
 
 Encouraged by \autoref{prop:gauge-group-almost-free-on-irreducible}
