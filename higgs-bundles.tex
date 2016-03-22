@@ -3667,6 +3667,12 @@ the ideas of Strominger-Yau-Zaslow.
 In that approach one focuses on a single complex structure on $X$, 
 for which  the torus fibers are special Lagrangian: that means 
 we need some $I_\zeta$ with $\abs{\zeta} = 1$. 
+
+\begin{exercise} Show that the torus fibers of $X$ are special 
+Lagrangian with respect to the pair $(\omega_\zeta, \Omega_\zeta)$ 
+if and only if $\abs{\zeta} = 1$.
+\end{exercise}
+
 Let us take structure $I_3$ i.e.
 $\zeta = 1$. The gluing maps are supposed to be related to
 holomorphic discs on a mirror manifold $X^\vee$, which is thought of
@@ -5465,17 +5471,22 @@ In this section we introduce the class of bundles which do.
 \begin{itemize}
 \item \ti{stable} if, for every holomorphic subbundle $E' \subset E$,
 we have $\mu(E') < \mu(E)$,
+\item \ti{polystable} if $E$ is a direct sum of stable bundles
+of the same slope,
 \item \ti{semistable} if, for every holomorphic subbundle 
-$E' \subset E$, we have $\mu(E') \le \mu(E)$,
-\item \ti{unstable} otherwise.
+$E' \subset E$, we have $\mu(E') \le \mu(E)$.
 \end{itemize}
 \end{defn}
+
+We have inclusions:
+\begin{equation}
+   \{ \text{stable} \} \subset \{ \text{polystable} \} \subset \{ \text{semistable} \}.
+\end{equation}
 
 \begin{exercise} \label{exc:coprime-semistable-is-stable} 
 Show that if $(K,d) = 1$ then every semistable bundle of rank $K$
 and degree $d$ is stable.
 \end{exercise}
-
 
 \begin{example}[Stability for bundles over $\C\PP^1$]
 Grothendieck's lemma says that all holomorphic vector 
@@ -5489,9 +5500,7 @@ The slope of such a bundle is the average of the $n_i$,
 \end{equation}
 Thus $E$ is unstable unless
 all $n_i$ are equal; if all $n_i$ are equal it is
-semistable; it is stable only if $K=1$.
-Note that semistable bundles of degree $d$ and rank $K$ exist
-if and only if $K \vert d$, $K > 1$.
+polystable; it is stable only if $K=1$.
 \end{example}
 
 \begin{example}[Instability of $\cO(-1) \oplus \cO(1)$]
@@ -5534,18 +5543,29 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 \end{equation} 
 \end{exercise}
 
+\fixme{should discuss S-equivalence, passage
+from semistable to the polystable associated graded?}
 
 
 \subsection{Holomorphic description}
 
-\begin{thm}[Narasimhan-Seshadri theorem] \label{thm:narasimhan-seshadri}
-For any $[D] \in \cN^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
+\begin{thm}[Narasimhan-Seshadri theorem] 
+We have:
+\label{thm:narasimhan-seshadri}
+\begin{itemize}
+\item For any $[D] \in \cN^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
 induces the structure of \ti{stable} holomorphic vector bundle on $E$.
 Conversely, any stable holomorphic structure 
 on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \cN^s_{K,d}(C)$.
+\item For any $[D] \in \cN_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
+induces the structure of \ti{polystable} holomorphic vector bundle on $E$.
+Conversely, any polystable holomorphic structure 
+on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \cN_{K,d}(C)$.
+\end{itemize}
 \end{thm}
 
-\begin{pf} We just discuss the case $d=0$, and also just give a sketch,
+\begin{pf} We just discuss the case $d=0$, only the stable case,
+and moreover we only give a vague sketch,
 lifted from \cite{MR710055}.
 
 First suppose $[D] \in \cN^s_{K,d}(C)$. Thus $D$
@@ -5575,11 +5595,17 @@ $\nabla^* \nabla Z = \star F_D$ would reduce
 $\norm{F_D}^2$.) So all we need to do is show that the
 minimum of $\norm{F_D}^2$ is actually attained in $\cO$.
 
-For this, the idea is to construct a convergent 
-minimizing sequence of connections, and then 
-study the limiting connection. If it belongs to 
-$\cO$ then we are done. If it doesn't, then we show
-that the holomorphic bundle is actually unstable.
+For this, one works by induction: so assume that the 
+result has been proven for all ranks $K'<K$.
+(The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
+Now the idea is to construct a 
+sequence of connections $D_n$ for which 
+$\abs{F_{D_n}} \to 0$. Using the Uhlenbeck compactness
+theorem \fixme{...} we can make gauge transformations
+such that this sequence becomes \ti{convergent}, so 
+some limiting connection $D^*$. If 
+$D^* \in \cO$ then we are done. If not, then we show
+that the original holomorphic bundle is actually unstable.
 \fixme{remark on induction, rank 1 case}
 \end{pf}
 
@@ -5618,8 +5644,10 @@ isometry of \kahler manifolds.
 \end{exercise}
 
 \begin{example}[Bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case
-we have $\dim_\C \cN_{2,d}(C) = 5$. For $d=1$, this space is 
-a compact \kahler manifold.
+we have $\dim_\C \cN_{2,d}(C) = 5$. When $d=1$ this is in fact
+a compact \kahler manifold; let's consider that case first.
+\fixme{...}
+
 \end{example}
 
 
