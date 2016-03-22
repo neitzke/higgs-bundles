@@ -4886,14 +4886,25 @@ complex structures.
 \begin{exercise} Verify that the complex and symplectic structures
 on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
 \end{exercise}
-Thus $\cA_k$ is \kahler.
-Moreover, it carries a natural action of $\fG_{k+1}$:
+
+\begin{exercise} Verify that $\cA_k$ is \kahler, and that the metric is
+\begin{equation}
+  g(\alpha,\beta) = \int_C \Tr(\alpha \wedge \star \beta).
+\end{equation}
+\end{exercise}
+Moreover, $\cA_k$ it carries a natural action of $\fG_{k+1}$:
 \begin{prop} For $k>1$, the action of $\fG$ on $\cA^h$ by conjugation,
 \begin{equation}
   D \mapsto D^g = g D g^{-1}, \qquad D \in \cA^h_k.
 \end{equation}
 extends to an action of $\fG_{k+1}$ on $\cA_k$.
 \end{prop}
+
+\begin{pf} This follows from the general fact
+that any differential operator of order $1$ mapping
+smooth sections $E \to F$ extends to a map on Sobolev spaces 
+$L^2_{k+1}(E) \to L^2_k(F)$. \fixme{plus Sobolev multiplication!}
+\end{pf}
 
 \begin{prop} The Lie algebra of $\fG_k$ is $\Omega^0_k(\End E)$.
 \end{prop}
@@ -5088,6 +5099,8 @@ $\coker \hat{D} = \ker \hat{D}^*$, where
 \begin{equation}
   \hat{D}^* = D \oplus D^*: \Omega^0(\fu(E)) \oplus \Omega^2(\fu(E)) \to \Omega^1(\fu(E)).
 \end{equation}
+Since $\im D$ and $\im D^*$ are $L^2$-orthogonal in $\Omega^1(\fu(E))$
+we will have $\ker \hat{D}^* = \ker D \oplus \ker D^*$.
 Any $\alpha \in \ker D \subset \Omega^0$ must be a constant multiple
 of $\bid$, since $D$ is an irreducible connection: this gives
 the desired statement for $\Omega^0$. For $\Omega^2$ we essentially
@@ -5106,16 +5119,31 @@ Now we are ready to prove that $\cN$ is well behaved:
 $\cN^s_{K,d}(C)$ is a \kahler manifold.
 \end{thm}
 \begin{pf}
-First we want 
+We want to apply 
+\autoref{prop:banach-symplectic-quotient-is-symplectic}
+to see that $\cN_{K,d}(C)$ is symplectic.
+For this we need to verify the hypotheses.
+First, we want 
 to show that $\mu^{-1}(0) \subset \cA^s_{k}$ is a submanifold. 
 This follows from the
 Banach space inverse function theorem, applied to the map
 \begin{equation}
-\mu: \cA^s_k \to \Omega^2(\fu(E)) / (\star \bf 1).
+\mu: \cA^s_k \to \Omega^2(\fu(E)) / (\star \bf 1),
 \end{equation}
-Then we can apply \autoref{prop:banach-symplectic-quotient-is-symplectic}
-to see that $\cN_{K,d}(C)$ is symplectic. The proof that it 
-is \kahler follows exactly the lines of the finite-dimensional
+which is a submersion according to 
+\autoref{lem:cohomology-vanishing-gauge-complex}.
+Second, we want to show that the tangent spaces to $\fG$-orbits are
+closed and complemented.
+$D \Omega^0 \oplus D^* \Omega^2$ is the image of 
+a Fredholm operator and thus closed, and the two summands
+are $L^2$-orthogonal, so that they are both separately closed;
+thus $D \Omega^0$ is closed, and complemented by
+$D^* \Omega^2 \oplus \coker \hat{D}$, as desired.
+Third, we ant to show that 
+
+The proof that $\cN_{K,d}(C)$
+is not only symplectic but actually 
+\kahler follows exactly the lines of the finite-dimensional
 case; see \cite{Tumpach2007} for an account.
 \end{pf}
 
@@ -5158,6 +5186,8 @@ connection is to have $K=1$, in which case we get dimension
 $0$ for $g=0$ and dimension $1$ for $g=1$, which is indeed
 correct --- see \autoref{exa:jacobians} below.
 
+
+\subsection{The case of line bundles}
 
 \begin{example}[Jacobians] \label{exa:jacobians}
 The special case $K=1$ is very concrete. In light of 
@@ -5234,11 +5264,14 @@ Hodge decomposition
 \end{equation}
 Thus the \kahler metric on $\Jac(C)$
 also depends on the complex structure of $C$.
+Explicitly, we can write it as
+\begin{equation}
+  g(\alpha, \beta) = \int \alpha \wedge \star \beta
+\end{equation}
+where $\alpha$, $\beta \in \cH^1(C)$.
 \end{example}
 
-
 \currentposition
-
 
 \begin{exercise}
 Prove that the complex structure on $\Jac(C)$
@@ -5246,16 +5279,50 @@ induced by the \kahler quotient construction is the
 one claimed above.
 \end{exercise}
 
-\begin{exercise} \label{exc:metric-on-jac-C-genus-one}
-Write an explicit formula for the \kahler metric on $\Jac(C)$
-when $C$ has genus $1$, with complex modulus $\tau$.
-\end{exercise}
+\begin{example} \label{exa:metric-on-jac-C-genus-one}
+Suppose that $C$ has genus $1$ and complex modulus $\tau$.
+In this case we can describe all this in a completely explicit way.
+We fix coordinates $(x,y)$ on $C$ with $x \in \R/\Z$, $y \in \R/\Z$.
+Then the complex coordinate on $C$ is
+\begin{equation}
+  z = x + \tau y \in \C / (\Z \oplus \tau \Z).
+\end{equation}
+A general flat connection
+is gauge equivalent to one of the form $D = \de + A$ with
+\begin{align}
+  A &= \theta_x \, \de x + \theta_y \, \de y \\
+  &= (2 \im \tau)^{-1} (-\I \bar\alpha \, \de z + \I \alpha \, \de \bar{z})
+\end{align}
+where
+\begin{equation}
+  % \theta_x = \alpha + \bar\alpha
+  % \theta_y = \tau \alpha + \bar \tau \bar\alpha
+  \alpha = \theta_y - \tau \theta_x.
+\end{equation}
+Note that the $\bar\partial$-operator appears with
+the coefficient $2 \I (\im \tau)^{-1} \alpha$,
+so $\alpha$ is a holomorphic coordinate.  
+This we have two coordinate systems on $\Jac C$: one
+real coordinate system
+\begin{equation}
+(\theta_x, \theta_y) \in (R / 2\pi\Z)^2
+\end{equation}
+the other a holomorphic coordinate
+\begin{equation}
+\alpha \in \C / \left( 2\pi \Z \oplus  2\pi \tau \Z\right).
+\end{equation}
+Thus $\Jac C$ is biholomorphic to $C$ itself.
+The \kahler form is
+\begin{equation}
+  \omega = \de \theta_x \wedge \de \theta_y = (\tau - \bar\tau) \de \alpha \wedge \de \bar\alpha.
+\end{equation}
+\end{example}
 
 \begin{exercise}
 Write an explicit formula for the \kahler metric on $\Jac(C)$
 when $C$ has genus $g \ge 1$. (You will need --- or rediscover ---
 the notion of \ti{period matrix} of $C$, generalizing the $\tau$
-which appeared in \autoref{exc:metric-on-jac-C-genus-one}.)
+which appeared in \autoref{exa:metric-on-jac-C-genus-one}.)
 \end{exercise}
 
 \begin{exercise} \label{exc:connections-vs-representations} 
@@ -5322,8 +5389,9 @@ When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
 
 \begin{lem}[Existence of Einstein connections on line bundles] \label{lem:einstein-connections-on-line-bundles}
 Suppose $\cL$ is a holomorphic line bundle over $C$. Then there
-exists a unique Hermitian metric $h$ on $\cL$ such that the Chern
-connection $D_h$ is Einstein.
+exists a Hermitian metric $h$ on $\cL$ such that the Chern
+connection $D_h$ is Einstein. The metric $h$ with this property
+is unique up to scalar multiple.
 \end{lem}
 \begin{pf}
 First choose some arbitrary $h$ on $\cL$. The curvature of the Chern
@@ -5347,7 +5415,7 @@ such that
 But then the $\partial \bar\partial$-lemma (\autoref{lem:ddbar-lemma})
 says that $\de \alpha$ can also be written as
 $\I \partial \bar\partial f$ for some real function $f$.
-This gives the desired $f$.
+This gives the desired $f$. \fixme{unique up to scalar multiple}
 \end{pf}
 
 There is another way of thinking about this result.
@@ -5356,13 +5424,15 @@ Hermitian vector bundle of rank $K$, and consider the case $K=1$.
 
 \begin{cor}[Gauge-theoretic stability of line bundles] 
 Suppose $\bar\partial \in \cA^{\bar\partial}$.
-Then the $\fG_\C$-orbit of $\bar\partial$ contains 
-a point of $\mu^{-1}(0)$, i.e. an Einstein connection.
+Then the $\fG_\C$-orbit of $\bar\partial$ 
+intersects $\mu^{-1}(0)$ precisely
+in a $\fG$-orbit.
 \end{cor}
 
 \begin{pf} By \autoref{lem:einstein-connections-on-line-bundles} 
 the holomorphic line bundle $(E,\bar\partial)$ admits
-a Hermitian metric $h'$ such that the Chern connection
+a Hermitian metric $h'$, unique up to scalar multiple, 
+such that the Chern connection
 for $(E, \bar\partial, h')$ is Einstein.
 But since all Hermitian metrics on $E$ are equivalent, there
 exists $g \in \fG_\C$ such that $g^* h' = h$;
@@ -5371,51 +5441,19 @@ Then the Chern connection for
 $(E,\bar\partial^{g^{-1}}, h)$ is Einstein, as desired.
 \end{pf}
 
-\begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
-Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
-Then the map $E \to E \otimes \cL$ gives a holomorphic 
-isometry of \kahler manifolds
+This theorem says that, for rank $K=1$, our original strategy
+for constructing a moduli space of holomorphic line bundles
+works perfectly: we really do have
 \begin{equation}
-\cN^s_{K,d}(C) \simarrow \cN^s_{K,d+Kd'}(C).
+  \cA^{\bar\partial} / \fG_\C = \cA^h \kq \fG = \Jac C.
 \end{equation}
-\end{prop}
-\begin{pf}
-By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
-a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
-suppose given an Einstein connection $D$ in $E$. Then the connection
-$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
-\begin{equation} \label{eq:additivity-of-curvature}
- F_{D'} = F_D + F_{D_\cL} \bid
-\end{equation}
-(note in writing this equation we used
-the fact that $\End(E') \simeq \End(E)$).
-Thus $D'$ is also Einstein. This gives the desired map.
-\end{pf}
-
-As a consequence of \autoref{prop:tensor-line-is-isometry}, one can say
-loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$.''
-However, one does not quite get a \ti{canonical} isomorphism.
-
-\begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
-\end{exercise}
-
-\begin{exercise} Verify that the map in 
-\autoref{prop:tensor-line-is-isometry} is a holomorphic
-isometry of \kahler manifolds.
-\end{exercise}
-
-\begin{example}[Bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case
-we have $\dim_\C \cN_{2,d}(C) = 5$. For $d=1$, this space is 
-a compact \kahler manifold. \autoref{prop:tensor-line-is-isometry} says
-that it has a natural action of the complex 2-dimensional torus
-$\Jac C$ by isometries. Dividing out this action we
-are left with a compact \kahler manifold of complex dimension $3$.
-\fixme{...}
-\end{example}
-
 
 
 \subsection{Stable vector bundles}
+
+For $K > 1$ the situation will be a bit different:
+not every holomorphic vector bundle will admit an Einstein connection.
+In this section we introduce the class of bundles which do.
 
 \begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
 \begin{equation}
@@ -5500,26 +5538,11 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 
 \subsection{Holomorphic description}
 
-\fixme{material below needs to be organized}
-
-
-% \begin{thm}[Narasimhan-Seshadri theorem for rank $1$]
-% Suppose $K=1$, so $E$ is a complex \ti{line} bundle of degree $d$,
-% and the stability condition is vacuous.
-% Then any point of $\cA$ lies in the $\fG_\C$-orbit of
-% $\bar\partial_D$ for a unique $[D] \in \cN_{1,d}(C)$.
-% \end{thm}
-
-% \begin{pf} \fixme{abelian Hodge theory}
-% \end{pf}
-
-
 \begin{thm}[Narasimhan-Seshadri theorem] \label{thm:narasimhan-seshadri}
 For any $[D] \in \cN^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
 induces the structure of \ti{stable} holomorphic vector bundle on $E$.
 Conversely, any stable holomorphic structure 
 on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \cN^s_{K,d}(C)$.
-\fixme{check!}
 \end{thm}
 
 \begin{pf} We just discuss the case $d=0$, and also just give a sketch,
@@ -5553,12 +5576,53 @@ $\norm{F_D}^2$.) So all we need to do is show that the
 minimum of $\norm{F_D}^2$ is actually attained in $\cO$.
 
 For this, the idea is to construct a convergent 
-minimizing sequence of connections $F_D$, and then 
+minimizing sequence of connections, and then 
 study the limiting connection. If it belongs to 
 $\cO$ then we are done. If it doesn't, then we show
 that the holomorphic bundle is actually unstable.
 \fixme{remark on induction, rank 1 case}
 \end{pf}
+
+
+\begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
+Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
+Then the map $E \to E \otimes \cL$ gives a holomorphic 
+isometry of \kahler manifolds
+\begin{equation}
+\cN^s_{K,d}(C) \simarrow \cN^s_{K,d+Kd'}(C).
+\end{equation}
+\end{prop}
+\begin{pf}
+By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
+a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
+suppose given an Einstein connection $D$ in $E$. Then the connection
+$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
+\begin{equation} \label{eq:additivity-of-curvature}
+ F_{D'} = F_D + F_{D_\cL} \bid
+\end{equation}
+(note in writing this equation we used
+the fact that $\End(E') \simeq \End(E)$).
+Thus $D'$ is also Einstein. This gives the desired map.
+\end{pf}
+
+As a consequence of \autoref{prop:tensor-line-is-isometry}, one can say
+loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$.''
+However, one does not quite get a \ti{canonical} isomorphism.
+
+\begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
+\end{exercise}
+
+\begin{exercise} Verify that the map in 
+\autoref{prop:tensor-line-is-isometry} is a holomorphic
+isometry of \kahler manifolds.
+\end{exercise}
+
+\begin{example}[Bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case
+we have $\dim_\C \cN_{2,d}(C) = 5$. For $d=1$, this space is 
+a compact \kahler manifold.
+\end{example}
+
+
 
 \printbibliography
 
