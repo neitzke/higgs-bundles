@@ -3475,7 +3475,7 @@ What is the map $Z$?
 \begin{exercise} \label{exc:ooguri-vafa-holomorphic-discs} \cite{ovmh} Let $X$ be the Ooguri-Vafa space.
 Show that there is an $I_\zeta$-holomorphic disc in $X$
 with boundary on the torus fiber over $z$, if and 
-only if $\zeta = \pm \I \frac{z}{\abs{z}}$. 
+only if $\zeta / z \in \I \R$. 
 (Hint: to see that the disc \ti{does}
 exist, you can construct it directly, along the lines of our 
 earlier constructions of holomorphic spheres in Gibbons-Hawking spaces; 
@@ -4563,25 +4563,33 @@ property
   \pi^* \omega_{X \kq G} = \iota^* \omega.
 \end{equation}
 \end{thm}
-% \begin{pf} Follow the pattern of the proof
-% of \autoref{prop:symplectic-quotient-is-symplectic}.
-% The infinite-dimensional setting leads to the following
-% hiccups:
-% \begin{itemize}
-% \item 
-% To show that $\mu^{-1}(0)$ is a submanifold of $X$,
-% we want as before to show that $0 \in W$ is a regular value for $\mu$.
-% This will not be true for $\mu: X \to \fg^*$ but will be true
-% for $\mu: X \to W$. Indeed we know that for any $Z \in \fg$
-% we have $\de \mu_Z = \iota_{\rho(Z)} \omega \neq 0$ as before.
-% Thus $\im \de \mu \subset \fg^*$ is not annihilated by any $Z \in \fg$.
-% Now, by the Hahn-Banach theorem, if $\de\mu: TX \to W$ were
-% not surjective, then there would be some linear functional
-% $\eta \in W^*$ which annihilates $\im \de\mu$.
-% \fixme{but this doesn't seem to help}
 
-% \end{itemize}
-% \end{pf}
+\begin{pf} 
+
+Follow the pattern of the proof
+of \autoref{prop:symplectic-quotient-is-symplectic}.
+The infinite-dimensional setting leads to the following
+hiccups: 
+\begin{itemize}
+
+\item 
+We just \ti{assume} that $\mu^{-1}(0)$ is a submanifold
+rather than proving it; it would be nice to see in a general
+way why this follows ``formally'' from the $G$-action being
+free, as in the finite-dimensional case, but 
+this seems to be subtle, or at least, I had trouble
+making it work. In the case we need, we will
+prove it by hand.
+
+\item To see that $\mu^{-1}(0) / G$ is a manifold
+we use \autoref{prop:free-proper-quotients-are-banach-manifolds}. 
+
+\item The ``dimension counting'' argument which showed
+$\omega$ nondegenerate in the finite-dimensional case
+gets replaced by a use of the assumption $T = (T^{\perp_\omega})^{\perp_\omega}$.
+
+\end{itemize}
+\end{pf}
 
 
 
