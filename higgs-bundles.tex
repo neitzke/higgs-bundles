@@ -261,6 +261,7 @@
 \DeclareMathOperator{\ind}{ind}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\Hol}{Hol}
 
 \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
@@ -5239,11 +5240,26 @@ In fact this map is an isomorphism, as follows from
 \autoref{exc:connections-vs-representations} below.
 
 Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$,
-of real dimension $2g$, $\simeq U(1)^{2g}$.
+of real dimension $2g$.
 In particular, using this description we see that 
 as a smooth manifold $\Jac(C)$
 is \ti{independent} of the chosen metric on $C$.
-Moreover, from this description 
+To describe it even more concretely, choose a 
+\ti{marking} of $C$, i.e. a basis 
+\begin{equation}
+	\{A_1, \dots, A_g, B_1, \dots, B_g \}, \qquad A_i, B_i \in H_1(C,\Z),
+\end{equation}
+such that
+\begin{equation}
+	A_i \cap A_j = 0, \quad B_i \cap B_j = 0, \quad A_i \cap B_j = \delta_{ij}.
+\end{equation}
+Then defining
+\begin{equation}
+	x_i = \Hol_{A_i} D, \qquad y_i = \Hol_{B_i} D,
+\end{equation}
+the $(x_i,y_i)$ give an explicit diffeomorphism $\Jac C \simeq (S^1)^{2g}$.
+
+Now, from $\Jac(C) \simeq H^1(C,U(1))$
 we get an identification
 \begin{equation} \label{eq:tangent-to-jacobian-derham}
  T_x \Jac(C) \simeq H^1(C,\R).
@@ -5281,6 +5297,11 @@ This pairing in fact depends only on the cohomology classes of
 $\alpha$ and $\beta$, not on the actual harmonic forms
 chosen to represent them! Said otherwise, this formula represents
 an intrinsically defined symplectic form on $H^1(C,U(1))$.
+We could write it even more concretely: in the coordinates
+$x_i$, $y_i$ we introduced above, \fixme{sign?}
+\begin{equation} \label{eq:jacobian-explicit-symplectic-form}
+	\omega = - \sum_i \frac{\de x_i}{x_i} \wedge \frac{\de y_i}{y_i}.
+\end{equation}
 In particular this form does not depend on the complex structure
 we chose on $C$.
 Thus, as a symplectic manifold, $\Jac(C)$ does not depend on
@@ -5307,6 +5328,10 @@ are changing.
 \end{example}
 
 \currentposition
+
+\begin{exercise} Prove the formula \eqref{eq:jacobian-explicit-symplectic-form}
+for the symplectic form on $\Jac(C)$.
+\end{exercise}
 
 \begin{exercise}
 Prove that the complex structure on $\Jac(C)$
@@ -5400,7 +5425,8 @@ give a description of $\cN_{K,d}^s(C)$ and $\cN_{K,d}(C)$
 as sets of equivalence classes of 
 representations of an \ti{extension} of $\pi_1(C)$
 by a finite group. (Hint: use the description of $C$ as 
-a polygon with edges identified.)
+a polygon with edges identified; what can you say about the
+holonomy around the boundary of the polygon?)
 \end{exercise}
 
 \begin{exercise} \label{exc:no-irreducible-connections-on-torus} 
@@ -5611,8 +5637,8 @@ converge weakly.
 
 Morally this should be understood as analogous to the compactness
 \autoref{thm:Ns-is-compact} for flat connections: we are saying that
-even if we allow some curvature, we still get a kind of weak compactness
-when we divide out by gauge transformations.
+even if we allow some bounded amount of curvature, we still get a 
+kind of weak compactness when we divide out by gauge transformations.
 
 Now we are ready for the main theorem about moduli of bundles:
 
@@ -5776,7 +5802,7 @@ One way to focus attention on only the interesting directions is to consider
 a smaller moduli space, consisting of bundles with ``fixed determinant.''
 For this, we fix some holomorphic line bundle $\tilde{d}$ of degree $d$
 on $C$. (If $d=0$ then it would be natural to take
- $\tilde{d}$ to be the trivial bundle.)
+ $\tilde{d}$ to be the trivial bundle.) \fixme{...}
 
 \begin{example}[Bundles of rank $2$ with fixed determinant 
 over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case we have $\dim_\C S\cN_{2,d}(C) = 3$. When $d=1$ this is in fact
