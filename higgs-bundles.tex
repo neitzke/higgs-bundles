@@ -4747,19 +4747,25 @@ complex manifold) $C$, with a \kahler metric, of total area $1$:
   \int_C \omega_C = 1.
 \end{equation}
 
-We are going to define a moduli space $\cN_{K,d}(C)$ which can be 
+We are going to define a moduli space $\cN = \cN_{K,d}(C)$ which can be 
 thought of in two ways:
 \begin{itemize}
-\item It is a moduli space of unitary connections on 
+\item $\cN$ is a moduli space of unitary connections on 
 complex vector bundles over $C$, of
 rank $K$ and degree $d$ over $C$, obeying a ``harmonicity''
 condition on their curvature (Einstein connections).
 From this point of view we see naturally that $\cN$ is
-\ti{symplectic}.
-\item It is a moduli space of holomorphic vector 
+\ti{symplectic}. Moreover from this point of view
+there is a natural sense in which $\cN$ is independent 
+of the complex structure of $C$: indeed we can identify
+it with a moduli space of representations of $\pi_1(C)$
+(or an extension of $\pi_1(C)$) which depends only 
+on the \ti{topology} of $C$.
+\item $\cN$ is a moduli space of holomorphic vector 
 bundles over $C$, of rank $K$ and degree $d$.
 From this point of view we see naturally that $\cN$ is
-\ti{complex}.
+\ti{complex}. Its complex structure does depend on
+the complex structure on $C$.
 \end{itemize}
 In fact the two structures are compatible and so 
 $\cN$ is naturally \kahler (where it is smooth).
@@ -5207,7 +5213,7 @@ For general $d$ something more is required. \fixme{...}
 The formula in \autoref{thm:dimension-of-N} looks a bit
 suspicious for $g < 2$. But in these cases
 the only way to have an irreducible Einstein 
-connection is to have $K=1$, in which case we get dimension
+connection is to have $K=1$. In that case we get dimension
 $0$ for $g=0$ and dimension $1$ for $g=1$, which is indeed
 correct --- see \autoref{exa:jacobians} below.
 
@@ -5233,7 +5239,7 @@ In fact this map is an isomorphism, as follows from
 \autoref{exc:connections-vs-representations} below.
 
 Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$,
-of real dimension $2g$.
+of real dimension $2g$, $\simeq U(1)^{2g}$.
 In particular, using this description we see that 
 as a smooth manifold $\Jac(C)$
 is \ti{independent} of the chosen metric on $C$.
@@ -5280,6 +5286,8 @@ we chose on $C$.
 Thus, as a symplectic manifold, $\Jac(C)$ does not depend on
 the complex structure of $C$.
 
+\insfig{higgs-bundles-14}{0.9}
+
 On the other hand the
 \ti{complex} structure definitely does depend on the complex
 structure of $C$: it is the one inducing the 
@@ -5289,11 +5297,13 @@ Hodge decomposition
 \end{equation}
 Thus the \kahler metric on $\Jac(C)$
 also depends on the complex structure of $C$.
-Explicitly, we can write it as
+Explicitly, we can write the \kahler metric as
 \begin{equation}
   g(\alpha, \beta) = \int \alpha \wedge \star \beta
 \end{equation}
 where $\alpha$, $\beta \in \cH^1(C)$.
+Loosely speaking, as we deform $C$, the ``angles'' of $\Jac(C)$
+are changing.
 \end{example}
 
 \currentposition
@@ -5356,7 +5366,9 @@ has a canonical bijection to the set of all irreducible representations
 $\pi_1(C) \to U(K)$ modulo equivalence. (Hint: this is actually the shadow
 of a stronger statement, namely that the category of flat connections is
 equivalent to the category of representations. So the real guts of the 
-question is to construct functors in both directions.)
+question is to construct functors in both directions. To go from a flat
+connection to a representation, take holonomies. To go from 
+a representation to a flat connection, use the universal cover of $C$.)
 Similarly show that $\cN_{K,0}(C)$ has a canonical bijection to 
 the set of all representations
 $\pi_1(C) \to U(K)$ modulo equivalence. 
@@ -5391,6 +5403,12 @@ by a finite group. (Hint: use the description of $C$ as
 a polygon with edges identified.)
 \end{exercise}
 
+\begin{exercise} \label{exc:no-irreducible-connections-on-torus} 
+Show that, when $g=1$ ($C$ is a torus), 
+and $K>1$, $\cN_{K,d}^s(C)$ is empty. (Hint: use the result
+of \autoref{exc:connections-vs-representations-general}.)
+\end{exercise}
+
 We have already seen that when $K=1$, $\cN_{K,0}(C)$ is a compact
 \kahler torus. The behavior is almost as good
 for general $K$ and $d$:
@@ -5398,6 +5416,12 @@ for general $K$ and $d$:
 \begin{cor}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
 $\cN_{K,d}(C)$ is compact.
 \end{cor}
+\begin{pf} This follows directly from the result of 
+\autoref{exc:connections-vs-representations-general}
+since a representation of a finite extension of $\pi_1(C)$ into 
+$U(K)$ is determined by a finite collection of matrices in $U(K)$,
+and $U(K)$ is compact.
+\end{pf}
 
 \begin{exercise} \label{exc:coprime-einstein-is-irreducible} 
 Show that if $(d,K)=1$ then $\cN_{K,d}(C) = \cN_{K,d}^s(C)$. 
@@ -5590,6 +5614,8 @@ Morally this should be understood as analogous to the compactness
 even if we allow some curvature, we still get a kind of weak compactness
 when we divide out by gauge transformations.
 
+Now we are ready for the main theorem about moduli of bundles:
+
 \begin{thm}[Narasimhan-Seshadri theorem]  \label{thm:narasimhan-seshadri}
 We have:
 \label{thm:narasimhan-seshadri}
@@ -5747,11 +5773,13 @@ isometry of \kahler manifolds.
 \end{exercise}
 
 One way to focus attention on only the interesting directions is to consider
-a smaller moduli space, consisting of bundles with fixed determinant.
-\fixme{...}
+a smaller moduli space, consisting of bundles with ``fixed determinant.''
+For this, we fix some holomorphic line bundle $\tilde{d}$ of degree $d$
+on $C$. (If $d=0$ then it would be natural to take
+ $\tilde{d}$ to be the trivial bundle.)
 
-\begin{example}[Bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case
-we have $\dim_\C \cN_{2,d}(C) = 5$. When $d=1$ this is in fact
+\begin{example}[Bundles of rank $2$ with fixed determinant 
+over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case we have $\dim_\C S\cN_{2,d}(C) = 3$. When $d=1$ this is in fact
 a compact \kahler manifold; let's consider that case first.
 \fixme{...}
 
