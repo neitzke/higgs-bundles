@@ -4350,7 +4350,7 @@ such that the induced maps
 are injections.
 \end{defn}
 
-Some authors would call this a ``weakly nondegerate'' pairing.
+Some authors would call this a ``weakly nondegenerate'' pairing.
 I emphasize that it is not the same as requiring the induced maps
 to be \ti{isomorphisms}.
 
@@ -4747,10 +4747,22 @@ complex manifold) $C$, with a \kahler metric, of total area $1$:
   \int_C \omega_C = 1.
 \end{equation}
 
-We are going to define a moduli space $\cN_{K,d}(C)$ parameterizing
-equivalence classes of holomorphic bundles over $C$ of 
-rank $K$ and degree $d$. Moreover this space is naturally 
-\kahler (where it is smooth).
+We are going to define a moduli space $\cN_{K,d}(C)$ which can be 
+thought of in two ways:
+\begin{itemize}
+\item It is a moduli space of unitary connections on 
+complex vector bundles over $C$, of
+rank $K$ and degree $d$ over $C$, obeying a ``harmonicity''
+condition on their curvature (Einstein connections).
+From this point of view we see naturally that $\cN$ is
+\ti{symplectic}.
+\item It is a moduli space of holomorphic vector 
+bundles over $C$, of rank $K$ and degree $d$.
+From this point of view we see naturally that $\cN$ is
+\ti{complex}.
+\end{itemize}
+In fact the two structures are compatible and so 
+$\cN$ is naturally \kahler (where it is smooth).
 
 Although we will not use this fact, $\cN_{K,d}(C)$ is actually
 algebraic. For those who are algebraically inclined, a 
@@ -4816,14 +4828,15 @@ All rank $K$ complex vector bundles over $C$ of degree $d$ are equivalent.
 \end{pf}
 
 Thus, suppose we fix a single rank $K$ complex vector bundle $E$, 
-of degree $d$; then every holomorphic vector bundle of rank $K$
+of degree $d$. Then every holomorphic vector bundle of rank $K$
 and degree $d$ is equivalent to $(E, \bar\partial)$ for some
 $\bar\partial$-operator $\bar\partial$ on $E$.
 Let $\cA^{\bar\partial}$ denote the space of all such $\bar\partial$.
 Then $\cA^{\bar\partial}$ is an affine space modeled on the 
 infinite-dimensional complex linear space $\Omega^{0,1}(\End E)$.
 
-The moduli space we want to describe could be thought of as
+The moduli space $\cN_{K,d}(C)$, which we want to construct, 
+could be thought of as
 $\cA^{\bar\partial}$ modulo equivalence --- where now ``equivalence'' means
 the (infinite-dimensional,
 complex) group $\fG_\C$ of sections of $GL(E)$,
@@ -5126,8 +5139,6 @@ so any $\alpha \in \ker D^* \subset \Omega^2$ has $D \star \alpha = 0$; said
 otherwise, $\ker D^* \subset \Omega^2$ is just spanned by $\star (\bid)$.
 \end{pf}
 
-Morally what we used here is just the statement that 
-$\fG$ acts freely on $\cA^s_k$.
 Now we are ready to prove that $\cN$ is well behaved:
 \begin{thm}[$\cN^s_{K,d}(C)$ is \kahler] \label{thm:N-is-kahler}
 $\cN^s_{K,d}(C)$ is a \kahler manifold.
@@ -5557,6 +5568,9 @@ from semistable to the polystable associated graded?}
 
 \subsection{Holomorphic description}
 
+Now we consider our construction of the moduli space from
+another point of view.
+
 \begin{thm}[Narasimhan-Seshadri theorem] 
 We have:
 \label{thm:narasimhan-seshadri}
@@ -5617,6 +5631,8 @@ that the original holomorphic bundle is actually unstable.
 \fixme{remark on induction, rank 1 case}
 \end{pf}
 
+What does $\cN_{K,d}(C)$ look like concretely, when $K>1$? Here is a 
+preliminary observation:
 
 \begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
 Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
@@ -5640,8 +5656,13 @@ Thus $D'$ is also Einstein. This gives the desired map.
 \end{pf}
 
 As a consequence of \autoref{prop:tensor-line-is-isometry}, one can say
-loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$.''
-However, one does not quite get a \ti{canonical} isomorphism.
+loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$''
+(although one does not quite get a \ti{canonical} isomorphism.)
+Moreover, tensorization by degree \ti{zero} bundles keeps us within
+the same moduli space, i.e. $\cN_{K,d}^s(C)$ has an action of $\Jac(C)$ by isometries. 
+So crudely speaking, $\cN_{K,d}^s(C)$ has $g$ complex directions in which 
+it looks like the compact complex torus $\Jac(C)$, while the other
+$(g-1)(K^2-1)$ directions are more interesting.
 
 \begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
 \end{exercise}
@@ -5651,6 +5672,10 @@ However, one does not quite get a \ti{canonical} isomorphism.
 isometry of \kahler manifolds.
 \end{exercise}
 
+One way to focus attention on only the interesting directions is to consider
+a smaller moduli space, consisting of bundles with fixed determinant.
+\fixme{...}
+
 \begin{example}[Bundles of rank $2$ over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case
 we have $\dim_\C \cN_{2,d}(C) = 5$. When $d=1$ this is in fact
 a compact \kahler manifold; let's consider that case first.
@@ -5658,6 +5683,36 @@ a compact \kahler manifold; let's consider that case first.
 
 \end{example}
 
+
+\section{Higgs bundles}
+
+Finally we are ready to treat the moduli space of Higgs bundles.
+
+As before we fix a compact Riemann surface $C$ and two integers
+$K \ge 2$ and $d$.
+We are going to define a moduli space $\cM_{K,d}(C)$ which can be
+studied, and thought of, in several different ways.
+One way to understand it is as ``moduli space of Higgs bundles.''
+We consider this picture first.
+
+
+\subsection{Basic definitions}
+
+\begin{defn}[Higgs bundle] \label{def:higgs-bundle}
+A \ti{Higgs bundle} of rank $K$ over $C$ 
+is a tuple $(E, \bar\partial, \varphi)$
+where $(E,\bar\partial)$ is a holomorphic vector bundle
+of rank $K$ over $C$, and 
+\begin{equation}
+\varphi \in H^0(C, \End E \otimes K_C).  
+\end{equation}
+\end{defn}
+
+Thus relative to a local trivialization of $E$, $\varphi$ would 
+be written as a matrix of holomorphic $1$-forms.
+
+Our interest is in the moduli space of Higgs bundles.
+How could we construct it?
 
 
 \printbibliography
