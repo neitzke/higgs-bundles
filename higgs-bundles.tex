@@ -5568,16 +5568,29 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 from semistable to the polystable associated graded?}
 
 
-\subsection{Holomorphic description}
+\subsection{Gauge-theoretic meaning of stability}
 
 Now we are ready to deal with the question of whether indeed
 \begin{equation}
   \cA^{\bar\partial} / \fG_\C = \cA^h \kq \fG.
 \end{equation}
-The following theorem says that this will be true
+\autoref{thm:narasimhan-seshadri} below says that this will be true
 after deleting unstable bundles from $\cA^{\bar\partial}$.
+We need a preliminary:
 
-\begin{thm}[Narasimhan-Seshadri theorem] 
+\begin{thm}[Weak Uhlenbeck compactness] \label{thm:uhlenbeck-weak}
+Suppose that $\{A_i\} \in \cA^h_1$ is a sequence of $L^2_1$ unitary 
+connections on $C$, with $\norm{F(A_i)}$ bounded. Then after passing
+to a subsequence, there exist $g_i \in \fG_2$ such that $A_i^{g_i}$
+converge weakly.
+\end{thm}
+
+Morally this should be understood as analogous to the compactness
+\autoref{thm:Ns-is-compact} for flat connections: we are saying that
+even if we allow some curvature, we still get a kind of weak compactness
+when we divide out by gauge transformations.
+
+\begin{thm}[Narasimhan-Seshadri theorem]  \label{thm:narasimhan-seshadri}
 We have:
 \label{thm:narasimhan-seshadri}
 \begin{itemize}
@@ -5669,7 +5682,7 @@ The idea is to construct a
 sequence of connections $D_n$ for which 
 $\norm{F_{D_n}}$ approaches its infimum. 
 Using the Uhlenbeck compactness
-theorem \fixme{...} we can make gauge transformations
+theorem \autoref{thm:uhlenbeck-weak} we can make gauge transformations
 such that this sequence becomes \ti{convergent}, so 
 some limiting connection $D^*$. If 
 $D^* \in \cO$ then we are done. If not, then we \ti{use}
