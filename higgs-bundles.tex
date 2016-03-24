@@ -5312,11 +5312,11 @@ Then the complex coordinate on $C$ is
 \begin{equation}
   z = x + \tau y \in \C / (\Z \oplus \tau \Z).
 \end{equation}
-A general flat connection
+A general flat $U(1)$-connection
 is gauge equivalent to one of the form $D = \de + A$ with
 \begin{align}
-  A &= \theta_x \, \de x + \theta_y \, \de y \\
-  &= (2 \im \tau)^{-1} (-\I \bar\alpha \, \de z + \I \alpha \, \de \bar{z})
+  A &= \I \theta_x \, \de x + \I \theta_y \, \de y \\
+  &= (2 \im \tau)^{-1} (\bar\alpha \, \de z - \alpha \, \de \bar{z})
 \end{align}
 where
 \begin{equation}
@@ -5325,8 +5325,8 @@ where
   \alpha = \theta_y - \tau \theta_x.
 \end{equation}
 Note that the $\bar\partial$-operator appears with
-the coefficient $2 \I (\im \tau)^{-1} \alpha$,
-so $\alpha$ is a holomorphic coordinate.  
+the coefficient $-2 (\im \tau)^{-1} \alpha$,
+so $\alpha$ is a holomorphic coordinate on $\Jac C$.  
 This we have two coordinate systems on $\Jac C$: one
 real coordinate system
 \begin{equation}
@@ -5440,7 +5440,9 @@ such that
 But then the $\partial \bar\partial$-lemma (\autoref{lem:ddbar-lemma})
 says that $\de \alpha$ can also be written as
 $\I \partial \bar\partial f$ for some real function $f$.
-This gives the desired $f$. \fixme{unique up to scalar multiple}
+This gives the desired $f$. It is unique up to shifts by
+a solution of $\partial \bar\partial f = 0$, but those
+are just harmonic functions on $C$, i.e. constants.
 \end{pf}
 
 There is another way of thinking about this result.
@@ -5568,8 +5570,12 @@ from semistable to the polystable associated graded?}
 
 \subsection{Holomorphic description}
 
-Now we consider our construction of the moduli space from
-another point of view.
+Now we are ready to deal with the question of whether indeed
+\begin{equation}
+  \cA^{\bar\partial} / \fG_\C = \cA^h \kq \fG.
+\end{equation}
+The following theorem says that this will be true
+after deleting unstable bundles from $\cA^{\bar\partial}$.
 
 \begin{thm}[Narasimhan-Seshadri theorem] 
 We have:
@@ -5586,16 +5592,46 @@ on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \cN_{K,d}(C)$.
 \end{itemize}
 \end{thm}
 
-\begin{pf} We just discuss the case $d=0$, only the stable case,
-and moreover we only give a vague sketch,
-lifted from \cite{MR710055}.
+\begin{pf} 
+We only give a vague sketch.
+The proof we are following is given in \cite{MR710055}.
+Moreover, we just discuss the case $d=0$ --- the other cases are
+very similar but involve more ugly notation.
 
 First suppose $[D] \in \cN^s_{K,d}(C)$. Thus $D$
 is an irreducible flat connection. Suppose that $E' \subset E$ is some
 subbundle preserved by $\bar\partial_D$; we want to show that $\deg E' < 0$.
 This is an instance of the general principle that ``curvature decreases
-in holomorphic subbundles;'' for the relevant computation 
-see e.g. \cite{MR95d:14001}.
+in holomorphic subbundles.'' 
+Let $E''$ be the orthocomplement of $E'$; then $D$ splits as
+\begin{equation}
+  D = \begin{pmatrix} D_{E'} & - \beta^\dagger \\ \beta & D_{E''} \end{pmatrix}
+\end{equation}
+where $\beta \in \Omega^{1,0} \otimes \Hom(E',E'')$ (the $(0,1)$ component
+vanishes because $E'$ is preserved by $\bar\partial_D$). Then we compute
+\begin{equation}
+  F_D = \begin{pmatrix} F_{D_{E'}} - \beta^\dagger \wedge \beta & - D_{\Hom(E'',E')} \beta^\dagger \\ D_{\Hom(E',E'')} \beta & F_{D_{E''}} - \beta \wedge \beta^\dagger \end{pmatrix} = 0.
+\end{equation}
+First look at the upper left corner: it says that
+\begin{equation}
+  F_{D_{E'}} = \beta^\dagger \wedge \beta,
+\end{equation}
+and thus
+\begin{equation}
+ \deg E' = \frac{\I}{2 \pi} \int_C \Tr F_{D_{E'}} = \frac{\I}{2 \pi} \int_C \Tr \beta^\dagger \wedge \beta.
+\end{equation}
+Now, $\I \Tr (\beta^\dagger \wedge \beta)$ is a seminegative form,
+so we get $\deg E' \le 0$, with equality only if $\beta = 0$.
+
+If $D$ is irreducible, then
+we must have $\beta \neq 0$; in that case we get $\deg E' < 0$,
+so $(E,\bar\partial_D)$ is stable, as desired.
+If $D$ is not irreducible, then we may have $\beta = 0$;
+but in this case $(E,\bar\partial_D)$ decomposes as direct sum
+of two holomorphic bundles, each of degree $0$, each carrying a 
+flat unitary connection. By induction on the rank we may assume
+that these two are polystable; thus 
+$(E,\bar\partial_D)$ is polystable, as desired.
 
 Conversely suppose we have some $D$ such that $\bar\partial_D$ 
 induces a stable holomorphic structure. Now we want to find a
@@ -5604,32 +5640,57 @@ i.e. is in the same $\fG_\C$-orbit. Call this orbit $\cO$.
 The idea is to consider the ``Yang-Mills functional''
 given by the $L^2$ norm of $F_D$, 
 \begin{equation}
- \norm{F}^2 = \int_C F \wedge \star F
+ \norm{F_D}^2 = \int_C F_D \wedge \star F_D.
 \end{equation}
 Suppose we work formally for a moment, avoiding questions of
 smoothness etc.
 And suppose we are at a minimum of $\norm{F_D}^2$ 
 in $\cO$.
-Then we can show that we must have $\norm{F_D}^2 = 0$ 
-(else a short computation shows that a 
-gauge transformation with parameter $Z$ obeying
-$\nabla^* \nabla Z = \star F_D$ would reduce 
-$\norm{F_D}^2$.) So all we need to do is show that the
+Then we consider an infinitesimal gauge transformation by 
+$Z \in \Lie \fG_\C = \Omega^0(\End E)$.
+% , obeying
+% \begin{equation}
+%   \I D^* D Z = \star F_D.
+% \end{equation}
+The resulting first-order change in $F_D$ is $F_D Z$,
+so the change in $\norm{F_D}^2$ is
+\begin{equation}
+ 2 \int_C \Tr (F_D Z \wedge \star F_D)
+\end{equation}
+If we are at the minimum then this must vanish for all $Z$,
+but this can happen only if $F_D = 0$.
+So all we need to do is show that a
 minimum of $\norm{F_D}^2$ is actually attained in $\cO$.
 
 For this, one works by induction: so assume that the 
 result has been proven for all ranks $K'<K$.
 (The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
-Now the idea is to construct a 
+The idea is to construct a 
 sequence of connections $D_n$ for which 
-$\abs{F_{D_n}} \to 0$. Using the Uhlenbeck compactness
+$\norm{F_{D_n}}$ approaches its infimum. 
+Using the Uhlenbeck compactness
 theorem \fixme{...} we can make gauge transformations
 such that this sequence becomes \ti{convergent}, so 
 some limiting connection $D^*$. If 
-$D^* \in \cO$ then we are done. If not, then we show
-that the original holomorphic bundle is actually unstable.
-\fixme{remark on induction, rank 1 case}
+$D^* \in \cO$ then we are done. If not, then we \ti{use}
+$D^*$ to prove that the original holomorphic bundle 
+$(E,\bar\partial_D)$ is 
+actually unstable. This is the trickiest part.
+First we show that at least there is a 
+holomorphic map $(E,\bar\partial_D) \to (E,\bar\partial_{D^*})$
+(use the fact that such maps do exist if $D^*$ is replaced
+by $D_n$, plus some analysis which morally says a zero mode 
+which exists for all the $D_n$ cannot \ti{disappear} in the limit.)
+But the orbit 
+\fixme{remark on induction, rank 1 case...}
 \end{pf}
+
+\begin{exercise} Over $\C\PP^1$, show that $\cO(m) \oplus \cO(m)$
+admits a holomorphic subbundle isomorphic to $\cO(n)$ if and only if
+$n \le m$.
+(This is an illustration of the principle that curvature
+decreases in holomorphic subbundles.)
+\end{exercise}
 
 What does $\cN_{K,d}(C)$ look like concretely, when $K>1$? Here is a 
 preliminary observation:
@@ -5688,12 +5749,11 @@ a compact \kahler manifold; let's consider that case first.
 
 Finally we are ready to treat the moduli space of Higgs bundles.
 
-As before we fix a compact Riemann surface $C$ and two integers
+As before we fix a compact Riemann surface $C$, with a 
+\kahler metric of total volume $1$, and two integers
 $K \ge 2$ and $d$.
 We are going to define a moduli space $\cM_{K,d}(C)$ which can be
 studied, and thought of, in several different ways.
-One way to understand it is as ``moduli space of Higgs bundles.''
-We consider this picture first.
 
 
 \subsection{Basic definitions}
@@ -5706,14 +5766,52 @@ of rank $K$ over $C$, and
 \begin{equation}
 \varphi \in H^0(C, \End E \otimes K_C).  
 \end{equation}
+$\varphi$ is called the \ti{Higgs field}.
 \end{defn}
 
 Thus relative to a local trivialization of $E$, $\varphi$ would 
 be written as a matrix of holomorphic $1$-forms.
 
-Our interest is in the moduli space of Higgs bundles.
-How could we construct it?
+\begin{example}[Zero Higgs field] For any holomorphic vector
+bundle $(E,\bar\partial)$ we obtain a trivial example of a Higgs bundle
+by taking $(E,\bar\partial,\varphi=0)$.
+\end{example}
 
+\begin{example}[Higgs line bundles] If $K=1$ then a Higgs bundle
+just means a holomorphic line bundle plus a holomorphic 1-form,
+$\varphi \in H^0(K_C)$.
+\end{example}
+
+\begin{example}[Hitchin section] \fixme{...}
+\end{example}
+
+Now suppose we want to construct a moduli space parameterizing Higgs
+bundles modulo equivalence, and we want it to be somehow ``nice.''
+One thing we could try is just to take a vector bundle over 
+$\cN_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
+The holomorphic tangent space to $\cN_{K,d}(C)$ is the space
+of harmonic $(0,1)$-forms valued in $\End(E)$,
+which is naturally dual to $H^0(C, \End E \otimes K_C)$.
+Thus the resulting space would be $T^* \cN_{K,d}(C)$.
+In particular this is a \ti{holomorphic symplectic} manifold.
+
+What we will actually do is a bit better. 
+As before, we fix a bundle $E$ of degree $d$.
+
+We define a ``doubled'' version of the space of connections,
+\begin{equation}
+  \cA^H = \cA^{\bar\partial} \times \Omega^{1,0}(\End E).
+\end{equation}
+The space $\cA^H$ carries a natural holomorphic symplectic form
+\begin{equation}
+  \Omega_1 = \fixme{...}
+\end{equation}
+
+Formally the moduli space of Higgs bundles would appear to be
+\begin{equation}
+  \cA^H = M^{-1}(0) / \fG_\C.
+\end{equation}
+\fixme{...}
 
 \printbibliography
 
