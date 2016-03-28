@@ -4894,7 +4894,7 @@ with the complex linear space $\Omega^{0,1}(\End E)$.
 
 On $\Omega^{1}(\fu(E))$ we have a natural pairing
 \begin{equation} \label{eq:symplectic-form-A}
-  \omega(\alpha,\beta) = \int_C \Tr(\alpha \wedge \beta).
+  \omega(\alpha,\beta) = -\int_C \Tr(\alpha \wedge \beta).
 \end{equation}
 We would like to think of this as a symplectic form.
 
@@ -4926,7 +4926,7 @@ on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta
 
 \begin{exercise} Verify that $\cA_k$ is \kahler, and that the metric is
 \begin{equation}
-  g(\alpha,\beta) = \int_C \Tr(\alpha \wedge \star \beta).
+  g(\alpha,\beta) = - \int_C \Tr(\alpha \wedge \star \beta).
 \end{equation}
 \end{exercise}
 Moreover, $\cA_k$ carries a natural action of $\fG_{k+1}$:
@@ -4951,14 +4951,14 @@ The action of $\fG_{k+1}$ on $\cA_k$ preserves the \kahler structure.
 \begin{prop}[Moment map for $\fG_{k+1}$ action on $\cA_k$] \label{prop:unitary-connections-moment-map}
 The action of $\fG_{k+1}$ on $\cA_k$ admits a moment map, given by
 \begin{equation} \label{eq:gauge-moment-map}
-  \mu(D) = F_D + 2 \pi \I \frac{d}{K} {\textbf 1} \omega_C 
+  \mu(D) = - F_D - 2 \pi \I \frac{d}{K} {\textbf 1} \omega_C 
 \end{equation}
 where $\omega_C$ denotes the \kahler form on $C$.
 More precisely, this means: suppose given an element 
 $Z \in \Lie \fG_{k+1} = \Omega^0_{k+1}(\fu(E))$,
 then we have 
 \begin{equation}
-  \mu_Z(D) = \int_C \Tr(Z F_D) + 2 \pi \I \frac{d}{K} \int_C \omega_C \Tr(Z).
+  \mu_Z(D) = - \int_C \Tr(Z F_D) - 2 \pi \I \frac{d}{K} \int_C \omega_C \Tr(Z).
 \end{equation}
 \end{prop}
 
@@ -4970,12 +4970,12 @@ $Z \in \Lie \fG_{k+1} = \Omega^0_{k+1}(\fu(E))$ by infinitesimal gauge transform
 and the differential of $\mu_Z$, acting on a tangent vector
 $\beta \in \Omega^1_{k}(\fu(E)) = T\cA^h_k$:
 \begin{equation} \label{eq:diff-moment-map}
-\de \mu_Z \cdot \beta = \int_C \Tr (Z \, D\beta).
+\de \mu_Z \cdot \beta = -\int_C \Tr (Z \, D\beta).
 \end{equation}
 We compute
 \begin{align}
-  \omega(\rho(Z), \beta) &= -\int_C \Tr (DZ \wedge \beta) \\
-  &= \int_C \Tr (Z \, D\beta) \\
+  \omega(\rho(Z), \beta) &= \int_C \Tr (DZ \wedge \beta) \\
+  &= -\int_C \Tr (Z \, D\beta) \\
   &= \de \mu_Z \cdot \beta.
 \end{align}
 \end{pf}
@@ -5615,7 +5615,8 @@ converge weakly.
 
 Morally this should be understood as analogous to the compactness
 \autoref{thm:Ns-is-compact} for flat connections: we are saying that
-even if we allow some curvature, we still get a kind of weak compactness
+even if we allow some bounded amount of 
+curvature, we still get a kind of weak compactness
 when we divide out by gauge transformations.
 
 Now we are ready for the main theorem about moduli of bundles:
