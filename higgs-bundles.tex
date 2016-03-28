@@ -4903,7 +4903,11 @@ of ``symplectic form'' for Banach manifolds.
 So now is a good time to switch to that setting.
 We fix some $k > 1$ (you can imagine that it is very big,
 say $k = 100$), and replace $\cA^h$ by the larger space $\cA^h_k$
-of $L^2_k$ connections. $\cA^h_k$ is a Banach manifold,
+of $L^2_k$ connections.\footnote{We have not formally defined
+``$L^2_k$ connection,'' but hope to get by just with the remark 
+that it means a connection of the form $D + \alpha$, 
+where $D$ is a smooth connection and $\alpha \in L^2_k(\fu(E))$.}
+$\cA^h_k$ is a Banach manifold,
 in fact an affine space modeled on the Banach space
 $\Omega^1_k(\End E) = L^2_k(T^* \otimes \End E)$. 
 Then \eqref{eq:symplectic-form-A} gives a symplectic 
@@ -4925,7 +4929,7 @@ on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta
   g(\alpha,\beta) = \int_C \Tr(\alpha \wedge \star \beta).
 \end{equation}
 \end{exercise}
-Moreover, $\cA_k$ it carries a natural action of $\fG_{k+1}$:
+Moreover, $\cA_k$ carries a natural action of $\fG_{k+1}$:
 \begin{prop} For $k>1$, the action of $\fG$ on $\cA^h$ by conjugation,
 \begin{equation}
   D \mapsto D^g = g D g^{-1}, \qquad D \in \cA^h_k.
