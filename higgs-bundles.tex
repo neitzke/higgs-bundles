@@ -5719,11 +5719,12 @@ use a functional $J$
   J(F_D)^2 = \int_C \left[\nu\left(\frac{\star F_D}{2 \pi \I}\right)\right]^2
 \end{equation}
 where we use the norm on matrices given by
-$\nu(M) = \sqrt{\Tr M^*M} = \sum \abs{\lambda_i}$.
+$\nu(M) = \Tr \sqrt{M^*M} = \sum \abs{\lambda_i}$.
 
 Suppose we work formally for a moment, avoiding questions of
 smoothness etc.
-And suppose that $\cO$ contains a minimum of $J$.
+And suppose that $\cO$ contains a minimum of $J$, corresponding
+to a unitary connection; abusing notation we call this connection $D$.
 Then we consider an infinitesimal gauge transformation by
 a \ti{self-adjoint} element 
 $Z \in \Lie \fG_\C = \Omega^0(\End E)$, i.e. $Z = Z^\dagger$ ---
@@ -5732,11 +5733,13 @@ Then the leading change of $\star F_D$ is given by $\I t D^* D Z$
 (because $D$ changes by $t \bar\partial_D Z - t \partial_D Z$,
 so $F_D$ changes by $t (\partial_D \bar\partial_D - \bar\partial_D \partial_D) Z = \star D^* D Z$). \fixme{check sign}
 Thus if we choose $Z$ obeying
-\begin{equation}
+\begin{equation} \label{eq:gauge-laplace}
   \I D^* D Z = -\star F_D
 \end{equation}
-the gauge transformation will reduce $J$, unless 
-already $F_D = 0$.
+a gauge transformation by $e^{t Z}$ for small $t$ 
+will reduce $J(F_D)$, unless 
+already $F_D = 0$. Elliptic theory shows that we can indeed
+find a $Z$ obeying \eqref{eq:gauge-laplace}.
 Thus, to get the desired $F_D = 0$, 
 all we need to do is show that a
 minimum of $J$ is actually attained in $\cO$.
