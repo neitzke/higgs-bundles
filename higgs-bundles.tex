@@ -5716,7 +5716,7 @@ For technical convenience, instead of the $L^2$ norm, we
 use a functional $J$
 (which has the same minima as $\norm{F}$):
 \begin{equation}
-  J^2 = \int_C \left[\nu\left(\frac{\star F}{2 \pi \I}\right)\right]^2
+  J(F_D)^2 = \int_C \left[\nu\left(\frac{\star F_D}{2 \pi \I}\right)\right]^2
 \end{equation}
 where we use the norm on matrices given by
 $\nu(M) = \sqrt{\Tr M^*M} = \sum \abs{\lambda_i}$.
@@ -5724,9 +5724,13 @@ $\nu(M) = \sqrt{\Tr M^*M} = \sum \abs{\lambda_i}$.
 Suppose we work formally for a moment, avoiding questions of
 smoothness etc.
 And suppose that $\cO$ contains a minimum of $J$.
-Then we consider an infinitesimal gauge transformation by 
-$Z \in \Lie \fG_\C = \Omega^0(\End E)$.
-The infinitesimal change of $\star F_D$ is given by $\I D^* D Z$.
+Then we consider an infinitesimal gauge transformation by
+a \ti{self-adjoint} element 
+$Z \in \Lie \fG_\C = \Omega^0(\End E)$, i.e. $Z = Z^\dagger$ ---
+i.e. transform by $e^{tZ}$ and work to first order in $t$.
+Then the leading change of $\star F_D$ is given by $\I t D^* D Z$
+(because $D$ changes by $t \bar\partial_D Z - t \partial_D Z$,
+so $F_D$ changes by $t (\partial_D \bar\partial_D - \bar\partial_D \partial_D) Z = \star D^* D Z$). \fixme{check sign}
 Thus if we choose $Z$ obeying
 \begin{equation}
   \I D^* D Z = -\star F_D
@@ -5739,17 +5743,16 @@ minimum of $J$ is actually attained in $\cO$.
 
 The idea is to construct a 
 sequence of connections $D_n$ for which 
-$\norm{F_{D_n}}$ approaches its infimum. 
+$J(F_{D_n})$ approaches its infimum. 
 Using the Uhlenbeck compactness
 theorem \autoref{thm:uhlenbeck-weak} we can make gauge transformations
-such that this sequence becomes \ti{convergent}, to 
+such that this sequence becomes \ti{convergent}
+(in the weak $L^2_1$ sense), to 
 some limiting connection $D_*$. If 
-$D_* \in \cO$ then we are done. If not, then we \ti{use}
-$D_*$ to prove that the original holomorphic bundle 
-$(E,\bar\partial_D)$ is 
-actually unstable. This is the trickiest part.
+$D_* \in \cO$ then we are done. 
 
-If we assume that $D_* \not\in \cO$ then there 
+So what if $D_* \not\in \cO$? Then we want to derive
+a contradiction. There 
 is no holomorphic isomorphism $(E,\bar\partial_D) \to (E,\bar\partial_{D_*})$.
 Still, we can show that at least there is a 
 holomorphic map
@@ -5758,7 +5761,9 @@ holomorphic map
 \end{equation}
 This uses the fact that holomorphically $(E,\bar\partial_D) \simeq (E,\bar\partial_{D_n})$ --- in other words, the operator $D^*_n \otimes D$
 on $\Hom(E,E)$ has a nontrivial kernel. Some elliptic estimates
-show that this kernel cannot disappear in the limit,
+show that this kernel cannot disappear in the limit (roughly:
+if the lowest eigenvalue of the associated Laplacian is zero
+for all $D_n$ then it is also zero for $D_*$),
 so $D_*^* \otimes D$ also has a nontrivial kernel,
 giving the desired $\gamma$.
 
@@ -5795,7 +5800,35 @@ were stable, it would lead to some non-Hausdorff behavior
 in the quotient.)
 
 We now derive a contradiction from this state of affairs.
-The top row of the diagram implies the existence
+
+The bottom row leads to a bound on \ti{all} 
+connections in the orbit of $(E,\bar\partial_{D^*})$:
+crudely speaking, because this bundle is \ti{unstable}
+we cannot make $J= 0$, and the unstable
+decomposition gives a precise lower bound: 
+\begin{equation} \label{eq:J-lower-bound}
+  J \ge 2 \deg F.
+\end{equation}
+For this we use the shape of the 
+curvature of a connection in $(E,\bar\partial_{D^*})$
+as we used above,
+\begin{equation} \label{eq:extension-curvature-again}
+  F_D = \begin{pmatrix} F_{D_F} - \beta^\dagger \wedge \beta & - D_{\Hom(H,F)} \beta^\dagger \\ D_{\Hom(F,H)} \beta & F_{D_{H}} - \beta \wedge \beta^\dagger \end{pmatrix},
+\end{equation}
+and the fact that the matrix norm $\nu$ behaves well:
+\begin{equation}
+  \nu\left[\begin{pmatrix} A & B \\ C & D \end{pmatrix} \right] \ge \abs{\Tr A} + \abs{\Tr D}.
+\end{equation}
+Applying this to \eqref{eq:extension-curvature-again} the key point
+is that the extra terms involving $\beta$ have the \ti{same sign}
+as the curvatures; thus the equation
+\begin{equation}
+  J(F_D) \ge \int_C \nu\left(\frac{\star F_D}{2 \pi \I}\right)
+\end{equation}
+gives $J(F_D) \ge \abs{\deg F}+\abs{\deg H} = 2 \deg F$
+as desired.
+
+On the other hand the top row of the diagram implies the existence
 of a connection in the orbit of $(E,\bar\partial_D)$,
 such that
 \begin{equation} \label{eq:J-upper-bound}
@@ -5804,21 +5837,9 @@ such that
 For this, one works by induction: so assume that the 
 result has been proven for all ranks $K'<K$.
 (The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
-Then \fixme{...}
-
-On the other hand the bottom row leads to a bound on \ti{all} 
-connections in the orbit of $(E,\bar\partial_{D^*})$,
-\begin{equation} \label{eq:J-lower-bound}
-  J \ge 2 \deg F.
-\end{equation}
-This is easier: we get it from the shape of the 
-curvature of a connection in $(E,\bar\partial_{D^*})$
-as we used above,
-\begin{equation} \label{eq:extension-curvature-again}
-  F_D = \begin{pmatrix} F_{D_F} - \beta^\dagger \wedge \beta & - D_{\Hom(H,F)} \beta^\dagger \\ D_{\Hom(F,H)} \beta & F_{D_{H}} - \beta \wedge \beta^\dagger \end{pmatrix},
-\end{equation}
-and the fact that the matrix norm $\nu$ behaves well:
-\fixme{...}
+Then the idea is to \ti{use} the existence of Einstein connections on 
+smaller bundles to cook up a connection on the full $(E,\bar\partial_D)$
+which does the job. \fixme{...}
 
 Combining \eqref{eq:J-upper-bound} and \eqref{eq:J-lower-bound} 
 gives a contradiction with the fact
