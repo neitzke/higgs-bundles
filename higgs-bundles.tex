@@ -5641,20 +5641,14 @@ converge weakly.
 
 Morally this should be understood as analogous to the compactness
 \autoref{thm:Ns-is-compact} for flat connections: we are saying that
-<<<<<<< HEAD
-even if we allow some bounded amount of 
-curvature, we still get a kind of weak compactness
-when we divide out by gauge transformations.
-=======
 even if we allow some bounded amount of curvature, we still get a 
 kind of weak compactness when we divide out by gauge transformations.
->>>>>>> 72c2c9577fc51abc1d1a71ef4ec0881612837a0f
+
 
 Now we are ready for the main theorem about moduli of bundles:
 
 \begin{thm}[Narasimhan-Seshadri theorem]  \label{thm:narasimhan-seshadri}
 We have:
-\label{thm:narasimhan-seshadri}
 \begin{itemize}
 \item For any $[D] \in \cN^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
 induces the structure of \ti{stable} holomorphic vector bundle on $E$.
@@ -5679,12 +5673,13 @@ subbundle preserved by $\bar\partial_D$; we want to show that $\deg E' < 0$.
 This is an instance of the general principle that ``curvature decreases
 in holomorphic subbundles.'' 
 Let $E''$ be the orthocomplement of $E'$; then $D$ splits as
-\begin{equation}
+\begin{equation} \label{eq:connection-split}
   D = \begin{pmatrix} D_{E'} & - \beta^\dagger \\ \beta & D_{E''} \end{pmatrix}
 \end{equation}
 where $\beta \in \Omega^{1,0} \otimes \Hom(E',E'')$ (the $(0,1)$ component
-vanishes because $E'$ is preserved by $\bar\partial_D$). Then we compute
-\begin{equation}
+of $\beta $vanishes because $E'$ is preserved by $\bar\partial_D$). 
+Then we compute
+\begin{equation} \label{eq:extension-curvature}
   F_D = \begin{pmatrix} F_{D_{E'}} - \beta^\dagger \wedge \beta & - D_{\Hom(E'',E')} \beta^\dagger \\ D_{\Hom(E',E'')} \beta & F_{D_{E''}} - \beta \wedge \beta^\dagger \end{pmatrix} = 0.
 \end{equation}
 First look at the upper left corner: it says that
@@ -5712,53 +5707,134 @@ Conversely suppose we have some $D$ such that $\bar\partial_D$
 induces a stable holomorphic structure. Now we want to find a
 \ti{flat} connection which induces the same holomorphic structure,
 i.e. is in the same $\fG_\C$-orbit. Call this orbit $\cO$.
-The idea is to consider the ``Yang-Mills functional''
+The moral idea is to consider the ``Yang-Mills functional''
 given by the $L^2$ norm of $F_D$, 
 \begin{equation}
  \norm{F_D}^2 = \int_C F_D \wedge \star F_D.
 \end{equation}
+For technical convenience, instead of the $L^2$ norm, we 
+use a functional $J$
+(which has the same minima as $\norm{F}$):
+\begin{equation}
+  J^2 = \int_C \left[\nu\left(\frac{\star F}{2 \pi \I}\right)\right]^2
+\end{equation}
+where we use the norm on matrices given by
+$\nu(M) = \sqrt{\Tr M^*M} = \sum \abs{\lambda_i}$.
+
 Suppose we work formally for a moment, avoiding questions of
 smoothness etc.
-And suppose we are at a minimum of $\norm{F_D}^2$ 
-in $\cO$.
+And suppose that $\cO$ contains a minimum of $J$.
 Then we consider an infinitesimal gauge transformation by 
 $Z \in \Lie \fG_\C = \Omega^0(\End E)$.
-% , obeying
-% \begin{equation}
-%   \I D^* D Z = \star F_D.
-% \end{equation}
-The resulting first-order change in $F_D$ is $F_D Z$,
-so the change in $\norm{F_D}^2$ is
+The infinitesimal change of $\star F_D$ is given by $\I D^* D Z$.
+Thus if we choose $Z$ obeying
 \begin{equation}
- 2 \int_C \Tr (F_D Z \wedge \star F_D)
+  \I D^* D Z = -\star F_D
 \end{equation}
-If we are at the minimum then this must vanish for all $Z$,
-but this can happen only if $F_D = 0$.
-So all we need to do is show that a
-minimum of $\norm{F_D}^2$ is actually attained in $\cO$.
+the gauge transformation will reduce $J$, unless 
+already $F_D = 0$.
+Thus, to get the desired $F_D = 0$, 
+all we need to do is show that a
+minimum of $J$ is actually attained in $\cO$.
 
-For this, one works by induction: so assume that the 
-result has been proven for all ranks $K'<K$.
-(The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
 The idea is to construct a 
 sequence of connections $D_n$ for which 
 $\norm{F_{D_n}}$ approaches its infimum. 
 Using the Uhlenbeck compactness
 theorem \autoref{thm:uhlenbeck-weak} we can make gauge transformations
-such that this sequence becomes \ti{convergent}, so 
-some limiting connection $D^*$. If 
-$D^* \in \cO$ then we are done. If not, then we \ti{use}
-$D^*$ to prove that the original holomorphic bundle 
+such that this sequence becomes \ti{convergent}, to 
+some limiting connection $D_*$. If 
+$D_* \in \cO$ then we are done. If not, then we \ti{use}
+$D_*$ to prove that the original holomorphic bundle 
 $(E,\bar\partial_D)$ is 
 actually unstable. This is the trickiest part.
-First we show that at least there is a 
-holomorphic map $(E,\bar\partial_D) \to (E,\bar\partial_{D^*})$
-(use the fact that such maps do exist if $D^*$ is replaced
-by $D_n$, plus some analysis which morally says a zero mode 
-which exists for all the $D_n$ cannot \ti{disappear} in the limit.)
-But the orbit 
-\fixme{remark on induction, rank 1 case...}
+
+If we assume that $D_* \not\in \cO$ then there 
+is no holomorphic isomorphism $(E,\bar\partial_D) \to (E,\bar\partial_{D_*})$.
+Still, we can show that at least there is a 
+holomorphic map
+\begin{equation}
+  \gamma: (E,\bar\partial_D) \to (E,\bar\partial_{D_*}).
+\end{equation}
+This uses the fact that holomorphically $(E,\bar\partial_D) \simeq (E,\bar\partial_{D_n})$ --- in other words, the operator $D^*_n \otimes D$
+on $\Hom(E,E)$ has a nontrivial kernel. Some elliptic estimates
+show that this kernel cannot disappear in the limit,
+so $D_*^* \otimes D$ also has a nontrivial kernel,
+giving the desired $\gamma$.
+
+Now, since $\Hom(E,E)$ has degree zero and $\gamma$ is holomorphic,
+it is impossible for $\det \gamma$ to have isolated zeroes: it either
+vanishes everywhere or nowhere; but by assumption it does vanish somewhere;
+so it must be zero. It follows that the \ti{image} of $\gamma$ is contained in
+some proper holomorphic subbundle of $(E,\bar\partial_{D_*})$; let $F$
+be the smallest such (I think a little
+sheaf theory is needed to construct this $F$).
+Similarly let $K$ denote the largest holomorphic subbundle 
+of $(E,\bar\partial_D)$ contained in $\ker \gamma$.
+Then we have a diagram of vector bundles:
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & K \arrow[r] & E \arrow[r] \arrow[d,"\gamma"] & G \arrow[d,"\rho"] \arrow[r] & 0 \\
+0 & H \arrow[l] & E \arrow[l] & F \arrow[l] & 0 \arrow[l]
+\end{tikzcd}  
+\end{equation}
+where on the top row we have the holomorphic structure
+$\bar\partial_D$ and on the bottom $\bar\partial_{D_*}$;
+and $\det \rho$ is generically nonzero (this comes from 
+the maximality of $K$ and minimality of $F$.)
+The existence of $\rho$ then implies 
+\begin{equation}
+  \deg G \le \deg F.
+\end{equation}
+Moreover, since $(E,\bar\partial_D)$ (the top row) was assumed stable,
+we must have $\deg K < 0$, so $\deg G > 0$, and thus $\deg F > 0$.
+In particular, this means $(E,\bar\partial_{D_*})$ (the bottom row) is 
+\ti{unstable}. (That is as we should expect: $D_*$ is 
+in the closure of the $\fG_\C$-orbit of $D$, so if it
+were stable, it would lead to some non-Hausdorff behavior 
+in the quotient.)
+
+We now derive a contradiction from this state of affairs.
+The top row of the diagram implies the existence
+of a connection in the orbit of $(E,\bar\partial_D)$,
+such that
+\begin{equation} \label{eq:J-upper-bound}
+  J < 2 \deg G.
+\end{equation}
+For this, one works by induction: so assume that the 
+result has been proven for all ranks $K'<K$.
+(The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
+Then \fixme{...}
+
+On the other hand the bottom row leads to a bound on \ti{all} 
+connections in the orbit of $(E,\bar\partial_{D^*})$,
+\begin{equation} \label{eq:J-lower-bound}
+  J \ge 2 \deg F.
+\end{equation}
+This is easier: we get it from the shape of the 
+curvature of a connection in $(E,\bar\partial_{D^*})$
+as we used above,
+\begin{equation} \label{eq:extension-curvature-again}
+  F_D = \begin{pmatrix} F_{D_F} - \beta^\dagger \wedge \beta & - D_{\Hom(H,F)} \beta^\dagger \\ D_{\Hom(F,H)} \beta & F_{D_{H}} - \beta \wedge \beta^\dagger \end{pmatrix},
+\end{equation}
+and the fact that the matrix norm $\nu$ behaves well:
+\fixme{...}
+
+Combining \eqref{eq:J-upper-bound} and \eqref{eq:J-lower-bound} 
+gives a contradiction with the fact
+that $D^*$ was the limit of an infimizing sequence.
+
 \end{pf}
+
+\begin{exercise} Verify the formula \eqref{eq:extension-curvature}.
+It is convenient to think of \eqref{eq:connection-split} as shifting
+a connection by a $1$-form,
+\begin{equation}
+  D = \begin{pmatrix} D_{E'} & 0 \\ 0 & D_{E''} \end{pmatrix} + \begin{pmatrix} 0 & - \beta^\dagger \\ \beta & 0 \end{pmatrix}
+\end{equation}
+and then use the formula for the perturbed
+curvature, $F_{D + A} = F_D + DA + A \wedge A$.
+\end{exercise}
 
 \begin{exercise} Over $\C\PP^1$, show that $\cO(m) \oplus \cO(m)$
 admits a holomorphic subbundle isomorphic to $\cO(n)$ if and only if
@@ -5810,9 +5886,16 @@ isometry of \kahler manifolds.
 
 One way to focus attention on only the interesting directions is to consider
 a smaller moduli space, consisting of bundles with ``fixed determinant.''
-For this, we fix some holomorphic line bundle $\tilde{d}$ of degree $d$
-on $C$. (If $d=0$ then it would be natural to take
- $\tilde{d}$ to be the trivial bundle.) \fixme{...}
+For this, we fix some element $\tilde{d} \in \cN_{1,d}(C)$ (i.e. 
+a holomorphic / harmonic line bundle.) 
+If $d=0$ then it would be natural to take
+$\tilde{d}$ to be the trivial bundle. 
+Then we fix a bundle $E$ together with an isomorphism
+$\det E \simeq \tilde{d}$. Then we construct a moduli 
+space $\cS\cN_{K,\tilde d}(C)$ by repeating all our previous 
+constructions, now with the extra condition that the connections
+$D$ which we consider restrict to the harmonic connection 
+on $\det E$. \fixme{...}
 
 \begin{example}[Bundles of rank $2$ with fixed determinant 
 over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case we have $\dim_\C S\cN_{2,d}(C) = 3$. When $d=1$ this is in fact
