@@ -5251,6 +5251,89 @@ $0$ for $g=0$ and dimension $1$ for $g=1$, which is indeed
 correct --- see \autoref{exa:jacobians} below.
 
 
+\subsection{Connections versus representations}
+
+\begin{exercise} \label{exc:connections-vs-representations} 
+Show that $\cN_{K,0}^s(C)$, considered as a set, 
+has a canonical bijection to the set of all irreducible representations
+$\pi_1(C) \to U(K)$ modulo equivalence. (Hint: this is actually the shadow
+of a stronger statement, namely that the category of flat connections is
+equivalent to the category of representations. So the real guts of the 
+question is to construct functors in both directions. To go from a flat
+connection to a representation, take holonomies. To go from 
+a representation to a flat connection, use the universal cover of $C$.)
+Similarly show that $\cN_{K,0}(C)$ has a canonical bijection to 
+the set of all representations
+$\pi_1(C) \to U(K)$ modulo equivalence. 
+Finally show (or at least sketch) that 
+these bijections are actually homeomorphisms.
+\end{exercise}
+
+\begin{exercise} \label{exc:no-irreducible-connections-on-torus} 
+Suppose $C$ is a torus 
+and $K>1$. Show that $\cN_{K,0}^s(C)$ is empty, and describe $\cN_{K,0}(C)$.
+(Hint: use the result
+of \autoref{exc:connections-vs-representations}.)
+\end{exercise}
+
+Now how about the case of general $d$, where we consider
+connections obeying \eqref{eq:harmonic-curvature} instead of
+just flat connections?
+We remark that $\omega_C$ is an arbitrary positive $2$-form 
+on $C$ with total integral $1$.
+At least formally we can imagine taking $\omega_C$ to be more and more 
+concentrated at a single point $z_0$, until in the limit we get
+$\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
+\eqref{eq:harmonic-curvature} are becoming
+flat away from $z_0$, but developing a singularity 
+at $z_0$, with the holonomy around $z_0$
+of finite order, given by multiplication by the root of unity 
+$e^{-2 \pi \I d / K}$. 
+
+\insfig{higgs-bundles-13}{0.95}
+
+This motivates the following:
+\begin{exercise} \label{exc:connections-vs-representations-general}
+Present $C$ as a polygon with edges identified in the standard way.
+\insfig{higgs-bundles-15}{1.1}
+This gives a description of $\pi_1(C)$ by generators 
+$(A_1, B_1, A_2, B_2, \dots, A_g, B_g)$ subject to the relation
+\begin{equation}
+	A_1 B_1 A_1^{-1} B_1^{-1} A_2 B_2 A_2^{-1} B_2^{-1} \cdots A_g B_g A_g^{-1} B_g^{-1} = \bid.
+\end{equation}
+Consider an \ti{extension}
+\begin{equation}
+	1 \to \Z / K\Z \to \tilde \pi_1(C) \to \pi_1(C) \to 1
+\end{equation}
+obtained by deforming this relation to
+\begin{equation}
+	A_1 B_1 A_1^{-1} B_1^{-1} A_2 B_2 A_2^{-1} B_2^{-1} \cdots A_g B_g A_g^{-1} B_g^{-1} = Z
+\end{equation}
+where $Z$ is a new generator, and adding the relation
+\begin{equation}
+	Z^K = \bid.
+\end{equation}
+Show that $\cN_{K,d}(C)$ is the set of equivalence classes
+of representations $\tilde \pi_1(C) \to U(K)$ for which 
+$Z$ acts by $e^{-2 \pi \I d / K} \bid$.
+(Hint: what can you say about the
+holonomy around the boundary of the polygon?)
+Similarly show that $\cN^s_{K,d}(C)$ is the subset of equivalence
+classes of \ti{irreducible} representations.
+\end{exercise}
+
+\begin{exercise} Use the result of \autoref{exc:connections-vs-representations-general}
+to describe $\cN_{2,1}(C)$ when $C$ has genus $1$.
+(This amounts to classifying pairs of matrices $A,B$ in $U(2)$ such that $ABA^{-1}B^{-1} = -\bid$,
+up to simultaneous conjugation. It might be useful to start with the 
+case where $A,B \in SU(2)$; using the $2:1$ projection $SU(2) \to SO(3)$
+this amounts to looking for pairs of matrices $\bar{A}, \bar{B} \in SO(3)$
+which commute, and yet do not belong to a common maximal torus
+$SO(2) \subset SO(3)$.)
+
+\end{exercise}
+
+
 \subsection{The case of line bundles}
 
 \begin{example}[Jacobians] \label{exa:jacobians}
@@ -5416,83 +5499,6 @@ the notion of \ti{period matrix} of $C$, generalizing the $\tau$
 which appeared in \autoref{exa:metric-on-jac-C-genus-one}.)
 \end{exercise}
 
-\begin{exercise} \label{exc:connections-vs-representations} 
-Show that $\cN_{K,0}^s(C)$, considered as a set, 
-has a canonical bijection to the set of all irreducible representations
-$\pi_1(C) \to U(K)$ modulo equivalence. (Hint: this is actually the shadow
-of a stronger statement, namely that the category of flat connections is
-equivalent to the category of representations. So the real guts of the 
-question is to construct functors in both directions. To go from a flat
-connection to a representation, take holonomies. To go from 
-a representation to a flat connection, use the universal cover of $C$.)
-Similarly show that $\cN_{K,0}(C)$ has a canonical bijection to 
-the set of all representations
-$\pi_1(C) \to U(K)$ modulo equivalence. 
-Finally show (or at least sketch) that 
-these bijections are actually homeomorphisms.
-\end{exercise}
-
-Now how about the case of general $d$, where we consider
-connections obeying \eqref{eq:harmonic-curvature} instead of
-just flat connections?
-We remark that $\omega_C$ is an arbitrary positive $2$-form 
-on $C$ with total integral $1$.
-At least formally we can imagine taking $\omega_C$ to be more and more 
-concentrated at a single point $z_0$, until in the limit we get
-$\omega_C = \delta(z_0)$. In this limit the connections $D$ obeying
-\eqref{eq:harmonic-curvature} are becoming
-flat away from $z_0$, but developing a singularity 
-at $z_0$, with the holonomy around $z_0$
-of finite order, given by multiplication by the root of unity 
-$e^{-2 \pi \I d / K}$. 
-
-\insfig{higgs-bundles-13}{0.95}
-
-This motivates the following:
-\begin{exercise} \label{exc:connections-vs-representations-general}
-Extend \autoref{exc:connections-vs-representations} to general 
-degrees $d$: in other words,
-give a description of $\cN_{K,d}^s(C)$ and $\cN_{K,d}(C)$
-as sets of equivalence classes of 
-representations of an \ti{extension} of $\pi_1(C)$
-by a finite group. (Hint: use the description of $C$ as 
-a polygon with edges identified; what can you say about the
-holonomy around the boundary of the polygon?)
-\end{exercise}
-
-\begin{exercise} \label{exc:no-irreducible-connections-on-torus} 
-Show that, when $g=1$ ($C$ is a torus), 
-and $K>1$, $\cN_{K,d}^s(C)$ is empty. (Hint: use the result
-of \autoref{exc:connections-vs-representations-general}.)
-\end{exercise}
-
-We have already seen that when $K=1$, $\cN_{K,0}(C)$ is a compact
-\kahler torus. The behavior is almost as good
-for general $K$ and $d$:
-
-\begin{cor}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
-$\cN_{K,d}(C)$ is compact.
-\end{cor}
-\begin{pf} This follows directly from the result of 
-\autoref{exc:connections-vs-representations-general}
-since a representation of a finite extension of $\pi_1(C)$ into 
-$U(K)$ is determined by a finite collection of matrices in $U(K)$,
-and $U(K)$ is compact.
-\end{pf}
-
-\begin{exercise} \label{exc:coprime-einstein-is-irreducible} 
-Show that if $(d,K)=1$ then $\cN_{K,d}(C) = \cN_{K,d}^s(C)$. 
-\end{exercise}
-
-\begin{cor}[$\cN_{K,d}(C)$ is nice when $(d,K)$ = 1]
-When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
-\kahler manifold.
-\end{cor}
-\begin{pf} This is just the combination of \autoref{thm:N-is-kahler},
-\autoref{thm:Ns-is-compact}, and 
-\autoref{exc:coprime-einstein-is-irreducible}.
-\end{pf}
-
 \begin{lem}[Existence of Einstein connections on line bundles] \label{lem:einstein-connections-on-line-bundles}
 Suppose $\cL$ is a holomorphic line bundle over $C$. Then there
 exists a Hermitian metric $h$ on $\cL$ such that the Chern
@@ -5555,6 +5561,37 @@ works perfectly: we really do have
 \begin{equation}
   \cA^{\bar\partial} / \fG_\C = \cA^h \kq \fG = \Jac C.
 \end{equation}
+
+
+\subsection{More formal developments}
+
+
+We have already seen that when $K=1$, $\cN_{K,0}(C)$ is a compact
+\kahler torus. The behavior is almost as good
+for general $K$ and $d$:
+
+\begin{cor}[Compactness of $\cN_{K,d}(C)$] \label{thm:Ns-is-compact}
+$\cN_{K,d}(C)$ is compact.
+\end{cor}
+\begin{pf} This follows directly from the result of 
+\autoref{exc:connections-vs-representations-general}
+since a representation of a finite extension of $\pi_1(C)$ into 
+$U(K)$ is determined by a finite collection of matrices in $U(K)$,
+and $U(K)$ is compact.
+\end{pf}
+
+\begin{exercise} \label{exc:coprime-einstein-is-irreducible} 
+Show that if $(d,K)=1$ then $\cN_{K,d}(C) = \cN_{K,d}^s(C)$. 
+\end{exercise}
+
+\begin{cor}[$\cN_{K,d}(C)$ is nice when $(d,K)$ = 1]
+When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
+\kahler manifold.
+\end{cor}
+\begin{pf} This is just the combination of \autoref{thm:N-is-kahler},
+\autoref{thm:Ns-is-compact}, and 
+\autoref{exc:coprime-einstein-is-irreducible}.
+\end{pf}
 
 
 \subsection{Stable vector bundles}
@@ -5951,7 +5988,9 @@ $\det E \simeq L$, and construct moduli
 spaces $\cS\cN_{K,\tilde d}(C)$ and $\cS\cN^s_{K,\tilde d}(C)$ 
 by repeating all our previous 
 constructions, now with the extra condition that the connections
-$D$ which we consider have $\det D = \tilde{d}$.
+$D$ which we consider have $\det D = \tilde{d}$,
+and the gauge group is restricted to $g \in U(E)$
+such that $\det g$ acts trivially.
 
 As before, we have:
 \begin{prop}[Moduli of stable bundles with fixed determinant is \kahler]
@@ -5964,7 +6003,7 @@ of the choice of $\tilde d$?
 \end{exercise}
 
 \begin{exercise} State the analogue of the Narasimhan-Seshadri theorem
-
+for $\cS\cN^s_{K,\tilde d}$.
 \end{exercise}
 
 
