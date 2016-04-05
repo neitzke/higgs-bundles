@@ -5175,12 +5175,14 @@ a Fredholm operator and thus closed, and the two summands
 are $L^2$-orthogonal, so that they are both separately closed;
 thus $D \Omega^0$ is closed, and complemented by
 $D^* \Omega^2 \oplus \coker \hat{D}$, as desired.
-Third, we ant to show that 
+Third, we want to show that the tangent spaces to $\fG$-orbits
+have $(T^{\perp_\omega})^{\perp_\omega} = T$; for this
+see an argument in \cite{MR909698}.
 
 The proof that $\cN_{K,d}(C)$
 is not only symplectic but actually 
 \kahler follows exactly the lines of the finite-dimensional
-case; see \cite{Tumpach2007} for an account.
+case. See \cite{Tumpach2007} for an account.
 \end{pf}
 
 \begin{thm}[Dimension of $\cN^s_{K,d}(C)$] \label{thm:dimension-of-N}
@@ -5190,7 +5192,7 @@ $\dim_\C \cN^s_{K,d}(C) = (g-1)K^2+1$ where $g$ is the genus of $C$.
 \begin{equation}
   \ind \hat{D} = \dim \ker \hat{D} - \dim \coker \hat{D}.
 \end{equation}
-Very generally, for any elliptic operator, this could be 
+Very generally, for any elliptic operator, this can be 
 computed by the Atiyah-Singer Index Theorem. In the present
 case, when the degree $d=0$,
 all we need to know is one of the basic
@@ -5212,7 +5214,8 @@ says
   \dim \coker \hat{D} = 2.
 \end{equation}
 Combining these gives the desired result, when $d=0$.
-For general $d$ something more is required. \fixme{...}
+For general $d$ we need to know a bit more about the
+structure of the index formula. \fixme{...}
 \end{pf}
 
 The formula in \autoref{thm:dimension-of-N} looks a bit
@@ -5331,7 +5334,6 @@ Loosely speaking, as we deform $C$, the ``angles'' of $\Jac(C)$
 are changing.
 \end{example}
 
-\currentposition
 
 \begin{exercise} Prove the formula \eqref{eq:jacobian-explicit-symplectic-form}
 for the symplectic form on $\Jac(C)$.
@@ -5841,7 +5843,9 @@ For this, one works by induction: so assume that the
 result has been proven for all ranks $K'<K$.
 (The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
 Then the idea is to \ti{use} the existence of Einstein connections on 
-smaller bundles to cook up a connection on the full $(E,\bar\partial_D)$
+smaller bundles, and the fact that $(E,\bar\partial_D)$ 
+comes as an extension of $G$ by $K$, 
+to cook up a connection on the full $(E,\bar\partial_D)$
 which does the job. \fixme{...}
 
 Combining \eqref{eq:J-upper-bound} and \eqref{eq:J-lower-bound} 
@@ -5849,6 +5853,8 @@ gives a contradiction with the fact
 that $D^*$ was the limit of an infimizing sequence.
 
 \end{pf}
+
+\currentposition
 
 \begin{exercise} Verify the formula \eqref{eq:extension-curvature}.
 It is convenient to think of \eqref{eq:connection-split} as shifting
