@@ -911,6 +911,14 @@ $(\partial z'_i / \partial z_j)_{i,j=1}^n$, which are holomorphic.
 % with the canonical holomorphic structure.
 \end{example}
 
+\begin{example}[Canonical bundle] The canonical line bundle over $X$ 
+is defined by
+\begin{equation}
+  K_X = \wedge^n TX.
+\end{equation}
+It inherits a holomorphic structure from that of $TX$.
+\end{example} 
+
 \begin{defn}[Connection compatible with holomorphic structure]
 If $E$ is a holomorphic vector bundle over $X$,
 a connection $D$ in $E$ is \ti{compatible with the
@@ -1255,6 +1263,22 @@ also equivalent to
   \item $\alpha \in \im \left(\I \partial \bar\partial: \Omega^{p-1,p-1}_\R(X) \to \Omega^{p,p}_\R(X)\right)$.
 \end{itemize}
 \end{lem}
+
+\begin{defn}[Laplace operator coupled to a vector bundle]
+If $X$ is a Riemannian manifold and $E$ a Hermitian vector bundle over 
+$X$ with connection $D$, we define a Laplacian
+\begin{equation}
+  \Delta_D: \Omega^k(E) \to \Omega^k(E)
+\end{equation}
+by
+\begin{equation}
+  \Delta_D = DD^* + D^* D.
+\end{equation}
+
+\end{defn}
+
+\fixme{...}
+
 
 \subsection{\kahler quotients}
 
@@ -4694,13 +4718,13 @@ $\sigma \in \pi^* \Hom(E,F)$, where $\pi: T^* X \to X$ is the projection.
 It has a fancy invariant definition, but the pedestrian way is
 to write the top-order part of $D$ in local coordinates for $X$ as
 \begin{equation}
-  \sum_{i_1, \dots, i_k} {F_{i_1 \cdots i_\ell}} \partial_{i_1} \cdots \partial_{i_\ell}
+  \sum_{i_1, \dots, i_\ell} {F_{i_1 \cdots i_\ell}} \partial_{i_1} \cdots \partial_{i_\ell}
 \end{equation}
 where each $P_{i_1 \cdots i_k} \in \Hom(E,F)$, and then replace
 $\partial_{i} \to \I p_i$, where $p_i$ are the corresponding local
 coordinates on $T^* X$, to get
 \begin{equation}
-  \sigma = \I^\ell \sum_{i_1, \dots, i_k} {F_{i_1 \cdots i_\ell}} p_{i_1} \cdots p_{i_\ell}
+  \sigma = \I^\ell \sum_{i_1, \dots, i_\ell} {F_{i_1 \cdots i_\ell}} p_{i_1} \cdots p_{i_\ell}
 \end{equation}
 \end{defn}
 
@@ -4716,7 +4740,8 @@ at all points off the zero section of $T^* X$.
 \end{defn}
 
 \begin{thm}[Elliptic regularity] \label{thm:elliptic-regularity}
-Suppose $D$ is elliptic. Then for any $k$,
+Suppose $D$ is an elliptic differential operator of order $\ell$. 
+Then for any $k$,
 $D$ extends to an operator acting on Sobolev spaces
 $$D_k: L^2_k(E) \to L^2_{k-\ell}(E),$$
 and we have:
@@ -5916,23 +5941,83 @@ isometry of \kahler manifolds.
 
 One way to focus attention on only the interesting directions is to consider
 a smaller moduli space, consisting of bundles with ``fixed determinant.''
-For this, we fix some element $\tilde{d} \in \cN_{1,d}(C)$ (i.e. 
-a holomorphic / harmonic line bundle.) 
+For this, we fix some line bundle $L$ of degree $d$, 
+use it to define the moduli space $\cN_{1,d}(C)$, and then fix
+an element $\tilde{d} \in \cN_{1,d}(C)$.
 If $d=0$ then it would be natural to take
-$\tilde{d}$ to be the trivial bundle. 
+$L$ and $\tilde{d}$ to be trivial.
 Then we fix a bundle $E$ together with an isomorphism
-$\det E \simeq \tilde{d}$. Then we construct a moduli 
-space $\cS\cN_{K,\tilde d}(C)$ by repeating all our previous 
+$\det E \simeq L$, and construct moduli 
+spaces $\cS\cN_{K,\tilde d}(C)$ and $\cS\cN^s_{K,\tilde d}(C)$ 
+by repeating all our previous 
 constructions, now with the extra condition that the connections
-$D$ which we consider restrict to the harmonic connection 
-on $\det E$. \fixme{...}
+$D$ which we consider have $\det D = \tilde{d}$.
+
+As before, we have:
+\begin{prop}[Moduli of stable bundles with fixed determinant is \kahler]
+$\cS\cN^s_{K,\tilde d}(C)$ is a \kahler manifold, of complex dimension
+$(g - 1) (K^2 - 1)$.
+\end{prop}
+
+\begin{exercise} In what sense is $\cS\cN_{K,\tilde d}(C)$ ``independent''
+of the choice of $\tilde d$?
+\end{exercise}
+
+\begin{exercise} State the analogue of the Narasimhan-Seshadri theorem
+
+\end{exercise}
+
 
 \begin{example}[Bundles of rank $2$ with fixed determinant 
-over a genus $2$ curve] Now let us consider the case where $K=2$ and $C$ has genus $g = 2$. In this case we have $\dim_\C S\cN_{2,d}(C) = 3$. When $d=1$ this is in fact
-a compact \kahler manifold; let's consider that case first.
-\fixme{...}
+over a genus $2$ curve] Consider the case where the rank $K=2$ and
+$C$ has genus $g = 2$. In this case we have 
+\begin{equation}
+\dim_\C \cS\cN^s_{2,\tilde d}(C) = 3.  
+\end{equation}
+These spaces are described concretely 
+in the paper \cite{MR0242185}. 
+
+It turns out that
+$\cS\cN_{2,0}(C)$ can be naturally identified with $\C\PP^3$. 
+The vague idea is as follows. 
+Let $P = \cN_{1,1}(C)$ (a torus of complex dimension $2$.)
+Suppose given a polystable rank $2$ holomorphic bundle $E$ on $C$, with
+$\det E$ holomorphically trivial.
+We consider the set $\Theta_E \subset P$ consisting of all degree
+$1$ line bundles $L$ such that $E \otimes L$ has nontrivial holomorphic
+sections. This subset turns out to be the zero locus of a holomorphic 
+section $s_E$ of 
+a certain canonically defined line bundle $\cL \to P$.
+$s_E$ is determined up to overall rescaling by $E$, and
+$s_E$ determines $E$ up to equivalence; thus
+$\cS\cN_{2,0}(C)$ gets identified with the projectivization
+of the vector space of sections of $\cL$.
+
+(Warning: it is a bit of an accident that $\cS\cN_{2,0}(C)$ 
+has the structure of complex manifold even though $0$ and $2$
+are not relatively prime; this doesn't happen in most 
+examples. Also, as far as I know,
+the \kahler structure on the open subset $\cS\cN^s_{2,0}(C)$
+does not extend smoothly over the whole $\C\PP^3$, so you probably 
+shouldn't think of this as being the standard \kahler structure on
+$\C\PP^3$.)
+
+The description of $\cS\cN^s_{2,\tilde d}(C)$ when $\tilde d$ has degree 
+$1$ is equally concrete but more complicated to state; see \cite{MR0242185}
+for that.
 
 \end{example}
+
+
+\begin{exercise} Suppose
+a rank $2$ bundle $E$ over $C$ is given holomorphically as a
+nontrivial (i.e. non-split) extension
+\begin{equation} 
+0 \to L^{-1} \to E \to L \to 0 
+\end{equation}
+where $L$ has degree $1$.
+Show that $E$ is semistable and $\det E$ is holomorphically trivial.
+\end{exercise}
 
 
 \section{Higgs bundles}
@@ -5962,6 +6047,9 @@ $\varphi$ is called the \ti{Higgs field}.
 Thus relative to a local trivialization of $E$, $\varphi$ would 
 be written as a matrix of holomorphic $1$-forms.
 
+There are a few Higgs bundles which we can describe particularly
+concretely:
+
 \begin{example}[Zero Higgs field] For any holomorphic vector
 bundle $(E,\bar\partial)$ we obtain a trivial example of a Higgs bundle
 by taking $(E,\bar\partial,\varphi=0)$.
@@ -5972,36 +6060,177 @@ just means a holomorphic line bundle plus a holomorphic 1-form,
 $\varphi \in H^0(K_C)$.
 \end{example}
 
-\begin{example}[Hitchin section] \fixme{...}
+\begin{defn}[Spin structure] \label{defn:spin-structure} A \ti{spin structure} on $C$
+is a holomorphic line bundle $\cL$ equipped with an isomorphism
+$\cL^2 \simeq K_C$.
+\end{defn}
+
+\begin{exercise} Show that the set of spin structures on $C$ (up to 
+the natural notion of equivalence) is a torsor for $H^1(C,\Z/2\Z)$.
+So in particular, there are $2^{2g}$ inequivalent 
+spin structures on a genus $g$ surface.
+\end{exercise}
+
+\begin{exercise} Show that
+\autoref{defn:spin-structure} is equivalent
+to your favorite definition of spin structure, if you have one.
+\end{exercise}
+
+\begin{example}[Hitchin section for $K=2$] \label{exc:hitchin-section-K2} 
+Fix a spin structure
+$\cL$ on $C$.
+Then consider the holomorphic vector
+bundle
+\begin{equation}
+  E = \cL \oplus \cL^{-1}
+\end{equation}
+For any $(\phi_1, \phi_2) \in H^0(C,K_C) \oplus H^0(C,K_C^2)$,
+we can equip $E$ with the Higgs field
+\begin{equation}
+  \varphi = \begin{pmatrix} \phi_1 & \phi_2 \\ 1 & \phi_1 \end{pmatrix} \in \begin{pmatrix} \Hom(\cL,\cL) \otimes K_C & \Hom(\cL^{-1},\cL) \otimes K_C \\ \Hom(\cL,\cL^{-1}) \otimes K_C & \Hom(\cL^{-1},\cL^{-1}) \otimes K_C \end{pmatrix} = \begin{pmatrix} K_C & K_C^2 \\ \cO & K_C \end{pmatrix}
+\end{equation}
+and thus obtain a Higgs bundle.
 \end{example}
+
+\subsection{Moduli spaces}
 
 Now suppose we want to construct a moduli space parameterizing Higgs
 bundles modulo equivalence, and we want it to be somehow ``nice.''
-One thing we could try is just to take a vector bundle over 
+The simplest idea would be just to take all stable vector bundles
+and then equip them with arbitrary Higgs fields: in other words
+take a vector bundle over 
 $\cN_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
-The holomorphic tangent space to $\cN_{K,d}(C)$ is the space
-of harmonic $(0,1)$-forms valued in $\End(E)$,
-which is naturally dual to $H^0(C, \End E \otimes K_C)$.
-Thus the resulting space would be $T^* \cN_{K,d}(C)$.
+The holomorphic tangent space to $\cN_{K,d}(C)$ at $E$ is the space
+$\cH^{0,1}(\End E)$ of harmonic forms $\alpha \in \Omega^{0,1}(\End E)$.
+This space is naturally dual to $H^0(C, \End E \otimes K_C)$, via the 
+pairing
+\begin{equation}
+  (\alpha, \psi) \in \cH^{0,1}(\End E) \times H^0(C,\End E \otimes K_C) \mapsto \int_C \Tr (\alpha \wedge \psi).
+\end{equation}
+Thus the moduli space we obtain in this way would be $T^* \cN_{K,d}(C)$.
 In particular this is a \ti{holomorphic symplectic} manifold.
+But it is not quite the space we are after.
 
-What we will actually do is a bit better. 
-As before, we fix a bundle $E$ of degree $d$.
+To get the space we are really after, we proceed by a ``doubled''
+version of the infinite-dimensional \kahler quotient we took before,
+i.e. we take an infinite-dimensional
+\hk quotient. As before, we fix a smooth bundle $E$ over $C$, 
+of degree $d$.
+Now we define a ``doubled'' version of the space of $\bar\partial$-operators
+on $E$,
+\begin{equation}
+  \cA^\C_1 = \cA^{\bar\partial} \times \Omega^{1,0}(\End E).
+\end{equation}
+$\cA^\C_1$ is a complex affine space over
+$\Omega^{0,1}(\End E) \oplus \Omega^{1,0}(\End E)$.
+We denote points of $\cA^\C_1$ as
+\begin{equation}
+  (\bar\partial_E, \varphi) \in \cA^\C_1.
+\end{equation}
+Evidently we have
+\begin{equation}
+  \cA^\C_1 = T^* \cA^{\bar\partial}
+\end{equation}
+and
+\begin{equation}
+  T \cA^\C_1 = \Omega^{0,1}(\End E) \oplus \Omega^{1,0}(\End E).
+\end{equation}
+The space $\cA^\C_1$ carries an obvious complex structure (since $T\cA^\C_1$
+is naturally a complex vector space).
+It also carries a natural holomorphic symplectic form:
+\begin{equation} \label{eq:Omega-1-AC}
+  \Omega_1((\alpha_1, \psi_1),(\alpha_2, \psi_2)) = \int \Tr (\alpha_1 \wedge \psi_2 - \alpha_2 \wedge \psi_1).
+\end{equation}
 
-We define a ``doubled'' version of the space of connections,
+\begin{exercise}
+Verify that the holomorphic symplectic form \eqref{eq:Omega-1-AC} 
+is the natural one on $T^* \cA^{\bar\partial}$.
+\end{exercise}
+
+As for $\cA^{\bar\partial}$, the space $\cA^\C_1$ has a natural action
+of $\fG_\C$, by
 \begin{equation}
-  \cA^H = \cA^{\bar\partial} \times \Omega^{1,0}(\End E).
-\end{equation}
-The space $\cA^H$ carries a natural holomorphic symplectic form
-\begin{equation}
-  \Omega_1 = \fixme{...}
+  (\bar\partial_E,\varphi) \mapsto (\bar\partial_E^g = g \bar\partial_E g^{-1}, \varphi^g = g \varphi g^{-1}).
 \end{equation}
 
-Formally the moduli space of Higgs bundles would appear to be
+\begin{prop}[Moment map for $\fG_\C$-action on $\cA^\C_1$]
+The $\fG_\C$-action on $\cA^\C_1$ has a complex moment map
 \begin{equation}
-  \cA^H = M^{-1}(0) / \fG_\C.
+  M_1 = \bar\partial_E \varphi.
 \end{equation}
+More precisely, this means: given $Z \in \Lie \fG = \Omega^0(\End E)$
+we have
+\begin{equation}
+  \mu_Z(\bar\partial_E,\varphi) = \int_C \Tr(Z \bar\partial_E \varphi).
+\end{equation}
+\end{prop}
+
+\begin{pf} This follows the pattern of proof of \autoref{prop:unitary-connections-moment-map}.
+For $Z \in \Lie \fG_\C = \Omega^0(\End E)$ we have
+the infinitesimal action
+\begin{equation}
+  \rho(Z) (\bar\partial_E,\varphi) = (- \bar\partial_E Z, [\varphi,Z]),
+\end{equation}
+and for
+$(\alpha,\psi) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$
+we have
+\begin{equation}
+  \de \mu_Z (\alpha,\psi) = \int_C \Tr( Z [\alpha,\varphi] + Z \bar\partial_E \psi)
+\end{equation}
+We compute:
+\begin{align}
+  \Omega_1(\rho(Z), (\alpha,\psi)) &= \int_C \Tr(- \bar\partial_E Z \wedge \psi - \alpha \wedge [\varphi,Z]) \\
+  &= \int_C \Tr(Z \bar\partial_E \psi + Z[\alpha,\varphi]) \\
+  &= \de \mu_Z(\alpha,\psi)
+\end{align}
+as desired.
+\end{pf}
+
+Thus formally the moduli space of Higgs bundles would appear to be
+\begin{equation}
+  M_1^{-1}(0) / \fG_\C = \cA^\C_1 \kq \fG_\C.
+\end{equation}
+As we have noted, though, the holomorphic symplectic quotient of 
+an \hk space has another interpretation: we can sometimes interpret
+it as an \hk quotient by a smaller group. 
+Let us try to do that here.
+As we did before, we introduce a Hermitian metric $h$ on the 
+bundle $E$.
+Then let $\cA^H$ denote the space
+of pairs $(D,\Phi)$ where $D$ is a \ti{unitary} connection on $(E,h)$
+and $\Phi \in \Omega^1_\C(\End E)$.
+The group $\fG$ of unitary gauge transformations
+acts on $\cA^H$ by
+\begin{equation}
+  (D,\Phi) \mapsto (D^g = g D g^{-1}, \Phi^g = g \Phi g^{-1}).
+\end{equation}
+We have an isomorphism of real affine spaces
+\begin{align}
+    \cA^\C_1 &\simarrow \cA^H \\
+    (\bar\partial_E,\varphi) & \mapsto (D_h, \Phi = \varphi + \varphi^\dagger)
+\end{align}
+where as usual $D_h$ denotes the Chern connection corresponding
+to $\bar\partial_E$.
+
+$\cA^H$ also carries a natural real symplectic form
+\begin{equation}
+  \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) = \int \Tr(\dot A_1 \wedge \dot A_2 + \dot \Phi_1 \wedge \dot \Phi_2).
+\end{equation}
+along with the complex form $\Omega_1$ which we break into 
+components $\Omega_1 = \omega_2 + \I \omega_3$.
+
+\begin{prop}[\Hk structure on $\cA^H$] The forms
+$(\omega_1, \omega_2, \omega_3)$ on $\cA^H$ are the symplectic
+forms for a \hk structure on $\cA^H$, with \hk metric
+\begin{equation}
+  g = \fixme{...}
+\end{equation}
+\end{prop}
+
+\begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
 \fixme{...}
+\end{prop}
+
 
 \printbibliography
 
