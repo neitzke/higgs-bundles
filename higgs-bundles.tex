@@ -6047,17 +6047,31 @@ $\varphi$ is called the \ti{Higgs field}.
 Thus relative to a local trivialization of $E$, $\varphi$ would 
 be written as a matrix of holomorphic $1$-forms.
 
+\begin{defn}[Stable Higgs bundle] A Higgs bundle $E$ over $C$ is called:
+\begin{itemize}
+\item \ti{stable} if, for every $\varphi$-invariant 
+holomorphic subbundle $E' \subset E$,
+we have $\mu(E') < \mu(E)$,
+\item \ti{polystable} if $E$ is a direct sum of stable Higgs bundles
+of the same slope,
+\item \ti{semistable} if, for every every $\varphi$-invariant 
+holomorphic subbundle 
+$E' \subset E$, we have $\mu(E') \le \mu(E)$.
+\end{itemize}
+\end{defn}
+
 There are a few Higgs bundles which we can describe particularly
 concretely:
 
 \begin{example}[Zero Higgs field] For any holomorphic vector
 bundle $(E,\bar\partial)$ we obtain a trivial example of a Higgs bundle
-by taking $(E,\bar\partial,\varphi=0)$.
+by taking $(E,\bar\partial,\varphi=0)$. It is a stable Higgs bundle
+if and only if $(E,\bar\partial)$ is stable.
 \end{example}
 
 \begin{example}[Higgs line bundles] If $K=1$ then a Higgs bundle
 just means a holomorphic line bundle plus a holomorphic 1-form,
-$\varphi \in H^0(K_C)$.
+$\varphi \in H^0(K_C)$. This is always stable.
 \end{example}
 
 \begin{defn}[Spin structure] \label{defn:spin-structure} A \ti{spin structure} on $C$
@@ -6076,7 +6090,7 @@ spin structures on a genus $g$ surface.
 to your favorite definition of spin structure, if you have one.
 \end{exercise}
 
-\begin{example}[Hitchin section for $K=2$] \label{exc:hitchin-section-K2} 
+\begin{example}[Hitchin section for $K=2$] \label{exa:hitchin-section-K2} 
 Fix a spin structure
 $\cL$ on $C$.
 Then consider the holomorphic vector
@@ -6091,6 +6105,11 @@ we can equip $E$ with the Higgs field
 \end{equation}
 and thus obtain a Higgs bundle.
 \end{example}
+
+\begin{exercise}
+Show that the Higgs bundles in \autoref{exa:hitchin-section-K2} are stable
+as long as $C$ has genus $g \ge 2$.
+\end{exercise}
 
 \subsection{Moduli spaces}
 
@@ -6198,7 +6217,7 @@ As we did before, we introduce a Hermitian metric $h$ on the
 bundle $E$.
 Then let $\cA^H$ denote the space
 of pairs $(D,\Phi)$ where $D$ is a \ti{unitary} connection on $(E,h)$
-and $\Phi \in \Omega^1_\C(\End E)$.
+and $\Phi \in \Omega^1(\fu(E))$.
 The group $\fG$ of unitary gauge transformations
 acts on $\cA^H$ by
 \begin{equation}
@@ -6207,14 +6226,14 @@ acts on $\cA^H$ by
 We have an isomorphism of real affine spaces
 \begin{align}
     \cA^\C_1 &\simarrow \cA^H \\
-    (\bar\partial_E,\varphi) & \mapsto (D_h, \Phi = \varphi + \varphi^\dagger)
+    (\bar\partial_E,\varphi) & \mapsto (D_h, \Phi = \varphi - \varphi^\dagger)
 \end{align}
 where as usual $D_h$ denotes the Chern connection corresponding
 to $\bar\partial_E$.
 
 $\cA^H$ also carries a natural real symplectic form
 \begin{equation}
-  \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) = \int \Tr(\dot A_1 \wedge \dot A_2 + \dot \Phi_1 \wedge \dot \Phi_2).
+  \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) = \int \Tr(\dot A_1 \wedge \dot A_2 + \dot \Phi_1 \wedge \dot \Phi_2),
 \end{equation}
 along with the complex form $\Omega_1$ which we break into 
 components $\Omega_1 = \omega_2 + \I \omega_3$.
@@ -6226,6 +6245,11 @@ forms for a \hk structure on $\cA^H$, with \hk metric
   g = \fixme{...}
 \end{equation}
 \end{prop}
+
+\fixme{describe the 3 complex structures and who's holomorphic in each}
+\fixme{structure $I_1$: $A_z$, $\Phi_z$}
+\fixme{structure $I_2$: ...}
+\fixme{structure $I_3$: ...}
 
 \begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
 \fixme{...}
