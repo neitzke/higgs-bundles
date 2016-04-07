@@ -6182,12 +6182,12 @@ There is another way of viewing this space which will be enlightening.
 We recall that, ignoring questions of stability, $\cN_{K,d}$ just
 consists of all holomorphic structures up to equivalence,
 \begin{equation}
-	\cN_{K,d}(C) = \cA^\C / \fG_\C.
+	\cN_{K,d}(C) = \cA^{\bar\partial} / \fG_\C.
 \end{equation}
 This suggests that we might profitably view $T^* \cN_{K,d}(C)$
 as a holomorphic symplectic quotient,
 \begin{equation}
-	T^* \cN_{K,d}(C) = (T^* \cA^\C_{K,d}) \kq \fG_\C.
+	T^* \cN_{K,d}(C) = (T^* \cA^{\bar\partial}_{K,d}) \kq \fG_\C.
 \end{equation}
 Let us see how this works.
 
@@ -6231,26 +6231,25 @@ with respect to $\Omega_1$,
 \begin{equation}
   M_1 = -2 \I \bar\partial_E \varphi.
 \end{equation}
-More precisely, this means: given $Z \in \Lie \fG = \Omega^0(\End E)$
+More precisely, this means: given $Z \in \Lie \fG_\C = \Omega^0(\End E)$
 we have
-\begin{equation}
+\begin{equation} \label{eq:M1-gauge}
   M_{1,Z}(\bar\partial_E,\varphi) = -2 \I \int_C \Tr(Z \bar\partial_E \varphi).
 \end{equation}
 \end{prop}
 
 \begin{pf} This follows the pattern of proof of \autoref{prop:unitary-connections-moment-map}.
-For $Z \in \Lie \fG_\C = \Omega^0(\End E)$ we have
-the infinitesimal action
+Each $Z \in \Omega^0(\End E)$ generates a vector field on $\cA^H$,
 \begin{equation}
   \rho(Z) = (- \bar\partial_E Z, [Z,\varphi]),
 \end{equation}
 and for
-$(\dot A_{\bar z},\dot\Phi_z) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$
-we have
+$(\dot A_{\bar z},\dot\Phi_z) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$,
+we compute by differentiating \eqref{eq:M1-gauge}
 \begin{equation}
   \de M_{1,Z} (\dot A_{\bar z},\dot\Phi_z) = -2 \I \int_C \Tr( Z [\dot A_{\bar z},\varphi] + Z \bar\partial_E \dot\Phi_z)
 \end{equation}
-We compute:
+Now we can check directly that $M_1$ is indeed a moment map, using \eqref{eq:Omega-1-AC}:
 \begin{align}
   \Omega_1(\rho(Z), (\dot A_{\bar z},\dot\Phi_z)) &= -2 \I \int_C \Tr(- \bar\partial_E Z \wedge \dot\Phi_z - \dot A_{\bar z} \wedge [Z,\varphi]) \\
   &= -2 \I \int_C \Tr(Z \bar\partial_E \dot\Phi_z + Z[\dot A_{\bar z},\varphi]) \\
