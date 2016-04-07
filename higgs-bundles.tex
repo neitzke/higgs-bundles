@@ -6281,18 +6281,19 @@ where $\bar\partial_E + \partial_E$ denotes the Chern connection.
 
 $\cA^H$ carries the complex form $\Omega_1$ which we break into 
 components $\Omega_1 = \omega_2 + \I \omega_3$, plus another 
-real symplectic form, naturally extending the one which 
+real symplectic form $\omega_1$, naturally extending the one \eqref{eq:symplectic-form-A} which 
 we had on $\cA^h$:
 \begin{align}
   \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= - \int_C \Tr(\dot A_1 \wedge \dot A_2 - \dot \Phi_1 \wedge \dot \Phi_2), \\
   \omega_2((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(\dot \Phi_1 \wedge \star \dot A_2 + \dot A_1 \wedge \star \dot \Phi_2), \\
   \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= - \int_C \Tr(\dot\Phi_1 \wedge \dot A_2 + \dot A_1 \wedge \dot \Phi_2).
 \end{align}
-
+Note that the $\omega_i$ are translation invariant forms on $\cA^H$ and hence
+closed.
 
 \begin{prop}[\Hk structure on $\cA^H$] The forms
 $(\omega_1, \omega_2, \omega_3)$ on $\cA^H$ are the symplectic
-forms for a \hk structure on $\cA^H$, with \hk metric
+forms for a \hk structure $(I_1,I_2,I_3,g)$ on $\cA^H$, with \hk metric
 \begin{equation}
   g((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) = - \int_C \Tr(\dot A_1 \wedge \star \dot A_2 + \dot \Phi_1 \wedge \star \dot \Phi_2)
 \end{equation}
@@ -6304,6 +6305,10 @@ The complex structures act by:
 \end{align}
 \end{prop}
 
+\begin{pf} Just compute directly that $I_i^2 = -1$, $I_1 I_2 = I_3$,
+and $\omega_i(\cdot, \cdot) = g(I_i \cdot, \cdot)$.
+\end{pf}
+
 \begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
 The $\fG$ action on $\cA^H$ admits a \hk moment map, given by:
 \begin{equation}
@@ -6311,16 +6316,22 @@ The $\fG$ action on $\cA^H$ admits a \hk moment map, given by:
 \end{equation}
 and
 \begin{equation}
-  \mu_1 = -F_D - [\Phi, \Phi] - 2 \pi \I \frac{d}{K} \bid \omega_C
+  \mu_1 = -F_D - \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C
 \end{equation}
 \end{prop}
 
 \begin{pf} We have already computed the holomorphic moment map
 $M_1 = \mu_2 + \I \mu_3$. All we need to do is check the 
-formula for $\mu_1$. We have
+formula for $\mu_1$. 
+% First note that for matrix-valued $1$-forms $\Phi_1, \Phi_2$ we have
+% $\Phi_1 \wedge \Phi_2 = (\Phi_{1x} \Phi_{2y} - \Phi_{1y} \Phi_{2x}) \de x \wedge \de y$
+We have
 \begin{equation}
-  \de \mu_1(\dot A, \dot \Phi) = - D \dot{A} - [\dot\Phi,\Phi] - [\Phi,\dot\Phi]
+  \de \mu_1(\dot A, \dot \Phi) = - D \dot{A} - \dot\Phi \wedge \Phi - \Phi \wedge \dot\Phi
 \end{equation}
+% (using the fact that $[\Phi,\dot \Phi] = [\dot \Phi,\Phi]$, which we 
+% can check by writing both out in local coordinates and getting
+% $\Phi_x \dot\Phi_y - $)
 and
 \begin{equation}
   \rho(Z) = (-DZ, [Z,\Phi])
@@ -6328,11 +6339,28 @@ and
 giving
 \begin{align}
   \omega_1(\rho(Z), (\dot A, \dot \Phi)) &= - \int_C \Tr(- D Z \wedge \dot A - [Z,\Phi] \wedge \dot \Phi) \\
-  &= - \int_C \Tr(Z D\dot A - [Z,\Phi] \wedge \dot \Phi) \\
-  &= \fixme{...}
+  &= - \int_C \Tr(Z D\dot A + Z(\dot \Phi \wedge \Phi + \Phi \wedge \dot \Phi) \\
+  &= \de \mu_{1,Z}(\dot A, \dot \Phi)
 \end{align}
+as desired.
 \end{pf}
 
+Thus the vanishing of the \hk moment map gives \ti{Hitchin's equations}:
+\begin{align*}
+\bar\partial_D \Phi &= 0, \\
+F_D + \Phi \wedge \Phi &= 0.
+\end{align*}
+
+Let $\cA^{H,s}$ be the set of \ti{irreducible} solutions.
+
+Now we can define
+\begin{defn}[Moduli space of Higgs bundles]
+\begin{equation}
+  \cM_{K,d}(C) = \cA^H \hkq \fG, \qquad \cM^s_{K,d}(C) = \cA^{H,s} \hkq \fG
+\end{equation}
+\end{defn}
+
+\fixme{decoupled in abelian case}
 
 \printbibliography
 
