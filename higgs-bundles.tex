@@ -5919,8 +5919,6 @@ that $D^*$ was the limit of an infimizing sequence.
 
 \end{pf}
 
-\currentposition
-
 \begin{exercise} Verify the formula \eqref{eq:extension-curvature}.
 It is convenient to think of \eqref{eq:connection-split} as shifting
 a connection by a $1$-form,
@@ -6158,15 +6156,15 @@ Note that this happens \ti{despite} the fact that the underlying
 vector bundle $E$ is unstable.
 
 
-\subsection{Moduli spaces}
+\subsection{Moduli space as holomorphic symplectic quotient}
 
 Now suppose we want to construct a moduli space parameterizing Higgs
 bundles modulo equivalence. To get some crude idea of what will happen,
 let us imagine that we just to take all stable vector bundles
 and then equip them with arbitrary Higgs fields: in other words
-we define $\cM_{K,d}(C)$ to be a vector bundle over 
+we take our ``moduli space'' to be a vector bundle over 
 $\cN_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
-What structure would $\cM_{K,d}(C)$ then get?
+What structure would the moduli space then get?
 
 The holomorphic tangent space to $\cN_{K,d}(C)$ at $E$ is the space
 of harmonic forms $\dot{A}_{\bar z} \in \cH^{0,1}_D(\End E)$.
@@ -6177,27 +6175,34 @@ The two are dual via the pairing
 \begin{equation}
   (\dot{A}_{\bar z}, \Phi_z) \mapsto \int_C \Tr (\dot{A}_{\bar z} \wedge \Phi_z).
 \end{equation}
-Thus we get in this way $\cM_{K,d}(C) = T^* \cN_{K,d}(C)$.
+Thus the moduli space we obtain in this way is simply $T^* \cN_{K,d}(C)$.
 In particular this is a \ti{holomorphic symplectic} manifold.
-But it is not quite the space we are after.
 
-To get the space we are really after, we proceed by a ``doubled''
-version of the infinite-dimensional \kahler quotient we took before,
-i.e. we take an infinite-dimensional
-\hk quotient. As before, we fix a smooth bundle $E$ over $C$, 
-of degree $d$.
-Now we define a ``doubled'' version of the space of $\bar\partial$-operators
+There is another way of viewing this space which will be enlightening.
+We recall that, ignoring questions of stability, we have
+\begin{equation}
+	\cN_{K,d}(C) = \cA^\C_{K,d} / \fG_\C.
+\end{equation}
+This suggests that we might profitably view $T^* \cN_{K,d}(C)$
+as a \ti{holomorphic} symplectic quotient,
+\begin{equation}
+	T^* \cN_{K,d}(C) = (T^* \cA^\C_{K,d}) \kq \fG_\C.
+\end{equation}
+Let us see how this works.
+
+As before, we fix a smooth bundle $E$ over $C$, 
+of degree $d$. Now we define a ``doubled'' version of the space of $\bar\partial$-operators
 on $E$,
 \begin{equation}
   \cA^\C_1 = \cA^{\bar\partial} \times \Omega^{1,0}(\End E).
 \end{equation}
-$\cA^\C_1$ is a complex affine space over
-$\Omega^{0,1}(\End E) \oplus \Omega^{1,0}(\End E)$.
 We denote points of $\cA^\C_1$ as
 \begin{equation}
   (\bar\partial_E, \varphi) \in \cA^\C_1.
 \end{equation}
-Evidently we have
+$\cA^\C_1$ is a complex affine space over
+$\Omega^{0,1}(\End E) \oplus \Omega^{1,0}(\End E)$.
+We have
 \begin{equation}
   \cA^\C_1 = T^* \cA^{\bar\partial}
 \end{equation}
@@ -6216,6 +6221,8 @@ of $\fG_\C$, by
 \begin{equation}
   (\bar\partial_E,\varphi) \mapsto (\bar\partial_E^g = g \bar\partial_E g^{-1}, \varphi^g = g \varphi g^{-1}).
 \end{equation}
+Now we want to take the holomorphic symplectic quotient by this action.
+So first we need to know the moment map:
 
 \begin{prop}[Moment map for $\fG_\C$-action on $\cA^\C_1$]
 The $\fG_\C$-action on $\cA^\C_1$ has a complex moment map
@@ -6251,15 +6258,29 @@ We compute:
 as desired.
 \end{pf}
 
-Thus formally (ignoring questions of stability) 
-the moduli space of Higgs bundles would appear to be
+So, the zero set of the moment map is simply
 \begin{equation}
-  M_1^{-1}(0) / \fG_\C = \cA^\C_1 \kq \fG_\C.
+	M_1^{-1}(0) = \{ (\bar\partial_E, \varphi ) \in \cA^\C_1: \bar\partial_E \varphi = 0 \}.
 \end{equation}
-As we have noted, though, the holomorphic symplectic quotient of 
-a \hk space has another interpretation: we can sometimes interpret
-it as a \hk quotient by a smaller group. 
+This means that
+the holomorphic symplectic quotient
+\begin{equation}
+ \cA^\C_1 \kq \fG_\C = M_1^{-1}(0) / \fG_\C
+\end{equation}
+consists of equivalence classes of holomorphic bundles equipped
+with \ti{holomorphic} Higgs fields, just as we wanted.
+This is encouraging. On the other hand, by itself, it doesn't
+give us anything really new about the space.
+
+
+\subsection{Moduli space as \hk quotient}
+
+As we have noted, though, a holomorphic symplectic quotient $X \kq G_\C$ 
+often has another interpretation: if the space $X$ with which we began
+was actually \hk, then we can try to identify $X \kq G_\C = X \hkq G$,
+and thus get a \hk structure on the quotient.
 Let us try to do that here.
+
 As we did before, we introduce a Hermitian metric $h$ on the 
 bundle $E$.
 Then let $\cA^H$ denote the space
@@ -6291,6 +6312,9 @@ we had on $\cA^h$:
 Note that the $\omega_i$ are translation invariant forms on $\cA^H$ and hence
 closed.
 
+\begin{exercise} Verify that indeed $\Omega_1 = \omega_2 + \I \omega_3$.
+\end{exercise}
+
 \begin{prop}[\Hk structure on $\cA^H$] The forms
 $(\omega_1, \omega_2, \omega_3)$ on $\cA^H$ are the symplectic
 forms for a \hk structure $(I_1,I_2,I_3,g)$ on $\cA^H$, with \hk metric
@@ -6308,6 +6332,18 @@ The complex structures act by:
 \begin{pf} Just compute directly that $I_i^2 = -1$, $I_1 I_2 = I_3$,
 and $\omega_i(\cdot, \cdot) = g(I_i \cdot, \cdot)$.
 \end{pf}
+
+There is a more abstract way of viewing this construction:
+\begin{exercise} \label{exc:VVstar-hk} If $(V,I,\omega)$ 
+is a \kahler vector space, show that 
+$V \oplus V^*$ admits a canonical \hk structure, for which $I_1 = I \oplus I^*$,
+$\omega_1 = \omega \oplus \omega^{-1}$,
+and $\Omega_1(v \oplus \alpha, v' \oplus \alpha') = \alpha'(v) - \alpha(v')$. \fixme{check factors}
+\end{exercise}
+
+\begin{exercise} Show that the \hk structure on $\cA^H$ introduced 
+above arises from the construction of \autoref{exc:VVstar-hk}.
+\end{exercise}
 
 \begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
 The $\fG$ action on $\cA^H$ admits a \hk moment map, given by:
@@ -6339,17 +6375,19 @@ and
 giving
 \begin{align}
   \omega_1(\rho(Z), (\dot A, \dot \Phi)) &= - \int_C \Tr(- D Z \wedge \dot A - [Z,\Phi] \wedge \dot \Phi) \\
-  &= - \int_C \Tr(Z D\dot A + Z(\dot \Phi \wedge \Phi + \Phi \wedge \dot \Phi) \\
+  &= - \int_C \Tr(Z D\dot A + Z(\dot \Phi \wedge \Phi + \Phi \wedge \dot \Phi)) \\
   &= \de \mu_{1,Z}(\dot A, \dot \Phi)
 \end{align}
 as desired.
 \end{pf}
 
-Thus the vanishing of the \hk moment map gives \ti{Hitchin's equations}:
-\begin{align*}
+Thus the vanishing of the \hk moment map, $\vec\mu = 0$, gives \ti{Hitchin's equations}:
+\begin{align}
 \bar\partial_D \Phi &= 0, \\
 F_D + \Phi \wedge \Phi &= -2 \pi \I \frac{d}{K} \bid \omega_C.
-\end{align*}
+\end{align}
+
+\currentposition
 
 Let $\cA^{H,s}$ be the set of \ti{irreducible} solutions.
 
