@@ -941,7 +941,7 @@ connection in $E$ with the claimed properties.
 Relative to a local holomorphic trivialization, show 
 that $D = \de + A$,
 where
-\begin{equation} \label{eq:chern-connection-local}
+\begin{equation} \label{eq:chern-connection-local-holomorphic}
   A = h^{-1} \partial h.
 \end{equation}
 
@@ -4923,7 +4923,7 @@ with the complex linear space $\Omega^{0,1}(\End E)$.
 
 On $\Omega^{1}(\fu(E))$ we have a natural pairing
 \begin{equation} \label{eq:symplectic-form-A}
-  \omega(\alpha,\beta) = -\int_C \Tr(\alpha \wedge \beta).
+  \omega(\dot{A}_1,\dot{A}_2) = -\int_C \Tr(\dot{A}_1 \wedge \dot{A}_2).
 \end{equation}
 We would like to think of this as a symplectic form.
 
@@ -4955,7 +4955,7 @@ on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta
 
 \begin{exercise} Verify that $\cA_k$ is \kahler, and that the metric is
 \begin{equation}
-  g(\alpha,\beta) = - \int_C \Tr(\alpha \wedge \star \beta).
+  g(\dot{A}_1,\dot{A}_2) = - \int_C \Tr(\dot{A}_1 \wedge \star \dot{A}_2).
 \end{equation}
 \end{exercise}
 Moreover, $\cA_k$ carries a natural action of $\fG_{k+1}$:
@@ -4997,15 +4997,15 @@ $Z \in \Lie \fG_{k+1} = \Omega^0_{k+1}(\fu(E))$ by infinitesimal gauge transform
   \rho(Z) = -DZ
 \end{equation}
 and the differential of $\mu_Z$, acting on a tangent vector
-$\beta \in \Omega^1_{k}(\fu(E)) = T\cA^h_k$:
+$\dot{A} \in \Omega^1_{k}(\fu(E)) = T\cA^h_k$:
 \begin{equation} \label{eq:diff-moment-map}
-\de \mu_Z \cdot \beta = -\int_C \Tr (Z \, D\beta).
+\de \mu_Z \cdot \dot{A} = -\int_C \Tr (Z \, D\dot{A}).
 \end{equation}
 We compute
 \begin{align}
-  \omega(\rho(Z), \beta) &= \int_C \Tr (DZ \wedge \beta) \\
-  &= -\int_C \Tr (Z \, D\beta) \\
-  &= \de \mu_Z \cdot \beta.
+  \omega(\rho(Z), \dot{A}) &= \int_C \Tr (DZ \wedge \dot{A}) \\
+  &= -\int_C \Tr (Z \, D\dot{A}) \\
+  &= \de \mu_Z \cdot \dot{A}.
 \end{align}
 \end{pf}
 
@@ -5378,7 +5378,7 @@ Then defining
 the $(x_i,y_i)$ give an explicit diffeomorphism $\Jac C \simeq (S^1)^{2g}$.
 
 Now, from $\Jac(C) \simeq H^1(C,U(1))$
-we get an identification
+we get an identification \fixme{watch out for factors $\I$ here}
 \begin{equation} \label{eq:tangent-to-jacobian-derham}
  T_x \Jac(C) \simeq H^1(C,\R).
 \end{equation}
@@ -5409,7 +5409,7 @@ the symplectic form $\omega$ is just obtained by
 restriction of the original symplectic form \eqref{eq:symplectic-form-A}
 from $\cA$ to $\cH^1(C)$,
 \begin{equation} \label{eq:symplectic-form-jac}
-  \omega(\alpha, \beta) = \int_C \alpha \wedge \beta.
+  \omega(\dot{A}_1, \dot{A}_2) = - \int_C \dot{A}_1 \wedge \dot{A}_2.
 \end{equation}
 This pairing in fact depends only on the cohomology classes of
 $\alpha$ and $\beta$, not on the actual harmonic forms
@@ -5418,7 +5418,7 @@ an intrinsically defined symplectic form on $H^1(C,U(1))$.
 We could write it even more concretely: in the coordinates
 $x_i$, $y_i$ we introduced above, \fixme{sign?}
 \begin{equation} \label{eq:jacobian-explicit-symplectic-form}
-	\omega = - \sum_i \frac{\de x_i}{x_i} \wedge \frac{\de y_i}{y_i}.
+	\omega = \sum_i \frac{\de x_i}{x_i} \wedge \frac{\de y_i}{y_i}.
 \end{equation}
 In particular this form does not depend on the complex structure
 we chose on $C$.
@@ -5438,13 +5438,12 @@ Thus the \kahler metric on $\Jac(C)$
 also depends on the complex structure of $C$.
 Explicitly, we can write the \kahler metric as
 \begin{equation}
-  g(\alpha, \beta) = \int \alpha \wedge \star \beta
+  g(\dot{A}_1, \dot{A}_2) = \int \dot{A}_1 \wedge \star \dot{A}_2
 \end{equation}
-where $\alpha$, $\beta \in \cH^1(C)$.
+where $\dot{A}_1$, $\dot{A}_2 \in \cH^1(C)$.
 Loosely speaking, as we deform $C$, the ``angles'' of $\Jac(C)$
 are changing.
 \end{example}
-
 
 \begin{exercise} Prove the formula \eqref{eq:jacobian-explicit-symplectic-form}
 for the symplectic form on $\Jac(C)$.
@@ -5489,7 +5488,7 @@ the other a holomorphic coordinate
 \alpha \in \C / \left( 2\pi \Z \oplus  2\pi \tau \Z\right).
 \end{equation}
 Thus $\Jac C$ is biholomorphic to $C$ itself.
-The \kahler form is
+The \kahler form is \fixme{sign?}
 \begin{equation}
   \omega = \de \theta_x \wedge \de \theta_y = (\tau - \bar\tau) \de \alpha \wedge \de \bar\alpha.
 \end{equation}
@@ -5515,7 +5514,7 @@ which generally is not harmonic. What we want to do is to
 improve $h$ to some $h'$ so that $F_{D_{h'}} \in \cH^2(C)$.
 We can write $h' = e^f h$ for some $f: C \to \R$.
 
-Then we have, using \eqref{eq:chern-connection-local},
+Then we have, using \eqref{eq:chern-connection-local-holomorphic},
 \begin{equation}
   F_{D_{h'}} = F_{D_h} + \bar\partial \partial f.
 \end{equation}
@@ -5816,7 +5815,7 @@ sequence of connections $D_n$ for which
 $J(F_{D_n})$ approaches its infimum. 
 Using the Uhlenbeck compactness
 theorem \autoref{thm:uhlenbeck-weak} we can make gauge transformations
-such that this sequence becomes \ti{convergent}
+such that some subsequence becomes \ti{convergent}
 (in the weak $L^2_1$ sense), to 
 some limiting connection $D_*$. If 
 $D_* \in \cO$ then we are done. 
@@ -5829,12 +5828,14 @@ holomorphic map
 \begin{equation}
   \gamma: (E,\bar\partial_D) \to (E,\bar\partial_{D_*}).
 \end{equation}
-This uses the fact that holomorphically $(E,\bar\partial_D) \simeq (E,\bar\partial_{D_n})$ --- in other words, the operator $D^*_n \otimes D$
+This uses the fact that holomorphically $(E,\bar\partial_D) \simeq (E,\bar\partial_{D_n})$ --- in other words, the operator
+$\bar\partial_{D^*_n} \otimes \bar\partial_D$
 on $\Hom(E,E)$ has a nontrivial kernel. Some elliptic estimates
 show that this kernel cannot disappear in the limit (roughly:
 if the lowest eigenvalue of the associated Laplacian is zero
-for all $D_n$ then it is also zero for $D_*$),
-so $D_*^* \otimes D$ also has a nontrivial kernel,
+for all $\bar\partial_{D_n}$ then it is also zero for $\bar\partial_{D_*}$),
+so $\bar\partial_{D^*_n} \otimes \bar\partial_D$
+ also has a nontrivial kernel,
 giving the desired $\gamma$.
 
 Now, since $\Hom(E,E)$ has degree zero and $\gamma$ is holomorphic,
@@ -5855,8 +5856,7 @@ Then we have a diagram of vector bundles:
 \end{equation}
 where on the top row we have the holomorphic structure
 $\bar\partial_D$ and on the bottom $\bar\partial_{D_*}$;
-and $\det \rho$ is generically nonzero (this comes from 
-the maximality of $K$ and minimality of $F$.)
+and $\det \rho$ is generically nonzero.
 The existence of $\rho$ then implies 
 \begin{equation}
   \deg G \le \deg F.
@@ -5865,7 +5865,7 @@ Moreover, since $(E,\bar\partial_D)$ (the top row) was assumed stable,
 we must have $\deg K < 0$, so $\deg G > 0$, and thus $\deg F > 0$.
 In particular, this means $(E,\bar\partial_{D_*})$ (the bottom row) is 
 \ti{unstable}. (That is as we should expect: $D_*$ is 
-in the closure of the $\fG_\C$-orbit of $D$, so if it
+in the closure of the $\fG_\C$-orbit $\cO$, so if it
 were stable, it would lead to some non-Hausdorff behavior 
 in the quotient.)
 
@@ -6116,59 +6116,68 @@ just means a holomorphic line bundle plus a holomorphic 1-form,
 $\varphi \in H^0(K_C)$. This is always stable.
 \end{example}
 
-\begin{defn}[Spin structure] \label{defn:spin-structure} A \ti{spin structure} on $C$
-is a holomorphic line bundle $\cL$ equipped with an isomorphism
-$\cL^2 \simeq K_C$.
-\end{defn}
+% \begin{defn}[Spin structure] \label{defn:spin-structure} A \ti{spin structure} on $C$
+% is a holomorphic line bundle $\cL$ equipped with an isomorphism
+% $\cL^2 \simeq K_C$.
+% \end{defn}
 
-\begin{exercise} Show that the set of spin structures on $C$ (up to 
-the natural notion of equivalence) is a torsor for $H^1(C,\Z/2\Z)$.
-So in particular, there are $2^{2g}$ inequivalent 
-spin structures on a genus $g$ surface.
-\end{exercise}
+% \begin{exercise} Show that the set of spin structures on $C$ (up to 
+% the natural notion of equivalence) is a torsor for $H^1(C,\Z/2\Z)$.
+% So in particular, there are $2^{2g}$ inequivalent 
+% spin structures on a genus $g$ surface.
+% \end{exercise}
 
-\begin{exercise} Show that
-\autoref{defn:spin-structure} is equivalent
-to your favorite definition of spin structure, if you have one.
-\end{exercise}
+% \begin{exercise} Show that
+% \autoref{defn:spin-structure} is equivalent
+% to your favorite definition of spin structure, if you have one.
+% \end{exercise}
 
-\begin{example}[Hitchin section for $K=2$] \label{exa:hitchin-section-K2} 
-Fix a spin structure
+\begin{example}[``Hitchin section'' for $GL(2)$] \label{exa:hitchin-section-K2} 
+Fix a line bundle
 $\cL$ on $C$.
 Then consider the holomorphic vector
 bundle
 \begin{equation}
-  E = \cL \oplus \cL^{-1}
+  E = \cL \otimes K_C \oplus \cL.
 \end{equation}
 For any $(\phi_1, \phi_2) \in H^0(C,K_C) \oplus H^0(C,K_C^2)$,
 we can equip $E$ with the Higgs field
 \begin{equation}
-  \varphi = \begin{pmatrix} \phi_1 & \phi_2 \\ 1 & \phi_1 \end{pmatrix} \in \begin{pmatrix} \Hom(\cL,\cL) \otimes K_C & \Hom(\cL^{-1},\cL) \otimes K_C \\ \Hom(\cL,\cL^{-1}) \otimes K_C & \Hom(\cL^{-1},\cL^{-1}) \otimes K_C \end{pmatrix} = \begin{pmatrix} K_C & K_C^2 \\ \cO & K_C \end{pmatrix}
+  \varphi = \begin{pmatrix} \phi_1 & \phi_2 \\ 1 & \phi_1 \end{pmatrix} \in \begin{pmatrix} \Hom(\cL \otimes K_C,\cL \otimes K_C) \otimes K_C & \Hom(\cL,\cL \otimes K_C) \otimes K_C \\ \Hom(\cL \otimes K_C,\cL) \otimes K_C & \Hom(\cL,\cL) \otimes K_C \end{pmatrix} = \begin{pmatrix} K_C & K_C^2 \\ \cO & K_C \end{pmatrix}
 \end{equation}
 and thus obtain a Higgs bundle.
 \end{example}
 
 \begin{exercise}
-Show that the Higgs bundles in \autoref{exa:hitchin-section-K2} are stable
+Show that the Higgs bundles in \autoref{exa:hitchin-section-K2} are stable,
+for any $(\phi_1,\phi_2)$,
 as long as $C$ has genus $g \ge 2$.
 \end{exercise}
+
+Note that this happens \ti{despite} the fact that the underlying
+vector bundle $E$ is unstable.
+
 
 \subsection{Moduli spaces}
 
 Now suppose we want to construct a moduli space parameterizing Higgs
-bundles modulo equivalence, and we want it to be somehow ``nice.''
-The simplest idea would be just to take all stable vector bundles
+bundles modulo equivalence. To get some crude idea of what will happen,
+let us imagine that we just to take all stable vector bundles
 and then equip them with arbitrary Higgs fields: in other words
-take a vector bundle over 
+we define $\cM_{K,d}(C)$ to be a vector bundle over 
 $\cN_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
+What structure would $\cM_{K,d}(C)$ then get?
+
 The holomorphic tangent space to $\cN_{K,d}(C)$ at $E$ is the space
-$\cH^{0,1}(\End E)$ of harmonic forms $\alpha \in \Omega^{0,1}(\End E)$.
-This space is naturally dual to $H^0(C, \End E \otimes K_C)$, via the 
-pairing
+of harmonic forms $\dot{A}_{\bar z} \in \cH^{0,1}_D(\End E)$.
+We can similarly identify $H^0(C, \End E \otimes K_C)$ as the space 
+of harmonic forms $\varphi = \Phi_z \in \cH^{1,0}_D(\End E)$.
+\fixme{need a little more Hodge theory background for this}
+The two are dual via the pairing
 \begin{equation}
-  (\alpha, \psi) \in \cH^{0,1}(\End E) \times H^0(C,\End E \otimes K_C) \mapsto \int_C \Tr (\alpha \wedge \psi).
+  (\dot{A}_{\bar z}, \Phi_z) \mapsto \int_C \Tr (\dot{A}_{\bar z} \wedge \Phi_z).
 \end{equation}
-Thus the moduli space we obtain in this way would be $T^* \cN_{K,d}(C)$.
+Thus we get in this way $\cM_{K,d}(C) = T^* \cN_{K,d}(C)$.
 In particular this is a \ti{holomorphic symplectic} manifold.
 But it is not quite the space we are after.
 
@@ -6200,15 +6209,9 @@ The space $\cA^\C_1$ carries an obvious complex structure (since $T\cA^\C_1$
 is naturally a complex vector space).
 It also carries a natural holomorphic symplectic form:
 \begin{equation} \label{eq:Omega-1-AC}
-  \Omega_1((\alpha_1, \psi_1),(\alpha_2, \psi_2)) = \int \Tr (\alpha_1 \wedge \psi_2 - \alpha_2 \wedge \psi_1).
+  \Omega_1((\dot{A}_{1{\bar z}}, \dot\Phi_{1z}),(\dot{A}_{2\bar{z}}, \dot\Phi_{2z})) = - 2 \I \int \Tr (\dot{A}_{1{\bar z}} \wedge \dot\Phi_{2z} - \dot{A}_{2\bar{z}} \wedge \dot\Phi_{1z}).
 \end{equation}
-
-\begin{exercise}
-Verify that the holomorphic symplectic form \eqref{eq:Omega-1-AC} 
-is the natural one on $T^* \cA^{\bar\partial}$.
-\end{exercise}
-
-As for $\cA^{\bar\partial}$, the space $\cA^\C_1$ has a natural action
+As with $\cA^{\bar\partial}$, $\cA^\C_1$ has a natural action
 of $\fG_\C$, by
 \begin{equation}
   (\bar\partial_E,\varphi) \mapsto (\bar\partial_E^g = g \bar\partial_E g^{-1}, \varphi^g = g \varphi g^{-1}).
@@ -6216,13 +6219,14 @@ of $\fG_\C$, by
 
 \begin{prop}[Moment map for $\fG_\C$-action on $\cA^\C_1$]
 The $\fG_\C$-action on $\cA^\C_1$ has a complex moment map
+with respect to $\Omega_1$,
 \begin{equation}
-  M_1 = \bar\partial_E \varphi.
+  M_1 = -2 \I \bar\partial_E \varphi.
 \end{equation}
 More precisely, this means: given $Z \in \Lie \fG = \Omega^0(\End E)$
 we have
 \begin{equation}
-  \mu_Z(\bar\partial_E,\varphi) = \int_C \Tr(Z \bar\partial_E \varphi).
+  M_{1,Z}(\bar\partial_E,\varphi) = -2 \I \int_C \Tr(Z \bar\partial_E \varphi).
 \end{equation}
 \end{prop}
 
@@ -6230,36 +6234,39 @@ we have
 For $Z \in \Lie \fG_\C = \Omega^0(\End E)$ we have
 the infinitesimal action
 \begin{equation}
-  \rho(Z) (\bar\partial_E,\varphi) = (- \bar\partial_E Z, [\varphi,Z]),
+  \rho(Z) = (- \bar\partial_E Z, [Z,\varphi]),
 \end{equation}
 and for
-$(\alpha,\psi) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$
+$(\dot A_{\bar z},\dot\Phi_z) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$
 we have
 \begin{equation}
-  \de \mu_Z (\alpha,\psi) = \int_C \Tr( Z [\alpha,\varphi] + Z \bar\partial_E \psi)
+  \de M_{1,Z} (\dot A_{\bar z},\dot\Phi_z) = -2 \I \int_C \Tr( Z [\dot A_{\bar z},\varphi] + Z \bar\partial_E \dot\Phi_z)
 \end{equation}
 We compute:
 \begin{align}
-  \Omega_1(\rho(Z), (\alpha,\psi)) &= \int_C \Tr(- \bar\partial_E Z \wedge \psi - \alpha \wedge [\varphi,Z]) \\
-  &= \int_C \Tr(Z \bar\partial_E \psi + Z[\alpha,\varphi]) \\
-  &= \de \mu_Z(\alpha,\psi)
+  \Omega_1(\rho(Z), (\dot A_{\bar z},\dot\Phi_z)) &= -2 \I \int_C \Tr(- \bar\partial_E Z \wedge \dot\Phi_z - \dot A_{\bar z} \wedge [Z,\varphi]) \\
+  &= -2 \I \int_C \Tr(Z \bar\partial_E \dot\Phi_z + Z[\dot A_{\bar z},\varphi]) \\
+  &= \de M_{1,Z}(\dot A_{\bar z},\dot\Phi_z)
 \end{align}
 as desired.
 \end{pf}
 
-Thus formally the moduli space of Higgs bundles would appear to be
+Thus formally (ignoring questions of stability) 
+the moduli space of Higgs bundles would appear to be
 \begin{equation}
   M_1^{-1}(0) / \fG_\C = \cA^\C_1 \kq \fG_\C.
 \end{equation}
 As we have noted, though, the holomorphic symplectic quotient of 
-an \hk space has another interpretation: we can sometimes interpret
-it as an \hk quotient by a smaller group. 
+a \hk space has another interpretation: we can sometimes interpret
+it as a \hk quotient by a smaller group. 
 Let us try to do that here.
 As we did before, we introduce a Hermitian metric $h$ on the 
 bundle $E$.
 Then let $\cA^H$ denote the space
 of pairs $(D,\Phi)$ where $D$ is a \ti{unitary} connection on $(E,h)$
 and $\Phi \in \Omega^1(\fu(E))$.
+$\cA^H$ is naturally an affine space over
+$\Omega^1(\fu(E)) \oplus \Omega^1(\fu(E))$.
 The group $\fG$ of unitary gauge transformations
 acts on $\cA^H$ by
 \begin{equation}
@@ -6268,34 +6275,63 @@ acts on $\cA^H$ by
 We have an isomorphism of real affine spaces
 \begin{align}
     \cA^\C_1 &\simarrow \cA^H \\
-    (\bar\partial_E,\varphi) & \mapsto (D_h, \Phi = \varphi - \varphi^\dagger)
+    (\bar\partial_E,\varphi) & \mapsto (D = \bar\partial_E + \partial_E, \Phi = \varphi - \varphi^\dagger)
 \end{align}
-where as usual $D_h$ denotes the Chern connection corresponding
-to $\bar\partial_E$.
+where $\bar\partial_E + \partial_E$ denotes the Chern connection.
 
-$\cA^H$ also carries a natural real symplectic form
-\begin{equation}
-  \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) = \int \Tr(\dot A_1 \wedge \dot A_2 + \dot \Phi_1 \wedge \dot \Phi_2),
-\end{equation}
-along with the complex form $\Omega_1$ which we break into 
-components $\Omega_1 = \omega_2 + \I \omega_3$.
+$\cA^H$ carries the complex form $\Omega_1$ which we break into 
+components $\Omega_1 = \omega_2 + \I \omega_3$, plus another 
+real symplectic form, naturally extending the one which 
+we had on $\cA^h$:
+\begin{align}
+  \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= - \int_C \Tr(\dot A_1 \wedge \dot A_2 - \dot \Phi_1 \wedge \dot \Phi_2), \\
+  \omega_2((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(\dot \Phi_1 \wedge \star \dot A_2 + \dot A_1 \wedge \star \dot \Phi_2), \\
+  \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= - \int_C \Tr(\dot\Phi_1 \wedge \dot A_2 + \dot A_1 \wedge \dot \Phi_2).
+\end{align}
+
 
 \begin{prop}[\Hk structure on $\cA^H$] The forms
 $(\omega_1, \omega_2, \omega_3)$ on $\cA^H$ are the symplectic
 forms for a \hk structure on $\cA^H$, with \hk metric
 \begin{equation}
-  g = \fixme{...}
+  g((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) = - \int_C \Tr(\dot A_1 \wedge \star \dot A_2 + \dot \Phi_1 \wedge \star \dot \Phi_2)
+\end{equation}
+The complex structures act by: 
+\begin{align}
+ I_1(\dot A, \dot \Phi) &= (\star \dot A, - \star \dot \Phi), \\
+ I_2(\dot A, \dot \Phi) &= (- \dot \Phi, \dot A), \\
+ I_3(\dot A, \dot \Phi) &= (- \star \dot\Phi, - \star \dot A).
+\end{align}
+\end{prop}
+
+\begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
+The $\fG$ action on $\cA^H$ admits a \hk moment map, given by:
+\begin{equation}
+  \mu_2 + \I \mu_3 = - 2 \I \bar\partial_E \varphi
+\end{equation}
+and
+\begin{equation}
+  \mu_1 = -F_D - [\Phi, \Phi] - 2 \pi \I \frac{d}{K} \bid \omega_C
 \end{equation}
 \end{prop}
 
-\fixme{describe the 3 complex structures and who's holomorphic in each}
-\fixme{structure $I_1$: $A_z$, $\Phi_z$}
-\fixme{structure $I_2$: ...}
-\fixme{structure $I_3$: ...}
-
-\begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
-\fixme{...}
-\end{prop}
+\begin{pf} We have already computed the holomorphic moment map
+$M_1 = \mu_2 + \I \mu_3$. All we need to do is check the 
+formula for $\mu_1$. We have
+\begin{equation}
+  \de \mu_1(\dot A, \dot \Phi) = - D \dot{A} - [\dot\Phi,\Phi] - [\Phi,\dot\Phi]
+\end{equation}
+and
+\begin{equation}
+  \rho(Z) = (-DZ, [Z,\Phi])
+\end{equation}
+giving
+\begin{align}
+  \omega_1(\rho(Z), (\dot A, \dot \Phi)) &= - \int_C \Tr(- D Z \wedge \dot A - [Z,\Phi] \wedge \dot \Phi) \\
+  &= - \int_C \Tr(Z D\dot A - [Z,\Phi] \wedge \dot \Phi) \\
+  &= \fixme{...}
+\end{align}
+\end{pf}
 
 
 \printbibliography
