@@ -6139,7 +6139,7 @@ bundle
 \begin{equation}
   E = \cL \otimes K_C \oplus \cL.
 \end{equation}
-For any $(\phi_1, \phi_2) \in H^0(C,K_C) \oplus H^0(C,K_C^2)$,
+For any $(\phi_1, \phi_2) \in H^0(K_C) \oplus H^0(K_C^2)$,
 we can equip $E$ with the Higgs field
 \begin{equation}
   \varphi = \begin{pmatrix} \phi_1 & \phi_2 \\ 1 & \phi_1 \end{pmatrix} \in \begin{pmatrix} \Hom(\cL \otimes K_C,\cL \otimes K_C) \otimes K_C & \Hom(\cL,\cL \otimes K_C) \otimes K_C \\ \Hom(\cL \otimes K_C,\cL) \otimes K_C & \Hom(\cL,\cL) \otimes K_C \end{pmatrix} = \begin{pmatrix} K_C & K_C^2 \\ \cO & K_C \end{pmatrix}
@@ -6153,24 +6153,33 @@ for any $(\phi_1,\phi_2)$,
 as long as $C$ has genus $g \ge 2$.
 \end{exercise}
 
-Note that this happens \ti{despite} the fact that the underlying
+Note that these Higgs bundles are stable \ti{despite} the fact that the underlying
 vector bundle $E$ is unstable.
 
 
 \subsection{Moduli space as holomorphic symplectic quotient}
 
-Now suppose we want to construct a moduli space parameterizing Higgs
+Now suppose we want to construct a moduli space parameterizing stable Higgs
 bundles modulo equivalence. To get some crude idea of what will happen,
-let us imagine that we just to take all stable vector bundles
+let us imagine that we take all stable vector bundles
 and then equip them with arbitrary Higgs fields: in other words
 we take our ``moduli space'' to be a vector bundle over 
-$\cN_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
-What structure would the moduli space then get?
+$\cN^s_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
 
-We can identify $H^0(C, \End E \otimes K_C)$ as the space 
-of harmonic forms $\varphi = \Phi_z \in \cH^{1,0}_D(\End E)$.
+\insfig{higgs-bundles-16}{1.0}
+
+Since every Higgs bundle obtained in this way is stable, we 
+should expect that this is at least a subset of the actual 
+moduli space of all stable Higgs bundles.
+What structure does it carry?
+
+Fix a point $D \in \cN^s_{K,d}(C)$.
+The space of Higgs fields on the holomorphic bundle $(E, \bar\partial_D)$
+is the same as the space of harmonic forms
+$\varphi = \Phi_z \in \cH^{1,0}_D(\End E)$.
 \fixme{need a little more Hodge theory background for this}
-On the other hand, the holomorphic tangent space to $\cN_{K,d}(C)$ at $E$ is the space
+On the other hand, the tangent space to $\cN_{K,d}(C)$ at $D$, considered
+as a complex vector space, is the space
 of harmonic forms $\dot{A}_{\bar z} \in \cH^{0,1}_D(\End E)$.
 The two are dual via the pairing
 \begin{equation}
