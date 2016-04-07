@@ -6166,11 +6166,11 @@ we take our ``moduli space'' to be a vector bundle over
 $\cN_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
 What structure would the moduli space then get?
 
-The holomorphic tangent space to $\cN_{K,d}(C)$ at $E$ is the space
-of harmonic forms $\dot{A}_{\bar z} \in \cH^{0,1}_D(\End E)$.
-We can similarly identify $H^0(C, \End E \otimes K_C)$ as the space 
+We can identify $H^0(C, \End E \otimes K_C)$ as the space 
 of harmonic forms $\varphi = \Phi_z \in \cH^{1,0}_D(\End E)$.
 \fixme{need a little more Hodge theory background for this}
+On the other hand, the holomorphic tangent space to $\cN_{K,d}(C)$ at $E$ is the space
+of harmonic forms $\dot{A}_{\bar z} \in \cH^{0,1}_D(\End E)$.
 The two are dual via the pairing
 \begin{equation}
   (\dot{A}_{\bar z}, \Phi_z) \mapsto \int_C \Tr (\dot{A}_{\bar z} \wedge \Phi_z).
@@ -6179,12 +6179,13 @@ Thus the moduli space we obtain in this way is simply $T^* \cN_{K,d}(C)$.
 In particular this is a \ti{holomorphic symplectic} manifold.
 
 There is another way of viewing this space which will be enlightening.
-We recall that, ignoring questions of stability, we have
+We recall that, ignoring questions of stability, $\cN_{K,d}$ just
+consists of all holomorphic structures up to equivalence,
 \begin{equation}
-	\cN_{K,d}(C) = \cA^\C_{K,d} / \fG_\C.
+	\cN_{K,d}(C) = \cA^\C / \fG_\C.
 \end{equation}
 This suggests that we might profitably view $T^* \cN_{K,d}(C)$
-as a \ti{holomorphic} symplectic quotient,
+as a holomorphic symplectic quotient,
 \begin{equation}
 	T^* \cN_{K,d}(C) = (T^* \cA^\C_{K,d}) \kq \fG_\C.
 \end{equation}
@@ -6342,18 +6343,19 @@ and $\Omega_1(v \oplus \alpha, v' \oplus \alpha') = \alpha'(v) - \alpha(v')$. \f
 \end{exercise}
 
 \begin{exercise} Show that the \hk structure on $\cA^H$ introduced 
-above arises from the construction of \autoref{exc:VVstar-hk}.
+above arises from the construction of \autoref{exc:VVstar-hk},
+applied to the vector space $V = \Omega^1(\fu(E))$.
 \end{exercise}
+
+In order to take a \hk quotient $\cA^H \hkq \fG$ we need
+first to have a moment map.
 
 \begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
 The $\fG$ action on $\cA^H$ admits a \hk moment map, given by:
-\begin{equation}
-  \mu_2 + \I \mu_3 = - 2 \I \bar\partial_E \varphi
-\end{equation}
-and
-\begin{equation}
-  \mu_1 = -F_D - \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C
-\end{equation}
+\begin{align}
+  \mu_2 + \I \mu_3 &= - 2 \I \bar\partial_D \varphi \\
+  \mu_1 &= -F_D - \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C.
+\end{align}
 \end{prop}
 
 \begin{pf} We have already computed the holomorphic moment map
@@ -6379,18 +6381,24 @@ giving
   &= \de \mu_{1,Z}(\dot A, \dot \Phi)
 \end{align}
 as desired.
+(Note that $\mu_1$ comes as a sum of two pieces, one involving $D$ and 
+one involving $\Phi$. This happens because the gauge group acts 
+separately on the two and the symplectic form $\omega_1$ is a sum
+of one piece involving $D$ and one involving $\Phi$. Moreover, if
+we look only at the part involving $D$, then our computations
+just reduce to those in \autoref{prop:unitary-connections-moment-map}.)
 \end{pf}
+
 
 Thus the vanishing of the \hk moment map, $\vec\mu = 0$, gives \ti{Hitchin's equations}:
 \begin{align}
-\bar\partial_D \Phi &= 0, \\
+\bar\partial_D \varphi &= 0, \\
 F_D + \Phi \wedge \Phi &= -2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{align}
 
 \currentposition
 
-Let $\cA^{H,s}$ be the set of \ti{irreducible} solutions.
-
+Let $\cA^{H,s}$ be the set of \ti{irreducible} pairs $(\bar\partial_E, \varphi)$.
 Now we can define
 \begin{defn}[Moduli space of Higgs bundles]
 \begin{equation}
