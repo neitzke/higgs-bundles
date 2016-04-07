@@ -6331,7 +6331,12 @@ The complex structures act by:
 \end{prop}
 
 \begin{pf} Just compute directly that $I_i^2 = -1$, $I_1 I_2 = I_3$,
-and $\omega_i(\cdot, \cdot) = g(I_i \cdot, \cdot)$.
+and $\omega_i(\cdot, \cdot) = g(I_i \cdot, \cdot)$. \fixme{some sign error here?}
+For example, when $i=3$ this amounts to checking that
+\begin{equation}
+g((- \star \dot \Phi_1,- \star \dot A_1),(\dot A_2, \dot \Phi_2)) = \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2))	
+\end{equation}
+
 \end{pf}
 
 There is a more abstract way of viewing this construction:
