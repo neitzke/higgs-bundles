@@ -4827,6 +4827,10 @@ The only reason we do not adopt this as the definition is that
 it does not make immediately manifest the fact that $\deg E$ is an 
 \ti{integer}.
 
+\begin{exercise} Show that the vector bundle $E$ and the line bundle $\det E$ 
+have the same degree.
+\end{exercise}
+
 Another interpretation of the degree which is useful for developing 
 intuition is:
 \begin{prop}[Degree counts zeroes] Suppose $E$ is a complex vector bundle over $C$, of rank $K$.
@@ -4846,10 +4850,6 @@ minus the number of poles (counted with multiplicity.)
 
 \begin{exercise} Show that the line bundle $\cO(n)$ over $\C\PP^1$
 has degree $n$.
-\end{exercise}
-
-\begin{exercise} Show that the vector bundle $E$ and the line bundle $\det E$ 
-have the same degree.
 \end{exercise}
 
 
@@ -4919,6 +4919,7 @@ is summarized in the next exercise:
 $\Omega^{1}(\fu(E))$ carries a natural complex structure $I$,
 and with this complex structure it is canonically identified
 with the complex linear space $\Omega^{0,1}(\End E)$.
+Moreover show that $I = \star$.
 \end{exercise}
 
 On $\Omega^{1}(\fu(E))$ we have a natural pairing
@@ -4950,7 +4951,7 @@ with $C^\infty$ objects.
 Altogether we now have a single space $\cA_k$ $(\simeq \cA^{\bar\partial}_k \simeq \cA^h_k)$ with both symplectic and
 complex structures.
 \begin{exercise} Verify that the complex and symplectic structures
-on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
+on $\cA_k$ are compatible, i.e. $\omega(I \dot{A}_1, I \dot{A}_2) = \omega(\dot{A}_1,\dot{A}_2)$.
 \end{exercise}
 
 \begin{exercise} Verify that $\cA_k$ is \kahler, and that the metric is
@@ -6247,7 +6248,7 @@ and for
 $(\dot A_{\bar z},\dot\Phi_z) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$,
 we compute by differentiating \eqref{eq:M1-gauge}
 \begin{equation}
-  \de M_{1,Z} (\dot A_{\bar z},\dot\Phi_z) = -2 \I \int_C \Tr( Z [\dot A_{\bar z},\varphi] + Z \bar\partial_E \dot\Phi_z)
+  \de M_{1,Z} (\dot A_{\bar z},\dot\Phi_z) = -2 \I \int_C \Tr( Z [\dot A_{\bar z},\varphi] + Z \bar\partial_E \dot\Phi_z).
 \end{equation}
 Now we can check directly that $M_1$ is indeed a moment map, using \eqref{eq:Omega-1-AC}:
 \begin{align}
