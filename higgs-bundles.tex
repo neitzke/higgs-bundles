@@ -1190,6 +1190,22 @@ The Hodge star gives an isomorphism
 \begin{equation}
   \star: \cH^k(X) \to \cH^{n-k}(X).
 \end{equation}
+If in addition $X$ is compact, then the pairing
+\begin{equation}
+	(\alpha,\beta) \mapsto \int_X \alpha \wedge \star \beta
+\end{equation}
+is nondegenerate, and thus gives an isomorphism
+\begin{equation}
+  \cH^k(X) \simeq \cH^k(X)^*
+\end{equation} 
+Equivalently, the pairing
+\begin{equation}
+(\alpha, \beta) \mapsto \int_X \alpha \wedge \beta
+\end{equation}
+gives an isomorphism
+\begin{equation}
+	\cH^k(X) \simeq \cH^{n-k}(X)^*.
+\end{equation}
 \end{prop}
 
 \begin{thm}[Abelian Hodge theory for compact Riemannian manifolds] 
@@ -1249,6 +1265,30 @@ Let $X$ be a compact \kahler manifold of complex dimension $n$. Then:
 \end{itemize}
 \end{thm}
 
+\begin{prop}[Poincare duality for $\bar\partial$-cohomology] \label{prop:poincare-duality-delbar}
+Let $X$ be a \kahler manifold of complex dimension $n$. Then
+the Hodge star gives an isomorphism
+\begin{equation}
+  \star: \cH^{p,q}(X) \to \cH^{n-q,n-p}(X).
+\end{equation}
+If in addition $X$ is compact, then the Hermitian pairing
+\begin{equation}
+	(\alpha,\beta) \mapsto \int_X \alpha \wedge \star \bar\beta
+\end{equation}
+is nondegenerate, and thus gives an isomorphism
+\begin{equation}
+  \cH^{p,q}(X) \simeq \overline{\cH^{p,q}(X)}^*.
+\end{equation} 
+Equivalently, the pairing
+\begin{equation}
+(\alpha, \beta) \mapsto \int_X \alpha \wedge \beta
+\end{equation}
+gives an isomorphism
+\begin{equation}
+	\cH^{p,q}(X) \simeq \cH^{n-q,n-p}(X)^*.
+\end{equation}
+\end{prop}
+
 \begin{lem}[$\partial\bar\partial$-lemma] \label{lem:ddbar-lemma}
 Suppose $X$ is a compact \kahler manifold, $\alpha \in \Omega^{p,q}(X)$
 and $\de \alpha = 0$. Then the following are equivalent:
@@ -1265,18 +1305,22 @@ also equivalent to
 \end{itemize}
 \end{lem}
 
-\begin{defn}[Laplace operator coupled to a vector bundle]
-If $X$ is a Riemannian manifold and $E$ a Hermitian vector bundle over 
-$X$ with connection $D$, we define a Laplacian
-\begin{equation}
-  \Delta_D: \Omega^k(E) \to \Omega^k(E)
-\end{equation}
-by
-\begin{equation}
-  \Delta_D = DD^* + D^* D.
-\end{equation}
+Finally we remark that all of the above statements have analogues
+when we consider forms valued in an auxiliary Hermitian vector
+bundle $E$ carrying a flat connection $D$.
 
-\end{defn}
+% \begin{defn}[Laplace operator coupled to a flat vector bundle]
+% If $X$ is a Riemannian manifold and $E$ a Hermitian vector bundle over 
+% $X$ with flat connection $D$, we define a Laplacian
+% \begin{equation}
+%   \Delta_D: \Omega^k(E) \to \Omega^k(E)
+% \end{equation}
+% by
+% \begin{equation}
+%   \Delta_D = DD^* + D^* D.
+% \end{equation}
+
+% \end{defn}
 
 \fixme{...}
 
@@ -6357,9 +6401,16 @@ g((\star \dot \Phi_1, \star \dot A_1),(\dot A_2, \dot \Phi_2)) = \omega_3((\dot 
 There is a more abstract way of viewing this construction:
 \begin{exercise} \label{exc:VVstar-hk} If $(V,I,\omega)$ 
 is a \kahler vector space, show that 
-$V \oplus V^*$ admits a canonical \hk structure, for which $I_1 = I \oplus I^*$,
-$\omega_1 = \omega \oplus \omega^{-1}$,
-and $\Omega_1(v \oplus \alpha, v' \oplus \alpha') = \alpha'(v) - \alpha(v')$. \fixme{check factors}
+$V \oplus V^*$ admits a canonical \hk structure, for which $I_1 = I \oplus I^T$,
+$\omega_1 = \omega \oplus -\omega^{-1}$,
+and $\Omega_1(v \oplus \alpha, v' \oplus \alpha') = 2\I (\alpha'(v) - \alpha(v'))$.
+\end{exercise}
+
+\begin{exercise}
+Show that the \hk structure on $\R^4$ from \autoref{exa:R4} arises 
+from the construction of \autoref{exc:VVstar-hk},
+where $V$ is the first $\R^2$ and $V^*$ the second $\R^2$
+in $\R^4$, and the duality pairing is $(x_2, x_3) \cdot (x_0, x_1) = x_3 x_0 + x_2 x_1$.
 \end{exercise}
 
 \begin{exercise} Show that the \hk structure on $\cA^H$ introduced 
@@ -6409,6 +6460,10 @@ we look only at the part involving $D$, then our computations
 just reduce to those in \autoref{prop:unitary-connections-moment-map}.)
 \end{pf}
 
+\begin{exercise} The statement that the $\fG$ action on $\cA^H$ admits a moment map
+implies in particular that the forms $\omega_i \in \Omega^2(\cA^H)$ are $\fG$-invariant.
+Verify this invariance directly from the formulas defining $\omega_i$.
+\end{exercise}
 
 Thus the vanishing of the \hk moment map, $\vec\mu = 0$, gives \ti{Hitchin's equations}:
 \begin{align}
