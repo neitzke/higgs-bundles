@@ -6299,7 +6299,7 @@ bundle $E$.
 Then let $\cA^H$ denote the space
 of pairs $(D,\Phi)$ where $D$ is a \ti{unitary} connection on $(E,h)$
 and $\Phi \in \Omega^1(\fu(E))$.
-$\cA^H$ is naturally an affine space over
+$\cA^H$ is naturally an affine space over the real vector space
 $\Omega^1(\fu(E)) \oplus \Omega^1(\fu(E))$.
 The group $\fG$ of unitary gauge transformations
 acts on $\cA^H$ by
@@ -6318,14 +6318,17 @@ components $\Omega_1 = \omega_2 + \I \omega_3$, plus another
 real symplectic form $\omega_1$, naturally extending the one \eqref{eq:symplectic-form-A} which 
 we had on $\cA^h$:
 \begin{align}
-  \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= - \int_C \Tr(\dot A_1 \wedge \dot A_2 - \dot \Phi_1 \wedge \dot \Phi_2), \\
-  \omega_2((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(\dot \Phi_1 \wedge \star \dot A_2 + \dot A_1 \wedge \star \dot \Phi_2), \\
-  \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= - \int_C \Tr(\dot\Phi_1 \wedge \dot A_2 + \dot A_1 \wedge \dot \Phi_2).
+  \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(- \dot A_1 \wedge \dot A_2 + \dot \Phi_1 \wedge \dot \Phi_2), \\
+  \omega_2((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(- \dot \Phi_1 \wedge \star \dot A_2 + \dot A_1 \wedge \star \dot \Phi_2), \\
+  \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(- \dot\Phi_1 \wedge \dot A_2 - \dot A_1 \wedge \dot \Phi_2).
 \end{align}
 Note that the $\omega_i$ are translation invariant forms on $\cA^H$ and hence
 closed.
 
-\begin{exercise} Verify that indeed $\Omega_1 = \omega_2 + \I \omega_3$.
+\begin{exercise} Verify that indeed $\Omega_1 = \omega_2 + \I \omega_3$. (Hint: it is
+easiest to compute $\omega_2 + \I \omega_3$ and then compare it to $\Omega_1$.
+For example, in the first term you will get $\star \dot{A}_2 + \I \dot{A}_2$ appearing.
+Then use the fact that $\dot{A}_2 = \dot{A}_{2z} + \dot{A}_{2\bar{z}}$.)
 \end{exercise}
 
 \begin{prop}[\Hk structure on $\cA^H$] The forms
@@ -6337,16 +6340,16 @@ forms for a \hk structure $(I_1,I_2,I_3,g)$ on $\cA^H$, with \hk metric
 The complex structures act by: 
 \begin{align}
  I_1(\dot A, \dot \Phi) &= (\star \dot A, - \star \dot \Phi), \\
- I_2(\dot A, \dot \Phi) &= (- \dot \Phi, \dot A), \\
- I_3(\dot A, \dot \Phi) &= (- \star \dot\Phi, - \star \dot A).
+ I_2(\dot A, \dot \Phi) &= (\dot \Phi, - \dot A), \\
+ I_3(\dot A, \dot \Phi) &= (\star \dot\Phi, \star \dot A).
 \end{align}
 \end{prop}
 
 \begin{pf} Just compute directly that $I_i^2 = -1$, $I_1 I_2 = I_3$,
-and $\omega_i(\cdot, \cdot) = g(I_i \cdot, \cdot)$. \fixme{some sign error here?}
+and $\omega_i(\cdot, \cdot) = g(I_i \cdot, \cdot)$.
 For example, when $i=3$ this amounts to checking that
 \begin{equation}
-g((- \star \dot \Phi_1,- \star \dot A_1),(\dot A_2, \dot \Phi_2)) = \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2))	
+g((\star \dot \Phi_1, \star \dot A_1),(\dot A_2, \dot \Phi_2)) = \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)).
 \end{equation}
 
 \end{pf}
