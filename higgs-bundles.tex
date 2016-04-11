@@ -262,6 +262,7 @@
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\Jac}{Jac}
 \DeclareMathOperator{\Hol}{Hol}
+\DeclareMathOperator{\gr}{gr}
 
 \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
@@ -5503,7 +5504,7 @@ induced by the \kahler quotient construction is the
 one claimed above.
 \end{exercise}
 
-\begin{example} \label{exa:metric-on-jac-C-genus-one}
+\begin{example}[Jacobians of genus $1$ curves] \label{exa:metric-on-jac-C-genus-one}
 Suppose that $C$ has genus $1$ and complex modulus $\tau$.
 In this case we can describe all this in a completely explicit way.
 We fix coordinates $(x,y)$ on $C$ with $x \in \R/\Z$, $y \in \R/\Z$.
@@ -5613,10 +5614,9 @@ works perfectly: we really do have
 \end{equation}
 
 
-\subsection{More formal developments}
+\subsection{Good properties of $\cN_{K,d}(C)$}
 
-
-We have already seen that when $K=1$, $\cN_{K,0}(C)$ is a compact
+We have already seen that when $K=1$, $\cN_{K,0}(C) = \Jac C$ is a compact
 \kahler torus. The behavior is almost as good
 for general $K$ and $d$:
 
@@ -5643,6 +5643,49 @@ When $(d,K) = 1$, $\cN_{K,d}(C)$ is a compact
 \autoref{exc:coprime-einstein-is-irreducible}.
 \end{pf}
 
+What does $\cN_{K,d}(C)$ look like concretely, when $K>1$? Here is a 
+preliminary observation:
+
+\begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
+Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
+Then the map $E \to E \otimes \cL$ gives a holomorphic 
+isometry of \kahler manifolds
+\begin{equation}
+\cN^s_{K,d}(C) \simarrow \cN^s_{K,d+Kd'}(C).
+\end{equation}
+\end{prop}
+\begin{pf}
+By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
+a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
+suppose given an Einstein connection $D$ in $E$. Then the connection
+$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
+\begin{equation} \label{eq:additivity-of-curvature}
+ F_{D'} = F_D + F_{D_\cL} \bid
+\end{equation}
+(note in writing this equation we used
+the fact that $\End(E') \simeq \End(E)$).
+Thus $D'$ is also Einstein. This gives the desired map.
+\end{pf}
+
+As a consequence of \autoref{prop:tensor-line-is-isometry}, one can say
+loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$''
+(although one does not quite get a \ti{canonical} isomorphism.)
+Moreover, tensorization by degree \ti{zero} bundles keeps us within
+the same moduli space, i.e. $\cN_{K,d}^s(C)$ has an action of $\Jac(C)$ by isometries. 
+So crudely speaking, $\cN_{K,d}^s(C)$ has $g$ complex directions in which 
+it looks like the compact complex torus $\Jac(C)$, while the other
+$(g-1)(K^2-1)$ directions are more interesting.
+
+\begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
+\end{exercise}
+
+\begin{exercise} Verify that the map in 
+\autoref{prop:tensor-line-is-isometry} is a holomorphic
+isometry of \kahler manifolds.
+\end{exercise}
+
+
+
 
 \subsection{Stable vector bundles}
 
@@ -5667,11 +5710,11 @@ $E' \subset E$, we have $\mu(E') \le \mu(E)$.
 \end{itemize}
 \end{defn}
 
-We have inclusions:
+We have inclusions
 \begin{equation}
    \{ \text{stable} \} \subset \{ \text{polystable} \} \subset \{ \text{semistable} \}.
 \end{equation}
-
+In favorable cases this hierarchy collapses:
 \begin{exercise} \label{exc:coprime-semistable-is-stable} 
 Show that if $(K,d) = 1$ then every semistable bundle of rank $K$
 and degree $d$ is stable.
@@ -5732,8 +5775,48 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 \end{equation} 
 \end{exercise}
 
-\fixme{should discuss S-equivalence, passage
-from semistable to the polystable associated graded?}
+Finally we remark on one fine point.
+As we will see below, the objects appearing in $\cA^h \kq \fG$
+are stable or at least polystable bundles,
+not general semistable ones. On the other hand, the moduli space
+we are constructing is often described as the moduli space of
+semistable vector bundles. To explain the reason for this apparent difference
+we first recall:
+
+\begin{prop}[Existence of Jordan-H\"older filtration] 
+If $(E, \bar\partial)$ is any holomorphic vector bundle,
+there exists a filtration by holomorphic subbundles,
+\begin{equation}
+ 0 = E_0 \subset E_1 \subset \cdots \subset E_k = E,
+\end{equation}
+such that each quotient $E_i / E_{i-1}$ is stable.
+The filtration need not be unique, but the induced
+bundle
+\begin{equation}
+  \gr E = \bigoplus_i E_i / E_{i-1}
+\end{equation}
+is uniquely determined up to equivalence.
+\end{prop}
+
+If $E$ is stable then the Jordan-H\"older filtration has
+just one step, and $\gr E = E$. More generally we have the 
+following:
+
+\begin{prop}[Associated graded to a semistable bundle is polystable]
+If $E$ is semistable, then $\gr E$ is polystable.
+\end{prop}
+
+\begin{defn}[$S$-equivalence] If $E$ and $E'$ are semistable 
+holomorphic vector bundles over $C$, we say $E$ and $E'$ are
+\ti{$S$-equivalent} if and only if $\gr E$ and $\gr E'$ are
+equivalent.
+\end{defn}
+
+Thus in each $S$-equivalence class there is a unique polystable
+representative up to ordinary equivalence. 
+It follows that the set of semistable bundles
+up to $S$-equivalence is the same as the set of polystable bundles 
+up to ordinary equivalence.
 
 
 \subsection{Gauge-theoretic meaning of stability}
@@ -5747,9 +5830,9 @@ after deleting unstable bundles from $\cA^{\bar\partial}$.
 We need a preliminary:
 
 \begin{thm}[Weak Uhlenbeck compactness] \label{thm:uhlenbeck-weak}
-Suppose that $\{A_i\} \in \cA^h_1$ is a sequence of $L^2_1$ unitary 
-connections on $C$, with $\norm{F(A_i)}$ bounded. Then after passing
-to a subsequence, there exist $g_i \in \fG_2$ such that $A_i^{g_i}$
+Suppose that $\{D_i\} \in \cA^h_1$ is a sequence of $L^2_1$ unitary 
+connections on $C$, with $\norm{F(D_i)}$ bounded. Then after passing
+to a subsequence, there exist $g_i \in \fG_2$ such that $D_i^{g_i}$
 converge weakly.
 \end{thm}
 
@@ -5762,6 +5845,7 @@ kind of weak compactness when we divide out by gauge transformations.
 Now we are ready for the main theorem about moduli of bundles:
 
 \begin{thm}[Narasimhan-Seshadri theorem]  \label{thm:narasimhan-seshadri}
+\cite{MR32:1725}
 We have:
 \begin{itemize}
 \item For any $[D] \in \cN^s_{K,d}(C)$ the $(0,1)$ part $\bar\partial_D$
@@ -5775,9 +5859,8 @@ on $E$ is equivalent to $\bar\partial_D$ for a unique $[D] \in \cN_{K,d}(C)$.
 \end{itemize}
 \end{thm}
 
-\begin{pf} 
-We only give a vague sketch.
-The proof we are following is given in \cite{MR710055}.
+\begin{pf} The proof we follow here is given in \cite{MR710055}.
+We only give a sketch.
 Moreover, we just discuss the case $d=0$ --- the other cases are
 very similar but involve more ugly notation.
 
@@ -5981,49 +6064,14 @@ curvature, $F_{D + A} = F_D + DA + A \wedge A$.
 admits a holomorphic subbundle isomorphic to $\cO(n)$ if and only if
 $n \le m$.
 (This is an illustration of the principle that curvature
-decreases in holomorphic subbundles.)
+decreases in holomorphic subbundles, but it is instructive to 
+do it directly in the holomorphic language without using connections.)
 \end{exercise}
 
-What does $\cN_{K,d}(C)$ look like concretely, when $K>1$? Here is a 
-preliminary observation:
 
-\begin{prop}[Tensorization with line bundle gives an isometry] \label{prop:tensor-line-is-isometry}
-Suppose $\cL$ is a holomorphic line bundle on $C$, of degree $d'$.
-Then the map $E \to E \otimes \cL$ gives a holomorphic 
-isometry of \kahler manifolds
-\begin{equation}
-\cN^s_{K,d}(C) \simarrow \cN^s_{K,d+Kd'}(C).
-\end{equation}
-\end{prop}
-\begin{pf}
-By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
-a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
-suppose given an Einstein connection $D$ in $E$. Then the connection
-$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
-\begin{equation} \label{eq:additivity-of-curvature}
- F_{D'} = F_D + F_{D_\cL} \bid
-\end{equation}
-(note in writing this equation we used
-the fact that $\End(E') \simeq \End(E)$).
-Thus $D'$ is also Einstein. This gives the desired map.
-\end{pf}
+\subsection{Bundles with fixed determinant}
 
-As a consequence of \autoref{prop:tensor-line-is-isometry}, one can say
-loosely that $\cN_{K,d}^s(C)$ ``depends on $d$ only modulo $K$''
-(although one does not quite get a \ti{canonical} isomorphism.)
-Moreover, tensorization by degree \ti{zero} bundles keeps us within
-the same moduli space, i.e. $\cN_{K,d}^s(C)$ has an action of $\Jac(C)$ by isometries. 
-So crudely speaking, $\cN_{K,d}^s(C)$ has $g$ complex directions in which 
-it looks like the compact complex torus $\Jac(C)$, while the other
-$(g-1)(K^2-1)$ directions are more interesting.
-
-\begin{exercise} Verify \eqref{eq:additivity-of-curvature}.
-\end{exercise}
-
-\begin{exercise} Verify that the map in 
-\autoref{prop:tensor-line-is-isometry} is a holomorphic
-isometry of \kahler manifolds.
-\end{exercise}
+\fixme{should say this more systematically}
 
 One way to focus attention on only the interesting directions is to consider
 a smaller moduli space, consisting of bundles with ``fixed determinant.''
@@ -6593,19 +6641,47 @@ and the second is
 As before, this is indeed a complex, when $(D,\varphi)$ is a harmonic 
 pair. Also as before, the \hk quotient construction dictates that
 we should interpret the quotient by the image of $\Omega^0$
-by taking the orthocomplement, i.e. imposing the gauge-fixing condition
+by taking the orthocomplement, i.e. imposing the ``gauge-fixing'' 
+condition \fixme{check sign}
 $D^* \dot{A} + \star [\dot\Phi, \Phi] = 0$.
 So altogether the tangent space we are after is the kernel of
 the operator
-\begin{equation}
-(\dot A, \dot \Phi) \mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot\Phi + [\star \Phi, \dot A] \\ D \star \dot{A} + [\Phi, \dot \Phi] \end{pmatrix}
-\end{equation}
-Note that this operator is \ti{elliptic}, just as before:
+\begin{align}
+\hat{D}: \Omega^1(\fu(E))^{\oplus 2} &\to \Omega^2(\fu(E))^{\oplus 3} \oplus \Omega^0(\fu(E)) \\
+(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot\Phi + [\star \Phi, \dot A] \\ D^* \dot{A} + \star[\Phi, \dot \Phi] \end{pmatrix}
+\end{align}
+Note that $\hat{D}$ is \ti{elliptic}, just as before:
 the principal symbol is $2K^2$ copies of $\de \oplus \de^*$.
-Thus, as before, elliptic theory tells us that when we 
-consider this operator on the Banach spaces of $L^2_k$ 
-Higgs pairs, we will find it has a finite-dimensional
+Thus, as before, elliptic theory in the sense of \autoref{sec:ellipticity}
+says that when we 
+consider the extension $\hat{D}_k$ on the Banach spaces of $L^2_k$ 
+Higgs pairs, $\hat{D}_k$ has a finite-dimensional
 kernel, and that kernel consists of smooth sections.
+
+Again as before, we have:
+\begin{lem}[Almost-vanishing for the doubled gauge complex] If $(D,\varphi) \in \cA^s$, then $\coker \hat{D}$ is $4$-dimensional,
+spanned by multiples of the identity in each summand
+of $\Omega^2(\fu(E))^{\oplus 3} \oplus \Omega^0(\fu(E))$.
+\end{lem}
+
+\begin{thm}[$\cM^s_{K,d}(C)$ is \hk] $\cM^s_{K,d}(C)$ is a \hk manifold.
+\end{thm}
+
+This already has the remarkable consequence that the metric 
+on $\cM^s_{K,d}(C)$ is Ricci-flat.
+
+\begin{prop}[Dimension of $\cM^s_{K,d}(C)$] The quaternionic dimension
+of $\cM_{K,d}^s(C)$ is $(g-1)K^2 + 1$.
+\end{prop}
+
+Unlike $\cN_{K,d}(C)$, it is hopeless to ask for
+$\cM_{K,d}(C)$ to be compact. We will see this in the next example.
+
+
+\subsection{The case of Higgs line bundles}
+
+
+
 
 \fixme{decoupled in abelian case}
 
