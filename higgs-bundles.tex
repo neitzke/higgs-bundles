@@ -4967,7 +4967,7 @@ with the complex linear space $\Omega^{0,1}(\End E)$.
 Moreover show that $I = \star$.
 \end{exercise}
 
-On $\Omega^{1}(\fu(E))$ we have a natural pairing
+On $\Omega^{1}(\fu(E))$ we have a natural nondegenerate pairing
 \begin{equation} \label{eq:symplectic-form-A}
   \omega(\dot{A}_1,\dot{A}_2) = -\int_C \Tr(\dot{A}_1 \wedge \dot{A}_2).
 \end{equation}
@@ -5022,6 +5022,7 @@ $L^2_{k+1}(E) \to L^2_k(F)$. \fixme{plus Sobolev multiplication!}
 \end{prop}
 
 The action of $\fG_{k+1}$ on $\cA_k$ preserves the \kahler structure.
+We could check this directly, but it also follows from:
 
 \begin{prop}[Moment map for $\fG_{k+1}$ action on $\cA_k$] \label{prop:unitary-connections-moment-map}
 The action of $\fG_{k+1}$ on $\cA_k$ admits a moment map, given by
@@ -6110,6 +6111,10 @@ Show that $E$ is semistable and $\det E$ is holomorphically trivial.
 \section{Higgs bundles}
 
 Finally we are ready to treat the moduli space of Higgs bundles.
+The fundamental reference for this subject is \cite{MR89a:32021};
+strictly speaking that paper treats only the case of rank $2$ bundles
+with fixed determinant, but most of the fundamental issues 
+and constructions appear already there.
 
 As before we fix a compact Riemann surface $C$, with a 
 \kahler metric of total volume $1$, and two integers
@@ -6122,8 +6127,8 @@ studied, and thought of, in several different ways.
 
 \begin{defn}[Higgs bundle] \label{def:higgs-bundle}
 A \ti{Higgs bundle} of rank $K$ over $C$ 
-is a tuple $(E, \bar\partial, \varphi)$
-where $(E,\bar\partial)$ is a holomorphic vector bundle
+is a tuple $(E, \bar\partial_E, \varphi)$
+where $(E,\bar\partial_E)$ is a holomorphic vector bundle
 of rank $K$ over $C$, and 
 \begin{equation}
 \varphi \in H^0(C, \End E \otimes K_C).  
@@ -6131,13 +6136,26 @@ of rank $K$ over $C$, and
 $\varphi$ is called the \ti{Higgs field}.
 \end{defn}
 
-Thus relative to a local trivialization of $E$, $\varphi$ would 
-be written as a matrix of holomorphic $1$-forms.
+Thus relative to a local holomorphic trivialization of $(E,\bar\partial_E)$ 
+and local coordinate on $C$, $\varphi$ would 
+be written as a matrix of holomorphic $1$-forms: something like
+\begin{equation}
+  \varphi = \begin{pmatrix} f_1 & f_2 \\ f_3 & f_4 \end{pmatrix} \de z,
+\end{equation}
+where all $f_i$ are holomorphic functions of $z$.
 
-\begin{defn}[Stable Higgs bundle] A Higgs bundle $E$ over $C$ is called:
+\begin{defn}[Sub-Higgs bundle] If $(E, \bar\partial_E, \varphi)$ 
+is a Higgs bundle over $C$, a \ti{sub-Higgs bundle} thereof
+is a subbundle $E' \subset E$ which is preserved by $\bar\partial_E$
+and has
+\begin{equation}
+  \varphi(E') \subset E' \otimes K_C.
+\end{equation}
+\end{defn}
+
+\begin{defn}[Stable Higgs bundle] A Higgs bundle $(E, \bar\partial_E, \varphi)$ over $C$ is called:
 \begin{itemize}
-\item \ti{stable} if, for every $\varphi$-invariant 
-holomorphic subbundle $E' \subset E$,
+\item \ti{stable} if, for every sub-Higgs bundle $E' \subset E$,
 we have $\mu(E') < \mu(E)$,
 \item \ti{polystable} if $E$ is a direct sum of stable Higgs bundles
 of the same slope,
@@ -6146,6 +6164,9 @@ holomorphic subbundle
 $E' \subset E$, we have $\mu(E') \le \mu(E)$.
 \end{itemize}
 \end{defn}
+Note that the slope $\mu$ is defined just as it was for a holomorphic
+vector bundle; the only role of the Higgs field is to restrict
+the allowed subbundles.
 
 There are a few Higgs bundles which we can describe particularly
 concretely:
@@ -6420,12 +6441,38 @@ applied to the vector space $V = \Omega^1(\fu(E))$.
 
 In order to take a \hk quotient $\cA^H \hkq \fG$ we need
 first to have a moment map.
+To write it we will use a bit of notation which 
+is convenient but also confusing, so let's 
+spell its meaning out. In local real coordinates $(x,y)$ on $C$,
+for $\alpha, \beta \in \Omega^1(\End E)$,
+we have
+\begin{align}
+  \alpha \wedge \beta &= (\alpha_x \de x + \alpha_y \de y) \wedge (\beta_x \de x + \beta_y \de y) \\
+  &= (\alpha_x \beta_y - \alpha_y \beta_x) \de x \wedge \de y.
+\end{align}
+Thus if we define (note the tricky sign)
+\begin{equation}
+  [\alpha,\beta] = \alpha \wedge \beta + \beta \wedge \alpha
+\end{equation}
+we have
+\begin{equation}
+  [\alpha,\beta] = ([\alpha_x, \beta_y] - [\alpha_y, \beta_x]) \de x \wedge \de y.
+\end{equation}
+In particular,
+\begin{align}
+  \Phi \wedge \Phi = [\Phi_x, \Phi_y] \de x \wedge \de y,
+\end{align}
+and recalling $\Phi = \varphi - \varphi^\dagger$,
+\begin{align}
+  \Phi \wedge \Phi &= - [\varphi_z, \varphi^\dagger_{\bar z}] \de z \wedge \de \bar{z} \\
+  &= - [\varphi, \varphi^\dagger].
+\end{align}
 
 \begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
-The $\fG$ action on $\cA^H$ admits a \hk moment map, given by:
+The $\fG$ action on $\cA^H$ admits a \hk moment map $\vec\mu$, given by:
 \begin{align}
   \mu_2 + \I \mu_3 &= - 2 \I \bar\partial_D \varphi \\
-  \mu_1 &= -F_D - \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C.
+  \mu_1 &= -F_D + \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{align}
 \end{prop}
 
@@ -6436,7 +6483,7 @@ formula for $\mu_1$.
 % $\Phi_1 \wedge \Phi_2 = (\Phi_{1x} \Phi_{2y} - \Phi_{1y} \Phi_{2x}) \de x \wedge \de y$
 We have
 \begin{equation}
-  \de \mu_1(\dot A, \dot \Phi) = - D \dot{A} - \dot\Phi \wedge \Phi - \Phi \wedge \dot\Phi
+  \de \mu_{1,Z}(\dot A, \dot \Phi) = \int_C \Tr Z\left(- D \dot{A} + [\dot\Phi,\Phi] \right)
 \end{equation}
 % (using the fact that $[\Phi,\dot \Phi] = [\dot \Phi,\Phi]$, which we 
 % can check by writing both out in local coordinates and getting
@@ -6448,7 +6495,7 @@ and
 giving
 \begin{align}
   \omega_1(\rho(Z), (\dot A, \dot \Phi)) &= - \int_C \Tr(- D Z \wedge \dot A - [Z,\Phi] \wedge \dot \Phi) \\
-  &= - \int_C \Tr(Z D\dot A + Z(\dot \Phi \wedge \Phi + \Phi \wedge \dot \Phi)) \\
+  &= - \int_C \Tr(Z D\dot A - Z[\dot \Phi, \Phi]) \\
   &= \de \mu_{1,Z}(\dot A, \dot \Phi)
 \end{align}
 as desired.
@@ -6465,21 +6512,100 @@ implies in particular that the forms $\omega_i \in \Omega^2(\cA^H)$ are $\fG$-in
 Verify this invariance directly from the formulas defining $\omega_i$.
 \end{exercise}
 
-Thus the vanishing of the \hk moment map, $\vec\mu = 0$, gives \ti{Hitchin's equations}:
-\begin{align}
+It is occasionally useful to write $\vec\mu$ in a more symmetric fashion,
+without combining $\mu_2$ and $\mu_3$ into $\mu_2 + \I \mu_3$; for that 
+purpose the next exercise is helpful:
+
+\begin{exercise} Show that
+\begin{equation}
+  \mu_2 = D \Phi, \qquad \mu_3 = D \star \Phi.
+\end{equation}
+\end{exercise}
+
+The vanishing of the \hk moment map, $\vec\mu = 0$, gives \ti{Hitchin's equations} \cite{MR89a:32021}:
+
+\begin{subequations} \label{eq:hitchin-eq}
+\begin{align} 
 \bar\partial_D \varphi &= 0, \\
-F_D + \Phi \wedge \Phi &= -2 \pi \I \frac{d}{K} \bid \omega_C.
+F_D + [\varphi,\varphi^\dagger] &= -2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{align}
+\end{subequations}
 
 \currentposition
 
-Let $\cA^{H,s}$ be the set of \ti{irreducible} pairs $(\bar\partial_E, \varphi)$.
-Now we can define
-\begin{defn}[Moduli space of Higgs bundles]
+Solutions of these equations are important enough that we give them a name:
+\begin{defn}[Harmonic pair]
+A \ti{harmonic pair} on $E$ is a pair $(D,\varphi) \in \cA^H$ 
+obeying Hitchin's equations \eqref{eq:hitchin-eq}.
+\end{defn}
+
+If $\varphi = 0$ then a harmonic pair $(D,\varphi)$ reduces to an 
+Einstein connection.
+
+Thus the moduli space we are after, $\cA^H \hkq \fG = \vec\mu^{-1}(0) / \fG$,
+is the space of harmonic pairs on $E$ modulo gauge equivalence.
+As before, to study this \hk quotient,
+we need to understand the extent to which
+$\fG$ acts freely:
+
+\begin{defn}[Irreducible Higgs pairs] A pair $(D,\varphi) \in \cA^H$
+is called \ti{irreducible} if there exist no subbundles $E' \subset E$
+which are preserved by both $D$ and $\varphi$. Let $\cA^{H,s} \subset \cA^H$
+be the set of irreducible Higgs pairs.
+\end{defn}
+
+In parallel to \autoref{prop:gauge-group-almost-free-on-irreducible},
+we have:
+\begin{prop}[Gauge group acts almost freely on irreducible Higgs pairs]
+If $g \in \fG$ and $(D,\varphi) \in \cA^{H,s}$, then
+$(D^g,\varphi^g) = (D,\varphi)$
+if and only if $g$ acts on $E$ by multiplication by a constant scalar.
+\end{prop}
+\begin{pf} This is essentially the same as the proof of
+\autoref{prop:gauge-group-almost-free-on-irreducible}.
+\end{pf}
+
+Now finally we define:
+\begin{defn}[Moduli space of harmonic pairs]
 \begin{equation}
-  \cM_{K,d}(C) = \cA^H \hkq \fG, \qquad \cM^s_{K,d}(C) = \cA^{H,s} \hkq \fG
+  \cM_{K,d}(C) = \cA^H \hkq \fG, \qquad \cM^s_{K,d}(C) = \cA^{H,s} \hkq \fG.
 \end{equation}
 \end{defn}
+
+As we did with the moduli spaces of Einstein connections, we 
+first discuss the formal picture. The tangent space to
+$\cM_{K,d}^s(C)$ at a given harmonic pair $(D,\varphi)$
+should formally be the joint kernel of the
+three linearized moment maps $\de \mu_i$, modulo the space spanned
+by infinitesimal gauge transformations.
+That is, we consider cohomology of the complex
+\begin{equation}
+  0 \to \Omega^0(\fu(E)) \to (\Omega^{1}(\fu(E)))^2 \to (\Omega^2(\fu(E)))^3 \to 0
+\end{equation}
+where the first arrow is
+\begin{equation}
+ Z \mapsto \rho(Z) = (\dot A = -D Z, \dot \Phi = [Z,\Phi])
+\end{equation}
+and the second is
+\begin{equation}
+(\dot A, \dot \Phi) \mapsto (D \dot{A} + [\Phi,\dot\Phi], D \dot\Phi + [\dot A, \Phi], D \star \dot\Phi + [\dot A, \star \Phi]).
+\end{equation}
+As before, this is indeed a complex, when $(D,\varphi)$ is a harmonic 
+pair. Also as before, the \hk quotient construction dictates that
+we should interpret the quotient by the image of $\Omega^0$
+by taking the orthocomplement, i.e. imposing the gauge-fixing condition
+$D^* \dot{A} + \star [\dot\Phi, \Phi] = 0$.
+So altogether the tangent space we are after is the kernel of
+the operator
+\begin{equation}
+(\dot A, \dot \Phi) \mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot\Phi + [\star \Phi, \dot A] \\ D \star \dot{A} + [\Phi, \dot \Phi] \end{pmatrix}
+\end{equation}
+Note that this operator is \ti{elliptic}, just as before:
+the principal symbol is $2K^2$ copies of $\de \oplus \de^*$.
+Thus, as before, elliptic theory tells us that when we 
+consider this operator on the Banach spaces of $L^2_k$ 
+Higgs pairs, we will find it has a finite-dimensional
+kernel, and that kernel consists of smooth sections.
 
 \fixme{decoupled in abelian case}
 
