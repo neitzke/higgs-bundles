@@ -4828,6 +4828,10 @@ The only reason we do not adopt this as the definition is that
 it does not make immediately manifest the fact that $\deg E$ is an 
 \ti{integer}.
 
+\begin{exercise} Show that the vector bundle $E$ and the line bundle $\det E$ 
+have the same degree.
+\end{exercise}
+
 Another interpretation of the degree which is useful for developing 
 intuition is:
 \begin{prop}[Degree counts zeroes] Suppose $E$ is a complex vector bundle over $C$, of rank $K$.
@@ -4847,10 +4851,6 @@ minus the number of poles (counted with multiplicity.)
 
 \begin{exercise} Show that the line bundle $\cO(n)$ over $\C\PP^1$
 has degree $n$.
-\end{exercise}
-
-\begin{exercise} Show that the vector bundle $E$ and the line bundle $\det E$ 
-have the same degree.
 \end{exercise}
 
 
@@ -4920,6 +4920,7 @@ is summarized in the next exercise:
 $\Omega^{1}(\fu(E))$ carries a natural complex structure $I$,
 and with this complex structure it is canonically identified
 with the complex linear space $\Omega^{0,1}(\End E)$.
+Moreover show that $I = \star$.
 \end{exercise}
 
 On $\Omega^{1}(\fu(E))$ we have a natural pairing
@@ -4951,7 +4952,7 @@ with $C^\infty$ objects.
 Altogether we now have a single space $\cA_k$ $(\simeq \cA^{\bar\partial}_k \simeq \cA^h_k)$ with both symplectic and
 complex structures.
 \begin{exercise} Verify that the complex and symplectic structures
-on $\cA_k$ are compatible, i.e. $\omega(I \alpha, I \beta) = \omega(\alpha,\beta)$.
+on $\cA_k$ are compatible, i.e. $\omega(I \dot{A}_1, I \dot{A}_2) = \omega(\dot{A}_1,\dot{A}_2)$.
 \end{exercise}
 
 \begin{exercise} Verify that $\cA_k$ is \kahler, and that the metric is
@@ -5920,8 +5921,6 @@ that $D^*$ was the limit of an infimizing sequence.
 
 \end{pf}
 
-\currentposition
-
 \begin{exercise} Verify the formula \eqref{eq:extension-curvature}.
 It is convenient to think of \eqref{eq:connection-split} as shifting
 a connection by a $1$-form,
@@ -6141,7 +6140,7 @@ bundle
 \begin{equation}
   E = \cL \otimes K_C \oplus \cL.
 \end{equation}
-For any $(\phi_1, \phi_2) \in H^0(C,K_C) \oplus H^0(C,K_C^2)$,
+For any $(\phi_1, \phi_2) \in H^0(K_C) \oplus H^0(K_C^2)$,
 we can equip $E$ with the Higgs field
 \begin{equation}
   \varphi = \begin{pmatrix} \phi_1 & \phi_2 \\ 1 & \phi_1 \end{pmatrix} \in \begin{pmatrix} \Hom(\cL \otimes K_C,\cL \otimes K_C) \otimes K_C & \Hom(\cL,\cL \otimes K_C) \otimes K_C \\ \Hom(\cL \otimes K_C,\cL) \otimes K_C & \Hom(\cL,\cL) \otimes K_C \end{pmatrix} = \begin{pmatrix} K_C & K_C^2 \\ \cO & K_C \end{pmatrix}
@@ -6155,50 +6154,67 @@ for any $(\phi_1,\phi_2)$,
 as long as $C$ has genus $g \ge 2$.
 \end{exercise}
 
-Note that this happens \ti{despite} the fact that the underlying
+Note that these Higgs bundles are stable \ti{despite} the fact that the underlying
 vector bundle $E$ is unstable.
 
 
-\subsection{Moduli spaces}
+\subsection{Moduli space as holomorphic symplectic quotient}
 
-Now suppose we want to construct a moduli space parameterizing Higgs
+Now suppose we want to construct a moduli space parameterizing stable Higgs
 bundles modulo equivalence. To get some crude idea of what will happen,
-let us imagine that we just to take all stable vector bundles
+let us imagine that we take all stable vector bundles
 and then equip them with arbitrary Higgs fields: in other words
-we define $\cM_{K,d}(C)$ to be a vector bundle over 
-$\cN_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
-What structure would $\cM_{K,d}(C)$ then get?
+we take our ``moduli space'' to be a vector bundle over 
+$\cN^s_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
 
-The holomorphic tangent space to $\cN_{K,d}(C)$ at $E$ is the space
-of harmonic forms $\dot{A}_{\bar z} \in \cH^{0,1}_D(\End E)$.
-We can similarly identify $H^0(C, \End E \otimes K_C)$ as the space 
-of harmonic forms $\varphi = \Phi_z \in \cH^{1,0}_D(\End E)$.
+\insfig{higgs-bundles-16}{1.0}
+
+Since every Higgs bundle obtained in this way is stable, we 
+should expect that this is at least a subset of the actual 
+moduli space of all stable Higgs bundles.
+What structure does it carry?
+
+Fix a point $D \in \cN^s_{K,d}(C)$.
+The space of Higgs fields on the holomorphic bundle $(E, \bar\partial_D)$
+is the same as the space of harmonic forms
+$\varphi = \Phi_z \in \cH^{1,0}_D(\End E)$.
 \fixme{need a little more Hodge theory background for this}
+On the other hand, the tangent space to $\cN_{K,d}(C)$ at $D$, considered
+as a complex vector space, is the space
+of harmonic forms $\dot{A}_{\bar z} \in \cH^{0,1}_D(\End E)$.
 The two are dual via the pairing
 \begin{equation}
   (\dot{A}_{\bar z}, \Phi_z) \mapsto \int_C \Tr (\dot{A}_{\bar z} \wedge \Phi_z).
 \end{equation}
-Thus we get in this way $\cM_{K,d}(C) = T^* \cN_{K,d}(C)$.
+Thus the moduli space we obtain in this way is simply $T^* \cN_{K,d}(C)$.
 In particular this is a \ti{holomorphic symplectic} manifold.
-But it is not quite the space we are after.
 
-To get the space we are really after, we proceed by a ``doubled''
-version of the infinite-dimensional \kahler quotient we took before,
-i.e. we take an infinite-dimensional
-\hk quotient. As before, we fix a smooth bundle $E$ over $C$, 
-of degree $d$.
-Now we define a ``doubled'' version of the space of $\bar\partial$-operators
+There is another way of viewing this space which will be enlightening.
+We recall that, ignoring questions of stability, $\cN_{K,d}$ just
+consists of all holomorphic structures up to equivalence,
+\begin{equation}
+	\cN_{K,d}(C) = \cA^{\bar\partial} / \fG_\C.
+\end{equation}
+This suggests that we might profitably view $T^* \cN_{K,d}(C)$
+as a holomorphic symplectic quotient,
+\begin{equation}
+	T^* \cN_{K,d}(C) = (T^* \cA^{\bar\partial}_{K,d}) \kq \fG_\C.
+\end{equation}
+Let us see how this works.
+
+As before, we fix a smooth bundle $E$ over $C$, 
+of degree $d$. Now we define a ``doubled'' version of the space of $\bar\partial$-operators
 on $E$,
 \begin{equation}
   \cA^\C_1 = \cA^{\bar\partial} \times \Omega^{1,0}(\End E).
 \end{equation}
-$\cA^\C_1$ is a complex affine space over
-$\Omega^{0,1}(\End E) \oplus \Omega^{1,0}(\End E)$.
 We denote points of $\cA^\C_1$ as
 \begin{equation}
   (\bar\partial_E, \varphi) \in \cA^\C_1.
 \end{equation}
-Evidently we have
+$\cA^\C_1$ is a complex affine space over
+$\Omega^{0,1}(\End E) \oplus \Omega^{1,0}(\End E)$.
+We have
 \begin{equation}
   \cA^\C_1 = T^* \cA^{\bar\partial}
 \end{equation}
@@ -6217,6 +6233,8 @@ of $\fG_\C$, by
 \begin{equation}
   (\bar\partial_E,\varphi) \mapsto (\bar\partial_E^g = g \bar\partial_E g^{-1}, \varphi^g = g \varphi g^{-1}).
 \end{equation}
+Now we want to take the holomorphic symplectic quotient by this action.
+So first we need to know the moment map:
 
 \begin{prop}[Moment map for $\fG_\C$-action on $\cA^\C_1$]
 The $\fG_\C$-action on $\cA^\C_1$ has a complex moment map
@@ -6224,26 +6242,25 @@ with respect to $\Omega_1$,
 \begin{equation}
   M_1 = -2 \I \bar\partial_E \varphi.
 \end{equation}
-More precisely, this means: given $Z \in \Lie \fG = \Omega^0(\End E)$
+More precisely, this means: given $Z \in \Lie \fG_\C = \Omega^0(\End E)$
 we have
-\begin{equation}
+\begin{equation} \label{eq:M1-gauge}
   M_{1,Z}(\bar\partial_E,\varphi) = -2 \I \int_C \Tr(Z \bar\partial_E \varphi).
 \end{equation}
 \end{prop}
 
 \begin{pf} This follows the pattern of proof of \autoref{prop:unitary-connections-moment-map}.
-For $Z \in \Lie \fG_\C = \Omega^0(\End E)$ we have
-the infinitesimal action
+Each $Z \in \Omega^0(\End E)$ generates a vector field on $\cA^H$,
 \begin{equation}
   \rho(Z) = (- \bar\partial_E Z, [Z,\varphi]),
 \end{equation}
 and for
-$(\dot A_{\bar z},\dot\Phi_z) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$
-we have
+$(\dot A_{\bar z},\dot\Phi_z) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$,
+we compute by differentiating \eqref{eq:M1-gauge}
 \begin{equation}
-  \de M_{1,Z} (\dot A_{\bar z},\dot\Phi_z) = -2 \I \int_C \Tr( Z [\dot A_{\bar z},\varphi] + Z \bar\partial_E \dot\Phi_z)
+  \de M_{1,Z} (\dot A_{\bar z},\dot\Phi_z) = -2 \I \int_C \Tr( Z [\dot A_{\bar z},\varphi] + Z \bar\partial_E \dot\Phi_z).
 \end{equation}
-We compute:
+Now we can check directly that $M_1$ is indeed a moment map, using \eqref{eq:Omega-1-AC}:
 \begin{align}
   \Omega_1(\rho(Z), (\dot A_{\bar z},\dot\Phi_z)) &= -2 \I \int_C \Tr(- \bar\partial_E Z \wedge \dot\Phi_z - \dot A_{\bar z} \wedge [Z,\varphi]) \\
   &= -2 \I \int_C \Tr(Z \bar\partial_E \dot\Phi_z + Z[\dot A_{\bar z},\varphi]) \\
@@ -6252,15 +6269,29 @@ We compute:
 as desired.
 \end{pf}
 
-Thus formally (ignoring questions of stability) 
-the moduli space of Higgs bundles would appear to be
+So, the zero set of the moment map is simply
 \begin{equation}
-  M_1^{-1}(0) / \fG_\C = \cA^\C_1 \kq \fG_\C.
+	M_1^{-1}(0) = \{ (\bar\partial_E, \varphi ) \in \cA^\C_1: \bar\partial_E \varphi = 0 \}.
 \end{equation}
-As we have noted, though, the holomorphic symplectic quotient of 
-a \hk space has another interpretation: we can sometimes interpret
-it as a \hk quotient by a smaller group. 
+This means that
+the holomorphic symplectic quotient
+\begin{equation}
+ \cA^\C_1 \kq \fG_\C = M_1^{-1}(0) / \fG_\C
+\end{equation}
+consists of equivalence classes of holomorphic bundles equipped
+with \ti{holomorphic} Higgs fields, just as we wanted.
+This is encouraging. On the other hand, by itself, it doesn't
+give us anything really new about the space.
+
+
+\subsection{Moduli space as \hk quotient}
+
+As we have noted, though, a holomorphic symplectic quotient $X \kq G_\C$ 
+often has another interpretation: if the space $X$ with which we began
+was actually \hk, then we can try to identify $X \kq G_\C = X \hkq G$,
+and thus get a \hk structure on the quotient.
 Let us try to do that here.
+
 As we did before, we introduce a Hermitian metric $h$ on the 
 bundle $E$.
 Then let $\cA^H$ denote the space
@@ -6292,6 +6323,9 @@ we had on $\cA^h$:
 Note that the $\omega_i$ are translation invariant forms on $\cA^H$ and hence
 closed.
 
+\begin{exercise} Verify that indeed $\Omega_1 = \omega_2 + \I \omega_3$.
+\end{exercise}
+
 \begin{prop}[\Hk structure on $\cA^H$] The forms
 $(\omega_1, \omega_2, \omega_3)$ on $\cA^H$ are the symplectic
 forms for a \hk structure $(I_1,I_2,I_3,g)$ on $\cA^H$, with \hk metric
@@ -6307,18 +6341,36 @@ The complex structures act by:
 \end{prop}
 
 \begin{pf} Just compute directly that $I_i^2 = -1$, $I_1 I_2 = I_3$,
-and $\omega_i(\cdot, \cdot) = g(I_i \cdot, \cdot)$.
+and $\omega_i(\cdot, \cdot) = g(I_i \cdot, \cdot)$. \fixme{some sign error here?}
+For example, when $i=3$ this amounts to checking that
+\begin{equation}
+g((- \star \dot \Phi_1,- \star \dot A_1),(\dot A_2, \dot \Phi_2)) = \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2))	
+\end{equation}
+
 \end{pf}
+
+There is a more abstract way of viewing this construction:
+\begin{exercise} \label{exc:VVstar-hk} If $(V,I,\omega)$ 
+is a \kahler vector space, show that 
+$V \oplus V^*$ admits a canonical \hk structure, for which $I_1 = I \oplus I^*$,
+$\omega_1 = \omega \oplus \omega^{-1}$,
+and $\Omega_1(v \oplus \alpha, v' \oplus \alpha') = \alpha'(v) - \alpha(v')$. \fixme{check factors}
+\end{exercise}
+
+\begin{exercise} Show that the \hk structure on $\cA^H$ introduced 
+above arises from the construction of \autoref{exc:VVstar-hk},
+applied to the vector space $V = \Omega^1(\fu(E))$.
+\end{exercise}
+
+In order to take a \hk quotient $\cA^H \hkq \fG$ we need
+first to have a moment map.
 
 \begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
 The $\fG$ action on $\cA^H$ admits a \hk moment map, given by:
-\begin{equation}
-  \mu_2 + \I \mu_3 = - 2 \I \bar\partial_E \varphi
-\end{equation}
-and
-\begin{equation}
-  \mu_1 = -F_D - \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C
-\end{equation}
+\begin{align}
+  \mu_2 + \I \mu_3 &= - 2 \I \bar\partial_D \varphi \\
+  \mu_1 &= -F_D - \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C.
+\end{align}
 \end{prop}
 
 \begin{pf} We have already computed the holomorphic moment map
@@ -6340,20 +6392,28 @@ and
 giving
 \begin{align}
   \omega_1(\rho(Z), (\dot A, \dot \Phi)) &= - \int_C \Tr(- D Z \wedge \dot A - [Z,\Phi] \wedge \dot \Phi) \\
-  &= - \int_C \Tr(Z D\dot A + Z(\dot \Phi \wedge \Phi + \Phi \wedge \dot \Phi) \\
+  &= - \int_C \Tr(Z D\dot A + Z(\dot \Phi \wedge \Phi + \Phi \wedge \dot \Phi)) \\
   &= \de \mu_{1,Z}(\dot A, \dot \Phi)
 \end{align}
 as desired.
+(Note that $\mu_1$ comes as a sum of two pieces, one involving $D$ and 
+one involving $\Phi$. This happens because the gauge group acts 
+separately on the two and the symplectic form $\omega_1$ is a sum
+of one piece involving $D$ and one involving $\Phi$. Moreover, if
+we look only at the part involving $D$, then our computations
+just reduce to those in \autoref{prop:unitary-connections-moment-map}.)
 \end{pf}
 
-Thus the vanishing of the \hk moment map gives \ti{Hitchin's equations}:
-\begin{align*}
-\bar\partial_D \Phi &= 0, \\
+
+Thus the vanishing of the \hk moment map, $\vec\mu = 0$, gives \ti{Hitchin's equations}:
+\begin{align}
+\bar\partial_D \varphi &= 0, \\
 F_D + \Phi \wedge \Phi &= -2 \pi \I \frac{d}{K} \bid \omega_C.
-\end{align*}
+\end{align}
 
-Let $\cA^{H,s}$ be the set of \ti{irreducible} solutions.
+\currentposition
 
+Let $\cA^{H,s}$ be the set of \ti{irreducible} pairs $(\bar\partial_E, \varphi)$.
 Now we can define
 \begin{defn}[Moduli space of Higgs bundles]
 \begin{equation}
