@@ -5377,12 +5377,12 @@ Then defining
 \begin{equation}
 	x_i = \Hol_{A_i} D, \qquad y_i = \Hol_{B_i} D,
 \end{equation}
-the $(x_i,y_i)$ give an explicit diffeomorphism $\Jac C \simeq (S^1)^{2g}$.
+the $(x_i,y_i)$ give an explicit diffeomorphism $\Jac C \simeq U(1)^{2g}$.
 
 Now, from $\Jac(C) \simeq H^1(C,U(1))$
-we get an identification \fixme{watch out for factors $\I$ here}
+we get an identification
 \begin{equation} \label{eq:tangent-to-jacobian-derham}
- T_x \Jac(C) \simeq H^1(C,\R).
+ T_x \Jac(C) \simeq \I H^1(C,\R).
 \end{equation}
 % We could understand this identification more concretely
 % as follows: identify $H^1(C,\R) = H^1_{dR}(C,\R)$
@@ -5395,7 +5395,7 @@ On the other hand, our realization of $T_x \Jac(C)$ via the symplectic quotient
 identifies it as $\ker (\de \oplus \de^*)$, i.e. 
 the space of harmonic forms,
 \begin{equation} \label{eq:tangent-to-jacobian-harmonic}
- T_x \Jac(C) \simeq \cH^1(C).
+ T_x \Jac(C) \simeq \I \cH^1(C).
 \end{equation}
 The relation between \eqref{eq:tangent-to-jacobian-derham}
 and \eqref{eq:tangent-to-jacobian-harmonic}
@@ -5409,7 +5409,7 @@ on $\Jac(C)$.
 As usual for symplectic quotients, 
 the symplectic form $\omega$ is just obtained by
 restriction of the original symplectic form \eqref{eq:symplectic-form-A}
-from $\cA$ to $\cH^1(C)$,
+from $\cA$ to $\I \cH^1(C)$,
 \begin{equation} \label{eq:symplectic-form-jac}
   \omega(\dot{A}_1, \dot{A}_2) = - \int_C \dot{A}_1 \wedge \dot{A}_2.
 \end{equation}
@@ -5418,9 +5418,9 @@ $\alpha$ and $\beta$, not on the actual harmonic forms
 chosen to represent them! Said otherwise, this formula represents
 an intrinsically defined symplectic form on $H^1(C,U(1))$.
 We could write it even more concretely: in the coordinates
-$x_i$, $y_i$ we introduced above, \fixme{sign?}
+$x_i$, $y_i$ we introduced above,
 \begin{equation} \label{eq:jacobian-explicit-symplectic-form}
-	\omega = \sum_i \frac{\de x_i}{x_i} \wedge \frac{\de y_i}{y_i}.
+	\omega = - \sum_i \frac{\de x_i}{x_i} \wedge \frac{\de y_i}{y_i}.
 \end{equation}
 In particular this form does not depend on the complex structure
 we chose on $C$.
@@ -5430,7 +5430,8 @@ the complex structure of $C$.
 \insfig{higgs-bundles-14}{0.9}
 
 On the other hand the
-\ti{complex} structure definitely does depend on the complex
+\ti{complex} structure of $\Jac(C)$ 
+definitely does depend on the complex
 structure of $C$: it is the one inducing the 
 Hodge decomposition
 \begin{equation}
@@ -5440,9 +5441,9 @@ Thus the \kahler metric on $\Jac(C)$
 also depends on the complex structure of $C$.
 Explicitly, we can write the \kahler metric as
 \begin{equation}
-  g(\dot{A}_1, \dot{A}_2) = \int \dot{A}_1 \wedge \star \dot{A}_2
+  g(\dot{A}_1, \dot{A}_2) = - \int \dot{A}_1 \wedge \star \dot{A}_2
 \end{equation}
-where $\dot{A}_1$, $\dot{A}_2 \in \cH^1(C)$.
+where $\dot{A}_1$, $\dot{A}_2 \in \I \cH^1(C)$.
 Loosely speaking, as we deform $C$, the ``angles'' of $\Jac(C)$
 are changing.
 \end{example}
@@ -5490,7 +5491,7 @@ the other a holomorphic coordinate
 \alpha \in \C / \left( 2\pi \Z \oplus  2\pi \tau \Z\right).
 \end{equation}
 Thus $\Jac C$ is biholomorphic to $C$ itself.
-The \kahler form is \fixme{sign?}
+The \kahler form is
 \begin{equation}
   \omega = \de \theta_x \wedge \de \theta_y = (\tau - \bar\tau) \de \alpha \wedge \de \bar\alpha.
 \end{equation}
@@ -6195,7 +6196,8 @@ consists of all holomorphic structures up to equivalence,
 \begin{equation}
 	\cN_{K,d}(C) = \cA^{\bar\partial} / \fG_\C.
 \end{equation}
-This suggests that we might profitably view $T^* \cN_{K,d}(C)$
+This suggests 
+(following the theme of \autoref{exc:cotangent-symplectic-quotients}) that we might profitably view $T^* \cN_{K,d}(C)$
 as a holomorphic symplectic quotient,
 \begin{equation}
 	T^* \cN_{K,d}(C) = (T^* \cA^{\bar\partial}_{K,d}) \kq \fG_\C.
@@ -6287,8 +6289,8 @@ give us anything really new about the space.
 \subsection{Moduli space as \hk quotient}
 
 As we have noted, though, a holomorphic symplectic quotient $X \kq G_\C$ 
-often has another interpretation: if the space $X$ with which we began
-was actually \hk, then we can try to identify $X \kq G_\C = X \hkq G$,
+often has another interpretation: if the space $X$ is 
+actually \hk, then we can try to identify $X \kq G_\C = X \hkq G$,
 and thus get a \hk structure on the quotient.
 Let us try to do that here.
 
