@@ -4905,7 +4905,12 @@ has degree $n$.
 All rank $K$ complex vector bundles over $C$ of degree $d$ are equivalent.
 \end{prop}
 
-\begin{pf} \fixme{...}
+\begin{pf} (From \cite{MR98b:14010}.) Rank $K$
+complex vector bundles over $C$ up to equivalence correspond
+to homotopy classes of maps $C \to BU(K)$. Since $C$ has dimension $2$,
+by cellular approximation
+we can replace $BU(K)$ by its 3-skeleton, which is $\C\PP^1$;
+and maps $C \to \C\PP^1$ are classified by their degree.
 \end{pf}
 
 Thus, suppose we fix a single rank $K$ complex vector bundle $E$, 
@@ -5385,7 +5390,7 @@ $SO(2) \subset SO(3)$.)
 \end{exercise}
 
 
-\subsection{The case of line bundles}
+\subsection{The case of line bundles} \label{sec:jacobians}
 
 \begin{example}[Jacobians] \label{exa:jacobians}
 The special case $K=1$ is very concrete. In light of 
@@ -5689,8 +5694,8 @@ isometry of \kahler manifolds.
 
 \subsection{Stable vector bundles}
 
-For $K > 1$ the situation will be a bit different:
-not every holomorphic vector bundle will admit an Einstein connection.
+For $K > 1$ the situation is a bit different:
+not every holomorphic vector bundle admits an Einstein connection.
 In this section we introduce the class of bundles which do.
 
 \begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
@@ -5775,13 +5780,40 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 \end{equation} 
 \end{exercise}
 
+\begin{lem}[Saturation of maps between bundles of same rank and degree] 
+Suppose $E$ and $E'$ are both
+holomorphic vector bundles with the same rank and degree,
+$\varphi: E \to E'$, and $\varphi$ is not an isomorphism.
+Then there exists a proper smallest subbundle $F \subset E$ containing
+$\ker \varphi$, and a proper smallest subbundle $F' \subset E'$
+containing $\im \varphi$.
+\end{lem}
+\begin{pf} \fixme{...}
+\end{pf}
+
+\begin{prop}[Stable bundles are simple] If $E$ and $E'$ are both stable
+holomorphic vector bundles with the same rank and degree, 
+then $\Hom(E,E')$ is 1-dimensional if $E \simeq E'$,
+and trivial otherwise.
+\end{prop}
+\begin{pf}
+If $E \not \simeq E'$ and $\Hom(E,E')$ is nontrivial, \ti{or}
+$\dim \Hom(E,E') > 1$, then there exists some $\varphi: E \to E'$ 
+such that $\varphi \neq 0$ and $\varphi$ is not an isomorphism.
+Let $F \subset E$ be the smallest subbundle containing $\ker \varphi$,
+and $F' \subset E'$ the smallest subbundle containing $\im \varphi$.
+Both $F$ and $F'$ are proper nontrivial subbundles, and we can compute 
+that either $\mu(F) \ge \mu(E)$ or $\mu(F') \ge\mu(E')$, giving a 
+contradiction.
+\end{pf}
+
 Finally we remark on one fine point.
 As we will see below, the objects appearing in $\cA^h \kq \fG$
 are stable or at least polystable bundles,
 not general semistable ones. On the other hand, the moduli space
 we are constructing is often described as the moduli space of
 semistable vector bundles. To explain the reason for this apparent difference
-we first recall:
+we first state:
 
 \begin{prop}[Existence of Jordan-H\"older filtration] 
 If $(E, \bar\partial)$ is any holomorphic vector bundle,
@@ -5798,9 +5830,16 @@ bundle
 is uniquely determined up to equivalence.
 \end{prop}
 
+\begin{pf} First we must show that every holomorphic vector bundle
+has \ti{some} holomorphic line subbundle. \fixme{...} With this done,
+let $E_1$ be some maximal stable subbundle of $E$, then let $E_2$ be
+a maximal stable subbundle of $E / E_1$, and so on.
+To see that $\gr E$ is uniquely determined, suppose given two
+such filtrations $E_i$ and $E'_i$. \fixme{...}
+\end{pf}
+
 If $E$ is stable then the Jordan-H\"older filtration has
-just one step, and $\gr E = E$. More generally we have the 
-following:
+just one step, and $\gr E = E$. More generally we have:
 
 \begin{prop}[Associated graded to a semistable bundle is polystable]
 If $E$ is semistable, then $\gr E$ is polystable.
@@ -6566,7 +6605,7 @@ purpose the next exercise is helpful:
 
 \begin{exercise} Show that
 \begin{equation}
-  \mu_2 = D \Phi, \qquad \mu_3 = D \star \Phi.
+  \mu_2 = D \star \Phi, \qquad \mu_3 = -D \Phi.
 \end{equation}
 \end{exercise}
 
@@ -6640,15 +6679,16 @@ and the second is
 \end{equation}
 As before, this is indeed a complex, when $(D,\varphi)$ is a harmonic 
 pair. Also as before, the \hk quotient construction dictates that
-we should interpret the quotient by the image of $\Omega^0$
-by taking the orthocomplement, i.e. imposing the ``gauge-fixing'' 
-condition \fixme{check sign}
-$D^* \dot{A} + \star [\dot\Phi, \Phi] = 0$.
+we should interpret the quotient by $\im \rho$
+by taking the orthocomplement,
+\begin{equation}
+  (\im \rho)^\perp = \{D \star \dot{A} - [\Phi, \dot\Phi] = 0\} \subset \Omega^1(\fu(E))^{\oplus 2}.
+\end{equation}
 So altogether the tangent space we are after is the kernel of
 the operator
 \begin{align}
-\hat{D}: \Omega^1(\fu(E))^{\oplus 2} &\to \Omega^2(\fu(E))^{\oplus 3} \oplus \Omega^0(\fu(E)) \\
-(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot\Phi + [\star \Phi, \dot A] \\ D^* \dot{A} + \star[\Phi, \dot \Phi] \end{pmatrix}
+\hat{D}: \Omega^1(\fu(E))^{\oplus 2} &\to \Omega^2(\fu(E))^{\oplus 4} \\
+(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot\Phi + [\star \Phi, \dot A] \\ D \star \dot{A} - [\Phi, \dot \Phi] \end{pmatrix}
 \end{align}
 Note that $\hat{D}$ is \ti{elliptic}, just as before:
 the principal symbol is $2K^2$ copies of $\de \oplus \de^*$.
@@ -6661,7 +6701,7 @@ kernel, and that kernel consists of smooth sections.
 Again as before, we have:
 \begin{lem}[Almost-vanishing for the doubled gauge complex] If $(D,\varphi) \in \cA^s$, then $\coker \hat{D}$ is $4$-dimensional,
 spanned by multiples of the identity in each summand
-of $\Omega^2(\fu(E))^{\oplus 3} \oplus \Omega^0(\fu(E))$.
+of $\Omega^2(\fu(E))^{\oplus 4}$.
 \end{lem}
 
 \begin{thm}[$\cM^s_{K,d}(C)$ is \hk] $\cM^s_{K,d}(C)$ is a \hk manifold.
@@ -6678,12 +6718,148 @@ Unlike $\cN_{K,d}(C)$, it is hopeless to ask for
 $\cM_{K,d}(C)$ to be compact. We will see this in the next example.
 
 
+\subsection{The twistor family, formally}
+
+We have been studying the \hk space $\cA^H$, which in its complex 
+structure $I_1$ is identified with the space $\cA^\C_1$
+of pairs $(\bar\partial_E, \varphi)$. Recall that modulo 
+questions of stability we have
+\begin{equation}
+  \cA^H \hkq \fG = \cA^\C_1 \kq \fG_\C,
+\end{equation}
+and the RHS at least formally 
+deserves the name ``moduli space of Higgs bundles.''
+
+Note as usual that the complex description is simpler than the
+unitary one --- to construct examples of Higgs bundles, we do not 
+have to solve the complicated PDE \eqref{eq:hitchin-eq}!
+
+Now, since $\cA^H$ is \hk, it has plenty of other complex structures
+$I_\zeta$. We may ask: do those too have simple descriptions?
+Let us begin with structure $I_2$. Since $I_2$ acts by
+$(\dot A, \dot \Phi) \mapsto (\dot \Phi, -\dot A)$
+we see that the combination $\dot A - \I \dot \Phi$
+is holomorphic.
+Said otherwise, $\cA^\C_2$ is the space of all
+(generally \ti{complex}, i.e. non-unitary)
+connections in $E$, which we split into their unitary and self-adjoint parts
+by writing
+\begin{equation}
+  \nabla_2 = D - \I \Phi.
+\end{equation}
+The action of $\fG$ on $\cA^\C_2$ takes 
+$\nabla_2 \to \nabla_2^g = g \nabla_2 g^{-1}$, i.e. it acts by
+the standard action of gauge transformations on connections.
+This action thus complexifies to the standard action of $\fG_\C$ by
+\ti{complex} gauge transformations on $\nabla_2$.
+(We emphasize that this is \ti{not} the same as the action 
+of $\fG_\C$ on $\cA^\C_1$
+which we considered above. Indeed, a real group action on a \hk space
+complexifies differently in each complex structure.)
+
+The holomorphic moment
+map for this action is
+\begin{equation}
+  M_2 = \mu_3 + \I \mu_1 = -D \Phi + \I \left(-F_D + \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C\right).
+\end{equation}
+This funny-looking combination has a nice interpretation:
+the curvature of $\nabla_2$ is
+\begin{equation}
+  F_{\nabla_2} = F_D - \I D\Phi - \Phi \wedge \Phi,
+\end{equation}
+so the condition $M_2 = 0$ says that
+\begin{equation}
+  F_{\nabla_2} = - 2\pi \I \frac{d}{K} \bid \omega_C.
+\end{equation}
+When $d=0$ this says that $\nabla_2$ is a complex \ti{flat}
+connection. More generally, $\nabla_2$ is a complex Einstein connection.
+
+Summing up: modulo questions of stability, we have in complex 
+structure $I_2$
+\begin{equation}
+  \cA^H \hkq \fG = \cA_2^\C \kq \fG_\C,
+\end{equation}
+and the RHS deserves the name ``moduli space of complex flat connections.''
+Thus we have the remarkable situation that the single \hk space
+$\cM_{K,d}(C)$ has two very diffrent interpretations:
+in one complex structure it is a moduli space of Higgs bundles,
+in another it is a moduli space of complex flat connections.
+
+What about structure $I_3$? In this structure we have a very similar
+story, except that now the holomorphic combination is
+$\dot A + \I \star \dot \Phi$, so the complex connection we consider is
+\begin{equation}
+  \nabla_3 = D + \I \star \Phi.
+\end{equation}
+
+\begin{exercise}
+Check that the vanishing of the moment map $M_3 = \mu_1 + \I \mu_2$
+implies that $\nabla_3$ is a complex Einstein connection.
+\end{exercise}
+
+In fact this is the tip of a bigger iceberg:
+for any $\zeta \in \C^\times$ we can consider the connection
+\begin{equation}
+  \nabla_\zeta = D - \zeta^{-1} \varphi - \zeta \varphi^\dagger
+\end{equation}
+
+\begin{exercise}
+Check that the full Hitchin equations \eqref{eq:hitchin-eq}
+imply that $\nabla_\zeta$ is a complex Einstein connection,
+for any $\zeta \in \C^\times$.
+\end{exercise}
+
+\begin{exercise}
+Check that (again ignoring stability) we have,
+in complex structure $I_\zeta$,
+\begin{equation}
+  \cA^H \hkq \fG = \cA_\zeta^\C \kq \fG_\C.
+\end{equation}
+\end{exercise}
+
+So in fact $\cM_{K,d}(C)$ can be identified with 
+a moduli space of complex flat connections 
+\ti{in many different ways}: indeed each
+complex structure $I_\zeta$ gives such an identification.
+
+
 \subsection{The case of Higgs line bundles}
 
+Now let us see how this works in the concrete example $K=1$.
 
+In this case things are particularly simple: $\End(E)$ is trivial,
+so the Higgs field $\varphi \in \Omega^{1,0}(C)$,
+and the brackets in the Hitchin equations \eqref{eq:hitchin-eq} 
+drop out, giving two decoupled equations:
+\begin{subequations}
+\begin{align}
+  \bar\partial \varphi &= 0, \\
+  F_D &= - 2\pi \I \frac{d}{K} \bid \omega_C.
+\end{align}
+\end{subequations}
+Thus $\vec\mu^{-1}(0)$ just consists of pairs $(D,\varphi)$
+where $D$ is an Einstein connection in 
+the line bundle $E$ and $\varphi$ is a holomorphic $1$-form on $C$.
 
+Moreover the action of $\fG$ on $\varphi$ is trivial.
+Thus, after taking the quotient by $\fG$ we just get
+\begin{equation}
+  \cM_{1,d}(C) = \cN_{1,d}(C) \times H^{1,0}(C).
+\end{equation}
+Since $H^{1,0}(C)$ is $T^* \cN_{1,d}(C)$ we can also write this as
+\begin{equation}
+  \cM_{1,d}(C) = T^* \cN_{1,d}(C). 
+\end{equation}
 
-\fixme{decoupled in abelian case}
+We have already analyzed $\cN_{1,d}(C)$ at some length: it is a compact
+\kahler torus, which we described in various ways 
+in \autoref{sec:jacobians}. 
+What we have found here is that the cotangent bundle
+to this torus is canonically \hk, and arises as the 
+simplest example of a moduli space of Higgs bundles.
+
+Now what are the holomorphic functions on this \hk space?
+\fixme{holonomy functions}
 
 \printbibliography
 
