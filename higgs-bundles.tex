@@ -1308,7 +1308,7 @@ also equivalent to
 
 Finally we remark that all of the above statements have analogues
 when we consider forms valued in an auxiliary Hermitian vector
-bundle $E$ carrying a flat connection $D$.
+bundle $E$ carrying a flat connection $D$. \fixme{say a little more here?}
 
 % \begin{defn}[Laplace operator coupled to a flat vector bundle]
 % If $X$ is a Riemannian manifold and $E$ a Hermitian vector bundle over 
@@ -5408,7 +5408,7 @@ Taking holonomies around loops gives a map
   \Jac(C) \to \Hom(\pi_1(C), U(1)) = H^1(C, U(1)).
 \end{equation}
 In fact this map is an isomorphism, as follows from
-\autoref{exc:connections-vs-representations} below.
+\autoref{exc:connections-vs-representations} above.
 
 Thus $\Jac(C)$ is the compact torus $H^1(C,U(1))$,
 of real dimension $2g$.
@@ -5426,9 +5426,9 @@ such that
 \end{equation}
 Then defining
 \begin{equation}
-	x_i = \Hol_{A_i} D, \qquad y_i = \Hol_{B_i} D,
+	\cX_{A_i} = \Hol_{A_i} D, \qquad \cX_{B_i} = \Hol_{B_i} D,
 \end{equation}
-the $(x_i,y_i)$ give an explicit diffeomorphism $\Jac C \simeq U(1)^{2g}$.
+the $(\cX_{A_i},\cX_{B_i})$ give an explicit diffeomorphism $\Jac C \simeq U(1)^{2g}$.
 
 Now, from $\Jac(C) \simeq H^1(C,U(1))$
 we get an identification
@@ -5469,9 +5469,9 @@ $\alpha$ and $\beta$, not on the actual harmonic forms
 chosen to represent them! Said otherwise, this formula represents
 an intrinsically defined symplectic form on $H^1(C,U(1))$.
 We could write it even more concretely: in the coordinates
-$x_i$, $y_i$ we introduced above,
+$\cX_{A_i}$, $\cX_{B_i}$ we introduced above,
 \begin{equation} \label{eq:jacobian-explicit-symplectic-form}
-	\omega = - \sum_i \frac{\de x_i}{x_i} \wedge \frac{\de y_i}{y_i}.
+	\omega = - \sum_i \frac{\de \cX_{A_i}}{\cX_{A_i}} \wedge \frac{\de \cX_{B_i}}{\cX_{B_i}}.
 \end{equation}
 In particular this form does not depend on the complex structure
 we chose on $C$.
@@ -5529,8 +5529,10 @@ where
   % \theta_y = \tau \alpha + \bar \tau \bar\alpha
   \alpha = \theta_y - \tau \theta_x.
 \end{equation}
-Note that the $\bar\partial$-operator appears with
-the coefficient $-2 (\im \tau)^{-1} \alpha$,
+Note that
+\begin{equation}
+  \bar\partial_D = (-2 (\im \tau)^{-1} \alpha) \de \bar{z} 
+\end{equation}
 so $\alpha$ is a holomorphic coordinate on $\Jac C$.  
 This we have two coordinate systems on $\Jac C$: one
 real coordinate system
@@ -5546,6 +5548,8 @@ The \kahler form is
 \begin{equation}
   \omega = \de \theta_x \wedge \de \theta_y = (\tau - \bar\tau) \de \alpha \wedge \de \bar\alpha.
 \end{equation}
+(Comparing with our previous notation for the general case, 
+we have $\e^{\I \theta_x} = \cX_A$, $\e^{\I \theta_y} = \cX_B$.)
 \end{example}
 
 \begin{exercise}
@@ -6331,7 +6335,6 @@ Fix a point $D \in \cN^s_{K,d}(C)$.
 The space of Higgs fields on the holomorphic bundle $(E, \bar\partial_D)$
 is the same as the space of harmonic forms
 $\varphi = \Phi_z \in \cH^{1,0}_D(\End E)$.
-\fixme{need a little more Hodge theory background for this}
 On the other hand, the tangent space to $\cN_{K,d}(C)$ at $D$, considered
 as a complex vector space, is the space
 of harmonic forms $\dot{A}_{\bar z} \in \cH^{0,1}_D(\End E)$.
@@ -6857,6 +6860,10 @@ in \autoref{sec:jacobians}.
 What we have found here is that the cotangent bundle
 to this torus is canonically \hk, and arises as the 
 simplest example of a moduli space of Higgs bundles.
+
+\begin{example}[Moduli of Higgs line bundles over a torus]
+\fixme{...}
+\end{example}
 
 Now what are the holomorphic functions on this \hk space?
 \fixme{holonomy functions}
