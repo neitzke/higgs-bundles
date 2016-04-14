@@ -6273,22 +6273,6 @@ just means a holomorphic line bundle plus a holomorphic 1-form,
 $\varphi \in H^0(K_C)$. This is always stable.
 \end{example}
 
-% \begin{defn}[Spin structure] \label{defn:spin-structure} A \ti{spin structure} on $C$
-% is a holomorphic line bundle $\cL$ equipped with an isomorphism
-% $\cL^2 \simeq K_C$.
-% \end{defn}
-
-% \begin{exercise} Show that the set of spin structures on $C$ (up to 
-% the natural notion of equivalence) is a torsor for $H^1(C,\Z/2\Z)$.
-% So in particular, there are $2^{2g}$ inequivalent 
-% spin structures on a genus $g$ surface.
-% \end{exercise}
-
-% \begin{exercise} Show that
-% \autoref{defn:spin-structure} is equivalent
-% to your favorite definition of spin structure, if you have one.
-% \end{exercise}
-
 \begin{example}[``Hitchin section'' for $GL(2)$] \label{exa:hitchin-section-K2} 
 Fix a line bundle
 $\cL$ on $C$.
@@ -6816,7 +6800,7 @@ in complex structure $I_\zeta$,
 \end{equation}
 \end{exercise}
 
-So $\cM_{K,d}(C)$ can be identified with 
+So, ignoring stability, it seems that $\cM_{K,d}(C)$ can be identified with 
 a moduli space of complex flat connections 
 \ti{in many different ways}: indeed each
 complex structure $I_\zeta$ gives such an identification.
@@ -6923,6 +6907,70 @@ and we have canonically
 \end{equation}
 
 
+\subsection{The role of stability}
+
+Now let us consider the case of general ranks $K>1$. We would like
+to compare $\cA^H \hkq \fG$ to $\cA_\zeta^\C \kq \fG_\C$.
+The problem we face is familiar: for each complex structure $I_\zeta$
+we have a complex moment map $M$ and a real moment map $\mu_\zeta$;
+we need to understand the intersection
+between the $\fG_\C$ orbits and the locus $\mu_\zeta^{-1}(0)$.
+This amounts to proving an analogue of \autoref{thm:narasimhan-seshadri}
+in this doubled context.
+
+The correct statements are:
+
+\begin{thm}[Polystable Higgs bundles admit harmonic connections] \label{thm:polystable-higgs-bundles-harmonic}
+Suppose $(E, \bar\partial_E, \varphi)$ is a Higgs bundle, with $\fG_\C$-orbit
+$\cO$. Then $\cO \cap \mu_1^{-1}(0)$ 
+consists of a single $\fG$-orbit if $(E, \bar\partial_E, \varphi)$ is polystable, and is empty otherwise. $(E,\bar\partial_E,\varphi)$ is
+stable iff the corresponding harmonic pair is irreducible.
+\end{thm}
+
+\begin{thm}[Reductive connections can be made harmonic]
+Suppose $(E, \nabla)$ is a flat complex connection on $E$, with $\fG_\C$-orbit
+$\cO$.
+Then $\cO \cap \mu_\zeta^{-1}(0)$ consists of a single $\fG$-orbit if
+$(E, \nabla)$ is reductive, and is empty otherwise. $(E,\nabla)$ is irreducible
+iff the correspnding harmonic pair is irreducible.
+\end{thm}
+
+Thus, the formal picture we set up becomes precise: \fixme{...}
+
+Now we consider a fun example, which needs a little bit of setup.
+
+\begin{defn}[Spin structure] \label{defn:spin-structure} A \ti{spin structure} on $C$
+is a holomorphic line bundle $\cL$ equipped with an isomorphism
+$\cL^2 \simeq K_C$.
+\end{defn}
+
+\begin{exercise} Show that the set of spin structures on $C$ (up to 
+the natural notion of equivalence) is a torsor for $H^1(C,\Z/2\Z)$.
+So in particular, there are $2^{2g}$ inequivalent 
+spin structures on a genus $g$ surface.
+\end{exercise}
+
+\begin{exercise} Show that
+\autoref{defn:spin-structure} is equivalent
+to your favorite definition of spin structure, if you have one.
+\end{exercise}
+
+\begin{example}[Uniformization theorem via Higgs bundle] Fix a spin structure $\cL$ 
+on $C$. We consider the stable Higgs bundle
+\begin{equation}
+  E = \cL \oplus \cL^{-1}, \qquad \varphi = \begin{pmatrix} 0 & 0 \\ 1 &0 \end{pmatrix}
+\end{equation}
+According to \autoref{thm:polystable-higgs-bundles-harmonic}
+there exists a harmonic connection in the $\fG_\C$-orbit of this
+Higgs bundle. In other words, there exists \fixme{...}
+
+\end{example}
+
+
+
+
+
+
 \subsection{The Hitchin fibration}
 
 \begin{defn}[Hitchin base] The \ti{Hitchin base} is the
@@ -6968,6 +7016,10 @@ A partial substitute is:
 \begin{prop}[Completeness of \hk metric on $\cM_{K,d}^s(C)$] The \hk metric on $\cM_{K,d}^s(C)$ is complete.
 \end{prop}
 
+
+\subsection{The circle action}
+
+\fixme{...}
 
 
 
