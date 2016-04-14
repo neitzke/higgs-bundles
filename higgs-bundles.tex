@@ -5537,7 +5537,7 @@ so $\alpha$ is a holomorphic coordinate on $\Jac C$.
 This we have two coordinate systems on $\Jac C$: one
 real coordinate system
 \begin{equation}
-(\theta_x, \theta_y) \in (R / 2\pi\Z)^2
+(\theta_x, \theta_y) \in (\R / 2\pi\Z)^2
 \end{equation}
 the other a holomorphic coordinate
 \begin{equation}
@@ -6192,7 +6192,7 @@ for that.
 a rank $2$ bundle $E$ over $C$ is given holomorphically as a
 nontrivial (i.e. non-split) extension
 \begin{equation} 
-0 \to L^{-1} \to E \to L \to 0 
+0 \to L^* \to E \to L \to 0 
 \end{equation}
 where $L$ has degree $1$.
 Show that $E$ is semistable and $\det E$ is holomorphically trivial.
@@ -6550,7 +6550,7 @@ we have
 \end{equation}
 In particular,
 \begin{align}
-  \Phi \wedge \Phi = [\Phi_x, \Phi_y] \de x \wedge \de y,
+  \Phi \wedge \Phi = \half [\Phi, \Phi] = [\Phi_x, \Phi_y] \de x \wedge \de y,
 \end{align}
 and recalling $\Phi = \varphi - \varphi^\dagger$,
 \begin{align}
@@ -6620,8 +6620,6 @@ The vanishing of the \hk moment map, $\vec\mu = 0$, gives \ti{Hitchin's equation
 F_D + [\varphi,\varphi^\dagger] &= -2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{align}
 \end{subequations}
-
-\currentposition
 
 Solutions of these equations are important enough that we give them a name:
 \begin{defn}[Harmonic pair]
@@ -6861,8 +6859,9 @@ What we have found here is that the cotangent bundle
 to this torus is canonically \hk, and arises as the 
 simplest example of a moduli space of Higgs bundles.
 
-\begin{example}[Moduli of Higgs line bundles over a torus]
-\fixme{...}
+\begin{example}[Moduli of degree zero Higgs line bundles over a torus]
+When $C$ is a torus, and $d = 0$, all this becomes even 
+more concrete.
 \end{example}
 
 Now what are the holomorphic functions on this \hk space?
