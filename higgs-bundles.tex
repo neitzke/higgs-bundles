@@ -6383,7 +6383,7 @@ The space $\cA^\C_1$ carries an obvious complex structure (since $T\cA^\C_1$
 is naturally a complex vector space).
 It also carries a natural holomorphic symplectic form:
 \begin{equation} \label{eq:Omega-1-AC}
-  \Omega_1((\dot{A}_{1{\bar z}}, \dot\Phi_{1z}),(\dot{A}_{2\bar{z}}, \dot\Phi_{2z})) = - 2 \I \int_C \Tr (\dot{A}_{1{\bar z}} \wedge \dot\Phi_{2z} - \dot{A}_{2\bar{z}} \wedge \dot\Phi_{1z}).
+  \Omega_1((\dot{A}_{1{\bar z}}, \dot\Phi_{1z}),(\dot{A}_{2\bar{z}}, \dot\Phi_{2z})) = 2 \I \int_C \Tr (\dot{A}_{1{\bar z}} \wedge \dot\Phi_{2z} - \dot{A}_{2\bar{z}} \wedge \dot\Phi_{1z}).
 \end{equation}
 As with $\cA^{\bar\partial}$, $\cA^\C_1$ has a natural action
 of $\fG_\C$, by
@@ -6397,12 +6397,12 @@ So first we need to know the moment map:
 The $\fG_\C$-action on $\cA^\C_1$ has a complex moment map
 with respect to $\Omega_1$,
 \begin{equation}
-  M_1 = -2 \I \bar\partial_E \varphi.
+  M_1 = 2 \I \bar\partial_E \varphi.
 \end{equation}
 More precisely, this means: given $Z \in \Lie \fG_\C = \Omega^0(\End E)$
 we have
 \begin{equation} \label{eq:M1-gauge}
-  M_{1,Z}(\bar\partial_E,\varphi) = -2 \I \int_C \Tr(Z \bar\partial_E \varphi).
+  M_{1,Z}(\bar\partial_E,\varphi) = 2 \I \int_C \Tr(Z \bar\partial_E \varphi).
 \end{equation}
 \end{prop}
 
@@ -6415,12 +6415,12 @@ and for
 $(\dot A_{\bar z},\dot\Phi_z) \in \Omega^{0,1}(\End E) \times \Omega^{1,0}(\End E) = T\cA_1^\C$,
 we compute by differentiating \eqref{eq:M1-gauge}
 \begin{equation}
-  \de M_{1,Z} (\dot A_{\bar z},\dot\Phi_z) = -2 \I \int_C \Tr( Z [\dot A_{\bar z},\varphi] + Z \bar\partial_E \dot\Phi_z).
+  \de M_{1,Z} (\dot A_{\bar z},\dot\Phi_z) = 2 \I \int_C \Tr( Z [\dot A_{\bar z},\varphi] + Z \bar\partial_E \dot\Phi_z).
 \end{equation}
 Now we can check directly that $M_1$ is indeed a moment map, using \eqref{eq:Omega-1-AC}:
 \begin{align}
-  \Omega_1(\rho(Z), (\dot A_{\bar z},\dot\Phi_z)) &= -2 \I \int_C \Tr(- \bar\partial_E Z \wedge \dot\Phi_z - \dot A_{\bar z} \wedge [Z,\varphi]) \\
-  &= -2 \I \int_C \Tr(Z \bar\partial_E \dot\Phi_z + Z[\dot A_{\bar z},\varphi]) \\
+  \Omega_1(\rho(Z), (\dot A_{\bar z},\dot\Phi_z)) &= 2 \I \int_C \Tr(- \bar\partial_E Z \wedge \dot\Phi_z - \dot A_{\bar z} \wedge [Z,\varphi]) \\
+  &= 2 \I \int_C \Tr(Z \bar\partial_E \dot\Phi_z + Z[\dot A_{\bar z},\varphi]) \\
   &= \de M_{1,Z}(\dot A_{\bar z},\dot\Phi_z)
 \end{align}
 as desired.
@@ -6474,8 +6474,8 @@ real symplectic form $\omega_1$, naturally extending the one \eqref{eq:symplecti
 we had on $\cA^h$:
 \begin{align}
   \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(- \dot A_1 \wedge \dot A_2 + \dot \Phi_1 \wedge \dot \Phi_2), \\
-  \omega_2((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(- \dot \Phi_1 \wedge \star \dot A_2 + \dot A_1 \wedge \star \dot \Phi_2), \\
-  \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(- \dot\Phi_1 \wedge \dot A_2 - \dot A_1 \wedge \dot \Phi_2).
+  \omega_2((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(\dot \Phi_1 \wedge \star \dot A_2 - \dot A_1 \wedge \star \dot \Phi_2), \\
+  \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(\dot\Phi_1 \wedge \dot A_2 + \dot A_1 \wedge \dot \Phi_2).
 \end{align}
 Note that the $\omega_i$ are translation invariant forms on $\cA^H$ and hence
 closed.
@@ -6495,8 +6495,8 @@ forms for a \hk structure $(I_1,I_2,I_3,g)$ on $\cA^H$, with \hk metric
 The complex structures act by: 
 \begin{align}
  I_1(\dot A, \dot \Phi) &= (\star \dot A, - \star \dot \Phi), \\
- I_2(\dot A, \dot \Phi) &= (\dot \Phi, - \dot A), \\
- I_3(\dot A, \dot \Phi) &= (\star \dot\Phi, \star \dot A).
+ I_2(\dot A, \dot \Phi) &= (- \dot \Phi, \dot A), \\
+ I_3(\dot A, \dot \Phi) &= (- \star \dot\Phi, - \star \dot A).
 \end{align}
 \end{prop}
 
@@ -6561,7 +6561,7 @@ and recalling $\Phi = \varphi - \varphi^\dagger$,
 \begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
 The $\fG$ action on $\cA^H$ admits a \hk moment map $\vec\mu$, given by:
 \begin{align}
-  \mu_2 + \I \mu_3 &= - 2 \I \bar\partial_D \varphi \\
+  \mu_2 + \I \mu_3 &= 2 \I \bar\partial_D \varphi \\
   \mu_1 &= -F_D + \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{align}
 \end{prop}
@@ -6608,7 +6608,7 @@ purpose the next exercise is helpful:
 
 \begin{exercise} Show that
 \begin{equation}
-  \mu_2 = D \star \Phi, \qquad \mu_3 = -D \Phi.
+  \mu_2 = -D \star \Phi, \qquad \mu_3 = D \Phi.
 \end{equation}
 \end{exercise}
 
@@ -6678,7 +6678,7 @@ where the first arrow is
 \end{equation}
 and the second is
 \begin{equation}
-(\dot A, \dot \Phi) \mapsto (D \dot{A} + [\Phi,\dot\Phi], D \dot\Phi + [\dot A, \Phi], D \star \dot\Phi + [\dot A, \star \Phi]).
+(\dot A, \dot \Phi) \mapsto (D \dot{A} + [\Phi,\dot\Phi], -D \star \dot\Phi - [\dot A, \star\Phi], D \dot\Phi + [\dot A, \Phi]).
 \end{equation}
 As before, this is indeed a complex, when $(D,\varphi)$ is a harmonic 
 pair. Also as before, the \hk quotient construction dictates that
@@ -6691,7 +6691,7 @@ So altogether the tangent space we are after is the kernel of
 the operator
 \begin{align}
 \hat{D}: \Omega^1(\fu(E))^{\oplus 2} &\to \Omega^2(\fu(E))^{\oplus 4} \\
-(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot\Phi + [\star \Phi, \dot A] \\ D \star \dot{A} - [\Phi, \dot \Phi] \end{pmatrix}
+(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ -D \star \dot\Phi - [\star \Phi, \dot A] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot{A} - [\Phi, \dot \Phi] \end{pmatrix}
 \end{align}
 Note that $\hat{D}$ is \ti{elliptic}, just as before:
 the principal symbol is $2K^2$ copies of $\de \oplus \de^*$.
@@ -6740,8 +6740,8 @@ have to solve the complicated PDE \eqref{eq:hitchin-eq}!
 Now, since $\cA^H$ is \hk, it has plenty of other complex structures
 $I_\zeta$. We may ask: do those too have simple descriptions?
 Let us begin with structure $I_2$. Since $I_2$ acts by
-$(\dot A, \dot \Phi) \mapsto (\dot \Phi, -\dot A)$
-we see that the combination $\dot A - \I \dot \Phi$
+$(\dot A, \dot \Phi) \mapsto (-\dot \Phi, \dot A)$
+we see that the combination $\dot A + \I \dot \Phi$
 is holomorphic.
 Said otherwise, $\cA^\C_2$ is the space of all
 (generally \ti{complex}, i.e. non-unitary)
@@ -6763,12 +6763,12 @@ complexifies differently in each complex structure.)
 The holomorphic moment
 map for this action is
 \begin{equation}
-  M_2 = \mu_3 + \I \mu_1 = -D \Phi + \I \left(-F_D + \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C\right).
+  M_2 = \mu_3 + \I \mu_1 = D \Phi + \I \left(-F_D + \Phi \wedge \Phi - 2 \pi \I \frac{d}{K} \bid \omega_C\right).
 \end{equation}
 This funny-looking combination has a nice interpretation:
 the curvature of $\nabla_2$ is
 \begin{equation}
-  F_{\nabla_2} = F_D - \I D\Phi - \Phi \wedge \Phi,
+  F_{\nabla_2} = F_D + \I D\Phi - \Phi \wedge \Phi,
 \end{equation}
 so the condition $M_2 = 0$ says that
 \begin{equation}
@@ -6790,9 +6790,9 @@ in another it is a moduli space of complex flat connections.
 
 What about structure $I_3$? In this structure we have a very similar
 story, except that now the holomorphic combination is
-$\dot A + \I \star \dot \Phi$, so the complex connection we consider is
+$\dot A - \I \star \dot \Phi$, so the complex connection we consider is
 \begin{equation}
-  \nabla_3 = D + \I \star \Phi.
+  \nabla_3 = D - \I \star \Phi.
 \end{equation}
 
 \begin{exercise}
@@ -6803,7 +6803,7 @@ implies that $\nabla_3$ is a complex Einstein connection.
 In fact this is the tip of a bigger iceberg:
 for any $\zeta \in \C^\times$ we can consider the connection
 \begin{equation}
-  \nabla_\zeta = D - \zeta^{-1} \varphi - \zeta \varphi^\dagger
+  \nabla_\zeta = D + \zeta^{-1} \varphi + \zeta \varphi^\dagger
 \end{equation}
 
 \begin{exercise}
