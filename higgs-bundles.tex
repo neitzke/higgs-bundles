@@ -3103,8 +3103,8 @@ more complicated formulas:
 where we introduced
 \begin{align}
   \theta_A = -\frac{1}{\sqrt{\im \tau}} x_1, & \qquad
-  \theta_B = \sqrt{\im \tau} x_0 - \frac{\re \tau}{\sqrt{\im \tau}} x_1, \\
-  Z_A = \frac{z_1}{2 \sqrt{\im \tau}}, & \qquad  Z_B = \tau Z_A.
+  \theta_B = \sqrt{\im \tau} x_0 - \frac{\re \tau}{\sqrt{\im \tau}} x_1, \label{eq:theta-R2T2} \\
+  Z_A = \frac{z_1}{2 \sqrt{\im \tau}}, & \qquad  Z_B = \tau Z_A. \label{eq:Z-R2T2}
 \end{align}
 In these coordinates the $\Z^2$ action
 just shifts $\theta_A$ and $\theta_B$ independently by 
@@ -5531,7 +5531,7 @@ where
 \end{equation}
 Note that
 \begin{equation}
-  \bar\partial_D = (-2 (\im \tau)^{-1} \alpha) \de \bar{z} 
+  \bar\partial_D = \bar\partial + (-2 (\im \tau)^{-1} \alpha) \de \bar{z} 
 \end{equation}
 so $\alpha$ is a holomorphic coordinate on $\Jac C$.  
 This we have two coordinate systems on $\Jac C$: one
@@ -5546,9 +5546,9 @@ the other a holomorphic coordinate
 Thus $\Jac C$ is biholomorphic to $C$ itself.
 The \kahler form is
 \begin{equation}
-  \omega = \de \theta_x \wedge \de \theta_y = (\tau - \bar\tau) \de \alpha \wedge \de \bar\alpha.
+  \omega = \de \theta_x \wedge \de \theta_y = \frac{\I}{2 \im \tau} \de \alpha \wedge \de \bar\alpha.
 \end{equation}
-(Comparing with our previous notation for the general case, 
+(Comparing with our notation for the general case, 
 we have $\e^{\I \theta_x} = \cX_A$, $\e^{\I \theta_y} = \cX_B$.)
 \end{example}
 
@@ -5667,7 +5667,7 @@ isometry of \kahler manifolds
 By \autoref{lem:einstein-connections-on-line-bundles} we can choose 
 a metric inducing an Einstein connection $D_\cL$ on $\cL$. Now 
 suppose given an Einstein connection $D$ in $E$. Then the connection
-$D' = D \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
+$D' = D \otimes 1 + 1 \otimes D_\cL$ in $E' = E \otimes \cL$ has curvature 
 \begin{equation} \label{eq:additivity-of-curvature}
  F_{D'} = F_D + F_{D_\cL} \bid
 \end{equation}
@@ -6472,11 +6472,13 @@ $\cA^H$ carries the complex form $\Omega_1$ which we break into
 components $\Omega_1 = \omega_2 + \I \omega_3$, plus another 
 real symplectic form $\omega_1$, naturally extending the one \eqref{eq:symplectic-form-A} which 
 we had on $\cA^h$:
+\begin{subequations} \label{eq:symplectic-forms-higgs}
 \begin{align}
   \omega_1((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(- \dot A_1 \wedge \dot A_2 + \dot \Phi_1 \wedge \dot \Phi_2), \\
   \omega_2((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(\dot \Phi_1 \wedge \star \dot A_2 - \dot A_1 \wedge \star \dot \Phi_2), \\
   \omega_3((\dot A_1, \dot \Phi_1),(\dot A_2, \dot \Phi_2)) &= \int_C \Tr(\dot\Phi_1 \wedge \dot A_2 + \dot A_1 \wedge \dot \Phi_2).
 \end{align}
+\end{subequations}
 Note that the $\omega_i$ are translation invariant forms on $\cA^H$ and hence
 closed.
 
@@ -6715,10 +6717,6 @@ on $\cM^s_{K,d}(C)$ is Ricci-flat.
 of $\cM_{K,d}^s(C)$ is $(g-1)K^2 + 1$.
 \end{prop}
 
-Unlike $\cN_{K,d}(C)$, it is hopeless to ask for
-$\cM_{K,d}(C)$ to be compact. We will see this in the next example.
-
-
 \subsection{The twistor family, formally}
 
 We have been studying the \hk space $\cA^H$, which in its complex 
@@ -6800,8 +6798,8 @@ implies that $\nabla_3$ is a complex Einstein connection.
 
 In fact this is the tip of a bigger iceberg:
 for any $\zeta \in \C^\times$ we can consider the connection
-\begin{equation}
-  \nabla_\zeta = D + \zeta^{-1} \varphi + \zeta \varphi^\dagger
+\begin{equation} \label{eq:nabla-zeta}
+  \nabla_\zeta = \zeta^{-1} \varphi + D + \zeta \varphi^\dagger
 \end{equation}
 
 \begin{exercise}
@@ -6818,7 +6816,7 @@ in complex structure $I_\zeta$,
 \end{equation}
 \end{exercise}
 
-So in fact $\cM_{K,d}(C)$ can be identified with 
+So $\cM_{K,d}(C)$ can be identified with 
 a moduli space of complex flat connections 
 \ti{in many different ways}: indeed each
 complex structure $I_\zeta$ gives such an identification.
@@ -6826,6 +6824,7 @@ complex structure $I_\zeta$ gives such an identification.
 
 \subsection{The case of Higgs line bundles}
 
+\begin{example}[Moduli of degree zero Higgs line bundles]
 Now let us see how this works in the concrete example $K=1$.
 
 In this case things are particularly simple: $\End(E)$ is trivial,
@@ -6858,14 +6857,119 @@ in \autoref{sec:jacobians}.
 What we have found here is that the cotangent bundle
 to this torus is canonically \hk, and arises as the 
 simplest example of a moduli space of Higgs bundles.
+\end{example}
 
 \begin{example}[Moduli of degree zero Higgs line bundles over a torus]
 When $C$ is a torus, and $d = 0$, all this becomes even 
-more concrete.
+more concrete. Extending our description of $\Jac C$
+from \autoref{exa:metric-on-jac-C-genus-one}, a general $(D,\Phi) \in \cM_{1,0}(C)$ is gauge equivalent to
+\begin{align}
+  D &= \de + \I \theta_A \de x + \I \theta_B \de y = \de + (2 \im \tau)^{-1} (\bar\alpha \de z - \alpha \de \bar{z}), \\
+  \Phi &= a \de z - \bar{a} \de \bar{z},
+\end{align}
+where
+\begin{equation}
+  \alpha = \theta_B - \tau \theta_A.
+\end{equation}
+The coordinates $(\theta_A, \theta_B, \alpha)$ identify $\cM_{1,0}(C)$
+with $U(1)^2 \times \C$.
+
+This looks a lot like the situation of \autoref{exa:R2T2}: we are
+considering a translation invariant \hk metric on $T^2 \times \R^2$. 
+In fact, it is \ti{exactly} the situation of \autoref{exa:R2T2}.
+To see this, we can compute directly from \eqref{eq:symplectic-forms-higgs} and
+\eqref{eq:Omega-1-AC}:
+\begin{align}
+  \omega_1 &= \de \theta_A \wedge \de \theta_B + 2 \I (\im \tau) \de a \wedge \de \bar{a}, \label{eq:symplectic-higgs-torus} \\
+  \Omega_1 &= 2 \de \alpha \wedge \de a. \label{eq:holsymp-higgs-torus}
+\end{align}
+This indeed matches with \autoref{exa:R2T2}, when we identify
+our coordinates $\theta_{A,B}$ with those in \eqref{eq:theta-R2T2},
+and identify the functions
+\begin{equation}
+  Z_A = a, \qquad Z_B = \tau a,
+\end{equation}
+with the $Z_{A,B}$ in \eqref{eq:Z-R2T2}.
+
+Now, we have already studied the whole family of complex
+structures $I_\zeta$ in this example: for any
+$\zeta \in \C^\times$,
+we have an identification 
+\begin{equation}
+  (\cM_{1,0}(C), I_\zeta) \simeq \C^\times \times \C^\times
+\end{equation}
+given by the explicit functions
+\begin{equation}
+  \cX_{A,B} = \exp \left( \zeta^{-1} Z_{A,B} + \I \theta_{A,B} + \zeta \bar{Z}_{A,B} \right).
+\end{equation}
+These formulas have a simple interpretation.
+$Z_{A,B}$ are the integrals of $\varphi = a \de z$
+over the cycles $A,B$; similarly $\bar Z_{A,B}$ are
+the integrals of $\varphi^\dagger$.
+Thus, if we consider the connection $\nabla_\zeta$ given by 
+\eqref{eq:nabla-zeta}, its holonomy around the cycles 
+$A,B$ is $\cX_{A,B}$.
+
 \end{example}
 
-Now what are the holomorphic functions on this \hk space?
-\fixme{holonomy functions}
+\begin{exercise} Verify \eqref{eq:symplectic-higgs-torus} and
+\eqref{eq:holsymp-higgs-torus}.
+\end{exercise}
+
+So everything hangs together: there are no issues of stability
+and we have canonically 
+\begin{equation}
+  (\cM_{1,0}(C), I_\zeta) \simeq H^1(C, \C^\times)
+\end{equation}
+
+
+\subsection{The Hitchin fibration}
+
+\begin{defn}[Hitchin base] The \ti{Hitchin base} is the
+vector space
+\begin{equation}
+  \cB = \bigoplus_{i=1}^K H^0(C, K_C^{\otimes i}).
+\end{equation}
+\end{defn}
+
+\begin{defn}[Hitchin fibration] The \ti{Hitchin fibration} is 
+the map
+\begin{equation}
+  \pi: \cM \to \cB
+\end{equation}
+defined as follows. Given $([D,\varphi]) \in \cM$
+we consider the characteristic polynomial
+\begin{equation}
+  \det (\lambda - \varphi) = \lambda^K + \sum_{i=1}^K \phi_i \lambda^{K-i}.
+\end{equation}
+Then define
+\begin{equation}
+  \pi([(D,\varphi)]) = (\phi_1, \phi_2, \dots, \phi_K) \in \cB.
+\end{equation}
+\end{defn}
+
+\begin{prop}[Hitchin fibration is proper] The Hitchin fibration
+is proper.
+\end{prop}
+
+\begin{defn}[Spectral curve] \fixme{...}
+\end{defn}
+
+\begin{prop}[$\cM$ is fiberwise compactification of $\cN$]
+$\cM_{K,d}^s(C)$ is the fiberwise compactification of $T^* \cN_{K,d}^s(C)$
+with respect to the Hitchin fibration. 
+\end{prop}
+
+We think of $\cM_{K,d}^s(C)$ as a kind of partial compactification
+of $T^* \cN_{K,d}^s(C)$. But it is hopeless to ask for
+$\cM^s_{K,d}(C)$ or $\cM_{K,d}(C)$ to be literally compact.
+A partial substitute is:
+
+\begin{prop}[Completeness of \hk metric on $\cM_{K,d}^s(C)$] The \hk metric on $\cM_{K,d}^s(C)$ is complete.
+\end{prop}
+
+
+
 
 \printbibliography
 
