@@ -330,16 +330,15 @@ It can be seen in various ways:
 
 \begin{itemize}
 \item $\cM$ is the (twisted) \ti{character variety}, i.e. moduli space of
-(twisted) 
-reductive representations\footnote{``Reductive'' means the closure of 
-the image is a reductive subgroup of $G_\C$.}
+(twisted) irreducible representations
 $\pi_1(C) \to G_\C$.
 e.g. for $g=2$ and $G = SU(2)$, 
 this means
 \begin{equation}
   \cM = \{ A_1,A_2,B_1,B_2 \in SL(2,\C): A_1 B_1 A_1^{-1} B_1^{-1} A_2 B_2 A_2^{-1} B_2^{-1} = \pm 1 \} / \sim
 \end{equation}
-\item $\cM$ is the moduli space parameterizing (stable) \ti{flat $G_\C$-connections}
+\item $\cM$ is the moduli space parameterizing irreducible
+\ti{flat $G_\C$-connections} (or complex Einstein connections)
 over $C$. (Certain sheaves on this moduli space are 
 basic objects on ``$B$ side'' of the geometric Langlands correspondence.)
 \item $\cM$ is a partial compactification of $T^* \Bun(C,G)$, where $\Bun(C,G)$ is the moduli space of semistable $G$-bundles on $C$. (Lagrangian submanifolds are related to \ti{D-modules} on $\Bun(C,G)$, basic objects on ``$A$ side'' 
@@ -6244,65 +6243,12 @@ and has
 \end{equation}
 \end{defn}
 
-\begin{defn}[Stable Higgs bundle] A Higgs bundle $(E, \bar\partial_E, \varphi)$ over $C$ is called:
-\begin{itemize}
-\item \ti{stable} if, for every sub-Higgs bundle $E' \subset E$,
-we have $\mu(E') < \mu(E)$,
-\item \ti{polystable} if $E$ is a direct sum of stable Higgs bundles
-of the same slope,
-\item \ti{semistable} if, for every every $\varphi$-invariant 
-holomorphic subbundle 
-$E' \subset E$, we have $\mu(E') \le \mu(E)$.
-\end{itemize}
-\end{defn}
-Note that the slope $\mu$ is defined just as it was for a holomorphic
-vector bundle; the only role of the Higgs field is to restrict
-the allowed subbundles.
-
-There are a few Higgs bundles which we can describe particularly
-concretely:
-
-\begin{example}[Zero Higgs field] For any holomorphic vector
-bundle $(E,\bar\partial)$ we obtain a trivial example of a Higgs bundle
-by taking $(E,\bar\partial,\varphi=0)$. It is a stable Higgs bundle
-if and only if $(E,\bar\partial)$ is stable.
-\end{example}
-
-\begin{example}[Higgs line bundles] If $K=1$ then a Higgs bundle
-just means a holomorphic line bundle plus a holomorphic 1-form,
-$\varphi \in H^0(K_C)$. This is always stable.
-\end{example}
-
-\begin{example}[``Hitchin section'' for $GL(2)$] \label{exa:hitchin-section-K2} 
-Fix a line bundle
-$\cL$ on $C$.
-Then consider the holomorphic vector
-bundle
-\begin{equation}
-  E = \cL \otimes K_C \oplus \cL.
-\end{equation}
-For any $(\phi_1, \phi_2) \in H^0(K_C) \oplus H^0(K_C^2)$,
-we can equip $E$ with the Higgs field
-\begin{equation}
-  \varphi = \begin{pmatrix} \phi_1 & \phi_2 \\ 1 & \phi_1 \end{pmatrix} \in \begin{pmatrix} \Hom(\cL \otimes K_C,\cL \otimes K_C) \otimes K_C & \Hom(\cL,\cL \otimes K_C) \otimes K_C \\ \Hom(\cL \otimes K_C,\cL) \otimes K_C & \Hom(\cL,\cL) \otimes K_C \end{pmatrix} = \begin{pmatrix} K_C & K_C^2 \\ \cO & K_C \end{pmatrix}
-\end{equation}
-and thus obtain a Higgs bundle.
-\end{example}
-
-\begin{exercise}
-Show that the Higgs bundles in \autoref{exa:hitchin-section-K2} are stable,
-for any $(\phi_1,\phi_2)$,
-as long as $C$ has genus $g \ge 2$.
-\end{exercise}
-
-Note that these Higgs bundles are stable \ti{despite} the fact that the underlying
-vector bundle $E$ is unstable.
-
 
 \subsection{Moduli space as holomorphic symplectic quotient}
 
-Now suppose we want to construct a moduli space parameterizing stable Higgs
-bundles modulo equivalence. To get some crude idea of what will happen,
+Now suppose we want to construct a moduli space parameterizing Higgs
+bundles modulo equivalence --- perhaps with some stability condition,
+yet to be described. To get some crude idea of what will happen,
 let us imagine that we take all stable vector bundles
 and then equip them with arbitrary Higgs fields: in other words
 we take our ``moduli space'' to be a vector bundle over 
@@ -6310,9 +6256,6 @@ $\cN^s_{K,d}(C)$, with fiber $H^0(C, \End E \otimes K_C)$.
 
 \insfig{higgs-bundles-16}{1.0}
 
-Since every Higgs bundle obtained in this way is stable, we 
-should expect that this is at least a subset of the actual 
-moduli space of all stable Higgs bundles.
 What structure does it carry?
 
 Fix a point $D \in \cN^s_{K,d}(C)$.
@@ -6349,10 +6292,6 @@ on $E$,
 \begin{equation}
   \cA^\C_1 = \cA^{\bar\partial} \times \Omega^{1,0}(\End E).
 \end{equation}
-We denote points of $\cA^\C_1$ as
-\begin{equation}
-  (\bar\partial_E, \varphi) \in \cA^\C_1.
-\end{equation}
 $\cA^\C_1$ is a complex affine space over
 $\Omega^{0,1}(\End E) \oplus \Omega^{1,0}(\End E)$.
 We have
@@ -6369,6 +6308,7 @@ It also carries a natural holomorphic symplectic form:
 \begin{equation} \label{eq:Omega-1-AC}
   \Omega_1((\dot{A}_{1{\bar z}}, \dot\Phi_{1z}),(\dot{A}_{2\bar{z}}, \dot\Phi_{2z})) = 2 \I \int_C \Tr (\dot{A}_{1{\bar z}} \wedge \dot\Phi_{2z} - \dot{A}_{2\bar{z}} \wedge \dot\Phi_{1z}).
 \end{equation}
+We denote points of $\cA^\C_1$ as $(\bar\partial_E, \varphi) \in \cA^\C_1$.
 As with $\cA^{\bar\partial}$, $\cA^\C_1$ has a natural action
 of $\fG_\C$, by
 \begin{equation}
@@ -6377,7 +6317,7 @@ of $\fG_\C$, by
 Now we want to take the holomorphic symplectic quotient by this action.
 So first we need to know the moment map:
 
-\begin{prop}[Moment map for $\fG_\C$-action on $\cA^\C_1$]
+\begin{prop}[Moment map for $\fG_\C$-action on $\cA^\C_1$] \label{prop:complex-moment-map-higgs}
 The $\fG_\C$-action on $\cA^\C_1$ has a complex moment map
 with respect to $\Omega_1$,
 \begin{equation}
@@ -6544,6 +6484,8 @@ and recalling $\Phi = \varphi - \varphi^\dagger$,
   &= - [\varphi, \varphi^\dagger].
 \end{align}
 
+Now we can write the moment map:
+
 \begin{prop}[\Hk moment map for $\fG$ action on $\cA^H$]
 The $\fG$ action on $\cA^H$ admits a \hk moment map $\vec\mu$, given by:
 \begin{align}
@@ -6553,8 +6495,8 @@ The $\fG$ action on $\cA^H$ admits a \hk moment map $\vec\mu$, given by:
 \end{prop}
 
 \begin{pf} We have already computed the holomorphic moment map
-$M_1 = \mu_2 + \I \mu_3$. All we need to do is check the 
-formula for $\mu_1$. 
+$M_1 = \mu_2 + \I \mu_3$, in \autoref{prop:complex-moment-map-higgs}. 
+All that remains is to check the formula for $\mu_1$. 
 % First note that for matrix-valued $1$-forms $\Phi_1, \Phi_2$ we have
 % $\Phi_1 \wedge \Phi_2 = (\Phi_{1x} \Phi_{2y} - \Phi_{1y} \Phi_{2x}) \de x \wedge \de y$
 We have
@@ -6599,14 +6541,12 @@ purpose the next exercise is helpful:
 \end{exercise}
 
 The vanishing of the \hk moment map, $\vec\mu = 0$, gives \ti{Hitchin's equations} \cite{MR89a:32021}:
-
 \begin{subequations} \label{eq:hitchin-eq}
 \begin{align} 
 \bar\partial_D \varphi &= 0, \\
 F_D + [\varphi,\varphi^\dagger] &= -2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{align}
 \end{subequations}
-
 Solutions of these equations are important enough that we give them a name:
 \begin{defn}[Harmonic pair]
 A \ti{harmonic pair} on $E$ is a pair $(D,\varphi) \in \cA^H$ 
@@ -6646,7 +6586,7 @@ Now finally we define:
 \end{equation}
 \end{defn}
 
-As we did with the moduli spaces of Einstein connections, we 
+As we did with $\cN^s_{K,d}(C)$, we 
 first discuss the formal picture. The tangent space to
 $\cM_{K,d}^s(C)$ at a given harmonic pair $(D,\varphi)$
 should formally be the joint kernel of the
@@ -6875,10 +6815,9 @@ and identify the functions
 \end{equation}
 with the $Z_{A,B}$ in \eqref{eq:Z-R2T2}.
 
-Now, we have already studied the whole family of complex
-structures $I_\zeta$ in this example: for any
-$\zeta \in \C^\times$,
-we have an identification 
+Now, we already studied the whole family of complex
+structures $I_\zeta$ in \autoref{exa:R2T2}: for any
+$\zeta \in \C^\times$, we have an identification 
 \begin{equation}
   (\cM_{1,0}(C), I_\zeta) \simeq \C^\times \times \C^\times
 \end{equation}
@@ -6900,44 +6839,70 @@ $A,B$ is $\cX_{A,B}$.
 \eqref{eq:holsymp-higgs-torus}.
 \end{exercise}
 
-So everything hangs together: there are no issues of stability
-and we have canonically 
+% So everything hangs together: there are no issues of stability
+% and we have canonically 
+% \begin{equation}
+%   (\cM_{1,0}(C), I_\zeta) \simeq H^1(C, \C^\times)
+% \end{equation}
+
+
+\subsection{Stability for Higgs bundles and flat connections}
+
+\begin{defn}[Stable Higgs bundle] A Higgs bundle $(E, \bar\partial_E, \varphi)$ over $C$ is called:
+\begin{itemize}
+\item \ti{stable} if, for every sub-Higgs bundle $E' \subset E$,
+we have $\mu(E') < \mu(E)$,
+\item \ti{polystable} if $E$ is a direct sum of stable Higgs bundles
+of the same slope,
+\item \ti{semistable} if, for every every $\varphi$-invariant 
+holomorphic subbundle 
+$E' \subset E$, we have $\mu(E') \le \mu(E)$.
+\end{itemize}
+\end{defn}
+Note that the slope $\mu$ is defined just as it was for a holomorphic
+vector bundle; the only role of the Higgs field is to restrict
+the allowed subbundles.
+
+There are a few Higgs bundles which we can describe particularly
+concretely:
+
+\begin{example}[Zero Higgs field] For any holomorphic vector
+bundle $(E,\bar\partial)$ we obtain a trivial example of a Higgs bundle
+by taking $(E,\bar\partial,\varphi=0)$. It is a stable Higgs bundle
+if and only if $(E,\bar\partial)$ is stable.
+\end{example}
+
+\begin{example}[Higgs line bundles] If $K=1$ then a Higgs bundle
+just means a holomorphic line bundle plus a holomorphic 1-form,
+$\varphi \in H^0(K_C)$. This is always stable.
+\end{example}
+
+\begin{example}[``Hitchin section'' for $GL(2)$] \label{exa:hitchin-section-K2} 
+Fix a line bundle
+$\cL$ on $C$.
+Then consider the holomorphic vector
+bundle
 \begin{equation}
-  (\cM_{1,0}(C), I_\zeta) \simeq H^1(C, \C^\times)
+  E = \cL \otimes K_C \oplus \cL.
 \end{equation}
+For any $(\phi_1, \phi_2) \in H^0(K_C) \oplus H^0(K_C^2)$,
+we can equip $E$ with the Higgs field
+\begin{equation}
+  \varphi = \begin{pmatrix} \phi_1 & \phi_2 \\ 1 & \phi_1 \end{pmatrix} \in \begin{pmatrix} \Hom(\cL \otimes K_C,\cL \otimes K_C) \otimes K_C & \Hom(\cL,\cL \otimes K_C) \otimes K_C \\ \Hom(\cL \otimes K_C,\cL) \otimes K_C & \Hom(\cL,\cL) \otimes K_C \end{pmatrix} = \begin{pmatrix} K_C & K_C^2 \\ \cO & K_C \end{pmatrix}
+\end{equation}
+and thus obtain a Higgs bundle.
+\end{example}
 
+\begin{exercise}
+Show that the Higgs bundles in \autoref{exa:hitchin-section-K2} are stable,
+for any $(\phi_1,\phi_2)$,
+as long as $C$ has genus $g \ge 2$.
+\end{exercise}
 
-\subsection{The role of stability}
+Note that these Higgs bundles are stable \ti{despite} the fact that the underlying
+vector bundle $E$ is unstable.
 
-Now let us consider the case of general ranks $K>1$. We would like
-to compare $\cA^H \hkq \fG$ to $\cA_\zeta^\C \kq \fG_\C$.
-The problem we face is familiar: for each complex structure $I_\zeta$
-we have a complex moment map $M$ and a real moment map $\mu_\zeta$;
-we need to understand the intersection
-between the $\fG_\C$ orbits and the locus $\mu_\zeta^{-1}(0)$.
-This amounts to proving an analogue of \autoref{thm:narasimhan-seshadri}
-in this doubled context.
-
-The correct statements are:
-
-\begin{thm}[Polystable Higgs bundles admit harmonic connections] \label{thm:polystable-higgs-bundles-harmonic}
-Suppose $(E, \bar\partial_E, \varphi)$ is a Higgs bundle, with $\fG_\C$-orbit
-$\cO$. Then $\cO \cap \mu_1^{-1}(0)$ 
-consists of a single $\fG$-orbit if $(E, \bar\partial_E, \varphi)$ is polystable, and is empty otherwise. $(E,\bar\partial_E,\varphi)$ is
-stable iff the corresponding harmonic pair is irreducible.
-\end{thm}
-
-\begin{thm}[Reductive connections can be made harmonic]
-Suppose $(E, \nabla)$ is a flat complex connection on $E$, with $\fG_\C$-orbit
-$\cO$.
-Then $\cO \cap \mu_\zeta^{-1}(0)$ consists of a single $\fG$-orbit if
-$(E, \nabla)$ is reductive, and is empty otherwise. $(E,\nabla)$ is irreducible
-iff the correspnding harmonic pair is irreducible.
-\end{thm}
-
-Thus, the formal picture we set up becomes precise: \fixme{...}
-
-Now we consider a fun example, which needs a little bit of setup.
+For the next example we need a little bit of setup:
 
 \begin{defn}[Spin structure] \label{defn:spin-structure} A \ti{spin structure} on $C$
 is a holomorphic line bundle $\cL$ equipped with an isomorphism
@@ -6955,16 +6920,113 @@ spin structures on a genus $g$ surface.
 to your favorite definition of spin structure, if you have one.
 \end{exercise}
 
-\begin{example}[Uniformization theorem via Higgs bundle] Fix a spin structure $\cL$ 
-on $C$. We consider the stable Higgs bundle
+\begin{example}[``Hitchin section'' for $SL(2)$] \label{exa:hitchin-section-SL2} 
+Fix a spin structure
+$\cL$ on $C$.
+Then consider the holomorphic vector
+bundle
 \begin{equation}
-  E = \cL \oplus \cL^{-1}, \qquad \varphi = \begin{pmatrix} 0 & 0 \\ 1 &0 \end{pmatrix}
+  E = \cL \oplus \cL^{-1}.
+\end{equation}
+For any $\phi_2 \in H^0(K_C^2)$,
+we can equip $E$ with the Higgs field
+\begin{equation}
+  \varphi = \begin{pmatrix} 0 & \phi_2 \\ 1 & 0 \end{pmatrix} \in \begin{pmatrix} \Hom(\cL,\cL) \otimes K_C & \Hom(\cL^{-1},\cL) \otimes K_C \\ \Hom(\cL,\cL^{-1}) \otimes K_C & \Hom(\cL^{-1},\cL^{-1}) \otimes K_C \end{pmatrix} = \begin{pmatrix} K_C & K_C^2 \\ \cO & K_C \end{pmatrix}
+\end{equation}
+and thus obtain a Higgs bundle.
+\end{example}
+
+
+
+\begin{defn}[Reductive complex connections] A connection $D$ in $E$
+is \ti{reductive} if, whenever $E' \subset E$ is $D$-invariant,
+there is a decomposition $E = E' \oplus E''$ where $E''$ is
+also $D$-invariant. 
+\end{defn}
+
+(So ``reductive'' is the complex-connection analogue of ``polystable,''
+in the same way as ``irreducible'' is the analogue of ``stable.'' 
+Note that the phenomenon of non-reductivity 
+is peculiar to complex connections: for 
+unitary ones we could always take $E''$ to be the orthocomplement
+of $E'$.)
+
+\begin{example}[Some non-reductive connections]
+Any representation $\rho: \pi_1(C) \to GL(K,\C)$ for which all
+$\rho(\wp)$ are upper-triangular matrices
+corresponds to a flat complex connection which is not reductive.
+\end{example}
+
+\subsection{Gauge-theoretic meaning of stability}
+
+Now let us consider the case of general ranks $K>1$. We would like
+to compare $\cA^H \hkq \fG$ to $\cA_\zeta^\C \kq \fG_\C$.
+The problem we face is familiar: for each complex structure $I_\zeta$
+we have a complex moment map $M$ and a real moment map $\mu_\zeta$;
+we need to understand the intersection
+between the $\fG_\C$ orbits and the locus $\mu_\zeta^{-1}(0)$.
+This amounts to proving an analogue of \autoref{thm:narasimhan-seshadri}
+in this doubled context.
+
+\begin{thm}[Polystable Higgs bundles admit harmonic connections] \label{thm:polystable-higgs-bundles-harmonic}
+We have:
+\begin{itemize}
+\item For any $[(D,\Phi)] \in \cM^s_{K,d}(C)$ the pair
+$(\bar\partial_D,\varphi)$
+induces the structure of \ti{stable} Higgs bundle on $E$.
+Conversely, any stable Higgs bundle structure 
+on $E$ is equivalent to $(\bar\partial_D,\varphi)$ for a unique $[(D,\Phi)] \in \cM^s_{K,d}(C)$.
+\item For any $[(D,\Phi)] \in \cM_{K,d}(C)$ the pair
+$(\bar\partial_D,\varphi)$
+induces the structure of \ti{polystable} Higgs bundle on $E$.
+Conversely, any polystable Higgs bundle structure 
+on $E$ is equivalent to $(\bar\partial_D,\varphi)$ for a unique $[(D,\Phi)] \in \cM_{K,d}(C)$.
+\end{itemize}
+\end{thm}
+
+\begin{pf} This is proven by analytic means, broadly similar to those
+ in the proof of \autoref{thm:narasimhan-seshadri}. I will not 
+ try to treat it here. The case of $K=2$
+ can be found in \cite{MR89a:32021}; for general $K$ see \cite{MR944577}.
+\end{pf}
+
+\begin{example}[Uniformization theorem via Higgs bundle] Fix a spin 
+structure $\cL$ on $C$. We consider the special case of
+\autoref{exa:hitchin-section-SL2} with $\phi_2 = 0$:
+\begin{equation}
+  E = \cL \oplus \cL^{-1}, \qquad \varphi = \begin{pmatrix} 0 & 0 \\ 1 &0 \end{pmatrix}.
 \end{equation}
 According to \autoref{thm:polystable-higgs-bundles-harmonic}
 there exists a harmonic connection in the $\fG_\C$-orbit of this
-Higgs bundle. In other words, there exists \fixme{...}
+Higgs bundle, or equivalently, a Hermitian metric $h$ on $E$ such that
+\begin{equation}
+  F_{D_h} + [\varphi, \varphi^{\dagger_h}] = 0.
+\end{equation}
+Concretely, \fixme{...}
 
 \end{example}
+
+
+\begin{thm}[Reductive connections can be made harmonic]
+Fix some $\zeta \in \C^\times$.
+\item For any $[(D,\Phi)] \in \cM^s_{K,d}(C)$ the complex Einstein
+connection $\nabla = \zeta^{-1} \varphi + D + \zeta \varphi^\dagger$ 
+is irreducible.
+Conversely, any irreducible complex Einstein connection
+$\nabla$ on $E$ arises 
+as $\nabla = \zeta^{-1} \varphi + D + \zeta \varphi^\dagger$ 
+for a unique $[(D,\Phi)] \in \cM^s_{K,d}(C)$.
+\item For any $[(D,\Phi)] \in \cM_{K,d}(C)$ the complex Einstein
+connection $\nabla = \zeta^{-1} \varphi + D + \zeta \varphi^\dagger$ 
+is reductive.
+Conversely, any reductive complex Einstein connection
+$\nabla$ on $E$ arises 
+as $\nabla = \zeta^{-1} \varphi + D + \zeta \varphi^\dagger$ 
+for a unique $[(D,\Phi)] \in \cM_{K,d}(C)$.
+\end{thm}
+
+\begin{pf} This is also an analytic problem: see \cite{MR965220}.
+\end{pf}
 
 
 
