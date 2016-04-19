@@ -7003,16 +7003,28 @@ structure $\cL$ on $C$. We consider the special case of
 According to \autoref{thm:polystable-higgs-bundles-harmonic}
 there exists a harmonic connection in the $\fG_\C$-orbit of this
 Higgs bundle, or equivalently, a Hermitian metric $h$ on $E$ such that
-\begin{equation}
+\begin{equation} \label{eq:hitchin-eq-redux}
   F_{D_h} + [\varphi, \varphi^{\dagger_h}] = 0.
 \end{equation}
-Concretely, \fixme{...}
+This metric is actually diagonal with respect to the decomposition of $E$:
+we can write it
+\begin{equation}
+  h = \begin{pmatrix} g^{-\half} & 0 \\ 0 & g^\half \end{pmatrix}
+\end{equation}
+where $g$ is a metric on $TC$. Then in a local coordinate system,
+\eqref{eq:hitchin-eq-redux} becomes
+\begin{equation}
+  -\half \bar\partial_{\bar z} \partial_z \log g_{z \bar{z}} + g_{z \bar{z}} = 0.
+\end{equation}
+This equation says that the metric $g$ has constant curvature
+$-4$.
 
 \end{example}
 
 
 \begin{thm}[Reductive connections can be made harmonic] \label{thm:reductive-connection-harmonic}
 Fix some $\zeta \in \C^\times$.
+\begin{itemize}
 \item For any $[(D,\Phi)] \in \cM^s_{K,d}(C)$ the complex Einstein
 connection $\nabla = \zeta^{-1} \varphi + D + \zeta \varphi^\dagger$ 
 is irreducible.
@@ -7027,12 +7039,14 @@ Conversely, any reductive complex Einstein connection
 $\nabla$ on $E$ arises 
 as $\nabla = \zeta^{-1} \varphi + D + \zeta \varphi^\dagger$ 
 for a unique $[(D,\Phi)] \in \cM_{K,d}(C)$.
+\end{itemize}
 \end{thm}
 
-\begin{pf} This is also an analytic problem: see \cite{MR965220}.
+\begin{pf} This is also an analytic problem: see \cite{MR887285} for 
+the case $K=2$ and \cite{MR965220} more generally.
+(More precisely, they prove it for $\zeta = 1$, but the extension
+to $\zeta \in \C^\times$ should be straightforward.)
 \end{pf}
-
-
 
 
 
@@ -7040,46 +7054,198 @@ for a unique $[(D,\Phi)] \in \cM_{K,d}(C)$.
 \subsection{The Hitchin fibration}
 
 \begin{defn}[Hitchin base] The \ti{Hitchin base} is the
-vector space
+complex vector space
 \begin{equation}
-  \cB = \bigoplus_{i=1}^K H^0(C, K_C^{\otimes i}).
+  \cB = \cB_K(C) = \bigoplus_{i=1}^K H^0(C, K_C^{\otimes i}).
 \end{equation}
 \end{defn}
 
 \begin{defn}[Hitchin fibration] The \ti{Hitchin fibration} is 
 the map
 \begin{equation}
-  \pi: \cM \to \cB
+  \pi: \cM_{K,d}(C) \to \cB_K(C)
 \end{equation}
 defined as follows. Given $([D,\varphi]) \in \cM$
 we consider the characteristic polynomial
 \begin{equation}
   \det (\lambda - \varphi) = \lambda^K + \sum_{i=1}^K \phi_i \lambda^{K-i}.
 \end{equation}
-Then define
+Then
 \begin{equation}
   \pi([(D,\varphi)]) = (\phi_1, \phi_2, \dots, \phi_K) \in \cB.
 \end{equation}
 \end{defn}
-
-\begin{prop}[Hitchin fibration is proper] The Hitchin fibration
-is proper.
-\end{prop}
-
-\begin{defn}[Spectral curve] \fixme{...}
+\begin{defn}[Spectral curve] Given a point $\vec\phi \in \cB$
+we define $\Sigma_{\vec\phi}$ to be the curve
+\begin{equation} \label{eq:spectral-curve}
+  \Sigma_{\vec\phi} = \{ \lambda^K + \sum_{i=1}^K \phi_i \lambda^{K-i} = 0 \} \subset T^* C.
+\end{equation}
 \end{defn}
 
-\begin{prop}[$\cM$ is fiberwise compactification of $\cN$]
-$\cM_{K,d}^s(C)$ is the fiberwise compactification of $T^* \cN_{K,d}^s(C)$
-with respect to the Hitchin fibration. 
+\begin{prop}[Hitchin fibration is $I_1$-holomorphic] The Hitchin fibration
+is holomorphic when considered as a map $(M, I_1) \to \cB$.
 \end{prop}
 
-We think of $\cM_{K,d}^s(C)$ as a kind of partial compactification
-of $T^* \cN_{K,d}^s(C)$. But it is hopeless to ask for
-$\cM^s_{K,d}(C)$ or $\cM_{K,d}(C)$ to be literally compact.
-A partial substitute is:
+\begin{defn}[Smooth locus]
+Let $\Delta_{\vec\phi} \in H^0(C, K_C^{\otimes K(K-1)})$ denote the discriminant of the 
+equation \eqref{eq:spectral-curve}.
+The \ti{smooth locus} $\cB' \subset \cB$ consists of all $\vec\phi$
+for which $\Delta_{\vec\phi}$ has only simple zeroes.
+\end{defn}
 
-\begin{prop}[Completeness of \hk metric on $\cM_{K,d}^s(C)$] The \hk metric on $\cM_{K,d}^s(C)$ is complete.
+\begin{example}[Spectral curves and smooth locus for $K=2$] When $K=2$, the spectral curve $\Sigma_{\vec\phi}$ is given by the equation
+\begin{equation}
+  \lambda^2 + \phi_2 = 0
+\end{equation}
+Said otherwise, $\Sigma_{\vec\phi}$ 
+is just the Riemann surface of $\sqrt{\phi_2}$.
+Moreover we have $\Delta_{\vec\phi} = 4 \phi_2$.
+Thus $\cB'$ consists of those $\vec\phi$ for which
+$\phi_2$ has only simple zeroes.
+\end{example}
+
+\begin{exercise} Show that, if $\vec\phi \in \cB'$,
+$\Sigma_{\vec\phi}$ is a smooth curve, which is a branched $K$-fold
+cover of $C$, where all branch points have ramification index $2$.
+\end{exercise}
+
+% \begin{prop}[$\cM$ is a fiberwise compactification of $T^* \cN$]
+% $\cM_{K,d}^s(C)$ is the fiberwise compactification of $T^* \cN_{K,d}^s(C)$
+% with respect to the Hitchin fibration. 
+% \end{prop}
+
+\begin{prop}[Generic fibers of the Hitchin fibration are shifted Jacobians]
+If $\vec\phi \in \cB'$, then
+the fiber $\pi^{-1}(\vec\phi)$ is the torus $\cN_{1,d'}(\Sigma_{\vec\phi})$
+where $d' = d - K(K-1)(g-1)$.
+\end{prop}
+
+\begin{pf} First we construct a map 
+\begin{equation}
+  \pi^{-1}(\vec\phi) \to \cN_{1,d'}(\Sigma_{\vec\phi}).
+\end{equation}
+So, suppose given a Higgs bundle structure
+$(\bar\partial_E,\varphi) \in \pi^{-1}(\vec\phi)$. 
+Then the spectral
+curve $\Sigma_{\vec\phi}$ is given by the characteristic polynomial
+of $\varphi$. Away from the branch locus
+ $\pi^{-1}(\Delta_\varphi^{-1}(0)) \subset \Sigma_{\vec\phi}$, we can
+define a holomorphic line bundle $\cL$ over $\Sigma_{\vec\phi}$ by
+\begin{equation}
+ \cL_\lambda = \ker(\varphi - \lambda) \subset \pi^* E. 
+\end{equation}
+More simply put: 
+$\Sigma_{\vec\phi}$ consists of the \ti{eigenvalues} of $\varphi$,
+and it carries a line bundle $\cL$ consisting of the \ti{eigenspaces}.
+
+The tricky point is to extend
+$\cL$ to a line bundle over the whole $\Sigma_{\vec\phi}$ 
+including the branch locus.
+If we are algebraically minded we can consider the
+\ti{sheaf} $\ker(\varphi-\lambda)$ and verify directly that it is
+locally free of rank $1$, thus it is the sheaf of sections of a
+holomorphic line bundle. I will describe the same thing in a more 
+analytic language. For notational simplicity I consider the special case
+where $K=2$. Then around a branch point 
+we can always find a local coordinate and gauge in which
+\begin{equation}
+   \varphi = \left[f(z) \bid + \begin{pmatrix} 0 & 1 \\ z & 0 \end{pmatrix}\right] \de z.
+\end{equation}
+Then $\Sigma_{\vec\phi}$ is locally
+given by $\{y^2 = z\}$ (where $y$ is a local coordinate on $T^*C$, $\lambda = y \, \de z$). $z = 0$ is a branch point.
+The line bundle $\cL$ away from $y=0$ can be written as
+\begin{equation}
+  \cL_y = \left\langle   \begin{pmatrix} 1 \\ y  \end{pmatrix}
+\right\rangle  \subset E_{y^2}
+\end{equation}
+and thus it extends just fine over the point $y=0$.
+
+Finally suppose given a connection $D$ in $E$.
+By projection on the two eigenspaces, $D$ induces a new
+connection $D^\parallel$ in $E$, defined away from the branch points.
+Equivalently we can view $D^\parallel$ as a connection in $\cL$,
+again away from the branch points. We have
+\begin{equation}
+  \Tr F_D = \Tr F_{D^\parallel}.
+\end{equation}
+It follows that if we use the curvature $F_D$ on $E$
+and $F_{D^\parallel}$ on $\cL$ to compute 
+the degrees, the two integrals will come out the same.
+The only difficulty is that $D^\parallel$ does not extend 
+over the branch points, so strictly speaking this 
+computation does not yet make any sense. We now see how
+to repair it.
+
+For simplicity suppose that 
+$D$ is trivial in a neighborhood of each branch point,
+in our local gauge above. Then the projected connection
+has
+\begin{equation}
+ D^\parallel_y \begin{pmatrix} 1 \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}^\parallel = \begin{pmatrix} 0 \\ 1 \end{pmatrix} + \frac{1}{2y} \begin{pmatrix} 1 \\ -y \end{pmatrix} = \frac{1}{2y} \begin{pmatrix} 1 \\ y \end{pmatrix}
+\end{equation}
+Thus, relative to our local trivialization of $\cL$, $D_y^\parallel$
+is given by $\de + \frac{1}{2} \frac{\de y}{y}$.
+In particular, its holonomy around the branch point $y=0$
+is $-1$.
+By modifying $D^\parallel$ in a small disc around $y=0$
+we we obtain a connection which does extend over $y = 0$ 
+and has $\int F = \half \oint \frac{\de y}{y} = \pi \I$ in that disc.
+Make this modification at all of the $2K(K-1)(g-1)$ branch points;
+each such disc contributes $-1/2$ to the integral defining $\deg \cL$.
+Thus we obtain the desired formula for $\deg \cL$.
+
+The inverse map 
+\begin{equation}
+\cN_{1,d'}(\Sigma_{\vec\phi}) \to \pi^{-1}(\vec\phi) 
+\end{equation}
+is similar: given the line bundle $\cL$
+over $\Sigma_{\vec\phi}$ we construct a Higgs bundle
+away from the branch locus by pushforward, and construct 
+directly its extension over the branch locus.
+\end{pf}
+
+\begin{exercise} Verify the assertion above, that when $K=2$
+and $\vec\phi \in \cB'$, around a branch point we can 
+always find a local coordinate and gauge in which 
+\begin{equation}
+ \varphi = \left[f(z) \bid + \begin{pmatrix} 0 & 1 \\ z & 0 \end{pmatrix}\right] \de z.
+\end{equation}
+\end{exercise}
+
+So we have taken care of the generic fibers of the Hitchin map.
+The following result gives at least a little information about 
+the others:
+
+\begin{prop}[Hitchin fibration is proper and surjective] The Hitchin fibration
+is proper and surjective.
+\end{prop}
+
+\begin{pf} This is proven in \cite{MR89a:32021} for $K=2$,
+by gauge-theoretic methods (using Uhlenbeck compactness),
+or in \cite{MR1085642} more generally by a more algebraic
+method.
+% ; the idea
+% is to show that if we have a sequence $(D_n, \Phi_n)$
+% whose image in $\cB$ is bounded
+% then the $L^2$ norm of $F$ is also bounded, so that we can use
+% \autoref{thm:uhlenbeck-weak} to get a subsequence where $D_n$ is
+% convergent. Then if the $\Phi_n$ lie in a compact subset of $\cB$...
+\end{pf}
+
+We think of $\cM_{K,d}^s(C)$ as a kind of partial compactification
+of $T^* \cN_{K,d}^s(C)$. But given the surjectivity of $\pi$
+it is evidently hopeless to ask for
+$\cM^s_{K,d}(C)$ or $\cM_{K,d}(C)$ to be literally compact.
+A partial substitute is provided by the next two facts:
+
+\begin{prop}[$\cM = \cM^s$ when $(K,d)=1$] For
+$(K,d) = 1$ we have no strictly polystable Higgs bundles, i.e.
+\begin{equation}
+ \cM_{K,d}(C) = \cM_{K,d}^s(C).   
+\end{equation} 
+\end{prop}
+
+\begin{prop}[Completeness of \hk metric on $\cM_{K,d}^s(C)$ when $(K,d)=1$] When $(K,d) = 1$ the \hk metric on $\cM_{K,d}^s(C)$ is complete.
 \end{prop}
 
 
