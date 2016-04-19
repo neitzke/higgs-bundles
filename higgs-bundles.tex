@@ -6963,10 +6963,14 @@ Now let us consider the case of general ranks $K>1$. We would like
 to compare $\cA^H \hkq \fG$ to $\cA_\zeta^\C \kq \fG_\C$.
 The problem we face is familiar: for each complex structure $I_\zeta$
 we have a complex moment map $M$ and a real moment map $\mu_\zeta$;
+after restricting to the locus $M^{-1}(0)$, 
 we need to understand the intersection
 between the $\fG_\C$ orbits and the locus $\mu_\zeta^{-1}(0)$.
 This amounts to proving an analogue of \autoref{thm:narasimhan-seshadri}
-in this doubled context.
+in this doubled context. More precisely we need two such theorems,
+one for $\zeta = 0$ and one for $\zeta \neq 0$:
+these are \autoref{thm:polystable-higgs-bundles-harmonic}
+and \autoref{thm:reductive-connection-harmonic} below.
 
 \begin{thm}[Polystable Higgs bundles admit harmonic connections] \label{thm:polystable-higgs-bundles-harmonic}
 We have:
@@ -7007,7 +7011,7 @@ Concretely, \fixme{...}
 \end{example}
 
 
-\begin{thm}[Reductive connections can be made harmonic]
+\begin{thm}[Reductive connections can be made harmonic] \label{thm:reductive-connection-harmonic}
 Fix some $\zeta \in \C^\times$.
 \item For any $[(D,\Phi)] \in \cM^s_{K,d}(C)$ the complex Einstein
 connection $\nabla = \zeta^{-1} \varphi + D + \zeta \varphi^\dagger$ 
