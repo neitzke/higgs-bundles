@@ -7098,23 +7098,37 @@ whose sheets over $z \in C$ are the $K$ eigenvalues of $\varphi(z)$.
 is holomorphic when considered as a map $(M, I_1) \to \cB$.
 \end{prop}
 
+There is a large domain inside of $\cB$ where the Hitchin
+fibration is ``nice''. To describe it we consider the \ti{discriminant}
+of the equation \eqref{eq:spectral-curve}. For example, if $K=2$
+then the equation is $\lambda^2 + \phi_1 \lambda + \phi_2 = 0$,
+which has discriminant
+\begin{equation}
+  \Delta_{\vec\phi} = \phi_1^2 - 4 \phi_2.
+\end{equation}
+Note that globally over $C$ this is a section of $K_C^2$.
+More generally, the formula
+\begin{equation}
+  \Delta = \prod_{i > j} (\lambda_i - \lambda_j)^2
+\end{equation}
+shows that $\Delta_{\vec\phi}$ is a section of $K_C^{K(K-1)}$.
+The zeroes of $\Delta_{\vec\phi}$ are the places on $C$ where the 
+sheets $\lambda_i$ collide, i.e. they are the places where
+curve $\Sigma_{\vec\phi}$ is \ti{ramified} as a cover of $C$.
+
+The simplest behavior occurs at a \ti{simple} zero of $\Delta_{\vec\phi}$.
+Indeed at such a zero the local behavior is like that of the 
+equation $y^2 = z$, which has
+two solutions $y = \pm \sqrt{z}$, colliding at the ramification point
+$z=0$; note that the curve $y^2 = z$ is \ti{smooth} even at this point.
+This motivates the following definition:
+
 \begin{defn}[Smooth locus]
 Let $\Delta_{\vec\phi} \in H^0(C, K_C^{\otimes K(K-1)})$ denote the discriminant of the 
 equation \eqref{eq:spectral-curve}.
 The \ti{smooth locus} $\cB' \subset \cB$ consists of all $\vec\phi$
 for which $\Delta_{\vec\phi}$ has only simple zeroes.
 \end{defn}
-
-\begin{example}[Spectral curves and smooth locus for $K=2$] When $K=2$, the spectral curve $\Sigma_{\vec\phi}$ is given by the equation
-\begin{equation}
-  \lambda^2 + \phi_2 = 0
-\end{equation}
-Said otherwise, $\Sigma_{\vec\phi}$ 
-is just the Riemann surface of $\sqrt{\phi_2}$.
-Moreover we have $\Delta_{\vec\phi} = 4 \phi_2$.
-Thus $\cB'$ consists of those $\vec\phi$ for which
-$\phi_2$ has only simple zeroes.
-\end{example}
 
 \begin{exercise} Show that, if $\vec\phi \in \cB'$,
 $\Sigma_{\vec\phi}$ is a smooth curve, which is a branched $K$-fold
@@ -7169,7 +7183,7 @@ we can always find a local coordinate and gauge in which
    \varphi = \left[f(z) \bid + \begin{pmatrix} 0 & 1 \\ z & 0 \end{pmatrix}\right] \de z.
 \end{equation}
 Then $\Sigma_{\vec\phi}$ is locally
-given by $\{y^2 = z\}$ (where $y$ is a local coordinate on $T^*C$, $\lambda = y \, \de z$). $z = 0$ is a branch point.
+given by $\{y^2 = z\}$ (where $y$ is a local coordinate on $T^*C$, $\lambda = (y+f(z)) \, \de z$). $z = 0$ is a branch point.
 The line bundle $\cL$ away from $y=0$ can be written as
 \begin{equation}
   \cL_y = \left\langle   \begin{pmatrix} 1 \\ y  \end{pmatrix}
