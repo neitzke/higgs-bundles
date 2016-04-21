@@ -6951,11 +6951,13 @@ is peculiar to complex connections: for
 unitary ones we could always take $E''$ to be the orthocomplement
 of $E'$.)
 
-\begin{example}[Some non-reductive connections]
-Any representation $\rho: \pi_1(C) \to GL(K,\C)$ for which all
-$\rho(\wp)$ are upper-triangular matrices
-corresponds to a flat complex connection which is not reductive.
-\end{example}
+\begin{exercise}
+Suppse $\rho: \pi_1(C) \to GL(K,\C)$ is a representation for which all
+$\rho(\wp)$ are upper-triangular matrices, at least one 
+of which is not diagonal,
+Show that $\rho$ corresponds to a flat complex connection 
+which is not reductive.
+\end{exercise}
 
 \subsection{Gauge-theoretic meaning of stability}
 
@@ -7001,7 +7003,7 @@ structure $\cL$ on $C$. We consider the special case of
   E = \cL \oplus \cL^{-1}, \qquad \varphi = \begin{pmatrix} 0 & 0 \\ 1 &0 \end{pmatrix}.
 \end{equation}
 According to \autoref{thm:polystable-higgs-bundles-harmonic}
-there exists a harmonic connection in the $\fG_\C$-orbit of this
+there exists a harmonic pair in the $\fG_\C$-orbit of this
 Higgs bundle, or equivalently, a Hermitian metric $h$ on $E$ such that
 \begin{equation} \label{eq:hitchin-eq-redux}
   F_{D_h} + [\varphi, \varphi^{\dagger_h}] = 0.
@@ -7021,8 +7023,12 @@ This equation says that the metric $g$ has constant curvature
 $-4$. So \autoref{thm:polystable-higgs-bundles-harmonic} applied to this 
 Higgs bundle implies the uniformization theorem.
 
-It is interesting in this case to consider the corresponding family of
-flat connections: \fixme{...}
+Let us explore this example a bit further. The harmonic pair
+$(D,\Phi)$ induces a flat connection
+\begin{equation}
+  \nabla = D + \I \Phi
+\end{equation}
+\fixme{...}
 
 \end{example}
 
@@ -7092,7 +7098,8 @@ Abusing notation we also write
 	\Sigma_{\varphi} = \Sigma_{\rho([D,\varphi])}.
 \end{equation}
 Then informally $\Sigma_\varphi \subset T^* C$ is a $K$-sheeted covering of $C$,
-whose sheets over $z \in C$ are the $K$ eigenvalues of $\varphi(z)$.
+whose sheets over $z \in C$ are the $K$ eigenvalues $\lambda_i$ 
+of $\varphi(z)$.
 
 \begin{prop}[Hitchin fibration is $I_1$-holomorphic] The Hitchin fibration
 is holomorphic when considered as a map $(M, I_1) \to \cB$.
@@ -7100,24 +7107,31 @@ is holomorphic when considered as a map $(M, I_1) \to \cB$.
 
 There is a large domain inside of $\cB$ where the Hitchin
 fibration is ``nice''. To describe it we consider the \ti{discriminant}
-of the equation \eqref{eq:spectral-curve}. For example, if $K=2$
-then the equation is $\lambda^2 + \phi_1 \lambda + \phi_2 = 0$,
-which has discriminant
-\begin{equation}
-  \Delta_{\vec\phi} = \phi_1^2 - 4 \phi_2.
-\end{equation}
-Note that globally over $C$ this is a section of $K_C^2$.
-More generally, the formula
+of the equation \eqref{eq:spectral-curve}.
+This is a polynomial $\Delta_{\vec\phi}$ in the $\phi_i$, 
+with the property 
 \begin{equation}
   \Delta = \prod_{i > j} (\lambda_i - \lambda_j)^2
 \end{equation}
-shows that $\Delta_{\vec\phi}$ is a section of $K_C^{K(K-1)}$.
+where $\lambda_i$ are the roots of \eqref{eq:spectral-curve}.
+For example, if $K=2$
+then \eqref{eq:spectral-curve} becomes 
+$\lambda^2 + \phi_1 \lambda + \phi_2 = 0$, which has discriminant
+\begin{equation}
+  \Delta_{\vec\phi} = \phi_1^2 - 4 \phi_2.
+\end{equation}
+Note that globally over $C$ this is a section of $K_C^{\otimes 2}$.
+More generally, $\Delta_{\vec\phi}$ is a section 
+of $K_C^{\otimes K(K-1)}$.
 The zeroes of $\Delta_{\vec\phi}$ are the places on $C$ where the 
 sheets $\lambda_i$ collide, i.e. they are the places where
-curve $\Sigma_{\vec\phi}$ is \ti{ramified} as a cover of $C$.
+the curve $\Sigma_{\vec\phi}$ is \ti{ramified} as a cover of $C$.
 
+Let us explore a bit more closely what happens near the ramification
+points.
 The simplest behavior occurs at a \ti{simple} zero of $\Delta_{\vec\phi}$.
-Indeed at such a zero the local behavior is like that of the 
+Indeed at such a zero the local behavior of \eqref{eq:spectral-curve}
+is like that of the 
 equation $y^2 = z$, which has
 two solutions $y = \pm \sqrt{z}$, colliding at the ramification point
 $z=0$; note that the curve $y^2 = z$ is \ti{smooth} even at this point.
@@ -7140,7 +7154,16 @@ cover of $C$, where all branch points have ramification index $2$.
 % with respect to the Hitchin fibration. 
 % \end{prop}
 
-\begin{prop}[Generic fibers of the Hitchin fibration are shifted Jacobians]
+\begin{prop}[Generic spectral curves have $2K(K-1)(g-1)$ branch points]
+If $\vec\phi \in \cB'$ then the covering $\Sigma_{\vec\phi} \to C$ has $2K(K-1)(g-1)$ branch points.
+\end{prop}
+\begin{pf} We use the fact that $\deg K_C = - \chi(C) = 2g-2$
+(Gauss-Bonnet theorem!)
+and the discriminant $\Delta_{\vec\phi}$ is a section of 
+$K_C^{K(K-1)}$.
+\end{pf}
+
+\begin{prop}[Generic fibers of the Hitchin fibration are shifted Jacobians] \label{prop:hitchin-fibers-are-jacobians}
 If $\vec\phi \in \cB'$, then
 the fiber $\rho^{-1}(\vec\phi) \subset \cM_{K,d}(C)$ 
 is the torus $\cN_{1,d'}(\Sigma_{\vec\phi})$
@@ -7200,16 +7223,19 @@ connection $D^\parallel$ in $E$, defined away from the branch points.
 Equivalently we can view $D^\parallel$ as a connection in $\cL$,
 again away from the branch points. We have
 \begin{equation}
-  \Tr F_D = \Tr F_{D^\parallel}.
+   \Tr F_{D^\parallel} = \Tr F_D.
 \end{equation}
-It follows that if we use the curvature $F_D$ on $E$
-and $F_{D^\parallel}$ on $\cL$ to compute 
-the degrees, the two integrals will come out the same.
-The only difficulty is that $D^\parallel$ does not extend 
-over the branch points, so strictly speaking this 
-computation does not yet make any sense. We now see how
-to repair it.
+It follows that 
+\begin{equation} \label{eq:degree-integrals-equal}
+  \int_{\Sigma'} F_{D^\parallel} = \int_C \Tr F_D,
+\end{equation}
+where $\Sigma'$ is $\Sigma$ with the branch points deleted.
+However, $D^\parallel$ does not extend 
+over the branch points, so we \ti{cannot} conclude 
+from \eqref{eq:degree-integrals-equal} that
+$\deg E = \deg \cL$.
 
+Let us see how to repair this difficulty.
 For simplicity suppose that 
 $D$ is trivial in a neighborhood of each branch point,
 in our local gauge above. Then the projected connection
@@ -7225,9 +7251,13 @@ is $-1$.
 By modifying $D^\parallel$ in a small disc around $y=0$
 we we obtain a connection which does extend over $y = 0$ 
 and has $\int F = \half \oint \frac{\de y}{y} = \pi \I$ in that disc.
-Make this modification at all of the $2K(K-1)(g-1)$ branch points;
-each such disc contributes $-1/2$ to the integral defining $\deg \cL$.
-Thus we obtain the desired formula for $\deg \cL$.
+Make this modification at all of the $2K(K-1)(g-1)$ branch points,
+to get a new connection $D'$ in $\cL$;
+then \eqref{eq:degree-integrals-equal} is replaced by
+\begin{equation}
+\int_{\Sigma} F_{D'} = \int_C \Tr F_D + \pi \I K(K-1)(g-1)
+\end{equation}
+which gives the desired formula for $d'$.
 
 The inverse map 
 \begin{equation}
@@ -7247,34 +7277,59 @@ always find a local coordinate and gauge in which
 \end{equation}
 \end{exercise}
 
-So we have taken care of the generic fibers of the Hitchin map.
-The following result gives at least a little information about 
-the others:
+\begin{exercise} Extend the proof of \autoref{prop:hitchin-fibers-are-jacobians} to general $K$.
+\end{exercise}
 
-\begin{prop}[Hitchin fibration is proper and surjective] The Hitchin fibration
-is proper and surjective.
+The next two statements give at least a little information about 
+the other fibers of the Hitchin fibration:
+
+\begin{prop}[Hitchin fibration is proper] The Hitchin fibration
+is proper.
 \end{prop}
 
-\begin{pf} This is proven in \cite{MR89a:32021} for $K=2$,
+\begin{pf} 
+This is proven in \cite{MR89a:32021} for $K=2$,
 by gauge-theoretic methods (using Uhlenbeck compactness),
 or in \cite{MR1085642} more generally by a more algebraic
 method.
-% ; the idea
-% is to show that if we have a sequence $(D_n, \Phi_n)$
-% whose image in $\cB$ is bounded
-% then the $L^2$ norm of $F$ is also bounded, so that we can use
+% Suppose we have a sequence $(D_n, \Phi_n)$ of harmonic pairs,
+% whose image in $\cB$ is bounded.
+% Then using \eqref{eq:hitchin-eq} we show
+% the $L^2$ norm of $F$ is also bounded, so that we can use
 % \autoref{thm:uhlenbeck-weak} to get a subsequence where $D_n$ is
 % convergent. Then if the $\Phi_n$ lie in a compact subset of $\cB$...
 \end{pf}
 
-So from this point of view we should imagine that $\cM_{K,d}(C)$
+\begin{prop}[Hitchin fibration is surjective] The Hitchin fibration
+is surjective.
+\end{prop}
+
+So $\cM_{K,d}(C)$
 is fibered over $\cB$, with compact torus fibers $\rho^{-1}(\vec\phi)$ 
 over $\vec\phi \in \cB'$. The complex structures of these fibers
-vary as the complex structure of $\Sigma_{\vec u}$ varies. 
+vary as the complex structure of $\Sigma_{\vec\phi}$ varies. 
+
 The fibers
 ``degenerate'' in some interesting fashion to (perhaps singular)
 compact fibers when the spectral curves $\Sigma_{\vec\phi}$ become
-singular.
+singular. One can view these fibers as some kind of ``compactified Jacobians''
+of the singular spectral curves. The most interesting fiber is the
+one over $0 \in \cB$: indeed the whole $\cM^s_{K,d}(C)$ 
+deformation retracts to this fiber, 
+the ``nilpotent cone,'' via the gradient flow of a rather interesting
+function
+\begin{equation}
+  F(D,\Phi) = \int_C \Tr (\varphi \wedge \varphi^\dagger).
+\end{equation}
+
+\begin{exercise} Compute the function $F$ on $\cM_{K,d}(C)$
+explicitly when $C$ is a torus, and describe its gradient flow.
+\end{exercise}
+
+But the nilpotent cone is also an incredibly singular
+fiber from our point of view.
+We will restrict our attention mainly to the ``boring'' smooth torus 
+fibers over $\cB'$.
 
 We can think of $\cM_{K,d}^s(C)$ as a kind of partial compactification
 of $T^* \cN_{K,d}^s(C)$: 
@@ -7282,13 +7337,13 @@ of $T^* \cN_{K,d}^s(C)$:
 $\cM_{K,d}^s(C)$.
 \end{prop}
 
-But given the surjectivity of $\rho$
-it is evidently hopeless to ask for
-$\cM^s_{K,d}(C)$ or $\cM_{K,d}(C)$ to be literally compact.
+Given the surjectivity of the Hitchin fibration
+it is evidently hopeless to ask for either
+$\cM^s_{K,d}(C)$ or $\cM_{K,d}(C)$ to be compact.
 A partial substitute is provided by the next two facts:
 
 \begin{prop}[$\cM = \cM^s$ when $(K,d)=1$] For
-$(K,d) = 1$ we have no strictly polystable Higgs bundles, i.e.
+$(K,d) = 1$ there are no strictly polystable Higgs bundles, i.e.
 \begin{equation}
  \cM_{K,d}(C) = \cM_{K,d}^s(C).   
 \end{equation} 
@@ -7296,6 +7351,76 @@ $(K,d) = 1$ we have no strictly polystable Higgs bundles, i.e.
 
 \begin{prop}[Completeness of \hk metric on $\cM_{K,d}^s(C)$ when $(K,d)=1$] When $(K,d) = 1$ the \hk metric on $\cM_{K,d}^s(C)$ is complete.
 \end{prop}
+
+
+\subsection{The integrable system}
+
+\begin{prop}[$\cM$ is a complex integrable system]
+The fibers of the Hitchin fibration have dimension equal to that
+of the base $\cB$, and are Lagrangian with respect to $\Omega_1$.
+\end{prop}
+
+\begin{pf} We compute the dimension directly as follows.
+For $\vec\phi \in \cB$,
+the covering $\Sigma_{\vec \phi} \to C$ has
+\begin{equation}
+  n_b = \deg K_C^{K(K-1)} = -K(K-1)\chi(C)
+\end{equation}
+branch points. The Riemann-Hurwitz formula says
+that
+\begin{equation}
+  \chi(\Sigma_{\vec \phi}) = K \chi(C) - n_b = K^2 \chi(C).
+\end{equation}
+Thus the complex dimension of the fiber is
+\begin{equation}
+  g_{\Sigma} = 1 - \half \chi(\Sigma) = 1 - \frac{K^2}{2} \chi(C) = 1 + K^2(g-1)
+\end{equation}
+which is half the dimension of the full $\cM_{K,d}(C)$.
+Since the fiber dimension and base dimension add to the full dimension,
+we get that the two are equal.
+
+Next how do we see that the fibers are Lagrangian? 
+Fix some $n$ with $1 le n \le K$ and some
+$\alpha \in \Omega^{0,1}(C,K^{-n+1})$, and consider the function
+\begin{equation}
+  f_\alpha = \int_C \alpha \Tr(\varphi^n)
+\end{equation}
+Then we have 
+\begin{align}
+ \de f_\alpha(\dot A, \dot \Phi) &= \int_C \alpha \Tr(\dot\varphi \varphi^{n-1}) = 2 \I \int_C \Tr(\dot\varphi \dot A_{\bar z}) = 2 \I \int_C \Tr\left(\dot\varphi \cdot -\frac{\I}{2} \alpha \varphi^{n-1} \right) \\
+ &= \Omega_1\left((\dot{A}_{\bar z} = -\frac{\I}{2} \alpha \varphi^{n-1}, \dot\varphi = 0),(\dot A, \dot \Phi)\right)
+\end{align}
+Said otherwise, up to $\fG_\C$ action we have
+\begin{equation}
+  \Omega_1^{-1} (\de f_\alpha) = (\dot{A}_{\bar z} = -\frac{\I}{2} \alpha \varphi^{n-1}, \dot\varphi = 0)
+\end{equation}
+In particular, the vector fields $v_\alpha = \Omega_1^{-1}(\de f_\alpha)$ 
+obtained in this way are all tangent to the fiber (since they all have
+$\dot\varphi = 0$) and all have $\Omega_1(v_\alpha, v_\beta) = 0$ (for
+the same reason). 
+
+Finally note that the $v_\alpha$
+\ti{span} the tangent spaces to the fiber.
+For this note that the $\de f_\alpha$ span $T^* \cB$: indeed
+we may choose $\alpha$'s corresponding to a basis of
+$[H^0(C, K^n)]^*$.
+
+Thus we conclude that $\Omega_1 = 0$ when restricted to the fiber, as 
+desired.
+
+\end{pf}
+
+\begin{exercise} Use the Riemann-Roch formula and Kodaira vanishing 
+to verify directly that the complex dimension of $\cB$ is $K^2(g-1)+1$.
+% (We could also compute directly the dimension of $\cB$ as a check:
+% it is $\sum_{i=1}^K h^0(K_C^{\otimes i}) = \sum_{i=1}^K (g-1)(2i-1)+\delta_{i,1} = K^2(g-1)+1$ as desired.)
+\end{exercise}
+
+
+\subsection{The semiflat picture}
+
+\fixme{$Z$, $\Gamma$, $\cX$ etc for this example}
+
 
 
 \subsection{The circle action}
