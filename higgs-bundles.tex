@@ -7492,7 +7492,7 @@ $$ \DIP{\cdot,\cdot}: \Gamma^* \times \Gamma^* \to \Z. $$
 
 Writing $\Gamma^*_\C = \Gamma^* \otimes_\Z \C$,
 the dual pairing induces a \ti{symmetric} pairing 
-$$ \DIP{\cdot,\cdot}: \Omega^1(\Gamma^*_\C) \times \Omega^1(\Gamma^*_\C) \to \Omega^2(\Gamma^*_\C). $$
+$$ \DIP{\cdot \wedge \cdot}: \Omega^1(\Gamma^*_\C) \times \Omega^1(\Gamma^*_\C) \to \Omega^2(\Gamma^*_\C). $$
 
 \begin{prop}[``Griffiths transversality'' for spectral curves]
 The 1-form $\de Z \in \Omega^1(\Gamma^*_\C)$ obeys
@@ -7509,13 +7509,14 @@ where $\Omega = \de \lambda$ is the holomorphic symplectic
 form on $T^* C$.
 
 Now there is the ``Riemann bilinear identity'' for closed $1$-forms 
-on $\Sigma_{\vec \phi}$, which says
+on $\Sigma_{\vec \phi}$, which says that wedge product in de Rham cohomology 
+is dual to intersection in homology, i.e.
 $$ \DIP{\alpha,\beta} = \int_{\Sigma_{\vec\phi}} \alpha \wedge \beta
 $$
 where on the left we view $\alpha, \beta$ as elements 
-in $\Gamma^*$ by integration. Thus we get
-$$ \DIP{\de Z(v), \de Z(v')} = \int_{\Sigma_{\vec\phi}} \iota_{s_v} \Omega \wedge \iota_{s_{v'}} \Omega = 0 $$
-for degree reasons.
+in $\Gamma^*_\C$ by integration. Thus we get
+$$ \DIP{\de Z(v), \de Z(v')} = \int_{\Sigma_{\vec\phi}} \iota_{s_v} \Omega \wedge \iota_{s_{v'}} \Omega$$
+which vanishes for degree reasons.
 \end{proof}
 
 Let $\cM' = \rho^{-1}(\cB') \subset \cM$.
@@ -7523,17 +7524,51 @@ We want to write coordinate formulas for the \hk metric over $\cM'$.
 There is an awkward point: the smooth torus fibers are 
 tori but not
 canonically trivialized, because of the 
-degree $d' = d - K(K-1)(g-1)$. In particular it is not immediately obvious
-how to identify nearby torus fibers. To deal with this problem we
+degree $d' = d - K(K-1)(g-1) \neq 0$. In particular it is not immediately obvious
+how to identify nearby torus fibers, which we certainly need to do if 
+we want to erect a coordinate system. To deal with this problem we
+work locally: fix a basepoint $\vec\phi \in \cB$
+and a point $p \in \Sigma_{\vec\phi}$. Then $p$ extends canonically to a local section 
+of the bundle of curves $\Sigma_{\vec\phi}$, over any contractible patch $U \in \cB'$. 
+We use the holomorphic line bundle
+$\cO(d' p)$ as a basepoint in the torus fibers over $U$. 
+Having done so, for any $\vec\phi \in U$ we have an identification
+$$ \rho^{-1}(\vec\phi) \simeq \Hom(\Gamma, U(1)) $$
+and thus functions
+$$ \theta_\gamma: \rho^{-1}(U) \to U(1). $$
+These are angular coordinates on the torus fibers.
+
+\begin{exercise} How do the coordinate functions $\theta_\gamma$
+depend on the choice of the point $p$?
+\end{exercise}
+
+Now we are ready to define an approximate version of the \hk 
+metric on $\cM_{K,d}(C)$. Still working on the patch $U$, 
+we introduce functions
+\begin{equation}
+	\cX_\gamma: \rho^{-1}(U) \times \C^\times \to \C^\times
+\end{equation}
+by
+\begin{equation}
+	\cX_\gamma(\zeta) = \exp \left(\zeta^{-1} Z_\gamma + \I \theta_\gamma + \zeta \bar{Z}_\gamma \right)
+\end{equation}
+and a complex $2$-form
+\begin{equation}
+	  \Omega(\zeta) = \I \DIP{\de \log \cX(\zeta), \de \log \cX(\zeta)}.
+\end{equation}
+Now we are in a situation very close to that of \autoref{exa:semiflat-1d-general},
+with the difference that $\Gamma$ now has rank $2n$ instead of $2$,
+and we have introduced an additional global ``twisting'' from the
+need to choose basepoints $p$.
+\begin{prop}[Semiflat \hk metric on $\cM'$ exists] There exists a \hk 
+metric on $\cM'$ for which the holomorphic symplectic form is 
+$\Omega(\zeta)$.
+\end{prop}
+
+\begin{pf}
 \fixme{...}
-% specialize to the case $d=0$. In this case, 
-% the torus fiber $\rho^{-1}(\vec\phi)$ is canonically identified
-% with the moduli space of flat $U(1)$-connections over 
+\end{pf}
 
-
-% Now we make a slightly ugly choice: we fix a contractible patch $U \subset \cM'$
-% and an arbitrary section of the Hitchin fibration over $U$.
-% Having made this choice, we can identify 
 
 
 \printbibliography
