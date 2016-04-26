@@ -7365,8 +7365,9 @@ Then results of Kirwan \fixme{...} give the desired retraction.
 
 \end{pf}
 
-\begin{exercise} Suppose $X$ is a \kahler manifold, with a function $\mu$
-generating a vector field $Z$. Show that $IZ$ is the Riemannian gradient
+\begin{exercise} Suppose $(X,\omega,I)$ 
+is a \kahler manifold, with a function $\mu: X \to \R$
+generating a vector field $Z$. Show that $IZ$ is the (Riemannian) gradient
 of $\mu$.
 \end{exercise}
 
@@ -7376,7 +7377,7 @@ limits both as $\lambda \to 0$
 and as $\lambda \to \infty$.
 \end{exercise}
 
-\begin{exercise} Compute the function $\mu$ on $\cM_{K,d}(C)$
+\begin{exercise} Compute the function $\mu$ on $\cM_{1,d}(C)$
 explicitly when $C$ is a torus, and describe its gradient flow.
 \end{exercise}
 
@@ -7385,11 +7386,16 @@ fiber from our point of view.
 We will restrict our attention mainly to the ``boring'' smooth torus 
 fibers over $\cB'$.
 
+
+\subsection{More formalities}
+
 We can think of $\cM_{K,d}^s(C)$ as a kind of partial compactification
 of $T^* \cN_{K,d}^s(C)$: 
 \begin{prop} $T^* \cN_{K,d}^s(C)$ is an open dense subset of
 $\cM_{K,d}^s(C)$.
 \end{prop}
+\begin{proof} \fixme{...}
+\end{proof}
 
 Given the surjectivity of the Hitchin fibration
 it is evidently hopeless to ask for either
@@ -7405,7 +7411,9 @@ $(K,d) = 1$ there are no strictly polystable Higgs bundles, i.e.
 
 \begin{prop}[Completeness of \hk metric on $\cM_{K,d}^s(C)$ when $(K,d)=1$] When $(K,d) = 1$ the \hk metric on $\cM_{K,d}^s(C)$ is complete.
 \end{prop}
-
+\begin{proof} A proof for $K=2$ can be found in \cite{MR89a:32021}.
+\fixme{more generally?}
+\end{proof}
 
 \subsection{The integrable system}
 
@@ -7526,21 +7534,40 @@ tori but not
 canonically trivialized, because of the 
 degree $d' = d - K(K-1)(g-1) \neq 0$. In particular it is not immediately obvious
 how to identify nearby torus fibers, which we certainly need to do if 
-we want to erect a coordinate system. To deal with this problem we
-work locally: fix a basepoint $\vec\phi \in \cB$
-and a point $p \in \Sigma_{\vec\phi}$. Then $p$ extends canonically to a local section 
-of the bundle of curves $\Sigma_{\vec\phi}$, over any contractible patch $U \in \cB'$. 
-We use the holomorphic line bundle
-$\cO(d' p)$ as a basepoint in the torus fibers over $U$. 
-Having done so, for any $\vec\phi \in U$ we have an identification
-$$ \rho^{-1}(\vec\phi) \simeq \Hom(\Gamma, U(1)) $$
-and thus functions
-$$ \theta_\gamma: \rho^{-1}(U) \to U(1). $$
-These are angular coordinates on the torus fibers.
+we want to erect a coordinate system. We know how to deal with this problem
+in the important special case $d = -K(g-1) = \half \chi(C)$. 
+Said otherwise, this is the case where $E \otimes K_C^{1/2}$ 
+has degree $0$. 
+In this case we get $d' = -K^2(g-1) = \half \chi(\Sigma)$,
+so $\cL \otimes K_\Sigma^{1/2}$ likewise has degree $0$. 
+\fixme{twisted characters, coordinates $\theta_\gamma$}
 
-\begin{exercise} How do the coordinate functions $\theta_\gamma$
-depend on the choice of the point $p$?
-\end{exercise}
+% when $d=0$. Namely we
+% work locally: fix a basepoint $\vec\phi \in \cB$
+% and a point $p \in \Sigma_{\vec\phi}$. Then $p$ extends canonically to a local section 
+% of the bundle of curves $\Sigma_{\vec\phi}$, over any contractible patch $U \in \cB'$. 
+% We use the holomorphic line bundle
+% $\cO(d' p)$ as a basepoint in the torus fibers over $U$. 
+% Having done so, for any $\vec\phi \in U$ we have an identification
+% $$ \rho^{-1}(\vec\phi) \simeq \Hom(\Gamma, U(1)) $$
+% and thus functions
+% $$ \theta_\gamma: \rho^{-1}(U) \to \R / 2 \pi \Z. $$
+% These are angular coordinates on the torus fibers.
+
+% Fortunately, the dependence on the choice of $p$ is mild:
+
+% \begin{exercise} Verify that changing the choice of the point $p$
+% changes the coordinate functions $\theta_\gamma$ by
+% \begin{equation}
+%   \theta'_\gamma = \theta_\gamma + 2 \pi d' \int^{p'}_p \alpha_\gamma
+% \end{equation}
+% where $\alpha_\gamma \in \cH^1(\Sigma_{\vec\phi})$ 
+% is dual to the cycle $\gamma$,
+% i.e.
+% \begin{equation}
+%   \oint_{\mu} \alpha_\gamma = \IP{\mu,\gamma}.
+% \end{equation}
+% \end{exercise}
 
 Now we are ready to define an approximate version of the \hk 
 metric on $\cM_{K,d}(C)$. Still working on the patch $U$, 
@@ -7558,8 +7585,7 @@ and a complex $2$-form
 \end{equation}
 Now we are in a situation very close to that of \autoref{exa:semiflat-1d-general},
 with the difference that $\Gamma$ now has rank $2n$ instead of $2$,
-and we have introduced an additional global ``twisting'' from the
-need to choose basepoints $p$.
+and we have introduced an additional global ``twisting'' from \fixme{...}
 \begin{prop}[Semiflat \hk metric on $\cM'$ exists] There exists a \hk 
 metric on $\cM'$ for which the holomorphic symplectic form is 
 $\Omega(\zeta)$.
