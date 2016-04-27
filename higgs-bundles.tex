@@ -7530,37 +7530,37 @@ which vanishes for degree reasons.
 Let $\cM' = \rho^{-1}(\cB') \subset \cM$.
 We want to write coordinate formulas for the \hk metric over $\cM'$.
 There is an awkward point: the smooth torus fibers are 
-tori but not
-canonically trivialized, because of the 
+not canonically trivialized, because of the 
 degree $d' = d - K(K-1)(g-1) \neq 0$. In particular it is not immediately obvious
 how to identify nearby torus fibers, which we certainly need to do if 
-we want to erect a coordinate system. We know how to deal with this problem
-in the important special case $d = -K(g-1) = \half \chi(C)$. 
-Said otherwise, this is the case where $E \otimes K_C^{1/2}$ 
-has degree $0$. 
-In this case we get $d' = -K^2(g-1) = \half \chi(\Sigma)$,
-so $\cL \otimes K_\Sigma^{1/2}$ likewise has degree $0$. 
-\fixme{twisted characters, coordinates $\theta_\gamma$}
+we want to erect a coordinate system.
 
-% when $d=0$. Namely we
-% work locally: fix a basepoint $\vec\phi \in \cB$
-% and a point $p \in \Sigma_{\vec\phi}$. Then $p$ extends canonically to a local section 
-% of the bundle of curves $\Sigma_{\vec\phi}$, over any contractible patch $U \in \cB'$. 
-% We use the holomorphic line bundle
-% $\cO(d' p)$ as a basepoint in the torus fibers over $U$. 
-% Having done so, for any $\vec\phi \in U$ we have an identification
-% $$ \rho^{-1}(\vec\phi) \simeq \Hom(\Gamma, U(1)) $$
-% and thus functions
-% $$ \theta_\gamma: \rho^{-1}(U) \to \R / 2 \pi \Z. $$
-% These are angular coordinates on the torus fibers.
+We know how to deal with this problem
+in the special case $d = -K(g-1) = \half \chi(C)$. 
+% Said otherwise, this is the case where $E \otimes K_C^{1/2}$ 
+% has degree $0$. 
+In this case we get $d' = -K^2(g-1) = \half \chi(\Sigma)$.
+Now, suppose we choose a spin structure
+$K_\Sigma^{1/2}$ on some $\Sigma_{\vec \phi}$.
+This also induces
+spin structures on nearby $\Sigma_{\vec \phi}$,
+with $\vec\phi$ lying in a contractible neighborhood $U \subset \cB'$.
 
-% Fortunately, the dependence on the choice of $p$ is mild:
+Now, by tensoring with $K_{\Sigma_{\vec \phi}}^{1/2}$ we can identify
+the torus fibers over $U$ 
+with $\Jac \Sigma_{\vec \phi} = \Hom(H_1(\Sigma_{\vec \phi},\Z),U(1))$.
+Thus we have evaluation maps
+$$ \theta_\gamma: \rho^{-1}(U) \to \R / 2 \pi \Z. $$
+These are angular coordinates on the torus fibers.
 
-% \begin{exercise} Verify that changing the choice of the point $p$
-% changes the coordinate functions $\theta_\gamma$ by
-% \begin{equation}
-%   \theta'_\gamma = \theta_\gamma + 2 \pi d' \int^{p'}_p \alpha_\gamma
-% \end{equation}
+Fortunately, the dependence on the choice of spin structure is mild:
+
+\begin{exercise} Verify that changing the choice of spin structure
+on $\Sigma_{\vec \phi}$
+shifts the coordinate functions $\theta_\gamma$ by constants (indeed integer 
+multiples of $\pi$.)
+\end{exercise}
+
 % where $\alpha_\gamma \in \cH^1(\Sigma_{\vec\phi})$ 
 % is dual to the cycle $\gamma$,
 % i.e.
