@@ -7441,7 +7441,7 @@ $\alpha \in \Omega^{0,1}(C,K^{-n+1})$, and consider the function
 \end{equation}
 Then we have 
 \begin{align}
- \de f_\alpha(\dot A, \dot \Phi) &= \int_C \alpha \Tr(\dot\varphi \varphi^{n-1}) = 2 \I \int_C \Tr(\dot\varphi \dot A_{\bar z}) = 2 \I \int_C \Tr\left(\dot\varphi \cdot -\frac{\I}{2} \alpha \varphi^{n-1} \right) \\
+ \de f_\alpha(\dot A, \dot \Phi) &= \int_C \alpha \Tr(\dot\varphi \varphi^{n-1}) = 2 \I \int_C \Tr\left(\dot\varphi \cdot -\frac{\I}{2} \alpha \varphi^{n-1} \right) \\
  &= \Omega_1\left((\dot{A}_{\bar z} = -\frac{\I}{2} \alpha \varphi^{n-1}, \dot\varphi = 0),(\dot A, \dot \Phi)\right)
 \end{align}
 Said otherwise, up to $\fG_\C$ action we have
@@ -7456,7 +7456,7 @@ the same reason).
 Finally note that the $\de f_\alpha$ span $T^* \cB$: indeed
 \eqref{eq:f-alpha} is a nondegenerate pairing between $H^0(C,K^n)$ and
 $\cH^{0,1}(K^{-n+1})$, so choosing enough
-$\alpha$'s, the $f_\alpha$ give a linear coordinate system on
+$\alpha$'s, the $f_\alpha$ give a coordinate system on
 $\cB$. Using this and the nondegeneracy of $\Omega_1$
 we get dually that the $v_\alpha$ span the tangent space to the 
 fiber. Thus we conclude that $\Omega_1 = 0$ when restricted to the fiber, as 
@@ -7514,7 +7514,11 @@ is dual to intersection in homology, i.e.
 $$ \DIP{\alpha,\beta} = \int_{\Sigma_{\vec\phi}} \alpha \wedge \beta
 $$
 where on the left we view $\alpha, \beta$ as elements 
-in $\Gamma^*_\C$ by integration. Thus we get
+in $\Gamma^*_\C$ by integration.
+
+In our case what we have shown above is that $\de Z \in \Gamma^*_\C$ corresponds
+to the $1$-form $\iota_{s_v}\Omega$.
+Thus we get
 $$ \DIP{\de Z(v), \de Z(v')} = \int_{\Sigma_{\vec\phi}} \iota_{s_v} \Omega \wedge \iota_{s_{v'}} \Omega$$
 which vanishes for degree reasons.
 \end{proof}
@@ -7534,8 +7538,8 @@ We use the holomorphic line bundle
 $\cO(d' p)$ as a basepoint in the torus fibers over $U$. 
 Having done so, for any $\vec\phi \in U$ we have an identification
 $$ \rho^{-1}(\vec\phi) \simeq \Hom(\Gamma, U(1)) $$
-and thus functions
-$$ \theta_\gamma: \rho^{-1}(U) \to U(1). $$
+and thus evaluation maps
+$$ \theta_\gamma: \rho^{-1}(U) \to \R / 2 \pi \Z. $$
 These are angular coordinates on the torus fibers.
 
 \begin{exercise} How do the coordinate functions $\theta_\gamma$
@@ -7557,7 +7561,8 @@ and a complex $2$-form
 	  \Omega(\zeta) = \I \DIP{\de \log \cX(\zeta), \de \log \cX(\zeta)}.
 \end{equation}
 Now we are in a situation very close to that of \autoref{exa:semiflat-1d-general},
-with the difference that $\Gamma$ now has rank $2n$ instead of $2$,
+with the difference that we are in higher dimension (in \autoref{exa:semiflat-1d-general}
+we constructed a space of complex dimension $2$),
 and we have introduced an additional global ``twisting'' from the
 need to choose basepoints $p$.
 \begin{prop}[Semiflat \hk metric on $\cM'$ exists] There exists a \hk 
