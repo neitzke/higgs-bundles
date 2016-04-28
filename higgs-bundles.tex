@@ -7746,20 +7746,29 @@ Let $T$ be the torus
 \begin{equation}
   T = \Hom(\Gamma, \C^\times).
 \end{equation}
+Note that $T$ is an abelian group.
+Define
+$$ \cX^\sf: \C^\times \times T \to T $$
+as follows: $\cX^\sf(\zeta): T \to T$ is translation by
+the element $\exp(Z / \zeta + \bar{Z} \zeta) \in T$.
 Then there exists at most one map
 $$ \cX: \C^\times \times T \to T $$
 with the properties:
 \begin{itemize}
-\item There exists some $c \in \Gamma^*_\R$ such that
-as $\zeta \to 0$ or $\zeta \to \infty$ we have
-\begin{equation}
-\fixme{...}
-\end{equation}
-\item $\cX$ is analytic away from the countable collection of rays
+\item 
+As $\zeta \to 0$ or $\zeta \to \infty$, the composition $\cX^\sf(\zeta) \circ \cX(\zeta)^{-1}$
+has a finite limit.
+\item $\cX$ is analytic away from a countable collection of rays 
+labeled by primitive vectors $\mu \in \Gamma$,
 $$\ell_\mu = \{ \zeta: Z_\mu / \zeta \in \R_- \} \subset \C^\times $$
-while on each of these rays $\xi$ jumps by the transformation
+while on each of these rays $\cX$ jumps by the transformation
+\fixme{be precise about clockwise/counterclockwise; and check sign}
 \begin{equation}
-  \cX \to \cX \exp \left[ \sum_\mu DT(\mu) \mu^* \log(1 + \exp \xi(\mu)) \right].
+  \cX \to \cX \exp \left[ (n\mu)^* \sum_{n \ge 1} DT(n\mu) \log(1 + \cX_{n\mu}) \right].
+\end{equation}
+or more concretely,
+\begin{equation}
+  \cX_\gamma \to \cX_\gamma \prod \fixme{...}
 \end{equation}
 \end{itemize}
 \end{lem}
