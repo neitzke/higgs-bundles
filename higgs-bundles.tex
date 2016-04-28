@@ -3323,7 +3323,7 @@ and a map
 such that:
 \begin{itemize}
 \item $Z$ is a homomorphism on each fiber --- i.e. for each 
-point $u \in \cB$, we get a homomorphism $Z(u): \Gamma_{\vec \phi} \to \C$,
+point $u \in \cB$, we get a homomorphism $Z(u): \Gamma_{u} \to \C$,
 \item $Z$ is holomorphic, if we equip $\Gamma$ with the complex
 structure it acquires as a covering space of $\cB$. (Said otherwise: if 
 we choose a section $\gamma$ of $\Gamma$ over some 
@@ -3345,7 +3345,7 @@ Now define a torus bundle over $\cB$ by
 \begin{equation}
   X = \Hom(\Gamma, U(1)),
 \end{equation}
-i.e. the fiber of $X$ over $u \in \cB$ is $\Hom(\Gamma_{\vec \phi}, U(1))$,
+i.e. the fiber of $X$ over $u \in \cB$ is $\Hom(\Gamma_{u}, U(1))$,
 which is indeed a torus $(S^1)^2$.
 Given a local section $\gamma$ of $\Gamma$ over a patch
 $U \subset \cB$, we have the evaluation map
@@ -7325,6 +7325,9 @@ one over $0 \in \cB$:
 $\rho^{-1}(0) \subset \cM_{K,d}(C)$.
 \end{defn}
 
+The nilpotent cone in particular contains $\cN_{K,d}(C)$ (polystable
+bundles with zero Higgs field), but it contains more.
+
 \begin{prop}[$\cM_{K,d}(C)$ deformation retracts to the nilpotent cone]
 When $(K,d) = 1$ the nilpotent cone is a deformation 
 retract of $\cM_{K,d}(C)$.
@@ -7394,8 +7397,8 @@ of $T^* \cN_{K,d}^s(C)$:
 \begin{prop} $T^* \cN_{K,d}^s(C)$ is an open dense subset of
 $\cM_{K,d}^s(C)$.
 \end{prop}
-\begin{proof} \fixme{...}
-\end{proof}
+\begin{pf} \fixme{...}
+\end{pf}
 
 Given the surjectivity of the Hitchin fibration
 it is evidently hopeless to ask for either
@@ -7411,9 +7414,9 @@ $(K,d) = 1$ there are no strictly polystable Higgs bundles, i.e.
 
 \begin{prop}[Completeness of \hk metric on $\cM_{K,d}^s(C)$ when $(K,d)=1$] When $(K,d) = 1$ the \hk metric on $\cM_{K,d}^s(C)$ is complete.
 \end{prop}
-\begin{proof} A proof for $K=2$ can be found in \cite{MR89a:32021}.
+\begin{pf} A proof for $K=2$ can be found in \cite{MR89a:32021}.
 \fixme{more generally?}
-\end{proof}
+\end{pf}
 
 \subsection{The integrable system}
 
@@ -7464,7 +7467,7 @@ the same reason).
 Finally note that the $\de f_\alpha$ span $T^* \cB$: indeed
 \eqref{eq:f-alpha} is a nondegenerate pairing between $H^0(C,K^n)$ and
 $\cH^{0,1}(K^{-n+1})$, so choosing enough
-$\alpha$'s, the $f_\alpha$ give a linear coordinate system on
+$\alpha$'s, the $f_\alpha$ give a global coordinate system on
 $\cB$. Using this and the nondegeneracy of $\Omega_1$
 we get dually that the $v_\alpha$ span the tangent space to the 
 fiber. Thus we conclude that $\Omega_1 = 0$ when restricted to the fiber, as 
@@ -7478,12 +7481,18 @@ to verify directly that the complex dimension of $\cB$ is $K^2(g-1)+1$.
 \end{exercise}
 
 
+\section{Metric formulas}
+
+In this section we will 
+describe the proposal of \cite{Gaiotto:2008cd,Gaiotto:2009hg,Gaiotto2012}, which is aimed at describing the
+\hk metric on $\cM_{K,d}(C)$ in a concrete way.
+
+
 \subsection{The semiflat picture}
 
-Our next aim is to describe the \hk metric on $\cM_{K,d}(C)$
-in a concrete way.
-For this we first have to specify what $\cM_{K,d}(C)$
-is as a manifold.
+We first describe a certain simple, explicit \hk metric, which is expected
+to be very close to the true \hk metric ``near the ends'' of $\cM$, i.e. 
+when we go out along a generic path to $\infty$.
 
 Over the smooth locus $\cB'$ we have a local system of lattices
 $$\Gamma_{\vec \phi} = H_1(\Sigma_{\vec \phi},\Z)$$
@@ -7502,31 +7511,6 @@ Writing $\Gamma^*_\C = \Gamma^* \otimes_\Z \C$,
 the dual pairing induces a \ti{symmetric} pairing 
 $$ \DIP{\cdot \wedge \cdot}: \Omega^1(\Gamma^*_\C) \times \Omega^1(\Gamma^*_\C) \to \Omega^2(\Gamma^*_\C). $$
 
-\begin{prop}[``Griffiths transversality'' for spectral curves]
-The 1-form $\de Z \in \Omega^1(\Gamma^*_\C)$ obeys
-\begin{equation}
-  \DIP{\de Z \wedge \de Z} = 0.
-\end{equation}
-\end{prop}
-
-\begin{proof} A tangent vector $v$ to $\cB$
-induces a holomorphic section $s_v$ of the 
-normal bundle $N(\Sigma_{\vec \phi})$. The variation
-$$\de Z_\gamma(v) = \oint_\gamma \iota_{s_v} \Omega$$
-where $\Omega = \de \lambda$ is the holomorphic symplectic
-form on $T^* C$.
-
-Now there is the ``Riemann bilinear identity'' for closed $1$-forms 
-on $\Sigma_{\vec \phi}$, which says that wedge product in de Rham cohomology 
-is dual to intersection in homology, i.e.
-$$ \DIP{\alpha,\beta} = \int_{\Sigma_{\vec\phi}} \alpha \wedge \beta
-$$
-where on the left we view $\alpha, \beta$ as elements 
-in $\Gamma^*_\C$ by integration. Thus we get
-$$ \DIP{\de Z(v), \de Z(v')} = \int_{\Sigma_{\vec\phi}} \iota_{s_v} \Omega \wedge \iota_{s_{v'}} \Omega$$
-which vanishes for degree reasons.
-\end{proof}
-
 Let $\cM' = \rho^{-1}(\cB') \subset \cM$.
 We want to write coordinate formulas for the \hk metric over $\cM'$.
 There is an awkward point: the smooth torus fibers are 
@@ -7536,16 +7520,17 @@ how to identify nearby torus fibers, which we certainly need to do if
 we want to erect a coordinate system.
 
 We know how to deal with this problem
-in the special case 
+in certain special cases. One particularly
+interesting case is
 \begin{equation}
 d = -K(g-1) = \half \chi(C). 
 \end{equation}
 So now we specialize to that case.
 % Said otherwise, this is the case where $E \otimes K_C^{1/2}$ 
 % has degree $0$. 
-Then $d' = -K^2(g-1) = \half \chi(\Sigma)$.
-
-Now, suppose we choose a spin structure
+Then $d' = -K^2(g-1) = \half \chi(\Sigma)$. This is not $0$ but it is
+``almost as good,'' in the following sense.
+Suppose we choose a spin structure
 $K_\Sigma^{1/2}$ on some $\Sigma_{\vec \phi}$.
 This also induces
 spin structures on nearby $\Sigma_{\vec \phi}$,
@@ -7577,31 +7562,210 @@ is canonically and globally defined.
 % \end{equation}
 % \end{exercise}
 
+To construct our approximate \hk metric on $\cM_{K,d}(C)$ we need some
+warmups.
+
+\begin{prop}[Positivity of semiflat $2$-forms] \label{prop:polarization}
+The $2$-form $\DIP{\de \theta \wedge \de \theta}$ is a positive
+form on each torus fiber $\rho^{-1}(\vec\phi)$, $\vec\phi \in \cB'$.
+The $2$-form $-\DIP{\de Z \wedge \de \bar{Z}}$ is positive on
+$\cB'$.
+\end{prop}
+\begin{pf} \fixme{...}
+\end{pf}
+
+\begin{prop}[``Griffiths transversality'' for spectral curves] \label{prop:transversality}
+The 1-form $\de Z \in \Omega^1(\Gamma^*_\C)$ obeys
+\begin{equation}
+  \DIP{\de Z \wedge \de Z} = 0.
+\end{equation}
+\end{prop}
+
+\begin{pf} A tangent vector $v$ to $\cB$
+induces a holomorphic section $s_v$ of the 
+normal bundle $N(\Sigma_{\vec \phi})$. The variation
+$$\de Z_\gamma(v) = \oint_\gamma \iota_{s_v} \Omega$$
+where $\Omega = \de \lambda$ is the holomorphic symplectic
+form on $T^* C$.
+
+Now there is the ``Riemann bilinear identity'' for closed $1$-forms 
+on $\Sigma_{\vec \phi}$, which says that wedge product in de Rham cohomology 
+is dual to intersection in homology, i.e.
+$$ \DIP{\alpha,\beta} = \int_{\Sigma_{\vec\phi}} \alpha \wedge \beta
+$$
+where on the left we view $\alpha, \beta$ as elements 
+in $\Gamma^*_\C$ by integration. Thus we get
+$$ \DIP{\de Z(v), \de Z(v')} = \int_{\Sigma_{\vec\phi}} \iota_{s_v} \Omega \wedge \iota_{s_{v'}} \Omega$$
+which vanishes for degree reasons.
+\end{pf}
+
+\begin{exercise} Interpret \autoref{prop:transversality}
+as saying that $Z$ locally embeds $\cB$ as a complex Lagrangian submanifold
+of a complex symplectic vector space.
+\end{exercise}
+
 Now we are ready to define an approximate version of the \hk 
 metric on $\cM_{K,d}(C)$. Still working on the patch $U$, 
-we introduce functions
+let $\Gamma_U$ denote the lattice of global sections of $\Gamma$
+over $U$; then for $\gamma \in \Gamma_U$ introduce a function
 \begin{equation}
-	\cX_\gamma: \rho^{-1}(U) \times \C^\times \to \C^\times
+	\cX_\gamma^\sf: \rho^{-1}(U) \times \C^\times \to \C^\times
 \end{equation}
 by
-\begin{equation}
-	\cX_\gamma(\zeta) = \exp \left(\zeta^{-1} Z_\gamma + \I \theta_\gamma + \zeta \bar{Z}_\gamma \right)
+\begin{equation} \label{eq:X-sf}
+	\cX_\gamma^\sf(\zeta) = \exp \left(\zeta^{-1} Z_\gamma + \I \theta_\gamma + \zeta \bar{Z}_\gamma \right).
 \end{equation}
-and a complex $2$-form
-\begin{equation}
-	  \Omega(\zeta) = \I \DIP{\de \log \cX(\zeta), \de \log \cX(\zeta)}.
+Also introduce a complex $2$-form
+\begin{equation} \label{eq:omegazeta-sf}
+	  \Omega^\sf(\zeta) = \I \DIP{\de \log \cX(\zeta), \de \log \cX(\zeta)}.
 \end{equation}
+While the funcions $\cX_\gamma^\sf$ depended on the patch $U$,
+the form $\Omega^\sf(\zeta)$ does not: it is global on $\cM'$
+(though it does not have any reason to extend to the singular fibers!)
+
 Now we are in a situation very close to that of \autoref{exa:semiflat-1d-general},
 with the difference that $\Gamma$ now has rank $2n$ instead of $2$,
 and we have introduced an additional global ``twisting'' from \fixme{...}
 \begin{prop}[Semiflat \hk metric on $\cM'$ exists] There exists a \hk 
 metric on $\cM'$ for which the holomorphic symplectic form is 
-$\Omega(\zeta)$.
+$\Omega^\sf(\zeta)$.
 \end{prop}
 
 \begin{pf}
-\fixme{...}
+Expanding $\Omega^\sf(\zeta)$ directly from \eqref{eq:omegazeta-sf} gives
+\begin{multline}
+  \Omega(\zeta) = \\ \I \zeta^{-2} \DIP{\de Z \wedge \de Z} - \zeta^{-1} \DIP{\de Z \wedge \de \theta} + \I \DIP{\de Z \wedge \de \bar{Z}} - \I \DIP{\de \theta \wedge \de \theta} - \zeta \DIP{\de \bar{Z} \wedge \de \theta} + \I \zeta^2 \DIP{\de \bar{Z} \wedge \de \bar{Z}}.
+\end{multline}
+Fortunately, \autoref{prop:transversality} says that the terms
+at order $\zeta^2$ and $\zeta^{-2}$ vanish, so that we get
+\begin{equation}
+  \Omega(\zeta) = - \zeta^{-1} \DIP{\de Z\wedge \de \theta} + \I \DIP{\de Z\wedge \de \bar{Z}} - \I \DIP{\de \theta\wedge \de \theta} - \zeta \DIP{\de \bar{Z} \wedge \de \theta},
+\end{equation}
+which using \eqref{eq:hol-symp-family} gives the candidate symplectic forms
+\begin{equation}
+  \Omega_1 = -2 \DIP{\de Z \wedge \de \theta}, \qquad \omega_1 = - \DIP{\de Z \wedge \de \bar{Z}} + \DIP{\de \theta \wedge \de \theta}.
+\end{equation}
+Then the same arguments as in \autoref{exc:semiflat-1d-hk}
+show that these forms actually come from a \hk structure.
 \end{pf}
+
+A useful way of thinking of the $\cX_\gamma$ is that they are the components
+of a single map
+\begin{equation}
+   \cX: U \times \C^\times \to T_U = \Hom(\Gamma_U, \C^\times)
+\end{equation}
+In other words: suppose we fix a point $(D,\Phi) \in \cM_{K,d}(C)$. 
+We know that $(D,\Phi)$ corresponds to a family of flat $GL(K,\C)$-connections
+in the bundle $E \otimes K_C^{1/2}$. Now we are assigning to it
+instead a family of flat $\C^\times$-connections
+$\cX(\zeta)$ over a spectral curve $\Sigma_{\vec\phi}$.
+
+Indeed there is a natural candidate way of doing this.
+The Higgs bundle $(\bar\partial_E,\varphi)$ has a corresponding
+spectral line bundle $\cL$ over $\Sigma_{\vec\phi}$, as 
+in \autoref{prop:hitchin-fibers-are-jacobians}. We consider
+the line bundle $(\cL \otimes K^{1/2}_{\Sigma_{\vec\phi}}, \lambda)$
+as a Higgs bundle. Then it has a corresponding family of flat
+$\C^\times$-connections over $\Sigma_{\vec\phi}$. This is $\cX^\sf$.
+
+\begin{exercise} Check that $\cX^\sf$ is indeed obtained by the above
+procedure.
+\end{exercise}
+
+However, the functions $\cX_\gamma^\sf$ are \ti{not} generally holomorphic
+on $(\cM_{K,d}(C), I_\zeta)$.
+This corresponds to saying that the
+passage from the flat $GL(K,\C)$-connections 
+$\nabla(\zeta)$ over $C$ to the flat connections
+$\cX^\sf(\zeta)$ over $\Sigma$ is not a holomorphic map
+between moduli spaces of flat connections.
+
+In what follows it will be technically useful to 
+\ti{complexify} the above formulas.
+\begin{prop}[Complex twistor lines for $\cM_{K,d}(C)$]
+\fixme{roughly!} The space of \ti{complex} holomorphic 
+sections of the twistor space $\cZ \to \C\PP^1$
+contains the set of tuples $(D,\varphi,\bar\varphi)$,
+where $D$ is a $GL(K,\C)$-connection over $C$,
+$\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End \overline E)$, obeying
+\begin{subequations}
+\begin{align}
+\bar\partial_E \varphi &= 0, \\
+\partial_E \bar\varphi &= 0, \\
+F_D + [\varphi,\bar\varphi] &= 0.
+\end{align}
+\end{subequations} 
+\end{prop}
+\begin{pf} Given such a tuple we can write the usual formula
+$$ \nabla(\zeta) = \zeta^{-1} \varphi + D + \zeta \bar\varphi $$
+which gives the desired section. \fixme{explain why it extends
+over the poles}
+\end{pf}
+
+\subsection{Metric comparison}
+
+One of the main claims of \cite{Gaiotto:2008cd} is that
+the actual metric $g$ on $\cM_{K,d}(C)$ differs
+from the semiflat metric $g^\sf$ by a correction term
+which is ``small on the smooth locus.'' A crude version of the 
+estimate is to say that along a path $p(t) \in \cM$
+parameterized by $t \in \R_+$, with
+$\rho(p(t)) = t \vec\phi$, we should have
+\begin{equation}
+  g = g^\sf + O(e^{-t M({\vec\phi})})
+\end{equation}
+where
+\begin{equation}
+  M({\vec\phi}) = \min\{\abs{Z_\gamma}: \gamma \in \Gamma_{\vec\phi} \}.
+\end{equation}
+
+One approach to proving this kind of formula
+is to make a careful study of the asymptotic
+behavior of the corresponding harmonic pairs $(D,\Phi)$.
+See \cite{Mazzeo2014} for this.
+
+Here we follow an approach closer to the philosophy of 
+\cite{Gaiotto:2008cd}. The idea is to produce holomorphic functions
+$\cX_\gamma(\zeta)$ on $\cM_{K,d}(C)$ which are Darboux coordinates for
+$\Omega(\zeta)$ and which are also exponentially close
+to the simple functions $\cX_\gamma^\sf(\zeta)$
+of \eqref{eq:X-sf}. Along the way we will discover various
+extra interesting bits of structure.
+
+The key lemma we will use is:
+\begin{lem} Suppose given a lattice $\Gamma$ with an
+isomorphism $\Gamma \simeq \Gamma^*$,
+homomorphism $Z:\Gamma \to \C$,
+and a map (not homomorphism) $DT: \Gamma \to \Z$.
+Let $T$ be the torus
+\begin{equation}
+  T = \Hom(\Gamma, \C^\times).
+\end{equation}
+Then there exists at most one map
+$$ \cX: \C^\times \times T \to T $$
+with the properties:
+\begin{itemize}
+\item There exists some $c \in \Gamma^*_\R$ such that
+as $\zeta \to 0$ or $\zeta \to \infty$ we have
+\begin{equation}
+\fixme{...}
+\end{equation}
+\item $\cX$ is analytic away from the countable collection of rays
+$$\ell_\mu = \{ \zeta: Z_\mu / \zeta \in \R_- \} \subset \C^\times $$
+while on each of these rays $\xi$ jumps by the transformation
+\begin{equation}
+  \cX \to \cX \exp \left[ \sum_\mu DT(\mu) \mu^* \log(1 + \exp \xi(\mu)) \right].
+\end{equation}
+\end{itemize}
+\end{lem}
+
+\begin{pf} Suppose there were two such $\cX$. \fixme{..} 
+\end{pf}
+
+
+
+
+\fixme{trajectories of quadratic differentials and triangulations}
 
 
 
