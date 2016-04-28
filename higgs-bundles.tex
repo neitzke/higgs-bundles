@@ -7452,7 +7452,7 @@ $\alpha \in \Omega^{0,1}(C,K^{-n+1})$, and consider the function
 \end{equation}
 Then we have 
 \begin{align}
- \de f_\alpha(\dot A, \dot \Phi) &= \int_C \alpha \Tr(\dot\varphi \varphi^{n-1}) = 2 \I \int_C \Tr(\dot\varphi \dot A_{\bar z}) = 2 \I \int_C \Tr\left(\dot\varphi \cdot -\frac{\I}{2} \alpha \varphi^{n-1} \right) \\
+ \de f_\alpha(\dot A, \dot \Phi) &= \int_C \alpha \Tr(\dot\varphi \varphi^{n-1}) = 2 \I \int_C \Tr\left(\dot\varphi \cdot -\frac{\I}{2} \alpha \varphi^{n-1} \right) \\
  &= \Omega_1\left((\dot{A}_{\bar z} = -\frac{\I}{2} \alpha \varphi^{n-1}, \dot\varphi = 0),(\dot A, \dot \Phi)\right)
 \end{align}
 Said otherwise, up to $\fG_\C$ action we have
@@ -7594,7 +7594,11 @@ is dual to intersection in homology, i.e.
 $$ \DIP{\alpha,\beta} = \int_{\Sigma_{\vec\phi}} \alpha \wedge \beta
 $$
 where on the left we view $\alpha, \beta$ as elements 
-in $\Gamma^*_\C$ by integration. Thus we get
+in $\Gamma^*_\C$ by integration.
+
+In our case what we have shown above is that $\de Z \in \Gamma^*_\C$ corresponds
+to the $1$-form $\iota_{s_v}\Omega$.
+Thus we get
 $$ \DIP{\de Z(v), \de Z(v')} = \int_{\Sigma_{\vec\phi}} \iota_{s_v} \Omega \wedge \iota_{s_{v'}} \Omega$$
 which vanishes for degree reasons.
 \end{pf}
@@ -7626,6 +7630,7 @@ the form $\Omega^\sf(\zeta)$ does not: it is global on $\cM'$
 Now we are in a situation very close to that of \autoref{exa:semiflat-1d-general},
 with the difference that $\Gamma$ now has rank $2n$ instead of $2$,
 and we have introduced an additional global ``twisting'' from \fixme{...}
+
 \begin{prop}[Semiflat \hk metric on $\cM'$ exists] There exists a \hk 
 metric on $\cM'$ for which the holomorphic symplectic form is 
 $\Omega^\sf(\zeta)$.
@@ -7741,20 +7746,29 @@ Let $T$ be the torus
 \begin{equation}
   T = \Hom(\Gamma, \C^\times).
 \end{equation}
+Note that $T$ is an abelian group.
+Define
+$$ \cX^\sf: \C^\times \times T \to T $$
+as follows: $\cX^\sf(\zeta): T \to T$ is translation by
+the element $\exp(Z / \zeta + \bar{Z} \zeta) \in T$.
 Then there exists at most one map
 $$ \cX: \C^\times \times T \to T $$
 with the properties:
 \begin{itemize}
-\item There exists some $c \in \Gamma^*_\R$ such that
-as $\zeta \to 0$ or $\zeta \to \infty$ we have
-\begin{equation}
-\fixme{...}
-\end{equation}
-\item $\cX$ is analytic away from the countable collection of rays
+\item 
+As $\zeta \to 0$ or $\zeta \to \infty$, the composition $\cX^\sf(\zeta) \circ \cX(\zeta)^{-1}$
+has a finite limit.
+\item $\cX$ is analytic away from a countable collection of rays 
+labeled by primitive vectors $\mu \in \Gamma$,
 $$\ell_\mu = \{ \zeta: Z_\mu / \zeta \in \R_- \} \subset \C^\times $$
-while on each of these rays $\xi$ jumps by the transformation
+while on each of these rays $\cX$ jumps by the transformation
+\fixme{be precise about clockwise/counterclockwise; and check sign}
 \begin{equation}
-  \cX \to \cX \exp \left[ \sum_\mu DT(\mu) \mu^* \log(1 + \exp \xi(\mu)) \right].
+  \cX \to \cX \exp \left[ (n\mu)^* \sum_{n \ge 1} DT(n\mu) \log(1 + \cX_{n\mu}) \right].
+\end{equation}
+or more concretely,
+\begin{equation}
+  \cX_\gamma \to \cX_\gamma \prod \fixme{...}
 \end{equation}
 \end{itemize}
 \end{lem}
