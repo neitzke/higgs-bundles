@@ -7737,11 +7737,35 @@ to the simple functions $\cX_\gamma^\sf(\zeta)$
 of \eqref{eq:X-sf}. Along the way we will discover various
 extra interesting bits of structure.
 
+We need one technical bit of preparation:
+\begin{defn}[Quadratic refinement of mod 2 pairing] Suppose given a lattice $\Gamma$ 
+with a bilinear pairing $\varepsilon: \Gamma \times \Gamma \to \Z / 2 \Z$. A \ti{quadratic refinement}
+of $\varepsilon$ is a map $\sigma: \Gamma \to \Z / 2\Z$ such that
+\begin{equation}
+	\sigma(\gamma + \gamma') = \sigma(\gamma) \sigma(\gamma') \varepsilon(\gamma,\gamma').
+\end{equation}
+\end{defn}
+
+\begin{prop}[Spin structures on $\Sigma$ are quadratic refinements on $H_1(\Sigma,\Z)$] 
+Suppose $\Sigma$ is any compact surface.
+There is a canonical bijection between equivalence classes of 
+spin structures on $\Sigma$ and quadratic refinements of the pairing
+$\varepsilon(\gamma,\gamma') = (-1)^{\IP{\gamma,\gamma'}}$ on $H_1(\Sigma,\Z)$.
+\end{prop}
+
+
+% (So $\varepsilon$ measures the extent to which $\sigma$ fails to be a
+% homomorphism.)
+
 The key lemma we will use is:
-\begin{lem} Suppose given a lattice $\Gamma$ with an
-isomorphism $\Gamma \simeq \Gamma^*$,
-homomorphism $Z:\Gamma \to \C$,
-and a map (not homomorphism) $DT: \Gamma \to \Z$.
+\begin{lem} Suppose given a lattice $\Gamma$ with: 
+\begin{itemize}
+	\item a skew pairing $\IP{\cdot,\cdot}: \Gamma \times \Gamma \to \Z$,
+	\item a homomorphism $Z:\Gamma \to \C$,
+  \item a map (not homomorphism) $DT: \Gamma \to \Z$,
+  \item a quadratic refinement $\sigma$ of the 
+  pairing $\varepsilon(\gamma,\gamma') = (-1)^{\IP{\gamma,\gamma'}}$ on $\Gamma$.
+\end{itemize}
 Let $T$ be the torus
 \begin{equation}
   T = \Hom(\Gamma, \C^\times).
@@ -7749,7 +7773,7 @@ Let $T$ be the torus
 Note that $T$ is an abelian group.
 Define
 $$ \cX^\sf: \C^\times \times T \to T $$
-as follows: $\cX^\sf(\zeta): T \to T$ is translation by
+as follows: $\cX^\sf(\zeta): T \to T$ is multiplication by
 the element $\exp(Z / \zeta + \bar{Z} \zeta) \in T$.
 Then there exists at most one map
 $$ \cX: \C^\times \times T \to T $$
@@ -7758,22 +7782,22 @@ with the properties:
 \item 
 As $\zeta \to 0$ or $\zeta \to \infty$, the composition $\cX^\sf(\zeta) \circ \cX(\zeta)^{-1}$
 has a finite limit.
-\item $\cX$ is analytic away from a countable collection of rays 
+\item $\cX(\zeta)$ is analytic in $\zeta$ away from the countable collection of rays 
 labeled by primitive vectors $\mu \in \Gamma$,
 $$\ell_\mu = \{ \zeta: Z_\mu / \zeta \in \R_- \} \subset \C^\times $$
 while on each of these rays $\cX$ jumps by the transformation
-\fixme{be precise about clockwise/counterclockwise; and check sign}
+\fixme{be precise about clockwise/counterclockwise}
 \begin{equation}
-  \cX \to \cX \exp \left[ (n\mu)^* \sum_{n \ge 1} DT(n\mu) \log(1 + \cX_{n\mu}) \right].
+  \cX \to \cX \exp \left[ (n\mu)^* \sum_{n \ge 1} DT(n\mu) \log(1 - \sigma(n\mu) \cX_{n\mu}) \right].
 \end{equation}
 or more concretely,
 \begin{equation}
-  \cX_\gamma \to \cX_\gamma \prod \fixme{...}
+  \cX_\gamma \to \cX_\gamma \prod_{n \ge 1} (1 - \sigma(n\mu) \cX_{n\mu})^{n \mu^*(\gamma) DT(n\mu)}
 \end{equation}
 \end{itemize}
 \end{lem}
 
-\begin{pf} Suppose there were two such $\cX$. \fixme{..} 
+\begin{pf} Suppose $\cX$ and $\cX'$ obey all of these conditions. \fixme{..} 
 \end{pf}
 
 
