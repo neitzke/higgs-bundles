@@ -7805,7 +7805,7 @@ A key lemma we will use is:
 Suppose $G$ is a complex Lie group, equipped with two antiholomorphic
 involutions $R$ and $\rho$, with fixed loci $G_R, G_\rho \subset G$,
 and $G_R \cap G_\rho = \{1\}$.
-Fix a collection of rays $\{\ell_\mu\}_{\mu \in \Lambda}$
+Fix a countable collection of rays $\{\ell_\mu\}_{\mu \in \Lambda}$
 running from $0$ to $\infty$ in $\C^\times$,
 and corresponding elements $S_\mu \in G$.
 Also fix a holomorphic map $\cX^\sf: \C^\times \to G$,
@@ -7823,13 +7823,14 @@ with the properties:
 \begin{equation} \label{eq:X-reality}
   \cX(-1/\bar\zeta) = \rho \cX(\zeta).
 \end{equation}
-\item $\cX(\zeta)$ is analytic in $\zeta$ away from the rays
-$\ell_\mu$,
-while on each of these rays $\cX$ jumps by the transformation
+% \item For any phase $\vartheta$, $\cX(\zeta)$ admits analytic 
+% continuation in the half-plane $\bbH_\vartheta$ 
+% centered on $\arg \zeta = \vartheta$.
+\item On the ray $\ell_\mu$, the limits from the two sides are 
+related by \fixme{check signs}
 \begin{equation}
-  \cX \to \cX S_\mu.
+  \cX^+_\mu = \cX^-_\mu S_\mu.
 \end{equation}
-\fixme{say clockwise or counter}
 \end{itemize}
 
 \end{lem}
