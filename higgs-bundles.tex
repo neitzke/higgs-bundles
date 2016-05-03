@@ -7059,6 +7059,7 @@ the case $K=2$ and \cite{MR965220} more generally.
 to $\zeta \in \C^\times$ should be straightforward.)
 \end{pf}
 
+\fixme{summarize the situation!}
 
 
 
@@ -7167,7 +7168,7 @@ $K_C^{K(K-1)}$, with only simple zeroes.
 If $\vec\phi \in \cB'$, then
 the fiber $\rho^{-1}(\vec\phi) \subset \cM_{K,d}(C)$ 
 is the torus $\cN_{1,d'}(\Sigma_{\vec\phi})$
-where \fixme{sign error?}
+where
 \begin{equation}
 	d' = d - K(K-1)(g-1).
 \end{equation}
@@ -7303,6 +7304,9 @@ method.
 \begin{prop}[Hitchin fibration is surjective] The Hitchin fibration
 is surjective.
 \end{prop}
+\begin{pf}
+\fixme{...}
+\end{pf}
 
 So $\cM_{K,d}(C)$
 is fibered over $\cB$, with compact torus fibers $\rho^{-1}(\vec\phi)$ 
@@ -7491,8 +7495,8 @@ describe the proposal of \cite{Gaiotto:2008cd,Gaiotto:2009hg,Gaiotto2012}, which
 \subsection{The semiflat picture}
 
 We first describe a certain simple, explicit \hk metric, which is expected
-to be very close to the true \hk metric ``near the ends'' of $\cM$, i.e. 
-when we go out along a generic path to $\infty$.
+to be very close to the true \hk metric ``near the ends'' of
+$\cM_{K,d}(C)$, i.e. when we go out along a generic path to $\infty$.
 
 Over the smooth locus $\cB'$ we have a local system of lattices
 $$\Gamma_{\vec \phi} = H_1(\Sigma_{\vec \phi},\Z)$$
@@ -7629,7 +7633,8 @@ the form $\Omega^\sf(\zeta)$ does not: it is global on $\cM'$
 
 Now we are in a situation very close to that of \autoref{exa:semiflat-1d-general},
 with the difference that $\Gamma$ now has rank $2n$ instead of $2$,
-and we have introduced an additional global ``twisting'' from \fixme{...}
+and we have introduced an additional global ``twisting'' from the
+local choices of spin structures.
 
 \begin{prop}[Semiflat \hk metric on $\cM'$ exists] There exists a \hk 
 metric on $\cM'$ for which the holomorphic symplectic form is 
@@ -7684,28 +7689,68 @@ passage from the flat $GL(K,\C)$-connections
 $\nabla(\zeta)$ over $C$ to the flat connections
 $\cX^\sf(\zeta)$ over $\Sigma$ is not a holomorphic map
 between moduli spaces of flat connections.
+Our next aim is to improve the functions
+$\cX_\gamma^\sf$ to true holomorphic Darboux
+coordinates $\cX_\gamma$.
 
 In what follows it will be technically useful to 
-\ti{complexify} the above formulas.
-\begin{prop}[Complex twistor lines for $\cM_{K,d}(C)$]
-\fixme{roughly!} The space of \ti{complex} holomorphic 
-sections of the twistor space $\cZ \to \C\PP^1$
-contains the set of tuples $(D,\varphi,\bar\varphi)$,
-where $D$ is a $GL(K,\C)$-connection over $C$,
-$\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End \overline E)$, obeying
-\begin{subequations}
+complexify.
+Let $\cZ$ denote the twistor space of $\cM^s_{K,d}(C)$,
+and let $\cM_\C$ be the space of \ti{complex} holomorphic 
+sections of $\cZ \to \C\PP^1$. $\cM_\C$ has an antiholomorphic
+involution with $\cM$ as fixed locus.
+
+\begin{prop}[Complex twistor lines for $\cM^s_{K,d}(C)$]
+$\cM_\C$ is the set of tuples $(D,\varphi,\bar\varphi)$,
+where $D$ is a complex connection in $E$,
+$\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End E)$, obeying
+\begin{subequations} \label{eq:hitchin-doubled}
 \begin{align}
-\bar\partial_E \varphi &= 0, \\
-\partial_E \bar\varphi &= 0, \\
-F_D + [\varphi,\bar\varphi] &= 0.
+\bar\partial_D \varphi &= 0, \\
+\partial_D \bar\varphi &= 0, \\
+F_D + [\varphi,\bar\varphi] &=  -2 \pi \I \frac{d}{K} \bid \omega_C,
 \end{align}
-\end{subequations} 
+\end{subequations}
+modulo the gauge group $\fG_\C = \Aut E$.
 \end{prop}
 \begin{pf} Given such a tuple we can write the usual formula
-$$ \nabla(\zeta) = \zeta^{-1} \varphi + D + \zeta \bar\varphi $$
-which gives the desired section. \fixme{explain why it extends
-over the poles}
+$$ \nabla(\zeta) = \zeta^{-1} \varphi + D + \zeta \bar\varphi. $$
+The conditions \eqref{eq:hitchin-doubled} imply
+as usual that $\nabla(\zeta)$ is a complex 
+Einstein connection for all $\zeta \in \C^\times$.
+Since $\pi^{-1}(\C^\times) \subset \cZ$ is isomorphic 
+to $\C^\times \times \cM^{Ein}_{K,d}(C)$, this gives a section
+over $\C^\times \subset \C\PP^1$. Moreover this section extends
+over $\zeta = 0$ and $\zeta = \infty$ since its behavior in these
+limits is just like that of the real twistor lines, which we already 
+know extend. 
+
+Conversely, given a twistor line we need to show that it is of 
+the above form. \fixme{is it really true?}
 \end{pf}
+
+\begin{defn}[Complexified Hitchin fibration]
+By restricting to the fibers over $0$ and $\infty$,
+each point of $\cM_\C$ gives a Higgs bundle and an
+anti-Higgs bundle. Thus we obtain a doubled Hitchin
+fibration,
+\begin{equation}
+\rho_\C: \cM_\C \to \cB \times \bar{\cB}.  
+\end{equation}
+\end{defn}
+
+\begin{prop}[Diagonal fibers of complexified Hitchin fibration] 
+Suppose $\vec\phi \in \cB'$ and $d' = 0$. Then $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi}) = \Hom(H_1(\Sigma_{\vec\phi}),\C^\times)$.
+\begin{pf} 
+% A point of $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi})$
+% gives two line bundles $\cL$, $\cL'$ over the 
+% same spectral curve $\Sigma_{\vec\phi}$,
+% with $\cL$ holomorphic and $\cL'$ antiholomorphic. 
+\fixme{...}
+\end{pf}
+\end{prop}
+
+
 
 \subsection{Metric comparison}
 
@@ -7716,7 +7761,7 @@ which is ``small on the smooth locus.'' A crude version of the
 estimate is to say that along a path $p(t) \in \cM$
 parameterized by $t \in \R_+$, with
 $\rho(p(t)) = t \vec\phi$, we should have
-\begin{equation}
+\begin{equation} \label{eq:metric-estimate}
   g = g^\sf + O(e^{-t M({\vec\phi})})
 \end{equation}
 where
@@ -7729,15 +7774,76 @@ is to make a careful study of the asymptotic
 behavior of the corresponding harmonic pairs $(D,\Phi)$.
 See \cite{Mazzeo2014} for this.
 
+
+
+\subsection{Twistorial construction, first steps}
+
 Here we follow an approach closer to the philosophy of 
 \cite{Gaiotto:2008cd}. The idea is to produce holomorphic functions
 $\cX_\gamma(\zeta)$ on $\cM_{K,d}(C)$ which are Darboux coordinates for
 $\Omega(\zeta)$ and which are also exponentially close
 to the simple functions $\cX_\gamma^\sf(\zeta)$
-of \eqref{eq:X-sf}. Along the way we will discover various
+of \eqref{eq:X-sf}. If we could do this completely rigorously
+it would establish the desired metric estimate 
+\eqref{eq:metric-estimate}, as well as various sharper
+statements.
+Along the way we will discover various
 extra interesting bits of structure.
 
-We need one technical bit of preparation:
+A key lemma we will use is:
+
+\begin{lem}[Uniqueness of solutions to Riemann-Hilbert problems] \label{lem:rh-uniqueness}
+Suppose $G$ is a complex Lie group, equipped with two antiholomorphic
+involutions $R$ and $\rho$, with fixed loci $G_R, G_\rho \subset G$,
+and $G_R \cap G_\rho = \{1\}$.
+Fix a collection of rays $\{\ell_\mu\}_{\mu \in \Lambda}$
+running from $0$ to $\infty$ in $\C^\times$,
+and corresponding elements $S_\mu \in G$.
+Also fix a holomorphic map $\cX^\sf: \C^\times \to G$,
+obeying the ``reality'' condition
+\begin{equation} \label{eq:Xsf-reality}
+  \cX^\sf(-1/\bar\zeta) = \rho \cX^\sf(\zeta).
+\end{equation}
+Then there exists at most one map
+$$ \cX: \C^\times \to G $$
+with the properties:
+\begin{itemize}
+\item As $\zeta \to 0$ or $\zeta \to \infty$, $\cX(\zeta) \cX^\sf(\zeta)^{-1}$ has a finite limit lying in $G_R$.
+(In other words, near $\zeta = 0$ we have $\cX(\zeta) = F(\zeta) \cX^\sf(\zeta)$, where $F(0) \in G_R$, and similarly near $\zeta = \infty$.)
+\item $\cX$ obeys the ``reality'' condition
+\begin{equation} \label{eq:X-reality}
+  \cX(-1/\bar\zeta) = \rho \cX(\zeta).
+\end{equation}
+\item $\cX(\zeta)$ is analytic in $\zeta$ away from the rays
+$\ell_\mu$,
+while on each of these rays $\cX$ jumps by the transformation
+\begin{equation}
+  \cX \to \cX S_\mu.
+\end{equation}
+\end{itemize}
+
+\end{lem}
+
+\begin{pf} Suppose $\cX$ and $\cX'$ obey all of these conditions.
+Then we consider the composite 
+\begin{equation}
+  Y: \C^\times \to G, \qquad Y(\zeta) = \cX'(\zeta)\cX(\zeta)^{-1}.
+\end{equation}
+The jumps $S_\mu$ cancel out in $Y$, so $Y$ is analytic everywhere;
+and our asymptotic condition says $Y$ is finite and $G_R$-valued 
+in the limits
+$\zeta \to 0$ or $\zeta \to \infty$. Thus by Liouville's theorem
+$Y(\zeta)$ must be a $\zeta$-independent element of $G_R$. Finally
+the reality condition \eqref{eq:X-reality} implies $Y$
+also belongs to $G_\rho$. So we conclude that $Y = 1$.
+\end{pf}
+
+\begin{example}[Riemann-Hilbert problems for $G = GL(N)$]
+\fixme{...} \fixme{cite Dubrovin, Cecotti-Vafa}
+\end{example}
+
+Before applying this to our situation we 
+need one technical bit of preparation:
 \begin{defn}[Quadratic refinement of mod 2 pairing] Suppose given a lattice $\Gamma$ 
 with a bilinear pairing $\varepsilon: \Gamma \times \Gamma \to \Z / 2 \Z$. A \ti{quadratic refinement}
 of $\varepsilon$ is a map $\sigma: \Gamma \to \Z / 2\Z$ such that
@@ -7753,59 +7859,120 @@ spin structures on $\Sigma$ and quadratic refinements of the pairing
 $\varepsilon(\gamma,\gamma') = (-1)^{\IP{\gamma,\gamma'}}$ on $H_1(\Sigma,\Z)$.
 \end{prop}
 
-
-% (So $\varepsilon$ measures the extent to which $\sigma$ fails to be a
-% homomorphism.)
-
-The key lemma we will use is:
-\begin{lem} Suppose given a lattice $\Gamma$ with: 
+We would like to apply \autoref{lem:rh-uniqueness} in the following
+situation. Fix a point $\vec\phi \in \cB$ and a spin structure
+on $\Sigma_{\vec\phi}$. Then we have
+a lattice $\Gamma = \Gamma_{\vec\phi}$ with: 
 \begin{itemize}
 	\item a skew pairing $\IP{\cdot,\cdot}: \Gamma \times \Gamma \to \Z$,
-	\item a homomorphism $Z:\Gamma \to \C$,
-  \item a map (not homomorphism) $DT: \Gamma \to \Z$,
+	\item a homomorphism $Z: \Gamma \to \C$,
   \item a quadratic refinement $\sigma$ of the 
   pairing $\varepsilon(\gamma,\gamma') = (-1)^{\IP{\gamma,\gamma'}}$ on $\Gamma$.
 \end{itemize}
+
 Let $T$ be the torus
 \begin{equation}
-  T = \Hom(\Gamma, \C^\times).
+  T = \Hom(\Gamma, \C^\times),
 \end{equation}
-Note that $T$ is an abelian group.
+and $G$ the group of birational holomorphic maps $T \to T$.
+Let $R$ be conjugation by the map $T \to T$ given by
+$z \mapsto \bar{z}$ on $\C^\times$, and similarly
+$\rho$ be conjugation by the map
+$T \to T$ given by $z \mapsto \bar{z}^{-1}$ on $\C^\times$.
 Define
-$$ \cX^\sf: \C^\times \times T \to T $$
-as follows: $\cX^\sf(\zeta): T \to T$ is multiplication by
-the element $\exp(Z / \zeta + \bar{Z} \zeta) \in T$.
-Then there exists at most one map
-$$ \cX: \C^\times \times T \to T $$
-with the properties:
+\begin{equation}
+\cX^\sf: \C^\times \to G
+\end{equation}
+by 
+\begin{equation}
+\cX^\sf(\zeta) = \exp(\zeta^{-1} Z + \zeta \bar{Z}) \in T \subset G.
+\end{equation}
+
+\begin{exercise} Check that $\cX^\sf$ obeys the reality condition 
+\eqref{eq:Xsf-reality}.
+\end{exercise}
+
+Finally, for each $\mu \in \Gamma$ primitive, let
+$$\ell_\mu = \{ \zeta: Z_\mu / \zeta \in \R_- \} \subset \C^\times. $$
+Assume for a moment that the $\ell_\mu$
+are all distinct.
+In this case, we are going to define one more bit of data:
 \begin{itemize}
-\item 
-As $\zeta \to 0$ or $\zeta \to \infty$, the composition $\cX^\sf(\zeta) \circ \cX(\zeta)^{-1}$
-has a finite limit.
-\item $\cX(\zeta)$ is analytic in $\zeta$ away from the countable collection of rays 
-labeled by primitive vectors $\mu \in \Gamma$,
-$$\ell_\mu = \{ \zeta: Z_\mu / \zeta \in \R_- \} \subset \C^\times $$
-while on each of these rays $\cX$ jumps by the transformation
-\fixme{be precise about clockwise/counterclockwise}
-\begin{equation}
-  \cX \to \cX \exp \left[ (n\mu)^* \sum_{n \ge 1} DT(n\mu) \log(1 - \sigma(n\mu) \cX_{n\mu}) \right].
-\end{equation}
-or more concretely,
-\begin{equation}
-  \cX_\gamma \to \cX_\gamma \prod_{n \ge 1} (1 - \sigma(n\mu) \cX_{n\mu})^{n \mu^*(\gamma) DT(n\mu)}
-\end{equation}
+  \item a map (not homomorphism) $DT: \Gamma \to \Z$.
 \end{itemize}
-\end{lem}
-
-\begin{pf} Suppose $\cX$ and $\cX'$ obey all of these conditions. \fixme{..} 
-\end{pf}
-
-
-
-
-\fixme{trajectories of quadratic differentials and triangulations}
+Then we will let $S_\mu \in G$ be the birational map
+\begin{equation}
+  X_\gamma \to X_\gamma \prod_{n \ge 1} (1 - \sigma(n\mu) X_{n\mu})^{n \IP{\gamma,\mu} DT(n\mu)}.
+\end{equation}
+(In the case we consider below, this product is actually finite,
+so we do not have to worry about issues of convergence.)
 
 
+\subsection{Trajectories of quadratic differentials}
+
+The definition of $DT$ is easiest to understand in the 
+case $K=2$, so let us consider that case first.
+\fixme{ref Strebel, Klemm-Lerche-Mayr-Vafa-Warner, Bridgeland-Smith}
+
+Fix a point $\vec\phi = (\phi_1, \phi_2) \in \cB'$.
+Everything we say in this section only involves the quadratic
+differential
+$\tilde\phi_2 = \phi_2 - \frac14 \phi_1^2$ (rescaled discriminant).
+
+\begin{defn}[$\vartheta$-trajectories of a quadratic differential]
+\fixme{...}
+\end{defn}
+
+\begin{defn}[Saddle connections]
+\fixme{...}
+\end{defn}
+
+\begin{defn}[Charge of a saddle connection]
+\fixme{...}
+\end{defn}
+
+\begin{defn}[Closed loops]
+\fixme{...}
+\end{defn}
+
+\begin{defn}[Charge of a closed loop]
+\fixme{...}
+\end{defn}
+
+\begin{defn}[DT invariants]
+\fixme{...}
+\end{defn}
+
+
+\fixme{trajectories of quadratic differentials}
+
+\fixme{saddle connections, closed geodesics}
+
+
+
+\subsection{Constructing $\cX$}
+
+Now, we are ready to show that there exists a map
+$\cX: \C^\times \to G$ 
+which obeys the conditions
+of \autoref{lem:rh-uniqueness},
+and at the same time, gives a holomorphic 
+Darboux coordinate system on $\cM$.
+
+\fixme{WKB ...}
+\fixme{introduce punctured case?}
+
+
+\subsection{Estimating $\cX$}
+
+For the purpose of computing metric estimates,
+we now want to see that $\cX$ becomes very close to $\cX^\sf$
+when we go out to infinity in $\cB'$.
+For this the essential point is the uniqueness 
+in \autoref{lem:rh-uniqueness}.
+
+\fixme{integral equations}
+\fixme{like Ooguri-Vafa!}
 
 \printbibliography
 
