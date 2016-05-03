@@ -7733,7 +7733,7 @@ calculation using normal bundle}
 \begin{example}[Complex twistor lines for $\cM_{1,0}(C)$] Suppose $E$ is 
 a degree $0$ line bundle over $C$. Then given any
 $\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End E)$
-we can find ...
+we can find \fixme{...}
 \end{example}
 
 \begin{defn}[Complexified Hitchin fibration]
@@ -7839,7 +7839,8 @@ Then we consider the composite
 \begin{equation}
   Y: \C^\times \to G, \qquad Y(\zeta) = \cX'(\zeta)\cX(\zeta)^{-1}.
 \end{equation}
-The jumps $S_\mu$ cancel out in $Y$, so $Y$ is analytic everywhere;
+The jumps $S_\mu$ cancel out in $Y$, so $Y$ is analytic everywhere
+\fixme{oops, why analytic and not just continuous?};
 and our asymptotic condition says $Y$ is finite and $G_R$-valued 
 in the limits
 $\zeta \to 0$ or $\zeta \to \infty$. Thus by Liouville's theorem
@@ -7868,6 +7869,9 @@ There is a canonical bijection between equivalence classes of
 spin structures on $\Sigma$ and quadratic refinements of the pairing
 $\varepsilon(\gamma,\gamma') = (-1)^{\IP{\gamma,\gamma'}}$ on $H_1(\Sigma,\Z)$.
 \end{prop}
+\begin{pf}
+\fixme{...}
+\end{pf}
 
 We would like to apply \autoref{lem:rh-uniqueness} in the following
 situation. Fix a point $\vec\phi \in \cB$ and a spin structure
@@ -7933,13 +7937,35 @@ Q = \phi_2 - \frac14 \phi_1^2
 (discriminant rescaled by $\frac14$).
 
 \begin{defn}[$\vartheta$-trajectories of a quadratic differential]
-A \ti{$\vartheta$-trajectory} of $Q$ is a real $1$-manifold $p$ on $C$
+A \ti{$\vartheta$-trajectory} of $Q$ is a connected 
+real $1$-manifold $p$ on $C$
 such that $e^{- \I \vartheta} \sqrt Q$ (with either choice of sign) is a
 \ti{real} and nowhere vanishing form on $p$. 
-Given a $\vartheta$-trajectory $p$, its lift to $\Sigma_{\vec\phi}$
-is canonically oriented. Call a \ti{$\vartheta$-trajectory} \ti{maximal} if
-it cannot be extended.
+Call a $\vartheta$-trajectory \ti{maximal} if
+it is not properly contained in any other.
 \end{defn}
+
+\fixme{fig}
+
+\begin{defn}[Orientation of $\vartheta$-trajectories]
+Given a $\vartheta$-trajectory $p$, its lift $\tilde{p}$ to $\Sigma_{\vec\phi}$
+is canonically oriented. Indeed, the two sheets of $\Sigma_{\vec\phi}$
+correspond canonically to the two choices of $\sqrt{Q}$.
+Thus we can orient $\tilde{p}$ by the condition that
+in the positive direction, the form $e^{-\I \vartheta} \sqrt{Q}$
+is positive.
+\end{defn}
+
+\fixme{fig}
+
+Let $C' = \{z: Q(z) \neq 0\} \subset C$.
+
+\begin{prop}[$\vartheta$-trajectories give a foliation] \fixme{...}
+\end{prop}
+
+\begin{prop}[Local singularities of the foliation by $\vartheta$-trajectories] \fixme{...}
+\end{prop}
+
 
 \begin{defn}[Saddle connections]
 A \ti{$\vartheta$-saddle connection} is a $\vartheta$-trajectory $p$
