@@ -7701,7 +7701,7 @@ sections of $\cZ \to \C\PP^1$. $\cM_\C$ has an antiholomorphic
 involution with $\cM$ as fixed locus.
 
 \begin{prop}[Complex twistor lines for $\cM^s_{K,d}(C)$]
-$\cM_\C$ is the set of tuples $(D,\varphi,\bar\varphi)$,
+$\cM_\C$ contains as a connected component the set of tuples $(D,\varphi,\bar\varphi)$,
 where $D$ is a complex connection in $E$,
 $\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End E)$, obeying
 \begin{subequations} \label{eq:hitchin-doubled}
@@ -7725,9 +7725,16 @@ over $\zeta = 0$ and $\zeta = \infty$ since its behavior in these
 limits is just like that of the real twistor lines, which we already 
 know extend. 
 
-Conversely, given a twistor line we need to show that it is of 
-the above form. \fixme{is it really true?}
+Conversely, given a complex twistor line of the above form we need to show that 
+it has a neighborhood consisting only of lines of the above form. \fixme{infinitesimal
+calculation using normal bundle}
 \end{pf}
+
+\begin{example}[Complex twistor lines for $\cM_{1,0}(C)$] Suppose $E$ is 
+a degree $0$ line bundle over $C$. Then given any
+$\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End E)$
+we can find ...
+\end{example}
 
 \begin{defn}[Complexified Hitchin fibration]
 By restricting to the fibers over $0$ and $\infty$,
@@ -7740,8 +7747,10 @@ fibration,
 \end{defn}
 
 \begin{prop}[Diagonal fibers of complexified Hitchin fibration] 
-Suppose $\vec\phi \in \cB'$ and $d' = 0$. Then $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi}) = \Hom(H_1(\Sigma_{\vec\phi}),\C^\times)$.
-\begin{pf} 
+Suppose $\vec\phi \in \cB'$ and $d' = 0$. Then $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi})$ has a
+connected component which is $\Hom(H_1(\Sigma_{\vec\phi}),\C^\times)$. \fixme{I hope!
+At least, get open neighborhood of compact torus in here}
+\begin{pf}
 % A point of $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi})$
 % gives two line bundles $\cL$, $\cL'$ over the 
 % same spectral curve $\Sigma_{\vec\phi}$,
@@ -7820,6 +7829,7 @@ while on each of these rays $\cX$ jumps by the transformation
 \begin{equation}
   \cX \to \cX S_\mu.
 \end{equation}
+\fixme{say clockwise or counter}
 \end{itemize}
 
 \end{lem}
@@ -7917,19 +7927,41 @@ case $K=2$, so let us consider that case first.
 Fix a point $\vec\phi = (\phi_1, \phi_2) \in \cB'$.
 Everything we say in this section only involves the quadratic
 differential
-$\tilde\phi_2 = \phi_2 - \frac14 \phi_1^2$ (rescaled discriminant).
+\begin{equation}
+Q = \phi_2 - \frac14 \phi_1^2	
+\end{equation}
+(discriminant rescaled by $\frac14$).
 
 \begin{defn}[$\vartheta$-trajectories of a quadratic differential]
-\fixme{...}
+A \ti{$\vartheta$-trajectory} of $Q$ is a real $1$-manifold $p$ on $C$
+such that $e^{- \I \vartheta} \sqrt Q$ (with either choice of sign) is a
+\ti{real} and nowhere vanishing form on $p$. 
+Given a $\vartheta$-trajectory $p$, its lift to $\Sigma_{\vec\phi}$
+is canonically oriented. Call a \ti{$\vartheta$-trajectory} \ti{maximal} if
+it cannot be extended.
 \end{defn}
 
 \begin{defn}[Saddle connections]
-\fixme{...}
+A \ti{$\vartheta$-saddle connection} is a $\vartheta$-trajectory $p$
+such that $\bar p \setminus p$ consists of two points.
 \end{defn}
+
+\fixme{fig}
 
 \begin{defn}[Charge of a saddle connection]
 \fixme{...}
 \end{defn}
+
+\begin{lem}[Phase constraint for saddle connections]
+If a $\vartheta$-saddle connection exists with charge
+$\gamma$, then $e^{- \I \vartheta} Z_\gamma \in \R_+$.
+\end{lem}
+
+\begin{pf} \fixme{...}
+\end{pf}
+
+In particular, $\vartheta$-saddle connections can only 
+occur at countably many phases.
 
 \begin{defn}[Closed loops]
 \fixme{...}
