@@ -7805,7 +7805,7 @@ A key lemma we will use is:
 Suppose $G$ is a complex Lie group, equipped with two antiholomorphic
 involutions $R$ and $\rho$, with fixed loci $G_R, G_\rho \subset G$,
 and $G_R \cap G_\rho = \{1\}$.
-Fix a countable collection of rays $\{\ell_\mu\}_{\mu \in \Lambda}$
+Fix a countable collection of rays $L = \{\ell_\mu\}_{\mu \in \Lambda}$
 running from $0$ to $\infty$ in $\C^\times$,
 and corresponding elements $S_\mu \in G$.
 Also fix a holomorphic map $\cX^\sf: \C^\times \to G$,
@@ -7823,11 +7823,8 @@ with the properties:
 \begin{equation} \label{eq:X-reality}
   \cX(-1/\bar\zeta) = \rho \cX(\zeta).
 \end{equation}
-% \item For any phase $\vartheta$, $\cX(\zeta)$ admits analytic 
-% continuation in the half-plane $\bbH_\vartheta$ 
-% centered on $\arg \zeta = \vartheta$.
-\item On the ray $\ell_\mu$, the limits from the two sides are 
-related by \fixme{check signs}
+\item On the ray $\ell_\mu$, the limits of $\cX$ from both sides 
+exist, and are related by
 \begin{equation}
   \cX^+_\mu = \cX^-_\mu S_\mu.
 \end{equation}
@@ -7840,12 +7837,16 @@ Then we consider the composite
 \begin{equation}
   Y: \C^\times \to G, \qquad Y(\zeta) = \cX'(\zeta)\cX(\zeta)^{-1}.
 \end{equation}
-The jumps $S_\mu$ cancel out in $Y$, so $Y$ is analytic everywhere
-\fixme{oops, why analytic and not just continuous?};
-and our asymptotic condition says $Y$ is finite and $G_R$-valued 
-in the limits
-$\zeta \to 0$ or $\zeta \to \infty$. Thus by Liouville's theorem
-$Y(\zeta)$ must be a $\zeta$-independent element of $G_R$. Finally
+The jumps $S_\mu$ cancel out in $Y$, so $Y$ is continuous
+everywhere, and analytic away from the collection of rays $\ell_\mu$.
+It follows using Morera's theorem that $Y$ is analytic
+everywhere in $\C^\times$.
+Moreover our asymptotic condition says $Y$ is finite 
+and $G_R$-valued in the limits
+$\zeta \to 0$ or $\zeta \to \infty$; but then the Riemann removable
+singularity theorem says that $Y$ is analytic on the whole
+$\C\PP^1$, and then Liouville's theorem says
+$Y(\zeta)$ is a $\zeta$-independent element of $G_R$. Finally
 the reality condition \eqref{eq:X-reality} implies $Y$
 also belongs to $G_\rho$. So we conclude that $Y = 1$.
 \end{pf}
