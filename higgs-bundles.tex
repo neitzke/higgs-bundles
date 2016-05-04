@@ -5697,8 +5697,12 @@ isometry of \kahler manifolds.
 
 \subsection{Stable vector bundles}
 
-For $K > 1$ the situation is a bit different:
-not every holomorphic vector bundle admits an Einstein connection.
+It still remains to explain what $\cN_{K,d}(C)$ and $\cN_{K,d}^s(C)$ precisely
+mean in terms of our original aim of studying holomorphic vector bundles.
+For $K > 1$ the situation is a bit different than for $K=1$:
+not every holomorphic vector bundle admits an Einstein connection,
+so not every holomorphic vector bundle will correspond to a point of 
+$\cN_{K,d}(C)$.
 In this section we introduce the class of bundles which do.
 
 \begin{defn}[Slope of a vector bundle] The \ti{slope} of a holomorphic vector bundle $E$ over $C$ is
@@ -7931,89 +7935,188 @@ case $K=2$, so let us consider that case first.
 \fixme{ref Strebel, Klemm-Lerche-Mayr-Vafa-Warner, Bridgeland-Smith}
 
 Fix a point $\vec\phi = (\phi_1, \phi_2) \in \cB'$.
-Everything we say in this section only involves the quadratic
-differential
+Most of what we say in this section is about the discriminant
 \begin{equation}
-Q = \phi_2 - \frac14 \phi_1^2	
+\Delta = \phi_1^2	- 4 \phi_2.
 \end{equation}
-(discriminant rescaled by $\frac14$).
+$\Delta$ is a holomorphic quadratic differential on $C$.
+
+Recall that the two sheets of $\Sigma_{\vec\phi}$ are given by
+(locally, in any domain where we can choose a single-valued $\sqrt{\Delta}$)
+\begin{equation}
+	\lambda_{\pm} = \half (-\phi_1 \pm \sqrt{\Delta})
+\end{equation}
+and in particular their difference is
+\begin{equation}
+	\lambda_+ - \lambda_- = \sqrt{\Delta}.
+\end{equation}
 
 \begin{defn}[$\vartheta$-trajectories of a quadratic differential]
-A \ti{$\vartheta$-trajectory} of $Q$ is a connected 
+A \ti{$\vartheta$-trajectory} of $\Delta$ is a connected 
 real $1$-manifold $p$ on $C$
-such that $e^{- \I \vartheta} \sqrt Q$ (with either choice of sign) is a
+such that $e^{- \I \vartheta} \sqrt \Delta$ (with either choice of sign
+for $\sqrt{\Delta}$) is a
 \ti{real} and nowhere vanishing form on $p$. 
 Call a $\vartheta$-trajectory \ti{maximal} if
 it is not properly contained in any other.
 \end{defn}
 
-\fixme{fig}
+Because of the sign ambiguity of $\sqrt{\Delta}$, there is no canonical
+way of orienting $\vartheta$-trajectories. However, once we pass to the 
+double cover, we do get an orientation:
 
-\begin{defn}[Orientation of $\vartheta$-trajectories]
+\begin{defn}[Orientation of lifted $\vartheta$-trajectories]
 Given a $\vartheta$-trajectory $p$, its lift $\tilde{p} = \pi^{-1}(p)$
 to $\Sigma_{\vec\phi}$ is canonically oriented. Indeed, 
 the two sheets of $\Sigma_{\vec\phi}$
-correspond canonically to the two choices of $\sqrt{Q}$.
+correspond canonically to the two choices of $\sqrt{\Delta}$.
 Thus we can orient $\tilde{p}$ by the condition that
-in the positive direction, $e^{-\I \vartheta} \sqrt{Q}$
+in the positive direction, $e^{-\I \vartheta} \sqrt{\Delta}$
 is positive.
 \end{defn}
 
-\fixme{fig}
+Note that changing $\vartheta \to \vartheta+\pi$ preserves
+the notion of $\vartheta$-trajectory but reverses the
+orientation of the lifts.
+
+\insfig{higgs-bundles-17}{0.8}
 
 
-Let $C' = \{z: Q(z) \neq 0\} \subset C$.
+Let $C' = \{z: \Delta(z) \neq 0\} \subset C$.
 
 \begin{prop}[$\vartheta$-trajectories give a foliation] The 
 $\vartheta$-trajectories are the leaves of a foliation of $C'$.
 \end{prop}
 \begin{pf} Around any $z_0 \in C'$ we consider a local coordinate
-$w$ given by $w(z) = \int^z_{z_0} \sqrt{Q}$. Then
-we have $Q = \de w^2$. Thus in the coordinate $w$, 
+$w$ given by $w(z) = \int^z_{z_0} \sqrt{\Delta}$. Then
+we have $\Delta = \de w^2$. Thus in the coordinate $w$, 
 $\vartheta$-trajectories are just straight segments 
 of inclination angle $\vartheta$.
 \end{pf}
 
-\begin{prop}[Local singularities of the foliation by $\vartheta$-trajectories] Around each zero of $Q$, the foliation
+\begin{prop}[Local singularities of the foliation by $\vartheta$-trajectories] Around each zero of $\Delta$, the foliation
 by $\vartheta$-trajectories has a three-pronged singularity,
-as shown in \fixme{fig}.
+as shown below.
+\insfig{higgs-bundles-18}{0.8}
 \end{prop}
+\begin{pf} In a neighborhood of a zero of $\Delta$, we may choose a 
+local coordinate such that $\Delta = z\,\de z^2$, using our assumption that
+all zeroes of $\Delta$ are simple.
+% (Perhaps this is not really necessary: we could
+% just make a linear change of coordinate, to arrange that the first-order term in the Taylor
+% expansion of $\Delta$ is $z \, \de z^2$, and then take a small enough disc that
+% we can neglect the deviation. But since we can get $z \, \de z^2$
+% on the nose, we might as well.)
+
+Then in any simply connected domain away from $z=0$ we have
+$w = \int \sqrt{\Delta} = \frac23 z^{\frac32}$. In particular,
+each of the three domains 
+\begin{equation}
+\frac23 (\vartheta + n\pi) < \arg z < \frac23 (\vartheta + (n+1)\pi),	\qquad n=0,1,2,
+\end{equation}
+is mapped by $w$ to a half-plane, 
+whose boundary is the line through $0$ of inclination $\vartheta$.
+This gives the picture shown.
+\end{pf}
+
+\begin{exercise} Show that in a neighborhood of a zero of $\Delta$, we may choose a 
+local coordinate $z$ such that $\Delta = z\,\de z^2$.
+\end{exercise}
+
+\begin{exercise} Suppose we consider a quadratic differential $\Delta$
+which is allowed to have higher-order zeroes. What is the behavior of
+the foliation by $\vartheta$-trajectories around such a zero?
+\end{exercise}
+
+Thus in the foliation by $\vartheta$-trajectories, there are finitely
+many special leaves, namely those which are asymptotic in one or
+both directions to zeroes of $\Delta$. The latter case is particularly
+special.
 
 \begin{defn}[Saddle connections]
 A \ti{$\vartheta$-saddle connection} is a maximal
 $\vartheta$-trajectory $p$
-such that $\bar p \setminus p$ consists of two points.
+such that $\bar p \setminus p$ consists of two points of $C$.
 \end{defn}
 
-\fixme{fig}
+\insfig{higgs-bundles-19}{0.8}
 
 \begin{defn}[Charge of a saddle connection]
 If $p$ is a saddle connection, then the closure of $\tilde p$
-is a loop on $\Sigma_{\vec \phi}$; the \ti{charge of $p$}
-is the class of this loop in $H_1(\Sigma,\Z)$.
+is an oriented loop on $\Sigma_{\vec \phi}$; the \ti{charge of $p$}
+is the class of this loop in $\Gamma_{\vec\phi} = H_1(\Sigma_{\vec\phi},\Z)$.
 \end{defn}
 
-\begin{lem}[Phase constraint for saddle connections]
-If a $\vartheta$-saddle connection exists with charge
+\insfig{higgs-bundles-20}{0.8}
+
+There is one other way in which a trajectory can have finite length:
+
+\begin{defn}[Closed loops]
+A \ti{$\vartheta$-closed loop} is a maximal $\vartheta$-trajectory $p$
+such that the closure of $p$ has the topology of $S^1$.
+\end{defn}
+This includes the possibility that $p$ begins and ends
+at the same branch point.
+
+\begin{defn}[Charge of a closed loop]
+If $p$ is a closed loop, then $\tilde p$ is the union of two
+oriented loops on $\Sigma$; the \ti{charge} of $\tilde p$
+is the class of this union in $\Gamma_{\vec\phi} = H_1(\Sigma_{\vec\phi},\Z)$.
+\end{defn}
+
+\insfig{higgs-bundles-21}{0.8}
+
+\begin{defn}[Finite $\vartheta$-trajectories] A
+\ti{finite $\vartheta$-trajectory} is a $\vartheta$-saddle connection or 
+$\vartheta$-closed loop.
+\end{defn}
+
+As we will now show, the existence of a finite $\vartheta$-trajectory is a
+non-generic phenomenon: for ``most'' angles $\vartheta$ they
+do not occur.
+
+\begin{lem}[Phase constraint for finite trajectories]
+If a $\vartheta$-finite trajectory exists with charge
 $\gamma$, then $e^{- \I \vartheta} Z_\gamma \in \R_+$.
 \end{lem}
 
-\begin{pf} \fixme{...}
+\begin{pf} We have by definition $Z_\gamma = \int_\gamma \lambda$.
+Choose the representative for $\gamma$ to be given by $\tilde p$.
+$\tilde p$ is naturally divided into two segments for the two connected 
+lifts of $p$. Choose a $\sqrt{\Delta}$ over $p$, and orient $p$
+so that $e^{-\I \vartheta} \sqrt{\Delta}$ is positive.
+Then we can rewrite $Z_\gamma$ as
+\begin{equation}
+Z_\gamma = \int_p \lambda_+ - \lambda_- = \int_p \sqrt{\Delta}	
+\end{equation}
+so
+\begin{equation}
+	e^{-\I \vartheta} Z_\gamma = \int_p e^{\I \vartheta} \sqrt{\Delta} > 0
+\end{equation}
+as desired.
 \end{pf}
 
-In particular, $\vartheta$-saddle connections can only 
-occur at countably many phases.
+In particular, finite $\vartheta$-trajectories can only 
+occur at countably many phases $\vartheta$.
 
-\begin{defn}[Closed loops]
-\fixme{...}
-\end{defn}
+\begin{prop}[Landscape of finite $\vartheta$-trajectories]
+Fix $\vartheta$ and $\vec\phi \in \cB'$. Then
+the set of finite $\vartheta$-trajectories consists 
+of finitely many saddle connections, plus finitely many closed
+subsets homeomorphic to annuli (``ring domains'') whose interior 
+is foliated by closed loops.
+\end{prop}
 
-\begin{defn}[Charge of a closed loop]
-\fixme{...}
-\end{defn}
+Each boundary of a ring domain can be a closed loop (this is the ``generic''
+situation in some sense) or a union of saddle connections.
+
+\insfig{higgs-bundles-22}{0.8}
+
+\begin{pf} \fixme{ref Strebel?}
+\end{pf}
 
 \begin{defn}[DT invariants]
-\fixme{...}
+Fix $\vec\phi \in \cB'$ \fixme{...}
 \end{defn}
 
 
