@@ -7950,34 +7950,47 @@ it is not properly contained in any other.
 \fixme{fig}
 
 \begin{defn}[Orientation of $\vartheta$-trajectories]
-Given a $\vartheta$-trajectory $p$, its lift $\tilde{p}$ to $\Sigma_{\vec\phi}$
-is canonically oriented. Indeed, the two sheets of $\Sigma_{\vec\phi}$
+Given a $\vartheta$-trajectory $p$, its lift $\tilde{p} = \pi^{-1}(p)$
+to $\Sigma_{\vec\phi}$ is canonically oriented. Indeed, 
+the two sheets of $\Sigma_{\vec\phi}$
 correspond canonically to the two choices of $\sqrt{Q}$.
 Thus we can orient $\tilde{p}$ by the condition that
-in the positive direction, the form $e^{-\I \vartheta} \sqrt{Q}$
+in the positive direction, $e^{-\I \vartheta} \sqrt{Q}$
 is positive.
 \end{defn}
 
 \fixme{fig}
 
+
 Let $C' = \{z: Q(z) \neq 0\} \subset C$.
 
-\begin{prop}[$\vartheta$-trajectories give a foliation] \fixme{...}
+\begin{prop}[$\vartheta$-trajectories give a foliation] The 
+$\vartheta$-trajectories are the leaves of a foliation of $C'$.
 \end{prop}
+\begin{pf} Around any $z_0 \in C'$ we consider a local coordinate
+$w$ given by $w(z) = \int^z_{z_0} \sqrt{Q}$. Then
+we have $Q = \de w^2$. Thus in the coordinate $w$, 
+$\vartheta$-trajectories are just straight segments 
+of inclination angle $\vartheta$.
+\end{pf}
 
-\begin{prop}[Local singularities of the foliation by $\vartheta$-trajectories] \fixme{...}
+\begin{prop}[Local singularities of the foliation by $\vartheta$-trajectories] Around each zero of $Q$, the foliation
+by $\vartheta$-trajectories has a three-pronged singularity,
+as shown in \fixme{fig}.
 \end{prop}
-
 
 \begin{defn}[Saddle connections]
-A \ti{$\vartheta$-saddle connection} is a $\vartheta$-trajectory $p$
+A \ti{$\vartheta$-saddle connection} is a maximal
+$\vartheta$-trajectory $p$
 such that $\bar p \setminus p$ consists of two points.
 \end{defn}
 
 \fixme{fig}
 
 \begin{defn}[Charge of a saddle connection]
-\fixme{...}
+If $p$ is a saddle connection, then the closure of $\tilde p$
+is a loop on $\Sigma_{\vec \phi}$; the \ti{charge of $p$}
+is the class of this loop in $H_1(\Sigma,\Z)$.
 \end{defn}
 
 \begin{lem}[Phase constraint for saddle connections]
