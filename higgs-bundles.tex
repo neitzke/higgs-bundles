@@ -7736,6 +7736,10 @@ statements.
 Along the way we will discover various
 extra interesting bits of structure.
 
+\fixme{motivation for this picture from Stokes phenomena of 
+irregular ODE}
+
+
 A key lemma we will use is:
 
 \begin{lem}[Uniqueness of solutions to Riemann-Hilbert problems] \label{lem:rh-uniqueness}
@@ -7777,7 +7781,7 @@ Then we consider the composite
 The jumps $S_\mu$ cancel out in $Y$, so $Y$ is continuous
 everywhere, and analytic away from the collection of rays $\ell_\mu$.
 It follows using Morera's theorem that $Y$ is analytic
-everywhere in $\C^\times$.
+everywhere in $\C^\times$. \fixme{even if the $\ell_\mu$ are dense?}
 Moreover our asymptotic condition says $Y$ is finite 
 and $G_R$-valued in the limits
 $\zeta \to 0$ or $\zeta \to \infty$; but then the Riemann removable
@@ -8085,14 +8089,8 @@ and/or ring domains may appear or disappear; this is
 the \ti{wall-crossing} phenomenon. We will have more to say
 about this shortly.
 
-\subsection{Constructing $\cX$}
 
-Now, we are ready to show that there exists a map
-$\cX: \C^\times \to G$ 
-which obeys the conditions
-of \autoref{lem:rh-uniqueness},
-and at the same time, gives a holomorphic 
-Darboux coordinate system on $\cM$.
+\subsection{Complexifying}
 
 
 In what follows it will be technically useful to 
@@ -8101,6 +8099,8 @@ Let $\cZ$ denote the twistor space of $\cM^s_{K,d}(C)$,
 and let $\cM_\C$ be the space of \ti{complex} holomorphic 
 sections of $\cZ \to \C\PP^1$. $\cM_\C$ has an antiholomorphic
 involution with $\cM$ as fixed locus.
+(I emphasize that the complex structure on $\cM_\C$ is yet another
+one, not related to any of the $I_\zeta$ we already have on $\cM$!)
 
 \begin{prop}[Complex twistor lines for $\cM^s_{K,d}(C)$]
 $\cM_\C$ contains as a connected component the set of tuples $(D,\varphi,\bar\varphi)$,
@@ -8115,8 +8115,11 @@ F_D + [\varphi,\bar\varphi] &=  -2 \pi \I \frac{d}{K} \bid \omega_C,
 \end{subequations}
 modulo the gauge group $\fG_\C = \Aut E$.
 \end{prop}
-\begin{pf} Given such a tuple we can write the usual formula
-$$ \nabla(\zeta) = \zeta^{-1} \varphi + D + \zeta \bar\varphi. $$
+\begin{pf} Given such a tuple we can write a formula parallel
+to \eqref{eq:nabla-zeta}:
+\begin{equation} \label{eq:nabla-zeta-complex}
+   \nabla(\zeta) = \zeta^{-1} \varphi + D + \zeta \bar\varphi.
+\end{equation}
 The conditions \eqref{eq:hitchin-doubled} imply
 as usual that $\nabla(\zeta)$ is a complex 
 Einstein connection for all $\zeta \in \C^\times$.
@@ -8160,6 +8163,9 @@ connected component which is $\Hom(H_1(\Sigma_{\vec\phi}),\C^\times)$. \fixme{I 
 \end{pf}
 \end{prop}
 
+
+\subsection{The punctured case}
+
 Now for each $\vec\phi \in \cB'$ we are going to construct
 a map 
 \begin{equation}
@@ -8172,12 +8178,86 @@ this is equivalent to giving a collection of functions
 $\cX_\gamma: \C^\times \to \C^\times$ 
 on the diagonal part of the complexified Hitchin fibration,
 obeying $\cX_{\gamma} \cX_{\gamma'} = \cX_{\gamma + \gamma'}$.
-These functions are \fixme{...}
+We want to find $\cX$ such that it obeys the conditions
+of \autoref{lem:rh-uniqueness},
+and at the same time, gives a holomorphic 
+Darboux coordinate system on $\cM$.
 
+The punctured case is technically much simpler and closer to
+being rigorously understood, so let's start there.
 
-\fixme{WKB ...}
-\fixme{introduce punctured case?}
+So, now let $C$ denote a surface with \ti{punctures}, such that
+$\chi(C) < 0$. Let $\bar{C}$ be the original unpunctured surface,
+and $z_1, \dots, z_n \in \bar{C}$ the punctures.
+Also fix additional ``residue data'' around the punctures:
+for each puncture $z_\ell$ give 
+a semisimple conjugacy class $m_\ell \in gl(K,\C)$
+and $m_\ell^\R \in \fu(K)$.
 
+Our constructions of moduli spaces can be extended to this
+punctured setting: the relevant moduli spaces involve 
+$(D,\Phi)$ which are allowed to have first-order poles
+at the punctures, with residues controlled by $m^\R$ and $m$.
+For example, the connection form representing $D$ near 
+a puncture is like
+\begin{equation}
+  D = \de + A, \qquad A = \I m^\R \de \theta + \text{ regular}
+\end{equation}
+with $\theta$ the polar angle, and similarly
+\begin{equation}
+  \varphi = m \frac{\de z}{z} + \text{ regular}
+\end{equation}
+We get spaces $\cN_{K,d,m^\R}(C)$, $\cM_{K,d,m^\R,m}(C)$.
+They have essentially all the same properties as
+their unpunctured cousins. \fixme{expand this a lot!}
+
+Now let us assume that all eigenvalues of each $m_\ell$
+are distinct, and also assume again that we are in the 
+case $K=2$. Then we have the following:
+
+\begin{prop}[Good behavior of $\vartheta$-trajectories
+on punctured surfaces] As long as $\vec\phi \in \cB'$
+and $e^{-\I \vartheta} Z_\gamma$ is real, 
+(in particular no eigenvalue of $e^{-\I \vartheta} m^\C_\ell$ is real), \fixme{...} 
+\end{prop}
+
+\fixme{WKB triangulation}
+
+\fixme{small flat sections}
+
+\fixme{definition of cross ratios}
+
+\fixme{jumps of cross ratios when saddle connection appears}
+
+\fixme{interpretation of cross ratios as abelianization}
+
+Now how do we see that these cross ratios $\cX_\gamma$
+have the asymptotic behavior we want as $\zeta \to 0, \infty$?
+
+\begin{prop}[WKB evolution along trajectories]
+Fix $K=2$.
+Suppose given a point of $\cM_\C$, corresponding to a family
+of flat connections $\nabla(\zeta)$ as 
+in \eqref{eq:nabla-zeta-complex}. Suppose that $p$ is 
+a closed segment contained in a $\vartheta$-trajectory. 
+Choose a $\sqrt{\Delta}$ over $p$,
+and sections $e_\pm$ of $E$ with $\varphi e_\pm = \lambda_\pm e_\pm$.
+Let $\Psi_p(\zeta)$ denote the parallel transport of $\nabla(\zeta)$
+from the beginning of $p$ to the end.
+Then, if we define the ``WKB remainder'' by
+\begin{equation}
+  r(\zeta) = \exp \left(-\zeta^{-1} \int_p \lambda_+\right) \Psi_p(\zeta) e_+,
+\end{equation}
+we have
+\begin{equation}
+  \lim_{\zeta \to 0} r(\zeta) = c e_+ 
+\end{equation}
+for some $c \in \C^\times$.
+\end{prop}
+
+What this lemma says is that the  
+``leading part'' of the propagation of $\nabla(\zeta)$ is
+given by the exponential growth one would naively expect.
 
 \subsection{Estimating $\cX$}
 
