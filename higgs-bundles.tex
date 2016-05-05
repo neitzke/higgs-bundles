@@ -7697,73 +7697,6 @@ Our next aim is to improve the functions
 $\cX_\gamma^\sf$ to true holomorphic Darboux
 coordinates $\cX_\gamma$.
 
-In what follows it will be technically useful to 
-complexify.
-Let $\cZ$ denote the twistor space of $\cM^s_{K,d}(C)$,
-and let $\cM_\C$ be the space of \ti{complex} holomorphic 
-sections of $\cZ \to \C\PP^1$. $\cM_\C$ has an antiholomorphic
-involution with $\cM$ as fixed locus.
-
-\begin{prop}[Complex twistor lines for $\cM^s_{K,d}(C)$]
-$\cM_\C$ contains as a connected component the set of tuples $(D,\varphi,\bar\varphi)$,
-where $D$ is a complex connection in $E$,
-$\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End E)$, obeying
-\begin{subequations} \label{eq:hitchin-doubled}
-\begin{align}
-\bar\partial_D \varphi &= 0, \\
-\partial_D \bar\varphi &= 0, \\
-F_D + [\varphi,\bar\varphi] &=  -2 \pi \I \frac{d}{K} \bid \omega_C,
-\end{align}
-\end{subequations}
-modulo the gauge group $\fG_\C = \Aut E$.
-\end{prop}
-\begin{pf} Given such a tuple we can write the usual formula
-$$ \nabla(\zeta) = \zeta^{-1} \varphi + D + \zeta \bar\varphi. $$
-The conditions \eqref{eq:hitchin-doubled} imply
-as usual that $\nabla(\zeta)$ is a complex 
-Einstein connection for all $\zeta \in \C^\times$.
-Since $\pi^{-1}(\C^\times) \subset \cZ$ is isomorphic 
-to $\C^\times \times \cM^{Ein}_{K,d}(C)$, this gives a section
-over $\C^\times \subset \C\PP^1$. Moreover this section extends
-over $\zeta = 0$ and $\zeta = \infty$ since its behavior in these
-limits is just like that of the real twistor lines, which we already 
-know extend. 
-
-Conversely, given a complex twistor line of the above form we need to show that 
-it has a neighborhood consisting only of lines of the above form. \fixme{infinitesimal
-calculation using normal bundle}
-\end{pf}
-
-\begin{example}[Complex twistor lines for $\cM_{1,0}(C)$] Suppose $E$ is 
-a degree $0$ line bundle over $C$. Then given any
-$\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End E)$
-we can find \fixme{...}
-\end{example}
-
-\begin{defn}[Complexified Hitchin fibration]
-By restricting to the fibers over $0$ and $\infty$,
-each point of $\cM_\C$ gives a Higgs bundle and an
-anti-Higgs bundle. Thus we obtain a doubled Hitchin
-fibration,
-\begin{equation}
-\rho_\C: \cM_\C \to \cB \times \bar{\cB}.  
-\end{equation}
-\end{defn}
-
-\begin{prop}[Diagonal fibers of complexified Hitchin fibration] 
-Suppose $\vec\phi \in \cB'$ and $d' = 0$. Then $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi})$ has a
-connected component which is $\Hom(H_1(\Sigma_{\vec\phi}),\C^\times)$. \fixme{I hope!
-At least, get open neighborhood of compact torus in here}
-\begin{pf}
-% A point of $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi})$
-% gives two line bundles $\cL$, $\cL'$ over the 
-% same spectral curve $\Sigma_{\vec\phi}$,
-% with $\cL$ holomorphic and $\cL'$ antiholomorphic. 
-\fixme{...}
-\end{pf}
-\end{prop}
-
-
 
 \subsection{Metric comparison}
 
@@ -7894,7 +7827,7 @@ Let $T$ be the torus
 \begin{equation}
   T = \Hom(\Gamma, \C^\times),
 \end{equation}
-and $G$ the group of birational holomorphic maps $T \to T$.
+and $G$ the group of birational automorphisms of $T$.
 Let $R$ be conjugation by the map $T \to T$ given by
 $z \mapsto \bar{z}$ on $\C^\times$, and similarly
 $\rho$ be conjugation by the map
@@ -7921,18 +7854,38 @@ In this case, we are going to define one more bit of data:
   \item a map (not homomorphism) $DT: \Gamma \to \Z$.
 \end{itemize}
 Then we will let $S_\mu \in G$ be the birational map
-\begin{equation}
+\begin{equation} \label{eq:ks-jump}
   X_\gamma \to X_\gamma \prod_{n \ge 1} (1 - \sigma(n\mu) X_{n\mu})^{n \IP{\gamma,\mu} DT(n\mu)}.
 \end{equation}
 (In the case we consider below, this product is actually finite,
 so we do not have to worry about issues of convergence.)
+
+\begin{exercise} Show that $S_\mu$ is a birational symplectomorphism,
+with respect to the natural symplectic structure on $T$ induced by
+the bilinear form $\IP{\cdot,\cdot}$ on $\Gamma$.
+\end{exercise}
+
+We should also remark that the name $DT$ is meant to 
+evoke ``Donaldson-Thomas,'' and indeed the invariants
+appearing here are expected to be 
+examples of generalized Donaldson-Thomas invariants.
+In this context the maps \eqref{eq:ks-jump} appeared  
+in the very important paper \cite{ks1}, and understanding
+their appearance was one of the original motivations 
+for the picture of $\cM$ we are describing here.
 
 
 \subsection{Trajectories of quadratic differentials}
 
 The definition of $DT$ is easiest to understand in the 
 case $K=2$, so let us consider that case first.
-\fixme{ref Strebel, Klemm-Lerche-Mayr-Vafa-Warner, Bridgeland-Smith}
+The construction we will describe is closely related to one
+which appeared in the physics literature, first in \cite{Klemm:1996bj}.
+It was later described in \cite{Gaiotto:2009hg} where the application
+to the Hitchin system appeared.
+% Also, the invariants
+% we define here really \ti{are} generalized Donaldson-Thomas
+% invariants; this is shown in \cite{bridgelandsmith}.
 
 Fix a point $\vec\phi = (\phi_1, \phi_2) \in \cB'$.
 Most of what we say in this section is about the discriminant
@@ -8080,14 +8033,12 @@ If a $\vartheta$-finite trajectory exists with charge
 $\gamma$, then $e^{- \I \vartheta} Z_\gamma \in \R_+$.
 \end{lem}
 
-\begin{pf} We have by definition $Z_\gamma = \int_\gamma \lambda$.
-Choose the representative for $\gamma$ to be given by $\tilde p$.
-$\tilde p$ is naturally divided into two segments for the two connected 
-lifts of $p$. Choose a $\sqrt{\Delta}$ over $p$, and orient $p$
+\begin{pf}
+Choose a $\sqrt{\Delta}$ over $p$, and orient $p$
 so that $e^{-\I \vartheta} \sqrt{\Delta}$ is positive.
-Then we can rewrite $Z_\gamma$ as
+Then
 \begin{equation}
-Z_\gamma = \int_p \lambda_+ - \lambda_- = \int_p \sqrt{\Delta}	
+Z_\gamma = \int_{\tilde p} \lambda = \int_p \lambda_+ - \lambda_- = \int_p \sqrt{\Delta}	
 \end{equation}
 so
 \begin{equation}
@@ -8101,30 +8052,38 @@ occur at countably many phases $\vartheta$.
 
 \begin{prop}[Landscape of finite $\vartheta$-trajectories]
 Fix $\vartheta$ and $\vec\phi \in \cB'$. Then
-the set of finite $\vartheta$-trajectories consists 
-of finitely many saddle connections, plus finitely many closed
-subsets homeomorphic to annuli (``ring domains'') whose interior 
-is foliated by closed loops.
+the set of finite $\vartheta$-trajectories is described as follows.
+There are finitely many
+subsets of $C$ homeomorphic to open annuli (``ring domains''),
+foliated by closed loops.
+Each boundary of a ring domain can be a closed loop 
+or a union of $\vartheta$-saddle connections.
+In addition there can be finitely many $\vartheta$-saddle connections elsewhere on
+$C$.
 \end{prop}
-
-Each boundary of a ring domain can be a closed loop (this is the ``generic''
-situation in some sense) or a union of saddle connections.
 
 \insfig{higgs-bundles-22}{0.8}
 
-\begin{pf} \fixme{ref Strebel?}
+\begin{pf} This is proven in \cite{MR743423}. \fixme{I think!}
 \end{pf}
 
 \begin{defn}[DT invariants]
-Fix $\vec\phi \in \cB'$ \fixme{...}
+Fix $\vec\phi \in \cB'$ and $\gamma \in \Gamma_{\vec \phi}$.
+$DT(\gamma) \in \Z$ is a count of finite $\vartheta$-trajectories
+(of $\Delta$), where $\vartheta = \arg Z_\gamma$:
+\begin{equation}
+  DT(\gamma) = (\# \text{ saddle connections of charge $\gamma$}) - 2 (\# \text{ ring domains of charge $\gamma$}).
+\end{equation}
 \end{defn}
 
+\begin{exercise} Show that $DT(\gamma) = DT(-\gamma)$.
+\end{exercise}
 
-\fixme{trajectories of quadratic differentials}
-
-\fixme{saddle connections, closed geodesics}
-
-
+Note that $DT$ is \ti{not} a locally constant function of $\gamma$.
+Indeed, as we deform $\vec\phi$, saddle connections 
+and/or ring domains may appear or disappear; this is 
+the \ti{wall-crossing} phenomenon. We will have more to say
+about this shortly.
 
 \subsection{Constructing $\cX$}
 
@@ -8134,6 +8093,87 @@ which obeys the conditions
 of \autoref{lem:rh-uniqueness},
 and at the same time, gives a holomorphic 
 Darboux coordinate system on $\cM$.
+
+
+In what follows it will be technically useful to 
+complexify.
+Let $\cZ$ denote the twistor space of $\cM^s_{K,d}(C)$,
+and let $\cM_\C$ be the space of \ti{complex} holomorphic 
+sections of $\cZ \to \C\PP^1$. $\cM_\C$ has an antiholomorphic
+involution with $\cM$ as fixed locus.
+
+\begin{prop}[Complex twistor lines for $\cM^s_{K,d}(C)$]
+$\cM_\C$ contains as a connected component the set of tuples $(D,\varphi,\bar\varphi)$,
+where $D$ is a complex connection in $E$,
+$\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End E)$, obeying
+\begin{subequations} \label{eq:hitchin-doubled}
+\begin{align}
+\bar\partial_D \varphi &= 0, \\
+\partial_D \bar\varphi &= 0, \\
+F_D + [\varphi,\bar\varphi] &=  -2 \pi \I \frac{d}{K} \bid \omega_C,
+\end{align}
+\end{subequations}
+modulo the gauge group $\fG_\C = \Aut E$.
+\end{prop}
+\begin{pf} Given such a tuple we can write the usual formula
+$$ \nabla(\zeta) = \zeta^{-1} \varphi + D + \zeta \bar\varphi. $$
+The conditions \eqref{eq:hitchin-doubled} imply
+as usual that $\nabla(\zeta)$ is a complex 
+Einstein connection for all $\zeta \in \C^\times$.
+Since $\pi^{-1}(\C^\times) \subset \cZ$ is isomorphic 
+to $\C^\times \times \cM^{Ein}_{K,d}(C)$, this gives a section
+over $\C^\times \subset \C\PP^1$. Moreover this section extends
+over $\zeta = 0$ and $\zeta = \infty$ since its behavior in these
+limits is just like that of the real twistor lines, which we already 
+know extend. 
+
+Conversely, given a complex twistor line of the above form we need to show that 
+it has a neighborhood consisting only of lines of the above form. \fixme{infinitesimal
+calculation using normal bundle}
+\end{pf}
+
+\begin{example}[Complex twistor lines for $\cM_{1,0}(C)$] Suppose $E$ is 
+a degree $0$ line bundle over $C$. Then given any
+$\varphi \in \Omega^{1,0}(\End E)$, $\bar\varphi \in \Omega^{0,1}(\End E)$
+we can find \fixme{...}
+\end{example}
+
+\begin{defn}[Complexified Hitchin fibration]
+By restricting to the fibers over $0$ and $\infty$,
+each point of $\cM_\C$ gives a Higgs bundle and an
+anti-Higgs bundle. Thus we obtain a doubled Hitchin
+fibration,
+\begin{equation}
+\rho_\C: \cM_\C \to \cB \times \bar{\cB}.  
+\end{equation}
+\end{defn}
+
+\begin{prop}[Diagonal fibers of complexified Hitchin fibration] \label{prop:diagonal-fibers-of-complex-hitchin-fibration}
+Suppose $\vec\phi \in \cB'$ and $d' = 0$. Then $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi})$ has a
+connected component which is $\Hom(H_1(\Sigma_{\vec\phi}),\C^\times)$. \fixme{I hope!}
+\begin{pf}
+% A point of $\rho_\C^{-1}(\vec\phi, \overline{\vec\phi})$
+% gives two line bundles $\cL$, $\cL'$ over the 
+% same spectral curve $\Sigma_{\vec\phi}$,
+% with $\cL$ holomorphic and $\cL'$ antiholomorphic. 
+\fixme{...}
+\end{pf}
+\end{prop}
+
+Now for each $\vec\phi \in \cB'$ we are going to construct
+a map 
+\begin{equation}
+\cX_{\vec\phi}: \C^\times \to G_{\vec\phi}
+\end{equation}
+where $G_{\vec\phi}$ is the group of birational automorphisms
+of the torus $T_{\vec\phi}$.
+By \autoref{prop:diagonal-fibers-of-complex-hitchin-fibration},
+this is equivalent to giving a collection of functions
+$\cX_\gamma: \C^\times \to \C^\times$ 
+on the diagonal part of the complexified Hitchin fibration,
+obeying $\cX_{\gamma} \cX_{\gamma'} = \cX_{\gamma + \gamma'}$.
+These functions are \fixme{...}
+
 
 \fixme{WKB ...}
 \fixme{introduce punctured case?}
