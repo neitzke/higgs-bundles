@@ -264,7 +264,21 @@
 \DeclareMathOperator{\Hol}{Hol}
 \DeclareMathOperator{\gr}{gr}
 
-\newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
+\newcommand{\insfig}[2]{
+
+\medskip
+\noindent
+\begin{minipage}{\linewidth} 
+
+\makebox[\linewidth]{\includegraphics[keepaspectratio=true,scale=#2]{figures/#1-crop.pdf}} 
+
+\end{minipage} 
+\medskip
+
+}
+
+
+% \newcommand{\insfig}[2]{\begin{figure}[htbp] \centering \includegraphics[scale=#2]{figures/#1-crop.pdf} \label{fig:#1} \end{figure}}
 % syntax: \insfig{name}{0.5}{caption}
 
 \newcommand{\fixme}[1]{{\color{orange}{[#1]}}}
@@ -7982,6 +7996,7 @@ of inclination angle $\vartheta$.
 by $\vartheta$-trajectories has a three-pronged singularity,
 as shown below.
 \insfig{higgs-bundles-18}{0.8}
+
 \end{prop}
 \begin{pf} In a neighborhood of a zero of $\Delta$, we may choose a 
 local coordinate such that $\Delta = z\,\de z^2$, using our assumption that
@@ -8264,13 +8279,17 @@ and $e^{-\I \vartheta} Z_\gamma$ is real,
 Then:
 \begin{itemize} 
 \item Every $\vartheta$-trajectory is forward asymptotic to a puncture,
-\item $C'$ contains finitely many cells
-$C_i$, such that $C_i$ is foliated by $\vartheta$-trajectories all of which are homotopic, and all of which are forward and backward asymptotic to punctures,
-\item $C' \setminus \cup C_i$ consists of the critical trajectories.
+\item The complement of the $\vartheta$-critical graph 
+has finitely many connected components
+$C_i$; each $C_i$ is foliated by $\vartheta$-trajectories all of which are homotopic, and all of which are forward and backward asymptotic to punctures.
 \end{itemize}
 \end{prop}
 
-\fixme{figure here}
+\insfig{higgs-bundles-23}{1.1}
+
+\begin{proof}
+\fixme{...}
+\end{proof}
 
 \fixme{WKB triangulation}
 
