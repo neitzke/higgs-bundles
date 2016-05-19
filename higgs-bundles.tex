@@ -29,7 +29,7 @@
 \definecolor{shadecolor}{rgb}{0.85,0.85,0.85}
 
 % Bibliography formatting
-\usepackage[bibstyle=authoryear-comp,labeldate=false,defernumbers=true,maxnames=20,firstinits=true,uniquename=init,dashed=false,backend=biber,sorting=none]{biblatex}
+\usepackage[bibstyle=authoryear-comp,labeldate=false,defernumbers=true,maxnames=20,giveninits=true,uniquename=init,dashed=false,backend=biber,sorting=none]{biblatex}
 
 \DeclareNameAlias{sortname}{first-last}
 
@@ -2612,7 +2612,7 @@ a ``Real'' structure $\rho_W: \sigma^* W \simarrow \overline{W}$, where
 $\sigma$ is the antipodal map of $\C\PP^1$.
 \end{defn}
 
-\begin{defn}[Metric twistorial vector space] A \ti{metric twistorial
+\begin{defn}[Metric twistorial vector space] \label{def:metric-twistorial-vector-space} A \ti{metric twistorial
 vector space} is a twistorial vector space $W \to S^2$, equipped with
 a fiberwise nondegenerate $\Omega \in \wedge^2(W^*) \otimes \cO(2)$,
 compatible with the Real structures in the sense that
@@ -2879,14 +2879,17 @@ actually a complex manifold, and its tangent space at a given
 $Y$ is $H^0(Y,N)$. 
 
 We are going to apply this to the situation
-where $Y$ is the image of one of the sections of $\cZ$.
+where $Y$ is the image of one of the sections of $\cZ$
+parameterized by $X$.
 Then $Y \simeq \C\PP^1$ and $N \simeq \cO(1)^{\oplus 2n}$.
 The first bit of good 
 news is that in this situation we indeed have $H^1(Y,N) = 0$,
 because $H^1(\C\PP^1, \cO(1)) = 0$.
 Moreover, $N$ carries the structure of metric
-twistorial vector space as in \autoref{...}, and thus by
-\autoref{...}, $H^0_\R(Y,N)$ is a \hk vector space.
+twistorial vector space as in
+\autoref{def:metric-twistorial-vector-space}, and thus by
+\autoref{prop:twistorial-and-quaternionic-vector-spaces},
+$H^0_\R(Y,N)$ is a \hk vector space.
 As $Y$ varies this gives $(I_1,I_2,I_3,g)$ on $X'$.
 
 Finally we just have to check the integrability $\de \omega_i = 0$. 
@@ -2923,7 +2926,8 @@ on the fibers of $\cZ$ \fixme{...}
 
 Two remarks about \autoref{thm:hk-twistor-construction}:
 \begin{itemize}
-\item I do not know any example for which $X' \neq X$, but it seems hard
+\item I have never heard of an example for 
+which $X' \neq X$, but it seems hard
 in general to rule out the possibility that $\cZ$ could have some 
 other real sections having nothing to do with the points of the original $X$.
 \item The space $X_\C$ of \ti{all} holomorphic sections of $\cZ$ has an antiholomorphic
@@ -4657,11 +4661,14 @@ we use \autoref{prop:free-proper-quotients-are-banach-manifolds}.
 \item The ``dimension counting'' argument which showed
 $\omega$ nondegenerate in the finite-dimensional case
 gets replaced by a use of the assumption $T = (T^{\perp_\omega})^{\perp_\omega}$.
-
 \end{itemize}
 \end{pf}
 
+\begin{defn}[\Hk quotients] \fixme{again same as in finite dimensions}
+\end{defn}
 
+\begin{thm}[\Hk quotient is \hk]  \fixme{...}
+\end{thm}
 
 \subsection{Ellipticity} \label{sec:ellipticity}
 
@@ -5622,7 +5629,7 @@ works perfectly: we really do have
 \end{equation}
 
 
-\subsection{Good properties of $\cN_{K,d}(C)$}
+\subsection{Good properties of \texorpdfstring{$\cN_{K,d}(C)$}{N(K,d)(C)}}
 
 We have already seen that when $K=1$, $\cN_{K,0}(C) = \Jac C$ is a compact
 \kahler torus. The behavior is almost as good
@@ -6635,8 +6642,16 @@ spanned by multiples of the identity in each summand
 of $\Omega^2(\fu(E))^{\oplus 4}$.
 \end{lem}
 
+\begin{pf}
+\fixme{...}
+\end{pf}
+
 \begin{thm}[$\cM^s_{K,d}(C)$ is \hk] $\cM^s_{K,d}(C)$ is a \hk manifold.
 \end{thm}
+
+\begin{pf}
+\fixme{...}
+\end{pf}
 
 This already has the remarkable consequence that the metric 
 on $\cM^s_{K,d}(C)$ is Ricci-flat.
@@ -6644,6 +6659,9 @@ on $\cM^s_{K,d}(C)$ is Ricci-flat.
 \begin{prop}[Dimension of $\cM^s_{K,d}(C)$] The quaternionic dimension
 of $\cM_{K,d}^s(C)$ is $(g-1)K^2 + 1$.
 \end{prop}
+\begin{pf}
+\fixme{...}
+\end{pf}
 
 \subsection{The twistor family, formally}
 
@@ -7740,7 +7758,7 @@ extra interesting bits of structure.
 irregular ODE}
 
 
-A key lemma we will use is:
+A key lemma motivating our constructions is:
 
 \begin{lem}[Uniqueness of solutions to Riemann-Hilbert problems] \label{lem:rh-uniqueness}
 Suppose $G$ is a complex Lie group, equipped with two antiholomorphic
@@ -7813,7 +7831,8 @@ spin structures on $\Sigma$ and quadratic refinements of the pairing
 $\varepsilon(\gamma,\gamma') = (-1)^{\IP{\gamma,\gamma'}}$ on $H_1(\Sigma,\Z)$.
 \end{prop}
 \begin{pf}
-\fixme{...}
+This is proven in \cite{MR588283}. (The construction is completely
+topological.) \fixme{briefly explain it here?}
 \end{pf}
 
 We would like to apply \autoref{lem:rh-uniqueness} in the following
@@ -7832,6 +7851,12 @@ Let $T$ be the torus
   T = \Hom(\Gamma, \C^\times),
 \end{equation}
 and $G$ the group of birational automorphisms of $T$.
+(One awkward point is that I do not know whether $G$ can be thought
+of as an infinite-dimensional complex Lie group in any
+reasonable sense; thus it is not clear 
+whether \autoref{lem:rh-uniqueness} can really be applied. 
+Let us proceed optimistically nonetheless!)
+
 Let $R$ be conjugation by the map $T \to T$ given by
 $z \mapsto \bar{z}$ on $\C^\times$, and similarly
 $\rho$ be conjugation by the map
@@ -7877,6 +7902,7 @@ In this context the maps \eqref{eq:ks-jump} appeared
 in the very important paper \cite{ks1}, and understanding
 their appearance was one of the original motivations 
 for the picture of $\cM$ we are describing here.
+
 
 
 \subsection{Trajectories of quadratic differentials}
@@ -7987,8 +8013,23 @@ the foliation by $\vartheta$-trajectories around such a zero?
 
 Thus in the foliation by $\vartheta$-trajectories, there are finitely
 many special leaves, namely those which are asymptotic in one or
-both directions to zeroes of $\Delta$. The latter case is particularly
-special.
+both directions to zeroes of $\Delta$. 
+
+\begin{defn}[Forward and backward asymptotics of trajectories]
+Given a maximal $\vartheta$-trajectory $p$ with a chosen orientation,
+we say $p$ is \ti{forward asymptotic} (resp. \ti{backward asymptotic}) to $z$ if, choosing any oriented parameterization of $p$,
+we have $\lim_{t \to \infty} p(t) = z$ (resp. $\lim_{t \to -\infty} p(t) = z$).
+\end{defn}
+
+\begin{defn}[Critical trajectories] A maximal $\vartheta$-trajectory
+is called \ti{critical} if it admits an orientation for which 
+it is backward asymptotic to a zero of $\Delta$. 
+The \ti{$\vartheta$-critical graph} is the union of the critical trajectories and the
+zeroes of $\Delta$.
+\end{defn}
+
+Critical trajectories which are also \ti{forward} asymptotic
+to zeroes of $\Delta$ are particularly special:
 
 \begin{defn}[Saddle connections]
 A \ti{$\vartheta$-saddle connection} is a maximal
@@ -8216,10 +8257,19 @@ are distinct, and also assume again that we are in the
 case $K=2$. Then we have the following:
 
 \begin{prop}[Good behavior of $\vartheta$-trajectories
-on punctured surfaces] As long as $\vec\phi \in \cB'$
+on punctured surfaces] Suppose $\vec\phi \in \cB'$
 and $e^{-\I \vartheta} Z_\gamma$ is real, 
-(in particular no eigenvalue of $e^{-\I \vartheta} m^\C_\ell$ is real), \fixme{...} 
+(in particular no eigenvalue of $e^{-\I \vartheta} m^\C_\ell$ is real).
+Then:
+\begin{itemize} 
+\item Every $\vartheta$-trajectory is forward asymptotic to a puncture,
+\item $C'$ contains finitely many cells
+$C_i$, such that $C_i$ is foliated by $\vartheta$-trajectories all of which are homotopic, and all of which are forward and backward asymptotic to punctures,
+\item $C' \setminus \cup C_i$ consists of the critical trajectories.
+\end{itemize}
 \end{prop}
+
+\fixme{figure here}
 
 \fixme{WKB triangulation}
 
@@ -8259,7 +8309,7 @@ What this lemma says is that the
 ``leading part'' of the propagation of $\nabla(\zeta)$ is
 given by the exponential growth one would naively expect.
 
-\subsection{Estimating $\cX$}
+\subsection{Estimating \texorpdfstring{$\cX$}{X}}
 
 For the purpose of computing metric estimates,
 we now want to see that $\cX$ becomes very close to $\cX^\sf$
