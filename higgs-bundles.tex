@@ -7572,7 +7572,7 @@ So now we specialize to that case.
 Then $d' = -K^2(g-1) = \half \chi(\Sigma)$. This is not $0$ but it is
 ``almost as good,'' in the following sense.
 Suppose we choose a spin structure
-$K_\Sigma^{1/2}$ on some $\Sigma_{\vec \phi}$.
+$K_{\Sigma_{\vec\phi}}^{1/2}$ on some $\Sigma_{\vec \phi}$.
 This also induces
 spin structures on nearby $\Sigma_{\vec \phi}$,
 with $\vec\phi$ lying in a contractible neighborhood $U \subset \cB'$.
@@ -7723,7 +7723,7 @@ However, the functions $\cX_\gamma^\sf$ are \ti{not} generally holomorphic
 on $(\cM_{K,d}(C), I_\zeta)$.
 This corresponds to saying that the
 passage from the flat $GL(K,\C)$-connections 
-$\nabla(\zeta)$ over $C$ to the flat connections
+$\nabla(\zeta)$ over $C$ to the flat $GL(1,\C)$-connections
 $\cX^\sf(\zeta)$ over $\Sigma$ is not a holomorphic map
 between moduli spaces of flat connections.
 Our next aim is to improve the functions
@@ -7737,7 +7737,7 @@ One of the main claims of \cite{Gaiotto:2008cd} is that
 the actual metric $g$ on $\cM_{K,d}(C)$ differs
 from the semiflat metric $g^\sf$ by a correction term
 which is ``small on the smooth locus.'' A crude version of the 
-estimate is to say that along a path $p(t) \in \cM$
+estimate is to say that along any path $p(t) \in \cM$
 parameterized by $t \in \R_+$, with
 $\rho(p(t)) = t \vec\phi$, we should have
 \begin{equation} \label{eq:metric-estimate}
@@ -8116,8 +8116,8 @@ Fix $\vartheta$ and $\vec\phi \in \cB'$. Then
 the set of finite $\vartheta$-trajectories is described as follows.
 There are finitely many
 subsets of $C$ homeomorphic to open annuli (``ring domains''),
-foliated by closed loops.
-Each boundary of a ring domain can be a closed loop 
+foliated by $\vartheta$-closed loops.
+Each boundary of a ring domain can be a $\vartheta$-closed loop 
 or a union of $\vartheta$-saddle connections.
 In addition there can be finitely many $\vartheta$-saddle connections elsewhere on
 $C$.
@@ -8125,7 +8125,7 @@ $C$.
 
 \insfig{higgs-bundles-22}{0.8}
 
-\begin{pf} This is proven in \cite{MR743423}. \fixme{I think!}
+\begin{pf} This is proven in \cite{MR743423}.
 \end{pf}
 
 \begin{defn}[DT invariants]
@@ -8133,7 +8133,7 @@ Fix $\vec\phi \in \cB'$ and $\gamma \in \Gamma_{\vec \phi}$.
 $DT(\gamma) \in \Z$ is a count of finite $\vartheta$-trajectories
 (of $\Delta$), where $\vartheta = \arg Z_\gamma$:
 \begin{equation}
-  DT(\gamma) = (\# \text{ saddle connections of charge $\gamma$}) - 2 (\# \text{ ring domains of charge $\gamma$}).
+  DT(\gamma) = (\# \text{ $\vartheta$-saddle connections of charge $\gamma$}) - 2 (\# \text{ $\vartheta$-ring domains of charge $\gamma$}).
 \end{equation}
 \end{defn}
 
