@@ -426,7 +426,7 @@ good one is \cite{MR2093043}.
 In this section ``manifold'' will mean a finite-dimensional
 manifold. (Later we will need to talk about
 infinite-dimensional Banach manifolds, but then we will
-always say ``Banach manifold'' instead of just ``manifold.''
+always say ``Banach manifold'' instead of just ``manifold.'')
 
 \subsection{Quotients}
 
@@ -6747,11 +6747,11 @@ structure $I_2$
 \begin{equation}
   \cA^H \hkq \fG = \cA_2^\C \kq \fG_\C,
 \end{equation}
-and the RHS deserves the name ``moduli space of complex flat connections.''
+and the RHS deserves the name ``moduli space of complex Einstein connections.''
 Thus we have the remarkable situation that the single \hk space
 $\cM_{K,d}(C)$ has two very diffrent interpretations:
 in one complex structure it is a moduli space of Higgs bundles,
-in another it is a moduli space of complex flat connections.
+in another it is a moduli space of complex Einstein connections.
 
 What about structure $I_3$? In this structure we have a very similar
 story, except that now the holomorphic combination is
@@ -6815,7 +6815,8 @@ Thus, after taking the quotient by $\fG$ we just get
 \begin{equation}
   \cM_{1,d}(C) = \cN_{1,d}(C) \times H^{1,0}(C).
 \end{equation}
-Since $H^{1,0}(C)$ is $T^* \cN_{1,d}(C)$ we can also write this as
+We can view this as a trivial holomorphic vector bundle over $\cN_{1,d}(C)$ whose
+fiber is $H^{1,0}(C)$. Moreover this trivial bundle has another name:
 \begin{equation}
   \cM_{1,d}(C) = T^* \cN_{1,d}(C).
 \end{equation}
@@ -6939,13 +6940,12 @@ and thus obtain a Higgs bundle.
 \end{example}
 
 \begin{exercise}
-Show that the Higgs bundles in \autoref{exa:hitchin-section-K2} are stable,
+Show that the Higgs bundles in \autoref{exa:hitchin-section-K2} are stable
+(\ti{despite} the fact that the underlying
+vector bundle $E$ is unstable),
 for any $(\phi_1,\phi_2)$,
 as long as $C$ has genus $g \ge 2$.
 \end{exercise}
-
-Note that these Higgs bundles are stable \ti{despite} the fact that the underlying
-vector bundle $E$ is unstable.
 
 For the next example we need a little bit of setup:
 
@@ -7156,19 +7156,20 @@ fibration is ``nice''. To describe it we consider the \ti{discriminant}
 of the equation \eqref{eq:spectral-curve}.
 This is a polynomial $\Delta_{\vec\phi}$ in the $\phi_i$,
 with the property
-\begin{equation}
+\begin{equation} \label{eq:discriminant}
   \Delta = \prod_{i > j} (\lambda_i - \lambda_j)^2
 \end{equation}
 where $\lambda_i$ are the roots of \eqref{eq:spectral-curve}.
 For example, if $K=2$
 then \eqref{eq:spectral-curve} becomes
 $\lambda^2 + \phi_1 \lambda + \phi_2 = 0$, which has discriminant
-\begin{equation}
+\begin{equation} \label{eq:discriminant-K2}
   \Delta_{\vec\phi} = \phi_1^2 - 4 \phi_2.
 \end{equation}
-Note that globally over $C$ this is a section of $K_C^{\otimes 2}$.
-More generally, $\Delta_{\vec\phi}$ is a section
-of $K_C^{\otimes K(K-1)}$.
+Globally over $C$, \eqref{eq:discriminant-K2}
+is a section of $K_C^{\otimes 2}$.
+For general $K$, \eqref{eq:discriminant} implies that 
+$\Delta_{\vec\phi}$ is a section of $K_C^{\otimes K(K-1)}$.
 The zeroes of $\Delta_{\vec\phi}$ are the places on $C$ where the
 sheets $\lambda_i$ collide, i.e. they are the places where
 the curve $\Sigma_{\vec\phi}$ is \ti{ramified} as a cover of $C$.
@@ -7180,19 +7181,20 @@ Indeed at such a zero the local behavior of \eqref{eq:spectral-curve}
 is like that of the
 equation $y^2 = z$, which has
 two solutions $y = \pm \sqrt{z}$, colliding at the ramification point
-$z=0$; note that the curve $y^2 = z$ is \ti{smooth} even at this point.
+$y=z=0$; note that the curve $y^2 = z$ is \ti{smooth} even at this point.
 This motivates the following definition:
 
-\begin{defn}[Smooth locus]
+\begin{defn}[Smooth locus and discriminant locus]
 Let $\Delta_{\vec\phi} \in H^0(C, K_C^{\otimes K(K-1)})$ denote the discriminant of the
 equation \eqref{eq:spectral-curve}.
 The \ti{smooth locus} $\cB' \subset \cB$ consists of all $\vec\phi$
 for which $\Delta_{\vec\phi}$ has only simple zeroes.
+The \ti{discriminant locus} is the complement of the smooth locus.
 \end{defn}
 
 \begin{exercise} Show that, if $\vec\phi \in \cB'$,
 $\Sigma_{\vec\phi}$ is a smooth curve, which is a branched $K$-fold
-cover of $C$, where all branch points have ramification index $2$.
+cover of $C$, and all branch points have ramification index $2$.
 \end{exercise}
 
 % \begin{prop}[$\cM$ is a fiberwise compactification of $T^* \cN$]
@@ -7200,19 +7202,34 @@ cover of $C$, where all branch points have ramification index $2$.
 % with respect to the Hitchin fibration.
 % \end{prop}
 
-\begin{prop}[Generic spectral curves have $2K(K-1)(g-1)$ branch points]
-If $\vec\phi \in \cB'$ then the covering $\Sigma_{\vec\phi} \to C$ has $2K(K-1)(g-1)$ branch points.
+\begin{prop}[Generic spectral curves have $2K(K-1)(g-1)$ branch points
+and genus $1 + K^2(g-1)$] \label{prop:generic-spectral-numerics}
+If $\vec\phi \in \cB'$ then the covering $\Sigma_{\vec\phi} \to C$ has $n_b = 2K(K-1)(g-1)$ branch points
+and has genus $1 + K^2(g-1)$.
 \end{prop}
-\begin{pf} We use the fact that $\deg K_C = - \chi(C) = 2g-2$
+\begin{pf} To count the number of branch points, 
+use the fact that $\deg K_C = - \chi(C) = 2g-2$
 (Gauss-Bonnet theorem)
 and the discriminant $\Delta_{\vec\phi}$ is a holomorphic section of
 $K_C^{K(K-1)}$, with only simple zeroes.
+
+To get the genus, use the Riemann-Hurwitz formula which says
+\begin{equation}
+  \chi(\Sigma_{\vec \phi}) = K \chi(C) - n_b = K^2 \chi(C).
+\end{equation}
 \end{pf}
+
+\begin{example}[Simplest spectral curves] 
+The simplest nontrivial case is the case $K=2$, $g=2$. In this case
+\autoref{prop:generic-spectral-numerics} says the generic spectral curves have
+genus $5$. Thus even in this simple case we are dealing with a somewhat
+complicated family of curves.
+\end{example}
 
 \begin{prop}[Generic fibers of the Hitchin fibration are shifted Jacobians] \label{prop:hitchin-fibers-are-jacobians}
 If $\vec\phi \in \cB'$, then
 the fiber $\rho^{-1}(\vec\phi) \subset \cM_{K,d}(C)$
-is the torus $\cN_{1,d'}(\Sigma_{\vec\phi})$
+is the compact torus $\cN_{1,d'}(\Sigma_{\vec\phi})$
 where
 \begin{equation}
 	d' = d - K(K-1)(g-1).
@@ -7351,7 +7368,9 @@ method.
 is surjective.
 \end{prop}
 \begin{pf}
-\fixme{...}
+To prove this it is sufficient to exhibit one Higgs bundle in each fiber.
+For $K=2$ we have already done this above, in \autoref{exa:hitchin-section-K2}.
+For larger $K$ there is a similar construction \fixme{...}
 \end{pf}
 
 So $\cM_{K,d}(C)$
@@ -7475,22 +7494,14 @@ The fibers of the Hitchin fibration over $\cB'$ have dimension equal to that
 of the base $\cB$, and are Lagrangian with respect to $\Omega_1$.
 \end{prop}
 
-\begin{pf} We compute the dimension directly as follows.
-For $\vec\phi \in \cB'$,
-the covering $\Sigma_{\vec \phi} \to C$ has
+\begin{pf} The fiber over $\vec\phi \in \cB'$ is the Jacobian of the
+smooth spectral curve $\Sigma_{\vec\phi}$, and thus its dimension
+is the genus of $\Sigma_{\vec\phi}$, which we computed in
+\autoref{prop:generic-spectral-numerics} as
 \begin{equation}
-  n_b = \deg K_C^{K(K-1)} = -K(K-1)\chi(C)
+  g_{\Sigma} = 1 + K^2(g-1).
 \end{equation}
-branch points. The Riemann-Hurwitz formula says
-that
-\begin{equation}
-  \chi(\Sigma_{\vec \phi}) = K \chi(C) - n_b = K^2 \chi(C).
-\end{equation}
-Thus the complex dimension of the fiber is
-\begin{equation}
-  g_{\Sigma} = 1 - \half \chi(\Sigma) = 1 - \frac{K^2}{2} \chi(C) = 1 + K^2(g-1)
-\end{equation}
-which is half the dimension of the full $\cM_{K,d}(C)$.
+This is half the dimension of $\cM_{K,d}(C)$.
 Since the fiber dimension and base dimension add to the full dimension,
 we get that the two are equal.
 
