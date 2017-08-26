@@ -6641,15 +6641,15 @@ and the second is
 As before, this is indeed a complex, when $(D,\varphi)$ is a harmonic 
 pair. Also as before, the \hk quotient construction dictates that
 we should interpret the quotient by $\im \rho$
-by taking the orthocomplement,
+by taking the orthocomplement, \fixme{double-check signs and factors here!}
 \begin{equation}
-  (\im \rho)^\perp = \{D \star \dot{A} - [\Phi, \dot\Phi] = 0\} \subset \Omega^1(\fu(E))^{\oplus 2}.
+  (\im \rho)^\perp = \{D \star \dot{A} - [\star \Phi, \dot\Phi] = 0\} \subset \Omega^1(\fu(E))^{\oplus 2}.
 \end{equation}
 So altogether the tangent space we are after is the kernel of
 the operator
 \begin{align}
 \hat{D}: \Omega^1(\fu(E))^{\oplus 2} &\to \Omega^2(\fu(E))^{\oplus 4} \\
-(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ -D \star \dot\Phi - [\star \Phi, \dot A] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot{A} - [\Phi, \dot \Phi] \end{pmatrix}
+(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ -D \star \dot\Phi - [\star \Phi, \dot A] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot{A} - [\star \Phi, \dot \Phi] \end{pmatrix}
 \end{align}
 Note that $\hat{D}$ is \ti{elliptic}, just as before:
 the principal symbol is $2K^2$ copies of $\de \oplus \de^*$.
