@@ -5795,7 +5795,7 @@ $\cO(0) \oplus \cO(0)$.
 
 The existence of this family
 means that if we naively try to construct a moduli space of \ti{all} holomorphic bundles
-over $\C\PP^1$ up to equivalence, without imposing any stability condition, 
+over $\C\PP^1$ up to equivalence, without imposing any stability condition,
 then any open set around the unstable
 bundle $\cO(1) \oplus \cO(-1)$ necessarily contains $\cO(0) \oplus \cO(0)$,
 i.e. the space would have to be non-Hausdorff.
@@ -6643,15 +6643,15 @@ and the second is
 As before, this is indeed a complex, when $(D,\varphi)$ is a harmonic
 pair. Also as before, the \hk quotient construction dictates that
 we should interpret the quotient by $\im \rho$
-by taking the orthocomplement,
+by taking the orthocomplement, \fixme{double-check signs and factors here!}
 \begin{equation}
-  (\im \rho)^\perp = \{D \star \dot{A} - [\Phi, \dot\Phi] = 0\} \subset \Omega^1(\fu(E))^{\oplus 2}.
+  (\im \rho)^\perp = \{D \star \dot{A} - [\star \Phi, \dot\Phi] = 0\} \subset \Omega^1(\fu(E))^{\oplus 2}.
 \end{equation}
 So altogether the tangent space we are after is the kernel of
 the operator
 \begin{align}
 \hat{D}: \Omega^1(\fu(E))^{\oplus 2} &\to \Omega^2(\fu(E))^{\oplus 4} \\
-(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ -D \star \dot\Phi - [\star \Phi, \dot A] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot{A} - [\Phi, \dot \Phi] \end{pmatrix}
+(\dot A, \dot \Phi) &\mapsto \begin{pmatrix} D \dot{A} + [\Phi,\dot\Phi] \\ -D \star \dot\Phi - [\star \Phi, \dot A] \\ D \dot\Phi + [\Phi, \dot A] \\ D \star \dot{A} - [\star \Phi, \dot \Phi] \end{pmatrix}
 \end{align}
 Note that $\hat{D}$ is \ti{elliptic}, just as before:
 the principal symbol is $2K^2$ copies of $\de \oplus \de^*$.
@@ -7141,9 +7141,11 @@ we define $\Sigma_{\vec\phi}$ to be the curve
 \end{equation}
 \end{defn}
 
+\insfig{higgs-bundles-24}{0.8}
+
 Abusing notation we also write
 \begin{equation}
-	\Sigma_{\varphi} = \Sigma_{\rho([D,\varphi])}.
+  \Sigma_{\varphi} = \Sigma_{\rho([D,\varphi])}.
 \end{equation}
 Then informally $\Sigma_\varphi \subset T^* C$ is a $K$-sheeted covering of $C$,
 whose sheets over $z \in C$ are the $K$ eigenvalues $\lambda_i$
@@ -7175,7 +7177,7 @@ $\lambda^2 + \phi_1 \lambda + \phi_2 = 0$, which has discriminant
 \end{equation}
 Globally over $C$, \eqref{eq:discriminant-K2}
 is a section of $K_C^{\otimes 2}$.
-For general $K$, \eqref{eq:discriminant} implies that 
+For general $K$, \eqref{eq:discriminant} implies that
 $\Delta_{\vec\phi}$ is a section of $K_C^{\otimes K(K-1)}$.
 The zeroes of $\Delta_{\vec\phi}$ are the places on $C$ where the
 sheets $\lambda_i$ collide, i.e. they are the places where
@@ -7214,7 +7216,7 @@ and genus $1 + K^2(g-1)$] \label{prop:generic-spectral-numerics}
 If $\vec\phi \in \cB'$ then the covering $\Sigma_{\vec\phi} \to C$ has $n_b = 2K(K-1)(g-1)$ branch points
 and has genus $1 + K^2(g-1)$.
 \end{prop}
-\begin{pf} To count the number of branch points, 
+\begin{pf} To count the number of branch points,
 use the fact that $\deg K_C = - \chi(C) = 2g-2$
 (Gauss-Bonnet theorem)
 and the discriminant $\Delta_{\vec\phi}$ is a holomorphic section of
@@ -7226,7 +7228,7 @@ To get the genus, use the Riemann-Hurwitz formula which says
 \end{equation}
 \end{pf}
 
-\begin{example}[Simplest spectral curves] 
+\begin{example}[Simplest spectral curves]
 The simplest nontrivial case is the case $K=2$, $g=2$. In this case
 \autoref{prop:generic-spectral-numerics} says the generic spectral curves have
 genus $5$. Thus even in this simple case we are dealing with a somewhat
@@ -7354,7 +7356,7 @@ always find a local coordinate and gauge in which
 \subsection{The other fibers}
 
 We have just explained that the generic fiber $\rho^{-1}(\vec\phi)$
-of the Hitchin fibration $\rho$ is a compact complex torus, 
+of the Hitchin fibration $\rho$ is a compact complex torus,
 the Jacobian of a smooth spectral curve $\Sigma_{\vec\phi}$.
 The complex structures of these fibers
 vary as the complex structure of $\Sigma_{\vec\phi}$ varies.
@@ -7362,8 +7364,8 @@ vary as the complex structure of $\Sigma_{\vec\phi}$ varies.
 It remains to
 understand the fibers lying over the discriminant locus.
 These fibers are generally \ti{not} compact complex tori.
-When $\Sigma_{\vec\phi}$ is reduced and connected, 
-$\rho^{-1}(\vec\phi)$ is the 
+When $\Sigma_{\vec\phi}$ is reduced and connected,
+$\rho^{-1}(\vec\phi)$ is the
 \ti{compactified Jacobian} of $\Sigma_{\vec\phi}$;
 see the Appendix of \cite{Melo2012} for a useful summary and
 more precise statement.
