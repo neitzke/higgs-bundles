@@ -5734,7 +5734,8 @@ In this section we introduce the class of bundles which do.
 \end{equation}
 \end{defn}
 
-\begin{defn}[Stable holomorphic vector bundle] A holomorphic vector bundle $E$ over $C$ is called:
+\begin{defn}[Stable holomorphic vector bundle] \label{def:stable-hol-vb} 
+A holomorphic vector bundle $E$ over $C$ is called:
 \begin{itemize}
 \item \ti{stable} if, for every holomorphic subbundle $E' \subset E$,
 we have $\mu(E') < \mu(E)$,
@@ -5812,31 +5813,41 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 \end{equation}
 \end{exercise}
 
-\begin{lem}[Saturation of maps between bundles of same rank and degree] \label{lem:saturation-of-bundle-maps}
-Suppose $E$ and $E'$ are both
-holomorphic vector bundles with the same rank and degree,
-$\varphi: E \to E'$, and $\varphi$ is not an isomorphism.
-Then there exists a proper smallest subbundle $F \subset E$ containing
-$\ker \varphi$, and a proper smallest subbundle $F' \subset E'$
-containing $\im \varphi$. \fixme{check}
+\begin{lem}[Saturation of subsheaves of bundles over curves]
+If $E$ is a holomorphic vector bundle and $S \subset E$ a subsheaf,
+then there exists a subbundle $F \subset E$
+with $\rank F = \rank S$
+and $\deg F \ge \deg S$.
 \end{lem}
-\begin{pf} \fixme{...}
+\begin{pf} $F$ is the ``saturation'' of $S$, defined as the kernel of the
+projection $E \to (E/S)/T$ where $T$ is the torsion subsheaf of $E/S$;
+then $E/F$ is torsion-free, which means $F$ is a subbundle
+as desired.
 \end{pf}
+
+\begin{cor}[Alternative characterization of stability]
+In \autoref{def:stable-hol-vb} we may replace ``subbundle of $E$'' by ``subsheaf $S \subset E$
+with $\rank S < \rank E$.''
+\end{cor}
 
 \begin{prop}[Stable bundles are simple] If $E$ and $E'$ are both stable
 holomorphic vector bundles with the same rank and degree,
 then $\Hom(E,E')$ is 1-dimensional if $E \simeq E'$,
 and trivial otherwise.
 \end{prop}
-\begin{pf}
+\begin{pf} \cite{MR98b:14010}
 If $E \not \simeq E'$ and $\Hom(E,E')$ is nontrivial, \ti{or}
 $\dim \Hom(E,E') > 1$, then there exists some $\varphi: E \to E'$
 such that $\varphi \neq 0$ and $\varphi$ is not an isomorphism.
-Let $F \subset E$ be the smallest subbundle containing $\ker \varphi$,
-and $F' \subset E'$ the smallest subbundle containing $\im \varphi$.
-Both $F$ and $F'$ are proper nontrivial subbundles, and we can compute
-that either $\mu(F) \ge \mu(E)$ or $\mu(F') \ge \mu(E')$, giving a
-contradiction.
+Since $\varphi \neq 0$ we must have $\rank \ker \varphi < \rank E$.
+Similarly, since $\varphi$ is not an isomorphism,
+we must have $\rank \im \varphi < \rank E'$ (else $\det \varphi$ would be a nonzero map
+$\det E \to \det E'$, which would have to be an isomorphism
+since $\deg E = \deg E'$.)
+But we have $\deg \ker \varphi + \deg \im \varphi = \deg E$
+and $\rank \ker \varphi + \rank \im \varphi = \rank E$
+from which it follows that either $\mu(\ker \varphi) \ge \mu(E)$ or $\mu(\im \varphi) \ge \mu(E) = \mu(E')$.
+This contradicts the stability of $E$ and $E'$.
 \end{pf}
 
 Finally we remark on one fine point.
@@ -6051,10 +6062,9 @@ Now, since $\Hom(E,E)$ has degree zero and $\gamma$ is holomorphic,
 it is impossible for $\det \gamma$ to have isolated zeroes: it either
 vanishes everywhere or nowhere; but by assumption it does vanish somewhere;
 so it must be zero. It follows that the image of $\gamma$ is contained in
-some proper holomorphic subbundle of $(E,\bar\partial_{D_*})$; let $F$
-be the smallest such;
-similarly let $K$ denote the smallest holomorphic subbundle
-of $(E,\bar\partial_D)$ containing $\ker \gamma$ (see \autoref{lem:saturation-of-bundle-maps}.)
+some proper holomorphic subbundle $F$ of $(E,\bar\partial_{D_*})$; 
+also let $K$ denote a proper holomorphic subbundle
+of $(E,\bar\partial_D)$ containing $\ker \gamma$.
 Then we have a diagram of vector bundles:
 \begin{equation}
 \begin{tikzcd}
