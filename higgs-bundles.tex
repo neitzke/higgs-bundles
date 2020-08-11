@@ -5139,12 +5139,16 @@ exist any subbundle $E' \subset E$ such that $D$ preserves $E'$.
 If $g \in \fG_{k+1}$ and $D$ is an irreducible connection, then $D^g = D$
 if and only if $g$ acts on $E$ by multiplication by a constant scalar.
 \end{prop}
-\begin{pf} $D^g = D$ if and only if $g$ is constant under the parallel
-transport of $D$. This means that $g$ is determined by
-its value at a single point of $C$. Moreover this value cannot be arbitrary:
-it has to commute with the parallel transport around any loop.
-Thus if $g$ were not a constant its eigenspaces would be preserved by parallel
-transport, which would contradict the irreducibility of $D$.
+\begin{pf} If $g$ is multiplication by a constant scalar then we certainly
+have $D^g = D$. Conversely,
+suppose $D^g = D$. Then $g$ is covariantly constant for the connection in
+$\End E$ induced by $D$, which implies that $g$ is determined by
+its value $g(p)$ for any $p \in C$, and that $g(p)$ 
+commutes with the holonomy of $D$ around any loop based at $p$.
+Thus the eigenspaces of $g(p)$ are preserved by parallel
+transport. This contradicts the irreducibility of $D$ unless
+$g(p)$ is a scalar. Finally the covariant constancy of $g$
+shows that $g$ is a constant scalar.
 \end{pf}
 
 Letting $\cA^s_{k} \subset \cA_k$ be the set of irreducible connections,
