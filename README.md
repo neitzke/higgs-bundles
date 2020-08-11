@@ -7,4 +7,4 @@ expository improvements, solutions to exercises) are very
 welcome (send pull requests).
 
 The PDF built from the master branch is hosted at
-http://www.ma.utexas.edu/users/neitzke/teaching/392C-higgs-bundles/higgs-bundles.pdf
+https://gauss.math.yale.edu/~an592/exports/higgs-metric.pdf
