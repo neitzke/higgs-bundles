@@ -4452,18 +4452,18 @@ such that $W \cap W' = \{0\}$ and $W + W' = V$.
 
 \begin{defn}[Derivatives of maps of Banach spaces]
 If $f: V \to W$ is a map of Banach spaces,
-we say $f$ is \ti{differentiable} and $\de f: V \to W$ its
-\ti{derivative} if for all $v \in V$ we have
+we say $f$ is \ti{differentiable} at $v$ and $\de f_v: V \to W$ its
+\ti{derivative} if
 \begin{equation}
-  \lim_{h \to 0} \frac{\norm{f(v+h) - f(v) - \de f(h)}}{\norm{h}} = 0.
+  \lim_{h \to 0} \frac{\norm{f(v+h) - f(v) - \de f_v(h)}}{\norm{h}} = 0.
 \end{equation}
 \end{defn}
 
 
 \begin{thm}[Inverse function theorem for Banach spaces]
 Suppose $f: V \to W$ is a smooth map of Banach spaces, and for some
-$v \in V$ the map $\de f(v): V \to W$ is a bounded isomorphism.
-Then $f$ there exists a neighborhood $U$ of $v$ such that $f \vert_U$
+$v \in V$ the map $\de f_v: V \to W$ is a bounded isomorphism.
+Then there exists a neighborhood $U$ of $v$ such that $f \vert_U$
 admits a smooth two-sided inverse.
 \end{thm}
 
@@ -4637,9 +4637,7 @@ some additional conditions:
 % $\mu: X \to W$ is continuous, and $\im \mu \subset W$ is closed,
 \item the tangent
 spaces $T = T_x (Gx)$ to $G$-orbits are closed and complemented,
-\item \begin{equation}
-  T = (T^{\perp_\omega})^{\perp_\omega}.
-\end{equation}
+\item $T = (T^{\perp_\omega})^{\perp_\omega}$.
 \end{itemize}
 Then $X \kq G$ is a Banach manifold, and there is a
 symplectic form $\omega_{X \kq G}$ on $X \kq G$, with the
