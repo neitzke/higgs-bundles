@@ -438,7 +438,13 @@ the stabilizers of all $x \in X$ are trivial.
 \begin{defn}[Proper action] \label{def:proper}
 Suppose $X$ is a manifold
 with a Lie group $G$ acting. We say the action is \ti{proper} if
-inverse images of compact sets in $X$
+the map 
+\begin{align}
+  G \times X &\to X \times X \\
+  (g,x) &\mapsto (x, gx) 
+\end{align}
+is a proper map, i.e.
+inverse images of compact sets in $X \times X$
 are compact in $G \times X$.
 \end{defn}
 
