@@ -226,6 +226,8 @@
 \renewcommand{\sf}{\mathrm{sf}}
 \newcommand{\inst}{\mathrm{inst}}
 \newcommand{\eff}{\mathrm{eff}}
+\newcommand{\fiber}{\mathrm{fiber}}
+\newcommand{\rmvert}{\mathrm{vert}}
 \newcommand{\dR}{\mathrm{dR}}
 \newcommand{\closed}{\mathrm{closed}}
 \newcommand{\exact}{\mathrm{exact}}
@@ -2400,8 +2402,8 @@ complex structure, $L$ is a \ti{holomorphic} line subbundle of the trivial rank 
 
 \begin{pf}
 For (1) it's enough to compute for $\vec{s} = (1,0,0)$, and there note
-$\omega_2 + \I \omega_3 \in \Omega^{2,0}$, $\omega_1 \in \Omega^{1,1}$,
-$\omega_2 - \I \omega_3 \in \Omega^{0,2}$. Thus $L_{\vec s}$ is 1-dimensional,
+$\omega_2 + \I \omega_3 \in \Omega^{2,0}_{\vec{s}}(X)$, $\omega_1 \in \Omega^{1,1}_{\vec{s}}(X)$,
+$\omega_2 - \I \omega_3 \in \Omega^{0,2}_{\vec{s}}(X)$. Thus $L_{\vec s}$ is 1-dimensional,
 spanned by $\omega_2 + \I \omega_3$.
 
 For (2) here is a computational proof.
@@ -2430,8 +2432,8 @@ As a quick check note that
 For general $\zeta$, what we want to know is that
 that applying $I_\zeta$ to the first slot of $\Omega(\zeta)$ gives
 $\I \Omega(\zeta)$, so that $\Omega(\zeta) \in L_\zeta$.
-This can be checked (a bit laboriously)
-\mmaref{verify-holsymp}
+This can be checked (a bit laboriously) 
+%\mmaref{verify-holsymp}
 using \eqref{eq:zeta-def}, $I_i \omega_i = g$,
 $I_i \omega_{i+1} = -\omega_{i+2}$, $I_i \omega_{i+2} = \omega_{i+1}$.
 
@@ -2762,7 +2764,7 @@ their bracket $[v',w']$ is also pulled back from the bracket on $S^2$,
 and we already know the integrability there, so again $[v',w'] \in T^{0,1} S^2$.
 
 All that remains is to check
-that $[v,w'] \subset T^{0,1} \cZ$.
+that $[v,w'] \in T^{0,1} \cZ$.
 Choose local coordinates $x^i$ for $X$ and write
 \begin{equation}
 v = v^i(x,\zeta) \partial_i, \qquad w' = f(x,\zeta) \partial_{\bar \zeta}, \qquad
@@ -2790,9 +2792,9 @@ Suppose $X$ is a \hk manifold with twistor space $\cZ$. Then:
   holomorphic projection $\pi: \cZ \to S^2$.
 \item $\cZ$ carries a twisted fiberwise holomorphic symplectic form,
 \begin{equation}
-  \Omega \in \Omega^{2,0}_{fiber}(\cZ) \otimes \pi^* \cO(2)
+  \Omega \in \Omega^{2,0}_{\fiber}(\cZ) \otimes \pi^* \cO(2)
 \end{equation}
-where $\Omega^{2,0}_{fiber}(\cZ) = \wedge^2 (T^{1,0}_{vert} \cZ)^*$.
+where $\Omega^{2,0}_{\fiber}(\cZ) = \wedge^2 (T^{1,0}_{\rmvert} \cZ)^*$.
 \item $\cZ$ carries a \ti{real structure} (antiholomorphic involution)
 $\rho: \cZ \to \cZ$, such that:
 \begin{enumerate}
