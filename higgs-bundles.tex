@@ -4404,21 +4404,19 @@ a normed vector space $V$ over $\R$ or $\C$, which
 is complete as a metric space.
 \end{defn}
 
-\begin{defn}[Norm of a linear functional] Say $V$ is a Banach
-space over $\R$ (resp. $\C$), and we have a
-linear map $\eta: V \to \R$ (resp. $\C$). Then we define
+\begin{defn}[Norm of a linear map] Say $V$ and $W$ are Banach
+spaces and $T: V \to W$ is a linear map. Then we define
 \begin{equation}
-  \norm{\eta} = \sup_{v \in V: \norm{v}=1} \abs{\eta(v)}.
+  \norm{T} = \sup_{v \in V: \norm{v}=1} \norm{T(v)}.
 \end{equation}
-We say $\eta$ is \ti{bounded} if $\norm{\eta} < \infty$.
+We say $T$ is \ti{bounded} if $\norm{T} < \infty$.
 \end{defn}
 
 Unlike the finite-dimensional situation, linear maps
-on Banach spaces need not be continuous:
+of Banach spaces need not be continuous:
 
-\begin{prop}[Continuous = bounded] If $V$ is a Banach space
-over $\R$ (resp. $\C$), a linear map $\eta: V \to \R$
-(resp. $\C$) is continuous if and only if it is bounded.
+\begin{prop}[Continuous = bounded] If $V$ and $W$ are Banach spaces, 
+a linear map $T: V \to W$ is continuous if and only if it is bounded.
 \end{prop}
 
 For our purposes we are mostly interested in Banach spaces as topological
@@ -4440,11 +4438,11 @@ surjective map of Banach spaces. Then $T$ is an open map.
 (Hint: use the open mapping theorem to show $T^{-1}$ is continuous.)
 \end{exercise}
 
-\begin{defn}[Dual of Banach space] If $V$ is a Banach space
-over $\R$ (resp. $\C$),
-$V^*$ is the space of all bounded linear maps $V \to \R$
-(resp. $\C$). $V^*$ is a Banach space.
-\end{defn}
+\begin{example}[Spaces of bounded linear maps] If $V$ and $W$ are Banach
+spaces, let $L(V,W)$ denote the space of all bounded linear maps
+$V \to W$. $L(V,W)$ is a Banach space. The \ti{dual} of $V$
+is $V^* = L(V,\R)$ or $V^* = L(V,\C)$.
+\end{example}
 
 $V^*$ is not too small --- at least it contains the dual space to
 any finite-dimensional $W \subset V$, as follows from:
@@ -4510,23 +4508,6 @@ with the $L^\infty$ (supremum) norm, and $W \subset V$
 the subspace of sequences which tend to zero; then $W$ is closed but
 not complemented.
 
-\begin{defn}[Derivatives of maps of Banach spaces]
-Suppose $f: V \to W$ is a map of Banach spaces.
-We say $f$ is \ti{differentiable} at $v$, and $\de f_v: V \to W$ is its
-\ti{derivative} at $v$, if
-\begin{equation}
-  \lim_{h \to 0} \frac{\norm{f(v+h) - f(v) - \de f_v(h)}}{\norm{h}} = 0.
-\end{equation}
-\end{defn}
-
-\fixme{better also define smooth}
-
-\begin{thm}[Inverse function theorem for Banach spaces]
-Suppose $f: V \to W$ is a smooth map of Banach spaces, and for some
-$v \in V$ the map $\de f_v: V \to W$ is a bounded isomorphism.
-Then there exists a neighborhood $U$ of $v$ such that $f \vert_U$
-admits a smooth two-sided inverse.
-\end{thm}
 
 \begin{defn}[Nondegenerate pairing of Banach spaces] If $V$, $W$
 are Banach spaces over $\R$, a \ti{nondegenerate pairing}
@@ -4543,8 +4524,30 @@ are injections.
 \end{defn}
 
 Some authors would call this a ``weakly nondegenerate'' pairing.
-I emphasize that it is not the same as requiring the induced maps
-to be \ti{isomorphisms}.
+
+
+\subsection{Calculus on Banach spaces}
+
+\begin{defn}[Derivatives of maps of Banach spaces]
+Suppose $f: V \to W$ is a map of Banach spaces.
+We say $f$ is \ti{differentiable} at $v$, and $D f_v: V \to W$ is its
+\ti{derivative} at $v$, if
+\begin{equation}
+  \lim_{h \to 0} \frac{\norm{f(v+h) - f(v) - D f_v(h)}}{\norm{h}} = 0.
+\end{equation}
+If $U \subset V$ is open and $f$ is differentiable at all $v \in U$,
+then we get a map $D f: U \to L(V,W)$ defined by $D f(v) = D f_v$.
+If $D f$ is continuous, we say $f$ is $C^1$ on $U$.
+Similarly, if $D^r f$ exists for all $r$, we say $f$
+is $C^\infty$ or \ti{smooth} on $U$.
+\end{defn}
+
+\begin{thm}[Inverse function theorem for Banach spaces]
+Suppose $f: V \to W$ is a smooth map of Banach spaces, and for some
+$v \in V$ the map $D f_v: V \to W$ is a bounded isomorphism.
+Then there exists a neighborhood $U$ of $v$ such that $f \vert_U$
+admits a smooth two-sided inverse.
+\end{thm}
 
 
 \subsection{Sobolev spaces}
@@ -4670,9 +4673,9 @@ is an \ti{injection} for each $x \in X$,
 not an isomorphism.
 \end{defn}
 
-Some authors refer to this as a \ti{weakly} symplectic
-form, reserving ``nondenegerate'' for the case when
-$v \mapsto \iota_v \omega$ is a bijection, not only an injection.
+% Some authors refer to this as a \ti{weakly} symplectic
+% form, reserving ``nondenegerate'' for the case when
+% $v \mapsto \iota_v \omega$ is a bijection.
 
 \begin{defn}[Banach Lie group]
 The definition of Banach Lie group $G$ is just as in the
