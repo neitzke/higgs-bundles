@@ -3938,14 +3938,15 @@ violating our assumption.
 
 \begin{example}[Elliptically fibered K3 surface] \label{exa:elliptically-fibered-k3}
 Now let's construct a \hk space with torus fibers over the \ti{compact}
-base $\C\PP^1$. The idea: for each $u \in \C\PP^1$ we will write
+base $\C\PP^1$. Loosely speaking, for each $u \in \C\PP^1$ we will consider
+an elliptic curve
 \begin{equation} \label{eq:X-u}
-  X_{\vec \phi} = \{ y^2 z = x^3 + A(u) xz^2 + B(u) z^3 \} \subset \C\PP^2,
+  X_u = \{ y^2 z = x^3 + A(u) xz^2 + B(u) z^3 \} \subset \C\PP^2,
 \end{equation}
-and let $X$ be the union of the $X_{\vec \phi}$.
+and let $X$ be the union of the $X_u$.
 
 We want $X$ to carry a global holomorphic $2$-form. How can we make it?
-On each fiber $X_{\vec \phi}$ we have the holomorphic $1$-form $\de x / y$.
+On each fiber $X_u$ we have the holomorphic $1$-form $\de x / y$.
 We want to wedge this with
 a holomorphic $1$-form coming from the base. Such a $1$-form
 doesn't literally exist, because $K_{\C\PP^1} \simeq \cO(-2)$; but there is
@@ -3963,14 +3964,14 @@ to make sense, $y^2 z$ and $x^3$ must be valued in the same place.
 To make all this work, we make $x$ valued in $\cO(4)$, $y$ in $\cO(6)$,
 and $z$ in $\cO(0)$. Then $A(u)$ must be a (fixed) section of $\cO(8)$
 and $B(u)$ a section of $\cO(12)$.
-Finally we define:\footnote{What the notation $\PP[\cO(4) \oplus \cO(6) \oplus \cO(0)]$ means: we take the locus where $x$, $y$, $z$ don't
+Now we are ready to make a proper definition of $X$:\footnote{What the notation $\PP[\cO(4) \oplus \cO(6) \oplus \cO(0)]$ means: we take the locus where $x$, $y$, $z$ don't
 simultaneously vanish, then quotient by simultaneous rescalings
 $(x,y,z) \to (\lambda x, \lambda y, \lambda z)$ with $\lambda \in \C^\times$;
 this defines a bundle over $\C\PP^1$ with each fiber isomorphic to $\C\PP^2$.}
 \begin{equation}
   X = \{ y^2 z = x^3 + A(u) xz^2 + B(u) z^3 \} \subset \PP[\cO(4) \oplus \cO(6) \oplus \cO(0)] \to \C\PP^1
 \end{equation}
-The fiber $X_{\vec \phi}$ is \ti{smooth} as long as the polynomial
+The fiber $X_{u}$ is smooth as long as the polynomial
 $x^3 + A(u) x + B(u)$ doesn't have any double zeroes in $x$,
 i.e. as long as the discriminant
 \begin{equation}
@@ -4016,7 +4017,7 @@ holomorphic on the curve \eqref{eq:X-u}.
 zeroes then $X$ is smooth.
 \end{exercise}
 
-In general, Yau's Theorem gives very little by way of explicit information
+In general, Yau's Theorem gives very little explicit information
 about the Ricci-flat metrics it provides. In the case of the K3 surface
 we have at least some \ti{asymptotic} information, thanks to the work
 of Gross-Wilson \cite{MR1863732}.
@@ -4394,6 +4395,10 @@ this method would not be so different from what we do here.
 
 \subsection{Banach spaces}
 
+Here I write only the bare minimum, in part because
+I am not really an expert; to really learn this material
+well, you'd better look elsewhere. \fixme{provide some refs}
+
 \begin{defn}[Banach space] A \ti{Banach space} is
 a normed vector space $V$ over $\R$ or $\C$, which
 is complete as a metric space.
@@ -4416,18 +4421,112 @@ over $\R$ (resp. $\C$), a linear map $\eta: V \to \R$
 (resp. $\C$) is continuous if and only if it is bounded.
 \end{prop}
 
-Loosely speaking, we want to consider two Banach spaces as
-``the same'' if there is a bounded linear isomorphism
-between them, even if that isomorphism does not preserve the
-norm. So we can think of a Banach space as coming not with
-a single norm but with a bunch of them, all inducing the
-same topology, and all more or less equally good.
+For our purposes we are mostly interested in Banach spaces as topological
+vector spaces --- we don't care about the specific norm,
+only about the topology induced by that norm. (Indeed, our main examples
+later will be Sobolev spaces, where in general we don't have a particularly
+canonical norm, just a class of norms which all induce the same topology.)
+Thus we take bounded linear maps as our notion of morphism,
+even though they don't preserve the norm.
+We take bounded linear isomorphisms as our notion of
+isomorphism; this is partially justified by the next theorem
+and exercise:
+
+\begin{thm}[Open mapping theorem for Banach spaces] Suppose $T: V \to W$ is a 
+surjective map of Banach spaces. Then $T$ is an open map.
+\end{thm}
+
+\begin{exercise} Suppose $V$ and $W$ are Banach spaces, and $T: V \to W$ is a bounded linear isomorphism. Show that $T^{-1}$ is also bounded.
+(Hint: use the open mapping theorem to show $T^{-1}$ is continuous.)
+\end{exercise}
 
 \begin{defn}[Dual of Banach space] If $V$ is a Banach space
 over $\R$ (resp. $\C$),
-$V^*$ is the space of all continuous linear maps $V \to \R$
+$V^*$ is the space of all bounded linear maps $V \to \R$
 (resp. $\C$). $V^*$ is a Banach space.
 \end{defn}
+
+$V^*$ is not too small --- at least it contains the dual space to
+any finite-dimensional $W \subset V$, as follows from:
+
+\begin{thm}[Hahn-Banach theorem] If $V$ is a Banach space, $W \subset V$
+and $\psi \in W^*$, then $\psi$ extends to an element $\tilde\psi \in V^*$,
+with $\norm{\tilde\psi} = \norm{\psi}$.
+\end{thm}
+
+The Hahn-Banach theorem implies that 
+the canonical map $V \to V^{**}$ is injective and norm-preserving. 
+If it is an isomorphism, then $V$ is called \ti{reflexive}.
+
+When considering Banach spaces we are particularly interested in their
+\ti{closed} subspaces (these are the ones which are themselves
+Banach spaces). 
+
+\begin{exercise} Suppose $V,W$ are Banach spaces and $T: V \to W$ is a
+bounded linear map. Then show that $\ker T$ is closed.
+\end{exercise}
+
+\begin{exercise} Suppose $V,W$ are Banach spaces and $T: V \to W$ is a
+bounded linear map. Suppose there exists $c > 0$ such that
+$\norm{T(x)} \ge c \norm{x}$ for all $x \in V$. 
+Then show that $\im T$ is closed.
+\end{exercise}
+
+
+Among these we will be especially interested in the 
+complemented ones:
+
+\begin{defn}[Complemented subspace] If $V$ is a Banach space
+and $W \subset V$ a closed subspace, we say $W$ is
+\ti{complemented} if there exists a closed subspace $W' \subset V$
+such that the natural map $W \oplus W' \to V$
+is an isomorphism.
+\end{defn}
+
+The notion of ``isomorphism'' in this definition can be taken to be
+just linear isomorphism, since this map is evidently bounded, and so
+if it is a linear isomorphism it is also an isomorphism of topological
+vector spaces.
+We should remark that every $W \subset V$ admits a complement $W'$ 
+in the algebraic sense
+(using the existence of a Hamel basis), so the real issue is whether
+$W'$ can be taken to be \ti{closed} or not.
+
+\begin{exercise} Suppose $V$ is a Hilbert space and $W \subset V$
+is a closed subspace. Show that $W$ is complemented.
+\end{exercise}
+
+\begin{exercise} Suppose $V$ is a Banach space and
+ $W \subset V$ is a closed subspace of finite dimension
+ or finite codimension.
+ Show that $W$ is complemented.
+\end{exercise}
+
+It doesn't seem so easy to come up with examples of closed subspaces
+which are not complemented, but it is known that they do exist in
+any Banach space which is not a Hilbert space. One concrete example:
+take $V$ to be the space of bounded sequences in $\R$ 
+with the $L^\infty$ (supremum) norm, and $W \subset V$
+the subspace of sequences which tend to zero; then $W$ is closed but
+not complemented.
+
+\begin{defn}[Derivatives of maps of Banach spaces]
+Suppose $f: V \to W$ is a map of Banach spaces.
+We say $f$ is \ti{differentiable} at $v$, and $\de f_v: V \to W$ is its
+\ti{derivative} at $v$, if
+\begin{equation}
+  \lim_{h \to 0} \frac{\norm{f(v+h) - f(v) - \de f_v(h)}}{\norm{h}} = 0.
+\end{equation}
+\end{defn}
+
+\fixme{better also define smooth}
+
+\begin{thm}[Inverse function theorem for Banach spaces]
+Suppose $f: V \to W$ is a smooth map of Banach spaces, and for some
+$v \in V$ the map $\de f_v: V \to W$ is a bounded isomorphism.
+Then there exists a neighborhood $U$ of $v$ such that $f \vert_U$
+admits a smooth two-sided inverse.
+\end{thm}
 
 \begin{defn}[Nondegenerate pairing of Banach spaces] If $V$, $W$
 are Banach spaces over $\R$, a \ti{nondegenerate pairing}
@@ -4447,33 +4546,6 @@ Some authors would call this a ``weakly nondegenerate'' pairing.
 I emphasize that it is not the same as requiring the induced maps
 to be \ti{isomorphisms}.
 
-\begin{defn}[Complemented subspace] If $V$ is a Banach space
-and $W \subset V$ a closed subspace, we say $W$ is
-\ti{complemented} if there exists a closed subspace $W' \subset V$
-such that $W \cap W' = \{0\}$ and $W + W' = V$.
-\end{defn}
-
-\begin{exercise} Suppose $V$ is a Banach space and
- $W \subset V$ is a closed subspace of finite codimension.
- Show that $W$ is complemented.
-\end{exercise}
-
-\begin{defn}[Derivatives of maps of Banach spaces]
-If $f: V \to W$ is a map of Banach spaces,
-we say $f$ is \ti{differentiable} at $v$ and $\de f_v: V \to W$ its
-\ti{derivative} if
-\begin{equation}
-  \lim_{h \to 0} \frac{\norm{f(v+h) - f(v) - \de f_v(h)}}{\norm{h}} = 0.
-\end{equation}
-\end{defn}
-
-
-\begin{thm}[Inverse function theorem for Banach spaces]
-Suppose $f: V \to W$ is a smooth map of Banach spaces, and for some
-$v \in V$ the map $\de f_v: V \to W$ is a bounded isomorphism.
-Then there exists a neighborhood $U$ of $v$ such that $f \vert_U$
-admits a smooth two-sided inverse.
-\end{thm}
 
 \subsection{Sobolev spaces}
 
@@ -4570,8 +4642,7 @@ such that $\phi_\alpha(Y \cap U_\alpha) = W_\alpha \cap \phi_\alpha(U_\alpha)$
 for some \ti{closed} subspace $W_\alpha \subset V_\alpha$.
 \end{defn}
 
-This is just like the usual definition of submanifold
-(sometimes called ``embedded submanifold'' as opposed to immersed);
+This is just like the usual definition of (embedded) submanifold;
 the key extra word in the infinite-dimensional setting
 is ``closed.''
 
