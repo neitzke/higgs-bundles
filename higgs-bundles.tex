@@ -305,7 +305,7 @@ Andrew Neitzke \\
 \tb{Preliminary} and \tb{incomplete} draft
 \end{center}
 
-{These are the notes for a Spring 2016
+{These are the notes for a spring 2016
 course at UT Austin. The lectures are now finished but the notes
 are not: they are extremely incomplete, unreliable, full
 of mistakes and omissions,
@@ -322,6 +322,8 @@ or as pull requests to the source repository hosted at
 \begin{center}
 \small \url{http://github.com/neitzke/higgs-bundles}
 \end{center}
+I thank the participants of the spring 2016 course at UT Austin
+for many corrections and improvements.
 }
 
 \tableofcontents
@@ -4678,21 +4680,25 @@ not an isomorphism.
 % $v \mapsto \iota_v \omega$ is a bijection.
 
 \begin{defn}[Banach Lie group]
-The definition of Banach Lie group $G$ is just as in the
-finite-dimensional case: it is a
+A Banach Lie group $G$ is a
 Banach manifold equipped with a group structure,
-such that the multiplication and inversion maps
-are smooth. The Lie algebra $\fg$ is defined as
-$T_e G$ and acquires the Lie bracket in the usual way.
+such that the multiplication map $G \times G \to G$ and the 
+inversion map $G \to G$
+are smooth. The Lie algebra $\fg$ is the Banach space
+$T_e G$ and acquires a Lie bracket in the usual way.
 %\fixme{ref Glockner-Neeb coming out Apr 14?}
-\fixme{ref Neeb on Infinite-Dimensional Lie Groups?}
+%\fixme{ref Neeb on Infinite-Dimensional Lie Groups?}
 \end{defn}
 
 \begin{prop}[Free proper quotients are Banach manifolds] \label{prop:free-proper-quotients-are-banach-manifolds}
-This is just like \autoref{prop:free-proper-quotients-are-manifolds}
-except that we need the extra hypothesis that the
-tangent spaces to orbits,
-$T_x (Gx) \subset T_x X$, are closed and complemented. \fixme{ref Bourbaki}
+Suppose $X$ is a Banach manifold with a Banach Lie group $G$
+acting properly and freely,
+and the tangent spaces to orbits,
+$T_x (Gx) \subset T_x X$, are closed and complemented.
+Then $X / G$ is a manifold and $TX / \rho(\fg) \simeq T(X/G)$,
+as in \autoref
+{prop:free-proper-quotients-are-manifolds}.
+\fixme{ref Bourbaki}
 \end{prop}
 
 
@@ -4707,19 +4713,19 @@ as \autoref{def:moment-map} and \autoref{def:symplectic-quotient}.
 \end{defn}
 
 \begin{thm}[Symplectic quotient is symplectic] \label{prop:banach-symplectic-quotient-is-symplectic}
-Suppose $X$ is a symplectic Banach manifold, with a group $G$
-acting properly on it, with moment map $\mu$.
+Suppose $X$ is a symplectic Banach manifold, with a Banach Lie group $G$
+acting properly, with moment map $\mu$.
 Suppose that $G$ acts freely on $\mu^{-1}(0)$, and we impose
 some additional conditions:
 \begin{itemize}
-\item $\mu^{-1}(0)$ is a submanifold of $X$,
+\item $\mu^{-1}(0)$ is a submanifold of $X$.
 % \item there exists a dense subspace $W \subset \fg^*$, containing
 % $\im \mu$, carrying a Banach space topology (not necessarily the
 % induced topology) such that
 % $\mu: X \to W$ is continuous, and $\im \mu \subset W$ is closed,
-\item the tangent
-spaces $T = T_x (Gx)$ to $G$-orbits are closed and complemented,
-\item each tangent space obeys $T = (T^{\perp_\omega})^{\perp_\omega}$.
+\item The tangent
+spaces $T = T_x (Gx)$ to $G$-orbits are closed and complemented.
+\item Each tangent space obeys $T = (T^{\perp_\omega})^{\perp_\omega}$.
 \end{itemize}
 Then $X \kq G$ is a Banach manifold, and there is a
 symplectic form $\omega_{X \kq G}$ on $X \kq G$, with the
@@ -5310,7 +5316,7 @@ We will need the following preliminary:
 \begin{lem}[Almost-vanishing for the gauge complex]
 \label{lem:cohomology-vanishing-gauge-complex}
 If $D \in \cA^s_k$, then
-$\coker D \subset \Omega^2$ and $\coker D^* \subset \Omega^0$ are both $1$-dimensional.
+$\coker D \subset \Omega^2(\fu(E))$ and $\coker D^* \subset \Omega^0(\fu(E))$ are both $1$-dimensional.
 \end{lem}
 (i.e. both $H^0$ and $H^2$ of the complex \eqref{eq:gauge-complex} are
 $1$-dimensional.)
@@ -5322,15 +5328,15 @@ $\coker \hat{D} = \ker \hat{D}^*$, where
 \end{equation}
 Since $\im D$ and $\im D^*$ are $L^2$-orthogonal in $\Omega^1(\fu(E))$
 we will have $\ker \hat{D}^* = \ker D \oplus \ker D^*$.
-Any $\alpha \in \ker D \subset \Omega^0$ must be a constant multiple
+Any $\alpha \in \ker D \subset \Omega^0(\fu(E))$ must be a constant multiple
 of $\bid$, since $D$ is an irreducible connection: this gives
-the desired statement for $\Omega^0$. For $\Omega^2$ we essentially
+the desired statement for $\Omega^0(\fu(E))$. For $\Omega^2(\fu(E))$ we essentially
 use Poincare duality: we have
 \begin{equation}
   D^* = - \star D \star
 \end{equation}
-so any $\alpha \in \ker D^* \subset \Omega^2$ has $D \star \alpha = 0$; said
-otherwise, $\ker D^* \subset \Omega^2$ is just spanned by $\star (\bid)$.
+so any $\alpha \in \ker D^* \subset \Omega^2(\fu(E))$ has $D \star \alpha = 0$; said
+otherwise, $\ker D^* \subset \Omega^2(\fu(E))$ is just spanned by $\star (\bid)$.
 \end{pf}
 
 Now we are ready to prove that $\cN$ is well behaved:
@@ -6077,73 +6083,75 @@ i.e. is in the same $\fG_\C$-orbit. Call this orbit $\cO$.
 The moral idea is to consider the ``Yang-Mills functional''
 given by the $L^2$ norm of $F_D$,
 \begin{equation}
- \norm{F_D}^2 = \int_C F_D \wedge \star F_D.
+ \norm{F_D}^2 = \int_C \Tr (F_D \wedge \star F_D).
 \end{equation}
 For technical convenience, instead of the $L^2$ norm, we
 use a functional $J$
 (which has the same minima as $\norm{F}$):
 \begin{equation}
-  J(F_D)^2 = \int_C \left[\nu\left(\frac{\star F_D}{2 \pi \I}\right)\right]^2
+  J(D)^2 = \int_C \left[\nu\left(\frac{\star F_D}{2 \pi \I}\right)\right]^2
 \end{equation}
 where we use the norm on matrices given by
 $\nu(M) = \Tr \sqrt{M^*M} = \sum \abs{\lambda_i}$.
 
 Suppose we work formally for a moment, avoiding questions of
 smoothness etc.
-And suppose that $\cO$ contains a minimum of $J$, corresponding
+Moreover, suppose that $\cO$ contains a minimum of $J$, corresponding
 to a unitary connection; abusing notation we call this connection $D$.
-Then we consider an infinitesimal gauge transformation by
-a \ti{self-adjoint} element
-$Z \in \Lie \fG_\C = \Omega^0(\End E)$, i.e. $Z = Z^\dagger$ ---
-i.e. transform by $e^{tZ}$ and work to first order in $t$.
-Then the leading change of $\star F_D$ is given by $\I t D^* D Z$
-(because $D$ changes by $t \bar\partial_D Z - t \partial_D Z$,
-so $F_D$ changes by $t (\partial_D \bar\partial_D - \bar\partial_D \partial_D) Z = \star D^* D Z$). \fixme{check sign}
-Thus if we choose $Z$ obeying
-\begin{equation} \label{eq:gauge-laplace}
-  \I D^* D Z = -\star F_D
-\end{equation}
-a gauge transformation by $e^{t Z}$ for small $t$
-will reduce $J(F_D)$, unless
-already $F_D = 0$. Elliptic theory shows that we can indeed
-find a $Z$ obeying \eqref{eq:gauge-laplace}.
-Thus, to get the desired $F_D = 0$,
-all we need to do is show that a
-minimum of $J$ is actually attained in $\cO$.
+We will show that this $D$ has the desired property $F_D = 0$.
 
-The idea is to construct a
-sequence of connections $D_n$ for which
-$J(F_{D_n})$ approaches its infimum.
+For this, we consider an infinitesimal gauge transformation by
+a self-adjoint element $Z \in \Lie \fG_\C = \Omega^0(\End E)$ ---
+i.e. we transform by $e^{tZ}$ and work to first order in $t$.
+The leading change of $\star F_D$ is $\I t D^* D Z$
+(because $D$ changes by $t \bar\partial_D Z - t \partial_D Z$,
+so $F_D$ changes by $t (\partial_D \bar\partial_D - \bar\partial_D \partial_D) Z = \star \I t D^* D Z$). \fixme{check sign}
+Now we consider $Z$ obeying
+\begin{equation} \label{eq:gauge-laplace}
+  \I D^* D Z = -\star F_D.
+\end{equation}
+Elliptic theory shows that we can indeed
+find a $Z$ obeying \eqref{eq:gauge-laplace}.
+Given such a $Z$, gauge transformation by $e^{t Z}$ for small $t$
+reduces $J(D)$, unless already $F_D = 0$.
+Thus, if $D$ is a minimum of $J$, then it must have $F_D = 0$
+as desired.
+
+Thus the problem remaining is to show that $J$ has a minimum on $\cO$.
+For this purpose consider a sequence $D_n$ along which
+$J(D_n)$ approaches its infimum.
 Using the Uhlenbeck compactness
 theorem \autoref{thm:uhlenbeck-weak} we can make gauge transformations
-such that some subsequence becomes \ti{convergent}
+such that some subsequence becomes convergent
 (in the weak $L^2_1$ sense), to
-some limiting connection $D_*$. If
-$D_* \in \cO$ then we are done.
+some limiting connection $D_\infty$. If
+$D_\infty \in \cO$ then we are done.
 
-So what if $D_* \not\in \cO$? Then we want to derive
+So what if $D_\infty \not\in \cO$? Then we want to derive
 a contradiction. There
-is no holomorphic isomorphism $(E,\bar\partial_D) \to (E,\bar\partial_{D_*})$.
+is no holomorphic isomorphism $(E,\bar\partial_D) \to (E,\bar\partial_{D_\infty})$.
 Still, we can show that at least there is a
 holomorphic map
 \begin{equation}
-  \gamma: (E,\bar\partial_D) \to (E,\bar\partial_{D_*}).
+  \gamma: (E,\bar\partial_D) \to (E,\bar\partial_{D_\infty}).
 \end{equation}
-This uses the fact that holomorphically $(E,\bar\partial_D) \simeq (E,\bar\partial_{D_n})$ --- in other words, the operator
+For this we use the fact that each $D_n \in \cO$, and so 
+holomorphically $(E,\bar\partial_D) \simeq (E,\bar\partial_{D_n})$,
+which implies the operator
 $\bar\partial_{D^*_n} \otimes \bar\partial_D$
 on $\Hom(E,E)$ has a nontrivial kernel. Some elliptic estimates
 show that this kernel cannot disappear in the limit (roughly:
 if the lowest eigenvalue of the associated Laplacian is zero
-for all $\bar\partial_{D_n}$ then it is also zero for $\bar\partial_{D_*}$),
-so $\bar\partial_{D^*_n} \otimes \bar\partial_D$
- also has a nontrivial kernel,
-giving the desired $\gamma$.
+for all $\bar\partial_{D_n}$ then it is also zero for $\bar\partial_{D_\infty}$),
+so $\bar\partial_{D^*_\infty} \otimes \bar\partial_D$
+ also has a nontrivial kernel.
+This gives the desired $\gamma$.
 
 Now, since $\Hom(E,E)$ has degree zero and $\gamma$ is holomorphic,
 it is impossible for $\det \gamma$ to have isolated zeroes: it either
 vanishes everywhere or nowhere; but by assumption it does vanish somewhere;
 so it must be zero. It follows that the image of $\gamma$ is contained in
-some proper holomorphic subbundle $F$ of $(E,\bar\partial_{D_*})$; 
+some proper holomorphic subbundle $F$ of $(E,\bar\partial_{D_\infty})$; 
 also let $K$ denote a proper holomorphic subbundle
 of $(E,\bar\partial_D)$ containing $\ker \gamma$.
 Then we have a diagram of vector bundles:
@@ -6154,7 +6162,7 @@ Then we have a diagram of vector bundles:
 \end{tikzcd}
 \end{equation}
 where on the top row we have the holomorphic structure
-$\bar\partial_D$ and on the bottom $\bar\partial_{D_*}$;
+$\bar\partial_D$ and on the bottom $\bar\partial_{D_\infty}$;
 and $\det \rho$ is generically nonzero.
 The existence of $\rho$ then implies
 \begin{equation}
@@ -6162,8 +6170,8 @@ The existence of $\rho$ then implies
 \end{equation}
 Moreover, since $(E,\bar\partial_D)$ (the top row) was assumed stable,
 we must have $\deg K < 0$, so $\deg G > 0$, and thus $\deg F > 0$.
-In particular, this means $(E,\bar\partial_{D_*})$ (the bottom row) is
-\ti{unstable}. (That is as we should expect: $D_*$ is
+In particular, this means $(E,\bar\partial_{D_\infty})$ (the bottom row) is
+\ti{unstable}. (That is as we should expect: $D_\infty$ is
 in the closure of the $\fG_\C$-orbit $\cO$, so if it
 were stable, it would lead to some non-Hausdorff behavior
 in the quotient.)
@@ -6171,17 +6179,17 @@ in the quotient.)
 We now derive a contradiction from this state of affairs.
 
 The bottom row leads to a bound on \ti{all}
-connections in the orbit of $(E,\bar\partial_{D^*})$,
+connections in the orbit of $(E,\bar\partial_{D_\infty})$,
 as follows.
-First, note that because this bundle is \ti{unstable}
-we cannot make $J= 0$. The unstable
+First, note that because $(E,\bar\partial_{D_\infty})$ is unstable
+we cannot make $J= 0$; the unstable
 decomposition gives a precise lower bound,
 \begin{equation} \label{eq:J-lower-bound}
   J \ge 2 \deg F,
 \end{equation}
 as we now show.
 We use the shape of the
-curvature of a connection in $(E,\bar\partial_{D^*})$
+curvature of a connection in $(E,\bar\partial_{D_\infty})$
 as we used above,
 \begin{equation} \label{eq:extension-curvature-again}
   F_D = \begin{pmatrix} F_{D_F} - \beta^\dagger \wedge \beta & - D_{\Hom(H,F)} \beta^\dagger \\ D_{\Hom(F,H)} \beta & F_{D_{H}} - \beta \wedge \beta^\dagger \end{pmatrix},
@@ -6216,9 +6224,11 @@ which does the job. \fixme{...}
 
 Combining \eqref{eq:J-upper-bound} and \eqref{eq:J-lower-bound}
 gives a contradiction with the fact
-that $D^*$ was the limit of an infimizing sequence.
+that $D_\infty$ was the limit of an infimizing sequence.
 
 \end{pf}
+
+\fixme{comment on other approaches, Yang-Mills flow}
 
 \begin{exercise} Verify the formula \eqref{eq:extension-curvature}.
 It is convenient to think of \eqref{eq:connection-split} as shifting
