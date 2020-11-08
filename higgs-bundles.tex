@@ -6185,48 +6185,44 @@ so $\bar\partial_{D^*_\infty} \otimes \bar\partial_D$
  also has a nontrivial kernel.
 This gives the desired $\gamma$.
 
-Now, since $\Hom(E,E)$ has degree zero and $\gamma$ is holomorphic,
+Since $\Hom(E,E)$ has degree zero and $\gamma$ is holomorphic,
 either $\det \gamma = 0$ or $\det \gamma$ is nowhere vanishing.
 However, by assumption $\gamma$ is not an isomorphism, so we must have
 $\det \gamma = 0$.
-Thus the sheaf $\ker \gamma$ is a nontrivial proper
+Now let us consider the sheaves $\ker \gamma$ and $\im \gamma$.
+Since degree is additive in exact sequences of sheaves
+we have
+\begin{equation}
+ \deg \im \gamma = - \deg \ker \gamma.
+\end{equation}
+The sheaf $\ker \gamma$ is a nontrivial proper
 holomorphic subbundle $K$ of $(E,\bar\partial_D)$.
 The sheaf $\im \gamma$ is not necessarily a subbundle,
 but using \autoref{lem:saturation} we can saturate 
 it to a holomorphic subbundle $I$ of $(E,\bar\partial_{D_\infty})$,
 which has the same rank as $\im \gamma$ but perhaps higher degree.
-Thus $\gamma$ induces a map $\rho$ fitting into a diagram of holomorphic vector bundles,
-\begin{equation}
-\begin{tikzcd}
-0 \arrow[r] & K \arrow[r] & (E, \bar{\partial}_D) \arrow[r] \arrow[d,"\gamma"] & G \arrow[d,"\rho"] \arrow[r] & 0 \\
-0 & H \arrow[l] & (E, {\bar\partial_{D_\infty}}) \arrow[l] & I \arrow[l] & 0 \arrow[l]
-\end{tikzcd}
-\end{equation}
-with $\rank G = \rank I$ and $\det \rho \neq 0$.
-The existence of $\rho$ implies
+Thus we have subbundles
 \begin{equation} \label{eq:degGlF}
-  \deg G \le \deg I.
+ K \subset (E,\bar\partial_D), \quad I \subset (E,\bar\partial_{D_\infty}), \quad  \deg I \ge - \deg K.
 \end{equation}
-Moreover, since $(E,\bar\partial_D)$ was assumed stable,
-we must have $\deg K < 0$, so $\deg G > 0$, and thus $\deg I > 0$.
+We now derive a contradiction from this state of affairs.
+
+Since $(E,\bar\partial_D)$ was assumed stable,
+we must have $\deg K < 0$, so $\deg I > 0$.
 In particular, this means $(E,\bar\partial_{D_\infty})$ 
 is unstable. (That is as we should expect: $D_\infty$ is
 in the closure of the $\fG_\C$-orbit $\cO$, so if it
 were stable, it would lead to some non-Hausdorff behavior
 in the quotient.)
-
-We now derive a contradiction from this state of affairs.
-
-The bottom row leads to a bound on all
-connections $D'$ in the orbit of $(E,\bar\partial_{D_\infty})$,
-as follows.
-First, note that because $(E,\bar\partial_{D_\infty})$ is unstable
-we cannot make $J(D') = 0$; indeed the unstable
-decomposition gives a precise lower bound,
+Consider a connection $D'$ in the orbit of $(E,\bar\partial_{D_\infty})$.
+Because $(E,\bar\partial_{D_\infty})$ is unstable
+we cannot find such a $D'$ with $J(D') = 0$; indeed the destabilizing
+subbundle $I$ implies the lower bound
 \begin{equation} \label{eq:J-lower-bound}
-  J(D') \ge 2 \deg F,
+  J(D') \ge 2 \deg I,
 \end{equation}
 as we now show.
+Let $H$ be the orthocomplement of $I$ in $E$.
 We use the shape of the
 curvature of a connection in $(E,\bar\partial_{D_\infty})$
 as we used above,
@@ -6246,17 +6242,16 @@ as the curvatures; thus the equation
 gives $J(D') \ge \abs{\deg I}+\abs{\deg H} = 2 \deg I$
 as desired.
 
-On the other hand the top row of the diagram implies the existence
-of a connection $D'' \in \cO$ such that
+On the other hand, using the subbundle $K$ one can construct
+a connection $D'' \in \cO$ such that
 \begin{equation} \label{eq:J-upper-bound}
-  J(D'') < 2 \deg G.
+  J(D'') < -2 \deg K.
 \end{equation}
 For this, one works by induction. Assume that the
 result has been proven for all ranks $K'<K$.
 (The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
 Then the idea is to use the existence of Einstein connections on
-smaller bundles, and the fact that $(E,\bar\partial_D)$
-comes as an extension of $G$ by $K$,
+smaller bundles
 to cook up a connection on the full $(E,\bar\partial_D)$
 which does the job. \fixme{...}
 
