@@ -4523,9 +4523,19 @@ such that the induced maps
   V \to W^*, \qquad W \to V^*
 \end{equation}
 are injections.
+(Some authors would call this a ``weakly nondegenerate'' pairing.)
 \end{defn}
 
-Some authors would call this a ``weakly nondegenerate'' pairing.
+The topology induced by the norm on a Banach space is sometimes
+called the \ti{strong topology}.
+Another one which is useful (e.g. in the formulation of \autoref{thm:uhlenbeck-weak}
+below) is the weak topology:
+\begin{defn}[Weak topology]
+If $V$ is a Banach space, the \ti{weak topology} on $V$
+is the weakest topology for which all elements of $V^*$
+are continuous.
+\end{defn}
+
 
 
 \subsection{Calculus on Banach spaces}
@@ -5879,7 +5889,7 @@ while for $t = 0$ instead $E_t \simeq \cO(1) \oplus \cO(-1)$.
 Thus we have the unstable bundle
 $\cO(1) \oplus \cO(-1)$
 precisely at $t = 0$, which under the
-slightest perturbation ``decays'' to the semistable one
+slightest perturbation ``decays'' to the polystable bundle
 $\cO(0) \oplus \cO(0)$.
 
 The existence of this family
@@ -5900,17 +5910,34 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 \end{equation}
 \end{exercise}
 
-\begin{lem}[Saturation of subsheaves of bundles over curves]
+\fixme{need to briefly introduce language of coherent sheaves here,
+locally free sheaves,
+their degrees and ranks, additivity in exact sequences}
+
+\begin{lem}[Saturation of subsheaves of bundles over curves] \label{lem:saturation}
 If $E$ is a holomorphic vector bundle and $S \subset E$ a subsheaf,
 then there exists a subbundle $F \subset E$
 with $\rank F = \rank S$
 and $\deg F \ge \deg S$.
 \end{lem}
-\begin{pf} $F$ is the ``saturation'' of $S$, defined as the kernel of the
-projection $E \to (E/S)/T$ where $T$ is the torsion subsheaf of $E/S$;
-then $E/F$ is torsion-free, which means $F$ is a subbundle
+\begin{pf} Let $F$ be the kernel of the
+projection $E \to (E/S)/T$, where $T$ is the torsion subsheaf of $E/S$;
+then $F$ is a subsheaf of $E$ and 
+$E/F$ is torsion-free, which means $F$ is a subbundle of $E$,
 as desired.
 \end{pf}
+
+We will use \autoref{lem:saturation} 
+below for subsheaves which arise as the images of
+holomorphic bundle maps. 
+(The image sheaf of a map $E \to E'$ 
+is a subsheaf of the locally free sheaf of sections of $E'$, thus
+it is itself a locally free sheaf,
+and thus it is the space of sections of some bundle, but nevertheless it is not
+generally a subbundle of $E'$; for instance, over $\C\PP^1$, 
+the image of a nontrivial map $\cO \to \cO(1)$ is the subsheaf of $\cO(1)$
+consisting of all sections vanishing at a point, which is isomorphic
+to the sheaf of sections of $\cO$, but its saturation is the whole $\cO(1)$.)
 
 \begin{cor}[Alternative characterization of stability]
 In \autoref{def:stable-hol-vb} we may replace ``subbundle of $E$'' by ``subsheaf $S \subset E$
@@ -6006,17 +6033,18 @@ after deleting unstable bundles from $\cA^{\bar\partial}$.
 We need a preliminary:
 
 \begin{thm}[Weak Uhlenbeck compactness] \label{thm:uhlenbeck-weak}
-Suppose that $\{D_i\} \in \cA^h_1$ is a sequence of $L^2_1$ unitary
-connections on $C$, with $\norm{F(D_i)}$ bounded. Then after passing
-to a subsequence, there exist $g_i \in \fG_2$ such that $D_i^{g_i}$
-converge weakly.
+Suppose that $(D_n)_{n=1}^\infty$ is a sequence in $\cA^h_1$, 
+with $\norm{F(D_n)}$ bounded. Then after passing
+to a subsequence, there exist $g_n \in \fG_2$ such that $D_n^{g_n}$
+converge in the weak topology on $\cA^h_1$.
 \end{thm}
 
-Morally this should be understood as analogous to the compactness
-\autoref{thm:Ns-is-compact} for flat connections: we are saying that
+This should be understood as analogous to the compactness
+\autoref{thm:Ns-is-compact} for flat connections: \autoref{thm:uhlenbeck-weak}
+says that
 even if we allow some bounded amount of curvature, we still get a
 kind of weak compactness when we divide out by gauge transformations.
-
+\fixme{explain why strong compactness is too much to ask?}
 
 Now we are ready for the main theorem about moduli of bundles:
 
@@ -6094,9 +6122,7 @@ use a functional $J$
 where we use the norm on matrices given by
 $\nu(M) = \Tr \sqrt{M^*M} = \sum \abs{\lambda_i}$.
 
-Suppose we work formally for a moment, avoiding questions of
-smoothness etc.
-Moreover, suppose that $\cO$ contains a minimum of $J$, corresponding
+Suppose that $\cO$ contains a minimum of $J$, corresponding
 to a unitary connection; abusing notation we call this connection $D$.
 We will show that this $D$ has the desired property $F_D = 0$.
 
@@ -6118,26 +6144,31 @@ Thus, if $D$ is a minimum of $J$, then it must have $F_D = 0$
 as desired.
 
 Thus the problem remaining is to show that $J$ has a minimum on $\cO$.
-For this purpose consider a sequence $D_n$ along which
-$J(D_n)$ approaches its infimum.
-Using the Uhlenbeck compactness
-theorem \autoref{thm:uhlenbeck-weak} we can make gauge transformations
-such that some subsequence becomes convergent
-(in the weak $L^2_1$ sense), to
-some limiting connection $D_\infty$. If
-$D_\infty \in \cO$ then we are done.
+Let $m$ be the infimum of $J$ on $\cO$, and
+consider a sequence $D_n$ with
+$J(D_n) \to m$.
+By the Uhlenbeck compactness
+theorem, \autoref{thm:uhlenbeck-weak}, we can make gauge transformations
+such that some subsequence converges in the weak topology on $\cA^h_1$ to
+a limiting $L^2_1$ connection $D_\infty$. 
+This weak convergence is sufficient to imply that 
+$J(D_\infty) \le m$. \fixme{explain why} Thus, if
+$D_\infty \in \cO$, then $J(D_\infty) = m$ and 
+$D_\infty$ is the desired minimum of $J$ on $\cO$.
 
 So what if $D_\infty \not\in \cO$? Then we want to derive
-a contradiction. There
+a contradiction. \fixme{remark $D_\infty$ still defines a holomorphic
+structure even though it's only $L^2_1$: from Atiyah-Bott Lemma 14.8} There
 is no holomorphic isomorphism $(E,\bar\partial_D) \to (E,\bar\partial_{D_\infty})$.
 Still, we can show that at least there is a
-holomorphic map
+nonzero holomorphic map
 \begin{equation}
   \gamma: (E,\bar\partial_D) \to (E,\bar\partial_{D_\infty}).
 \end{equation}
 For this we use the fact that each $D_n \in \cO$, and so 
-holomorphically $(E,\bar\partial_D) \simeq (E,\bar\partial_{D_n})$,
-which implies the operator
+there does exist a nonzero holomorphic map 
+$\gamma_n: (E,\bar\partial_D) \to (E,\bar\partial_{D_n})$,
+so the operator
 $\bar\partial_{D^*_n} \otimes \bar\partial_D$
 on $\Hom(E,E)$ has a nontrivial kernel. Some elliptic estimates
 show that this kernel cannot disappear in the limit (roughly:
@@ -6216,7 +6247,7 @@ such that
 For this, one works by induction: so assume that the
 result has been proven for all ranks $K'<K$.
 (The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
-Then the idea is to \ti{use} the existence of Einstein connections on
+Then the idea is to use the existence of Einstein connections on
 smaller bundles, and the fact that $(E,\bar\partial_D)$
 comes as an extension of $G$ by $K$,
 to cook up a connection on the full $(E,\bar\partial_D)$
