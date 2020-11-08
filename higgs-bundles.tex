@@ -5912,7 +5912,9 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 
 \fixme{need to briefly introduce language of coherent sheaves here,
 locally free sheaves,
-their degrees and ranks, additivity in exact sequences}
+their degrees and ranks, additivity in exact sequences,
+characterization of subbundles by fact that quotient is torsion-free, fact that
+sheaf kernel of bundle map is a bundle}
 
 \begin{lem}[Saturation of subsheaves of bundles over curves] \label{lem:saturation}
 If $E$ is a holomorphic vector bundle and $S \subset E$ a subsheaf,
@@ -5931,13 +5933,14 @@ We will use \autoref{lem:saturation}
 below for subsheaves which arise as the images of
 holomorphic bundle maps. 
 (The image sheaf of a map $E \to E'$ 
-is a subsheaf of the locally free sheaf of sections of $E'$, thus
+is a subsheaf of the locally free sheaf of sections of $E'$, so
 it is itself a locally free sheaf,
 and thus it is the space of sections of some bundle, but nevertheless it is not
 generally a subbundle of $E'$; for instance, over $\C\PP^1$, 
 the image of a nontrivial map $\cO \to \cO(1)$ is the subsheaf of $\cO(1)$
-consisting of all sections vanishing at a point, which is isomorphic
-to the sheaf of sections of $\cO$, but its saturation is the whole $\cO(1)$.)
+consisting of all sections vanishing at a point. This subsheaf is isomorphic
+to the sheaf of sections of $\cO$, but
+$\cO$ is not a subbundle of $\cO(1)$.)
 
 \begin{cor}[Alternative characterization of stability]
 In \autoref{def:stable-hol-vb} we may replace ``subbundle of $E$'' by ``subsheaf $S \subset E$
@@ -6046,7 +6049,8 @@ even if we allow some bounded amount of curvature, we still get a
 kind of weak compactness when we divide out by gauge transformations.
 \fixme{explain why strong compactness is too much to ask?}
 
-Now we are ready for the main theorem about moduli of bundles:
+Now we are ready for the main theorem about moduli of holomorphic 
+vector bundles:
 
 \begin{thm}[Narasimhan-Seshadri theorem]  \label{thm:narasimhan-seshadri}
 \cite{MR32:1725}
@@ -6106,59 +6110,62 @@ $(E,\bar\partial_D)$ is polystable, as desired.
 
 Conversely suppose we have some $D$ such that $\bar\partial_D$
 induces a stable holomorphic structure. Now we want to find a
-\ti{flat} connection which induces the same holomorphic structure,
+flat connection which induces the same holomorphic structure,
 i.e. is in the same $\fG_\C$-orbit. Call this orbit $\cO$.
-The moral idea is to consider the ``Yang-Mills functional''
-given by the $L^2$ norm of $F_D$,
+The moral idea is to look for a minimum of the $L^2$ norm of $F_D$ (Yang-Mills
+functional)
 \begin{equation}
  \norm{F_D}^2 = \int_C \Tr (F_D \wedge \star F_D).
 \end{equation}
 For technical convenience, instead of the $L^2$ norm, we
-use a functional $J$
-(which has the same minima as $\norm{F}$):
+use a functional $J$ which has the same minima as $\norm{F}$:
 \begin{equation}
-  J(D)^2 = \int_C \left[\nu\left(\frac{\star F_D}{2 \pi \I}\right)\right]^2
+  J(D)^2 = \int_C \left[\nu\left(\frac{\star F_D}{2 \pi \I}\right)\right]^2, \qquad \nu(M) = \Tr \sqrt{M^*M} = \sum \abs{\lambda_i}.
 \end{equation}
-where we use the norm on matrices given by
-$\nu(M) = \Tr \sqrt{M^*M} = \sum \abs{\lambda_i}$.
-
-Suppose that $\cO$ contains a minimum of $J$, corresponding
-to a unitary connection; abusing notation we call this connection $D$.
-We will show that this $D$ has the desired property $F_D = 0$.
+Let $m$ be the infimum of $J$ on $\cO$, and
+suppose that $\cO$ contains a connection $D'$
+with $J(D') = m$.
+We will show that $F_{D'} = 0$.
 
 For this, we consider an infinitesimal gauge transformation by
 a self-adjoint element $Z \in \Lie \fG_\C = \Omega^0(\End E)$ ---
 i.e. we transform by $e^{tZ}$ and work to first order in $t$.
-The leading change of $\star F_D$ is $\I t D^* D Z$
-(because $D$ changes by $t \bar\partial_D Z - t \partial_D Z$,
-so $F_D$ changes by $t (\partial_D \bar\partial_D - \bar\partial_D \partial_D) Z = \star \I t D^* D Z$). \fixme{check sign}
+The leading change of $\star F_{D'}$ is $\I t D'^* D' Z$
+(because $D'$ changes by $t \bar\partial_{D'} Z - t \partial_{D'} Z$,
+so $F_{D'}$ changes by $t (\partial_{D'} \bar\partial_{D'} - \bar\partial_{D'} \partial_{D'}) Z = \star \I t {D'}^* {D'} Z$). \fixme{check sign}
 Now we consider $Z$ obeying
 \begin{equation} \label{eq:gauge-laplace}
-  \I D^* D Z = -\star F_D.
+  \I D'^* D' Z = -\star F_{D'}.
 \end{equation}
 Elliptic theory shows that we can indeed
 find a $Z$ obeying \eqref{eq:gauge-laplace}.
 Given such a $Z$, gauge transformation by $e^{t Z}$ for small $t$
-reduces $J(D)$, unless already $F_D = 0$.
-Thus, if $D$ is a minimum of $J$, then it must have $F_D = 0$
-as desired.
+reduces $J(D')$, unless already $F_{D'} = 0$.
+Thus, since we assume $J(D') = m$, we must have $F_{D'} = 0$.
+\fixme{interpret as gradient flow?}
 
-Thus the problem remaining is to show that $J$ has a minimum on $\cO$.
-Let $m$ be the infimum of $J$ on $\cO$, and
-consider a sequence $D_n$ with
-$J(D_n) \to m$.
+Thus the problem remaining is to show that  $\cO$ indeed contains 
+a minimum of $J$.
+For this consider a sequence $(D_n)_{n=1}^\infty$ in $\cO$ with
+\begin{equation}
+J(D_n) \to m.
+\end{equation}
 By the Uhlenbeck compactness
 theorem, \autoref{thm:uhlenbeck-weak}, we can make gauge transformations
 such that some subsequence converges in the weak topology on $\cA^h_1$ to
 a limiting $L^2_1$ connection $D_\infty$. 
 This weak convergence is sufficient to imply that 
-$J(D_\infty) \le m$. \fixme{explain why} Thus, if
+\begin{equation} \label{eq:JDinfty}
+J(D_\infty) \le m.
+\end{equation}
+\fixme{explain why} Thus, if
 $D_\infty \in \cO$, then $J(D_\infty) = m$ and 
 $D_\infty$ is the desired minimum of $J$ on $\cO$.
 
 So what if $D_\infty \not\in \cO$? Then we want to derive
 a contradiction. \fixme{remark $D_\infty$ still defines a holomorphic
-structure even though it's only $L^2_1$: from Atiyah-Bott Lemma 14.8} There
+structure even though it's only $L^2_1$: from Atiyah-Bott Lemma 14.8} 
+In this case there
 is no holomorphic isomorphism $(E,\bar\partial_D) \to (E,\bar\partial_{D_\infty})$.
 Still, we can show that at least there is a
 nonzero holomorphic map
@@ -6179,72 +6186,72 @@ so $\bar\partial_{D^*_\infty} \otimes \bar\partial_D$
 This gives the desired $\gamma$.
 
 Now, since $\Hom(E,E)$ has degree zero and $\gamma$ is holomorphic,
-it is impossible for $\det \gamma$ to have isolated zeroes: it either
-vanishes everywhere or nowhere; but by assumption it does vanish somewhere;
-so it must be zero. It follows that the image of $\gamma$ is contained in
-some proper holomorphic subbundle $F$ of $(E,\bar\partial_{D_\infty})$; 
-also let $K$ denote a proper holomorphic subbundle
-of $(E,\bar\partial_D)$ containing $\ker \gamma$.
-Then we have a diagram of vector bundles:
+either $\det \gamma = 0$ or $\det \gamma$ is nowhere vanishing.
+However, by assumption $\gamma$ is not an isomorphism, so we must have
+$\det \gamma = 0$.
+Thus the sheaf $\ker \gamma$ is a nontrivial proper
+holomorphic subbundle $K$ of $(E,\bar\partial_D)$.
+The sheaf $\im \gamma$ is not necessarily a subbundle,
+but using \autoref{lem:saturation} we can saturate 
+it to a holomorphic subbundle $I$ of $(E,\bar\partial_{D_\infty})$,
+which has the same rank as $\im \gamma$ but perhaps higher degree.
+Thus $\gamma$ induces a map $\rho$ fitting into a diagram of holomorphic vector bundles,
 \begin{equation}
 \begin{tikzcd}
-0 \arrow[r] & K \arrow[r] & E \arrow[r] \arrow[d,"\gamma"] & G \arrow[d,"\rho"] \arrow[r] & 0 \\
-0 & H \arrow[l] & E \arrow[l] & F \arrow[l] & 0 \arrow[l]
+0 \arrow[r] & K \arrow[r] & (E, \bar{\partial}_D) \arrow[r] \arrow[d,"\gamma"] & G \arrow[d,"\rho"] \arrow[r] & 0 \\
+0 & H \arrow[l] & (E, {\bar\partial_{D_\infty}}) \arrow[l] & I \arrow[l] & 0 \arrow[l]
 \end{tikzcd}
 \end{equation}
-where on the top row we have the holomorphic structure
-$\bar\partial_D$ and on the bottom $\bar\partial_{D_\infty}$;
-and $\det \rho$ is generically nonzero.
-The existence of $\rho$ then implies
-\begin{equation}
-  \deg G \le \deg F.
+with $\rank G = \rank I$ and $\det \rho \neq 0$.
+The existence of $\rho$ implies
+\begin{equation} \label{eq:degGlF}
+  \deg G \le \deg I.
 \end{equation}
-Moreover, since $(E,\bar\partial_D)$ (the top row) was assumed stable,
-we must have $\deg K < 0$, so $\deg G > 0$, and thus $\deg F > 0$.
-In particular, this means $(E,\bar\partial_{D_\infty})$ (the bottom row) is
-\ti{unstable}. (That is as we should expect: $D_\infty$ is
+Moreover, since $(E,\bar\partial_D)$ was assumed stable,
+we must have $\deg K < 0$, so $\deg G > 0$, and thus $\deg I > 0$.
+In particular, this means $(E,\bar\partial_{D_\infty})$ 
+is unstable. (That is as we should expect: $D_\infty$ is
 in the closure of the $\fG_\C$-orbit $\cO$, so if it
 were stable, it would lead to some non-Hausdorff behavior
 in the quotient.)
 
 We now derive a contradiction from this state of affairs.
 
-The bottom row leads to a bound on \ti{all}
-connections in the orbit of $(E,\bar\partial_{D_\infty})$,
+The bottom row leads to a bound on all
+connections $D'$ in the orbit of $(E,\bar\partial_{D_\infty})$,
 as follows.
 First, note that because $(E,\bar\partial_{D_\infty})$ is unstable
-we cannot make $J= 0$; the unstable
+we cannot make $J(D') = 0$; indeed the unstable
 decomposition gives a precise lower bound,
 \begin{equation} \label{eq:J-lower-bound}
-  J \ge 2 \deg F,
+  J(D') \ge 2 \deg F,
 \end{equation}
 as we now show.
 We use the shape of the
 curvature of a connection in $(E,\bar\partial_{D_\infty})$
 as we used above,
 \begin{equation} \label{eq:extension-curvature-again}
-  F_D = \begin{pmatrix} F_{D_F} - \beta^\dagger \wedge \beta & - D_{\Hom(H,F)} \beta^\dagger \\ D_{\Hom(F,H)} \beta & F_{D_{H}} - \beta \wedge \beta^\dagger \end{pmatrix},
+  F_{D'} = \begin{pmatrix} F_{D'_I} - \beta^\dagger \wedge \beta & - D'_{\Hom(H,I)} \beta^\dagger \\ D'_{\Hom(I,H)} \beta & F_{D'_{H}} - \beta \wedge \beta^\dagger \end{pmatrix},
 \end{equation}
 and the fact that the matrix norm $\nu$ behaves well:
 \begin{equation}
-  \nu\left[\begin{pmatrix} A & B \\ C & D \end{pmatrix} \right] \ge \abs{\Tr A} + \abs{\Tr D}.
+  \nu\left[\begin{pmatrix} a & b \\ c & d \end{pmatrix} \right] \ge \abs{\Tr a} + \abs{\Tr d}.
 \end{equation}
 Applying this to \eqref{eq:extension-curvature-again} the key point
-is that the extra terms involving $\beta$ have the \ti{same sign}
+is that the extra terms involving $\beta$ have the same sign
 as the curvatures; thus the equation
 \begin{equation}
-  J(F_D) \ge \int_C \nu\left(\frac{\star F_D}{2 \pi \I}\right)
+  J(D') \ge \int_C \nu\left(\frac{\star F_{D'}}{2 \pi \I}\right)
 \end{equation}
-gives $J(F_D) \ge \abs{\deg F}+\abs{\deg H} = 2 \deg F$
+gives $J(D') \ge \abs{\deg I}+\abs{\deg H} = 2 \deg I$
 as desired.
 
 On the other hand the top row of the diagram implies the existence
-of a connection in the orbit of $(E,\bar\partial_D)$,
-such that
+of a connection $D'' \in \cO$ such that
 \begin{equation} \label{eq:J-upper-bound}
-  J < 2 \deg G.
+  J(D'') < 2 \deg G.
 \end{equation}
-For this, one works by induction: so assume that the
+For this, one works by induction. Assume that the
 result has been proven for all ranks $K'<K$.
 (The case $K'=1$ was \autoref{lem:einstein-connections-on-line-bundles}.)
 Then the idea is to use the existence of Einstein connections on
@@ -6253,10 +6260,12 @@ comes as an extension of $G$ by $K$,
 to cook up a connection on the full $(E,\bar\partial_D)$
 which does the job. \fixme{...}
 
-Combining \eqref{eq:J-upper-bound} and \eqref{eq:J-lower-bound}
-gives a contradiction with the fact
-that $D_\infty$ was the limit of an infimizing sequence.
-
+Combining \eqref{eq:J-upper-bound}, \eqref{eq:J-lower-bound}, \eqref{eq:degGlF}
+we have
+\begin{equation}
+ m \le J(D'') < J(D_\infty) \le m
+\end{equation}
+which is the desired contradiction.
 \end{pf}
 
 \fixme{comment on other approaches, Yang-Mills flow}
@@ -6541,12 +6550,15 @@ often has another interpretation: if the space $X$ is
 actually \hk, then we can try to identify $X \kq G_\C = X \hkq G$,
 and thus get a \hk structure on the quotient.
 Let us try to do that here.
-
-As we did before, we introduce a Hermitian metric $h$ on the
+As we did before, we begin by introducing a Hermitian metric $h$ on the
 bundle $E$.
-Then let $\cA^H$ denote the space
-of pairs $(D,\Phi)$ where $D$ is a \ti{unitary} connection on $(E,h)$
+
+\begin{defn}[Doubled connection] A \ti{doubled connection} on $(E,h)$ is a pair
+$(D,\Phi)$ where $D$ is a unitary connection on $(E,h)$
 and $\Phi \in \Omega^1(\fu(E))$.
+\end{defn}
+
+Let $\cA^H$ denote the space of all doubled connections on $(E,h)$.
 $\cA^H$ is naturally an affine space over the real vector space
 $\Omega^1(\fu(E)) \oplus \Omega^1(\fu(E))$.
 The group $\fG$ of unitary gauge transformations
@@ -6717,31 +6729,33 @@ F_D + [\varphi,\varphi^\dagger] &= -2 \pi \I \frac{d}{K} \bid \omega_C.
 \end{align}
 \end{subequations}
 Solutions of these equations are important enough that we give them a name:
-\begin{defn}[Harmonic pair]
-A \ti{harmonic pair} on $E$ is a pair $(D,\varphi) \in \cA^H$
+\begin{defn}[Harmonic doubled connection]
+A \ti{harmonic doubled connection} on $E$ is a doubled connection 
+$(D,\Phi) \in \cA^H$
 obeying Hitchin's equations \eqref{eq:hitchin-eq}.
 \end{defn}
 
-If $\varphi = 0$ then a harmonic pair $(D,\varphi)$ reduces to an
+A harmonic doubled connection $(D,\Phi)$ with $\Phi = 0$ reduces to an
 Einstein connection.
 
 Thus the moduli space we are after, $\cA^H \hkq \fG = \vec\mu^{-1}(0) / \fG$,
-is the space of harmonic pairs on $E$ modulo gauge equivalence.
+is the space of harmonic doubled connections on $E$ modulo gauge equivalence.
 As before, to study this \hk quotient,
 we need to understand the extent to which
 $\fG$ acts freely:
 
-\begin{defn}[Irreducible Higgs pairs] A pair $(D,\varphi) \in \cA^H$
-is called \ti{irreducible} if there exist no subbundles $E' \subset E$
-which are preserved by both $D$ and $\varphi$. Let $\cA^{H,s} \subset \cA^H$
-be the set of irreducible Higgs pairs.
+\begin{defn}[Irreducible doubled connections] A doubled 
+connection $(D,\Phi) \in \cA^H$
+is called \ti{irreducible} if there exist no proper subbundles $E' \subset E$
+which are preserved by both $D$ and $\Phi$. Let $\cA^{H,s} \subset \cA^H$
+be the set of irreducible doubled connections.
 \end{defn}
 
 In parallel to \autoref{prop:gauge-group-almost-free-on-irreducible},
 we have:
-\begin{prop}[Gauge group acts almost freely on irreducible Higgs pairs]
-If $g \in \fG$ and $(D,\varphi) \in \cA^{H,s}$, then
-$(D^g,\varphi^g) = (D,\varphi)$
+\begin{prop}[Gauge group acts almost freely on irreducible doubled connections]
+If $g \in \fG$ and $(D,\Phi) \in \cA^{H,s}$, then
+$(D^g,\Phi^g) = (D,\Phi)$
 if and only if $g$ acts on $E$ by multiplication by a constant scalar.
 \end{prop}
 \begin{pf} This is essentially the same as the proof of
@@ -6749,7 +6763,7 @@ if and only if $g$ acts on $E$ by multiplication by a constant scalar.
 \end{pf}
 
 Now finally we define:
-\begin{defn}[Moduli space of harmonic pairs]
+\begin{defn}[Moduli space of harmonic doubled connections]
 \begin{equation}
   \cM_{K,d}(C) = \cA^H \hkq \fG, \qquad \cM^s_{K,d}(C) = \cA^{H,s} \hkq \fG.
 \end{equation}
@@ -6757,7 +6771,7 @@ Now finally we define:
 
 As we did with $\cN^s_{K,d}(C)$, we
 first discuss the formal picture. The tangent space to
-$\cM_{K,d}^s(C)$ at a given harmonic pair $(D,\varphi)$
+$\cM_{K,d}^s(C)$ at a given harmonic doubled connection $(D,\Phi)$
 should formally be the joint kernel of the
 three linearized moment maps $\de \mu_i$, modulo the space spanned
 by infinitesimal gauge transformations.
@@ -6773,10 +6787,11 @@ and the second is
 \begin{equation}
 (\dot A, \dot \Phi) \mapsto (D \dot{A} + [\Phi,\dot\Phi], -D \star \dot\Phi - [\dot A, \star\Phi], D \dot\Phi + [\dot A, \Phi]).
 \end{equation}
-As before, this is indeed a complex, when $(D,\varphi)$ is a harmonic
+As before, this is indeed a complex, when $(D,\Phi)$ is a harmonic
 pair. Also as before, the \hk quotient construction dictates that
 we should interpret the quotient by $\im \rho$
-by taking the orthocomplement, \fixme{double-check signs and factors here!}
+by taking the orthocomplement, \fixme{make this sentence clearer} 
+\fixme{double-check signs and factors here!}
 \begin{equation}
   (\im \rho)^\perp = \{D \star \dot{A} - [\star \Phi, \dot\Phi] = 0\} \subset \Omega^1(\fu(E))^{\oplus 2}.
 \end{equation}
@@ -6789,13 +6804,13 @@ the operator
 Note that $\hat{D}$ is \ti{elliptic}, just as before:
 the principal symbol is $2K^2$ copies of $\de \oplus \de^*$.
 Thus, as before, elliptic theory in the sense of \autoref{sec:ellipticity}
-says that when we
-consider the extension $\hat{D}_k$ on the Banach spaces of $L^2_k$
-Higgs pairs, $\hat{D}_k$ has a finite-dimensional
+says that the extension $\hat{D}_k$ of $\hat{D}$ 
+to the Banach space of $L^2_k$
+doubled connections has a finite-dimensional
 kernel, and that kernel consists of smooth sections.
 
 Again as before, we have:
-\begin{lem}[Almost-vanishing for the doubled gauge complex] If $(D,\varphi) \in \cA^s$, then $\coker \hat{D}$ is $4$-dimensional,
+\begin{lem}[Almost-vanishing for the doubled gauge complex] If $(D,\Phi) \in \cA^{H,s}$, then $\coker \hat{D}$ is $4$-dimensional,
 spanned by multiples of the identity in each summand
 of $\Omega^2(\fu(E))^{\oplus 4}$.
 \end{lem}
@@ -6820,6 +6835,7 @@ of $\cM_{K,d}^s(C)$ is $(g-1)K^2 + 1$.
 \begin{pf}
 \fixme{...}
 \end{pf}
+
 
 \subsection{The twistor family, formally}
 
@@ -7076,10 +7092,10 @@ and thus obtain a Higgs bundle.
 
 \begin{exercise}
 Show that the Higgs bundles in \autoref{exa:hitchin-section-K2} are stable
-(\ti{despite} the fact that the underlying
+(despite the fact that the underlying
 vector bundle $E$ is unstable),
 for any $(\phi_1,\phi_2)$,
-as long as $C$ has genus $g \ge 2$.
+if $C$ has genus $g \ge 2$.
 \end{exercise}
 
 For the next example we need a little bit of setup:
@@ -7091,7 +7107,7 @@ $\cL^2 \simeq K_C$.
 
 \begin{exercise} Show that the set of spin structures on $C$ (up to
 the natural notion of equivalence) is a torsor for $H^1(C,\Z/2\Z)$.
-So in particular, there are $2^{2g}$ inequivalent
+In particular, there are $2^{2g}$ inequivalent
 spin structures on a genus $g$ surface.
 \end{exercise}
 
@@ -7154,7 +7170,7 @@ one for $\zeta = 0$ and one for $\zeta \neq 0$:
 these are \autoref{thm:polystable-higgs-bundles-harmonic}
 and \autoref{thm:reductive-connection-harmonic} below.
 
-\begin{thm}[Polystable Higgs bundles admit harmonic connections] \label{thm:polystable-higgs-bundles-harmonic}
+\begin{thm}[Polystable Higgs bundles admit harmonic doubled connections] \label{thm:polystable-higgs-bundles-harmonic}
 We have:
 \begin{itemize}
 \item For any $[(D,\Phi)] \in \cM^s_{K,d}(C)$ the pair
@@ -7183,7 +7199,7 @@ structure $\cL$ on $C$. We consider the special case of
   E = \cL \oplus \cL^{-1}, \qquad \varphi = \begin{pmatrix} 0 & 0 \\ 1 &0 \end{pmatrix}.
 \end{equation}
 According to \autoref{thm:polystable-higgs-bundles-harmonic}
-there exists a harmonic pair in the $\fG_\C$-orbit of this
+there exists a harmonic doubled connection in the $\fG_\C$-orbit of this
 Higgs bundle, or equivalently, a Hermitian metric $h$ on $E$ such that
 \begin{equation} \label{eq:hitchin-eq-redux}
   F_{D_h} + [\varphi, \varphi^{\dagger_h}] = 0.
@@ -7203,7 +7219,7 @@ This equation says that the metric $g$ has constant curvature
 $-4$. So \autoref{thm:polystable-higgs-bundles-harmonic} applied to this
 Higgs bundle implies the uniformization theorem.
 
-Let us explore this example a bit further. The harmonic pair
+Let us explore this example a bit further. The harmonic doubled connection
 $(D,\Phi)$ induces a flat connection
 \begin{equation}
   \nabla = D + \I \Phi
@@ -7314,16 +7330,16 @@ For general $K$, \eqref{eq:discriminant} implies that
 $\Delta_{\vec\phi}$ is a section of $K_C^{\otimes K(K-1)}$.
 The zeroes of $\Delta_{\vec\phi}$ are the places on $C$ where the
 sheets $\lambda_i$ collide, i.e. they are the places where
-the curve $\Sigma_{\vec\phi}$ is \ti{ramified} as a cover of $C$.
+the curve $\Sigma_{\vec\phi}$ is ramified as a cover of $C$.
 
 Let us explore a bit more closely what happens near the ramification
 points.
-The simplest behavior occurs at a \ti{simple} zero of $\Delta_{\vec\phi}$.
+The simplest behavior occurs at a simple zero of $\Delta_{\vec\phi}$.
 Indeed at such a zero the local behavior of \eqref{eq:spectral-curve}
 is like that of the
 equation $y^2 = z$, which has
 two solutions $y = \pm \sqrt{z}$, colliding at the ramification point
-$y=z=0$; note that the curve $y^2 = z$ is \ti{smooth} even at this point.
+$y=z=0$; note that the curve $y^2 = z$ is smooth even at this point.
 This motivates the following definition:
 
 \begin{defn}[Smooth locus and discriminant locus]
@@ -7401,7 +7417,7 @@ The tricky point is to extend
 $\cL$ to a line bundle over the whole $\Sigma_{\vec\phi}$
 including the branch locus.
 If we are algebraically minded we can consider the
-\ti{sheaf} $\ker(\varphi-\lambda)$ and verify directly that it is
+sheaf $\ker(\varphi-\lambda)$ and verify directly that it is
 locally free of rank $1$, thus it is the sheaf of sections of a
 holomorphic line bundle. I will describe the same thing in a more
 analytic language. For notational simplicity I consider the special case
@@ -7436,7 +7452,7 @@ It follows that
 \end{equation}
 where $\Sigma'$ is $\Sigma$ with the branch points deleted.
 However, $D^\parallel$ does not extend
-over the branch points, so we \ti{cannot} conclude
+over the branch points, so we cannot conclude
 from \eqref{eq:degree-integrals-equal} that
 $\deg E = \deg \cL$.
 
@@ -7516,7 +7532,7 @@ and in \cite{Wentworth2014} for general $K$,
 by gauge-theoretic methods (using Uhlenbeck compactness).
 Also see \cite{MR1085642} for a more algebraic
 method.
-% Suppose we have a sequence $(D_n, \Phi_n)$ of harmonic pairs,
+% Suppose we have a sequence $(D_n, \Phi_n)$ of harmonic doubled connections,
 % whose image in $\cB$ is bounded.
 % Then using \eqref{eq:hitchin-eq} we show
 % the $L^2$ norm of $F$ is also bounded, so that we can use
@@ -7919,7 +7935,7 @@ where
 
 One approach to proving this kind of formula
 is to make a careful study of the asymptotic
-behavior of the corresponding harmonic pairs $(D,\Phi)$.
+behavior of the corresponding harmonic doubled connections $(D,\Phi)$.
 See \cite{Mazzeo2014} for this.
 
 
