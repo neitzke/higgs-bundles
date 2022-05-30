@@ -5914,7 +5914,7 @@ one piece polynomial in $z$ and one piece polynomial in $z^{-1}$
 locally free sheaves,
 their degrees and ranks, additivity in exact sequences,
 characterization of subbundles by fact that quotient is torsion-free, fact that
-sheaf kernel of bundle map is a bundle}
+over a smooth curve the sheaf kernel of bundle map is a bundle}
 
 \begin{lem}[Saturation of subsheaves of bundles over curves] \label{lem:saturation}
 If $E$ is a holomorphic vector bundle and $S \subset E$ a subsheaf,
@@ -5931,16 +5931,19 @@ as desired.
 
 We will use \autoref{lem:saturation} 
 below for subsheaves which arise as the images of
-holomorphic bundle maps. 
-(The image sheaf of a map $E \to E'$ 
+holomorphic bundle maps.\footnote{The image sheaf of a map $E \to E'$ 
 is a subsheaf of the locally free sheaf of sections of $E'$, so
-it is itself a locally free sheaf,
-and thus it is the space of sections of some bundle, but nevertheless it is not
+it is itself a locally free sheaf (this uses the fact that we work over
+a smooth curve);
+thus it is the space of sections of some bundle, but nevertheless it is not
 generally a subbundle of $E'$; for instance, over $\C\PP^1$, 
 the image of a nontrivial map $\cO \to \cO(1)$ is the subsheaf of $\cO(1)$
 consisting of all sections vanishing at a point. This subsheaf is isomorphic
 to the sheaf of sections of $\cO$, but
-$\cO$ is not a subbundle of $\cO(1)$.)
+$\cO$ is not a subbundle of $\cO(1)$. A related fact is that
+the cokernel of a nontrivial map $\cO \to \cO(1)$ is a sheaf supported
+at a point, and thus is not locally free; in turn this is related
+to the oft-quoted fact that the category of vector bundles is not abelian.}
 
 \begin{cor}[Alternative characterization of stability]
 In \autoref{def:stable-hol-vb} we may replace ``subbundle of $E$'' by ``subsheaf $S \subset E$
