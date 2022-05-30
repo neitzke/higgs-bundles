@@ -4,4 +4,5 @@ sub svg2pdf {
    system("inkscape --export-area-page --export-text-to-path --export-pdf=\"$curdir/$_[0].pdf\" \"$curdir/$_[0].svg\""); }
 $pdf_mode = 1;
 $pdflatex = 'pdflatex %O -synctex=1 -interaction=nonstopmode %S';
+system('git config --global --add safe.directory /github/workspace');
 do './gitinfo2.pm'
